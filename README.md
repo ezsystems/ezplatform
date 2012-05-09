@@ -13,9 +13,8 @@ A prototype of eZ Publish integrations from a high level:
 
 ```
 >index.php
- |-> boostrap.php-> config.php
- |                <- config
- |<- Container ( configured )
+ |-> boostrap.php |<-> config.php
+ |<--- Container ( configured )
  |
  |-> Dispatcher/ PreRouter -> Router -> Controller |<-> Model
  |                                                 | Result -> ViewDispatcher-> View (twig/php based)
