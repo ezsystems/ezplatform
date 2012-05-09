@@ -19,7 +19,9 @@ A prototype of eZ Publish integrations from a high level:
  |
  |-> Dispatcher/ PreRouter -> Router -> Controller |<-> Model
  |                                                 | Result -> ViewDispatcher-> View (twig/php based)
-<-----------------------------------------------------------------------------  Response 
+ |                                    <--------------------------------  Response 
+ |                          <--------
+<--------------------------
 ```
 
 
