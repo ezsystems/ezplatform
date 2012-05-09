@@ -2,9 +2,9 @@ Cherry MVC
 ==========
 
 Cherry: From the fact that we will use components from the sources we see fit:
- - RMF
- - Symfony
- - HiMVC
+ - RMF https://github.com/Qafoo/REST-Micro-Framework
+ - Symfony https://github.com/symfony/
+ - HiMVC https://github.com/andrerom/HiMVC
 
 
 
