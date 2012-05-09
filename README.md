@@ -16,6 +16,9 @@ A prototype of eZ Publish MVC stack from a high level:
  |-> boostrap.php |<-> config.php
  |<--- Container ( configured )
  |
+ |-> RequestParser
+ |<---- Request
+ |
  |-> Dispatcher/ PreRouter -> Router -> Controller |<-> Model
  |                                                 | Result -> ViewDispatcher-> View (twig/php based)
  |                                    <--------------------------------  Response 
