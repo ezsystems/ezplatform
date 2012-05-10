@@ -1,0 +1,3 @@
+[submodule "vendor/ezsystems/api"]
+	path = vendor/ezsystems/api
+	url = git@github.com:ezsystems/ezp-next.git
