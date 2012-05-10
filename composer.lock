@@ -1,0 +1,45 @@
+{
+    "hash": "319da5f3f2338126ff5a46966ae7ef86",
+    "packages": [
+        {
+            "package": "symfony/class-loader",
+            "version": "dev-master",
+            "source-reference": "0e6ee8d07dda6920106048247d41249201604e76",
+            "alias": "2.1.9999999.9999999-dev"
+        },
+        {
+            "package": "symfony/dependency-injection",
+            "version": "dev-master",
+            "source-reference": "b01877ddbde08c1eded2502a6fdce8dbde89bd35",
+            "alias": "2.1.9999999.9999999-dev"
+        },
+        {
+            "package": "symfony/event-dispatcher",
+            "version": "dev-master",
+            "source-reference": "0c1ae4898196f5e96b79028d8d2f35de4b584659",
+            "alias": "2.1.9999999.9999999-dev"
+        },
+        {
+            "package": "symfony/http-foundation",
+            "version": "dev-master",
+            "source-reference": "54c22f4bf8625303503a117dcc68544d3f8ac876",
+            "alias": "2.1.9999999.9999999-dev"
+        },
+        {
+            "package": "symfony/http-kernel",
+            "version": "dev-master",
+            "source-reference": "94abcb71a634d7fc0e1eac287cbc1f7d1792d367",
+            "alias": "2.1.9999999.9999999-dev"
+        },
+        {
+            "package": "symfony/routing",
+            "version": "dev-master",
+            "source-reference": "b6c2bafae0cf8a557d719598a4a462676c3d04bd",
+            "alias": "2.1.9999999.9999999-dev"
+        }
+    ],
+    "packages-dev": null,
+    "aliases": [
+
+    ]
+}
