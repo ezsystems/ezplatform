@@ -1,4 +1,7 @@
 /vendor/symfony/
+/vendor/composer/
+/vendor/.composer/
+/vendor/autoload.php
 .php~
 /nbproject/
 /.idea/
