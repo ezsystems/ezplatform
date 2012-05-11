@@ -37,4 +37,4 @@ Reason is that it is then optional, you can disable it by removing the setting f
 In the case of HiMVC, the above high level view is how it is implemented with the execption of Response object.
 And as for Reouter, the details is that it finds a match (Route object), and executes controller callback (so either closure or other callable structure), which in "LegacyKernel" means it will call Legacy\Kernel::run().
 
-For installation instructions, see [/INSTALL.md](INSTALL.md).
+For installation instructions, see [INSTALL.md](/INSTALL.md).

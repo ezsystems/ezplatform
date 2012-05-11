@@ -4,7 +4,7 @@
    ```bash
    git clone git@github.com:ezsystems/ezp-next-mvc.git
    ```
-2. Install the dependencies with [http://getcomposer.org](Composer) :
+2. Install the dependencies with [Composer](http://getcomposer.org) :
    ```bash
    cd /path/to/ezp-next-mvc/
    php bin/composer.phar install
