@@ -16,7 +16,8 @@ $dispatcher->addSubscriber(
     new HttpKernel\EventListener\RouterListener(
         new Routing\Matcher\UrlMatcher(
             $routes,
-            new Routing\RequestContext()
+            new Routing\RequestContext(),
+            $dispatcher
         )
     )
 );
