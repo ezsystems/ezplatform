@@ -75,7 +75,7 @@ class UrlMatcher extends BaseUrlMatcher implements EventDispatcherAwareInterface
             if ( $urlAliasEvent->hasMatcher() )
             {
                 $parameters = $urlAliasEvent->getMatcher()->match( $pathinfo );
-                if ( isset( $parameters ) )
+                if ( $parameters !== null )
                     return $parameters;
             }
             unset( $urlAliasEvent );
@@ -86,7 +86,7 @@ class UrlMatcher extends BaseUrlMatcher implements EventDispatcherAwareInterface
             if ( $fallbackEvent->hasMatcher() )
             {
                 $parameters = $fallbackEvent->getMatcher()->match( $pathinfo );
-                if ( isset( $parameters ) )
+                if ( $parameters !== null )
                     return $parameters;
             }
             unset( $fallbackEvent );
