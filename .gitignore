@@ -1,5 +1,6 @@
 /vendor/symfony/
 /vendor/composer/
+/vendor/twig/
 /vendor/.composer/
 /vendor/autoload.php
 .php~

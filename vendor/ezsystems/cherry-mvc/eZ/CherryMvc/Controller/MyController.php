@@ -8,14 +8,26 @@
  */
 
 namespace eZ\CherryMvc\Controller;
+
+use eZ\CherryMvc\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class MyController
+class MyController extends Controller
 {
     public function indexAction()
     {
-        return new Response( '<h1>eZ Publish 5</h1><h2>Welcome to the future !</h2>' );
+        $tpl = $this->templateEngineFactory->build( "twig" );
+
+        return new Response(
+            $tpl->render(
+                "<h1>{{ title }}</h1><h2>{{ subtitle }}</h2>",
+                array(
+                    "title" => "eZ Publish 5",
+                    "subtitle" => "Welcome to the future !"
+                )
+            )
+        );
     }
 
     public function helloAction($name)
