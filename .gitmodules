@@ -1,3 +1,6 @@
 [submodule "vendor/ezsystems/api"]
 	path = vendor/ezsystems/api
 	url = git@github.com:ezsystems/ezp-next.git
+[submodule "vendor/ezsystems/legacy"]
+	path = vendor/ezsystems/legacy
+	url = git@github.com:ezsystems/ezpublish-ee.git

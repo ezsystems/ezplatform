@@ -4,9 +4,12 @@ require_once __DIR__.'/../vendor/autoload.php';
 use eZ\CherryMvc\Kernel;
 use eZ\CherryMvc\Controller\Resolver;
 use eZ\CherryMvc\Template\Factory as TemplateFactory;
+use eZ\CherryMvc\Event\Listener\Fallback as FallbackListener;
+use eZ\CherryMvc\Routing\Matcher\UrlMatcher;
+use eZ\CherryMvc\Routing\Matcher\FallbackMatcher;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing;
+use Symfony\Component\Routing\RequestContext;
 use Symfony\Component\HttpKernel\EventListener\RouterListener;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use \Twig_Loader_String;
@@ -18,11 +21,16 @@ $routes = include __DIR__.'/../src/routes.php';
 $dispatcher = new EventDispatcher();
 $dispatcher->addSubscriber(
     new RouterListener(
-        new Routing\Matcher\UrlMatcher(
+        new UrlMatcher(
             $routes,
-            new Routing\RequestContext(),
+            new RequestContext(),
             $dispatcher
         )
+    )
+);
+$dispatcher->addSubscriber(
+    new FallbackListener(
+        new FallbackMatcher()
     )
 );
 
