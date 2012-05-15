@@ -9,6 +9,7 @@
         "symfony/config": "2.1.*",
         "symfony/console": "2.1.*",
         "symfony/finder": "2.1.*",
+        "symfony/yaml": "2.1.*",
         "twig/twig": "1.8.0"
     },
     "autoload": {
