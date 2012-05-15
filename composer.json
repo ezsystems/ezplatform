@@ -15,7 +15,8 @@
     "autoload": {
         "psr-0": {
             "eZ\\Publish": "vendor/ezsystems/api",
-            "eZ\\CherryMvc": "vendor/ezsystems/cherry-mvc"
+            "eZ\\CherryMvc": "vendor/ezsystems/cherry-mvc",
+            "eZ\\Bundle": "vendor/ezsystems/cherry-mvc"
         }
     }
 }
