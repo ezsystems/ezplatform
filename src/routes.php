@@ -5,7 +5,7 @@ $routes = new Routing\RouteCollection();
 $routes->add(
     'index',
     new Routing\Route(
-        '/',
+        '/test',
         array(
              '_controller' => 'eZ\\CherryMvc\\Controller\\MyController::indexAction'
         )
