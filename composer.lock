@@ -1,41 +1,51 @@
 {
-    "hash": "09a709f389b41bc1e827a6b72f8958d4",
+    "hash": "bef617dc2bafba3fe149d3456b2e19b8",
     "packages": [
         {
             "package": "symfony/class-loader",
             "version": "dev-master",
-            "source-reference": "0e6ee8d07dda6920106048247d41249201604e76",
+            "source-reference": "4ebd45f966d7925225c5daea827d9368f04fba12",
+            "alias": "2.1.9999999.9999999-dev"
+        },
+        {
+            "package": "symfony/config",
+            "version": "dev-master",
+            "source-reference": "612082e1034de8175fc2895ed237c0f89f2b5e26",
             "alias": "2.1.9999999.9999999-dev"
         },
         {
             "package": "symfony/dependency-injection",
             "version": "dev-master",
-            "source-reference": "b01877ddbde08c1eded2502a6fdce8dbde89bd35",
+            "source-reference": "e7aea18d0242877eea50af66a728bf1ab74cb20e",
             "alias": "2.1.9999999.9999999-dev"
         },
         {
             "package": "symfony/event-dispatcher",
             "version": "dev-master",
-            "source-reference": "0c1ae4898196f5e96b79028d8d2f35de4b584659",
+            "source-reference": "0b58a4019befc0bd038bc0ec0165101d5dd31754",
             "alias": "2.1.9999999.9999999-dev"
         },
         {
             "package": "symfony/http-foundation",
             "version": "dev-master",
-            "source-reference": "54c22f4bf8625303503a117dcc68544d3f8ac876",
+            "source-reference": "cf8e8324c68ce584525502702866485f17f1c8a5",
             "alias": "2.1.9999999.9999999-dev"
         },
         {
             "package": "symfony/http-kernel",
             "version": "dev-master",
-            "source-reference": "94abcb71a634d7fc0e1eac287cbc1f7d1792d367",
+            "source-reference": "d2729c175c5d57d5578a3ac388f314970718431e",
             "alias": "2.1.9999999.9999999-dev"
         },
         {
             "package": "symfony/routing",
             "version": "dev-master",
-            "source-reference": "b6c2bafae0cf8a557d719598a4a462676c3d04bd",
+            "source-reference": "5ae3bd199393f84bc1d531cdcbdb936cbe1ad206",
             "alias": "2.1.9999999.9999999-dev"
+        },
+        {
+            "package": "twig/twig",
+            "version": "v1.8.0"
         }
     ],
     "packages-dev": null,
