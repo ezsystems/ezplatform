@@ -8,9 +8,9 @@
  */
 
 namespace eZ\CherryMvc;
-use Symfony\Component\HttpKernel\HttpKernel;
+use Symfony\Component\HttpKernel\HttpKernel as BaseHttpKernel;
 
-class Kernel extends HttpKernel
+class HttpKernel extends BaseHttpKernel
 {
 
 }
