@@ -17,8 +17,8 @@ class LegacyKernel extends Controller
 {
     public function indexAction()
     {
-        $legacyRoot = __DIR__ . "/../../../../../legacy/";
-        require_once $legacyRoot . "autoload.php";
+        $legacyRoot = $this->container->getParameter( 'ezpublish_legacy.root_dir' );
+        require_once $legacyRoot . "/autoload.php";
 
         chdir( $legacyRoot );
         $kernel = new ezpKernel;
