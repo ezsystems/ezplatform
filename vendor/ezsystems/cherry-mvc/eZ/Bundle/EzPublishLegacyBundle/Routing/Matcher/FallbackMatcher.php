@@ -7,10 +7,10 @@
  * @version //autogentag//
  */
 
-namespace eZ\CherryMvc\Routing\Matcher;
+namespace eZ\Bundle\EzPublishLegacyBundle\Routing\Matcher;
 
-use eZ\CherryMvc\Event\UrlAliasMatcherEvent;
 use eZ\CherryMvc\Event\FallbackMatcherEvent;
+use eZ\CherryMvc\Event\UrlAliasMatcherEvent;
 use eZ\CherryMvc\Event\CherryMvcEvents;
 use Symfony\Component\Routing\Matcher\UrlMatcher as BaseUrlMatcher;
 use Symfony\Component\Routing\Matcher\UrlMatcherInterface;
@@ -32,7 +32,7 @@ class FallbackMatcher extends BaseUrlMatcher implements UrlMatcherInterface
     {
         return array(
             "_route" => "eZLegacyFallback",
-            "_controller" => "eZ\\CherryMvc\\Controller\\LegacyKernel::indexAction",
+            "_controller" => "eZ\\Bundle\\EzPublishLegacyBundle\\Controller\\LegacyKernel::indexAction",
         );
     }
 }

@@ -7,7 +7,7 @@
  * @version //autogentag//
  */
 
-namespace eZ\CherryMvc\Controller;
+namespace eZ\Bundle\EzPublishLegacyBundle\Controller;
 
 use eZ\CherryMvc\Controller;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,7 +17,7 @@ class LegacyKernel extends Controller
 {
     public function indexAction()
     {
-        $legacyRoot = __DIR__ . "/../../../../legacy/";
+        $legacyRoot = __DIR__ . "/../../../../../legacy/";
         require_once $legacyRoot . "autoload.php";
 
         chdir( $legacyRoot );

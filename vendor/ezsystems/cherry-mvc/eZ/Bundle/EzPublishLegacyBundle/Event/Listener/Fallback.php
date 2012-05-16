@@ -7,11 +7,11 @@
  * @version //autogentag//
  */
 
-namespace eZ\CherryMvc\Event\Listener;
+namespace eZ\Bundle\EzPublishLegacyBundle\Event\Listener;
 
 use eZ\CherryMvc\Event\CherryMvcEvents;
 use eZ\CherryMvc\Event\FallbackMatcherEvent;
-use eZ\CherryMvc\Routing\Matcher\FallbackMatcher;
+use eZ\Bundle\EzPublishLegacyBundle\Routing\Matcher\FallbackMatcher;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class Fallback implements EventSubscriberInterface

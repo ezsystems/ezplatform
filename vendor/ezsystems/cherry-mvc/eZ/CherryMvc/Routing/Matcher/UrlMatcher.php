@@ -70,6 +70,7 @@ class UrlMatcher extends BaseUrlMatcher implements EventDispatcherAwareInterface
         catch ( ResourceNotFoundException $e )
         {
             // Send event for UrlAlias matching
+            // TODO: Would be better to use service tags instead of the event system for this
             $urlAliasEvent = new UrlAliasMatcherEvent( $this->context );
             $this->dispatcher->dispatch( CherryMvcEvents::URL_ALIAS_MATCH, $urlAliasEvent );
             if ( $urlAliasEvent->hasMatcher() )
