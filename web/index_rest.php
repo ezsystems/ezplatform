@@ -7,6 +7,6 @@
  * @version //autogentag//
  */
 
-$legacyRoot = __DIR__ . "/../vendor/ezsystems/legacy/";
+$legacyRoot = __DIR__ . "/../app/ezpublish_legacy/";
 chdir( $legacyRoot );
 require $legacyRoot . "index_rest.php";
