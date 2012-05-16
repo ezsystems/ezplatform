@@ -19,11 +19,11 @@ class Factory
      * Register a template kind with its associated callback function
      *
      * @param string $name
-     * @param callable $callback
+     * @param \eZ\CherryMvc\Template\Engine $engine
      */
-    public function register( $name, $callback )
+    public function register( $name, Engine $engine )
     {
-        $this->templateEngines[$name] = $callback;
+        $this->templateEngines[$name] = $engine;
     }
 
     /**
@@ -32,14 +32,15 @@ class Factory
      * @param string $name
      *
      * @throws \InvalidArgumentException
+     * @return mixed
      */
     public function build( $name )
     {
         if ( !isset( $this->templateEngines[$name] ) )
         {
-            throw new InvalidArgumentException( "Template engine '$name' has not been registered!" );
+            throw new \InvalidArgumentException( "Template engine '$name' has not been registered!" );
         }
 
-        return $this->templateEngines[$name]();
+        return $this->templateEngines[$name]->build();
     }
 }

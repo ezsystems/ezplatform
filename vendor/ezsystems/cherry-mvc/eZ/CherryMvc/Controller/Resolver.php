@@ -11,6 +11,9 @@ namespace eZ\CherryMvc\Controller;
 
 use eZ\CherryMvc\Template\Factory as TemplateFactory;
 use Symfony\Component\HttpKernel\Controller\ControllerResolver;
+use Symfony\Component\HttpKernel\Log\LoggerInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 
 /**
  * eZ Publish specific Controller Resolver
@@ -18,22 +21,20 @@ use Symfony\Component\HttpKernel\Controller\ControllerResolver;
 class Resolver extends ControllerResolver
 {
     /**
-     * Template engine factory
-     *
-     * @var \eZ\CherryMvc\Template\Factory
+     * @var \Symfony\Component\DependencyInjection\ContainerInterface
      */
-    protected $templateEngineFactory;
+    private $container;
 
     /**
      * Constructor.
      *
      * @param \eZ\CherryMvc\Template\Factory $templateEngineFactory
-     * @param LoggerInterface $logger A LoggerInterface instance
+     * @param \Symfony\Component\HttpKernel\Log\LoggerInterface $logger A LoggerInterface instance
      */
-    public function __construct( TemplateFactory $templateEngineFactory, LoggerInterface $logger = null )
+    public function __construct( ContainerInterface $container, LoggerInterface $logger = null )
     {
+        $this->container = $container;
         parent::__construct( $logger );
-        $this->templateEngineFactory = $templateEngineFactory;
     }
 
     /**
@@ -45,8 +46,14 @@ class Resolver extends ControllerResolver
      */
     protected function createController($controller)
     {
-        $return = parent::createController( $controller );
-        $return[0]->setTemplateEngineFactory( $this->templateEngineFactory );
-        return $return;
+        // $callbackController should be an array
+        // [0] is the controller object
+        // [1] is the controller method to call
+        $callbackController = parent::createController( $controller );
+        $controller = $callbackController[0];
+        if ( $controller instanceof ContainerAwareInterface )
+            $controller->setContainer( $this->container );
+
+        return $callbackController;
     }
 }

@@ -10,6 +10,7 @@
 namespace eZ\Bundle\EzPublishCoreBundle;
 
 use eZ\CherryMvc\Routing\Matcher\UrlMatcher;
+use eZ\CherryMvc\Template\TwigEngine;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\HttpKernel\EventListener\RouterListener;
 use Symfony\Component\Routing\RequestContext;
@@ -31,6 +32,15 @@ class EzPublishCoreBundle extends Bundle
                     $dispatcher
                 )
             )
+        );
+
+        // Registering the Template engine.
+        // TODO: This should be done with DIC with the help of a tag
+        // TODO: We might need to consider Templating component instead of this
+        $tplFactory = $this->container->get( 'ezpublish.templating.factory' );
+        $tplFactory->register(
+            "twig",
+            new TwigEngine()
         );
     }
 }

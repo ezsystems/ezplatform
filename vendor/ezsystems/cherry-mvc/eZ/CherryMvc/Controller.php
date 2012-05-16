@@ -10,24 +10,22 @@
 namespace eZ\CherryMvc;
 
 use eZ\CherryMvc\Template\Factory as TemplateFactory;
+use Symfony\Component\DependencyInjection\ContainerAware;
+use Symfony\Component\HttpFoundation\Response;
 
-class Controller
+class Controller extends ContainerAware
 {
     /**
-     * Template engine factory
+     * Renders $template with $params.
      *
-     * @var \eZ\CherryMvc\Template\Factory
+     * @param string $template Template file or template content (depending on the engine used)
+     * @param array $params Hash of params. Key is the variable name that will be made available in the template
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    protected $templateEngineFactory;
-
-    /**
-     * Sets the template factory to use
-     *
-     * @param \eZ\CherryMvc\Template\Factory $templateEngineFactory
-     *
-     */
-    public function setTemplateEngineFactory( TemplateFactory $templateEngineFactory )
+    public function render( $template, array $params = array() )
     {
-        $this->templateEngineFactory = $templateEngineFactory;
+        return new Response(
+            $this->container->get( 'ezpublish.templating' )->render( $template, $params )
+        );
     }
 }
