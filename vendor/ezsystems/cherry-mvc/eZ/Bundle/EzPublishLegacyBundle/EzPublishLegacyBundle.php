@@ -20,8 +20,7 @@ class EzPublishLegacyBundle extends Bundle
         if ( $this->container->getParameter( 'ezpublish_legacy.enabled' ) )
         {
             // TODO: Would be better to use service tags instead of the event system for this
-            $dispatcher = $this->container->get( 'event_dispatcher' );
-            $dispatcher->addSubscriber(
+                $this->container->get( 'event_dispatcher' )->addSubscriber(
                 new FallbackListener(
                     new FallbackMatcher()
                 )

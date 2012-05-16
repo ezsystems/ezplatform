@@ -26,11 +26,11 @@ class EzPublishCoreExtension extends Extension
      *
      * @api
      */
-    public function load(array $config, ContainerBuilder $container)
+    public function load( array $config, ContainerBuilder $container )
     {
         $loader = new Loader\YamlFileLoader(
             $container,
-            new FileLocator(__DIR__.'/../Resources/config')
+            new FileLocator( __DIR__ . '/../Resources/config' )
         );
         $loader->load( 'services.yml' );
     }

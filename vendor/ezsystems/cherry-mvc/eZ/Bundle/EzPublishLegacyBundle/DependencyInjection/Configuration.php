@@ -32,7 +32,10 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode( 'root_dir' )
                     ->validate()
                         ->ifTrue(
-                            function($v) { return !file_exists($v); }
+                            function ( $v )
+                            {
+                                return !file_exists($v);
+                            }
                         )
                         ->thenInvalid( "Provided eZ Publish Legacy root dir does not exist!'" )
                 ->end()

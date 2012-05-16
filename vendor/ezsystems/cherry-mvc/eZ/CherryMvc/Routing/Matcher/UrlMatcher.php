@@ -28,7 +28,7 @@ class UrlMatcher extends BaseUrlMatcher implements EventDispatcherAwareInterface
 
     public function __construct( RouteCollection $routes, RequestContext $context, EventDispatcherInterface $dispatcher )
     {
-        parent::__construct($routes, $context);
+        parent::__construct( $routes, $context );
         $this->dispatcher = $dispatcher;
     }
 

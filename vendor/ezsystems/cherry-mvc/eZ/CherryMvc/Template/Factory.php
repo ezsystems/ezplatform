@@ -39,7 +39,7 @@ class Factory
     {
         if ( !isset( $this->templateEngines[$name] ) )
         {
-            throw new \InvalidArgumentException( "Template engine '$name' has not been registered!" );
+            throw new InvalidArgumentException( "Template engine '$name' has not been registered!" );
         }
 
         return $this->templateEngines[$name];

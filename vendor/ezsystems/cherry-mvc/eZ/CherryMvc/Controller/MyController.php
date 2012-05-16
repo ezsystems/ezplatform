@@ -26,17 +26,17 @@ class MyController extends Controller
         );
     }
 
-    public function helloAction($name)
+    public function helloAction( $name )
     {
-        $response = new Response("Hello $name!");
-        $response->headers->set('Content-Type', 'text/plain');
+        $response = new Response( "Hello $name!" );
+        $response->headers->set( 'Content-Type', 'text/plain' );
         return $response;
     }
 
     public function byeAction()
     {
-        $response = new Response("Good bye!");
-        $response->headers->set('Content-Type', 'text/plain');
+        $response = new Response( "Good bye!" );
+        $response->headers->set( 'Content-Type', 'text/plain' );
         return $response;
     }
 }
