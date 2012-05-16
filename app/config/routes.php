@@ -30,4 +30,13 @@ $routes->add(
         )
     )
 );
+$routes->add(
+    'setupInfo',
+    new Routing\Route(
+        '/ezdemo_site_admin/setup/info',
+        array(
+             '_controller' => 'eZ\\Bundle\\EzPublishLegacyBundle\\Controller\\SetupController::infoAction'
+        )
+    )
+);
 return $routes;
