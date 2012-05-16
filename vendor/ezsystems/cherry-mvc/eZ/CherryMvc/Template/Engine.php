@@ -14,7 +14,7 @@ interface Engine
     /**
      * Builds the template engine
      *
-     * @return void
+     * @return \eZ\CherryMvc\Template\Engine
      */
     public function build();
 
