@@ -24,6 +24,7 @@ class Factory
     public function register( $name, Engine $engine )
     {
         $this->templateEngines[$name] = $engine;
+        $this->templateEngines[$name]->build();
     }
 
     /**
@@ -34,13 +35,13 @@ class Factory
      * @throws \InvalidArgumentException
      * @return mixed
      */
-    public function build( $name )
+    public function getEngine( $name )
     {
         if ( !isset( $this->templateEngines[$name] ) )
         {
             throw new \InvalidArgumentException( "Template engine '$name' has not been registered!" );
         }
 
-        return $this->templateEngines[$name]->build();
+        return $this->templateEngines[$name];
     }
 }

@@ -29,6 +29,6 @@ services:
     ezpublish.templating:
         class: eZ\CherryMvc\Template\Engine
         factory_service: ezpublish.templating.factory
-        factory_method: build
+        factory_method: getEngine
         arguments: [%ezpublish.templating.type%]
 

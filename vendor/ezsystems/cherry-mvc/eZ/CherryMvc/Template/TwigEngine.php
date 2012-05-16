@@ -18,7 +18,7 @@ class TwigEngine implements Engine
 
     public function build()
     {
-        return $this->twigEnv = new \Twig_Environment( new \Twig_Loader_String() );
+        $this->twigEnv = new \Twig_Environment( new \Twig_Loader_String() );
     }
 
     public function render( $template, array $params = array() )
