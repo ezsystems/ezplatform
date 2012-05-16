@@ -1,0 +1,6 @@
+parameters:
+    # Below default parameters, to be defined in app/config/config.yml
+    #ezpublish_legacy.enabled: false
+    #ezpublish_legacy.root_dir: ~
+
+services:

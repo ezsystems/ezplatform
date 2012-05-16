@@ -1,0 +1,3 @@
+ez_publish_legacy:
+    enabled: true
+    root_dir: %kernel.root_dir%/ezpublish_legacy

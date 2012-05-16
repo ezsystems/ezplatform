@@ -17,13 +17,16 @@ class EzPublishLegacyBundle extends Bundle
 {
     public function boot()
     {
-        // TODO: Would be better to use service tags instead of the event system for this
-        $dispatcher = $this->container->get( 'event_dispatcher' );
-        $dispatcher->addSubscriber(
-            new FallbackListener(
-                new FallbackMatcher()
-            )
-        );
+        if ( $this->container->getParameter( 'ezpublish_legacy.enabled' ) )
+        {
+            // TODO: Would be better to use service tags instead of the event system for this
+            $dispatcher = $this->container->get( 'event_dispatcher' );
+            $dispatcher->addSubscriber(
+                new FallbackListener(
+                    new FallbackMatcher()
+                )
+            );
+        }
     }
 
 }
