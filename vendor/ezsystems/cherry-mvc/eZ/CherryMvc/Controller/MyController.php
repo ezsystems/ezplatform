@@ -17,16 +17,12 @@ class MyController extends Controller
 {
     public function indexAction()
     {
-        $tpl = $this->templateEngineFactory->build( "twig" );
-
-        return new Response(
-            $tpl->render(
-                "<h1>{{ title }}</h1><h2>{{ subtitle }}</h2>",
-                array(
-                    "title" => "eZ Publish 5",
-                    "subtitle" => "Welcome to the future !"
-                )
-            )
+        return $this->render(
+            "<h1>{{ title }}</h1><h2>{{ subtitle }}</h2>",
+            array(
+                 "title" => "eZ Publish 5",
+                 "subtitle" => "Welcome to the future !"
+             )
         );
     }
 
