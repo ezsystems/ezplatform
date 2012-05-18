@@ -26,7 +26,6 @@ class SetupController extends Controller
         // Logic gathering all the information
         $loadedExtensions = get_loaded_extensions();
         $splAutoloadFunctions = spl_autoload_functions();
-        $currentDirectory = getcwd();
         $phpINI = array();
 
         foreach ( array( 'safe_mode', 'register_globals', 'file_uploads' ) as $iniName )
@@ -89,9 +88,9 @@ class SetupController extends Controller
                 }
                 $tpl = eZTemplate::factory();
 
-                $tpl->setVariable( 'ezpublish_version', eZPublishSDK::version() . " (" . eZPublishSDK::alias() . ")" );
+                $tpl->setVariable( 'ezpublish_version', "5.0 pre-alpha1 (Kilimanjaro)" );
                 $tpl->setVariable( 'ezpublish_extensions', eZExtension::activeExtensions() );
-                $tpl->setVariable( 'php_version', "5.0.0alpha1" );
+                $tpl->setVariable( 'php_version', phpversion() );
                 $tpl->setVariable( 'php_accelerator', $phpAcceleratorInfo );
                 $tpl->setVariable( 'webserver_info', $webserverInfo );
                 $tpl->setVariable( 'database_info', $db->databaseName() );
@@ -105,7 +104,6 @@ class SetupController extends Controller
             }
         );
         $kernel->shutdown();
-        chdir( $currentDirectory );
 
         // Rendering with twig, embedding the result of a legacy template
         return $this->render(
