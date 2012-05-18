@@ -1,6 +1,6 @@
 <?php
 /**
- * File containing the LegacyKernel class.
+ * File containing the LegacyKernelController class.
  *
  * @copyright Copyright (C) 1999-2012 eZ Systems AS. All rights reserved.
  * @license http://www.gnu.org/licenses/gpl-2.0.txt GNU General Public License v2
@@ -13,7 +13,7 @@ use eZ\CherryMvc\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use \ezpKernel;
 
-class LegacyKernel extends Controller
+class LegacyKernelController extends Controller
 {
     public function indexAction()
     {

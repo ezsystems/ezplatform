@@ -32,7 +32,7 @@ class FallbackMatcher extends BaseUrlMatcher implements UrlMatcherInterface
     {
         return array(
             "_route" => "eZLegacyFallback",
-            "_controller" => "eZ\\Bundle\\EzPublishLegacyBundle\\Controller\\LegacyKernel::indexAction",
+            "_controller" => "eZ\\Bundle\\EzPublishLegacyBundle\\Controller\\LegacyKernelController::indexAction",
         );
     }
 }
