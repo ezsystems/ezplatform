@@ -17,11 +17,19 @@ class MyController extends Controller
 {
     public function indexAction()
     {
+        $templateBridge = $this->container->get( 'ezpublish_legacy.template_bridge' );
         return $this->render(
-            "<h1>{{ title }}</h1><h2>{{ subtitle }}</h2>",
+            "<h1>{{ title }}</h1><h2>{{ subtitle }}</h2>{{ legacyTemplateResult|raw }}",
             array(
                  "title" => "eZ Publish 5",
-                 "subtitle" => "Welcome to the future !"
+                 "subtitle" => "Welcome to the future !",
+                 "legacyTemplateResult" => $templateBridge->renderTemplate(
+                     'design:test/helloworld.tpl',
+                     array(
+                          'message' => 'All your eZ Publish base are belong to us ;-)',
+                          'konamiCode' => array( 'Up', 'Up', 'Down', 'Down', 'Left', 'Right', 'Left', 'Right', 'B', 'A' )
+                     )
+                 )
              )
         );
     }

@@ -80,6 +80,18 @@ class LegacyKernel extends ezpKernel
         return parent::run();
     }
 
+    /**
+     * Runs a callback function (closure) in the legacy environment.
+     *
+     * @param closure $callback
+     * @return mixed Depends on $callback's returned value
+     */
+    public function runCallback( $callback )
+    {
+        $this->enterLegacyRootDir();
+        return parent::runCallback($callback);
+    }
+
     public function shutdown()
     {
         parent::shutdown();
