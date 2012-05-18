@@ -19,8 +19,15 @@ class EzPublishLegacyBundle extends Bundle
     {
         if ( $this->container->getParameter( 'ezpublish_legacy.enabled' ) )
         {
+            // To properly register legacy autoload, we need to go to the legacy root dir
+            // since legacy autoload.php has some dependencies on files called with relative paths (i.e. config.php)
+            $workingDir = getcwd();
+            chdir( $this->container->getParameter( 'ezpublish_legacy.root_dir' ) );
+            require_once "autoload.php";
+            chdir( $workingDir );
+
             // TODO: Would be better to use service tags instead of the event system for this
-                $this->container->get( 'event_dispatcher' )->addSubscriber(
+            $this->container->get( 'event_dispatcher' )->addSubscriber(
                 new FallbackListener(
                     new FallbackMatcher()
                 )

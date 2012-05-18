@@ -3,6 +3,7 @@ parameters:
     http_kernel.class: eZ\CherryMvc\HttpKernel
     event_dispatcher.class: Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher
     controller_resolver.class: eZ\CherryMvc\Controller\Resolver
+    webroot_dir: %kernel.root_dir%/../web
 
     # eZ Publish related params
     ezpublish.templating.factory_class: eZ\CherryMvc\Template\Factory

@@ -23,8 +23,6 @@ class SetupController extends Controller
 {
     public function infoAction()
     {
-        require_once __DIR__ . '/../../../../../../../app/ezpublish_legacy/autoload.php';
-
         // Logic gathering all the information
         $loadedExtensions = get_loaded_extensions();
         $splAutoloadFunctions = spl_autoload_functions();
@@ -53,8 +51,7 @@ class SetupController extends Controller
         }
 
         // Calling the old kernel with a closure
-        chdir( $this->container->getParameter( 'ezpublish_legacy.root_dir' ) );
-        $kernel = new ezpKernel;
+        $kernel = $this->container->get( 'ezpublish_legacy.kernel' );
         $infoOutput = $kernel->runCallback(
             function () use ( $loadedExtensions, $splAutoloadFunctions, $phpINI, $webserverInfo )
             {

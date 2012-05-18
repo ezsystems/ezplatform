@@ -13,17 +13,15 @@ use eZ\CherryMvc\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use \ezpKernel;
 
+/**
+ * Controller embedding legacy kernel.
+ */
 class LegacyKernelController extends Controller
 {
     public function indexAction()
     {
-        $legacyRoot = $this->container->getParameter( 'ezpublish_legacy.root_dir' );
-        require_once $legacyRoot . "/autoload.php";
-
-        chdir( $legacyRoot );
-        $kernel = new ezpKernel;
+        $kernel = $this->container->get( 'ezpublish_legacy.kernel' );
         $result = $kernel->run();
-
         $kernel->shutdown();
 
         return new Response(
