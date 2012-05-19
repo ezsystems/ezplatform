@@ -3,11 +3,20 @@ use Symfony\Component\Routing;
 
 $routes = new Routing\RouteCollection();
 $routes->add(
-    'index',
+    'test',
     new Routing\Route(
         '/test',
         array(
-             '_controller' => 'eZ\\CherryMvc\\Controller\\MyController::indexAction'
+             '_controller' => 'eZ\\CherryMvc\\Controller\\MyController::testAction'
+        )
+    )
+);
+$routes->add(
+    'testWithLegacy',
+    new Routing\Route(
+        '/test/legacy',
+        array(
+             '_controller' => 'eZ\\CherryMvc\\Controller\\MyController::testWithLegacyAction'
         )
     )
 );

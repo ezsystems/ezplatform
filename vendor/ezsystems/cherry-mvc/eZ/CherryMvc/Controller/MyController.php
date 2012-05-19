@@ -15,7 +15,18 @@ use Symfony\Component\HttpFoundation\Response;
 
 class MyController extends Controller
 {
-    public function indexAction()
+    public function testAction()
+    {
+        return $this->render(
+            "<h1>{{ title }}</h1><h2>{{ subtitle }}</h2>",
+            array(
+                 "title" => "eZ Publish 5",
+                 "subtitle" => "Welcome to the future !",
+            )
+        );
+    }
+
+    public function testWithLegacyAction()
     {
         $templateBridge = $this->container->get( 'ezpublish_legacy.template_bridge' );
         return $this->render(
