@@ -38,5 +38,7 @@ class EzPublishCoreExtension extends Extension
         $loader->load( 'papi.yml' );
         // Built-in field types
         $loader->load( 'fieldtypes.yml' );
+        // Built-in storage engines
+        $loader->load( 'storage_engines.yml' );
     }
 }

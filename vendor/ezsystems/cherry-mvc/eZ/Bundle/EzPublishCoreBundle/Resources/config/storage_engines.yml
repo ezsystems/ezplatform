@@ -1,0 +1,9 @@
+parameters:
+    ezpublish.api.storage_engine.in_memory.class: eZ\Publish\Core\Persistence\InMemory\Handler
+
+services:
+    ezpublish.api.storage_engine.in_memory:
+        class: %ezpublish.api.storage_engine.in_memory.class%
+        tags:
+            - {name: ezpublish.storageEngine, alias: inMemory}
+

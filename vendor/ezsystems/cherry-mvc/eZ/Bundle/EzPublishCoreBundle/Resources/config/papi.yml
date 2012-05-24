@@ -2,7 +2,8 @@ parameters:
     ezpublish.api.repository.factory.class: eZ\Bundle\EzPublishCoreBundle\ApiLoader\RepositoryFactory
     ezpublish.api.repository.class: eZ\Publish\Core\Repository\Repository
     ezpublish.api.io_handler.class: eZ\Publish\Core\IO\InMemoryHandler
-    ezpublish.api.persistence_handler.class: eZ\Publish\Core\Persistence\InMemory\Handler
+    ezpublish.api.storage_engine.factory.class: eZ\Bundle\EzPublishCoreBundle\ApiLoader\StorageEngineFactory
+    ezpublish.api.storage_engine.default: inMemory
 
 services:
     ezpublish.api.repository.factory:
@@ -21,6 +22,13 @@ services:
         class: %ezpublish.api.io_handler.class%
         public: false
 
+    ezpublish.api.storage_engine.factory:
+        class: %ezpublish.api.storage_engine.factory.class%
+        arguments: [@service_container]
+
     ezpublish.api.persistence_handler:
-        class: %ezpublish.api.persistence_handler.class%
+        class: eZ\Publish\SPI\Persistence\Handler
+        factory_service: ezpublish.api.storage_engine.factory
+        factory_method: buildStorageEngine
+        arguments: [%ezpublish.api.storage_engine.default%]
         public: false
