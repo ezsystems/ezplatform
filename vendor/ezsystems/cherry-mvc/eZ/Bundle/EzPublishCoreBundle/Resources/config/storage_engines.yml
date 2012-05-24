@@ -1,5 +1,36 @@
 parameters:
     ezpublish.api.storage_engine.in_memory.class: eZ\Publish\Core\Persistence\InMemory\Handler
+    ezpublish.api.storage_engine.legacy.class: eZ\Publish\Core\Persistence\Legacy\Handler
+    ezpublish.api.storage_engine.legacy.factory.class: eZ\Bundle\EzPublishCoreBundle\ApiLoader\LegacyStorageEngineFactory
+    #ezpublish.api.storage_engine.legacy.dsn: <database_type>://<user>:<password>@<host>/<database_name>
+    ezpublish.api.storage_engine.legacy.defer_type_update: false
+
+    # Legacy storage engine configuration
+    # Value converters
+    ezpublish.fieldType.ezauthor.converter.class: eZ\Publish\Core\Persistence\Legacy\Content\FieldValue\Converter\Author
+    ezpublish.fieldType.ezbinaryfile.converter.class: eZ\Publish\Core\Persistence\Legacy\Content\FieldValue\Converter\BinaryFile
+    ezpublish.fieldType.ezboolean.converter.class: eZ\Publish\Core\Persistence\Legacy\Content\FieldValue\Converter\CheckBox
+    #ezpublish.fieldType.ezcountry.converter.class: eZ\Publish\Core\Persistence\Legacy\Content\FieldValue\Converter\Country
+    ezpublish.fieldType.ezdatetime.converter.class: eZ\Publish\Core\Persistence\Legacy\Content\FieldValue\Converter\DateAndTime
+    ezpublish.fieldType.ezfloat.converter.class: eZ\Publish\Core\Persistence\Legacy\Content\FieldValue\Converter\Float
+    ezpublish.fieldType.ezinteger.converter.class: eZ\Publish\Core\Persistence\Legacy\Content\FieldValue\Converter\Integer
+    #ezpublish.fieldType.ezimage.converter.class: eZ\Publish\Core\Persistence\Legacy\Content\FieldValue\Converter\Image
+    ezpublish.fieldType.ezkeyword.converter.class: eZ\Publish\Core\Persistence\Legacy\Content\FieldValue\Converter\Keyword
+    ezpublish.fieldType.ezmedia.converter.class: eZ\Publish\Core\Persistence\Legacy\Content\FieldValue\Converter\Media
+    #ezpublish.fieldType.ezobjectrelationlist.converter.class: eZ\Publish\Core\Persistence\Legacy\Content\FieldValue\Converter\ObjectRelationList
+    ezpublish.fieldType.ezselection.converter.class: eZ\Publish\Core\Persistence\Legacy\Content\FieldValue\Converter\Selection
+    ezpublish.fieldType.ezstring.converter.class: eZ\Publish\Core\Persistence\Legacy\Content\FieldValue\Converter\TextLine
+    ezpublish.fieldType.eztext.converter.class: eZ\Publish\Core\Persistence\Legacy\Content\FieldValue\Converter\TextBlock
+    ezpublish.fieldType.ezxmltext.converter.class: eZ\Publish\Core\Persistence\Legacy\Content\FieldValue\Converter\XmlText
+    ezpublish.fieldType.ezsrrating.converter.class: eZ\Publish\Core\Persistence\Legacy\Content\FieldValue\Converter\Rating
+    ezpublish.fieldType.ezurl.converter.class: eZ\Publish\Core\Persistence\Legacy\Content\FieldValue\Converter\Url
+
+    # External storage handlers
+    ezpublish.fieldType.ezbinaryfile.externalStorage.class: eZ\Publish\Core\Persistence\Legacy\Content\FieldValue\Converter\BinaryFileStorage
+    #ezpublish.fieldType.ezimage.externalStorage.class: eZ\Publish\Core\Persistence\Legacy\Content\FieldValue\Converter\ImageStorage
+    ezpublish.fieldType.ezkeyword.externalStorage.class: eZ\Publish\Core\Persistence\Legacy\Content\FieldValue\Converter\KeywordStorage
+    ezpublish.fieldType.ezmedia.externalStorage.class: eZ\Publish\Core\Persistence\Legacy\Content\FieldValue\Converter\MediaStorage
+    ezpublish.fieldType.ezurl.externalStorage.class: eZ\Publish\Core\Persistence\Legacy\Content\FieldValue\Converter\UrlStorage
 
 services:
     ezpublish.api.storage_engine.in_memory:
@@ -7,3 +38,109 @@ services:
         tags:
             - {name: ezpublish.storageEngine, alias: inMemory}
 
+    # Legacy storage engine
+    ezpublish.api.storage_engine.legacy.factory:
+        class: %ezpublish.api.storage_engine.legacy.factory.class%
+        arguments: [@service_container]
+
+    ezpublish.api.storage_engine.legacy:
+        class: %ezpublish.api.storage_engine.legacy.class%
+        factory_service: ezpublish.api.storage_engine.legacy.factory
+        factory_method: buildLegacyEngine
+        arguments:
+            - %ezpublish.api.storage_engine.legacy.dsn%
+            - %ezpublish.api.storage_engine.legacy.defer_type_update%
+        tags:
+            - {name: ezpublish.storageEngine, alias: legacy}
+
+    # Field type converters for legacy
+    ezpublish.fieldType.ezauthor.converter:
+        class: %ezpublish.fieldType.ezauthor.converter.class%
+        tags:
+            - {name: ezpublish.storageEngine.legacy.converter, alias: ezauthor}
+
+    ezpublish.fieldType.ezbinaryfile.converter:
+        class: %ezpublish.fieldType.ezbinaryfile.converter.class%
+        tags:
+            - {name: ezpublish.storageEngine.legacy.converter, alias: ezbinaryfile}
+
+    ezpublish.fieldType.ezboolean.converter:
+        class: %ezpublish.fieldType.ezboolean.converter.class%
+        tags:
+            - {name: ezpublish.storageEngine.legacy.converter, alias: ezboolean}
+
+    ezpublish.fieldType.ezdatetime.converter:
+        class: %ezpublish.fieldType.ezdatetime.converter.class%
+        tags:
+            - {name: ezpublish.storageEngine.legacy.converter, alias: ezdatetime}
+
+    ezpublish.fieldType.ezfloat.converter:
+        class: %ezpublish.fieldType.ezfloat.converter.class%
+        tags:
+            - {name: ezpublish.storageEngine.legacy.converter, alias: ezfloat}
+
+    ezpublish.fieldType.ezinteger.converter:
+        class: %ezpublish.fieldType.ezinteger.converter.class%
+        tags:
+            - {name: ezpublish.storageEngine.legacy.converter, alias: ezinteger}
+
+    ezpublish.fieldType.ezkeyword.converter:
+        class: %ezpublish.fieldType.ezkeyword.converter.class%
+        tags:
+            - {name: ezpublish.storageEngine.legacy.converter, alias: ezkeyword}
+
+    ezpublish.fieldType.ezmedia.converter:
+        class: %ezpublish.fieldType.ezmedia.converter.class%
+        tags:
+            - {name: ezpublish.storageEngine.legacy.converter, alias: ezmedia}
+
+    ezpublish.fieldType.ezselection.converter:
+        class: %ezpublish.fieldType.ezselection.converter.class%
+        tags:
+            - {name: ezpublish.storageEngine.legacy.converter, alias: ezselection}
+
+    ezpublish.fieldType.ezstring.converter:
+        class: %ezpublish.fieldType.ezstring.converter.class%
+        tags:
+            - {name: ezpublish.storageEngine.legacy.converter, alias: ezstring}
+
+    ezpublish.fieldType.eztext.converter:
+        class: %ezpublish.fieldType.eztext.converter.class%
+        tags:
+            - {name: ezpublish.storageEngine.legacy.converter, alias: eztext}
+
+    ezpublish.fieldType.ezxmltext.converter:
+        class: %ezpublish.fieldType.ezxmltext.converter.class%
+        tags:
+            - {name: ezpublish.storageEngine.legacy.converter, alias: ezxmltext}
+
+    ezpublish.fieldType.ezsrrating.converter:
+        class: %ezpublish.fieldType.ezsrrating.converter.class%
+        tags:
+            - {name: ezpublish.storageEngine.legacy.converter, alias: ezsrrating}
+
+    ezpublish.fieldType.ezurl.converter:
+        class: %ezpublish.fieldType.ezurl.converter.class%
+        tags:
+            - {name: ezpublish.storageEngine.legacy.converter, alias: ezurl}
+
+    # External storage engines for legacy
+    ezpublish.fieldType.ezbinaryfile.externalStorage:
+        class: %ezpublish.fieldType.ezbinaryfile.externalStorage.class%
+        tags:
+            - {name: ezpublish.storageEngine.legacy.externalStorageHandler, alias: ezbinaryfile}
+
+    ezpublish.fieldType.ezkeyword.externalStorage:
+        class: %ezpublish.fieldType.ezkeyword.externalStorage.class%
+        tags:
+            - {name: ezpublish.storageEngine.legacy.externalStorageHandler, alias: ezkeyword}
+
+    ezpublish.fieldType.ezmedia.externalStorage:
+        class: %ezpublish.fieldType.ezmedia.externalStorage.class%
+        tags:
+            - {name: ezpublish.storageEngine.legacy.externalStorageHandler, alias: ezmedia}
+
+    ezpublish.fieldType.ezurl.externalStorage:
+        class: %ezpublish.fieldType.ezurl.externalStorage.class%
+        tags:
+            - {name: ezpublish.storageEngine.legacy.externalStorageHandler, alias: ezurl}

@@ -1,3 +1,7 @@
 ez_publish_legacy:
     enabled: true
     root_dir: %kernel.root_dir%/ezpublish_legacy
+
+parameters:
+    ezpublish.api.storage_engine.default: legacy
+    ezpublish.api.storage_engine.legacy.dsn: mysql://root:root@localhost/ezptest
