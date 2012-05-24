@@ -33,5 +33,10 @@ class EzPublishCoreExtension extends Extension
             new FileLocator( __DIR__ . '/../Resources/config' )
         );
         $loader->load( 'services.yml' );
+
+        // Public API services
+        $loader->load( 'papi.yml' );
+        // Built-in field types
+        $loader->load( 'fieldtypes.yml' );
     }
 }

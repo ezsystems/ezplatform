@@ -54,6 +54,8 @@ class Resolver extends ControllerResolver
         if ( $controller instanceof ContainerAwareInterface )
             $controller->setContainer( $this->container );
 
+        $controller->setRepository( $this->container->get( 'ezpublish.api.repository' ) );
+
         return $callbackController;
     }
 }

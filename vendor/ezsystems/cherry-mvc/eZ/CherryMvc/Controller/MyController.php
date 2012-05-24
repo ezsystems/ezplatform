@@ -17,11 +17,12 @@ class MyController extends Controller
 {
     public function testAction()
     {
+        $contentService = $this->repository->getContentService();
+
         return $this->render(
-            "<h1>{{ title }}</h1><h2>{{ subtitle }}</h2>",
+            "<h1>{{ content.fields['name']['eng-GB'] }}</h1><h2>{{ content.fields['short_name']['eng-GB'] }}</h2><p>{{ content.fields['description']['eng-GB']|nl2br }}</p>",
             array(
-                 "title" => "eZ Publish 5",
-                 "subtitle" => "Welcome to the future !",
+                 "content"      => $contentService->loadContent( 1 )
             )
         );
     }

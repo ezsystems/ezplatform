@@ -12,9 +12,15 @@ namespace eZ\CherryMvc;
 use eZ\CherryMvc\Template\Factory as TemplateFactory;
 use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\Response;
+use eZ\Publish\API\Repository\Repository;
 
 class Controller extends ContainerAware
 {
+    /**
+     * @var \eZ\Publish\API\Repository\Repository
+     */
+    protected $repository;
+
     /**
      * Renders $template with $params.
      *
@@ -27,5 +33,13 @@ class Controller extends ContainerAware
         return new Response(
             $this->container->get( 'ezpublish.templating' )->render( $template, $params )
         );
+    }
+
+    /**
+     * @param \eZ\Publish\API\Repository\Repository $repository
+     */
+    public function setRepository( Repository $repository )
+    {
+        $this->repository = $repository;
     }
 }

@@ -11,9 +11,11 @@ namespace eZ\Bundle\EzPublishCoreBundle;
 
 use eZ\CherryMvc\Routing\Matcher\UrlMatcher;
 use eZ\CherryMvc\Template\TwigEngine;
+use eZ\Bundle\EzPublishCoreBundle\DependencyInjection\Compiler\AddFieldTypePass;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\HttpKernel\EventListener\RouterListener;
 use Symfony\Component\Routing\RequestContext;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 class EzPublishCoreBundle extends Bundle
 {
@@ -42,5 +44,11 @@ class EzPublishCoreBundle extends Bundle
             "twig",
             new TwigEngine()
         );
+    }
+
+    public function build( ContainerBuilder $container )
+    {
+        parent::build( $container );
+        $container->addCompilerPass( new AddFieldTypePass );
     }
 }

@@ -1,0 +1,122 @@
+parameters:
+    ezpublish.api.fieldtype.ezauthor.class: eZ\Publish\Core\Repository\FieldType\Author\Type
+    ezpublish.api.fieldtype.ezbinaryfile.class: eZ\Publish\Core\Repository\FieldType\BinaryFile\Type
+    ezpublish.api.fieldtype.ezboolean.class: eZ\Publish\Core\Repository\FieldType\Checkbox\Type
+    ezpublish.api.fieldtype.ezdatetime.class: eZ\Publish\Core\Repository\FieldType\DateAndTime\Type
+    ezpublish.api.fieldtype.ezfloat.class: eZ\Publish\Core\Repository\FieldType\Float\Type
+    ezpublish.api.fieldtype.ezinteger.class: eZ\Publish\Core\Repository\FieldType\Integer\Type
+    ezpublish.api.fieldtype.ezimage.class: eZ\Publish\Core\Repository\FieldType\Image\Type
+    ezpublish.api.fieldtype.ezkeyword.class: eZ\Publish\Core\Repository\FieldType\Keyword\Type
+    ezpublish.api.fieldtype.ezmedia.class: eZ\Publish\Core\Repository\FieldType\Media\Type
+    ezpublish.api.fieldtype.ezstarrating.class: eZ\Publish\Core\Repository\FieldType\Rating\Type
+    ezpublish.api.fieldtype.ezselection.class: eZ\Publish\Core\Repository\FieldType\Selection\Type
+    ezpublish.api.fieldtype.eztext.class: eZ\Publish\Core\Repository\FieldType\TextBlock\Type
+    ezpublish.api.fieldtype.ezstring.class: eZ\Publish\Core\Repository\FieldType\TextLine\Type
+    ezpublish.api.fieldtype.ezurl.class: eZ\Publish\Core\Repository\FieldType\Url\Type
+    ezpublish.api.fieldtype.ezxmltext.class: eZ\Publish\Core\Repository\FieldType\XmlText\Type
+    ezpublish.api.fieldtype.ezxmltext.simplifiedInputParser.class: eZ\Publish\Core\Repository\FieldType\XmlText\Input\Parser\Simplified
+    ezpublish.api.fieldtype.ezxmltext.xmlSchema.class: eZ\Publish\Core\Repository\FieldType\XmlText\Schema
+    ezpublish.api.fieldtype.ezxmltext.xmlSchema.options: []
+    # ezpublish.api.fieldtype.ezxmltext.xmlSchema.options:
+    #    customAttributes:
+    #         table:
+    #             - cellpadding
+    #     classesList:
+    #         paragraph:
+    #             - pink
+    #     customTags:
+    #         underline:
+    #             isInline: true
+    ezpublish.api.fieldtype.ezcountry.class: eZ\Publish\Core\Repository\FieldType\Country\Type
+
+services:
+    ezpublish.api.fieldtype.ezauthor:
+        class: %ezpublish.api.fieldtype.ezauthor.class%
+        tags:
+            - {name: ezpublish.fieldType, alias: ezauthor}
+
+    ezpublish.api.fieldtype.ezbinaryfile:
+        class: %ezpublish.api.fieldtype.ezbinaryfile.class%
+        tags:
+            - {name: ezpublish.fieldType, alias: ezbinaryfile}
+
+    ezpublish.api.fieldtype.ezboolean:
+        class: %ezpublish.api.fieldtype.ezboolean.class%
+        tags:
+            - {name: ezpublish.fieldType, alias: ezboolean}
+
+    ezpublish.api.fieldtype.ezdatetime:
+        class: %ezpublish.api.fieldtype.ezdatetime.class%
+        tags:
+            - {name: ezpublish.fieldType, alias: ezdatetime}
+
+    ezpublish.api.fieldtype.ezfloat:
+        class: %ezpublish.api.fieldtype.ezfloat.class%
+        tags:
+            - {name: ezpublish.fieldType, alias: ezfloat}
+
+    ezpublish.api.fieldtype.ezinteger:
+        class: %ezpublish.api.fieldtype.ezinteger.class%
+        tags:
+            - {name: ezpublish.fieldType, alias: ezinteger}
+
+    ezpublish.api.fieldtype.ezimage:
+        class: %ezpublish.api.fieldtype.ezimage.class%
+        parameters: [@ezpublish.api.repository]
+        tags:
+            - {name: ezpublish.fieldType, alias: ezimage}
+
+    ezpublish.api.fieldtype.ezkeyword:
+        class: %ezpublish.api.fieldtype.ezkeyword.class%
+        tags:
+            - {name: ezpublish.fieldType, alias: ezkeyword}
+
+    ezpublish.api.fieldtype.ezmedia:
+        class: %ezpublish.api.fieldtype.ezmedia.class%
+        parameters: [@ezpublish.api.repository]
+        tags:
+            - {name: ezpublish.fieldType, alias: ezmedia}
+
+    ezpublish.api.fieldtype.ezstarrating:
+        class: %ezpublish.api.fieldtype.ezstarrating.class%
+        tags:
+            - {name: ezpublish.fieldType, alias: ezstarrating}
+
+    ezpublish.api.fieldtype.ezselection:
+        class: %ezpublish.api.fieldtype.ezselection.class%
+        tags:
+            - {name: ezpublish.fieldType, alias: ezselection}
+
+    ezpublish.api.fieldtype.eztext:
+        class: %ezpublish.api.fieldtype.eztext.class%
+        tags:
+            - {name: ezpublish.fieldType, alias: eztext}
+
+    ezpublish.api.fieldtype.ezstring:
+        class: %ezpublish.api.fieldtype.ezstring.class%
+        tags:
+            - {name: ezpublish.fieldType, alias: ezstring}
+
+    ezpublish.api.fieldtype.ezurl:
+        class: %ezpublish.api.fieldtype.ezurl.class%
+        tags:
+            - {name: ezpublish.fieldType, alias: ezurl}
+
+    ezpublish.api.fieldtype.ezxmltext:
+        class: %ezpublish.api.fieldtype.ezxmltext.class%
+        arguments: [@ezpublish.api.fieldtype.ezxmltext.simplifiedInputParser]
+        tags:
+            - {name: ezpublish.fieldType, alias: ezxmltext}
+
+    ezpublish.api.fieldtype.ezxmltext.simplifiedInputParser:
+        class: %ezpublish.api.fieldtype.ezxmltext.simplifiedInputParser.class%
+        public: false
+        arguments:
+            - @ezpublish.api.fieldtype.ezxmltext.xmlSchema
+        #   - {TrimSpaces: true, AllowMultipleSpaces: true}
+
+    ezpublish.api.fieldtype.ezxmltext.xmlSchema:
+        class: %ezpublish.api.fieldtype.ezxmltext.xmlSchema.class%
+        arguments:
+            - %ezpublish.api.fieldtype.ezxmltext.xmlSchema.options%
+        public: false
