@@ -5,10 +5,10 @@ parameters:
     ezpublish.fieldType.ezdatetime.class: eZ\Publish\Core\Repository\FieldType\DateAndTime\Type
     ezpublish.fieldType.ezfloat.class: eZ\Publish\Core\Repository\FieldType\Float\Type
     ezpublish.fieldType.ezinteger.class: eZ\Publish\Core\Repository\FieldType\Integer\Type
-    ezpublish.fieldType.ezimage.class: eZ\Publish\Core\Repository\FieldType\Image\Type
+    #ezpublish.fieldType.ezimage.class: eZ\Publish\Core\Repository\FieldType\Image\Type
     ezpublish.fieldType.ezkeyword.class: eZ\Publish\Core\Repository\FieldType\Keyword\Type
     ezpublish.fieldType.ezmedia.class: eZ\Publish\Core\Repository\FieldType\Media\Type
-    ezpublish.fieldType.ezstarrating.class: eZ\Publish\Core\Repository\FieldType\Rating\Type
+    ezpublish.fieldType.ezsrrating.class: eZ\Publish\Core\Repository\FieldType\Rating\Type
     ezpublish.fieldType.ezselection.class: eZ\Publish\Core\Repository\FieldType\Selection\Type
     ezpublish.fieldType.eztext.class: eZ\Publish\Core\Repository\FieldType\TextBlock\Type
     ezpublish.fieldType.ezstring.class: eZ\Publish\Core\Repository\FieldType\TextLine\Type
@@ -37,6 +37,7 @@ services:
 
     ezpublish.fieldType.ezbinaryfile:
         class: %ezpublish.fieldType.ezbinaryfile.class%
+        arguments: [@ezpublish.api.repository]
         tags:
             - {name: ezpublish.fieldType, alias: ezbinaryfile}
 
@@ -60,11 +61,11 @@ services:
         tags:
             - {name: ezpublish.fieldType, alias: ezinteger}
 
-    ezpublish.fieldType.ezimage:
-        class: %ezpublish.fieldType.ezimage.class%
-        parameters: [@ezpublish.api.repository]
-        tags:
-            - {name: ezpublish.fieldType, alias: ezimage}
+    #ezpublish.fieldType.ezimage:
+    #    class: %ezpublish.fieldType.ezimage.class%
+    #    parameters: [@ezpublish.api.repository]
+    #    tags:
+    #        - {name: ezpublish.fieldType, alias: ezimage}
 
     ezpublish.fieldType.ezkeyword:
         class: %ezpublish.fieldType.ezkeyword.class%
@@ -73,14 +74,14 @@ services:
 
     ezpublish.fieldType.ezmedia:
         class: %ezpublish.fieldType.ezmedia.class%
-        parameters: [@ezpublish.api.repository]
+        arguments: [@ezpublish.api.repository]
         tags:
             - {name: ezpublish.fieldType, alias: ezmedia}
 
-    ezpublish.fieldType.ezstarrating:
-        class: %ezpublish.fieldType.ezstarrating.class%
+    ezpublish.fieldType.ezsrrating:
+        class: %ezpublish.fieldType.ezsrrating.class%
         tags:
-            - {name: ezpublish.fieldType, alias: ezstarrating}
+            - {name: ezpublish.fieldType, alias: ezsrrating}
 
     ezpublish.fieldType.ezselection:
         class: %ezpublish.fieldType.ezselection.class%
