@@ -23,10 +23,10 @@ class AddFieldTypePass implements CompilerPassInterface
      */
     public function process( ContainerBuilder $container )
     {
-        if ( !$container->hasDefinition( 'ezpublish.api.repository_factory' ) )
+        if ( !$container->hasDefinition( 'ezpublish.api.repository.factory' ) )
             return;
 
-        $repositoryFactoryDef = $container->getDefinition( 'ezpublish.api.repository_factory' );
+        $repositoryFactoryDef = $container->getDefinition( 'ezpublish.api.repository.factory' );
 
         foreach ( $container->findTaggedServiceIds( 'ezpublish.fieldType' ) as $id => $attributes )
         {

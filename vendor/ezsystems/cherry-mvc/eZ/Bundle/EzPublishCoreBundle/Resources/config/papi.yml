@@ -1,17 +1,17 @@
 parameters:
-    ezpublish.api.repository_factory.class: eZ\Bundle\EzPublishCoreBundle\ApiLoader\RepositoryFactory
+    ezpublish.api.repository.factory.class: eZ\Bundle\EzPublishCoreBundle\ApiLoader\RepositoryFactory
     ezpublish.api.repository.class: eZ\Publish\Core\Repository\Repository
     ezpublish.api.io_handler.class: eZ\Publish\Core\IO\InMemoryHandler
     ezpublish.api.persistence_handler.class: eZ\Publish\Core\Persistence\InMemory\Handler
 
 services:
-    ezpublish.api.repository_factory:
-        class: %ezpublish.api.repository_factory.class%
+    ezpublish.api.repository.factory:
+        class: %ezpublish.api.repository.factory.class%
         arguments: [@service_container]
 
     ezpublish.api.repository:
         class: %ezpublish.api.repository.class%
-        factory_service: ezpublish.api.repository_factory
+        factory_service: ezpublish.api.repository.factory
         factory_method: buildRepository
         arguments:
             - @ezpublish.api.persistence_handler
