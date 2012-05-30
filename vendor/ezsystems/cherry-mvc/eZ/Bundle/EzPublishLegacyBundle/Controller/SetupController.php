@@ -103,7 +103,6 @@ class SetupController extends Controller
                 return $tpl->fetch( "design:setup/info.tpl" );
             }
         );
-        $kernel->shutdown();
 
         // Rendering with twig, embedding the result of a legacy template
         return $this->render(

@@ -35,6 +35,7 @@ class LegacyKernel extends ezpKernel
 
         $this->enterLegacyRootDir();
         parent::__construct();
+        $this->leaveLegacyRootDir();
     }
 
     /**
@@ -50,7 +51,7 @@ class LegacyKernel extends ezpKernel
     /**
      * Leaves the legacy root dir and switches back to the initial webroot dir.
      */
-    public function leaveLegacyRootDir()
+    protected function leaveLegacyRootDir()
     {
         if ( getcwd() == $this->legacyRootDir )
             chdir( $this->webrootDir );
@@ -78,6 +79,7 @@ class LegacyKernel extends ezpKernel
     {
         $this->enterLegacyRootDir();
         return parent::run();
+        $this->leaveLegacyRootDir();
     }
 
     /**
@@ -90,11 +92,6 @@ class LegacyKernel extends ezpKernel
     {
         $this->enterLegacyRootDir();
         return parent::runCallback($callback);
-    }
-
-    public function shutdown()
-    {
-        parent::shutdown();
         $this->leaveLegacyRootDir();
     }
 }

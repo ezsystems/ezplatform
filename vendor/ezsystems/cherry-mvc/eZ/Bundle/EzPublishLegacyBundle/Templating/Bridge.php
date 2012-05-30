@@ -45,7 +45,6 @@ class Bridge
             }
         );
 
-        $this->legacyKernel->shutdown();
         return $tplResult;
     }
 }

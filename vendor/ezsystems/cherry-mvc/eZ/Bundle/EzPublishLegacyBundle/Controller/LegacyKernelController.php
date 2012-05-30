@@ -22,7 +22,6 @@ class LegacyKernelController extends Controller
     {
         $kernel = $this->container->get( 'ezpublish_legacy.kernel' );
         $result = $kernel->run();
-        $kernel->shutdown();
 
         return new Response(
             $result["content"]
