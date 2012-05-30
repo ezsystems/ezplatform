@@ -10,6 +10,7 @@
         "symfony/console": "2.1.*",
         "symfony/finder": "2.1.*",
         "symfony/yaml": "2.1.*",
+        "symfony/templating": "2.1.*",
         "twig/twig": "1.8.0"
     },
     "autoload": {
