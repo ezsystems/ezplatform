@@ -59,4 +59,17 @@ class MyController extends Controller
         $response->headers->set( 'Content-Type', 'text/plain' );
         return $response;
     }
+
+    public function helloWorldAction()
+    {
+        $response = new Response( "Hello World!" );
+        return $response;
+    }
+
+    public function helloWorldTwigAction()
+    {
+        return $this->render(
+            "Hello World!"
+        );
+    }
 }

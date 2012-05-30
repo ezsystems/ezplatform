@@ -48,4 +48,22 @@ $routes->add(
         )
     )
 );
+$routes->add(
+    'helloWorld',
+    new Routing\Route(
+        '/helloWorld',
+        array(
+             '_controller' => 'eZ\\CherryMvc\\Controller\\MyController::helloWorldAction'
+        )
+    )
+);
+$routes->add(
+    'helloWorldTwig',
+    new Routing\Route(
+        '/helloWorldTwig',
+        array(
+             '_controller' => 'eZ\\CherryMvc\\Controller\\MyController::helloWorldTwigAction'
+        )
+    )
+);
 return $routes;
