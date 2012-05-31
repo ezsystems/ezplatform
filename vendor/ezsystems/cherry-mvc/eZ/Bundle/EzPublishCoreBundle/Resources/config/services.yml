@@ -5,12 +5,6 @@ parameters:
     controller_resolver.class: eZ\CherryMvc\Controller\Resolver
     webroot_dir: %kernel.root_dir%/../web
 
-    # eZ Publish related params
-    ezpublish.templating.factory_class: eZ\CherryMvc\Template\Factory
-    # Templates type
-    # TODO: Should not be global. Consider Symfony Templating Component
-    ezpublish.templating.type: twig
-
 services:
     http_kernel:
         class: %http_kernel.class%
@@ -23,13 +17,4 @@ services:
     controller_resolver:
         class: %controller_resolver.class%
         arguments: [@service_container]
-
-    ezpublish.templating.factory:
-        class: %ezpublish.templating.factory_class%
-
-    ezpublish.templating:
-        class: eZ\CherryMvc\Template\Engine
-        factory_service: ezpublish.templating.factory
-        factory_method: getEngine
-        arguments: [%ezpublish.templating.type%]
 

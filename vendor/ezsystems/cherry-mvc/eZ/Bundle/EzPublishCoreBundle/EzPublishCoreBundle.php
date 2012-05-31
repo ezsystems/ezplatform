@@ -37,15 +37,6 @@ class EzPublishCoreBundle extends Bundle
                 )
             )
         );
-
-        // Registering the Template engine.
-        // TODO: This should be done with DIC with the help of a tag
-        // TODO: We might need to consider Templating component instead of this
-        $tplFactory = $this->container->get( 'ezpublish.templating.factory' );
-        $tplFactory->register(
-            "twig",
-            new TwigEngine()
-        );
     }
 
     public function build( ContainerBuilder $container )
