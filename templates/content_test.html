@@ -1,3 +1,6 @@
-<h1>{{ content.fields['name']['eng-GB'] }}</h1>
-<h2>{{ content.fields['short_name']['eng-GB'] }}</h2>
-<p>{{ content.fields['description']['eng-GB']|nl2br }}</p>
+{% for fieldName, field in content.fields %}
+{{ fieldName }}:
+{% for lang, data in field %}
+{{ lang }}: {{ data|raw }}<br />
+{% endfor %}
+{% endfor %}
