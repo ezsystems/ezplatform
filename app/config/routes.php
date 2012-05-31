@@ -7,8 +7,11 @@ $routes->add(
     new Routing\Route(
         '/test/{contentId}',
         array(
-             'contentId' => 1,
+             'contentId' => 102,
              '_controller' => 'eZ\\CherryMvc\\Controller\\MyController::testAction'
+        ),
+        array(
+             'contentId' => '\d+'
         )
     )
 );
