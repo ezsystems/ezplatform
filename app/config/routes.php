@@ -66,4 +66,13 @@ $routes->add(
         )
     )
 );
+$routes->add(
+    'editorial',
+    new Routing\Route(
+        '/Editorial',
+        array(
+             '_controller' => 'eZ\\CherryMvc\\Controller\\MyController::editorialAction'
+        )
+    )
+);
 return $routes;

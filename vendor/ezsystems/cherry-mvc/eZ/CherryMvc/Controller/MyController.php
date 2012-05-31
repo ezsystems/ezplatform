@@ -74,6 +74,11 @@ class MyController extends Controller
         return $this->render( "hello_world.html" );
     }
 
+    public function editorialAction()
+    {
+        return $this->pageLayoutAction( "Editorial Interface", "<p>HERE GOES THE OBJECT</p>" );
+    }
+
     public function pageLayoutAction( $title, $content )
     {
         return $this->render(
