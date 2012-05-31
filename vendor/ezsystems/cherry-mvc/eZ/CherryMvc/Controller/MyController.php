@@ -20,7 +20,7 @@ class MyController extends Controller
         return $this->pageLayoutAction(
             "Test loading content",
             $this->container->get( 'ezpublish.templating' )->render(
-                "content_test.html",
+                "content_test.html.twig",
                 array(
                     "content" => $this->repository->getContentService()->loadContent( 1 )
                 )
@@ -33,7 +33,7 @@ class MyController extends Controller
         return $this->pageLayoutAction(
             "Test with Legacy template",
             $this->container->get( 'ezpublish.templating' )->render(
-                "legacy_test.html",
+                "legacy_test.html.twig",
                 array(
                     "title" => "eZ Publish 5",
                     "subtitle" => "Welcome to the future !",
@@ -71,7 +71,7 @@ class MyController extends Controller
 
     public function helloWorldTwigAction()
     {
-        return $this->render( "hello_world.html" );
+        return $this->render( "hello_world.html.twig" );
     }
 
     public function editorialAction()
@@ -82,7 +82,7 @@ class MyController extends Controller
     public function pageLayoutAction( $title, $content )
     {
         return $this->render(
-            "pagelayout.html",
+            "pagelayout.html.twig",
             array(
                 "title" => $title,
                 "content" => $content,
