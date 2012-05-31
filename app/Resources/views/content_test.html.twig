@@ -1,6 +1,6 @@
 {% for fieldName, field in content.fields %}
-{{ fieldName }}:
-{% for lang, data in field %}
-{{ lang }}: {{ data|raw }}<br />
-{% endfor %}
+    <strong>{{ fieldName }}:</strong>
+    {% for lang, data in field %}
+        {{ lang }}: {{ data|raw }}<br />
+    {% endfor %}
 {% endfor %}
