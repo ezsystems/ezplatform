@@ -5,8 +5,9 @@ $routes = new Routing\RouteCollection();
 $routes->add(
     'test',
     new Routing\Route(
-        '/test',
+        '/test/{contentId}',
         array(
+             'contentId' => 1,
              '_controller' => 'eZ\\CherryMvc\\Controller\\MyController::testAction'
         )
     )

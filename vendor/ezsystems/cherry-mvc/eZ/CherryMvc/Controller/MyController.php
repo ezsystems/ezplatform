@@ -15,14 +15,14 @@ use Symfony\Component\HttpFoundation\Response;
 
 class MyController extends Controller
 {
-    public function testAction()
+    public function testAction( $contentId )
     {
         return $this->pageLayoutAction(
             "Test loading content",
             $this->container->get( 'ezpublish.templating' )->render(
                 "content_test.html.twig",
                 array(
-                    "content" => $this->repository->getContentService()->loadContent( 1 )
+                    "content" => $this->repository->getContentService()->loadContent( $contentId )
                 )
             )
         );
