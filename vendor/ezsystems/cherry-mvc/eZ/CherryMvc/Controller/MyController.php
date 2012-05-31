@@ -17,32 +17,26 @@ class MyController extends Controller
 {
     public function testAction( $contentId )
     {
-        return $this->pageLayoutAction(
-            "Test loading content",
-            $this->container->get( 'ezpublish.templating' )->render(
-                "content_test.html.twig",
-                array(
-                    "content" => $this->repository->getContentService()->loadContent( $contentId )
-                )
+        return $this->render(
+            "content_test.html.twig",
+            array(
+                "content" => $this->repository->getContentService()->loadContent( $contentId )
             )
         );
     }
 
     public function testWithLegacyAction()
     {
-        return $this->pageLayoutAction(
-            "Test with Legacy template",
-            $this->container->get( 'ezpublish.templating' )->render(
-                "legacy_test.html.twig",
-                array(
-                    "title" => "eZ Publish 5",
-                    "subtitle" => "Welcome to the future !",
-                    "legacyTemplateResult" => $this->container->get( 'ezpublish_legacy.template_bridge' )->renderTemplate(
-                        "design:test/helloworld.tpl",
-                        array(
-                             'message' => 'All your eZ Publish base are belong to us ;-)',
-                             'konamiCode' => array( 'Up', 'Up', 'Down', 'Down', 'Left', 'Right', 'Left', 'Right', 'B', 'A' )
-                        )
+        return $this->render(
+            "legacy_test.html.twig",
+            array(
+                "title" => "eZ Publish 5",
+                "subtitle" => "Welcome to the future !",
+                "legacyTemplateResult" => $this->container->get( 'ezpublish_legacy.template_bridge' )->renderTemplate(
+                    "design:test/helloworld.tpl",
+                    array(
+                         'message' => 'All your eZ Publish base are belong to us ;-)',
+                         'konamiCode' => array( 'Up', 'Up', 'Down', 'Down', 'Left', 'Right', 'Left', 'Right', 'B', 'A' )
                     )
                 )
             )
@@ -77,16 +71,5 @@ class MyController extends Controller
     public function editorialAction()
     {
         return $this->pageLayoutAction( "Editorial Interface", "<p>HERE GOES THE OBJECT</p>" );
-    }
-
-    public function pageLayoutAction( $title, $content )
-    {
-        return $this->render(
-            "pagelayout.html.twig",
-            array(
-                "title" => $title,
-                "content" => $content,
-            )
-        );
     }
 }
