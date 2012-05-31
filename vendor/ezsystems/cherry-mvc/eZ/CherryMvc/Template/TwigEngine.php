@@ -10,7 +10,7 @@
 namespace eZ\CherryMvc\Template;
 
 use \Twig_Environment;
-use \Twig_Loader_String;
+use \Twig_Loader_Filesystem;
 
 class TwigEngine implements Engine
 {
@@ -21,7 +21,9 @@ class TwigEngine implements Engine
 
     public function build()
     {
-        $this->twigEnv = new Twig_Environment( new Twig_Loader_String() );
+        $this->twigEnv = new Twig_Environment(
+            new Twig_Loader_Filesystem( __DIR__ . "/../../../../../../templates/" )
+        );
     }
 
     public function render( $template, array $params = array() )
