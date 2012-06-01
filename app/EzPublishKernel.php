@@ -9,6 +9,7 @@
 
 use eZ\Bundle\EzPublishCoreBundle\EzPublishCoreBundle;
 use eZ\Bundle\EzPublishLegacyBundle\EzPublishLegacyBundle;
+use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
 
@@ -24,6 +25,7 @@ class EzPublishKernel extends Kernel
     public function registerBundles()
     {
         return array(
+            new FrameworkBundle(),
             new EzPublishCoreBundle(),
             new EzPublishLegacyBundle(),
         );
