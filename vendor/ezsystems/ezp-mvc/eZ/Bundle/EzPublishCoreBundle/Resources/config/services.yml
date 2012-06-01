@@ -1,0 +1,20 @@
+parameters:
+    # Kernel related params
+    http_kernel.class: eZ\Publish\MVC\HttpKernel
+    event_dispatcher.class: Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher
+    controller_resolver.class: eZ\Publish\MVC\Controller\Resolver
+    webroot_dir: %kernel.root_dir%/../web
+
+services:
+    http_kernel:
+        class: %http_kernel.class%
+        arguments: [@event_dispatcher, @service_container, @controller_resolver]
+
+    event_dispatcher:
+        class: %event_dispatcher.class%
+        arguments: [@service_container]
+
+    controller_resolver:
+        class: %controller_resolver.class%
+        arguments: [@service_container]
+

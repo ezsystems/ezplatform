@@ -8,7 +8,7 @@ $routes->add(
         '/test/{contentId}',
         array(
              'contentId' => 102,
-             '_controller' => 'eZ\\CherryMvc\\Controller\\MyController::testAction'
+             '_controller' => 'eZ\\Publish\\MVC\\Controller\\MyController::testAction'
         ),
         array(
              'contentId' => '\d+'
@@ -20,7 +20,7 @@ $routes->add(
     new Routing\Route(
         '/test/legacy',
         array(
-             '_controller' => 'eZ\\CherryMvc\\Controller\\MyController::testWithLegacyAction'
+             '_controller' => 'eZ\\Publish\\MVC\\Controller\\MyController::testWithLegacyAction'
         )
     )
 );
@@ -30,7 +30,7 @@ $routes->add(
         '/hello/{name}',
         array(
              'name' => 'World',
-             '_controller' => 'eZ\\CherryMvc\\Controller\\MyController::helloAction'
+             '_controller' => 'eZ\\Publish\\MVC\\Controller\\MyController::helloAction'
         )
     )
 );
@@ -39,7 +39,7 @@ $routes->add(
     new Routing\Route(
         '/bye',
         array(
-             '_controller' => 'eZ\\CherryMvc\\Controller\\MyController::byeAction'
+             '_controller' => 'eZ\\Publish\\MVC\\Controller\\MyController::byeAction'
         )
     )
 );
@@ -57,7 +57,7 @@ $routes->add(
     new Routing\Route(
         '/helloWorld',
         array(
-             '_controller' => 'eZ\\CherryMvc\\Controller\\MyController::helloWorldAction'
+             '_controller' => 'eZ\\Publish\\MVC\\Controller\\MyController::helloWorldAction'
         )
     )
 );
@@ -66,7 +66,7 @@ $routes->add(
     new Routing\Route(
         '/helloWorldTwig',
         array(
-             '_controller' => 'eZ\\CherryMvc\\Controller\\MyController::helloWorldTwigAction'
+             '_controller' => 'eZ\\Publish\\MVC\\Controller\\MyController::helloWorldTwigAction'
         )
     )
 );
@@ -75,7 +75,7 @@ $routes->add(
     new Routing\Route(
         '/Editorial',
         array(
-             '_controller' => 'eZ\\CherryMvc\\Controller\\MyController::editorialAction'
+             '_controller' => 'eZ\\Publish\\MVC\\Controller\\MyController::editorialAction'
         )
     )
 );
