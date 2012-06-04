@@ -7,20 +7,20 @@
  * @version //autogentag//
  */
 
-namespace eZ\Publish\MVC\Controller;
+namespace EzSystems\DemoBundle\Controller;
 
 use eZ\Publish\MVC\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class MyController extends Controller
+class DemoController extends Controller
 {
     public function testAction( $contentId )
     {
         return $this->render(
-            "content_test.html.twig",
+            "eZDemoBundle:content:content_test.html.twig",
             array(
-                "content" => $this->repository->getContentService()->loadContent( $contentId )
+                "content" => $this->getRepository()->getContentService()->loadContent( $contentId )
             )
         );
     }
@@ -28,7 +28,7 @@ class MyController extends Controller
     public function testWithLegacyAction()
     {
         return $this->render(
-            "legacy_test.html.twig",
+            "eZDemoBundle:content:legacy_test.html.twig",
             array(
                 "title" => "eZ Publish 5",
                 "subtitle" => "Welcome to the future !",
@@ -43,20 +43,6 @@ class MyController extends Controller
         );
     }
 
-    public function helloAction( $name )
-    {
-        $response = new Response( "Hello $name!" );
-        $response->headers->set( 'Content-Type', 'text/plain' );
-        return $response;
-    }
-
-    public function byeAction()
-    {
-        $response = new Response( "Good bye!" );
-        $response->headers->set( 'Content-Type', 'text/plain' );
-        return $response;
-    }
-
     public function helloWorldAction()
     {
         $response = new Response( "Hello World!" );
@@ -65,11 +51,17 @@ class MyController extends Controller
 
     public function helloWorldTwigAction()
     {
-        return $this->render( "hello_world.html.twig" );
+        return $this->render( "eZDemoBundle::hello_world.html.twig" );
     }
 
-    public function editorialAction()
+    public function editorialAction( $contentId )
     {
+        return $this->render(
+            "eZDemoBundle:content:editorial.html.twig",
+            array(
+                 "content" => $this->getRepository()->getContentService()->loadContent( $contentId )
+            )
+        );
         return $this->pageLayoutAction( "Editorial Interface", "<p>HERE GOES THE OBJECT</p>" );
     }
 }

@@ -1,0 +1,28 @@
+eZTest:
+    pattern: /test/{contentId}
+    defaults:
+        _controller: eZDemoBundle:Demo:test
+        contentId: 102
+    requirements:
+        contentId: \d+
+
+eZTestWithLegacy:
+    pattern: /test/legacy
+    defaults:
+        _controller: eZDemoBundle:Demo:testLegacy
+
+eZHelloWorld:
+    pattern: /helloWorld
+    defaults:
+        _controller: eZDemoBundle:Demo:helloWorld
+        name: World
+
+eZHelloWorldTwig:
+    pattern: /helloWorldTwig
+    defaults:
+        _controller: eZDemoBundle:Demo:helloWorldTwig
+
+eZEditorial:
+    pattern: /Editorial/{contentId}
+    defaults:
+        _controller: eZDemoBundle:Demo:editorial

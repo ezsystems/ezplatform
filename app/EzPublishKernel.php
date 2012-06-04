@@ -9,6 +9,7 @@
 
 use eZ\Bundle\EzPublishCoreBundle\EzPublishCoreBundle;
 use eZ\Bundle\EzPublishLegacyBundle\EzPublishLegacyBundle;
+use EzSystems\DemoBundle\EzSystemsDemoBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\TwigBundle\TwigBundle;
 use Symfony\Component\HttpKernel\Kernel;
@@ -30,6 +31,7 @@ class EzPublishKernel extends Kernel
             new TwigBundle(),
             new EzPublishCoreBundle(),
             new EzPublishLegacyBundle(),
+            new EzSystemsDemoBundle(),
         );
     }
 

@@ -1,0 +1,2 @@
+eZDemoBundle:
+    resource: "@eZDemoBundle/Resources/config/routing.yml"
