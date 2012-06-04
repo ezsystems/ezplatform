@@ -10,36 +10,20 @@
 namespace eZ\Publish\MVC;
 
 use eZ\Publish\MVC\Template\Factory as TemplateFactory;
-use Symfony\Component\DependencyInjection\ContainerAware;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller as BaseController;
 use Symfony\Component\HttpFoundation\Response;
 use eZ\Publish\API\Repository\Repository;
 
-class Controller extends ContainerAware
+class Controller extends BaseController
 {
     /**
-     * @var \eZ\Publish\API\Repository\Repository
+     * @return \eZ\Publish\API\Repository\Repository
      */
-    protected $repository;
-
-    /**
-     * Renders $template with $params.
-     *
-     * @param string $template Template file or template content (depending on the engine used)
-     * @param array $params Hash of params. Key is the variable name that will be made available in the template
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function render( $template, array $params = array() )
+    public function getRepository()
     {
-        return new Response(
-            $this->container->get( 'ezpublish.templating' )->render( $template, $params )
-        );
-    }
+        if ( !$this->container->has( 'ezpublish.api.repository' ) )
+            throw new \LogicException( 'The EzPublishCoreBundle has not been registered in your application.' );
 
-    /**
-     * @param \eZ\Publish\API\Repository\Repository $repository
-     */
-    public function setRepository( Repository $repository )
-    {
-        $this->repository = $repository;
+        return $this->container->get( 'ezpublish.api.repository' );
     }
 }
