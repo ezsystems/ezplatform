@@ -10,6 +10,7 @@
 use eZ\Bundle\EzPublishCoreBundle\EzPublishCoreBundle;
 use eZ\Bundle\EzPublishLegacyBundle\EzPublishLegacyBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
+use Symfony\Bundle\TwigBundle\TwigBundle;
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
 
@@ -26,6 +27,7 @@ class EzPublishKernel extends Kernel
     {
         return array(
             new FrameworkBundle(),
+            new TwigBundle(),
             new EzPublishCoreBundle(),
             new EzPublishLegacyBundle(),
         );
