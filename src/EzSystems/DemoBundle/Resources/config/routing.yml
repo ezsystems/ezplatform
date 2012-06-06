@@ -9,7 +9,7 @@ eZTest:
 eZTestWithLegacy:
     pattern: /test/legacy
     defaults:
-        _controller: eZDemoBundle:Demo:testLegacy
+        _controller: eZDemoBundle:Demo:testWithLegacy
 
 eZHelloWorld:
     pattern: /helloWorld
