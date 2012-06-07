@@ -79,8 +79,9 @@ class LegacyKernel extends ezpKernel
     public function run()
     {
         $this->enterLegacyRootDir();
-        return parent::run();
+        $return = parent::run();
         $this->leaveLegacyRootDir();
+        return $return;
     }
 
     /**
@@ -92,7 +93,8 @@ class LegacyKernel extends ezpKernel
     public function runCallback( $callback )
     {
         $this->enterLegacyRootDir();
-        return parent::runCallback($callback);
+        $return = parent::runCallback($callback);
         $this->leaveLegacyRootDir();
+        return $return;
     }
 }
