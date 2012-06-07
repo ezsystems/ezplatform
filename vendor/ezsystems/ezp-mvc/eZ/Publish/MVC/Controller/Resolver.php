@@ -9,34 +9,13 @@
 
 namespace eZ\Publish\MVC\Controller;
 
-use eZ\Publish\MVC\Template\Factory as TemplateFactory;
-use Symfony\Component\HttpKernel\Controller\ControllerResolver;
-use Symfony\Component\HttpKernel\Log\LoggerInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\ControllerResolver;
 
 /**
  * eZ Publish specific Controller Resolver
  */
 class Resolver extends ControllerResolver
 {
-    /**
-     * @var \Symfony\Component\DependencyInjection\ContainerInterface
-     */
-    private $container;
-
-    /**
-     * Constructor.
-     *
-     * @param \eZ\Publish\MVC\Template\Factory $templateEngineFactory
-     * @param \Symfony\Component\HttpKernel\Log\LoggerInterface $logger A LoggerInterface instance
-     */
-    public function __construct( ContainerInterface $container, LoggerInterface $logger = null )
-    {
-        $this->container = $container;
-        parent::__construct( $logger );
-    }
-
     /**
      * Returns a callable for the given controller.
      *
@@ -46,14 +25,12 @@ class Resolver extends ControllerResolver
      */
     protected function createController($controller)
     {
+        // TODO: Is it still needed ?
         // $callbackController should be an array
         // [0] is the controller object
         // [1] is the controller method to call
         $callbackController = parent::createController( $controller );
         $controller = $callbackController[0];
-        if ( $controller instanceof ContainerAwareInterface )
-            $controller->setContainer( $this->container );
-
         $controller->setRepository( $this->container->get( 'ezpublish.api.repository' ) );
 
         return $callbackController;
