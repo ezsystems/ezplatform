@@ -62,6 +62,5 @@ class DemoController extends Controller
                  "content" => $this->getRepository()->getContentService()->loadContent( $contentId )
             )
         );
-        return $this->pageLayoutAction( "Editorial Interface", "<p>HERE GOES THE OBJECT</p>" );
     }
 }
