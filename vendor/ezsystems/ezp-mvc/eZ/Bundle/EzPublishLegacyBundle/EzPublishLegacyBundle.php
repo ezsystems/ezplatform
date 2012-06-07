@@ -25,13 +25,6 @@ class EzPublishLegacyBundle extends Bundle
             chdir( $this->container->getParameter( 'ezpublish_legacy.root_dir' ) );
             require_once "autoload.php";
             chdir( $workingDir );
-
-            // TODO: Would be better to use service tags instead of the event system for this
-            $this->container->get( 'event_dispatcher' )->addSubscriber(
-                new FallbackListener(
-                    new FallbackMatcher()
-                )
-            );
         }
     }
 

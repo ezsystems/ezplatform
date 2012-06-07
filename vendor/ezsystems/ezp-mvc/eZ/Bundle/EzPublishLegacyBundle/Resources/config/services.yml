@@ -6,6 +6,7 @@ parameters:
     ezpublish_legacy.kernel.class: eZ\Bundle\EzPublishLegacyBundle\Services\LegacyKernel
     ezpublish_legacy.templating.bridge.class: eZ\Bundle\EzPublishLegacyBundle\Templating\Bridge
     ezpublish_legacy.controller.class: eZ\Bundle\EzPublishLegacyBundle\Controller\LegacyKernelController
+    ezpublish_legacy.router.class: eZ\Bundle\EzPublishLegacyBundle\Routing\FallbackRouter
 
 services:
     ezpublish_legacy.kernel:
@@ -19,3 +20,8 @@ services:
     ezpublish_legacy.controller:
         class: %ezpublish_legacy.controller.class%
         arguments: [@ezpublish_legacy.kernel]
+
+    ezpublish_legacy.router:
+        class: %ezpublish_legacy.router.class%
+        tags:
+            - {name: router, priority: -255}
