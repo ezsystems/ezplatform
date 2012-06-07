@@ -19,7 +19,7 @@ services:
 
     ezpublish_legacy.controller:
         class: %ezpublish_legacy.controller.class%
-        arguments: [@ezpublish_legacy.kernel]
+        arguments: [@ezpublish_legacy.kernel, @templating]
 
     ezpublish_legacy.router:
         class: %ezpublish_legacy.router.class%

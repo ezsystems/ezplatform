@@ -36,6 +36,7 @@ class LegacyKernel extends ezpKernel
         $this->enterLegacyRootDir();
         parent::__construct();
         $this->leaveLegacyRootDir();
+        $this->setUseExceptions( true );
     }
 
     /**
