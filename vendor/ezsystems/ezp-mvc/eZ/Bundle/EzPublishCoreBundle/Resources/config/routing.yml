@@ -1,0 +1,7 @@
+parameters:
+    ezpublish.chain_router.class: eZ\Publish\MVC\Routing\ChainRouter
+
+services:
+    ezpublish.chain_router:
+        class: %ezpublish.chain_router.class%
+        arguments: [@router.request_context]

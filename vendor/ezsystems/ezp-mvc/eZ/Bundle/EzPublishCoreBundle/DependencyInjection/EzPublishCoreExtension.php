@@ -12,6 +12,7 @@ namespace eZ\Bundle\EzPublishCoreBundle\DependencyInjection;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader;
+use Symfony\Component\DependencyInjection\Loader\FileLoader;
 use Symfony\Component\Config\FileLocator;
 
 class EzPublishCoreExtension extends Extension
@@ -20,9 +21,9 @@ class EzPublishCoreExtension extends Extension
      * Loads a specific configuration.
      *
      * @param array            $config    An array of configuration values
-     * @param ContainerBuilder $container A ContainerBuilder instance
+     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container A ContainerBuilder instance
      *
-     * @throws InvalidArgumentException When provided tag is not defined in this extension
+     * @throws \InvalidArgumentException When provided tag is not defined in this extension
      *
      * @api
      */
@@ -32,8 +33,34 @@ class EzPublishCoreExtension extends Extension
             $container,
             new FileLocator( __DIR__ . '/../Resources/config' )
         );
+        // Base services override
         $loader->load( 'services.yml' );
+        // Routing
+        $this->handleRouting( $container, $loader );
+        // Public API loadgin
+        $this->handleApiLoading( $container, $loader );
+    }
 
+    /**
+     * Handle routing parameters
+     *
+     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
+     * @param \Symfony\Component\DependencyInjection\Loader\FileLoader $loader
+     */
+    private function handleRouting( ContainerBuilder $container, FileLoader $loader )
+    {
+        $loader->load( 'routing.yml' );
+        $container->setAlias( 'router', 'ezpublish.chain_router' );
+    }
+
+    /**
+     * Handle public API loading
+     *
+     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
+     * @param \Symfony\Component\DependencyInjection\Loader\FileLoader $loader
+     */
+    private function handleApiLoading( ContainerBuilder $container, FileLoader $loader )
+    {
         // Public API services
         $loader->load( 'papi.yml' );
         // Built-in field types
