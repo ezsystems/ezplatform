@@ -35,7 +35,7 @@ class ContentHelper implements ContentHelperInterface
      * @param array $params An array of parameters to the field view
      * @return string The HTML markup
      */
-    public function renderView( Field $field, array $params = array() )
+    public function renderField( Field $field, array $params = array() )
     {
         return $field->value;
     }
