@@ -1,0 +1,15 @@
+parameters:
+    ezpublish.twig.content_helper.class: eZ\Publish\MVC\Templating\Twig\Helper\ContentHelper
+    ezpublish.twig.extension.content.class: eZ\Publish\MVC\Templating\Twig\Extension\ContentExtension
+
+services:
+    ezpublish.twig.content_helper:
+        class: %ezpublish.twig.content_helper.class%
+        public: false
+
+    ezpublish.twig.extension.content:
+        class: %ezpublish.twig.extension.content.class%
+        arguments: [@ezpublish.twig.content_helper]
+        public: false
+        tags:
+            - {name: twig.extension}

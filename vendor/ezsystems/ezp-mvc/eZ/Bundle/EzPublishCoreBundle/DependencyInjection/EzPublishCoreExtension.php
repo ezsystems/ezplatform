@@ -37,8 +37,9 @@ class EzPublishCoreExtension extends Extension
         $loader->load( 'services.yml' );
         // Routing
         $this->handleRouting( $container, $loader );
-        // Public API loadgin
+        // Public API loading
         $this->handleApiLoading( $container, $loader );
+        $this->handleTemplating( $container, $loader );
     }
 
     /**
@@ -67,5 +68,16 @@ class EzPublishCoreExtension extends Extension
         $loader->load( 'fieldtypes.yml' );
         // Built-in storage engines
         $loader->load( 'storage_engines.yml' );
+    }
+
+    /**
+     * Handle templating parameters
+     *
+     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
+     * @param \Symfony\Component\DependencyInjection\Loader\FileLoader $loader
+     */
+    private function handleTemplating( ContainerBuilder $container, FileLoader $loader )
+    {
+        $loader->load( 'templating.yml' );
     }
 }
