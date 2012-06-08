@@ -7,7 +7,7 @@
  * @version //autogentag//
  */
 
-namespace eZ\Bundle\EzPublishLegacyBundle\Controller;
+namespace EzSystems\DemoBundle\Controller;
 
 use eZ\Publish\MVC\Controller;
 use Symfony\Component\HttpFoundation\Response;
@@ -106,25 +106,7 @@ class SetupController extends Controller
 
         // Rendering with twig, embedding the result of a legacy template
         return $this->render(
-        <<<EOT
-<!DOCTYPE html>
-<html lang="en-US">
-<head>
-  <title>{{title}} - eZ Publish Demo Design</title>
-  <link rel="stylesheet" type="text/css" href="/design/admin2/stylesheets/core.css" />
-  <link rel="stylesheet" type="text/css" href="/design/admin2/stylesheets/content.css" />
-  <link rel="stylesheet" type="text/css" href="/design/admin2/stylesheets/theme/rounded.css" />
-</head>
-<body>
-  <div style="padding: 10px 20px 30px 20px;">
-  {% autoescape false %}
-    {{infoOutput}}
-  {% endautoescape %}
-  </div>
-</body>
-</html>
-EOT
-,
+            "eZDemoBundle::setupInfo.html.twig",
             array(
                 "title" => "System information",
                 "infoOutput" => $infoOutput,
