@@ -9,9 +9,7 @@
 
 namespace eZ\Publish\MVC;
 
-use eZ\Publish\MVC\Template\Factory as TemplateFactory;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller as BaseController;
-use Symfony\Component\HttpFoundation\Response;
 use eZ\Publish\API\Repository\Repository;
 
 class Controller extends BaseController
