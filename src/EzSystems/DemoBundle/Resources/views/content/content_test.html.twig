@@ -7,13 +7,13 @@
 
 {% block content %}
 <div class="attribute-header">
-    <h1 class="long">Loading content #{{ content.contentInfo.id }}: {{ ezpublish.contentView( content ) }}</h1>
+    <h1 class="long">Loading content #{{ content.contentInfo.id }}: {{ ezpublish.renderContent( content ) }}</h1>
 </div>
 
 <div>
 {% for field in content.getFields() %}
     <div>
-        <strong>{{field.fieldDefIdentifier}}: </strong>{{ ezpublish.fieldView( field )|raw }}
+        <strong>{{field.fieldDefIdentifier}}: </strong>{{ ezpublish.renderField( field )|raw }}
     </div>
 {% endfor %}
 </div>
