@@ -26,8 +26,6 @@ class LegacyKernel extends ezpKernel
      */
     private $webrootDir;
 
-    private $isRequestInitialized = false;
-
     public function __construct( $legacyRootDir, $webrootDir )
     {
         $this->legacyRootDir = $legacyRootDir;
@@ -56,19 +54,6 @@ class LegacyKernel extends ezpKernel
     {
         if ( getcwd() == $this->legacyRootDir )
             chdir( $this->webrootDir );
-    }
-
-    /**
-     * Initializes request in legacy kernel.
-     * This will happen only once.
-     */
-    protected function requestInit()
-    {
-        if ( $this->isRequestInitialized )
-            return;
-
-        parent::requestInit();
-        $this->isRequestInitialized = true;
     }
 
     /**
