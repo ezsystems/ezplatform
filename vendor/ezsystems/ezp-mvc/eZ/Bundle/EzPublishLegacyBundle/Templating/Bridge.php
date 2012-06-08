@@ -26,9 +26,10 @@ class Bridge
     /**
      * Renders a legacy template.
      *
-     * @param $tplPath Path to template (i.e. "design:setup/info.tpl")
+     * @param string $tplPath Path to template (i.e. "design:setup/info.tpl")
      * @param array $params Parameters to pass to template.
      *                      Consists of a hash with key as the variable name available in the template.
+     * @return string The legacy template result
      */
     public function renderTemplate( $tplPath, array $params = array() )
     {
