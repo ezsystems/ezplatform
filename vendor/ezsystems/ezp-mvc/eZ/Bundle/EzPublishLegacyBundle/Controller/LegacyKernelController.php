@@ -32,6 +32,12 @@ class LegacyKernelController
      */
     private $kernel;
 
+    /**
+     * @todo Maybe following dependencies should be mutualized in an abstract controller
+     *       Injection can be done through "parent service" feature for DIC : http://symfony.com/doc/master/components/dependency_injection/parentservices.html
+     * @param \eZ\Bundle\EzPublishLegacyBundle\Services\LegacyKernel $kernel
+     * @param \Symfony\Component\Templating\EngineInterface $templateEngine
+     */
     public function __construct( LegacyKernel $kernel, EngineInterface $templateEngine )
     {
         $this->kernel = $kernel;
