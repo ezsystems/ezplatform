@@ -9,7 +9,7 @@
 
 namespace eZ\Publish\MVC\Templating\Helper;
 
-use eZ\Publish\API\Repository\Values\Content\Content;
+use eZ\Publish\Core\Repository\Values\Content\Content;
 use eZ\Publish\API\Repository\Values\Content\Field;
 
 /**
@@ -22,7 +22,7 @@ interface ContentHelperInterface
      * Renders the HTML for a given content.
      *
      * @abstract
-     * @param \eZ\Publish\API\Repository\Values\Content\Content $content
+     * @param \eZ\Publish\Core\Repository\Values\Content\Content $content
      * @param array $params An array of parameters to the content view
      * @return string The HTML markup
      */
@@ -32,9 +32,11 @@ interface ContentHelperInterface
      * Renders the HTML for a given field.
      *
      * @abstract
-     * @param \eZ\Publish\API\Repository\Values\Content\Field $field
-     * @param array $params An array of parameters to the field view
+     * @param \eZ\Publish\Core\Repository\Values\Content\Content $content
+     * @param string $fieldIdentifier
+     * @param array $params An array of parameters to pass to the field view
+     * @throws \InvalidArgumentException If $fieldIdentifier is invalid in $content
      * @return string The HTML markup
      */
-    public function renderField( Field $field, array $params = array() );
+    public function renderField( Content $content, $fieldIdentifier, array $params = array() );
 }
