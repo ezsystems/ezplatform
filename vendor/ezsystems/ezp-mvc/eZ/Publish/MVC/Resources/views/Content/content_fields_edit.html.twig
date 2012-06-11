@@ -1,0 +1,11 @@
+{# Here are defined blocks for editorial interface #}
+{# Will basically override normal "view" blocks, injecting some metadata in them #}
+
+{% block eztext_field_edit %}
+<div {{ block( 'field_edit_attributes' ) }}>{{ block( "eztext_field" ) }}</div>
+{% endblock %}
+
+{# Defines data attributes to be rendered in edit mode #}
+{% block field_edit_attributes %}
+data-test="foobar"
+{% endblock %}

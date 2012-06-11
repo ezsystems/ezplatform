@@ -10,6 +10,7 @@
 namespace eZ\Publish\MVC\Templating\Twig\Extension;
 
 use \Twig_Extension;
+use \Twig_Environment;
 use eZ\Publish\MVC\Templating\Twig\Helper\ContentHelper;
 
 /**
@@ -26,6 +27,17 @@ class ContentExtension extends Twig_Extension
     public function __construct( ContentHelper $contentHelper )
     {
         $this->contentHelper = $contentHelper;
+    }
+
+    /**
+     * Initializes the template runtime (aka Twig environment).
+     *
+     * @param \Twig_Environment $environment
+     */
+    public function initRuntime( Twig_Environment $environment )
+    {
+        parent::initRuntime( $environment );
+        $this->contentHelper->setTwigEnvironment( $environment );
     }
 
     /**

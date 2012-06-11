@@ -1,0 +1,14 @@
+{# Template blocks to be used by content fields #}
+{# Block naming convention is <fieldDefinitionIdentifier>_field #}
+
+{% block ezstring_field %}
+{% spaceless %}
+    {{ field.value }}
+{% endspaceless %}
+{% endblock %}
+
+{% block eztext_field %}
+{% spaceless %}
+    {{ field.value|nl2br|raw }}
+{% endspaceless %}
+{% endblock %}
