@@ -17,10 +17,20 @@ eZHelloWorld:
         _controller: eZDemoBundle:Demo:helloWorld
         name: World
 
+eZHelloWorldCached:
+    pattern: /helloWorldCached
+    defaults:
+        _controller: eZDemoBundle:Demo:helloWorldCached
+
 eZHelloWorldTwig:
     pattern: /helloWorldTwig
     defaults:
         _controller: eZDemoBundle:Demo:helloWorldTwig
+
+eZHelloWorldTwigCached:
+    pattern: /helloWorldTwigCached
+    defaults:
+        _controller: eZDemoBundle:Demo:helloWorldTwigCached
 
 eZEditorial:
     pattern: /Editorial/{contentId}
