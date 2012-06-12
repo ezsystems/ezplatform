@@ -33,13 +33,7 @@ class DemoController extends Controller
             array(
                 "title" => "eZ Publish 5",
                 "subtitle" => "Welcome to the future !",
-                "legacyTemplateResult" => $this->container->get( 'ezpublish_legacy.template_bridge' )->renderTemplate(
-                    "design:test/helloworld.tpl",
-                    array(
-                         'message' => 'All your eZ Publish base are belong to us ;-)',
-                         'konamiCode' => array( 'Up', 'Up', 'Down', 'Down', 'Left', 'Right', 'Left', 'Right', 'B', 'A' )
-                    )
-                )
+                "messageForLegacy" => "All your eZ Publish base are belong to us ;-)"
             )
         );
     }

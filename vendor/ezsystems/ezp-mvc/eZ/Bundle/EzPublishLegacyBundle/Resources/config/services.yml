@@ -4,7 +4,6 @@ parameters:
     #ezpublish_legacy.root_dir: ~
 
     ezpublish_legacy.kernel.class: eZ\Bundle\EzPublishLegacyBundle\Services\LegacyKernel
-    ezpublish_legacy.templating.bridge.class: eZ\Bundle\EzPublishLegacyBundle\Templating\Bridge
     ezpublish_legacy.controller.class: eZ\Bundle\EzPublishLegacyBundle\Controller\LegacyKernelController
     ezpublish_legacy.router.class: eZ\Bundle\EzPublishLegacyBundle\Routing\FallbackRouter
 
@@ -12,10 +11,6 @@ services:
     ezpublish_legacy.kernel:
         class: %ezpublish_legacy.kernel.class%
         arguments: [%ezpublish_legacy.root_dir%, %webroot_dir%]
-
-    ezpublish_legacy.template_bridge:
-        class: %ezpublish_legacy.templating.bridge.class%
-        arguments: [@ezpublish_legacy.kernel]
 
     ezpublish_legacy.controller:
         class: %ezpublish_legacy.controller.class%
