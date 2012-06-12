@@ -168,7 +168,7 @@ class ContentExtension extends Twig_Extension
             }
 
             if ( empty( $blocks ) )
-                throw new \LogicException( "Cannot find '$blockName' template block field type." );
+                throw new \LogicException( "Cannot find '$fieldBlockName' template block field type." );
 
             $this->blocks->attach( $field, $blocks );
         }
