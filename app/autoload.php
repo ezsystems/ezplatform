@@ -10,8 +10,17 @@
 require_once __DIR__ . '/../vendor/symfony/symfony/src/Symfony/Component/ClassLoader/UniversalClassLoader.php';
 
 use Symfony\Component\ClassLoader\UniversalClassLoader;
+use Symfony\Component\ClassLoader\ApcUniversalClassLoader;
 
-$loader = new UniversalClassLoader();
+if ( extension_loaded( "APC" ) )
+{
+    require_once __DIR__ . '/../vendor/symfony/symfony/src/Symfony/Component/ClassLoader/ApcUniversalClassLoader.php';
+    $loader = new ApcUniversalClassLoader( "eZPublish" );
+}
+else
+{
+    $loader = new UniversalClassLoader( "prefix" );
+}
 $loader->registerNamespaces(
     array(
          'Symfony'          => __DIR__ . '/../vendor/symfony/symfony/src',
