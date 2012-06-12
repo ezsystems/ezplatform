@@ -3,7 +3,7 @@
 
 {% block ezstring_field %}
 {% spaceless %}
-    {{ field.value }}
+    <span {{ block( 'field_attributes' ) }}>{{ field.value }}</span>
 {% endspaceless %}
 {% endblock %}
 
@@ -24,10 +24,20 @@
 {# You can define a field_value variable before rendering this one if you need special operation for rendering content (i.e. nl2br) #}
 {% block simple_block_field %}
 {% spaceless %}
-    {% set attr = attr|default( '' ) %}
     {% set field_value = field_value|default( field.value ) %}
-    <div{% if attr %} {{ attr }}{% endif %}>
+    <div {{ block( 'field_attributes' ) }}>
         {{ field_value|raw }}
     </div>
+{% endspaceless %}
+{% endblock %}
+
+{# Block for field attributes rendering. Useful to add a custom class, id or whatever HTML attribute to the field markup #}
+{% block field_attributes %}
+{% spaceless %}
+    {% set attr = attr|default( {} ) %}
+    {% set editMeta = editMeta|default( {} ) %}
+    {% for attrname, attrvalue in attr %}{{ attrname }}="{{ attrvalue }}" {% endfor %}
+    {# Rendering metadata for editorial interface, if available #}
+    {% for metaName, metaValue in editMeta %}{{ 'meta-ez-' ~ metaName }}="{{ metaValue }}"{% endfor %}
 {% endspaceless %}
 {% endblock %}

@@ -51,6 +51,13 @@ class ContentExtension extends Twig_Extension
      */
     protected $blocks;
 
+    /**
+     * Hash of field type identifiers (i.e. "ezstring"), indexed by field definition identifier
+     *
+     * @var array
+     */
+    protected $fieldTypeIdentifiers = array();
+
     public function __construct( array $resources = array() )
     {
         $this->resources = $resources;
@@ -107,17 +114,35 @@ class ContentExtension extends Twig_Extension
         // Merging passed parameters to default ones
         $params += array(
             'lang'      => null,
+            'editMode'  => false
         );
 
         $field = $content->getField( $fieldIdentifier, $params['lang'] );
         if ( !$field instanceof Field )
             throw new \InvalidArgumentException( "Invalid field identifier '$fieldIdentifier' for content #{$content->contentInfo->id}" );
 
+        // Adding Field and ContentInfo objects to parameters to be passed to the template
+        $params += array(
+            'field'         => $field,
+            'contentInfo'   => $content->getVersionInfo()->getContentInfo()
+        );
+
+        // Ensure that not edit metadata has been injected from the template
+        unset( $params['editMeta'] );
+        $inEditMode = $params['editMode'] ?: $this->isInEditMode();
+        if ( $inEditMode )
+        {
+            $params += array(
+                'editMeta' => $this->getEditMetadata( $content, $field )
+            );
+        }
+
+
         // Getting instance of Twig_Template that will be used to render blocks
-        $params['field'] = $field;
-        $this->template = reset( $this->resources );
         if ( !$this->template instanceof Twig_Template )
-            $this->template = $this->environment->loadTemplate( $this->template );
+        {
+            $this->template = $this->environment->loadTemplate( reset( $this->resources ) );
+        }
 
         $html = $this->template->renderBlock(
             $this->getFieldBlockName( $content, $field ),
@@ -189,12 +214,64 @@ class ContentExtension extends Twig_Extension
      */
     protected function getFieldBlockName( Content $content, Field $field )
     {
-        $fieldTypeIdentifier = $content
-            ->getVersionInfo()
-            ->getContentInfo()
-            ->getContentType()
-            ->getFieldDefinition( $field->fieldDefIdentifier )
-            ->fieldTypeIdentifier;
-        return "{$fieldTypeIdentifier}_field";
+        return $this->getFieldTypeIdentifier( $content, $field ) . '_field';
+    }
+
+    /**
+     * Returns the field type identifier for $field
+     *
+     * @param \eZ\Publish\Core\Repository\Values\Content\Content $content
+     * @param \eZ\Publish\API\Repository\Values\Content\Field $field
+     * @return string
+     */
+    protected function getFieldTypeIdentifier( Content $content, Field $field )
+    {
+        if ( !isset( $this->fieldTypeIdentifiers[$field->fieldDefIdentifier] ) )
+        {
+            $this->fieldTypeIdentifiers[$field->fieldDefIdentifier] = $content
+                ->getVersionInfo()
+                ->getContentInfo()
+                ->getContentType()
+                ->getFieldDefinition( $field->fieldDefIdentifier )
+                ->fieldTypeIdentifier;
+        }
+
+        return $this->fieldTypeIdentifiers[$field->fieldDefIdentifier];
+    }
+
+    /**
+     * Checks if we are in edit mode or not (editorial interface).
+     *
+     * @todo Needs to check in the session and via the API if current user has access to edit mode
+     * @return bool
+     */
+    protected function isInEditMode()
+    {
+        return false;
+    }
+
+    /**
+     * Returns metadata needed for edition while using the editorial interface.
+     * These will basically be rendered as HTML data attributes, prefixed by "data-ez".
+     * Example: data-ez-field-id="12345"
+     *
+     * @param \eZ\Publish\Core\Repository\Values\Content\Content $content
+     * @param \eZ\Publish\API\Repository\Values\Content\Field $field
+     * @return array
+     * @todo It would make sense to also ask for additional metadata supported by the field type
+     */
+    protected function getEditMetadata( Content $content, Field $field )
+    {
+        $versionInfo = $content->getVersionInfo();
+        $contentInfo = $versionInfo->getContentInfo();
+
+        return array(
+            'field-id'                  => $field->id,
+            'field-identifier'          => $field->fieldDefIdentifier,
+            'field-type-identifier'     => $this->getFieldTypeIdentifier( $content, $field ),
+            'content-id'                => $contentInfo->id,
+            'version'                   => $versionInfo->versionNo,
+            'locale-code'               => $field->languageCode
+        );
     }
 }
