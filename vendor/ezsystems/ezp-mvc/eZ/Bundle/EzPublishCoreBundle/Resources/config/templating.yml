@@ -1,19 +1,13 @@
 parameters:
-    ezpublish.twig.content_helper.class: eZ\Publish\MVC\Templating\Twig\Helper\ContentHelper
     ezpublish.twig.extension.content.class: eZ\Publish\MVC\Templating\Twig\Extension\ContentExtension
     ezpublish.twig.content_helper.resources:
         - content_fields_full.html.twig
         - content_fields_edit.html.twig
 
 services:
-    ezpublish.twig.content_helper:
-        class: %ezpublish.twig.content_helper.class%
-        arguments: [%ezpublish.twig.content_helper.resources%]
-        public: false
-
     ezpublish.twig.extension.content:
         class: %ezpublish.twig.extension.content.class%
-        arguments: [@ezpublish.twig.content_helper]
+        arguments: [%ezpublish.twig.content_helper.resources%]
         public: false
         tags:
             - {name: twig.extension}
