@@ -7,7 +7,7 @@
  * @version //autogentag//
  */
 
-namespace eZ\Bundle\EzPublishLegacyBundle\Services;
+namespace eZ\Publish\Legacy;
 use \ezpKernel;
 
 class LegacyKernel extends ezpKernel

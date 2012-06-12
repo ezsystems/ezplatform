@@ -10,7 +10,7 @@
 namespace eZ\Publish\Legacy\Templating\Twig\Extension;
 
 use eZ\Publish\Legacy\Templating\Twig\TokenParser\LegacyIncludeParser;
-use eZ\Bundle\EzPublishLegacyBundle\Services\LegacyKernel;
+use eZ\Publish\Legacy\LegacyKernel;
 use eZTemplate;
 
 /**
@@ -19,7 +19,7 @@ use eZTemplate;
 class LegacyExtension extends \Twig_Extension
 {
     /**
-     * @var \eZ\Bundle\EzPublishLegacyBundle\Services\LegacyKernel
+     * @var \eZ\Publish\Legacy\LegacyKernel
      */
     private $legacyKernel;
 
