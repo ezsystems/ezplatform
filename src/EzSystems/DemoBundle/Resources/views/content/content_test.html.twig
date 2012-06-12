@@ -11,10 +11,25 @@
 </div>
 
 <div>
-{% for field in content.getFields() %}
-    <div>
-        <strong>{{field.fieldDefIdentifier}}: </strong>{{ ezpublish.renderField( field )|raw }}
-    </div>
-{% endfor %}
+    <h3>Name:</h3>
+    {{ ez_render_field(
+           content,
+           "name",
+           {
+               'editMode': true,
+               'attr': { 'class': 'foobar' }
+           }
+       )
+    }}
+
+    <h3>Description:</h3>
+    {{ ez_render_field(
+           content,
+           "description",
+           {
+               'editMode': true
+           }
+       )
+    }}
 </div>
 {% endblock %}
