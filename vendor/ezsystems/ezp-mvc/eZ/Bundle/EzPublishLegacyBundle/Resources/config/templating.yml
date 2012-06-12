@@ -1,0 +1,9 @@
+parameters:
+    ezpublish_legacy.twig.extension.class: eZ\Publish\Legacy\Templating\Twig\Extension\LegacyExtension
+
+services:
+    ezpublish_legacy.twig.extension:
+        class: %ezpublish_legacy.twig.extension.class%
+        arguments: [@ezpublish_legacy.kernel]
+        tags:
+            - {name: twig.extension}

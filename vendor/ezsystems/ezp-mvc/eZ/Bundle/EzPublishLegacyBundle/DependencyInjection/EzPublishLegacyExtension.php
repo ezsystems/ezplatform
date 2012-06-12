@@ -41,6 +41,9 @@ class EzPublishLegacyExtension extends Extension
             $loader->load( 'services.yml' );
 
             $container->setParameter( 'ezpublish_legacy.root_dir', $config['root_dir'] );
+
+            // Templating
+            $loader->load( 'templating.yml' );
         }
     }
 }
