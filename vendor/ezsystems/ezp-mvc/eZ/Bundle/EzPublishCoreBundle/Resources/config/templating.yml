@@ -1,8 +1,6 @@
 parameters:
     ezpublish.twig.extension.content.class: eZ\Publish\MVC\Templating\Twig\Extension\ContentExtension
-    ezpublish.twig.content_helper.resources:
-        - content_fields_full.html.twig
-        - content_fields_edit.html.twig
+    ezpublish.twig.content_helper.resources: [content_fields_full.html.twig]
 
 services:
     ezpublish.twig.extension.content:
