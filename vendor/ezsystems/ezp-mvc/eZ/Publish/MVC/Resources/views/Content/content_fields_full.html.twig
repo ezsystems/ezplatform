@@ -9,6 +9,25 @@
 
 {% block eztext_field %}
 {% spaceless %}
-    {{ field.value|nl2br|raw }}
+    {% set field_value = field.value|nl2br %}
+    {{ block( 'simple_block_field' ) }}
+{% endspaceless %}
+{% endblock %}
+
+{% block ezxmltext_field %}
+{% spaceless %}
+    {{ block( 'simple_block_field' ) }}
+{% endspaceless %}
+{% endblock %}
+
+{# The simple_block_field block is a shorthand html block-based fields (like eztext or ezxmltext) #}
+{# You can define a field_value variable before rendering this one if you need special operation for rendering content (i.e. nl2br) #}
+{% block simple_block_field %}
+{% spaceless %}
+    {% set attr = attr|default( '' ) %}
+    {% set field_value = field_value|default( field.value ) %}
+    <div{% if attr %} {{ attr }}{% endif %}>
+        {{ field_value|raw }}
+    </div>
 {% endspaceless %}
 {% endblock %}
