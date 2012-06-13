@@ -5,20 +5,31 @@
        ```bash
        git clone git@github.com:ezsystems/ezp-next-mvc.git
        ```
-2. Install the dependencies with [Composer](http://getcomposer.org) :
+2. Install the dependencies with [Composer](http://getcomposer.org):
 
        ```bash
        cd /path/to/ezp-next-mvc/
-       php bin/composer.phar install
+       php composer.phar install
        ```
-3. Initialize and update git submodules (like public API) :
+3. Initialize and update git submodules (like public API):
 
        ```bash
        git submodule init
        git submodule update
        ```
+4. Configure by editing `app/config/config.yml`
 
-4. Configure a VirtualHost with:
+       * `ez_publish_legacy.root_dir`: Path to your eZ Publish legacy directory. The default path is `app/ezpublish_legacy`
+       * `ezpublish.api.storage_engine.legacy.dsn`: DSN to your database connection (only MySQL and PostgreSQL are supported at the moment)
+
+5. Dump your assets in your webroot:
+
+    ```bash
+    php app/console assets:install --symlink web
+    ```
+    The command above will symlink all your assets in the `web/` folder in a `bundles/` sub-folder.
+
+6. *Optional* - Configure a VirtualHost:
 
     ```apache
     <VirtualHost *:80>
@@ -39,6 +50,7 @@
         RewriteRule ^/var/[^/]+/cache/(texttoimage|public)/.* - [L]
         RewriteRule ^/design/[^/]+/(stylesheets|images|javascript)/.* - [L]
         RewriteRule ^/css/.* - [L]
+        RewriteRule ^/bundles/.* - [L]
         RewriteRule ^/share/icons/.* - [L]
         RewriteRule ^/extension/[^/]+/design/[^/]+/(lib|stylesheets|images|javascripts?)/.* - [L]
         RewriteRule ^/packages/styles/.+/(stylesheets|images|javascript)/[^/]+/.* - [L]
@@ -48,3 +60,10 @@
         RewriteRule .* /index.php
     </VirtualHost>
     ```
+6. *Optional*, **Development ONLY** - Take advantage of PHP 5.4 build-in web server:
+
+    ```bash
+    php app/console server:run localhost:8000
+    ```
+    The command above will run the built-in web server on localhost, on port 8000.
+    You will have access to eZ Publish by going to `http://localhost:8000` from your browser.
