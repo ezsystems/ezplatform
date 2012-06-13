@@ -9,6 +9,10 @@
 
 require_once __DIR__ . '/../vendor/symfony/symfony/src/Symfony/Component/ClassLoader/UniversalClassLoader.php';
 
+// SessionHandlerInterface is native as of PHP 5.4, but we need forward compatibility
+if ( version_compare( PHP_VERSION, '5.4', '<' ) )
+    require_once __DIR__ . '/../vendor/symfony/symfony/src/Symfony/Component/HttpFoundation/Resources/stubs/SessionHandlerInterface.php';
+
 use Symfony\Component\ClassLoader\UniversalClassLoader;
 use Symfony\Component\ClassLoader\ApcUniversalClassLoader;
 
