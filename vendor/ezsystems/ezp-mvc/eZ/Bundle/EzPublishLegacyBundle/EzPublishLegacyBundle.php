@@ -10,8 +10,6 @@
 namespace eZ\Bundle\EzPublishLegacyBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
-use eZ\Bundle\EzPublishLegacyBundle\Event\Listener\Fallback as FallbackListener;
-use eZ\Bundle\EzPublishLegacyBundle\Routing\Matcher\FallbackMatcher;
 
 class EzPublishLegacyBundle extends Bundle
 {
