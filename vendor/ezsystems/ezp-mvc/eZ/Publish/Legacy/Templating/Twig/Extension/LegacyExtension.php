@@ -23,21 +23,13 @@ class LegacyExtension extends Twig_Extension
      * Closure encapsulating the legacy kernel
      *
      * @var \Closure
+     * @return \eZ\Publish\Legacy\Kernel
      */
-    private $legacyKernelClosure;
+    protected $getLegacyKernel;
 
     public function __construct( \Closure $legacyKernelClosure )
     {
-        $this->legacyKernelClosure = $legacyKernelClosure;
-    }
-
-    /**
-     * @return \eZ\Publish\Legacy\Kernel
-     */
-    protected function getLegacyKernel()
-    {
-        $legacyKernelClosure = $this->legacyKernelClosure;
-        return $legacyKernelClosure();
+        $this->getLegacyKernel = $legacyKernelClosure;
     }
 
     /**
