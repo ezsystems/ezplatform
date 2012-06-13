@@ -50,8 +50,8 @@ class SetupController extends Controller
         }
 
         // Calling the old kernel with a closure
-        $kernel = $this->container->get( 'ezpublish_legacy.kernel' );
-        $infoOutput = $kernel->runCallback(
+        $kernelClosure = $this->container->get( 'ezpublish_legacy.kernel' );
+        $infoOutput = $kernelClosure()->runCallback(
             function () use ( $loadedExtensions, $splAutoloadFunctions, $phpINI, $webserverInfo )
             {
                 $db = eZDB::instance();

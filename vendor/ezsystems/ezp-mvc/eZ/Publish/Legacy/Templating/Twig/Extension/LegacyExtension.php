@@ -10,7 +10,7 @@
 namespace eZ\Publish\Legacy\Templating\Twig\Extension;
 
 use eZ\Publish\Legacy\Templating\Twig\TokenParser\LegacyIncludeParser;
-use eZ\Publish\Legacy\LegacyKernel;
+use eZ\Publish\Legacy\Kernel as LegacyKernel;
 use eZTemplate;
 
 /**
@@ -19,13 +19,24 @@ use eZTemplate;
 class LegacyExtension extends \Twig_Extension
 {
     /**
-     * @var \eZ\Publish\Legacy\LegacyKernel
+     * Closure encapsulating the legacy kernel
+     *
+     * @var \Closure
      */
-    private $legacyKernel;
+    private $legacyKernelClosure;
 
-    public function __construct( LegacyKernel $legacyKernel )
+    public function __construct( \Closure $legacyKernelClosure )
     {
-        $this->legacyKernel = $legacyKernel;
+        $this->legacyKernelClosure = $legacyKernelClosure;
+    }
+
+    /**
+     * @return \eZ\Publish\Legacy\Kernel
+     */
+    protected function getLegacyKernel()
+    {
+        $legacyKernelClosure = $this->legacyKernelClosure;
+        return $legacyKernelClosure();
     }
 
     /**
@@ -38,7 +49,7 @@ class LegacyExtension extends \Twig_Extension
      */
     public function renderTemplate( $tplPath, array $params = array() )
     {
-        $tplResult = $this->legacyKernel->runCallback(
+        $tplResult = $this->getLegacyKernel()->runCallback(
             function() use ( $tplPath, $params )
             {
                 $tpl = eZTemplate::factory();

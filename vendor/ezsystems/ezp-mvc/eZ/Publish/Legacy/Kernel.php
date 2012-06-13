@@ -10,7 +10,10 @@
 namespace eZ\Publish\Legacy;
 use \ezpKernel;
 
-class LegacyKernel extends ezpKernel
+/**
+ * Class wrapping the legacy kernel
+ */
+final class Kernel extends ezpKernel
 {
     /**
      * Legacy root directory

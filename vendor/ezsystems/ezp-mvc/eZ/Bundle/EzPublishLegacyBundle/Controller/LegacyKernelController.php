@@ -11,7 +11,7 @@ namespace eZ\Bundle\EzPublishLegacyBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Templating\EngineInterface;
-use eZ\Publish\Legacy\LegacyKernel;
+use eZ\Publish\Legacy\Kernel as LegacyKernel;
 use \ezpModuleNotFound;
 use \ezpModuleViewNotFound;
 use \ezpModuleDisabled;
@@ -28,19 +28,19 @@ class LegacyKernelController
     /**
      * The legacy kernel instance (eZ Publish 4)
      *
-     * @var \eZ\Publish\Legacy\LegacyKernel
+     * @var \eZ\Publish\Legacy\Kernel
      */
     private $kernel;
 
     /**
      * @todo Maybe following dependencies should be mutualized in an abstract controller
      *       Injection can be done through "parent service" feature for DIC : http://symfony.com/doc/master/components/dependency_injection/parentservices.html
-     * @param \eZ\Publish\Legacy\LegacyKernel $kernel
+     * @param \Closure $kernelClosure
      * @param \Symfony\Component\Templating\EngineInterface $templateEngine
      */
-    public function __construct( LegacyKernel $kernel, EngineInterface $templateEngine )
+    public function __construct( \Closure $kernelClosure, EngineInterface $templateEngine )
     {
-        $this->kernel = $kernel;
+        $this->kernel = $kernelClosure();
         $this->templateEngine = $templateEngine;
     }
 
