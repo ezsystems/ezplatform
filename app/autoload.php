@@ -28,32 +28,32 @@ else
 }
 $loader->registerNamespaces(
     array(
-         'Symfony'          => __DIR__ . '/../vendor/symfony/symfony/src',
-         'eZ'      => array(
-             __DIR__ . '/../vendor/ezsystems/ezp-mvc',
-             __DIR__ . '/../vendor/ezsystems/api'
-         ),
+        'Symfony'          => __DIR__ . '/../vendor/symfony/symfony/src',
+        'eZ'      => array(
+            __DIR__ . '/../vendor/ezsystems/ezp-mvc',
+            __DIR__ . '/../vendor/ezsystems/api'
+        ),
     )
 );
 $loader->registerPrefixes(
     array(
-         'Twig_Extensions_' => __DIR__ . '/../vendor/twig/twig-extensions/lib',
-         'Twig_'            => __DIR__ . '/../vendor/twig/twig/lib',
+        'Twig_Extensions_' => __DIR__ . '/../vendor/twig/twig-extensions/lib',
+        'Twig_'            => __DIR__ . '/../vendor/twig/twig/lib',
     )
 );
 
 // intl
-if (!function_exists('intl_get_error_code'))
+if ( !function_exists( 'intl_get_error_code' ) )
 {
     require_once __DIR__ . '/../vendor/symfony/symfony/src/Symfony/Component/Locale/Resources/stubs/functions.php';
 
-    $loader->registerPrefixFallbacks(array(__DIR__ . '/../vendor/symfony/symfony/src/Symfony/Component/Locale/Resources/stubs'));
+    $loader->registerPrefixFallbacks( array( __DIR__ . '/../vendor/symfony/symfony/src/Symfony/Component/Locale/Resources/stubs' ) );
 }
 
 // "Project" bundles goes in src/ directory
 $loader->registerNamespaceFallbacks(
     array(
-         __DIR__ . '/../src',
+        __DIR__ . '/../src',
     )
 );
 $loader->register();

@@ -25,8 +25,8 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root( 'ezpublish_legacy' );
-        $rootNode
+        $treeBuilder
+            ->root( 'ezpublish_legacy' )
             ->children()
                 ->booleanNode( 'enabled' )->defaultFalse()->end()
                 ->scalarNode( 'root_dir' )
@@ -34,7 +34,7 @@ class Configuration implements ConfigurationInterface
                         ->ifTrue(
                             function ( $v )
                             {
-                                return !file_exists($v);
+                                return !file_exists( $v );
                             }
                         )
                         ->thenInvalid( "Provided eZ Publish Legacy root dir does not exist!'" )

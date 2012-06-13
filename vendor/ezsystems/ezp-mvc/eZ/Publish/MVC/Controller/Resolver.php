@@ -23,7 +23,7 @@ class Resolver extends ControllerResolver
      *
      * @return mixed A PHP callable
      */
-    protected function createController($controller)
+    protected function createController( $controller )
     {
         // TODO: Is it still needed ?
         // $callbackController should be an array

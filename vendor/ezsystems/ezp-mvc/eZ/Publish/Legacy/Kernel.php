@@ -81,7 +81,7 @@ final class Kernel extends ezpKernel
     public function runCallback( $callback )
     {
         $this->enterLegacyRootDir();
-        $return = parent::runCallback($callback);
+        $return = parent::runCallback( $callback );
         $this->leaveLegacyRootDir();
         return $return;
     }

@@ -11,6 +11,7 @@ namespace eZ\Publish\MVC;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller as BaseController;
 use eZ\Publish\API\Repository\Repository;
+use \LogicException;
 
 class Controller extends BaseController
 {
@@ -20,7 +21,7 @@ class Controller extends BaseController
     public function getRepository()
     {
         if ( !$this->container->has( 'ezpublish.api.repository' ) )
-            throw new \LogicException( 'The EzPublishCoreBundle has not been registered in your application.' );
+            throw new LogicException( 'The EzPublishCoreBundle has not been registered in your application.' );
 
         return $this->container->get( 'ezpublish.api.repository' );
     }

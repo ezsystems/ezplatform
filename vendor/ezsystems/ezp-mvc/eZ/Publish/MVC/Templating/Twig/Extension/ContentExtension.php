@@ -15,6 +15,9 @@ use \Twig_Function_Method;
 use \Twig_Template;
 use eZ\Publish\Core\Repository\Values\Content\Content;
 use eZ\Publish\API\Repository\Values\Content\Field;
+use \SplObjectStorage;
+use \InvalidArgumentException;
+use \LogicException;
 
 /**
  * Twig content extension for eZ Publish specific usage.
@@ -61,7 +64,7 @@ class ContentExtension extends Twig_Extension
     public function __construct( array $resources = array() )
     {
         $this->resources = $resources;
-        $this->blocks = new \SplObjectStorage();
+        $this->blocks = new SplObjectStorage();
     }
 
     /**
@@ -119,7 +122,7 @@ class ContentExtension extends Twig_Extension
 
         $field = $content->getField( $fieldIdentifier, $params['lang'] );
         if ( !$field instanceof Field )
-            throw new \InvalidArgumentException( "Invalid field identifier '$fieldIdentifier' for content #{$content->contentInfo->id}" );
+            throw new InvalidArgumentException( "Invalid field identifier '$fieldIdentifier' for content #{$content->contentInfo->id}" );
 
         // Adding Field and ContentInfo objects to parameters to be passed to the template
         $params += array(
@@ -129,14 +132,12 @@ class ContentExtension extends Twig_Extension
 
         // Ensure that not edit metadata has been injected from the template
         unset( $params['editMeta'] );
-        $inEditMode = $params['editMode'] ?: $this->isInEditMode();
-        if ( $inEditMode )
+        if ( $params['editMode'] ?: $this->isInEditMode() )
         {
             $params += array(
                 'editMeta' => $this->getEditMetadata( $content, $field )
             );
         }
-
 
         // Getting instance of Twig_Template that will be used to render blocks
         if ( !$this->template instanceof Twig_Template )
@@ -144,13 +145,11 @@ class ContentExtension extends Twig_Extension
             $this->template = $this->environment->loadTemplate( reset( $this->resources ) );
         }
 
-        $html = $this->template->renderBlock(
+        return $this->template->renderBlock(
             $this->getFieldBlockName( $content, $field ),
             $params,
             $this->getBlocksByField( $content, $field )
         );
-
-        return $html;
     }
 
     /**
@@ -165,42 +164,38 @@ class ContentExtension extends Twig_Extension
      */
     protected function getBlocksByField( Content $content, Field $field )
     {
-        if ( !$this->blocks->contains( $field ) )
+        if ( $this->blocks->contains( $field ) )
+            return $this->blocks[$field];
+
+        // Looping against available resources to find template blocks for $field
+        //TODO: maybe we should consider "themes" like in forms - http://symfony.com/doc/master/book/forms.html#form-theming
+        $blocks = array();
+        foreach ( $this->resources as &$template )
         {
-            // Looping against available resources to find template blocks for $field
-            //TODO: maybe we should consider "themes" like in forms - http://symfony.com/doc/master/book/forms.html#form-theming
-            $blocks = array();
-            foreach ( $this->resources as &$template )
+            if ( !$template instanceof Twig_Template )
+                $template = $this->environment->loadTemplate( $template );
+
+            $tpl = $template;
+            $fieldBlockName = $this->getFieldBlockName( $content, $field );
+
+            // Current template might have parents, so we need to loop against them to find a matching block
+            do
             {
-                if ( !$template instanceof Twig_Template )
-                    $template = $this->environment->loadTemplate( $template );
-
-                $tpl = $template;
-                $fieldBlockName = $this->getFieldBlockName( $content, $field );
-
-                // Current template might have parents, so we need to loop against them to find a matching block
-                do
+                foreach ( $tpl->getBlocks() as $blockName => $block )
                 {
-                    foreach ( $tpl->getBlocks() as $blockName => $block )
+                    if ( strpos( $blockName, $fieldBlockName ) === 0 )
                     {
-                        if ( strpos( $blockName, $fieldBlockName ) === 0 )
-                        {
-                            $blocks[$blockName] = $block;
-                        }
+                        $blocks[$blockName] = $block;
                     }
                 }
-                while ( $tpl = $tpl->getParent( array() ) !== false );
             }
-
-            if ( empty( $blocks ) )
-                throw new \LogicException( "Cannot find '$fieldBlockName' template block field type." );
-
-            $this->blocks->attach( $field, $blocks );
+            while ( $tpl = $tpl->getParent( array() ) !== false );
         }
-        else
-        {
-            $blocks = $this->blocks[$field];
-        }
+
+        if ( empty( $blocks ) )
+            throw new LogicException( "Cannot find '$fieldBlockName' template block field type." );
+
+        $this->blocks->attach( $field, $blocks );
 
         return $blocks;
     }
@@ -263,13 +258,12 @@ class ContentExtension extends Twig_Extension
     protected function getEditMetadata( Content $content, Field $field )
     {
         $versionInfo = $content->getVersionInfo();
-        $contentInfo = $versionInfo->getContentInfo();
 
         return array(
             'field-id'                  => $field->id,
             'field-identifier'          => $field->fieldDefIdentifier,
             'field-type-identifier'     => $this->getFieldTypeIdentifier( $content, $field ),
-            'content-id'                => $contentInfo->id,
+            'content-id'                => $versionInfo->getContentInfo()->id,
             'version'                   => $versionInfo->versionNo,
             'locale-code'               => $field->languageCode
         );

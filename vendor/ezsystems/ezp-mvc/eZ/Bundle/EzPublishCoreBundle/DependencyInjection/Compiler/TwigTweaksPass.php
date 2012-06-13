@@ -11,6 +11,7 @@ namespace eZ\Bundle\EzPublishCoreBundle\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use \ReflectionClass;
 
 /**
  * This compiler pass will register eZ Publish field types.
@@ -27,7 +28,7 @@ class TwigTweaksPass implements CompilerPassInterface
             return;
 
         // Adding base templates directory in the twig environment
-        $reflContentExtensionClass = new \ReflectionClass( 'eZ\\Publish\\MVC\\Templating\\Twig\\Extension\\ContentExtension' );
+        $reflContentExtensionClass = new ReflectionClass( 'eZ\\Publish\\MVC\\Templating\\Twig\\Extension\\ContentExtension' );
         $tplDir = dirname( $reflContentExtensionClass->getFileName() ) . '/../../../Resources/views';
         $container->getDefinition( 'twig.loader' )->addMethodCall(
             'addPath',
