@@ -17,10 +17,9 @@
        git submodule init
        git submodule update
        ```
-4. Configure by editing `app/config/config.yml`
-
-       * `ez_publish_legacy.root_dir`: Path to your eZ Publish legacy directory. The default path is `app/ezpublish_legacy`
-       * `ezpublish.api.storage_engine.legacy.dsn`: DSN to your database connection (only MySQL and PostgreSQL are supported at the moment)
+4. Configure by editing `app/config/config.yml`:
+    * `ez_publish_legacy.root_dir`: Path to your eZ Publish legacy directory. The default path is `app/ezpublish_legacy`
+    * `ezpublish.api.storage_engine.legacy.dsn`: DSN to your database connection (only MySQL and PostgreSQL are supported at the moment)
 
 5. Dump your assets in your webroot:
 
