@@ -15,6 +15,7 @@ if ( version_compare( PHP_VERSION, '5.4', '<' ) )
 
 use Symfony\Component\ClassLoader\UniversalClassLoader;
 use Symfony\Component\ClassLoader\ApcUniversalClassLoader;
+use Symfony\Component\ClassLoader\MapClassLoader;
 
 if ( extension_loaded( "APC" ) )
 {
@@ -56,3 +57,12 @@ $loader->registerNamespaceFallbacks(
     )
 );
 $loader->register();
+
+// Classmap based autoloading
+$classMap = include __DIR__ . '/../vendor/composer/autoload_classmap.php';
+if ( !empty( $classMap ) )
+{
+    require_once __DIR__ . '/../vendor/symfony/symfony/src/Symfony/Component/ClassLoader/MapClassLoader.php';
+    $classMapLoader = new MapClassLoader( $classMap );
+    $classMapLoader->register();
+}
