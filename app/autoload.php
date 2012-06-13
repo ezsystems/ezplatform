@@ -2,6 +2,9 @@
 /**
  * File containing the autoload configuration.
  *
+ * ATTENTION: DO NOT MODIFY THIS FILE, IF YOU HAVE CUSTOM AUTOLOADERS TO
+ * PLUG-IN, CREATE A 'config/autoload.php' FILE.
+ *
  * @copyright Copyright (C) 1999-2012 eZ Systems AS. All rights reserved.
  * @license http://www.gnu.org/licenses/gpl-2.0.txt GNU General Public License v2
  * @version //autogentag//
@@ -49,6 +52,9 @@ if ( !function_exists( 'intl_get_error_code' ) )
 
     $loader->registerPrefixFallbacks( array( __DIR__ . '/../vendor/symfony/symfony/src/Symfony/Component/Locale/Resources/stubs' ) );
 }
+
+if ( file_exists( __DIR__ . '/config/autoload.php' ) )
+    require_once __DIR__ . '/config/autoload.php';
 
 // "Project" bundles goes in src/ directory
 $loader->registerNamespaceFallbacks(

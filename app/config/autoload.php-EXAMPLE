@@ -1,0 +1,39 @@
+<?php
+/**
+ * This file lets you define additional autoloader.
+ *
+ * @copyright Copyright (C) 1999-2012 eZ Systems AS. All rights reserved.
+ * @license http://www.gnu.org/licenses/gpl-2.0.txt GNU General Public License v2
+ * @version //autogentag//
+ */
+
+/*
+You can use spl_autoload_register()
+(http://php.net/manual/fr/function.spl-autoload-register.php)
+
+Example:
+
+spl_autoload_register(
+    function ( $class )
+    {
+        require "path/to/classes/" . $class . ".php";
+    }
+);
+
+or use the UniversalClassLoader instance used by eZ Publish 5:
+
+Example:
+
+$loader->registerNamespaces(
+    array(
+        "MyLib" => __DIR__ . "/../vendor/my-company/my-lib/src",
+    )
+);
+$loader->registerPrefixes(
+    array(
+        "MyStuff_" => __DIR__ . "/../vendor/my-company/stuff/src",
+    )
+);
+
+Note: you don't have to call $loader->register(), this will be done for you.
+*/
