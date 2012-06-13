@@ -1,40 +1,51 @@
-Cherry MVC
-==========
+# eZ Publish 5
 
-Cherry: From the fact that we will use components from the sources we see fit:
- - RMF https://github.com/Qafoo/REST-Micro-Framework
- - Symfony https://github.com/symfony/
- - HiMVC https://github.com/andrerom/HiMVC
+## What is eZ Publish?
+**eZ Publish 5** is a professional PHP CMS (content management system).
 
-
-
-A prototype of eZ Publish MVC stack from a high level:
+It is database, platform and browser independent. Because it is
+browser based it can be used and updated from anywhere as long as you have
+access to the Internet.
 
 
+## Architecture
+### Public API
+**eZ Publish 5** relies on a flexible, layered, service oriented API.
+It exposes clear, content oriented domain objects.
+
+### HMVC
+eZ Publish 5 is built on top of **[Symfony2](http://symfony.com)** full stack framework, taking advantage of
+every components provided, giving all its **Hierarchical Model View Controller** (aka *HMVC*) power.
+
+### Chained routing
+A chain router is introduced, allowing to take advantage of declared routes in your `routing.yml` config file as well as
+URL aliases to match content (aka *dynamic routing*), or routing fallback to the old eZ Publish 4 modules.
+
+### Template engine
+The default template engine used by the system is **[Twig](http://twig.sensiolabs.org/)**.
+**Twig** is a modern, powerful and easy to extend template engine.
+
+> As Symfony2 allows usage of multiple template engines, it is also possible to do so in eZ Publish 5, but all the
+> content oriented functionnalities are only available with Twig.
+
+
+## Backwards compatibility
+eZ Publish 5 is **100% data compatible** with version 4 (the same database can be used).
+
+### Legacy template inclusion
+It is possible to include templates from the *legacy kernel* (`*.tpl`) in new twig templates:
+
+```jinja
+{% ez_legacy_include "design:my/old_template.tpl" with {"someVar": "someValue"} %}
 ```
->index.php
- |-> boostrap.php |<-> config.php
- |<--- Container ( configured )
- |
- |-> RequestParser
- |<---- Request
- |
- |-> Dispatcher/ PreRouter -> Router -> Controller |<-> Model
- |                                                 | Result -> ViewDispatcher-> View (twig/php based)
- |                                    <--------------------------------  Response 
- |                          <--------
-<--------------------------
-```
+
+### Fallback routing
+A fallback mechanism is provided so that your modules built on top of eZ Publish 4 (aka *Legacy kernel*)
+can still be used in the new architecture.
 
 
-For the Legacy integration there are two possible ways to inject logic:
-- Allow pre router to take several routers (new stack and legacy fallback)
-- Have a Special Legacy Route that serves as a fallback if no other route matches
+## LICENCE
+eZ Systems AS & GPL v2.0
 
-Last option is the one recently prototyped in HiMVC:
-https://github.com/andrerom/HiMVC/compare/2f12b65...c4ecefe
-Reason is that it is then optional, you can disable it by removing the setting for it, and what remain is a clean HMVC architecture with out any hard coded Legacy knowledge.
-In the case of HiMVC, the above high level view is how it is implemented with the execption of Response object.
-And as for Reouter, the details is that it finds a match (Route object), and executes controller callback (so either closure or other callable structure), which in "LegacyKernel" means it will call Legacy\Kernel::run().
-
+## INSTALL
 For installation instructions, see [INSTALL.md](https://github.com/ezsystems/ezp-next-mvc/blob/master/INSTALL.md).
