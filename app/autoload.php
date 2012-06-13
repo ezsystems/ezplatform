@@ -24,7 +24,7 @@ if ( extension_loaded( "APC" ) )
 }
 else
 {
-    $loader = new UniversalClassLoader( "prefix" );
+    $loader = new UniversalClassLoader();
 }
 $loader->registerNamespaces(
     array(
