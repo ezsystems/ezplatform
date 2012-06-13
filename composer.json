@@ -4,13 +4,16 @@
         "twig/twig": "1.8.2",
         "twig/extensions": "dev-master",
         "zetacomponents/database": "dev-master",
-        "zetacomponents/configuration": "dev-master"
+        "zetacomponents/configuration": "dev-master",
+        "zetacomponents/php-generator": "dev-master",
+        "zetacomponents/mail": "dev-master"
     },
     "autoload": {
         "psr-0": {
-            "eZ\\Publish": "vendor/ezsystems/api",
-            "eZ\\CherryMvc": "vendor/ezsystems/cherry-mvc",
-            "eZ\\Bundle": "vendor/ezsystems/cherry-mvc"
+            "eZ\\Bundle": "vendor/ezsystems/ezp-mvc",
+            "eZ\\Publish\\MVC": "vendor/ezsystems/ezp-mvc",
+            "eZ\\Publish\\Legacy": "vendor/ezsystems/ezp-mvc",
+            "eZ\\Publish": "vendor/ezsystems/api"
         }
     }
 }

@@ -1,10 +1,16 @@
 {
-    "hash": "de6e67411c0605e194ef23eda665066c",
+    "hash": "6a7d1f974fde2697b8436ddac09a3141",
     "packages": [
         {
             "package": "doctrine/common",
             "version": "dev-master",
-            "source-reference": "25e7b91a41dda2adfff529a814a4f9f90a30fa62"
+            "alias-pretty-version": "2.3.x-dev",
+            "alias-version": "2.3.9999999.9999999-dev"
+        },
+        {
+            "package": "doctrine/common",
+            "version": "dev-master",
+            "source-reference": "80838882abc04270fb9bc5812da4ab64e2ee3f88"
         },
         {
             "package": "doctrine/common",
@@ -21,7 +27,13 @@
         {
             "package": "symfony/symfony",
             "version": "dev-master",
-            "source-reference": "1541fe26e4d78135ab24ae2edfb1dbc2a9b2fa40"
+            "alias-pretty-version": "2.1.x-dev",
+            "alias-version": "2.1.9999999.9999999-dev"
+        },
+        {
+            "package": "symfony/symfony",
+            "version": "dev-master",
+            "source-reference": "1d7501dbc427c9b35cdce7237a2f58ec71d89cdf"
         },
         {
             "package": "twig/extensions",
@@ -46,6 +58,16 @@
             "package": "zetacomponents/database",
             "version": "dev-master",
             "source-reference": "0e8ddef8ce616bc18365efa2eef2161de3d7f74f"
+        },
+        {
+            "package": "zetacomponents/mail",
+            "version": "dev-master",
+            "source-reference": "e0120aad96efb41bdfac5583d9cb3863bc2823e7"
+        },
+        {
+            "package": "zetacomponents/php-generator",
+            "version": "dev-master",
+            "source-reference": "b51935ec5b763e5bad2182d810e1b752fcc83903"
         }
     ],
     "packages-dev": null,
@@ -57,6 +79,8 @@
         "symfony/symfony": 20,
         "twig/extensions": 20,
         "zetacomponents/database": 20,
-        "zetacomponents/configuration": 20
+        "zetacomponents/configuration": 20,
+        "zetacomponents/php-generator": 20,
+        "zetacomponents/mail": 20
     }
 }
