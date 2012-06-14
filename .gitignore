@@ -10,3 +10,11 @@
 /.idea/
 /app/cache/
 /app/ezpublish_legacy
+/web/index_treemenu.php
+/web/index_rest.php
+/web/index_cluster.php
+/web/bundles/
+/web/design
+/web/extension
+/web/share
+/web/var
