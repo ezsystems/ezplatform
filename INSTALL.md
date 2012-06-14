@@ -60,6 +60,8 @@
         RewriteRule ^/packages/styles/.+/thumbnail/.* - [L]
         RewriteRule ^/favicon\.ico - [L]
         RewriteRule ^/robots\.txt - [L]
+        # Following rule is needed to correctly display assets from bundles
+        RewriteRule ^/bundles/ - [L]
         RewriteRule .* /index.php
     </VirtualHost>
     ```
