@@ -25,8 +25,12 @@
 
     ```bash
     php app/console assets:install --symlink web
+    php app/console ezpublish:legacy:assets_instal
     ```
-    The command above will symlink all your assets in the `web/` folder in a `bundles/` sub-folder.
+    The first command will symlink all the assets from your bundles in the `web/` folder in a `bundles/` sub-folder.
+
+    The second command will symlink assets from your eZ Publish legacy directory and add wrapper scripts around the legacy front controllers
+    (basically `index_treemenu.php`, `index_rest.php` and `index_cluster.php`)
 
 6. *Optional* - Configure a VirtualHost:
 
