@@ -19,7 +19,9 @@ class EzPublishLegacyBundle extends Bundle
             return;
 
         // Deactivate eZComponents loading from legacy autoload.php as they are already loaded
-        define( 'EZCBASE_ENABLED', false );
+        if ( !defined( 'EZCBASE_ENABLED' ) )
+            define( 'EZCBASE_ENABLED', false );
+
         require_once $this->container->getParameter( 'ezpublish_legacy.root_dir' ) . "/autoload.php";
     }
 
