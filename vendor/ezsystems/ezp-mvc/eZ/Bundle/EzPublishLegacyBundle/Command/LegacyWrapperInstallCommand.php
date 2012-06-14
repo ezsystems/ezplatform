@@ -56,8 +56,10 @@ EOT
         {
             $newFrontController = "$webroot/$frontController";
             $filesystem->remove( $newFrontController );
-            $generator = new ezcPhpGenerator( $newFrontController );
+            $generator = new ezcPhpGenerator( $newFrontController, false );
+            $generator->lineBreak = "\n";
             $generator->appendCustomCode( <<<EOT
+<?php
 /**
  * File containing the wrapper around the legacy $frontController file
  *
@@ -70,10 +72,11 @@ EOT
             $generator->appendFunctionCall(
                 'chdir',
                 array(
-                     new ezcPhpGeneratorParameter( $legacyRootDir, ezcPhpGeneratorParameter::VALUE )
+                     new ezcPhpGeneratorParameter( 'legacyRoot' )
                 )
             );
             $generator->appendCustomCode( 'require $legacyRoot . "/index_rest.php";' );
+            $generator->appendEmptyLines();
             $generator->finish();
         }
     }
