@@ -23,13 +23,12 @@ class LegacyExtension extends Twig_Extension
      * Closure encapsulating the legacy kernel
      *
      * @var \Closure
-     * @return \eZ\Publish\Legacy\Kernel
      */
-    protected $getLegacyKernel;
+    private $legacyKernelClosure;
 
     public function __construct( \Closure $legacyKernelClosure )
     {
-        $this->getLegacyKernel = $legacyKernelClosure;
+        $this->legacyKernelClosure = $legacyKernelClosure;
     }
 
     /**
@@ -54,6 +53,17 @@ class LegacyExtension extends Twig_Extension
                 return $tpl->fetch( $tplPath );
             }
         );
+    }
+
+    /**
+     * Returns the legacy kernel object.
+     *
+     * @return \eZ\Publish\Legacy\Kernel
+     */
+    final protected function getLegacyKernel()
+    {
+        $closure = $this->legacyKernelClosure;
+        return $closure();
     }
 
     public function getTokenParsers()
