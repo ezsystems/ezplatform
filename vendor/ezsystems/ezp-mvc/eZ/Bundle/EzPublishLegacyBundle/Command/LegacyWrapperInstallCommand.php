@@ -75,7 +75,7 @@ EOT
                      new ezcPhpGeneratorParameter( 'legacyRoot' )
                 )
             );
-            $generator->appendCustomCode( 'require $legacyRoot . "/index_rest.php";' );
+            $generator->appendCustomCode( "require \$legacyRoot . '/$frontController';" );
             $generator->appendEmptyLines();
             $generator->finish();
         }
