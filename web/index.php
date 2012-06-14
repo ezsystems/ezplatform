@@ -7,5 +7,5 @@ use Symfony\Component\HttpFoundation\Request;
 
 $kernel = new EzPublishKernel( 'dev', true );
 $kernel->loadClassCache();
-$kernelCache = new EzPublishCache( $kernel );
-$kernelCache->handle( Request::createFromGlobals() )->send();
+$kernel = new EzPublishCache( $kernel );
+$kernel->handle( Request::createFromGlobals() )->send();
