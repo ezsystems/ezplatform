@@ -25,7 +25,7 @@
 
     ```bash
     php app/console assets:install --symlink web
-    php app/console ezpublish:legacy:assets_instal
+    php app/console ezpublish:legacy:assets_install
     ```
     The first command will symlink all the assets from your bundles in the `web/` folder in a `bundles/` sub-folder.
 
@@ -47,19 +47,24 @@
         RewriteEngine On
         RewriteRule ^/api/ /index_rest.php [L]
         RewriteRule content/treemenu/? /index_treemenu.php [L]
+        
+        # If not using cluster:
         RewriteRule ^/var/storage/.* - [L]
         RewriteRule ^/var/[^/]+/storage/.* - [L]
+        # If using cluster, uncomment the following and comment the previous ones
+        #RewriteRule ^/var/([^/]+/)?storage/images(-versioned)?/.* /index_cluster.php [L]
+        #RewriteRule ^/var/([^/]+/)?cache/(texttoimage|public)/.* /index_cluster.php [L]
+
         RewriteRule ^/var/cache/texttoimage/.* - [L]
         RewriteRule ^/var/[^/]+/cache/(texttoimage|public)/.* - [L]
         RewriteRule ^/design/[^/]+/(stylesheets|images|javascript)/.* - [L]
-        RewriteRule ^/css/.* - [L]
-        RewriteRule ^/bundles/.* - [L]
         RewriteRule ^/share/icons/.* - [L]
         RewriteRule ^/extension/[^/]+/design/[^/]+/(lib|stylesheets|images|javascripts?)/.* - [L]
         RewriteRule ^/packages/styles/.+/(stylesheets|images|javascript)/[^/]+/.* - [L]
         RewriteRule ^/packages/styles/.+/thumbnail/.* - [L]
         RewriteRule ^/favicon\.ico - [L]
         RewriteRule ^/robots\.txt - [L]
+
         # Following rule is needed to correctly display assets from bundles
         RewriteRule ^/bundles/ - [L]
         RewriteRule .* /index.php
