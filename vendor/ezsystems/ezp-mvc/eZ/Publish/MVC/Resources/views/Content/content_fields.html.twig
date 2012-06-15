@@ -39,6 +39,6 @@
     {% set editMeta = editMeta|default( {} ) %}
     {% for attrname, attrvalue in attr %}{{ attrname }}="{{ attrvalue }}" {% endfor %}
     {# Rendering metadata for editorial interface, if available #}
-    {% for metaName, metaValue in editMeta %}{{ 'data-ez-' ~ metaName }}="{{ metaValue }}"{% endfor %}
+    {% for metaName, metaValue in editMeta %}{{ 'data-ez-' ~ metaName }}="{{ metaValue }}" {% endfor %}
 {% endspaceless %}
 {% endblock %}
