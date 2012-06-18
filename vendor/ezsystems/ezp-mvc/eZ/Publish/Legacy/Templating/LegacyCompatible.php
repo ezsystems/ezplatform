@@ -7,7 +7,7 @@
  * @version //autogentag//
  */
 
-namespace eZ\Bundle\EzPublishLegacyBundle\Templating;
+namespace eZ\Publish\Legacy\Templating;
 
 /**
  * This interface must be implemented to make objects compatible with legacy eZ Template engine.
@@ -27,6 +27,7 @@ interface LegacyCompatible
      *
      * @param string $name
      * @return mixed
+     * @throws \InvalidArgumentException If $name is not supported as a valid attribute
      */
     public function attribute( $name );
 

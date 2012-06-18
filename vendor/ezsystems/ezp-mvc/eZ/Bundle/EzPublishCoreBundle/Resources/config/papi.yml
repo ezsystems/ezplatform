@@ -5,6 +5,9 @@ parameters:
     ezpublish.api.storage_engine.factory.class: eZ\Bundle\EzPublishCoreBundle\ApiLoader\StorageEngineFactory
     ezpublish.api.storage_engine.default: inMemory
 
+    ezpublish.api.content.class: eZ\Publish\Core\Repository\Values\Content\Content
+    ezpublish.api.location.class: eZ\Publish\Core\Repository\Values\Content\Location
+
 services:
     ezpublish.api.repository.factory:
         class: %ezpublish.api.repository.factory.class%

@@ -11,8 +11,10 @@ namespace eZ\Publish\Legacy\Templating\Twig\Extension;
 
 use eZ\Publish\Legacy\Templating\Twig\TokenParser\LegacyIncludeParser;
 use eZ\Publish\Legacy\Kernel as LegacyKernel;
+use eZ\Publish\Legacy\Templating\LegacyCompatible;
+use eZ\Publish\Legacy\Templating\Converter\MultipleObjectConverter;
 use eZTemplate;
-use \Twig_Extension;
+use Twig_Extension;
 
 /**
  * Twig extension for eZ Publish legacy
@@ -26,9 +28,15 @@ class LegacyExtension extends Twig_Extension
      */
     private $legacyKernelClosure;
 
-    public function __construct( \Closure $legacyKernelClosure )
+    /**
+     * @var \eZ\Publish\Legacy\Templating\Converter\MultipleObjectConverter
+     */
+    private $objectConverter;
+
+    public function __construct( \Closure $legacyKernelClosure, MultipleObjectConverter $objectConverter )
     {
         $this->legacyKernelClosure = $legacyKernelClosure;
+        $this->objectConverter = $objectConverter;
     }
 
     /**
@@ -41,13 +49,27 @@ class LegacyExtension extends Twig_Extension
      */
     public function renderTemplate( $tplPath, array $params = array() )
     {
+        $objectConverter = $this->objectConverter;
         return $this->getLegacyKernel()->runCallback(
-            function() use ( $tplPath, $params )
+            function() use ( $tplPath, $params, $objectConverter )
             {
                 $tpl = eZTemplate::factory();
                 foreach ( $params as $varName => $param )
                 {
-                    $tpl->setVariable( $varName, $param );
+                    if ( !is_object( $param ) || $param instanceof LegacyCompatible )
+                    {
+                        $tpl->setVariable( $varName, $param );
+                    }
+                    else
+                    {
+                        $objectConverter->register( $param, $varName );
+                    }
+                }
+
+                // Get converted objects if any and pass them to the template
+                foreach ( $objectConverter->convertAll() as $varName => $obj )
+                {
+                    $tpl->setVariable( $varName, $obj );
                 }
 
                 return $tpl->fetch( $tplPath );

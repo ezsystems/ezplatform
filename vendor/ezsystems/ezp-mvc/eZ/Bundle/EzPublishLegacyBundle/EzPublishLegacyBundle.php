@@ -10,6 +10,8 @@
 namespace eZ\Bundle\EzPublishLegacyBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
+use eZ\Bundle\EzPublishLegacyBundle\DependencyInjection\Compiler\LegacyPass;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 class EzPublishLegacyBundle extends Bundle
 {
@@ -25,4 +27,9 @@ class EzPublishLegacyBundle extends Bundle
         require_once $this->container->getParameter( 'ezpublish_legacy.root_dir' ) . "/autoload.php";
     }
 
+    public function build( ContainerBuilder $container )
+    {
+        parent::build($container);
+        $container->addCompilerPass( new LegacyPass() );
+    }
 }
