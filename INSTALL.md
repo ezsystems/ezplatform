@@ -3,14 +3,17 @@
 1. Clone the repository
 
        ```bash
-       git clone git@github.com:ezsystems/ezp-next-mvc.git
+       git clone git@github.com:ezsystems/ezpublish5.git
        ```
 2. Install the dependencies with [Composer](http://getcomposer.org):
 
        ```bash
-       cd /path/to/ezp-next-mvc/
+       cd /path/to/ezpublish5/
        php composer.phar install
        ```
+       
+       > **Note**: If you end to a *process timed out* error, his might be caused by a *not-that-fast* internet connection :-).
+       > Try then to set `COMPOSER_PROCESS_TIMEOUT` environment variable to 3000 before relaunching the composer install command.
 3. Initialize and update git submodules (like public API):
 
        ```bash
