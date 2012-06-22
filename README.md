@@ -52,5 +52,7 @@ can still be used in the new architecture.
 ## LICENCE
 eZ Systems AS & GPL v2.0
 
-## INSTALL
+## INSTALL AND GET STARTED
 For installation instructions, see [INSTALL.md](https://github.com/ezsystems/ezpublish5/blob/master/INSTALL.md).
+
+To get started, see [GETTING_STARTED.md](https://github.com/ezsystems/ezpublish5/blob/master/GETTING_STARTED.md).
