@@ -4,7 +4,7 @@
         {
             "package": "doctrine/common",
             "version": "dev-master",
-            "source-reference": "80838882abc04270fb9bc5812da4ab64e2ee3f88"
+            "source-reference": "f0b548aa55bb7dac36d79061270a085dd38635b4"
         },
         {
             "package": "doctrine/common",
@@ -27,7 +27,7 @@
         {
             "package": "symfony/symfony",
             "version": "dev-master",
-            "source-reference": "6448fd0772725c7e92d2daaf8cf7b47206ab0f5a"
+            "source-reference": "v2.1.0-BETA1"
         },
         {
             "package": "twig/extensions",
