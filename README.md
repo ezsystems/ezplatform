@@ -48,4 +48,4 @@ can still be used in the new architecture.
 eZ Systems AS & GPL v2.0
 
 ## INSTALL
-For installation instructions, see [INSTALL.md](https://github.com/ezsystems/ezp-next-mvc/blob/master/INSTALL.md).
+For installation instructions, see [INSTALL.md](https://github.com/ezsystems/ezpublish5/blob/master/INSTALL.md).
