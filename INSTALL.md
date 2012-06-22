@@ -1,30 +1,49 @@
 # Installation instructions
 
+## eZ Publish 4 (aka *legacy*) part
+1. Start from an [eZ Publish CP 2012.5](http://share.ez.no/downloads/downloads/ez-publish-community-project-2012.5) installation
+
+2. Upgrade it to the enhanced version 
+   (get the source from eZ Publish legacy's [**ezpublish5-integration** branch](https://github.com/ezsystems/ezpublish/tree/ezpublish5-integration)). 
+   No upgrade script is needed, only replace all source files (except your own extensions, templates and settings).
+
+   > **Very important**: Be sure you have upgraded your **index.php** as well
+
+## eZ Publish 5 part
 1. Clone the repository
 
        ```bash
        git clone git@github.com:ezsystems/ezpublish5.git
        ```
-2. Install the dependencies with [Composer](http://getcomposer.org):
+2. Install the dependencies with [Composer](http://getcomposer.org) (`composer.phar` is already provided):
 
        ```bash
        cd /path/to/ezpublish5/
        php composer.phar install
        ```
        
-       > **Note**: If you end to a *process timed out* error, his might be caused by a *not-that-fast* internet connection :-).
+       > **Note**: If you end to a *process timed out* error, this might be caused by a *not-that-fast* internet connection :-).
        > Try then to set `COMPOSER_PROCESS_TIMEOUT` environment variable to 3000 before relaunching the composer install command.
+       
+       ```bash
+       COMPOSER_PROCESS_TIMEOUT=3000 php composer.phar install
+       ```
 3. Initialize and update git submodules (like public API):
 
        ```bash
        git submodule init
        git submodule update
        ```
-4. Configure by editing `app/config/config.yml`:
-    * `ez_publish_legacy.root_dir`: Path to your eZ Publish legacy directory. The default path is `app/ezpublish_legacy`
+4. Move (or symlink) your eZ Publish legacy root to `app/ezpublish_legacy`
+
+       ```bash
+       ln -s /path/to/ezpublish/legacy /path/to/ezpublish5/app/ezpublish_legacy
+       ```
+
+5. Configure by editing `app/config/config.yml`:
     * `ezpublish.api.storage_engine.legacy.dsn`: DSN to your database connection (only MySQL and PostgreSQL are supported at the moment)
 
-5. Dump your assets in your webroot:
+6. Dump your assets in your webroot:
 
     ```bash
     php app/console assets:install --symlink web
@@ -35,7 +54,7 @@
     The second command will symlink assets from your eZ Publish legacy directory and add wrapper scripts around the legacy front controllers
     (basically `index_treemenu.php`, `index_rest.php` and `index_cluster.php`)
 
-6. *Optional* - Configure a VirtualHost:
+7. *Optional* - Configure a VirtualHost:
 
     ```apache
     <VirtualHost *:80>
@@ -73,7 +92,7 @@
         RewriteRule .* /index.php
     </VirtualHost>
     ```
-6. *Optional*, **Development ONLY** - Take advantage of PHP 5.4 build-in web server:
+7. *Optional*, **Development ONLY** - Take advantage of PHP 5.4 build-in web server:
 
     ```bash
     php app/console server:run localhost:8000
