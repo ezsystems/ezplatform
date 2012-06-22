@@ -40,9 +40,9 @@
     ```apache
     <VirtualHost *:80>
         ServerName your-host-name
-        DocumentRoot /path/to/ezp-next-mvc/web/
+        DocumentRoot /path/to/ezpublish5/web/
 
-        <Directory /path/to/ezp-next-mvc/>
+        <Directory /path/to/ezpublish5/>
             order allow,deny
             allow from all
         </Directory>
