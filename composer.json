@@ -21,10 +21,7 @@
     },
     "autoload": {
         "psr-0": {
-            "eZ\\Bundle": "vendor/ezsystems/ezp-mvc",
-            "eZ\\Publish\\MVC": "vendor/ezsystems/ezp-mvc",
-            "eZ\\Publish\\Legacy": "vendor/ezsystems/ezp-mvc",
-            "eZ\\Publish": "vendor/ezsystems/api"
+            "eZ": "vendor/ezsystems/ezpublish"
         }
     }
 }

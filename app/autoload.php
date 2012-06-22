@@ -33,8 +33,7 @@ $loader->registerNamespaces(
     array(
         'Symfony'          => __DIR__ . '/../vendor/symfony/symfony/src',
         'eZ'      => array(
-            __DIR__ . '/../vendor/ezsystems/ezp-mvc',
-            __DIR__ . '/../vendor/ezsystems/api'
+            __DIR__ . '/../vendor/ezsystems/ezpublish',
         ),
     )
 );
