@@ -39,6 +39,7 @@ This will allow you to take advantage of additional eZ-specific features (like e
 Inside an eZ Controller, you can access to the public API by getting the Repository through the `$this->getRepository()` method.
 
 ```php
+<?php
 namespace My\TestBundle\Controller;
 
 use eZ\Publish\MVC\Controller as EzController;
@@ -95,6 +96,7 @@ The new kernel still relies on eZ Publish legacy kernel and runs it when needed 
 It is however still possible to run some PHP code inside that sandbox through the `runCallback()` method.
 
 ```php
+<?php
 // Inside a controller/action
 $settingName = 'MySetting';
 $test = array( 'oneValue', 'anotherValue' );
