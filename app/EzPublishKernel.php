@@ -9,15 +9,30 @@
 
 use eZ\Bundle\EzPublishCoreBundle\EzPublishCoreBundle;
 use eZ\Bundle\EzPublishLegacyBundle\EzPublishLegacyBundle;
+use eZ\Publish\MVC\SiteAccess\Router as SiteAccessRouter;
 use EzSystems\DemoBundle\EzSystemsDemoBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\TwigBundle\TwigBundle;
 use Symfony\Bundle\WebProfilerBundle\WebProfilerBundle;
 use Symfony\Component\HttpKernel\Kernel;
+use Symfony\Component\HttpKernel\HttpKernelInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Config\Loader\LoaderInterface;
 
 class EzPublishKernel extends Kernel
 {
+    /**
+     * Constructor.
+     *
+     * @param string $environment The environment
+     * @param bool $debug Whether to enable debugging or not
+     */
+    public function __construct( $environment, $debug )
+    {
+        parent::__construct( $environment, $debug );
+        $this->loadClassCache();
+    }
+
     /**
      * Returns an array of bundles to registers.
      *
@@ -53,5 +68,23 @@ class EzPublishKernel extends Kernel
     public function registerContainerConfiguration( LoaderInterface $loader )
     {
         $loader->load( __DIR__ . '/config/config_' . $this->getEnvironment() . '.yml' );
+    }
+
+    /**
+     * Creates a new request with values from PHP's super globals.
+     *
+     * @param \eZ\Publish\MVC\SiteAccess\Router $siteAccessRouter
+     *
+     * @return \Symfony\Component\HttpFoundation\Request A new request
+     */
+    public function createRequestFromGlobals( SiteAccessRouter $siteAccessRouter )
+    {
+        $request = Request::createFromGlobals();
+        $request->attributes->add(
+            array(
+                "siteaccess" => $siteAccessRouter->match( $_SERVER["SCRIPT_URI"] )
+            )
+        );
+        return $request;
     }
 }
