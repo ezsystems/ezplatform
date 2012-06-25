@@ -62,6 +62,7 @@
         DocumentRoot /path/to/ezpublish5/web/
 
         <Directory /path/to/ezpublish5/>
+            Options FollowSymLinks
             order allow,deny
             allow from all
         </Directory>
