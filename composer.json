@@ -16,8 +16,7 @@
         "zetacomponents/mvc-authentication-tiein": "dev-master",
         "zetacomponents/persistent-object": "dev-master",
         "zetacomponents/php-generator": "dev-master",
-        "zetacomponents/signal-slot": "dev-master",
-        "zetacomponents/webdav": "dev-master"
+        "zetacomponents/signal-slot": "dev-master"
     },
     "autoload": {
         "psr-0": {
