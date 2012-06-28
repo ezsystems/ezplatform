@@ -4,7 +4,8 @@
 1. Start from an [eZ Publish CP 2012.5](http://share.ez.no/downloads/downloads/ez-publish-community-project-2012.5) installation
 
 2. Upgrade it to the enhanced version 
-   (get the source from eZ Publish legacy's [**ezpublish5-integration** branch](https://github.com/ezsystems/ezpublish/tree/ezpublish5-integration)). 
+   (get the source from eZ Publish legacy's [**ezpublish5-integration** branch](https://github.com/ezsystems/ezpublish/tree/ezpublish5-integration), 
+   or just [download the ZIP file](https://github.com/ezsystems/ezpublish/zipball/ezpublish5-integration)). 
    No upgrade script is needed, only replace all source files (except your own extensions, templates and settings).
 
    > **Very important**: Be sure you have upgraded your **index.php** as well
