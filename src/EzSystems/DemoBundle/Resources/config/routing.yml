@@ -7,9 +7,10 @@ eZTest:
         contentId: \d+
 
 eZTestWithLegacy:
-    pattern: /test/legacy
+    pattern: /test/legacy/{contentId}
     defaults:
         _controller: eZDemoBundle:Demo:testWithLegacy
+        contentId: 102
 
 eZHelloWorld:
     pattern: /helloWorld

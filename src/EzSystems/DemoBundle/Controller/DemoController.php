@@ -26,14 +26,15 @@ class DemoController extends Controller
         );
     }
 
-    public function testWithLegacyAction()
+    public function testWithLegacyAction( $contentId )
     {
         return $this->render(
             "eZDemoBundle:content:legacy_test.html.twig",
             array(
                 "title" => "eZ Publish 5",
                 "subtitle" => "Welcome to the future !",
-                "messageForLegacy" => "All your eZ Publish base are belong to us ;-)"
+                "messageForLegacy" => "All your eZ Publish base are belong to us ;-)",
+                "content"      => $this->getRepository()->getContentService()->loadContent( $contentId )
             )
         );
     }
