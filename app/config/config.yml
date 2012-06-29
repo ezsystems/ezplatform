@@ -19,3 +19,13 @@ ez_publish_legacy:
 parameters:
     ezpublish.api.storage_engine.default: legacy
     ezpublish.api.storage_engine.legacy.dsn: mysql://root:root@localhost/ezdemo
+
+    # Siteaccess matching, this is dummy configuration for tests
+    ezpublish.siteaccess.default: ezdemo_site
+    ezpublish.siteaccess.config:
+        Map\URI:
+            ezdemo_site: ezdemo_site
+            ezdemo_site_admin: ezdemo_site_admin
+        Map\Host:
+            ezpublish: ezdemo_site
+            ezpublish.admin: ezdemo_site_admin
