@@ -12,11 +12,11 @@ $kernelCache->handle(
         new SiteAccessRouter(
             "ezdemo_site",
             array(
-                "uri" => array(
+                "Map\\URI" => array(
                     "ezdemo_site" => "ezdemo_site",
                     "ezdemo_site_admin" => "ezdemo_site_admin",
                 ),
-                "host" => array(
+                "Map\\Host" => array(
                     "ezpublish" => "ezdemo_site",
                     "ezpublish.admin" => "ezdemo_site_admin",
                 ),
