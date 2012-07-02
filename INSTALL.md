@@ -32,8 +32,7 @@
 3. Initialize and update git submodules (like public API):
 
        ```bash
-       git submodule init
-       git submodule update
+       git submodule update --init
        ```
 4. Move (or symlink) your eZ Publish legacy root to `app/ezpublish_legacy`
 
