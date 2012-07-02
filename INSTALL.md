@@ -20,6 +20,7 @@
 
        If you don't have Composer yet, download it following the instructions on http://getcomposer.org/ or just run the following command:
        ```bash
+       cd /path/to/ezpublish5/
        curl -s http://getcomposer.org/installer | php
        ```
 
