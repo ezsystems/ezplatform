@@ -1,7 +1,7 @@
 {
     "require": {
         "symfony/symfony": "dev-master",
-        "twig/twig": "1.8.2",
+        "twig/twig": "1.8.3",
         "twig/extensions": "dev-master",
         "zetacomponents/archive": "dev-master",
         "zetacomponents/authentication": "dev-master",
