@@ -9,14 +9,14 @@
 
 use eZ\Bundle\EzPublishCoreBundle\EzPublishCoreBundle;
 use eZ\Bundle\EzPublishLegacyBundle\EzPublishLegacyBundle;
-use eZ\Bundle\EzPublishCoreBundle\Kernel as BaseEzPublishKernel;
+use Symfony\Component\HttpKernel\Kernel;
 use EzSystems\DemoBundle\EzSystemsDemoBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\TwigBundle\TwigBundle;
 use Symfony\Bundle\WebProfilerBundle\WebProfilerBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
 
-class EzPublishKernel extends BaseEzPublishKernel
+class EzPublishKernel extends Kernel
 {
     /**
      * Constructor.
