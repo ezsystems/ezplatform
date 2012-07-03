@@ -16,10 +16,18 @@
        ```bash
        git clone git@github.com:ezsystems/ezpublish5.git
        ```
-2. Install the dependencies with [Composer](http://getcomposer.org). If you don't have Composer yet, download it following the instructions on http://getcomposer.org/ or just run the following command:
+2. Install the dependencies with [Composer](http://getcomposer.org).
 
+       If you don't have Composer yet, download it following the instructions on http://getcomposer.org/ or just run the following command:
        ```bash
+       cd /path/to/ezpublish5/
        curl -s http://getcomposer.org/installer | php
+       ```
+
+       Afer installing composer, install of all the project's dependencies by running:
+       ```bash
+       cd /path/to/ezpublish5/
+       php composer.phar install
        ```
        
        > **Note**: If you end to a *process timed out* error, this might be caused by a *not-that-fast* internet connection :-).
