@@ -1,5 +1,10 @@
 # Installation instructions
 
+> **Side note for Linux users**: Please avoid doing this installation as `root`, since your web server probably runs with another user 
+(`www-data` on Debian/Ubuntu, `apache` on Redhat/CentOS/Fedora).
+> 
+> If you still want to do this as `root`, then ensure that your webserver has at least write access in the `app/` directory.
+
 ## eZ Publish 4 (aka *legacy*) part
 1. Start from an [eZ Publish CP 2012.5](http://share.ez.no/downloads/downloads/ez-publish-community-project-2012.5) installation
 
