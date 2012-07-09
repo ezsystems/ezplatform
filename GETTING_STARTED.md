@@ -109,7 +109,7 @@ $myLegacySetting = $this->getLegacyKernel()->runCallback(
     }
 );
 ```
-
+> `runCallback()` can also take a 2nd argument. Setting to `true` avoids to re-initialize the legacy kernel environment after your call.
 
 ## Limitations / Known issues
 eZ Publish 5 development is still at a very early stage (*pre-alpha*) and as such there are still a lot of limitations and (un)known issues like:
