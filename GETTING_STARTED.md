@@ -101,7 +101,7 @@ It is however still possible to run some PHP code inside that sandbox through th
 $settingName = 'MySetting';
 $test = array( 'oneValue', 'anotherValue' );
 $myLegacySetting = $this->getLegacyKernel()->runCallback(
-    function () use ( $foo, $test )
+    function () use ( $settingName, $test )
     {
         // Here you can reuse $settingName and $test variables inside the legacy context
         $ini = eZINI::instance( 'someconfig.ini' );
