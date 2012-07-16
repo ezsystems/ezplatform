@@ -1,5 +1,5 @@
 {
-    "hash": "12aeb4e7995a47eff7b3ad03804cb4b2",
+    "hash": "1f4748359a987db8ab33c4f3b30dc96f",
     "packages": [
         {
             "package": "doctrine/common",
@@ -10,14 +10,8 @@
         {
             "package": "doctrine/common",
             "version": "dev-master",
-            "alias-pretty-version": "2.3.x-dev",
-            "alias-version": "2.3.9999999.9999999-dev"
-        },
-        {
-            "package": "doctrine/common",
-            "version": "dev-master",
-            "source-reference": "0e454a92409ee594a93c362f74a3e0f42424d663",
-            "commit-date": "1340828547"
+            "source-reference": "ee3aeae972386d761d8358bab3d67e246f4261ba",
+            "commit-date": "1342078708"
         },
         {
             "package": "symfony/symfony",
@@ -28,8 +22,8 @@
         {
             "package": "symfony/symfony",
             "version": "dev-master",
-            "source-reference": "884a8264b3dfa545773365dace5adf2f34fd050a",
-            "commit-date": "1340898515"
+            "source-reference": "151b79a6ce3f459e2fa8815cd9f2786eef750993",
+            "commit-date": "1342376835"
         },
         {
             "package": "twig/extensions",
@@ -39,7 +33,7 @@
         },
         {
             "package": "twig/twig",
-            "version": "v1.8.2"
+            "version": "v1.8.3"
         },
         {
             "package": "zetacomponents/archive",
@@ -132,6 +126,12 @@
             "commit-date": "1337609183"
         },
         {
+            "package": "zetacomponents/system-information",
+            "version": "dev-master",
+            "source-reference": "674336286f189d222a275bec32be9123d9faf477",
+            "commit-date": "1337594201"
+        },
+        {
             "package": "zetacomponents/webdav",
             "version": "1.1rc1"
         }
@@ -140,7 +140,7 @@
     "aliases": [
 
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "stability-flags": {
         "symfony/symfony": 20,
         "twig/extensions": 20,
@@ -157,6 +157,7 @@
         "zetacomponents/mvc-authentication-tiein": 20,
         "zetacomponents/persistent-object": 20,
         "zetacomponents/php-generator": 20,
-        "zetacomponents/signal-slot": 20
+        "zetacomponents/signal-slot": 20,
+        "zetacomponents/system-information": 20
     }
 }
