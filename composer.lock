@@ -1,5 +1,5 @@
 {
-    "hash": "1f4748359a987db8ab33c4f3b30dc96f",
+    "hash": "8319422c1c4f74f6f6e94ee2808c64cb",
     "packages": [
         {
             "package": "doctrine/common",
@@ -16,12 +16,6 @@
         {
             "package": "symfony/symfony",
             "version": "dev-master",
-            "alias-pretty-version": "2.1.x-dev",
-            "alias-version": "2.1.9999999.9999999-dev"
-        },
-        {
-            "package": "symfony/symfony",
-            "version": "dev-master",
             "source-reference": "151b79a6ce3f459e2fa8815cd9f2786eef750993",
             "commit-date": "1342376835"
         },
@@ -33,7 +27,7 @@
         },
         {
             "package": "twig/twig",
-            "version": "v1.8.3"
+            "version": "v1.9.0"
         },
         {
             "package": "zetacomponents/archive",
@@ -140,7 +134,7 @@
     "aliases": [
 
     ],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": {
         "symfony/symfony": 20,
         "twig/extensions": 20,
