@@ -56,7 +56,7 @@
     * Copy `app/config/parameters.yml.dist` to `app/config/parameters.yml`
     * Edit `app/config/parameters.yml` and configure
 
-      > `ezpublish.api.storage_engine.legacy.dsn`: DSN to your database connection (only MySQL and PostgreSQL are supported at the moment)
+         * `ezpublish.api.storage_engine.legacy.dsn`: DSN to your database connection (only MySQL and PostgreSQL are supported at the moment)
 
 6. Dump your assets in your webroot:
 
