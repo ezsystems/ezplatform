@@ -1,23 +1,23 @@
 {
-    "hash": "8319422c1c4f74f6f6e94ee2808c64cb",
+    "hash": "86390c2294f69f3c48fba18687b075c3",
     "packages": [
         {
             "package": "doctrine/common",
-            "version": "dev-master",
-            "alias-pretty-version": "2.3.x-dev",
-            "alias-version": "2.3.9999999.9999999-dev"
-        },
-        {
-            "package": "doctrine/common",
-            "version": "dev-master",
-            "source-reference": "ee3aeae972386d761d8358bab3d67e246f4261ba",
-            "commit-date": "1342078708"
+            "version": "2.3.x-dev",
+            "source-reference": "15b04ec520ccded3dc0eba65b12a69ff1931360f",
+            "commit-date": "1342443556"
         },
         {
             "package": "symfony/symfony",
             "version": "dev-master",
-            "source-reference": "151b79a6ce3f459e2fa8815cd9f2786eef750993",
-            "commit-date": "1342376835"
+            "alias-pretty-version": "2.1.x-dev",
+            "alias-version": "2.1.9999999.9999999-dev"
+        },
+        {
+            "package": "symfony/symfony",
+            "version": "dev-master",
+            "source-reference": "f52ce6178243e4b11aa09bde147f684d596fb120",
+            "commit-date": "1342516073"
         },
         {
             "package": "twig/extensions",
