@@ -24,5 +24,6 @@
         "psr-0": {
             "eZ": "vendor/ezsystems/ezpublish"
         }
-    }
+    },
+    "minimum-stability": "dev"
 }
