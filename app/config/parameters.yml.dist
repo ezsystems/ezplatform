@@ -1,0 +1,14 @@
+parameters:
+    # Customize here your database connection
+    # This is a DNS. Format is <dbType>://<user>:<password>@<host>/<dbName>
+    ezpublish.api.storage_engine.legacy.dsn: mysql://root:root@localhost/ezdemo
+
+    # Siteaccess matching, this is dummy configuration for tests
+    ezpublish.siteaccess.default: ezdemo_site
+    ezpublish.siteaccess.config:
+        Map\URI:
+            ezdemo_site: ezdemo_site
+            ezdemo_site_admin: ezdemo_site_admin
+        Map\Host:
+            ezpublish.dev: ezdemo_site
+            admin.ezpublish.dev: ezdemo_site_admin
