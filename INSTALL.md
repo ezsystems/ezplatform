@@ -6,7 +6,7 @@
 > If you still want to do this as `root`, then ensure that your webserver has at least write access in the `app/` directory.
 
 ## eZ Publish 4 (aka *legacy*) part
-1. Start from an [eZ Publish CP 2012.5](http://share.ez.no/downloads/downloads/ez-publish-community-project-2012.5) installation
+1. Start from an [eZ Publish CP 2012.5](http://share.ez.no/downloads/downloads/ez-publish-community-project-2012.5) or [higher](http://share.ez.no/downloads/downloads) installation.
 
 2. Upgrade it to the enhanced version 
    (get the source from eZ Publish legacy's [**ezpublish5-integration** branch](https://github.com/ezsystems/ezpublish/tree/ezpublish5-integration), 
@@ -14,6 +14,20 @@
    No upgrade script is needed, only replace all source files (except your own extensions, templates and settings).
 
    > **Very important**: Be sure you have upgraded your **index.php** as well
+
+### Troubleshooting
+You might get the following error:
+> Retrieving remote site packages list failed. You may upload packages manually.
+>
+> Remote repository URL: http://packages.ez.no/ezpublish/5.0/5.0.0alpha1/
+
+This is most likely because you didn't start from an eZ Publish CP package, but directly from GitHub sources.
+To fix it, tweak your `settings/package.ini` by overriding it:
+
+```ini
+[RepositorySettings]
+RemotePackagesIndexURL=http://packages.ez.no/ezpublish/4.7/4.7.0
+```
 
 ## eZ Publish 5 part
 1. Clone the repository
