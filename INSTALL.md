@@ -21,7 +21,9 @@ You might get the following error:
 >
 > Remote repository URL: http://packages.ez.no/ezpublish/5.0/5.0.0alpha1/
 
-This is most likely because you didn't start from an eZ Publish CP package, but directly from GitHub sources.
+This is most likely because you didn't start from an eZ Publish CP package, but directly from GitHub sources,
+or because you launched installation wizard *after* having upgraded to `ezpublish5-integration` branch.
+
 To fix it, tweak your `settings/package.ini` by overriding it:
 
 ```ini
