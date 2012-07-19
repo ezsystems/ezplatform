@@ -23,8 +23,7 @@
     "autoload": {
         "psr-0": {
             "eZ": "vendor/ezsystems/ezpublish/"
-        },
-        "classmap": ["app/ezpublish_legacy"]
+        }
     },
     "minimum-stability": "dev"
 }
