@@ -37,7 +37,14 @@ RemotePackagesIndexURL=http://packages.ez.no/ezpublish/4.7/4.7.0
        ```bash
        git clone git@github.com:ezsystems/ezpublish5.git
        ```
-2. Install the dependencies with [Composer](http://getcomposer.org).
+       
+2. Move (or symlink) your eZ Publish legacy root to `app/ezpublish_legacy`
+
+       ```bash
+       ln -s /path/to/ezpublish/legacy /path/to/ezpublish5/app/ezpublish_legacy
+       ```
+
+3. Install the dependencies with [Composer](http://getcomposer.org).
 
        If you don't have Composer yet, download it following the instructions on http://getcomposer.org/ or just run the following command:
        ```bash
@@ -57,22 +64,17 @@ RemotePackagesIndexURL=http://packages.ez.no/ezpublish/4.7/4.7.0
        ```bash
        COMPOSER_PROCESS_TIMEOUT=3000 php composer.phar install
        ```
-3. Initialize and update git submodules (like public API):
+4. Initialize and update git submodules (like public API):
 
        ```bash
        git submodule update --init
        ```
-4. Move (or symlink) your eZ Publish legacy root to `app/ezpublish_legacy`
-
-       ```bash
-       ln -s /path/to/ezpublish/legacy /path/to/ezpublish5/app/ezpublish_legacy
-       ```
-
 5. Configure:
     * Copy `app/config/parameters.yml.dist` to `app/config/parameters.yml`
     * Edit `app/config/parameters.yml` and configure
 
          * `ezpublish.api.storage_engine.legacy.dsn`: DSN to your database connection (only MySQL and PostgreSQL are supported at the moment)
+         * `ezpublish.siteaccess.default`: Should be a **valid siteaccess** (preferably the same than `[SiteSettings].DefaultAccess` set in your `settings/override/site.ini.append.php`
 
 6. Dump your assets in your webroot:
 
