@@ -9,7 +9,7 @@
 
 namespace EzSystems\DemoBundle\Controller;
 
-use eZ\Publish\MVC\Controller;
+use eZ\Bundle\EzPublishCoreBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use \DateTime;
@@ -58,7 +58,7 @@ class DemoController extends Controller
             // return the 304 Response immediately
             return $response;
         }
-        $response->setContent( "Hello World!" );
+        $response->setContent( "Hello Universe!" );
 
         return $response;
     }
@@ -73,7 +73,7 @@ class DemoController extends Controller
         $response = new Response();
         $response->setPublic();
         $response->setETag( "HelloWorldTwigTag" );
-        $response->setLastModified( new DateTime( "2012-01-01 00:00:00+0000" ) );
+//        $response->setLastModified( new DateTime( "2012-01-01 00:00:00+0000" ) );
 
         // Check that the Response is not modified for the given Request
         if ( $response->isNotModified( $this->getRequest() ) )
@@ -81,7 +81,8 @@ class DemoController extends Controller
             // return the 304 Response immediately
             return $response;
         }
-        return $this->render( "eZDemoBundle::hello_world.html.twig", null, $response );
+
+        return $this->render( "eZDemoBundle::hello_world.html.twig", array(), $response );
     }
 
 

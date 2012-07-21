@@ -9,7 +9,7 @@
 
 namespace EzSystems\DemoBundle\Controller;
 
-use eZ\Publish\MVC\Controller;
+use eZ\Bundle\EzPublishCoreBundle\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use \eZTemplate;
 use \eZDB;
@@ -50,8 +50,7 @@ class SetupController extends Controller
         }
 
         // Calling the old kernel with a closure
-        $kernelClosure = $this->container->get( 'ezpublish_legacy.kernel' );
-        $infoOutput = $kernelClosure()->runCallback(
+        $infoOutput = $this->getLegacyKernel()->runCallback(
             function () use ( $loadedExtensions, $splAutoloadFunctions, $phpINI, $webserverInfo )
             {
                 $db = eZDB::instance();

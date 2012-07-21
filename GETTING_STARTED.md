@@ -33,7 +33,7 @@ Any route that is not declared in eZ Publish 5 in an included `routing.yml` will
 This will allow your old modules still to work as before.
 
 ### Developing a controller
-When developing a controller (formerly module), make sure to extend `eZ\Publish\MVC\Controller` instead of the default Symfony one.
+When developing a controller (formerly module), make sure to extend `eZ\Bundle\EzPublishCoreBundle\Controller` instead of the default Symfony one.
 This will allow you to take advantage of additional eZ-specific features (like easier Public API access).
 
 Inside an eZ Controller, you can access to the public API by getting the Repository through the `$this->getRepository()` method.
@@ -42,7 +42,7 @@ Inside an eZ Controller, you can access to the public API by getting the Reposit
 <?php
 namespace My\TestBundle\Controller;
 
-use eZ\Publish\MVC\Controller as EzController;
+use eZ\Bundle\EzPublishCoreBundle\Controller as EzController;
 
 class MyController extends EzController
 {
