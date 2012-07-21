@@ -8,4 +8,4 @@ use Symfony\Component\HttpFoundation\Request;
 
 $kernel = new EzPublishKernel( 'dev', true );
 $kernelCache = new EzPublishCache( $kernel );
-$kernelCache->handle( Request::createFromGlobals() )->send();;
+$kernelCache->handle( Request::createFromGlobals() )->send();
