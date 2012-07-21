@@ -1,2 +1,5 @@
 eZDemoBundle:
     resource: "@eZDemoBundle/Resources/config/routing.yml"
+
+_ezpublishRoutes:
+    resource: "@EzPublishCoreBundle/Resources/config/routing/internal.yml"
