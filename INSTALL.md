@@ -57,18 +57,7 @@ RemotePackagesIndexURL=http://packages.ez.no/ezpublish/4.7/4.7.0
        cd /path/to/ezpublish5/
        php composer.phar install
        ```
-       
-       > **Note**: If you end to a *process timed out* error, this might be caused by a *not-that-fast* internet connection :-).
-       > Try then to set `COMPOSER_PROCESS_TIMEOUT` environment variable to 3000 before relaunching the composer install command.
-       
-       ```bash
-       COMPOSER_PROCESS_TIMEOUT=3000 php composer.phar install
-       ```
-4. Initialize and update git submodules (like public API):
 
-       ```bash
-       git submodule update --init
-       ```
 5. Configure:
     * Copy `app/config/parameters.yml.dist` to `app/config/parameters.yml`
     * Edit `app/config/parameters.yml` and configure
