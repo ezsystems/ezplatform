@@ -1,3 +1,0 @@
-[submodule "vendor/ezsystems/ezpublish"]
-	path = vendor/ezsystems/ezpublish
-	url = git@github.com:ezsystems/ezp-next.git
