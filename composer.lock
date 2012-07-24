@@ -1,11 +1,17 @@
 {
-    "hash": "4af576709f31e44ae110f5cee54184ee",
+    "hash": "92831a98ac74b422261cd45a91d04e14",
     "packages": [
         {
             "package": "doctrine/common",
             "version": "2.3.x-dev",
-            "source-reference": "15b04ec520ccded3dc0eba65b12a69ff1931360f",
-            "commit-date": "1342443556"
+            "source-reference": "b0ed9cc35ec28b7cd23d3d001e6fd4c7b5092926",
+            "commit-date": "1343082138"
+        },
+        {
+            "package": "ezsystems/ezpublish",
+            "version": "dev-master",
+            "source-reference": "f284a992bedc0f80c0858750730b5f39c5e0565b",
+            "commit-date": "1343136457"
         },
         {
             "package": "symfony/symfony",
@@ -16,8 +22,8 @@
         {
             "package": "symfony/symfony",
             "version": "dev-master",
-            "source-reference": "f58c27544dd525c7c2f0991fcbd1c671dfdb28cd",
-            "commit-date": "1343051736"
+            "source-reference": "2aaa4ed84e56ad8e3420e696f6a42231d30bc1d2",
+            "commit-date": "1343064472"
         },
         {
             "package": "twig/extensions",
@@ -27,7 +33,15 @@
         },
         {
             "package": "twig/twig",
-            "version": "v1.9.1"
+            "version": "dev-master",
+            "alias-pretty-version": "1.9.x-dev",
+            "alias-version": "1.9.9999999.9999999-dev"
+        },
+        {
+            "package": "twig/twig",
+            "version": "dev-master",
+            "source-reference": "657de7bdeb680815e0df95f63da9f81e1533d2ea",
+            "commit-date": "1342953178"
         },
         {
             "package": "zetacomponents/archive",
@@ -138,6 +152,7 @@
     "stability-flags": {
         "symfony/symfony": 20,
         "twig/extensions": 20,
+        "ezsystems/ezpublish": 20,
         "zetacomponents/archive": 20,
         "zetacomponents/authentication": 20,
         "zetacomponents/cache": 20,
