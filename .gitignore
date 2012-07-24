@@ -1,10 +1,4 @@
-/vendor/symfony/
-/vendor/composer/
-/vendor/twig/
-/vendor/.composer/
-/vendor/autoload.php
-/vendor/doctrine
-/vendor/zetacomponents
+/vendor/
 .php~
 /nbproject/
 /.idea/

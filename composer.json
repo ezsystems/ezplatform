@@ -1,8 +1,14 @@
 {
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:ezsystems/ezp-next"
+    }
+    ],
     "require": {
         "symfony/symfony": "dev-master",
-        "twig/twig": "1.9.1",
         "twig/extensions": "dev-master",
+        "ezsystems/ezpublish": "dev-master",
         "zetacomponents/archive": "dev-master",
         "zetacomponents/authentication": "dev-master",
         "zetacomponents/cache": "dev-master",
