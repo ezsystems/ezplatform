@@ -2,7 +2,7 @@ imports:
     - { resource: parameters.yml }
 
 framework:
-    #esi:             ~
+    esi:             { enabled: true }
     #translator:      { fallback: %locale% }
     # The secret parameter is used to generate CSRF tokens
     secret:          058e7bdb3356d1e126041796db3b7371

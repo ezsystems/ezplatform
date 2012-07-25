@@ -3,3 +3,7 @@ eZDemoBundle:
 
 _ezpublishRoutes:
     resource: "@EzPublishCoreBundle/Resources/config/routing/internal.yml"
+
+_internal:
+    resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
+    prefix:   /_internal
