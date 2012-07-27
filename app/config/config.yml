@@ -11,8 +11,10 @@ framework:
     csrf_protection: false
     validation:      { enable_annotations: true }
     templating:      { engines: ['twig'] } #assets_version: SomeVersionScheme
-#    session:
-#        auto_start:     true
+    session:
+        name: "eZSESSID"
+# Use the following line to get session name per siteaccess
+#        name: "eZSESSID{siteaccess_hash}"
 
 ez_publish_legacy:
     enabled: true
