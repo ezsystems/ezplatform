@@ -10,8 +10,8 @@
         {
             "package": "ezsystems/ezpublish",
             "version": "dev-master",
-            "source-reference": "f284a992bedc0f80c0858750730b5f39c5e0565b",
-            "commit-date": "1343136457"
+            "source-reference": "82961624a469ef58d6094a808afdd8d7c5454972",
+            "commit-date": "1343427942"
         },
         {
             "package": "symfony/symfony",
@@ -22,8 +22,8 @@
         {
             "package": "symfony/symfony",
             "version": "dev-master",
-            "source-reference": "2aaa4ed84e56ad8e3420e696f6a42231d30bc1d2",
-            "commit-date": "1343064472"
+            "source-reference": "21d4973f7987fc637532960155c9f0e7d5758c15",
+            "commit-date": "1343388006"
         },
         {
             "package": "twig/extensions",
