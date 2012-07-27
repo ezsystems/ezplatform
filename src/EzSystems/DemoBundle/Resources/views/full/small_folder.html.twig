@@ -1,0 +1,42 @@
+{% extends "eZDemoBundle::pagelayout.html.twig" %}
+
+{% block content %}
+<div class="attribute-header">
+    <h1 class="long">{{ content.contentInfo.name }} (location ID is #{{ location.id }})</h1>
+</div>
+
+<div>
+    <h3>Name:</h3>
+    {{ ez_render_field(
+           content,
+           "name",
+           {
+               'editMode': true,
+               'attr': { 'class': 'foobar' }
+           }
+       )
+    }}
+
+    <h3>Description:</h3>
+    {{ ez_render_field(
+           content,
+           "description",
+           {
+               'editMode': true
+           }
+       )
+    }}
+</div>
+
+<hr />
+
+<div>
+    <h3>OS types:</h3>
+    <ul>
+    {% for os in osTypes %}
+        <li>{{ os }}</li>
+    {% endfor %}
+    </ul>
+    <p><strong>Foo:</strong> {{ foo }}</p>
+</div>
+{% endblock %}
