@@ -12,3 +12,6 @@ parameters:
         Map\Host:
             ezpublish.dev: ezdemo_site
             admin.ezpublish.dev: ezdemo_site_admin
+
+    ezpublish_legacy.view.default_layout: eZDemoBundle::pagelayout.html.twig
+    ezpublish_legacy.view.content_block_name: content
