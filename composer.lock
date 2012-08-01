@@ -4,14 +4,14 @@
         {
             "package": "doctrine/common",
             "version": "2.3.x-dev",
-            "source-reference": "b0ed9cc35ec28b7cd23d3d001e6fd4c7b5092926",
-            "commit-date": "1343082138"
+            "source-reference": "2fccdb2a4dee54e620793f3e4294ffd8f0eea68d",
+            "commit-date": "1343765518"
         },
         {
             "package": "ezsystems/ezpublish",
             "version": "dev-master",
-            "source-reference": "82961624a469ef58d6094a808afdd8d7c5454972",
-            "commit-date": "1343427942"
+            "source-reference": "ee4b8bf31612e9d01f3d63dea598ce07f58777de",
+            "commit-date": "1343811255"
         },
         {
             "package": "symfony/symfony",
@@ -22,8 +22,8 @@
         {
             "package": "symfony/symfony",
             "version": "dev-master",
-            "source-reference": "21d4973f7987fc637532960155c9f0e7d5758c15",
-            "commit-date": "1343388006"
+            "source-reference": "b1618d210cb7e27036edcea9c163a94167e7df59",
+            "commit-date": "1343747192"
         },
         {
             "package": "twig/extensions",
@@ -40,8 +40,8 @@
         {
             "package": "twig/twig",
             "version": "dev-master",
-            "source-reference": "657de7bdeb680815e0df95f63da9f81e1533d2ea",
-            "commit-date": "1342953178"
+            "source-reference": "51c866f415bbee670cd9ba13591307bce8dabdca",
+            "commit-date": "1343464333"
         },
         {
             "package": "zetacomponents/archive",
