@@ -1,4 +1,6 @@
 parameters:
+    # Using legacy storage engine for data compatibility with 4.x
+    ezpublish.api.storage_engine.default: legacy
     # Customize here your database connection
     # This is a DSN. Format is <dbType>://<user>:<password>@<host>/<dbName>
     ezpublish.api.storage_engine.legacy.dsn: mysql://root:root@localhost/ezdemo
@@ -12,6 +14,9 @@ parameters:
         Map\Host:
             ezpublish.dev: ezdemo_site
             admin.ezpublish.dev: ezdemo_site_admin
+
+    # Uncomment the following line to deactivate view cache
+    #ezpublish.controller.content.view.options: {viewCache: false}
 
     ezpublish_legacy.view.default_layout: eZDemoBundle::pagelayout.html.twig
     ezpublish_legacy.view.content_block_name: content
