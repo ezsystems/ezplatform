@@ -14,3 +14,4 @@
 /web/share
 /web/var
 composer.phar
+composer.lock
