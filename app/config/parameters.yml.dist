@@ -7,13 +7,17 @@ parameters:
 
     # Siteaccess matching, this is dummy configuration for tests
     ezpublish.siteaccess.default: ezdemo_site
-    ezpublish.siteaccess.config:
+    ezpublish.siteaccess.match_config:
         Map\URI:
             ezdemo_site: ezdemo_site
             ezdemo_site_admin: ezdemo_site_admin
         Map\Host:
             ezpublish.dev: ezdemo_site
             admin.ezpublish.dev: ezdemo_site_admin
+
+    # Bypass UrlAliasRouter to use the admin interface since everything needs to run via the legacy kernel
+    ezpublish.siteaccess.config.ezdemo_site_admin:
+        useUrlAliasRouter: false
 
     # Uncomment the following line to deactivate view cache
     #ezpublish.controller.content.view.options: {viewCache: false}
