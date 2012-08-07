@@ -1,0 +1,74 @@
+// Scaffolding
+// Basic and global styles for generating a grid system, structural layout, and page templates
+// -------------------------------------------------------------------------------------------
+
+
+// STRUCTURAL LAYOUT
+// -----------------
+
+body {
+  margin: 0;
+  font-family: @baseFontFamily;
+  font-size: @baseFontSize;
+  line-height: @baseLineHeight;
+  color: @textColor;
+  background-color: @white;
+}
+
+
+// LINKS
+// -----
+
+a {
+  color: @linkColor;
+  text-decoration: none;
+  .transition(color linear 0.2s)
+}
+a:hover {
+  color: @linkColorHover;
+  text-decoration: underline;
+}
+
+a.teaser-link,
+.content-view-line .attribute-header a {
+    color: @linkColor;
+    .transition(color linear 0.2s);
+    h2, h3, h4, h5 {
+        color: @linkColor;
+        .transition(color linear 0.2s);
+    }
+    &:hover,
+    &:focus {
+        text-decoration: none;
+        color: @orange;
+        h2, h3, h4, h5 {
+            color: @orange;
+        }
+    }
+}
+
+.highlighted {
+    a.teaser-link {
+        color: @white;
+        h2, h3, h4, h5 {
+            color: @white;
+        }
+        &:hover,
+        &:focus {
+            text-decoration: none;
+            color: @orange;
+            h2, h3, h4, h5 {
+                color: @orange;
+            }
+        }
+    }
+}
+
+.attribute-byline.with-comments a.comments {
+    color: @gray;
+    text-decoration: none;
+    &:hover,
+    &:focus {
+        color: @linkColorHover;
+    }
+}

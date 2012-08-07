@@ -1,0 +1,151 @@
+
+.full-gallery, .embed-gallery, .block-gallery {
+    .gallery-navigator {
+        white-space:nowrap;
+        position:relative;
+        top:0;
+        left:0;
+        z-index:10;
+        overflow:hidden;
+        padding-top:5px;
+
+
+        .cursor {
+            position:absolute;
+            top:0;
+            z-index:11;
+            width:33px;
+            display:inline-block;
+            display:none;
+        }
+
+        .navig {
+            display:inline-block;
+            width:20px;
+            height:37px;
+            position:absolute;
+            top:31px;
+            z-index:11;
+        }
+
+        .next {
+            right:0px;
+            .sprite(transparent, -55px, -22px);
+        }
+
+        .prev {
+            left:0px;
+            .sprite(transparent, -35px, -22px);
+        }
+
+
+        .images {
+            margin:0;
+            position:relative;
+            top:0;
+            left:0;
+            white-space:nowrap;
+            z-index:1;
+            font-size:10px;
+
+            li {
+                display:inline-block;
+
+                &:before {
+                    display:none;
+                }
+            }
+
+            figure {
+                position:relative;
+                margin:0;
+
+
+            }
+
+            figcaption {
+                display:none;
+            }
+        }
+
+    }
+
+    .gallery-viewer {
+
+        padding-bottom:5px;
+        border-bottom:1px solid @grayLighter;
+
+        .counter {
+            display:block;
+            float:right;
+            color: @grayLow;
+            font-weight:normal;
+            font-size:60%;
+        }
+
+        figure {
+            margin:0;
+            padding:0;
+        
+            img {
+                display:block;
+                max-height:100%;
+                width:auto;
+            }
+
+        }
+
+        figcaption {
+            margin:0;
+            color:@grayLow;
+
+            p:last-of-type {
+                margin-bottom:0;
+            }
+        }
+        
+        h2 {
+            border-bottom:1px solid @grayLighter;
+            line-height:28px;
+            margin:15px 0;
+
+            a {
+                color: @grayDark;
+            }
+        }
+
+    }
+}
+
+
+.block-gallery {
+
+    figure {
+        position:relative;
+    }
+
+    .gallery-viewer {
+        figcaption {
+            position:absolute;
+            top:0;
+            color:#fff;
+            background: rgba(0, 0, 0, 0.3);
+            width:100%;
+            padding:10px 0;
+
+            h3 {
+                color:#fff;
+                font-size:130%;
+            }
+
+            a, .counter {
+                color: #fff;
+            }
+
+            > * {
+                padding:0 10px;
+            }
+        }
+    }
+}
+
