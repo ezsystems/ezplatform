@@ -9,3 +9,20 @@ web_profiler:
     toolbar: true
     position: bottom
     intercept_redirects: false
+
+# Requirements for less parser
+# Mac OS X:
+# Install Node.js
+# $ sudo port install node
+# Install npm
+# $ sudo port install npm
+# Install less via npm, but globally
+# $ sudo npm install -g less
+assetic:
+    debug: %kernel.debug%
+    use_controller: false
+    filters:
+        less:
+            node: /opt/local/bin/node
+            node_paths: [/opt/local/lib/node_modules]
+

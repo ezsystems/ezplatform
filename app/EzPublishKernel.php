@@ -13,6 +13,7 @@ use Symfony\Component\HttpKernel\Kernel;
 use EzSystems\DemoBundle\EzSystemsDemoBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\TwigBundle\TwigBundle;
+use Symfony\Bundle\AsseticBundle\AsseticBundle;
 use Symfony\Bundle\WebProfilerBundle\WebProfilerBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
 
@@ -42,6 +43,7 @@ class EzPublishKernel extends Kernel
         $bundles = array(
             new FrameworkBundle(),
             new TwigBundle(),
+            new AsseticBundle(),
             new EzPublishCoreBundle(),
             new EzPublishLegacyBundle(),
             new EzSystemsDemoBundle(),

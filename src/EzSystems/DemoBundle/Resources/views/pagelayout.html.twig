@@ -48,7 +48,11 @@
             head.appendChild(printNode);
         })();
     </script>
-    <link rel="stylesheet" type="text/css" href="{{ asset( "bundles/ezdemo/css/all.css" ) }}"/>
+    {% stylesheets filter='less' output='bundles/ezdemo/css/all.css'
+        '@eZDemoBundle/Resources/public/less/bootstrap.less'
+    %}
+        <link rel="stylesheet" type="text/css" href="{{ asset_url }}"/>
+    {% endstylesheets %}
 
     <link rel="stylesheet" type="text/css" href="/extension/ezdemo/design/ezdemo/stylesheets/print.css" media="print"/>
 
