@@ -20,7 +20,7 @@ web_profiler:
 # $ sudo npm install -g less
 assetic:
     debug: %kernel.debug%
-    use_controller: false
+    use_controller: true
     filters:
         less:
             node: /opt/local/bin/node
