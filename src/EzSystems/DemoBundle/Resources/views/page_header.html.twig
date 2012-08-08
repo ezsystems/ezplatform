@@ -1,0 +1,18 @@
+<header>
+    <div class="container">
+        <div class="navbar extra-navi">
+            <div class="nav-collapse row">
+
+            </div>
+        </div>
+        <div class="row">
+            {% block logo %}
+                {% include 'eZDemoBundle::page_header_logo.html.twig' %}
+            {% endblock %}
+
+            {% block searchbox %}
+                {% include 'eZDemoBundle::page_header_searchbox.html.twig' %}
+            {% endblock %}
+        </div>
+    </div>
+</header>

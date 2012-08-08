@@ -1,10 +1,7 @@
 <!DOCTYPE html>
-<!--[if lt IE 9 ]>
-<html class="unsupported-ie ie" lang=""><![endif]-->
-<!--[if IE 9 ]>
-<html class="ie ie9" lang=""><![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!-->
-<html lang=""><!--<![endif]-->
+<!--[if lt IE 9 ]><html class="unsupported-ie ie" lang=""><![endif]-->
+<!--[if IE 9 ]><html class="ie ie9" lang=""><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html lang=""><!--<![endif]-->
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <style type="text/css">
@@ -61,17 +58,10 @@
 
 </head>
 <body>
-<div id="page" class=" section_id_1 subtree_level_0_node_id_2">
-    <header>
-        <div class="container">
-            <div class="row">
-                <div class="span8">
-                    <a href="/" title="eZ Publish Demo Design" class="logo"><img
-                            src="/extension/ezdemo/design/ezdemo/images/logo-ez.png" alt="eZ Publish Demo Design"/></a>
-                </div>
-            </div>
-        </div>
-    </header>
+<div id="page" class="">
+    {% block header %}
+        {% include 'eZDemoBundle::page_header.html.twig' %}
+    {% endblock %}
 
     <div class="navbar main-navi">
         <div class="navbar-inner">

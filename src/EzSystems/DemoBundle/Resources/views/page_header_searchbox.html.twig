@@ -1,0 +1,8 @@
+{# TODO: keep feature with disabled search button while in edit mode as well as set browse mode #}
+<form class="span4 form-search" method="get" action="{{ path( 'eZSearch' ) }}" id="site-wide-search">
+    <label class="pull-right">
+        <span class="hidden">{{ 'Search' }}</span>
+
+            <input class="search-query span3" type="search" name="SearchText" id="site-wide-search-field" placeholder="{{ 'Search text' }}" />
+    </label>
+</form>
