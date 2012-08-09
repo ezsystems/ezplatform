@@ -43,7 +43,3 @@ eZSetupLegacy:
     defaults:
         _controller: eZDemoBundle:Setup:info
 
-eZSearch:
-    pattern: /search
-    defaults:
-        _controller: eZDemoBundle:Demo:search

@@ -47,6 +47,7 @@
     </script>
     {% stylesheets filter='less' output='bundles/ezdemo/css/all.css'
         '@eZDemoBundle/Resources/public/less/bootstrap.less'
+        '@eZDemoBundle/Resources/public/css/responsive.css'
     %}
         <link rel="stylesheet" type="text/css" href="{{ asset_url }}"/>
     {% endstylesheets %}
@@ -60,7 +61,8 @@
 <body>
 <div id="page" class="">
     {% block header %}
-        {% include 'eZDemoBundle::page_header.html.twig' %}
+        {{ contentId }}
+        {% include 'eZDemoBundle::page_header.html.twig' with { 'contentId': contentId } %}
     {% endblock %}
 
     <div class="navbar main-navi">

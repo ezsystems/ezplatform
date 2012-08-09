@@ -1,8 +1,12 @@
 <header>
+    {{ contentId }}
     <div class="container">
         <div class="navbar extra-navi">
             <div class="nav-collapse row">
 
+                {% block userlinks %}
+                    {% include 'eZDemoBundle::page_header_links.html.twig' %}
+                {% endblock %}
             </div>
         </div>
         <div class="row">

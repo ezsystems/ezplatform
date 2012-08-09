@@ -1,0 +1,41 @@
+<ul class="nav">
+    <li id="tagcloud"><a href="/content/view/tagcloud/" title="{% trans %}Tag cloud{% endtrans %}">{% trans %}Tag cloud{% endtrans %}</a></li>
+    <li id="sitemap"><a href="/content/view/sitemap/{{ contentId }}" title="{% trans %}Site map{% endtrans %}">{% trans %}Site map{% endtrans %}</a></li>
+{# TODO: add logic for basket link visibility #}
+{% if false %}
+    <li id="shoppingbasket"><a href="/shop/basket/" title="{% trans %}Shopping basket{% endtrans %}">{% trans %}Shopping basket{% endtrans %}</a></li>
+{% endif %}
+{# TODO: add logic for currently logged in user, related to the session implementation #}
+{% if false %}
+    <li id="myprofile"><a href="/user/edit/" title="{% trans %}My profile{% endtrans %}">{% trans %}My profile{% endtrans %}</a></li>
+    <li id="logout"><a href="/user/logout" title="{% trans %}Logout{% endtrans %}">{% trans %}Logout{% endtrans %} ( {$current_user.contentobject.name|wash} )</a></li>
+{% else %}
+    {# TODO: add check if user registration is enabled #}
+    {% if true %}
+    <li id="registeruser"><a href="/user/register" title="{% trans %}Register{% endtrans %}">{% trans %}Register{% endtrans %}</a></li>
+    {% endif %}
+    <li id="login" class="transition-showed">
+        <a href="#login" title="show login form" class="show-login-form">{% trans %}Login{% endtrans %}</a>
+        <a href="#" title="hide login form" class="hide-login-form">{% trans %}Login{% endtrans %}</a>
+        <form class="login-form span3" action="/user/login" method="post">
+            <fieldset>
+                <label>
+                    <span class="hidden">{% trans %}Username{% endtrans %}</span>
+                    <input type="text" name="Login" id="login-username" placeholder="Username">
+                </label>
+                <label>
+                    <span class="hidden">{% trans %}Password{% endtrans %}</span>
+                    <input type="password" name="Password" id="login-password" placeholder="Password">
+                </label>
+                <div class="clearfix">
+                    <a href="/user/forgotpassword" class="forgot-password">{% trans %}Forgot your password?{% endtrans %}</a>
+                    <button class="btn btn-warning pull-right" type="submit">
+                        {% trans %}Login{% endtrans %}
+                    </button>
+                </div>
+            </fieldset>
+            <input type="hidden" name="RedirectURI" value="" />
+        </form>
+    </li>
+{% endif %}
+</ul>
