@@ -3,68 +3,23 @@
 <!--[if IE 9 ]><html class="ie ie9" lang=""><![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--><html lang=""><!--<![endif]-->
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <style type="text/css">
-        .limitdisplay-user {
-            display: none;
-        }
+    {# TODO: this probably won't be needed anymore as we will relay on the HTTP cache #}
+    {% include 'eZDemoBundle::page_head_displaystyles.html.twig' with { 'user': user } %}
 
-        .limitdisplay-user-10 {
-            display: inline;
-        }
-
-        .limitdisplay-user-block-10 {
-            display: block;
-        }</style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - </title>
-    <meta name="author" content="eZ Systems"/>
-    <meta name="copyright" content="eZ Systems"/>
-    <meta name="description" content="Content Management System"/>
-    <meta name="keywords" content="cms, publish, e-commerce, content management, development framework"/>
-    <meta name="MSSmartTagsPreventParsing" content="TRUE"/>
-    <meta name="generator" content="eZ Publish"/>
 
-    <link rel="Home" href="/" title=" front page"/>
-    <link rel="Index" href="/"/>
-    <link rel="Top" href="/" title="{{ title }}"/>
-    <link rel="Search" href="/content/advancedsearch" title="Search "/>
-    <link rel="Shortcut icon" href="/design/standard/images/favicon.ico" type="image/x-icon"/>
-    <link rel="Copyright" href="/ezinfo/copyright"/>
-    <link rel="Author" href="/ezinfo/about"/>
-    <link rel="Alternate" type="application/rss+xml" title="RSS" href="/rss/feed/my_feed"/>
-
-    <script type="text/javascript">
-        (function () {
-            var head = document.getElementsByTagName('head')[0];
-            var printNode = document.createElement('link');
-            printNode.rel = 'Alternate';
-            printNode.href = "/layout/set/print/content/view/sitemap/2" + document.location.search;
-            printNode.media = 'print';
-            printNode.title = "Printable version";
-            head.appendChild(printNode);
-        })();
-    </script>
-    {% stylesheets filter='less' output='bundles/ezdemo/css/all.css'
-        '@eZDemoBundle/Resources/public/less/bootstrap.less'
-        '@eZDemoBundle/Resources/public/css/responsive.css'
-    %}
-        <link rel="stylesheet" type="text/css" href="{{ asset_url }}"/>
-    {% endstylesheets %}
-
-    <link rel="stylesheet" type="text/css" href="/extension/ezdemo/design/ezdemo/stylesheets/print.css" media="print"/>
-
-    <script type="text/javascript" src="/var/ezdemo_site/cache/public/javascript/d91b7b697f5c6c310dbd854fa2cf448e.js"
-            charset="utf-8"></script>
-
+    {% include 'eZDemoBundle::page_head.html.twig' %}
+    {% include 'eZDemoBundle::page_head_style.html.twig' %}
+    {% include 'eZDemoBundle::page_head_script.html.twig' %}
 </head>
 <body>
+<!-- Complete page area: START -->
 <div id="page" class="">
+    <!-- Header area: START -->
     {% block header %}
-        {{ contentId }}
-        {% include 'eZDemoBundle::page_header.html.twig' with { 'contentId': contentId } %}
+        {% include 'eZDemoBundle::page_header.html.twig' with { 'content': content } %}
     {% endblock %}
-
+    <!-- Header area: END -->
     <div class="navbar main-navi">
         <div class="navbar-inner">
             <div class="container">
@@ -84,31 +39,37 @@
             {% endblock %}
             </div>
         </div>
+        {# TODO: implement logic to control path visibility #}
+        <!-- Path area: START -->
+        {% if pageData.showPath %}
+            {% block path %}
+                {% include 'eZDemoBundle::page_toppath.html.twig' %}
+            {% endblock %}
+        {% endif %}
+        <!-- Path area: END -->
     </div>
     <div class="container">
         <div class="row">
-            <div class="span12 main-content">
-                <div class="content-view-sitemap">
+            <!-- Main area: START -->
+            <div class="span{% set innerColumnSize = innerColumnSize|default( 12 ) %} main-content">
                 {% block content %}{% endblock %}
-                </div>
             </div>
+            <!-- Main area: END -->
         </div>
     </div>
-    <footer>
-        <div class="claim-wrapper">
-            <div class="container">
-            {% block footer %}
-                <div class="nav-collapse">
-                    Powered by <a href="http://ez.no/ezpublish"
-                                  title="eZ Publish&#8482; CMS Open Source Web Content Management">eZ Publish&#8482; CMS
-                    Open Source Web Content Management</a>.
-                </div>
-            {% endblock %}
-            </div>
-        </div>
-    </footer>
-
+    <!-- Footer area: START -->
+    {% block footer %}
+        {% include 'eZDemoBundle::page_footer.html.twig' %}
+    {% endblock %}
+    <!-- Footer area: END -->
 </div>
+<!-- Complete page area: END -->
+
+<!-- Footer script area: START -->
+{% block footer_script %}
+    {% include 'eZDemoBundle::page_footer_script.html.twig' %}
+{% endblock %}
+<!-- Footer script area: END -->
 
 </body>
 </html>

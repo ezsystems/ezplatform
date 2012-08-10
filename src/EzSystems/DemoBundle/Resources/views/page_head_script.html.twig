@@ -1,0 +1,5 @@
+{# TODO:  handle loading JavaScript files from the INI configuration as well as ezjscore #}
+
+{% javascripts '@eZDemoBundle/Resources/public/js/*' output='bundles/ezdemo/js/all.js' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
