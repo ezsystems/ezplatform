@@ -21,24 +21,11 @@
     {% endblock %}
     <!-- Header area: END -->
     <div class="navbar main-navi">
-        <div class="navbar-inner">
-            <div class="container">
-            {% block navbar %}
-
-                <a class="btn btn-navbar" data-action="toggleclass" data-class="nav-collapse"
-                   data-target=".main-navi .nav-collapse">Navigation</a>
-
-                <div class="nav-collapse">
-                    <ul class="nav">
-                        {% set contentId = contentId|default( 102 ) %}
-                        <li id="node_id_60" class="firstli active current"><a href="{{ path( 'eZEditorial', {'contentId': contentId} ) }}">Editorial Interface</a>
-                        </li>
-                    </ul>
-                </div>
-
-            {% endblock %}
-            </div>
-        </div>
+        <!-- Top menu area: START -->
+        {% block topMenu %}
+            {% render "eZDemoBundle:Demo:topMenu" with {'locationId': 2} %}
+        {% endblock %}
+        <!-- Top menu area: END -->
         {# TODO: implement logic to control path visibility #}
         <!-- Path area: START -->
         {% if pageData.showPath %}
@@ -66,7 +53,7 @@
 <!-- Complete page area: END -->
 
 <!-- Footer script area: START -->
-{% block footer_script %}
+{% block footerScript %}
     {% include 'eZDemoBundle::page_footer_script.html.twig' %}
 {% endblock %}
 <!-- Footer script area: END -->

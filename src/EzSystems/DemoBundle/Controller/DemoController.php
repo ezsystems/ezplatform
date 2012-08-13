@@ -10,6 +10,9 @@
 namespace EzSystems\DemoBundle\Controller;
 
 use eZ\Bundle\EzPublishCoreBundle\Controller;
+use eZ\Publish\API\Repository\Values\Content\Query;
+use eZ\Publish\API\Repository\Values\Content\Query\Criterion;
+use eZ\Publish\API\Repository\Values\Content\Query\SortClause;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use \DateTime;
@@ -85,7 +88,6 @@ class DemoController extends Controller
         return $this->render( "eZDemoBundle::hello_world.html.twig", array(), $response );
     }
 
-
     public function editorialAction( $contentId )
     {
         return $this->render(
@@ -94,5 +96,34 @@ class DemoController extends Controller
                  "content" => $this->getRepository()->getContentService()->loadContent( $contentId )
             )
         );
+    }
+
+    public function topMenuAction( $locationId )
+    {
+        $location = $this->getRepository()->getLocationService()->loadLocation( $locationId );
+        $childList = $this->getRepository()->getLocationService()->loadLocationChildren( $location );
+
+        return $this->render( "eZDemoBundle::page_topmenu.html.twig",
+                              array(
+                                   "locations" => $childList
+                              ) );
+    }
+
+    public function latestContentAction( $pathString, $contentTypeIdentifier, $limit )
+    {
+        $contentType = $this->getRepository()->getContentTypeService()->loadContentTypeByIdentifier( $contentTypeIdentifier );
+
+        $query = new Query( array( 'criterion' => new Criterion\LogicalAnd( array( new Criterion\Subtree( $pathString ),
+                                                                                   new Criterion\ContentTypeId( $contentType->id ) ) ),
+                                   'sortClauses' => array( new SortClause\DatePublished( Query::SORT_DESC ) ) ) );
+        $query->limit = $limit;
+
+
+        $searchResult = $this->getRepository()->getSearchService()->findContent( $query );
+
+        return $this->render( "eZDemoBundle:content:footer_latest_content.html.twig",
+                              array(
+                                   "latestContent" => $searchResult
+                              ) );
     }
 }
