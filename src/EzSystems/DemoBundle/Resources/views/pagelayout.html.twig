@@ -46,7 +46,7 @@
     </div>
     <!-- Footer area: START -->
     {% block footer %}
-        {% include 'eZDemoBundle::page_footer.html.twig' %}
+        {% render "eZDemoBundle:Demo:footer" with {'contentTypeIdentifier': 'feedback_form'} %}
     {% endblock %}
     <!-- Footer area: END -->
 </div>

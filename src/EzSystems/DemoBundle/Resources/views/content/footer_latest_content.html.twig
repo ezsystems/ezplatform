@@ -1,6 +1,0 @@
-<h3>{% trans %}Latest News{% endtrans %}</h3>
-<ul>
-    {% for content in latestContent.searchHits %}
-        <li><a href="">{{ content.valueObject.contentInfo.name|escape }}</a></li>
-    {% endfor %}
-</ul>

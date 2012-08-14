@@ -121,9 +121,28 @@ class DemoController extends Controller
 
         $searchResult = $this->getRepository()->getSearchService()->findContent( $query );
 
-        return $this->render( "eZDemoBundle:content:footer_latest_content.html.twig",
+        return $this->render( "eZDemoBundle:footer:latest_content.html.twig",
                               array(
                                    "latestContent" => $searchResult
+                              ) );
+    }
+
+    public function footerAction( $contentTypeIdentifier )
+    {
+        $contentType = $this->getRepository()->getContentTypeService()->loadContentTypeByIdentifier( $contentTypeIdentifier );
+
+        $query = new Query( array( 'criterion' => new Criterion\LogicalAnd( array( new Criterion\Subtree( '/1/2/' ),
+                                                                                   new Criterion\ContentTypeId( $contentType->id ) ) ),
+                                   'sortClauses' => array( new SortClause\DatePublished( Query::SORT_DESC ) ) ) );
+        $query->limit = 1;
+
+        $searchResult = $this->getRepository()->getSearchService()->findContent( $query );
+
+        $content = isset($searchResult->searchHits[0]) ? $searchResult->searchHits[0]->valueObject  : null;
+
+        return $this->render( "eZDemoBundle::page_footer.html.twig",
+                              array(
+                                   "content" => $content
                               ) );
     }
 }

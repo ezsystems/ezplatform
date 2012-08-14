@@ -9,7 +9,8 @@
                     {% if location.contentInfo.contentType.identifer == 'link' %}
                         <li id=""><a href="#">{{ location.contentInfo.name|escape }}</a></li>
                     {% else %}
-                        <li id=""><a href="{{ location.urlAlias }}">{{ location.contentInfo.name|escape }}</a></li>
+                        {# Temporary use system URL #}
+                        <li id=""><a href="/content/location/{{ location.id }}">{{ location.contentInfo.name|escape }}</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>

@@ -9,13 +9,13 @@
     <div class="container">
         <div class="row">
             <div class="span4">
-&nbsp;
+                {% include "eZDemoBundle:footer:address.html.twig" with {'content': content} %}
             </div>
             <div class="span4 nav-collapse">
                 {% render "eZDemoBundle:Demo:latestContent" with {'pathString': '/1/2/', 'contentTypeIdentifier': 'article', 'limit': '7'} %}
             </div>
             <div class="span4 nav-collapse">
-&nbsp;
+                {% include "eZDemoBundle:footer:feedback_form.html.twig" with {'content': content} %}
             </div>
         </div>
     </div>
