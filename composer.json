@@ -13,7 +13,7 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "git@github.com:ezsystems/ezp-next"
+            "url": "https://github.com/ezsystems/ezp-next.git"
     }
     ],
     "require": {
