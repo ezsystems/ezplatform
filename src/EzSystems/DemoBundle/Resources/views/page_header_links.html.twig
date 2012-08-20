@@ -1,6 +1,6 @@
 <ul class="nav">
-    <li id="tagcloud"><a href="/content/view/tagcloud/" title="{% trans %}Tag cloud{% endtrans %}">{% trans %}Tag cloud{% endtrans %}</a></li>
-    <li id="sitemap"><a href="/content/view/sitemap/{{ contentId }}" title="{% trans %}Site map{% endtrans %}">{% trans %}Site map{% endtrans %}</a></li>
+    <li id="tagcloud"><a href="/content/view/tagcloud/{{ location.id }}" title="{% trans %}Tag cloud{% endtrans %}">{% trans %}Tag cloud{% endtrans %}</a></li>
+    <li id="sitemap"><a href="/content/view/sitemap/{{ location.id }}" title="{% trans %}Site map{% endtrans %}">{% trans %}Site map{% endtrans %}</a></li>
 {# TODO: add logic for basket link visibility #}
 {% if false %}
     <li id="shoppingbasket"><a href="/shop/basket/" title="{% trans %}Shopping basket{% endtrans %}">{% trans %}Shopping basket{% endtrans %}</a></li>
