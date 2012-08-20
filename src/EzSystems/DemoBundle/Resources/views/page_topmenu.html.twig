@@ -7,10 +7,10 @@
             <ul class="nav">
                 {% for location in locations %}
                     {% if location.contentInfo.contentType.identifer == 'link' %}
-                        <li id=""><a href="#">{{ location.contentInfo.name|escape }}</a></li>
+                        <li id=""><a href="#">{{ location.contentInfo.name }}</a></li>
                     {% else %}
                         {# Temporary use system URL #}
-                        <li id=""><a href="/content/location/{{ location.id }}">{{ location.contentInfo.name|escape }}</a></li>
+                        <li id=""><a href="{{ path( '_ezpublishLocation', {'locationId': location.id} ) }}">{{ location.contentInfo.name }}</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
