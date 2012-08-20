@@ -98,22 +98,41 @@ class DemoController extends Controller
         );
     }
 
+    /**
+     * Renders the top menu, with cache control
+     *
+     * @param int $locationId
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function topMenuAction( $locationId )
     {
+        $response = new Response;
+        $response->setMaxAge( 60 );
         $location = $this->getRepository()->getLocationService()->loadLocation( $locationId );
 
         return $this->render(
             "eZDemoBundle::page_topmenu.html.twig",
             array(
                 "locations" => $this->getRepository()->getLocationService()->loadLocationChildren( $location )
-            )
+            ),
+            $response
         );
     }
 
+    /**
+     * Renders the latest content for footer, with cache control
+     *
+     * @param string $pathString
+     * @param string $contentTypeIdentifier
+     * @param int $limit
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function latestContentAction( $pathString, $contentTypeIdentifier, $limit )
     {
-        $contentType = $this->getRepository()->getContentTypeService()->loadContentTypeByIdentifier( $contentTypeIdentifier );
+        $response = new Response;
+        $response->setMaxAge( 60 );
 
+        $contentType = $this->getRepository()->getContentTypeService()->loadContentTypeByIdentifier( $contentTypeIdentifier );
         $query = new Query(
             array(
                  'criterion' => new Criterion\LogicalAnd(
@@ -133,7 +152,8 @@ class DemoController extends Controller
             "eZDemoBundle:footer:latest_content.html.twig",
             array(
                 "latestContent" => $this->getRepository()->getSearchService()->findContent( $query )
-            )
+            ),
+            $response
         );
     }
 
