@@ -101,48 +101,69 @@ class DemoController extends Controller
     public function topMenuAction( $locationId )
     {
         $location = $this->getRepository()->getLocationService()->loadLocation( $locationId );
-        $childList = $this->getRepository()->getLocationService()->loadLocationChildren( $location );
 
-        return $this->render( "eZDemoBundle::page_topmenu.html.twig",
-                              array(
-                                   "locations" => $childList
-                              ) );
+        return $this->render(
+            "eZDemoBundle::page_topmenu.html.twig",
+            array(
+                "locations" => $this->getRepository()->getLocationService()->loadLocationChildren( $location )
+            )
+        );
     }
 
     public function latestContentAction( $pathString, $contentTypeIdentifier, $limit )
     {
         $contentType = $this->getRepository()->getContentTypeService()->loadContentTypeByIdentifier( $contentTypeIdentifier );
 
-        $query = new Query( array( 'criterion' => new Criterion\LogicalAnd( array( new Criterion\Subtree( $pathString ),
-                                                                                   new Criterion\ContentTypeId( $contentType->id ) ) ),
-                                   'sortClauses' => array( new SortClause\DatePublished( Query::SORT_DESC ) ) ) );
+        $query = new Query(
+            array(
+                 'criterion' => new Criterion\LogicalAnd(
+                     array(
+                          new Criterion\Subtree( $pathString ),
+                          new Criterion\ContentTypeId( $contentType->id )
+                     )
+                 ),
+                 'sortClauses' => array(
+                     new SortClause\DatePublished( Query::SORT_DESC )
+                 )
+            )
+        );
         $query->limit = $limit;
 
-
-        $searchResult = $this->getRepository()->getSearchService()->findContent( $query );
-
-        return $this->render( "eZDemoBundle:footer:latest_content.html.twig",
-                              array(
-                                   "latestContent" => $searchResult
-                              ) );
+        return $this->render(
+            "eZDemoBundle:footer:latest_content.html.twig",
+            array(
+                "latestContent" => $this->getRepository()->getSearchService()->findContent( $query )
+            )
+        );
     }
 
     public function footerAction( $contentTypeIdentifier )
     {
         $contentType = $this->getRepository()->getContentTypeService()->loadContentTypeByIdentifier( $contentTypeIdentifier );
 
-        $query = new Query( array( 'criterion' => new Criterion\LogicalAnd( array( new Criterion\Subtree( '/1/2/' ),
-                                                                                   new Criterion\ContentTypeId( $contentType->id ) ) ),
-                                   'sortClauses' => array( new SortClause\DatePublished( Query::SORT_DESC ) ) ) );
+        $query = new Query(
+            array(
+                 'criterion' => new Criterion\LogicalAnd(
+                     array(
+                          new Criterion\Subtree( '/1/2/' ),
+                          new Criterion\ContentTypeId( $contentType->id )
+                     )
+                 ),
+                 'sortClauses' => array(
+                     new SortClause\DatePublished( Query::SORT_DESC )
+                 )
+            )
+        );
         $query->limit = 1;
 
         $searchResult = $this->getRepository()->getSearchService()->findContent( $query );
+        $content = isset( $searchResult->searchHits[0] ) ? $searchResult->searchHits[0]->valueObject  : null;
 
-        $content = isset($searchResult->searchHits[0]) ? $searchResult->searchHits[0]->valueObject  : null;
-
-        return $this->render( "eZDemoBundle::page_footer.html.twig",
-                              array(
-                                   "content" => $content
-                              ) );
+        return $this->render(
+            "eZDemoBundle::page_footer.html.twig",
+            array(
+                "content" => $content
+            )
+        );
     }
 }
