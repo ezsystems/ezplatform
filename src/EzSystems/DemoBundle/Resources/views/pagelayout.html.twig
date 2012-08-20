@@ -17,13 +17,13 @@
 <div id="page" class="">
     <!-- Header area: START -->
     {% block header %}
-        {% include 'eZDemoBundle::page_header.html.twig' with { 'content': content } %}
+        {% include 'eZDemoBundle::page_header.html.twig' with {'content': content} %}
     {% endblock %}
     <!-- Header area: END -->
     <div class="navbar main-navi">
         <!-- Top menu area: START -->
         {% block topMenu %}
-            {% render "eZDemoBundle:Demo:topMenu" with {'locationId': 2} %}
+            {% render "eZDemoBundle:Demo:topMenu" with {'locationId': 2}, {'standalone': true} %}
         {% endblock %}
         <!-- Top menu area: END -->
         {# TODO: implement logic to control path visibility #}
@@ -46,7 +46,7 @@
     </div>
     <!-- Footer area: START -->
     {% block footer %}
-        {% render "eZDemoBundle:Demo:footer" with {'contentTypeIdentifier': 'feedback_form'} %}
+        {% render "eZDemoBundle:Demo:footer" with {'contentTypeIdentifier': 'feedback_form'}, {'standalone': true} %}
     {% endblock %}
     <!-- Footer area: END -->
 </div>
