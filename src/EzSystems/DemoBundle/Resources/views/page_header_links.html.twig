@@ -1,23 +1,23 @@
 <ul class="nav">
-    <li id="tagcloud"><a href="/content/view/tagcloud/{{ location.id }}" title="{{ 'Tag cloud'|trans }}">{{ 'Tag cloud'|trans }}</a></li>
-    <li id="sitemap"><a href="/content/view/sitemap/{{ location.id }}" title="{{ 'Site map'|trans }}">{{ 'Site map'|trans }}</a></li>
+    <li id="tagcloud"><a href="{{ path( 'ez_legacy', {'module_uri': '/content/view/tagcloud/' ~ location.id} ) }}" title="{{ 'Tag cloud'|trans }}">{{ 'Tag cloud'|trans }}</a></li>
+    <li id="sitemap"><a href="{{ path( 'ez_legacy', {'module_uri': '/content/view/sitemap/' ~ location.id} ) }}" title="{{ 'Site map'|trans }}">{{ 'Site map'|trans }}</a></li>
 {# TODO: add logic for basket link visibility #}
 {% if false %}
-    <li id="shoppingbasket"><a href="/shop/basket/" title="{{ 'Shopping basket'|trans }}">{{ 'Shopping basket'|trans }}</a></li>
+    <li id="shoppingbasket"><a href="{{ path( 'ez_legacy', {'module_uri': '/shop/basket/'} ) }}" title="{{ 'Shopping basket'|trans }}">{{ 'Shopping basket'|trans }}</a></li>
 {% endif %}
 {# TODO: add logic for currently logged in user, related to the session implementation #}
 {% if false %}
-    <li id="myprofile"><a href="/user/edit/" title="{{ 'My profile'|trans }}">{{ 'My profile'|trans }}</a></li>
-    <li id="logout"><a href="/user/logout" title="{{ 'Logout'|trans }}">{{ 'Logout'|trans }} ( {$current_user.contentobject.name|wash} )</a></li>
+    <li id="myprofile"><a href="{{ path( 'ez_legacy', {'module_uri': '/user/edit/'} ) }}" title="{{ 'My profile'|trans }}">{{ 'My profile'|trans }}</a></li>
+    <li id="logout"><a href="{{ path( 'ez_legacy', {'module_uri': '/user/logout'} ) }}" title="{{ 'Logout'|trans }}">{{ 'Logout'|trans }} ( {$current_user.contentobject.name|wash} )</a></li>
 {% else %}
     {# TODO: add check if user registration is enabled #}
     {% if true %}
-    <li id="registeruser"><a href="/user/register" title="{{ 'Register'|trans }}">{{ 'Register'|trans }}</a></li>
+    <li id="registeruser"><a href="{{ path( 'ez_legacy', {'module_uri': '/user/register'} ) }}" title="{{ 'Register'|trans }}">{{ 'Register'|trans }}</a></li>
     {% endif %}
     <li id="login" class="transition-showed">
         <a href="#login" title="show login form" class="show-login-form">{{ 'Login'|trans }}</a>
         <a href="#" title="hide login form" class="hide-login-form">{{ 'Login'|trans }}</a>
-        <form class="login-form span3" action="/user/login" method="post">
+        <form class="login-form span3" action="{{ path( 'ez_legacy', {'module_uri': '/user/login'} ) }}" method="post">
             <fieldset>
                 <label>
                     <span class="hidden">{{ 'Username'|trans }}</span>
@@ -28,7 +28,7 @@
                     <input type="password" name="Password" id="login-password" placeholder="Password">
                 </label>
                 <div class="clearfix">
-                    <a href="/user/forgotpassword" class="forgot-password">{{ 'Forgot your password?'|trans }}</a>
+                    <a href="{{ path( 'ez_legacy', {'module_uri': '/user/forgotpassword'} ) }}" class="forgot-password">{{ 'Forgot your password?'|trans }}</a>
                     <button class="btn btn-warning pull-right" type="submit">
                         {{ 'Login'|trans }}
                     </button>
