@@ -19,10 +19,5 @@ web_profiler:
 # Install less via npm, but globally
 # $ sudo npm install -g less
 assetic:
-    debug: %kernel.debug%
     use_controller: true
-    filters:
-        less:
-            node: /opt/local/bin/node
-            node_paths: [/opt/local/lib/node_modules]
 
