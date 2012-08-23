@@ -159,6 +159,9 @@ class DemoController extends Controller
 
     public function footerAction( $contentTypeIdentifier )
     {
+        $response = new Response;
+        $response->setPublic();
+        $response->setMaxAge( 60 );
         $contentType = $this->getRepository()->getContentTypeService()->loadContentTypeByIdentifier( $contentTypeIdentifier );
 
         $query = new Query(
@@ -183,7 +186,8 @@ class DemoController extends Controller
             "eZDemoBundle::page_footer.html.twig",
             array(
                 "content" => $content
-            )
+            ),
+            $response
         );
     }
 }
