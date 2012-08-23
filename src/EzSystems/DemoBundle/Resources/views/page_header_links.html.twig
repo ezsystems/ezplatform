@@ -1,6 +1,6 @@
 <ul class="nav">
     <li id="tagcloud"><a href="{{ path( 'ez_legacy', {'module_uri': '/content/view/tagcloud/' ~ location.id} ) }}" title="{{ 'Tag cloud'|trans }}">{{ 'Tag cloud'|trans }}</a></li>
-    <li id="sitemap"><a href="{{ path( 'ez_legacy', {'module_uri': '/content/view/sitemap/' ~ location.id} ) }}" title="{{ 'Site map'|trans }}">{{ 'Site map'|trans }}</a></li>
+    <li id="sitemap"><a href="{{ path( 'ez_legacy', {'module_uri': '/content/view/sitemap/' ~ location.id} ) }}" title="{{ 'Site map'|trans }}">{{ 'Site map'|trans }}</a></li>
 {# TODO: add logic for basket link visibility #}
 {% if false %}
     <li id="shoppingbasket"><a href="{{ path( 'ez_legacy', {'module_uri': '/shop/basket/'} ) }}" title="{{ 'Shopping basket'|trans }}">{{ 'Shopping basket'|trans }}</a></li>
