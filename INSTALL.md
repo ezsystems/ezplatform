@@ -92,24 +92,22 @@ RemotePackagesIndexURL=http://packages.ez.no/ezpublish/4.7/4.7.0
         RewriteEngine On
         RewriteRule ^/api/ /index_rest.php [L]
         RewriteRule content/treemenu/? /index_treemenu.php [L]
-        
-        # If not using cluster:
-        RewriteRule ^/var/storage/.* - [L]
-        RewriteRule ^/var/[^/]+/storage/.* - [L]
-        # If using cluster, uncomment the following and comment the previous ones
+   
+        # If using cluster, uncomment the following two lines:
         #RewriteRule ^/var/([^/]+/)?storage/images(-versioned)?/.* /index_cluster.php [L]
         #RewriteRule ^/var/([^/]+/)?cache/(texttoimage|public)/.* /index_cluster.php [L]
-
-        RewriteRule ^/var/cache/texttoimage/.* - [L]
-        RewriteRule ^/var/[^/]+/cache/(texttoimage|public)/.* - [L]
-        RewriteRule ^/design/[^/]+/(stylesheets|images|javascript)/.* - [L]
+        
+        RewriteRule ^/var/([^/]+/)?storage/.* - [L]
+        RewriteRule ^/var/([^/]+/)?cache/(texttoimage|public)/.* - [L]
+        RewriteRule ^/design/([^/]+/)?(stylesheets|images|javascript)/.* - [L]
         RewriteRule ^/share/icons/.* - [L]
         RewriteRule ^/extension/[^/]+/design/[^/]+/(lib|stylesheets|images|javascripts?)/.* - [L]
         RewriteRule ^/packages/styles/.+/(stylesheets|images|javascript)/[^/]+/.* - [L]
         RewriteRule ^/packages/styles/.+/thumbnail/.* - [L]
+        RewriteRule ^/var/storage/packages/.* - [L]
         RewriteRule ^/favicon\.ico - [L]
         RewriteRule ^/robots\.txt - [L]
-
+   
         # Following rule is needed to correctly display assets from bundles
         RewriteRule ^/bundles/ - [L]
         RewriteRule .* /index.php
