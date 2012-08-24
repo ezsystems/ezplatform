@@ -91,8 +91,7 @@ RemotePackagesIndexURL=http://packages.ez.no/ezpublish/4.7/4.7.0
 
         RewriteEngine On
         RewriteRule ^/api/ /index_rest.php [L]
-        RewriteRule content/treemenu/? /index_treemenu.php [L]
-   
+
         # If using cluster, uncomment the following two lines:
         #RewriteRule ^/var/([^/]+/)?storage/images(-versioned)?/.* /index_cluster.php [L]
         #RewriteRule ^/var/([^/]+/)?cache/(texttoimage|public)/.* /index_cluster.php [L]
