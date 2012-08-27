@@ -13,11 +13,13 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "git@github.com:ezsystems/ezp-next"
+            "url": "https://github.com/ezsystems/ezp-next.git"
     }
     ],
     "require": {
-        "symfony/symfony": "dev-master",
+        "php": ">=5.3.3",
+        "symfony/symfony": "2.1.*",
+        "symfony/assetic-bundle": "dev-master",
         "twig/extensions": "dev-master",
         "ezsystems/ezpublish": "dev-master",
         "zetacomponents/archive": "dev-master",

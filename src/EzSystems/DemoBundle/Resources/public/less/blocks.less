@@ -1,0 +1,100 @@
+.item-list {
+    .block-content {
+        padding: 10px 20px;
+    }
+}
+
+.block-type-mainstory {
+    position: relative;
+    margin: 20px 0;
+    .clearfix();
+    &.full-size {
+        a {
+            .overlay {
+                position: absolute;
+                bottom: 15px;
+                left: 0;
+                font-weight: 300;
+                .attribute-author {
+                    color: @white;
+                    font-size: 18px;
+                    display: block;
+                    margin: 0 10px;
+                }
+                h2 {
+                    display: block;
+                    margin: 0 10px;
+                    color: @white;
+                    line-height: 1.2;
+                }
+            }
+            &:hover,
+            &:focus {
+                text-decoration: none;
+                .overlay {
+                    .attribute-author,
+                    h2 {
+                        text-decoration: none;
+                        color: @orange;
+                    }
+                }
+            }
+        }
+    }
+    &.picture-left {
+        a {
+            display: block;
+            .clearfix();
+            padding: 15px;
+            #gradient > .vertical(@blueDarker, @blueDarkest);
+            .attribute-image {
+                display: block;
+                width: 40%;
+                float: left;
+                margin-right: 20px;
+            }
+            .attribute-header h2 {
+                line-height: 1.2;
+                margin-bottom: 5px;
+                color: @white;
+            }
+            .attribute-short {
+                color: @white;
+            }
+            &:hover,
+            &:focus {
+                text-decoration: none;
+                .attribute-header h2,
+                .attribute-short {
+                    text-decoration: none;
+                    color: @orange;
+                }
+            }
+        }
+    }
+}
+
+.block-type-content-grid {
+    article {
+        display: block;
+        margin-bottom: 30px;
+        a.teaser-link {
+            display: block;
+            padding-bottom: 8px;
+        }
+        h3 {
+            font-weight: 300;
+        }
+    }
+    .attribute-short {
+        font-weight: 300;
+    }
+}
+
+.content-view-aside {
+    .block-type-tagcloud {
+        .block-content {
+            padding: 10px 20px;
+        }
+    }
+}

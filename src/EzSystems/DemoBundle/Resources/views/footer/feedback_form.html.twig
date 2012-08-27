@@ -1,0 +1,34 @@
+<h3>{{ 'Get in touch'|trans }}</h3>
+
+<form method="post" action="{{ path( 'ez_legacy', {'module_uri': '/content/action'} ) }}" class="contact-form">
+    <fieldset>
+        <label>
+            <span class="hidden">{{ 'Sender name'|trans }}</span>
+            <label for="ContentObjectAttribute_ezstring_data_text_{{ content.contentType.fieldDefinitions[2].id }}"></label>
+            <input class="box " type="text" size="70" name="ContentObjectAttribute_ezstring_data_text_{{ content.contentType.fieldDefinitions[2].id }}" value="" placeholder="{{ 'Sender name'|trans }}">
+        </label>
+        <label>
+            <span class="hidden">{{ 'Email'|trans }}</span>
+            <label for="ContentObjectAttribute_ezstring_data_text_{{ content.contentType.fieldDefinitions[5].id }}"></label>
+            <input class="box " type="text" size="70" name="ContentObjectAttribute_ezstring_data_text_{{ content.contentType.fieldDefinitions[5].id }}" value="" placeholder="{{ 'Email'|trans }}">
+        </label>
+        <label>
+            <span class="hidden">{{ 'Subject'|trans }}</span>
+            <label for="ContentObjectAttribute_ezstring_data_text_{{ content.contentType.fieldDefinitions[4].id }}"></label>
+            <input class="box " type="text" size="70" name="ContentObjectAttribute_ezstring_data_text_{{ content.contentType.fieldDefinitions[4].id }}" value="" placeholder="{{ 'Subject'|trans }}">
+        </label>
+        <label>
+            <span class="hidden">{{ 'Message'|trans }}</span>
+            <label for="ContentObjectAttribute_ezstring_data_text_{{ content.contentType.fieldDefinitions[4].id }}"></label>
+            <textarea class="box " type="text" cols="70" name="ContentObjectAttribute_ezstring_data_text_{{ content.contentType.fieldDefinitions[4].id }}" rows="10" placeholder="{{ 'Message'|trans }}"></textarea>
+        </label>
+        <div class="actions">
+            <button type="submit" class="btn btn-mini btn-warning pull-right" name="ActionCollectInformation">{{ 'Send'|trans }}</button>
+            <input type="hidden" name="ContentNodeID" value="{{ content.mainLocationId }}" />
+            <input type="hidden" name="ContentObjectID" value="{{ content.contentInfo.mainLocationId }}" />
+            <input type="hidden" name="ViewMode" value="full" />
+        </div>
+    </fieldset>
+</form>
+
+

@@ -1,0 +1,7 @@
+{# TODO: add loading external CSS files defined in the INI settings #}
+{% stylesheets filter='less' output='bundles/ezdemo/css/all.css'
+    '@eZDemoBundle/Resources/public/less/bootstrap.less'
+    '@eZDemoBundle/Resources/public/css/responsive.css'
+%}
+    <link rel="stylesheet" type="text/css" href="{{ asset_url }}"/>
+{% endstylesheets %}

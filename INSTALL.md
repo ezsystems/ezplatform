@@ -16,10 +16,12 @@
 2. **Development ONLY** Move (or symlink) your eZ Publish legacy root to `app/ezpublish_legacy`
     1. Start from / upgrade to [latest](http://share.ez.no/downloads/downloads) eZ Publish CP installation.
 
-    2. Upgrade it to the latest git version by first cloning eZ Publish:
+    2. Upgrade it to the latest git version by first cloning eZ Publish 4.x git:
        ```bash
        git clone git@github.com:ezsystems/ezpublish.git
        ```
+       OR just [download the ZIP file](https://github.com/ezsystems/ezpublish/zipball/master)).
+
        No upgrade script is needed, only replace all source files (except your own extensions, templates and settings).
 
     3. Symlink or move the legacy installation to app/ezpublish_legacy
@@ -75,25 +77,22 @@
 
         RewriteEngine On
         RewriteRule ^/api/ /index_rest.php [L]
-        RewriteRule content/treemenu/? /index_treemenu.php [L]
-        
-        # If not using cluster:
-        RewriteRule ^/var/storage/.* - [L]
-        RewriteRule ^/var/[^/]+/storage/.* - [L]
-        # If using cluster, uncomment the following and comment the previous ones
+
+        # If using cluster, uncomment the following two lines:
         #RewriteRule ^/var/([^/]+/)?storage/images(-versioned)?/.* /index_cluster.php [L]
         #RewriteRule ^/var/([^/]+/)?cache/(texttoimage|public)/.* /index_cluster.php [L]
-
-        RewriteRule ^/var/cache/texttoimage/.* - [L]
-        RewriteRule ^/var/[^/]+/cache/(texttoimage|public)/.* - [L]
-        RewriteRule ^/design/[^/]+/(stylesheets|images|javascript)/.* - [L]
+        
+        RewriteRule ^/var/([^/]+/)?storage/.* - [L]
+        RewriteRule ^/var/([^/]+/)?cache/(texttoimage|public)/.* - [L]
+        RewriteRule ^/design/([^/]+/)?(stylesheets|images|javascript)/.* - [L]
         RewriteRule ^/share/icons/.* - [L]
         RewriteRule ^/extension/[^/]+/design/[^/]+/(lib|stylesheets|images|javascripts?)/.* - [L]
         RewriteRule ^/packages/styles/.+/(stylesheets|images|javascript)/[^/]+/.* - [L]
         RewriteRule ^/packages/styles/.+/thumbnail/.* - [L]
+        RewriteRule ^/var/storage/packages/.* - [L]
         RewriteRule ^/favicon\.ico - [L]
         RewriteRule ^/robots\.txt - [L]
-
+   
         # Following rule is needed to correctly display assets from bundles
         RewriteRule ^/bundles/ - [L]
         RewriteRule .* /index.php
@@ -115,7 +114,7 @@ You might get the following error:
 > Remote repository URL: http://packages.ez.no/ezpublish/5.0/5.0.0alpha1/
 
 This is most likely because you didn't start from an eZ Publish CP package, but directly from GitHub sources,
-or because you launched installation wizard *after* having upgraded to `ezpublish5-integration` branch.
+or because you launched installation wizard *after* having upgraded to `master` branch.
 
 To fix it, tweak your `settings/package.ini` by overriding it:
 

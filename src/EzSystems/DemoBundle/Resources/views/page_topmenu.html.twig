@@ -1,0 +1,19 @@
+<div class="navbar-inner">
+    <div class="container">
+
+        <a class="btn btn-navbar" data-action="toggleclass" data-class="nav-collapse" data-target=".main-navi .nav-collapse">{% trans %}Navigation{% endtrans %}</a>
+
+        <div class="nav-collapse">
+            <ul class="nav">
+                {% for location in locations %}
+                    {% if location.contentInfo.contentType.identifer == 'link' %}
+                        <li id=""><a href="#">{{ location.contentInfo.name }}</a></li>
+                    {% else %}
+                        <li id=""><a href="{{ path( 'ez_urlalias', {'location': location} ) }}">{{ location.contentInfo.name }}</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+
+    </div>
+</div>

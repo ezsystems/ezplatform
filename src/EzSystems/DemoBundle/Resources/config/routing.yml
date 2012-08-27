@@ -42,3 +42,4 @@ eZSetupLegacy:
     pattern: /ezdemo_site_admin/setup/info
     defaults:
         _controller: eZDemoBundle:Setup:info
+

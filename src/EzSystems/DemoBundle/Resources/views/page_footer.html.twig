@@ -1,0 +1,22 @@
+<footer>
+    <div class="claim-wrapper">
+        <div class="container">
+            <div class="nav-collapse">
+                Powered by <a href="http://ez.no/ezpublish" title="eZ Publish&#8482; CMS Open Source Web Content Management">eZ Publish&#8482; CMS Open Source Web Content Management</a>.
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="span4">
+                {% include "eZDemoBundle:footer:address.html.twig" with {'content': content} %}
+            </div>
+            <div class="span4 nav-collapse">
+                {% render "eZDemoBundle:Demo:latestContent" with {'pathString': '/1/2/', 'contentTypeIdentifier': 'article', 'limit': '7'}, {'standalone': true} %}
+            </div>
+            <div class="span4 nav-collapse">
+                {% include "eZDemoBundle:footer:feedback_form.html.twig" with {'content': content} %}
+            </div>
+        </div>
+    </div>
+</footer>

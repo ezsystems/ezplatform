@@ -32,6 +32,8 @@ else
 $loader->registerNamespaces(
     array(
         'Symfony'          => __DIR__ . '/../vendor/symfony/symfony/src',
+        'Symfony\\Bundle\\AsseticBundle' => __DIR__ . '/../vendor/symfony/assetic-bundle/',
+        'Assetic' => __DIR__ . '/../vendor/kriswallsmith/assetic/src/',
         'eZ'      => array(
             __DIR__ . '/../vendor/ezsystems/ezpublish',
         ),
