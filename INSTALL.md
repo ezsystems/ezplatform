@@ -7,12 +7,12 @@
 
 ## INSTALL
 1. Get eZ Publish 5
-    * A: If this is a a eZ Publish build (a tar.gz file), then you just need to extract it.
-    * B: **Development ONLY** You can get eZ Publish using GIT with the following command:
+    A. If this is a a eZ Publish 5 build (a tar.gz file), then you just need to extract it.
+    B. **Development ONLY** You can get eZ Publish using GIT with the following command:
        ```bash
        git clone git@github.com:ezsystems/ezpublish5.git
        ```
-       
+
 2. **Development ONLY** Move (or symlink) your eZ Publish legacy root to `app/ezpublish_legacy`
     1. Start from / upgrade to [latest](http://share.ez.no/downloads/downloads) eZ Publish CP installation.
 
@@ -20,12 +20,12 @@
        ```bash
        git clone git@github.com:ezsystems/ezpublish.git
        ```
-       OR just [download the ZIP file](https://github.com/ezsystems/ezpublish/zipball/master)).
+
+       OR just [download the ZIP file](https://github.com/ezsystems/ezpublish/zipball/master).
 
        No upgrade script is needed, only replace all source files (except your own extensions, templates and settings).
 
     3. Symlink or move the legacy installation to app/ezpublish_legacy
-
        ```bash
        ln -s /path/to/ezpublish/legacy /path/to/ezpublish5/app/ezpublish_legacy
        ```
