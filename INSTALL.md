@@ -7,8 +7,9 @@
 
 ## INSTALL
 1. Get eZ Publish 5
-    A. If this is a a eZ Publish 5 build (a tar.gz file), then you just need to extract it.
-    B. **Development ONLY** You can get eZ Publish using GIT with the following command:
+    * A. If this is a a eZ Publish 5 build (a tar.gz file), then you just need to extract it.
+
+    * B. **Development ONLY** You can get eZ Publish using GIT with the following command:
        ```bash
        git clone git@github.com:ezsystems/ezpublish5.git
        ```
