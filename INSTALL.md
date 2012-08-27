@@ -5,46 +5,30 @@
 > 
 > If you still want to do this as `root`, then ensure that your webserver has at least write access in the `app/` directory.
 
-## eZ Publish 4 (aka *legacy*) part
-1. Start from an [eZ Publish CP 2012.5](http://share.ez.no/downloads/downloads/ez-publish-community-project-2012.5) or [higher](http://share.ez.no/downloads/downloads) installation.
-
-2. Upgrade it to the enhanced version 
-   (get the source from eZ Publish legacy's [**ezpublish5-integration** branch](https://github.com/ezsystems/ezpublish/tree/ezpublish5-integration), 
-   or just [download the ZIP file](https://github.com/ezsystems/ezpublish/zipball/ezpublish5-integration)). 
-   No upgrade script is needed, only replace all source files (except your own extensions, templates and settings).
-
-   > **Very important**: Be sure you have upgraded your **index.php** as well
-
-### Troubleshooting
-You might get the following error:
-> Retrieving remote site packages list failed. You may upload packages manually.
->
-> Remote repository URL: http://packages.ez.no/ezpublish/5.0/5.0.0alpha1/
-
-This is most likely because you didn't start from an eZ Publish CP package, but directly from GitHub sources,
-or because you launched installation wizard *after* having upgraded to `ezpublish5-integration` branch.
-
-To fix it, tweak your `settings/package.ini` by overriding it:
-
-```ini
-[RepositorySettings]
-RemotePackagesIndexURL=http://packages.ez.no/ezpublish/4.7/4.7.0
-```
-
-## eZ Publish 5 part
-1. Clone the repository
-
+## INSTALL
+1. Get eZ Publish 5
+    * A: If this is a a eZ Publish build (a tar.gz file), then you just need to extract it.
+    * B: **Development ONLY** You can get eZ Publish using GIT with the following command:
        ```bash
        git clone git@github.com:ezsystems/ezpublish5.git
        ```
        
-2. Move (or symlink) your eZ Publish legacy root to `app/ezpublish_legacy`
+2. **Development ONLY** Move (or symlink) your eZ Publish legacy root to `app/ezpublish_legacy`
+    1. Start from / upgrade to [latest](http://share.ez.no/downloads/downloads) eZ Publish CP installation.
+
+    2. Upgrade it to the latest git version by first cloning eZ Publish:
+       ```bash
+       git clone git@github.com:ezsystems/ezpublish.git
+       ```
+       No upgrade script is needed, only replace all source files (except your own extensions, templates and settings).
+
+    3. Symlink or move the legacy installation to app/ezpublish_legacy
 
        ```bash
        ln -s /path/to/ezpublish/legacy /path/to/ezpublish5/app/ezpublish_legacy
        ```
 
-3. Install the dependencies with [Composer](http://getcomposer.org).
+3. **Development ONLY** Install the dependencies with [Composer](http://getcomposer.org).
 
        If you don't have Composer yet, download it following the instructions on http://getcomposer.org/ or just run the following command:
        ```bash
@@ -122,3 +106,20 @@ RemotePackagesIndexURL=http://packages.ez.no/ezpublish/4.7/4.7.0
     ```
     The command above will run the built-in web server on localhost, on port 8000.
     You will have access to eZ Publish by going to `http://localhost:8000` from your browser.
+
+
+### Troubleshooting during Setup wizard
+You might get the following error:
+> Retrieving remote site packages list failed. You may upload packages manually.
+>
+> Remote repository URL: http://packages.ez.no/ezpublish/5.0/5.0.0alpha1/
+
+This is most likely because you didn't start from an eZ Publish CP package, but directly from GitHub sources,
+or because you launched installation wizard *after* having upgraded to `ezpublish5-integration` branch.
+
+To fix it, tweak your `settings/package.ini` by overriding it:
+
+```ini
+[RepositorySettings]
+RemotePackagesIndexURL=http://packages.ez.no/ezpublish/4.7/4.7.0
+```

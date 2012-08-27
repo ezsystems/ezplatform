@@ -26,13 +26,13 @@ The default template engine used by the system is **[Twig](http://twig.sensiolab
 **Twig** is a modern, powerful and easy to extend template engine.
 
 > As Symfony2 allows usage of multiple template engines, it is also possible to do so in eZ Publish 5, but all the
-> content oriented functionnalities are only available with Twig.
+> content oriented functionality are only available with Twig.
 
 ## Requirements
 **eZ Publish 5** meets the same requirements as [Symfony2](http://symfony.com/doc/master/reference/requirements.html), 
 plus the [regular eZ Publish 4 ones](http://doc.ez.no/eZ-Publish/Technical-manual/4.x/Installation/Normal-installation/Requirements-for-doing-a-normal-installation).
 
-Minimum PHP version is 5.3.3, but 5.4.x is highly recommended.
+Minimum PHP version is 5.3.3, but 5.4.x is recommended.
 
 ## Backwards compatibility
 eZ Publish 5 is **100% data compatible** with version 4 (the same database can be used).
@@ -48,9 +48,11 @@ It is possible to include templates from the *legacy kernel* (`*.tpl`) in new tw
 A fallback mechanism is provided so that your modules built on top of eZ Publish 4 (aka *Legacy kernel*)
 can still be used in the new architecture.
 
+## COPYRIGHT
+Copyright (C) 1999-2012 eZ Systems AS. All rights reserved.
 
 ## LICENCE
-eZ Systems AS & GPL v2.0
+http://www.gnu.org/licenses/gpl-2.0.txt GNU General Public License v2
 
 ## INSTALL AND GET STARTED
 For installation instructions, see [INSTALL.md](https://github.com/ezsystems/ezpublish5/blob/master/INSTALL.md).
