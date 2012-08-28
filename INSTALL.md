@@ -15,7 +15,7 @@
 ### A: From Archvie (tar.gz)
 1. Extract the archive
 
-   **For upgrading from EZ Publish Enterprise Edition 4.7**: Upgrade documentation can be found on http://doc.ez.no/eZ-Publish/Upgrading/Upgrading-to-5.0/Upgrading-from-4.7-to-5.0
+   **For upgrading from eZ Publish Enterprise Edition 4.7**: Upgrade documentation can be found on http://doc.ez.no/eZ-Publish/Upgrading/Upgrading-to-5.0/Upgrading-from-4.7-to-5.0
 
 ### B: From GIT **Development ONLY**
 1. You can get eZ Publish using GIT with the following command:
