@@ -5,8 +5,8 @@
 > If you still want to do this as `root`, then ensure that your webserver has at least write access in the `app/` directory.
 
 ## Glossary
-* <eZ Publish 5 root>: The file system path where eZ Publish 5 is installed in, like "/home/myuser/www/" or "/var/sites/ezpublish/"
-* <eZ Publish Legacy root>:
+* /eZ/Publish/5/root/: The file system path where eZ Publish 5 is installed in, like "/home/myuser/www/" or "/var/sites/ezpublish/"
+* /eZ/Publish/5/legacy/root/:
 	* "Legacy" aka "Legacy Stack" refers to the eZ Publish 4.x installation which is bundled with eZ Publish 5 inside "app/ezpublish_legacy/"
 	* The Legacy root is thus the root eZ Publish 5 path + the sub path mentioned above, example:  "/var/sites/ezpublish/app/ezpublish_legacy/"
 
@@ -25,7 +25,7 @@
 
 2. Get eZ Publish Legacy
        ```bash
-       cd <eZ Publish root>/app
+       cd /eZ/Publish/5/root/app
        git clone git@github.com:ezsystems/ezpublish.git ezpublish_legacy
        ```
 
@@ -112,8 +112,8 @@
 ### Clean installation using Setup wizard
 1. Run Setup wizard:
 
-    There is currently a know issue in eZ Publish 5's Symfony based stack when it comes to Setup wizard, so you will need to execute it directly from the  <eZ Publish Legacy root> by exposing that as a internal wirtual host  as well.
-    This can be done in same way as described on doc.ez.no for Virtual host setups where "eZ Publish" path will be: <eZ Publish Legacy root>
+    There is currently a know issue in eZ Publish 5's Symfony based stack when it comes to Setup wizard, so you will need to execute it directly from the  /eZ/Publish/5/legacy/root/ by exposing that as a internal wirtual host  as well.
+    This can be done in same way as described on doc.ez.no for Virtual host setups where "eZ Publish" path will be: /eZ/Publish/5/legacy/root/
 
 ##### Troubleshooting during Setup wizard
 You might get the following error:
