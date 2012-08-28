@@ -1,68 +1,68 @@
 # Installation instructions
 
-> **Side note for Linux users**: Please avoid doing this installation as `root`, since your web server probably runs with another user 
-(`www-data` on Debian/Ubuntu, `apache` on Redhat/CentOS/Fedora).
+> **Side note for Linux users**: Please avoid doing this installation as `root`, since your web server probably runs with another user (`www-data` on Debian/Ubuntu, `apache` on Redhat/CentOS/Fedora).
 > 
 > If you still want to do this as `root`, then ensure that your webserver has at least write access in the `app/` directory.
 
-## INSTALL
-1. Get eZ Publish 5
-    * A. If this is a a eZ Publish 5 build (a tar.gz file), then you just need to extract it.
-    * B. **Development ONLY** You can get eZ Publish using GIT with the following command:
+## Glossary
+* <eZ Publish 5 root>: The file system path where eZ Publish 5 is installed in, like "/home/myuser/www/" or "/var/sites/ezpublish/"
+* <eZ Publish Legacy root>:
+	* "Legacy" aka "Legacy Stack" refers to the eZ Publish 4.x installation which is bundled with eZ Publish 5 inside "app/ezpublish_legacy/"
+	* The Legacy root is thus the root eZ Publish 5 path + the sub path mentioned above, example:  "/var/sites/ezpublish/app/ezpublish_legacy/"
+
+## Installation
+
+### A: From Archvie (tar.gz)
+1. Extract the archive
+
+   **For upgrading from EZ Publish Enterprise Edition 4.7**: Upgrade documentation can be found on http://doc.ez.no/eZ-Publish/Upgrading/Upgrading-to-5.0/Upgrading-from-4.7-to-5.0
+
+### B: From GIT **Development ONLY**
+1. You can get eZ Publish using GIT with the following command:
        ```bash
        git clone git@github.com:ezsystems/ezpublish5.git
        ```
 
-2. **Development ONLY** Move (or symlink) your eZ Publish legacy root to `app/ezpublish_legacy`
+2. Get eZ Publish Legacy
+       ```bash
+       cd <eZ Publish root>/app
+       git clone git@github.com:ezsystems/ezpublish.git ezpublish_legacy
+       ```
+
+3. *Optional* Upgrade eZ Publish Community Project installation
     1. Start from / upgrade to [latest](http://share.ez.no/downloads/downloads) eZ Publish CP installation.
 
-    2. Upgrade it to the latest git version by first cloning eZ Publish 4.x git:
-       ```bash
-       git clone git@github.com:ezsystems/ezpublish.git
-       ```
+    2. Follow normal eZ Publish upgrade procedures for upgrading the distribution files and moving over extensions.
 
-       OR just [download the ZIP file](https://github.com/ezsystems/ezpublish/zipball/master).
+4. Install the dependencies with [Composer](http://getcomposer.org).
 
-       No upgrade script is needed, only replace all source files (except your own extensions, templates and settings).
-
-    3. Symlink or move the legacy installation to app/ezpublish_legacy
-       ```bash
-       ln -s /path/to/ezpublish/legacy /path/to/ezpublish5/app/ezpublish_legacy
-       ```
-
-3. **Development ONLY** Install the dependencies with [Composer](http://getcomposer.org).
-
-       If you don't have Composer yet, download it following the instructions on http://getcomposer.org/ or just run the following command:
+       Download composer and install dependencies by running:
        ```bash
        cd /path/to/ezpublish5/
        curl -s http://getcomposer.org/installer | php
-       ```
-
-       Afer installing composer, install of all the project's dependencies by running:
-       ```bash
-       cd /path/to/ezpublish5/
        php composer.phar install
        ```
 
-5. Configure:
+## Setup files
+1. Configure:
     * Copy `app/config/parameters.yml.dist` to `app/config/parameters.yml`
     * Edit `app/config/parameters.yml` and configure
 
          * `ezpublish.api.storage_engine.legacy.dsn`: DSN to your database connection (only MySQL and PostgreSQL are supported at the moment)
          * `ezpublish.siteaccess.default`: Should be a **valid siteaccess** (preferably the same than `[SiteSettings].DefaultAccess` set in your `settings/override/site.ini.append.php`
 
-6. Dump your assets in your webroot:
+2. Dump your assets in your webroot:
 
     ```bash
     php app/console assets:install --symlink web
     php app/console ezpublish:legacy:assets_install
     ```
-    The first command will symlink all the assets from your bundles in the `web/` folder in a `bundles/` sub-folder.
+    The first command will symlink all the assets from your bundles in the `web/` folder, in a `bundles/` sub-folder.
 
     The second command will symlink assets from your eZ Publish legacy directory and add wrapper scripts around the legacy front controllers
     (basically `index_treemenu.php`, `index_rest.php` and `index_cluster.php`)
 
-7. *Optional* - Configure a VirtualHost:
+3. *Optional* - Configure a VirtualHost:
 
     ```apache
     <VirtualHost *:80>
@@ -98,7 +98,10 @@
         RewriteRule .* /index.php
     </VirtualHost>
     ```
-7. *Optional*, **Development ONLY** - Take advantage of PHP 5.4 build-in web server:
+
+## Run eZ Publish
+
+1. *Optional*, **Development ONLY** - Take advantage of PHP 5.4 build-in web server:
 
     ```bash
     php app/console server:run localhost:8000
@@ -106,17 +109,20 @@
     The command above will run the built-in web server on localhost, on port 8000.
     You will have access to eZ Publish by going to `http://localhost:8000` from your browser.
 
+### Clean installation using Setup wizard
+1. Run Setup wizard:
 
-### Troubleshooting during Setup wizard
+    There is currently a know issue in eZ Publish 5's Symfony based stack when it comes to Setup wizard, so you will need to execute it directly from the  <eZ Publish Legacy root> by exposing that as a internal wirtual host  as well.
+    This can be done in same way as described on doc.ez.no for Virtual host setups where "eZ Publish" path will be: <eZ Publish Legacy root>
+
+##### Troubleshooting during Setup wizard
 You might get the following error:
 > Retrieving remote site packages list failed. You may upload packages manually.
 >
-> Remote repository URL: http://packages.ez.no/ezpublish/5.0/5.0.0alpha1/
+> Remote repository URL: http://packages.ez.no/ezpublish/5.0/5.0.0[-alpha1]/
 
-This is most likely because you didn't start from an eZ Publish CP package, but directly from GitHub sources,
-or because you launched installation wizard *after* having upgraded to `master` branch.
-
-To fix it, tweak your `settings/package.ini` by overriding it:
+This should only happen when you install from GIT or use pre realease packages
+To fix it, tweak your `settings/package.ini` by overriding it with a valid version:
 
 ```ini
 [RepositorySettings]
