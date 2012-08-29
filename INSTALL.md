@@ -20,13 +20,13 @@
 ### B: From GIT **Development ONLY**
 1. You can get eZ Publish using GIT with the following command:
        ```bash
-       git clone git@github.com:ezsystems/ezpublish5.git
+       git clone https://github.com/ezsystems/ezpublish5.git
        ```
 
 2. Get eZ Publish Legacy
        ```bash
        cd /eZ/Publish/5/root/app
-       git clone git@github.com:ezsystems/ezpublish.git ezpublish_legacy
+       git clone https://github.com/ezsystems/ezpublish.git ezpublish_legacy
        ```
 
 3. *Optional* Upgrade eZ Publish Community Project installation
