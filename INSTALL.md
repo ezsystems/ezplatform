@@ -1,8 +1,21 @@
 # Installation instructions
 
-> **Side note for Linux users**: Please avoid doing this installation as `root`, since your web server probably runs with another user (`www-data` on Debian/Ubuntu, `apache` on Redhat/CentOS/Fedora).
-> 
-> If you still want to do this as `root`, then ensure that your webserver has at least write access in the `app/` directory.
+> **Side note for Linux users**:
+> One common issue is that the app/cache and app/logs directories must be writable both by the web server and the command line user.
+>  if your web server user is different from your command line user, you can run the following commands just once in your project to ensure that permissions will be setup properly. Change www-data to your web server user:
+> **1. Using ACL on a system that supports chmod +a**
+```
+ $ rm -rf app/cache/*
+ $ rm -rf app/logs/*
+ $ sudo chmod +a "www-data allow delete,write,append,file_inherit,directory_inherit" app/cache app/logs
+ $ sudo chmod +a "`whoami` allow delete,write,append,file_inherit,directory_inherit" app/cache app/logs
+```
+> **2. Using Acl on a system that does not support chmod +a**
+> Some systems don't support chmod +a, but do support another utility called setfacl. You may need to enable ACL support on your partition and install setfacl before using it (as is the case with Ubuntu), like so:
+```
+$ sudo setfacl -R -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs
+$ sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs
+```
 
 ## Glossary
 * /eZ/Publish/5/root/: The file system path where eZ Publish 5 is installed in, like "/home/myuser/www/" or "/var/sites/ezpublish/"
