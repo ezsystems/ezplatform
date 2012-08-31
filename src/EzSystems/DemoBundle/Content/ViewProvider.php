@@ -9,10 +9,10 @@
 
 namespace EzSystems\DemoBundle\Content;
 
-use eZ\Publish\MVC\View\ContentViewProvider,
+use eZ\Publish\Core\MVC\Symfony\View\ContentViewProvider,
     eZ\Publish\API\Repository\Values\Content\Location,
     eZ\Publish\API\Repository\Values\Content\ContentInfo,
-    eZ\Publish\MVC\View\ContentView;
+    eZ\Publish\Core\MVC\Symfony\View\ContentView;
 
 class ViewProvider implements ContentViewProvider
 {
@@ -21,7 +21,7 @@ class ViewProvider implements ContentViewProvider
      *
      * @param \eZ\Publish\API\Repository\Values\Content\ContentInfo $contentInfo
      * @param string $viewType
-     * @return \eZ\Publish\MVC\View\ContentView|void
+     * @return \eZ\Publish\Core\MVC\Symfony\View\ContentView|void
      */
     public function getViewForContent( ContentInfo $contentInfo, $viewType )
     {
@@ -41,7 +41,7 @@ class ViewProvider implements ContentViewProvider
      *
      * @param \eZ\Publish\API\Repository\Values\Content\Location $location
      * @param string $viewType
-     * @return \eZ\Publish\MVC\View\ContentView|void
+     * @return \eZ\Publish\Core\MVC\Symfony\View\ContentView|void
      */
     public function getViewForLocation( Location $location, $viewType )
     {

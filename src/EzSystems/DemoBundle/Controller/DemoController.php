@@ -107,6 +107,7 @@ class DemoController extends Controller
     public function topMenuAction( $locationId )
     {
         $response = new Response;
+        $response->setPublic();
         $response->setMaxAge( 60 );
         $location = $this->getRepository()->getLocationService()->loadLocation( $locationId );
 
@@ -130,6 +131,7 @@ class DemoController extends Controller
     public function latestContentAction( $pathString, $contentTypeIdentifier, $limit )
     {
         $response = new Response;
+        $response->setPublic();
         $response->setMaxAge( 60 );
 
         $contentType = $this->getRepository()->getContentTypeService()->loadContentTypeByIdentifier( $contentTypeIdentifier );

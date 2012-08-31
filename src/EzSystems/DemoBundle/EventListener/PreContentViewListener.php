@@ -9,7 +9,7 @@
 
 namespace EzSystems\DemoBundle\EventListener;
 
-use eZ\Publish\MVC\Event\PreContentViewEvent;
+use eZ\Publish\Core\MVC\Symfony\Event\PreContentViewEvent;
 
 class PreContentViewListener
 {
