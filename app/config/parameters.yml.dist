@@ -1,4 +1,8 @@
 parameters:
+    # The session name.
+    # Using "{siteaccess_hash}" in the session name will make the session relative to the siteaccess.
+    session_name: "eZSESSID{siteaccess_hash}"
+
     # Using legacy storage engine for data compatibility with 4.x
     ezpublish.api.storage_engine.default: legacy
     # Customize here your database connection
