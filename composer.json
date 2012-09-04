@@ -41,7 +41,7 @@
     },
     "autoload": {
         "psr-0": {
-            "eZ": "vendor/ezsystems/ezpublish/"
+            "": "src/"
         }
     },
     "minimum-stability": "dev",

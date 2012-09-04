@@ -1,75 +1,35 @@
 <?php
 /**
  * File containing the autoload configuration.
- *
- * ATTENTION: DO NOT MODIFY THIS FILE, IF YOU HAVE CUSTOM AUTOLOADERS TO
- * PLUG-IN, CREATE A 'config/autoload.php' FILE.
+ * It uses Composer autoloader and is greatly inspired by the Symfony standard distribution's.
  *
  * @copyright Copyright (C) 1999-2012 eZ Systems AS. All rights reserved.
  * @license http://www.gnu.org/licenses/gpl-2.0.txt GNU General Public License v2
  * @version //autogentag//
  */
 
-require_once __DIR__ . '/../vendor/symfony/symfony/src/Symfony/Component/ClassLoader/UniversalClassLoader.php';
+use Doctrine\Common\Annotations\AnnotationRegistry,
+    Symfony\Component\ClassLoader\ApcClassLoader;
 
-// SessionHandlerInterface is native as of PHP 5.4, but we need forward compatibility
-if ( version_compare( PHP_VERSION, '5.4', '<' ) )
-    require_once __DIR__ . '/../vendor/symfony/symfony/src/Symfony/Component/HttpFoundation/Resources/stubs/SessionHandlerInterface.php';
-
-use Symfony\Component\ClassLoader\UniversalClassLoader;
-use Symfony\Component\ClassLoader\ApcUniversalClassLoader;
-use Symfony\Component\ClassLoader\MapClassLoader;
-
-if ( extension_loaded( "APC" ) )
-{
-    require_once __DIR__ . '/../vendor/symfony/symfony/src/Symfony/Component/ClassLoader/ApcUniversalClassLoader.php';
-    $loader = new ApcUniversalClassLoader( "eZPublish" );
-}
-else
-{
-    $loader = new UniversalClassLoader();
-}
-$loader->registerNamespaces(
-    array(
-        'Symfony'          => __DIR__ . '/../vendor/symfony/symfony/src',
-        'Symfony\\Bundle\\AsseticBundle' => __DIR__ . '/../vendor/symfony/assetic-bundle/',
-        'Assetic' => __DIR__ . '/../vendor/kriswallsmith/assetic/src/',
-        'eZ'      => array(
-            __DIR__ . '/../vendor/ezsystems/ezpublish',
-        ),
-    )
-);
-$loader->registerPrefixes(
-    array(
-        'Twig_Extensions_' => __DIR__ . '/../vendor/twig/twig-extensions/lib',
-        'Twig_'            => __DIR__ . '/../vendor/twig/twig/lib',
-    )
-);
+$loader = require __DIR__.'/../vendor/autoload.php';
 
 // intl
 if ( !function_exists( 'intl_get_error_code' ) )
 {
-    require_once __DIR__ . '/../vendor/symfony/symfony/src/Symfony/Component/Locale/Resources/stubs/functions.php';
+    require_once __DIR__.'/../vendor/symfony/symfony/src/Symfony/Component/Locale/Resources/stubs/functions.php';
 
-    $loader->registerPrefixFallbacks( array( __DIR__ . '/../vendor/symfony/symfony/src/Symfony/Component/Locale/Resources/stubs' ) );
+    $loader->add( '', __DIR__.'/../vendor/symfony/symfony/src/Symfony/Component/Locale/Resources/stubs' );
 }
 
-if ( file_exists( __DIR__ . '/config/autoload.php' ) )
-    require_once __DIR__ . '/config/autoload.php';
+AnnotationRegistry::registerLoader( array( $loader, 'loadClass' ) );
 
-// "Project" bundles goes in src/ directory
-$loader->registerNamespaceFallbacks(
-    array(
-        __DIR__ . '/../src',
-    )
-);
-$loader->register();
-
-// Classmap based autoloading
-$classMap = include __DIR__ . '/../vendor/composer/autoload_classmap.php';
-if ( !empty( $classMap ) )
+// Use APC class loader if APC is loaded, to improve loading performance.
+// Change "ezpublish" prefix if needed, in order not to conflict with another application.
+if ( extension_loaded( "APC" ) )
 {
-    require_once __DIR__ . '/../vendor/symfony/symfony/src/Symfony/Component/ClassLoader/MapClassLoader.php';
-    $classMapLoader = new MapClassLoader( $classMap );
-    $classMapLoader->register();
+    require_once __DIR__ . '/../vendor/symfony/symfony/src/Symfony/Component/ClassLoader/ApcClassLoader.php';
+    $loader = new ApcClassLoader( 'ezpublish', $loader );
+    $loader->register( true );
 }
+
+return $loader;
