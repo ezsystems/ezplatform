@@ -7,15 +7,16 @@
  * @version //autogentag//
  */
 
-use eZ\Bundle\EzPublishCoreBundle\EzPublishCoreBundle;
-use eZ\Bundle\EzPublishLegacyBundle\EzPublishLegacyBundle;
-use Symfony\Component\HttpKernel\Kernel;
-use EzSystems\DemoBundle\EzSystemsDemoBundle;
-use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
-use Symfony\Bundle\TwigBundle\TwigBundle;
-use Symfony\Bundle\AsseticBundle\AsseticBundle;
-use Symfony\Bundle\WebProfilerBundle\WebProfilerBundle;
-use Symfony\Component\Config\Loader\LoaderInterface;
+use eZ\Bundle\EzPublishCoreBundle\EzPublishCoreBundle,
+    eZ\Bundle\EzPublishLegacyBundle\EzPublishLegacyBundle,
+    EzSystems\DemoBundle\EzSystemsDemoBundle,
+    Symfony\Component\HttpKernel\Kernel,
+    Symfony\Bundle\FrameworkBundle\FrameworkBundle,
+    Symfony\Bundle\TwigBundle\TwigBundle,
+    Symfony\Bundle\AsseticBundle\AsseticBundle,
+    Symfony\Bundle\WebProfilerBundle\WebProfilerBundle,
+    Symfony\Component\Config\Loader\LoaderInterface,
+    Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle;
 
 class EzPublishKernel extends Kernel
 {
@@ -44,6 +45,7 @@ class EzPublishKernel extends Kernel
             new FrameworkBundle(),
             new TwigBundle(),
             new AsseticBundle(),
+            new SensioGeneratorBundle(),
             new EzPublishCoreBundle(),
             new EzPublishLegacyBundle(),
             new EzSystemsDemoBundle(),

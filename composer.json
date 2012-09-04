@@ -37,7 +37,8 @@
         "zetacomponents/php-generator": "dev-master",
         "zetacomponents/signal-slot": "dev-master",
         "zetacomponents/system-information": "dev-master",
-        "zetacomponents/webdav": "1.1.0-rc1"
+        "zetacomponents/webdav": "1.1.0-rc1",
+        "sensio/generator-bundle": "2.1.*"
     },
     "autoload": {
         "psr-0": {
