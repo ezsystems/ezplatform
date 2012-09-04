@@ -182,7 +182,7 @@ class DemoController extends Controller
         $query->limit = 1;
 
         $searchResult = $this->getRepository()->getSearchService()->findContent( $query );
-        $content = isset( $searchResult->searchHits[0] ) ? $searchResult->searchHits[0]->valueObject  : null;
+        $content = isset( $searchResult->searchHits[0] ) ? $searchResult->searchHits[0]->valueObject : null;
 
         return $this->render(
             "eZDemoBundle::page_footer.html.twig",
