@@ -95,6 +95,13 @@ Base Twig code can be found in the [base template](https://github.com/ezsystems/
 >
 > Only *ezstring*, *eztext* and raw *ezxmltext* have been implemented to work in this way at the moment.
 
+### Rendering a location
+From a Twig template, it is possible to render a content with a sub-request:
+
+```jinja
+{% render "ez_content:viewLocation" with {"locationId": 123, "viewMode": "full"} %}
+```
+
 ### Legacy templates inclusion
 It is possible to include old templates (**.tpl*) into new ones:
 
