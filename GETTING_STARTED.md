@@ -10,7 +10,7 @@ in order to get the basics.
 > "Bundle" is the name for an extension in Symfony.
 
 A demo bundle, [EzDemoBundle](https://github.com/ezsystems/ezpublish5/tree/master/src/EzSystems/DemoBundle), is provided
-in the *src/* directory under the *EzSystems* namespace.
+in the *src/* directory under the *EzSystems* namespace and, among others, provides implementation for the demo design.
 This demo bundle already exposes [some routes](https://github.com/ezsystems/ezpublish5/blob/master/src/EzSystems/DemoBundle/Resources/config/routing.yml)
 allowing to make some tests and hacking.
 
@@ -27,8 +27,26 @@ The most interesting routes for a start are :
 > (you can access it from your eZ Publish 5 installation like you already did before).
 
 ## Guidelines and features available
+### Generating a bundle
+eZ Publish 5 comes with [SensioGeneratorBundle](http://symfony.com/doc/master/bundles/SensioGeneratorBundle/index.html).
+This bundle provides useful commands, including one to easily generate a new bundle from command line:
+
+```bash
+php app/console generate:bundle
+```
+
+Please note that `yml` is the preferred format for configuration.
+
+For more information, [check the documentation for this command](http://symfony.com/doc/master/bundles/SensioGeneratorBundle/index.html).
+
+> Note: By choosing *yes* to *generate the whole directory structure*, you will have a complete bundle, including the *DependencyInjection*
+> part and a directory for tests.
+>
+> Thus this is the recommended way of doing.
+
 ### Routing
-Any route that is not declared in eZ Publish 5 in an included `routing.yml` will automatically fallback to eZ Publish legacy (including admin interface).
+Any route that is not declared in eZ Publish 5 in an included `routing.yml` and that is not a valid *UrlAlias* will automatically fallback
+to eZ Publish legacy (including admin interface).
 
 This will allow your old modules still to work as before.
 
@@ -114,7 +132,5 @@ $myLegacySetting = $this->getLegacyKernel()->runCallback(
 ## Limitations / Known issues
 eZ Publish 5 development is still at a very early stage (*pre-alpha*) and as such there are still a lot of limitations and (un)known issues like:
 
-- Session is currently not shared between the new and the legacy kernel.
 - Field templates can't be overridden for now
-- No siteaccess matching in the new kernel
 - Still a lot of work to do ;-)
