@@ -1,13 +1,7 @@
 parameters:
-    ezdemo.content_view_provider.class: EzSystems\DemoBundle\Content\ViewProvider
     ezdemo.pre_content_view_listener.class: EzSystems\DemoBundle\EventListener\PreContentViewListener
 
 services:
-    ezdemo.content_view_provider:
-        class: %ezdemo.content_view_provider.class%
-        tags:
-            - {name: ezpublish.content_view_provider}
-
     ezdemo.pre_content_view_listener:
         class: %ezdemo.pre_content_view_listener.class%
         tags:
