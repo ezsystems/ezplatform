@@ -1,4 +1,5 @@
-<h3>{% trans %}Address{% endtrans %}</h3>
+{% if content is not null %}
+<h3>{{'Address'|trans}}</h3>
 <address>
     {{ ez_render_field(
            content,
@@ -9,3 +10,4 @@
        )
     }}
 </address>
+{% endif %}
