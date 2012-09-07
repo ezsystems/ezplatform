@@ -35,5 +35,7 @@ class eZDemoExtension extends Extension
 
         // Base services override
         $loader->load( 'services.yml' );
+        // Base fieldtypes override
+        $loader->load( 'fieldtypes.yml' );
     }
 }

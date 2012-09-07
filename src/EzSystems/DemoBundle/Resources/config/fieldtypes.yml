@@ -1,0 +1,185 @@
+parameters:
+    ezpublish.fieldtype.ezpage.zoneDefinition:
+        globalZoneLayout:
+            zoneTypeName: Global zone layout
+            zones:
+                main:
+                    name: Global zone
+            zoneThumbnail: globalzone_layout.gif
+            template: globalzonelayout.tpl
+            availableForClasses: [global_layout]
+        2zonesLayout1:
+            zoneTypeName: 2 zones (layout 1)
+            zones:
+                left:
+                    name: Left zone
+                right:
+                    name: Right zone
+            zoneThumbnail: 2zones_layout1.gif
+            template: 2zoneslayout1.tpl
+            availableForClasses: [frontpage]
+        2zonesLayout2:
+            zoneTypeName: 2 zones (layout 2)
+            zones:
+                left:
+                    name: Left zone
+                right:
+                    name: Right zone
+            zoneThumbnail: 2zones_layout2.gif
+            template: 2zoneslayout2.tpl
+            availableForClasses: [frontpage]
+        3zonesLayout1:
+            zoneTypeName: 3 zones (layout 1)
+            zones:
+                left:
+                    name: Left zone
+                right:
+                    name: Right zone
+                bottom:
+                    name: Bottom zone
+            zoneThumbnail: 3zones_layout1.gif
+            template: 3zoneslayout1.tpl
+            availableForClasses: [frontpage]
+        3zonesLayout2:
+            zoneTypeName: 3 zones (layout 2)
+            zones:
+                left:
+                    name: Left zone
+                right:
+                    name: Right zone
+                bottom:
+                    name: Bottom zone
+            zoneThumbnail: 3zones_layout2.gif
+            template: 3zoneslayout2.tpl
+            availableForClasses: [frontpage]
+        4zonesLayout1:
+            zoneTypeName: 4 zones (layout 1)
+            zones:
+                left:
+                    name: Left zone
+                right:
+                    name: Right zone
+                bottomleft:
+                    name: Bottom left zone
+                bottomright:
+                    name: Bottom right zone
+            zoneThumbnail: 4zones_layout1.gif
+            template: 4zoneslayout1.tpl
+            availableForClasses: [frontpage]
+    ezpublish.fieldtype.ezpage.blockDefinition:
+        campaign:
+            name: Campaign
+            numberOfValidItems: 5
+            numberOfArchivedItems: 5
+            manualAddingOfItems: enabled
+            views:
+                default:
+                    name: Default
+        mainStory:
+            name: Main story
+            numberOfValidItems: 1
+            numberOfArchivedItems: 5
+            manualAddingOfItems: enabled
+            views:
+                default:
+                    name: Default
+                highligted:
+                    name: Highligted
+        contentGrid:
+            name: Content Grid
+            numberOfValidItems: 8
+            numberOfArchivedItems: 8
+            nanualAddingOfItems: enabled
+            views:
+                default:
+                    name: Default
+                1column4rows:
+                    name: 1 column 4 rows
+                2columns2rows:
+                    name: 2 columns 2 rows
+                3columns1row:
+                    name: 3 columns 1 row
+                3columns2rows:
+                    name: 3 columns 2 rows
+                4columns1row:
+                    name: 4 columns 1 row
+                4columns2rows:
+                    name: 4 columns 2 rows
+        gallery:
+            name: Gallery
+            numberOfValidItems: 8
+            numberOfArchivedItems: 5
+            manualAddingOfItems: enabled
+            views:
+                default:
+                    Name: Default
+        banner:
+            name: Banner
+            numberOfValidItems: 1
+            numberOfArchivedItems: 5
+            manualAddingOfItems: disabled
+            views:
+                default:
+                    name: URL
+                code:
+                    name: Code
+        video:
+            name: Video
+            numberOfValidItems: 1
+            numberOfArchivedItems: 5
+            manualAddingOfItems: enabled
+            views:
+                default:
+                    name: Default
+        tagCloud:
+            name: Tag cloud
+            manualAddingOfItems: disabled
+            customAttributes:
+                subtreeNodeId:
+                    useBrowseMode: true
+            views:
+                default:
+                    name: Default
+        poll:
+            name: Poll
+            manualAddingOfItems: disabled
+            customAttributes:
+                pollNodeId:
+                    useBrowseMode: true
+            views:
+                default:
+                    name: Default
+        itemList:
+            name: Item list
+            numberOfValidItems: 12
+            numberOfArchivedItems: 5
+            manualAddingOfItems: enabled
+            views:
+                default:
+                    name: Default
+        feedReader:
+            Name: Feed reader
+            manualAddingOfItems: disabled
+            customAttributes:
+                source: {}
+                limit: {}
+                offset: {}
+            views:
+                default:
+                    name: Default
+        feedbackForm:
+            Name: Feedback Form
+            numberOfValidItems: 1
+            numberOfArchivedItems: 5
+            manualAddingOfItems: enabled
+            views:
+                default:
+                    name: Default
+        highlightedItem:
+            name: Highlighted Item
+            numberOfValidItems: 1
+            numberOfArchivedItems: 5
+            manualAddingOfItems: enabled
+            views:
+                default:
+                    name: Default
