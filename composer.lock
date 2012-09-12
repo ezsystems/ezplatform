@@ -46,7 +46,7 @@
         {
             "package": "symfony-cmf/routing",
             "version": "dev-master",
-            "source-reference": "c1592dff3dbed15878a39dc7b8f4ba16e31d322f",
+            "source-reference": "85f49287e94a38d3e93ecb74de83ec877da53147",
             "commit-date": "1347020679"
         },
         {
