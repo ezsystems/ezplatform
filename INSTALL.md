@@ -2,7 +2,7 @@
 
 > **Side note for Linux users**:
 > One common issue is that the app/cache and app/logs directories must be writable both by the web server and the command line user.
->  if your web server user is different from your command line user, you can run the following commands just once in your project to ensure that permissions will be setup properly. Change www-data to your web server user:
+> If your web server user is different from your command line user, you can run the following commands just once in your project to ensure that permissions will be set up properly. Change www-data to your web server user:
 > **1. Using ACL on a system that supports chmod +a**
 ```
  $ rm -rf app/cache/*
@@ -10,7 +10,7 @@
  $ sudo chmod +a "www-data allow delete,write,append,file_inherit,directory_inherit" app/cache app/logs
  $ sudo chmod +a "`whoami` allow delete,write,append,file_inherit,directory_inherit" app/cache app/logs
 ```
-> **2. Using Acl on a system that does not support chmod +a**
+> **2. Using ACL on a system that does not support chmod +a**
 > Some systems don't support chmod +a, but do support another utility called setfacl. You may need to enable ACL support on your partition and install setfacl before using it (as is the case with Ubuntu), like so:
 ```
 $ sudo setfacl -R -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs
@@ -18,14 +18,14 @@ $ sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs
 ```
 
 ## Glossary
-* /eZ/Publish/5/root/: The file system path where eZ Publish 5 is installed in, like "/home/myuser/www/" or "/var/sites/ezpublish/"
+* /eZ/Publish/5/root/: The filesystem path where eZ Publish 5 is installed in, like "/home/myuser/www/" or "/var/sites/ezpublish/"
 * /eZ/Publish/5/legacy/root/:
 	* "Legacy" aka "Legacy Stack" refers to the eZ Publish 4.x installation which is bundled with eZ Publish 5 inside "app/ezpublish_legacy/"
 	* The Legacy root is thus the root eZ Publish 5 path + the sub path mentioned above, example:  "/var/sites/ezpublish/app/ezpublish_legacy/"
 
 ## Installation
 
-### A: From Archvie (tar.gz)
+### A: From Archive (tar.gz)
 1. Extract the archive
 
    **For upgrading from eZ Publish Enterprise Edition 4.7**: Upgrade documentation can be found on http://doc.ez.no/eZ-Publish/Upgrading/Upgrading-to-5.0/Upgrading-from-4.7-to-5.0
@@ -56,7 +56,7 @@ $ sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs
        php composer.phar install
        ```
 
-## Setup files
+## Set up files
 1. Configure:
     * Copy `app/config/parameters.yml.dist` to `app/config/parameters.yml`
     * Edit `app/config/parameters.yml` and configure
@@ -114,7 +114,7 @@ $ sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs
 
 ## Run eZ Publish
 
-1. *Optional*, **Development ONLY** - Take advantage of PHP 5.4 build-in web server:
+1. *Optional*, **Development ONLY** - Take advantage of PHP 5.4 built-in web server:
 
     ```bash
     php app/console server:run localhost:8000
@@ -125,7 +125,7 @@ $ sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs
 ### Clean installation using Setup wizard
 1. Run Setup wizard:
 
-    There is currently a know issue in eZ Publish 5's Symfony based stack when it comes to Setup wizard, so you will need to execute it directly from the  /eZ/Publish/5/legacy/root/ by exposing that as a internal wirtual host  as well.
+    There is currently a known issue in eZ Publish 5's Symfony based stack when it comes to Setup wizard, so you will need to execute it directly from the /eZ/Publish/5/legacy/root/ by exposing that as a internal virtual host as well.
     This can be done in same way as described on doc.ez.no for Virtual host setups where "eZ Publish" path will be: /eZ/Publish/5/legacy/root/
 
 ##### Troubleshooting during Setup wizard

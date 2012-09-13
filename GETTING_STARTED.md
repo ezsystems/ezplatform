@@ -7,7 +7,7 @@ The best way to kickstart is to read the [Symfony2 documentation](http://symfony
 in order to get the basics.
 
 ## Demo bundle
-> "Bundle" is the name for an extension in Symfony.
+> "Bundle" is the name used for an extension in Symfony.
 
 A demo bundle, [EzDemoBundle](https://github.com/ezsystems/ezpublish5/tree/master/src/EzSystems/DemoBundle), is provided
 in the *src/* directory under the *EzSystems* namespace and, among others, provides implementation for the demo design.
@@ -16,7 +16,7 @@ allowing to make some tests and hacking.
 
 The most interesting routes for a start are :
 
-- **eZTest**: Loads a content via the public API and displays it. This content is expected to be a very simple folder with
+- **eZTest**: Loads a content via the Public API and displays it. This content is expected to be a very simple folder with
   *name* and *description* Field Definitions (formerly *content class attributes*).
 - **eZTestWithLegacy**: Includes a legacy template in a new one.
 
@@ -48,10 +48,10 @@ For more information, [check the documentation for this command](http://symfony.
 Any route that is not declared in eZ Publish 5 in an included `routing.yml` and that is not a valid *UrlAlias* will automatically fallback
 to eZ Publish legacy (including admin interface).
 
-This will allow your old modules still to work as before.
+This allows your old modules to work as before out-of-the-box.
 
 ### Developing a controller
-When developing a controller (formerly module), make sure to extend `eZ\Bundle\EzPublishCoreBundle\Controller` instead of the default Symfony one.
+When developing a controller (formerly *module*), make sure to extend `eZ\Bundle\EzPublishCoreBundle\Controller` instead of the default Symfony one.
 This will allow you to take advantage of additional eZ-specific features (like easier Public API access).
 
 Inside an eZ Controller, you can access to the public API by getting the Repository through the `$this->getRepository()` method.
@@ -113,7 +113,7 @@ It is possible to include old templates (**.tpl*) into new ones:
 
 > **Note**
 >
-> Content/Location objects from public API are converted into eZContentObject/eZContentObjectTreeNode objects (re-fetched)
+> Content/Location objects from the Public API are converted into eZContentObject/eZContentObjectTreeNode objects (re-fetched)
 
 ### Run legacy PHP code
 The new kernel still relies on eZ Publish legacy kernel and runs it when needed inside an isolated PHP closure, making it sandboxed.
@@ -137,7 +137,7 @@ $myLegacySetting = $this->getLegacyKernel()->runCallback(
 > `runCallback()` can also take a 2nd argument. Setting to `true` avoids to re-initialize the legacy kernel environment after your call.
 
 ## Limitations / Known issues
-eZ Publish 5 development is still at a very early stage (*pre-alpha*) and as such there are still a lot of limitations and (un)known issues like:
+eZ Publish 5 development is still at an early stage (*pre-beta*) and as such there are still a lot of limitations and (un)known issues like:
 
 - Field templates can't be overridden for now
 - Still a lot of work to do ;-)
