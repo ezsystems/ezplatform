@@ -1,17 +1,17 @@
 {
-    "hash": "c33a12692a1dc4811d755b08cc4171a2",
+    "hash": "1fc4e444eb2eaf9ad204a790f8c6f258",
     "packages": [
         {
             "package": "doctrine/common",
             "version": "2.3.x-dev",
-            "source-reference": "605b1b8b5a7bc8daf9111fb35483e5708e30de35",
-            "commit-date": "1346249247"
+            "source-reference": "24c761bf0f8337064b961a8fad85631a561d26c7",
+            "commit-date": "1347882477"
         },
         {
             "package": "ezsystems/ezpublish",
             "version": "dev-master",
-            "source-reference": "773b267f2a52c170aebe957dd13c8244ab31ee12",
-            "commit-date": "1347112954"
+            "source-reference": "7e5e10853eea66f3d965360a23ea2d320f7aabd0",
+            "commit-date": "1347918959"
         },
         {
             "package": "kriswallsmith/assetic",
@@ -22,8 +22,8 @@
         {
             "package": "kriswallsmith/assetic",
             "version": "dev-master",
-            "source-reference": "dfbb776288baf9319d1693195af2cb6e00729901",
-            "commit-date": "1347039484"
+            "source-reference": "a6baab9b4c4361aca51bf90ee47c1586dff3cb0c",
+            "commit-date": "1347622188"
         },
         {
             "package": "sensio/generator-bundle",
@@ -34,7 +34,7 @@
         {
             "package": "sensio/generator-bundle",
             "version": "dev-master",
-            "source-reference": "v2.1.0-RC2",
+            "source-reference": "v2.1.0",
             "commit-date": "1346138171"
         },
         {
@@ -46,8 +46,8 @@
         {
             "package": "symfony-cmf/routing",
             "version": "dev-master",
-            "source-reference": "85f49287e94a38d3e93ecb74de83ec877da53147",
-            "commit-date": "1347020679"
+            "source-reference": "5b56ecfaa74813ae88f175b42ee1b480f0e9e161",
+            "commit-date": "1347634254"
         },
         {
             "package": "symfony/assetic-bundle",
@@ -58,12 +58,12 @@
         {
             "package": "symfony/assetic-bundle",
             "version": "dev-master",
-            "source-reference": "4e7e8a039fa19434f04558473adbb201118af942",
-            "commit-date": "1346199949"
+            "source-reference": "64345e86761444c35679e1aed424e1ed2370f0de",
+            "commit-date": "1347626244"
         },
         {
             "package": "symfony/symfony",
-            "version": "v2.1.0"
+            "version": "v2.1.1"
         },
         {
             "package": "twig/extensions",
@@ -80,14 +80,14 @@
         {
             "package": "twig/twig",
             "version": "dev-master",
-            "alias-pretty-version": "1.9.x-dev",
-            "alias-version": "1.9.9999999.9999999-dev"
+            "alias-pretty-version": "1.10.x-dev",
+            "alias-version": "1.10.9999999.9999999-dev"
         },
         {
             "package": "twig/twig",
             "version": "dev-master",
-            "source-reference": "68b8c4619c5bbe82bd345fe56070dec8c356610a",
-            "commit-date": "1347025342"
+            "source-reference": "e3e8b422c195f01b1a364126eff98adacfb9ff79",
+            "commit-date": "1347944686"
         },
         {
             "package": "zetacomponents/archive",
