@@ -17,11 +17,12 @@ $ sudo setfacl -R -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs
 $ sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs
 ```
 
-## Glossary
-* /eZ/Publish/5/root/: The filesystem path where eZ Publish 5 is installed in, like "/home/myuser/www/" or "/var/sites/ezpublish/"
-* /eZ/Publish/5/legacy/root/:
-	* "Legacy" aka "Legacy Stack" refers to the eZ Publish 4.x installation which is bundled with eZ Publish 5 inside "app/ezpublish_legacy/"
-	* The Legacy root is thus the root eZ Publish 5 path + the sub path mentioned above, example:  "/var/sites/ezpublish/app/ezpublish_legacy/"
+
+## Paths
+*  /<ezpublish5-path>/: The filesystem path where eZ Publish 5 is installed in, examples: "/home/myuser/www/" or "/var/sites/ezpublish/"
+* /<ezpublish5-path>/app/ezpublish_legacy/:
+	* "Legacy" aka "Legacy Stack" refers to the eZ Publish 4.x installation which is bundled with eZ Publish 5 normally inside "app/ezpublish_legacy/"
+	* Example: "/home/myuser/www/app/ezpublish_legacy/"
 
 ## Installation
 
@@ -38,7 +39,7 @@ $ sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs
 
 2. Get eZ Publish Legacy
        ```bash
-       cd /eZ/Publish/5/root/app
+       cd /<ezpublish5-path>/app/
        git clone https://github.com/ezsystems/ezpublish.git ezpublish_legacy
        ```
 
@@ -51,12 +52,18 @@ $ sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs
 
        Download composer and install dependencies by running:
        ```bash
-       cd /path/to/ezpublish5/
+       cd /<ezpublish5-path>/
        curl -s http://getcomposer.org/installer | php
        php composer.phar install
        ```
 
-## Set up files
+       Note: Every time you want to get the latest updates of all your dependencies just run this command:
+       ```bash
+       cd /<ezpublish5-path>/
+       php composer.phar update
+       ```
+
+## Setup files
 1. Configure:
     * Copy `app/config/parameters.yml.dist` to `app/config/parameters.yml`
     * Edit `app/config/parameters.yml` and configure
@@ -80,9 +87,9 @@ $ sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs
     ```apache
     <VirtualHost *:80>
         ServerName your-host-name
-        DocumentRoot /path/to/ezpublish5/web/
+        DocumentRoot /<ezpublish5-path>/web/
 
-        <Directory /path/to/ezpublish5/>
+        <Directory /<ezpublish5-path>/>
             Options FollowSymLinks
             order allow,deny
             allow from all
@@ -125,8 +132,9 @@ $ sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs
 ### Clean installation using Setup wizard
 1. Run Setup wizard:
 
-    There is currently a known issue in eZ Publish 5's Symfony based stack when it comes to Setup wizard, so you will need to execute it directly from the /eZ/Publish/5/legacy/root/ by exposing that as a internal virtual host as well.
-    This can be done in same way as described on doc.ez.no for Virtual host setups where "eZ Publish" path will be: /eZ/Publish/5/legacy/root/
+
+    There is currently a known issue in eZ Publish 5's Symfony based stack when it comes to Setup wizard, so you will need to execute it directly from the /<ezpublish5-path>/app/ezpublish_legacy/ by exposing that as a internal virtual host as well.
+    This can be done in same way as described on doc.ez.no for Virtual host setups where "eZ Publish" path will be: /<ezpublish5-path>/app/ezpublish_legacy/
 
 ##### Troubleshooting during Setup wizard
 You might get the following error:
@@ -139,5 +147,5 @@ To fix it, tweak your `settings/package.ini` by overriding it with a valid versi
 
 ```ini
 [RepositorySettings]
-RemotePackagesIndexURL=http://packages.ez.no/ezpublish/4.7/4.7.0
+RemotePackagesIndexURL=http://packages.ez.no/ezpublish/5.0/5.0.0-alpha1
 ```
