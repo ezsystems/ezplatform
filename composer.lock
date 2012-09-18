@@ -86,8 +86,8 @@
         {
             "package": "twig/twig",
             "version": "dev-master",
-            "source-reference": "e3e8b422c195f01b1a364126eff98adacfb9ff79",
-            "commit-date": "1347944686"
+            "source-reference": "b4d1d62b82e83c6fd3d5a6cd46a186de64275bb4",
+            "commit-date": "1347961095"
         },
         {
             "package": "zetacomponents/archive",
