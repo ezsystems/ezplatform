@@ -1,193 +1,1006 @@
 {
-    "hash": "1fc4e444eb2eaf9ad204a790f8c6f258",
+    "hash": "fc21499fb7d15cf60d83ed1e05b1a294",
     "packages": [
         {
-            "package": "doctrine/common",
+            "name": "doctrine/common",
             "version": "2.3.x-dev",
-            "source-reference": "24c761bf0f8337064b961a8fad85631a561d26c7",
-            "commit-date": "1347882477"
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/common",
+                "reference": "24c761bf0f8337064b961a8fad85631a561d26c7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/doctrine/common/zipball/24c761bf0f8337064b961a8fad85631a561d26c7",
+                "reference": "24c761bf0f8337064b961a8fad85631a561d26c7",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "time": "1347882477",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3.x-dev"
+                }
+            },
+            "installation-source": "source",
+            "autoload": {
+                "psr-0": {
+                    "Doctrine\\Common": "lib/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jonathan Wage",
+                    "email": "jonwage@gmail.com",
+                    "homepage": "http://www.jwage.com/"
+                },
+                {
+                    "name": "Guilherme Blanco",
+                    "email": "guilhermeblanco@gmail.com"
+                },
+                {
+                    "name": "Roman Borschel",
+                    "email": "roman@code-factory.org"
+                },
+                {
+                    "name": "Benjamin Eberlei",
+                    "email": "kontakt@beberlei.de"
+                },
+                {
+                    "name": "Johannes Schmitt",
+                    "email": "schmittjoh@gmail.com",
+                    "homepage": "http://jmsyst.com",
+                    "role": "Developer of wrapped JMSSerializerBundle"
+                }
+            ],
+            "description": "Common Library for Doctrine projects",
+            "homepage": "http://www.doctrine-project.org",
+            "keywords": [
+                "collections",
+                "spl",
+                "eventmanager",
+                "annotations",
+                "persistence"
+            ]
         },
         {
-            "package": "ezsystems/ezpublish",
+            "name": "ezsystems/ezpublish",
             "version": "dev-master",
-            "source-reference": "7e5e10853eea66f3d965360a23ea2d320f7aabd0",
-            "commit-date": "1347918959"
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ezsystems/ezp-next.git",
+                "reference": "fbefabe70c94cc795d46bab02b8cf1d3f71eacab"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/ezsystems/ezp-next/zipball/fbefabe70c94cc795d46bab02b8cf1d3f71eacab",
+                "reference": "fbefabe70c94cc795d46bab02b8cf1d3f71eacab",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "zetacomponents/archive": "dev-master",
+                "zetacomponents/authentication": "dev-master",
+                "zetacomponents/cache": "dev-master",
+                "zetacomponents/configuration": "dev-master",
+                "zetacomponents/console-tools": "dev-master",
+                "zetacomponents/database": "dev-master",
+                "zetacomponents/debug": "dev-master",
+                "zetacomponents/feed": "dev-master",
+                "zetacomponents/mail": "dev-master",
+                "zetacomponents/mvc-tools": "dev-master",
+                "zetacomponents/mvc-authentication-tiein": "dev-master",
+                "zetacomponents/persistent-object": "dev-master",
+                "zetacomponents/php-generator": "dev-master",
+                "zetacomponents/signal-slot": "dev-master",
+                "zetacomponents/system-information": "dev-master",
+                "zetacomponents/webdav": "1.1.0-rc1",
+                "symfony-cmf/routing": "1.0.*"
+            },
+            "require-dev": {
+                "symfony/symfony": "2.1.1",
+                "qafoo/rmf": "dev-master",
+                "ezsystems/ezpublish-legacy": "dev-master"
+            },
+            "time": "1348062965",
+            "type": "library",
+            "installation-source": "source",
+            "autoload": {
+                "psr-0": {
+                    "eZ": ""
+                }
+            },
+            "license": [
+                "GPL-2.0"
+            ],
+            "description": "eZ Publish API and kernel. This is the heart of eZ Publish 5.",
+            "homepage": "http://share.ez.no",
+            "support": {
+                "source": "https://github.com/ezsystems/ezp-next/tree/master"
+            }
         },
         {
-            "package": "kriswallsmith/assetic",
+            "name": "kriswallsmith/assetic",
             "version": "dev-master",
-            "alias-pretty-version": "1.1.x-dev",
-            "alias-version": "1.1.9999999.9999999-dev"
+            "source": {
+                "type": "git",
+                "url": "http://github.com/kriswallsmith/assetic.git",
+                "reference": "a6baab9b4c4361aca51bf90ee47c1586dff3cb0c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/kriswallsmith/assetic/zipball/a6baab9b4c4361aca51bf90ee47c1586dff3cb0c",
+                "reference": "a6baab9b4c4361aca51bf90ee47c1586dff3cb0c",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/process": "2.1.*",
+                "php": ">=5.3.1"
+            },
+            "require-dev": {
+                "twig/twig": ">=1.6.0,<2.0",
+                "leafo/lessphp": "*",
+                "leafo/scssphp": "*",
+                "ptachoire/cssembed": "*",
+                "leafo/scssphp-compass": "*"
+            },
+            "suggest": {
+                "twig/twig": "Assetic provides the integration with the Twig templating engine",
+                "leafo/lessphp": "Assetic provides the integration with the lessphp LESS compiler",
+                "leafo/scssphp": "Assetic provides the integration with the scssphp SCSS compiler",
+                "ptachoire/cssembed": "Assetic provides the integration with phpcssembed to embed data uris",
+                "leafo/scssphp-compass": "Assetic provides the integration with the SCSS compass plugin"
+            },
+            "time": "1347622188",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1-dev"
+                }
+            },
+            "installation-source": "source",
+            "autoload": {
+                "psr-0": {
+                    "Assetic": "src/"
+                },
+                "files": [
+                    "src/functions.php"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kris Wallsmith",
+                    "email": "kris.wallsmith@gmail.com",
+                    "homepage": "http://kriswallsmith.net/"
+                }
+            ],
+            "description": "Asset Management for PHP",
+            "homepage": "https://github.com/kriswallsmith/assetic",
+            "keywords": [
+                "assets",
+                "compression",
+                "minification"
+            ]
         },
         {
-            "package": "kriswallsmith/assetic",
+            "name": "sensio/generator-bundle",
+            "version": "2.1.x-dev",
+            "target-dir": "Sensio/Bundle/GeneratorBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sensio/SensioGeneratorBundle",
+                "reference": "3a65c9bf7d31aecacffc15a48f5eb2ece3615ef0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/sensio/SensioGeneratorBundle/zipball/3a65c9bf7d31aecacffc15a48f5eb2ece3615ef0",
+                "reference": "3a65c9bf7d31aecacffc15a48f5eb2ece3615ef0",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/framework-bundle": "2.1.*",
+                "symfony/console": "2.1.*"
+            },
+            "require-dev": {
+                "symfony/doctrine-bridge": "2.1.*",
+                "doctrine/orm": ">=2.1,<2.4-dev",
+                "twig/twig": ">=1.8,<2.0-dev"
+            },
+            "time": "1348030981",
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.1.x-dev"
+                }
+            },
+            "installation-source": "source",
+            "autoload": {
+                "psr-0": {
+                    "Sensio\\Bundle\\GeneratorBundle": ""
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "This bundle generates code for you"
+        },
+        {
+            "name": "symfony-cmf/routing",
             "version": "dev-master",
-            "source-reference": "a6baab9b4c4361aca51bf90ee47c1586dff3cb0c",
-            "commit-date": "1347622188"
+            "target-dir": "Symfony/Cmf/Component/Routing",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony-cmf/Routing",
+                "reference": "85f49287e94a38d3e93ecb74de83ec877da53147"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/symfony-cmf/Routing/zipball/85f49287e94a38d3e93ecb74de83ec877da53147",
+                "reference": "85f49287e94a38d3e93ecb74de83ec877da53147",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2",
+                "symfony/routing": "2.1.*",
+                "symfony/http-kernel": "2.1.*"
+            },
+            "time": "1347634254",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "installation-source": "source",
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Cmf\\Component\\Routing": ""
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony CMF Community",
+                    "homepage": "https://github.com/symfony-cmf/Routing/contributors"
+                }
+            ],
+            "description": "Extends the Symfony2 routing component for dynamic routes and chaining several routers",
+            "homepage": "http://cmf.symfony.com",
+            "keywords": [
+                "database",
+                "routing"
+            ]
         },
         {
-            "package": "sensio/generator-bundle",
+            "name": "symfony/assetic-bundle",
             "version": "dev-master",
-            "alias-pretty-version": "2.1.x-dev",
-            "alias-version": "2.1.9999999.9999999-dev"
+            "target-dir": "Symfony/Bundle/AsseticBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/AsseticBundle",
+                "reference": "64345e86761444c35679e1aed424e1ed2370f0de"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/symfony/AsseticBundle/zipball/64345e86761444c35679e1aed424e1ed2370f0de",
+                "reference": "64345e86761444c35679e1aed424e1ed2370f0de",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "symfony/framework-bundle": "2.1.*",
+                "kriswallsmith/assetic": "1.1.*"
+            },
+            "require-dev": {
+                "symfony/twig-bundle": "2.1.*",
+                "symfony/console": "2.1.*",
+                "symfony/class-loader": "2.1.*",
+                "symfony/yaml": "2.1.*",
+                "symfony/form": "2.1.*",
+                "symfony/dom-crawler": "2.1.*",
+                "symfony/css-selector": "2.1.*"
+            },
+            "suggest": {
+                "symfony/twig-bundle": "2.1.*"
+            },
+            "time": "1347626244",
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.1.x-dev"
+                }
+            },
+            "installation-source": "source",
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Bundle\\AsseticBundle": ""
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kris Wallsmith",
+                    "email": "kris.wallsmith@gmail.com",
+                    "homepage": "http://kriswallsmith.net/"
+                }
+            ],
+            "description": "Integrates Assetic into Symfony2",
+            "homepage": "https://github.com/symfony/AsseticBundle",
+            "keywords": [
+                "assets",
+                "compression",
+                "minification"
+            ]
         },
         {
-            "package": "sensio/generator-bundle",
+            "name": "symfony/symfony",
+            "version": "2.1.x-dev",
+            "source": {
+                "type": "git",
+                "url": "git://github.com/symfony/symfony.git",
+                "reference": "f1e6063c0a42065adf026811127f3db1d7a79eb5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/symfony/symfony/zipball/f1e6063c0a42065adf026811127f3db1d7a79eb5",
+                "reference": "f1e6063c0a42065adf026811127f3db1d7a79eb5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "doctrine/common": ">2.2,<2.4-dev",
+                "twig/twig": ">=1.9.1,<2.0-dev"
+            },
+            "replace": {
+                "symfony/doctrine-bridge": "self.version",
+                "symfony/monolog-bridge": "self.version",
+                "symfony/propel1-bridge": "self.version",
+                "symfony/swiftmailer-bridge": "self.version",
+                "symfony/twig-bridge": "self.version",
+                "symfony/framework-bundle": "self.version",
+                "symfony/security-bundle": "self.version",
+                "symfony/twig-bundle": "self.version",
+                "symfony/web-profiler-bundle": "self.version",
+                "symfony/browser-kit": "self.version",
+                "symfony/class-loader": "self.version",
+                "symfony/config": "self.version",
+                "symfony/console": "self.version",
+                "symfony/css-selector": "self.version",
+                "symfony/dependency-injection": "self.version",
+                "symfony/dom-crawler": "self.version",
+                "symfony/event-dispatcher": "self.version",
+                "symfony/filesystem": "self.version",
+                "symfony/finder": "self.version",
+                "symfony/form": "self.version",
+                "symfony/http-foundation": "self.version",
+                "symfony/http-kernel": "self.version",
+                "symfony/locale": "self.version",
+                "symfony/options-resolver": "self.version",
+                "symfony/process": "self.version",
+                "symfony/routing": "self.version",
+                "symfony/security": "self.version",
+                "symfony/serializer": "self.version",
+                "symfony/templating": "self.version",
+                "symfony/translation": "self.version",
+                "symfony/validator": "self.version",
+                "symfony/yaml": "self.version"
+            },
+            "require-dev": {
+                "doctrine/dbal": ">=2.2,<2.4-dev",
+                "doctrine/orm": ">=2.2.3,<2.4-dev",
+                "doctrine/data-fixtures": "1.0.*",
+                "propel/propel1": "dev-master",
+                "monolog/monolog": "dev-master"
+            },
+            "time": "1348035223",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.1-dev"
+                }
+            },
+            "installation-source": "source",
+            "autoload": {
+                "psr-0": {
+                    "Symfony": "src/",
+                    "SessionHandlerInterface": "src/Symfony/Component/HttpFoundation/Resources/stubs"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                }
+            ],
+            "description": "The Symfony PHP framework",
+            "homepage": "http://symfony.com",
+            "keywords": [
+                "framework"
+            ]
+        },
+        {
+            "name": "twig/extensions",
             "version": "dev-master",
-            "source-reference": "v2.1.0",
-            "commit-date": "1346138171"
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fabpot/Twig-extensions",
+                "reference": "f904575642b1213db69b4a98f08397e722ba1cae"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/fabpot/Twig-extensions/zipball/f904575642b1213db69b4a98f08397e722ba1cae",
+                "reference": "f904575642b1213db69b4a98f08397e722ba1cae",
+                "shasum": ""
+            },
+            "require": {
+                "twig/twig": "1.*"
+            },
+            "time": "1346770278",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "installation-source": "source",
+            "autoload": {
+                "psr-0": {
+                    "Twig_Extensions_": "lib/"
+                }
+            }
         },
         {
-            "package": "symfony-cmf/routing",
+            "name": "twig/twig",
             "version": "dev-master",
-            "alias-pretty-version": "1.0.x-dev",
-            "alias-version": "1.0.9999999.9999999-dev"
+            "source": {
+                "type": "git",
+                "url": "git://github.com/fabpot/Twig.git",
+                "reference": "b4d1d62b82e83c6fd3d5a6cd46a186de64275bb4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/fabpot/Twig/zipball/b4d1d62b82e83c6fd3d5a6cd46a186de64275bb4",
+                "reference": "b4d1d62b82e83c6fd3d5a6cd46a186de64275bb4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.4"
+            },
+            "time": "1347961095",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.10-dev"
+                }
+            },
+            "installation-source": "source",
+            "autoload": {
+                "psr-0": {
+                    "Twig_": "lib/"
+                }
+            },
+            "license": [
+                "BSD-3"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Armin Ronacher",
+                    "email": "armin.ronacher@active-4.com"
+                }
+            ],
+            "description": "Twig, the flexible, fast, and secure template language for PHP",
+            "homepage": "http://twig.sensiolabs.org",
+            "keywords": [
+                "templating"
+            ]
         },
         {
-            "package": "symfony-cmf/routing",
+            "name": "zetacomponents/archive",
             "version": "dev-master",
-            "source-reference": "85f49287e94a38d3e93ecb74de83ec877da53147",
-            "commit-date": "1347634254"
+            "source": {
+                "type": "git",
+                "url": "git://github.com/zetacomponents/Archive.git",
+                "reference": "4b2c4a1c24b1e1f831b015c8ff72181aece7b421"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/zetacomponents/Archive/zipball/4b2c4a1c24b1e1f831b015c8ff72181aece7b421",
+                "reference": "4b2c4a1c24b1e1f831b015c8ff72181aece7b421",
+                "shasum": ""
+            },
+            "require": {
+                "zetacomponents/base": "*"
+            },
+            "require-dev": {
+                "zetacomponents/unit-test": "*"
+            },
+            "time": "1337594043",
+            "type": "library",
+            "installation-source": "source",
+            "autoload": {
+                "classmap": [
+                    "src"
+                ]
+            }
         },
         {
-            "package": "symfony/assetic-bundle",
+            "name": "zetacomponents/authentication",
             "version": "dev-master",
-            "alias-pretty-version": "2.1.x-dev",
-            "alias-version": "2.1.9999999.9999999-dev"
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zetacomponents/Authentication.git",
+                "reference": "c422670d09967491c1c8c98f9334f1a738617bd0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/zetacomponents/Authentication/zipball/c422670d09967491c1c8c98f9334f1a738617bd0",
+                "reference": "c422670d09967491c1c8c98f9334f1a738617bd0",
+                "shasum": ""
+            },
+            "require": {
+                "zetacomponents/base": "*"
+            },
+            "require-dev": {
+                "zetacomponents/unit-test": "*"
+            },
+            "time": "1337594121",
+            "type": "library",
+            "installation-source": "source",
+            "autoload": {
+                "classmap": [
+                    "src"
+                ]
+            }
         },
         {
-            "package": "symfony/assetic-bundle",
+            "name": "zetacomponents/base",
             "version": "dev-master",
-            "source-reference": "64345e86761444c35679e1aed424e1ed2370f0de",
-            "commit-date": "1347626244"
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zetacomponents/Base.git",
+                "reference": "642f63a8a72c32996f1aaf8a317fdf746bc32ce7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/zetacomponents/Base/zipball/642f63a8a72c32996f1aaf8a317fdf746bc32ce7",
+                "reference": "642f63a8a72c32996f1aaf8a317fdf746bc32ce7",
+                "shasum": ""
+            },
+            "require-dev": {
+                "zetacomponents/unit-test": "*"
+            },
+            "time": "1337599296",
+            "type": "library",
+            "installation-source": "source",
+            "autoload": {
+                "classmap": [
+                    "src"
+                ]
+            }
         },
         {
-            "package": "symfony/symfony",
-            "version": "v2.1.1"
-        },
-        {
-            "package": "twig/extensions",
+            "name": "zetacomponents/cache",
             "version": "dev-master",
-            "alias-pretty-version": "1.0.x-dev",
-            "alias-version": "1.0.9999999.9999999-dev"
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zetacomponents/Cache.git",
+                "reference": "34fa794d0b5aeef67fee609c52c5d24fa4604bbd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/zetacomponents/Cache/zipball/34fa794d0b5aeef67fee609c52c5d24fa4604bbd",
+                "reference": "34fa794d0b5aeef67fee609c52c5d24fa4604bbd",
+                "shasum": ""
+            },
+            "require": {
+                "zetacomponents/base": "*"
+            },
+            "require-dev": {
+                "zetacomponents/unit-test": "*"
+            },
+            "time": "1337594129",
+            "type": "library",
+            "installation-source": "source",
+            "autoload": {
+                "classmap": [
+                    "src"
+                ]
+            }
         },
         {
-            "package": "twig/extensions",
+            "name": "zetacomponents/configuration",
             "version": "dev-master",
-            "source-reference": "f904575642b1213db69b4a98f08397e722ba1cae",
-            "commit-date": "1346770278"
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zetacomponents/Configuration.git",
+                "reference": "10ae09f42768d4657b2d1a66226ee63cbd8754b2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/zetacomponents/Configuration/zipball/10ae09f42768d4657b2d1a66226ee63cbd8754b2",
+                "reference": "10ae09f42768d4657b2d1a66226ee63cbd8754b2",
+                "shasum": ""
+            },
+            "require": {
+                "zetacomponents/base": "*"
+            },
+            "require-dev": {
+                "zetacomponents/unit-test": "*"
+            },
+            "time": "1337594132",
+            "type": "library",
+            "installation-source": "source",
+            "autoload": {
+                "classmap": [
+                    "src"
+                ]
+            }
         },
         {
-            "package": "twig/twig",
+            "name": "zetacomponents/console-tools",
             "version": "dev-master",
-            "alias-pretty-version": "1.10.x-dev",
-            "alias-version": "1.10.9999999.9999999-dev"
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zetacomponents/ConsoleTools.git",
+                "reference": "90156abef01e4215fda8b9740f77c322f126fb02"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/zetacomponents/ConsoleTools/zipball/90156abef01e4215fda8b9740f77c322f126fb02",
+                "reference": "90156abef01e4215fda8b9740f77c322f126fb02",
+                "shasum": ""
+            },
+            "require": {
+                "zetacomponents/base": "*"
+            },
+            "require-dev": {
+                "zetacomponents/unit-test": "*"
+            },
+            "time": "1337594134",
+            "type": "library",
+            "installation-source": "source",
+            "autoload": {
+                "classmap": [
+                    "src"
+                ]
+            }
         },
         {
-            "package": "twig/twig",
+            "name": "zetacomponents/database",
             "version": "dev-master",
-            "source-reference": "b4d1d62b82e83c6fd3d5a6cd46a186de64275bb4",
-            "commit-date": "1347961095"
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zetacomponents/Database.git",
+                "reference": "0e8ddef8ce616bc18365efa2eef2161de3d7f74f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/zetacomponents/Database/zipball/0e8ddef8ce616bc18365efa2eef2161de3d7f74f",
+                "reference": "0e8ddef8ce616bc18365efa2eef2161de3d7f74f",
+                "shasum": ""
+            },
+            "require": {
+                "zetacomponents/base": "*"
+            },
+            "require-dev": {
+                "zetacomponents/unit-test": "*"
+            },
+            "time": "1337594140",
+            "type": "library",
+            "installation-source": "source",
+            "autoload": {
+                "classmap": [
+                    "src"
+                ]
+            }
         },
         {
-            "package": "zetacomponents/archive",
+            "name": "zetacomponents/debug",
             "version": "dev-master",
-            "source-reference": "4b2c4a1c24b1e1f831b015c8ff72181aece7b421",
-            "commit-date": "1337594043"
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zetacomponents/Debug.git",
+                "reference": "0d8cc8fae2765c22f3f1930e4cf738304fbadbaf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/zetacomponents/Debug/zipball/0d8cc8fae2765c22f3f1930e4cf738304fbadbaf",
+                "reference": "0d8cc8fae2765c22f3f1930e4cf738304fbadbaf",
+                "shasum": ""
+            },
+            "require": {
+                "zetacomponents/base": "*"
+            },
+            "require-dev": {
+                "zetacomponents/unit-test": "*"
+            },
+            "time": "1337594145",
+            "type": "library",
+            "installation-source": "source",
+            "autoload": {
+                "classmap": [
+                    "src"
+                ]
+            }
         },
         {
-            "package": "zetacomponents/authentication",
+            "name": "zetacomponents/feed",
             "version": "dev-master",
-            "source-reference": "c422670d09967491c1c8c98f9334f1a738617bd0",
-            "commit-date": "1337594121"
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zetacomponents/Feed.git",
+                "reference": "e0190e90caf6f49771410b485fc43ff09a62b725"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/zetacomponents/Feed/zipball/e0190e90caf6f49771410b485fc43ff09a62b725",
+                "reference": "e0190e90caf6f49771410b485fc43ff09a62b725",
+                "shasum": ""
+            },
+            "require": {
+                "zetacomponents/base": "*"
+            },
+            "require-dev": {
+                "zetacomponents/unit-test": "*"
+            },
+            "time": "1337594158",
+            "type": "library",
+            "installation-source": "source",
+            "autoload": {
+                "classmap": [
+                    "src"
+                ]
+            }
         },
         {
-            "package": "zetacomponents/base",
+            "name": "zetacomponents/mail",
             "version": "dev-master",
-            "source-reference": "642f63a8a72c32996f1aaf8a317fdf746bc32ce7",
-            "commit-date": "1337599296"
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zetacomponents/Mail.git",
+                "reference": "e0120aad96efb41bdfac5583d9cb3863bc2823e7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/zetacomponents/Mail/zipball/e0120aad96efb41bdfac5583d9cb3863bc2823e7",
+                "reference": "e0120aad96efb41bdfac5583d9cb3863bc2823e7",
+                "shasum": ""
+            },
+            "require": {
+                "zetacomponents/base": "*"
+            },
+            "require-dev": {
+                "zetacomponents/unit-test": "*"
+            },
+            "time": "1337594175",
+            "type": "library",
+            "installation-source": "source",
+            "autoload": {
+                "classmap": [
+                    "src"
+                ]
+            }
         },
         {
-            "package": "zetacomponents/cache",
+            "name": "zetacomponents/mvc-authentication-tiein",
             "version": "dev-master",
-            "source-reference": "34fa794d0b5aeef67fee609c52c5d24fa4604bbd",
-            "commit-date": "1337594129"
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zetacomponents/MvcAuthenticationTiein.git",
+                "reference": "9bae3a7313e2ef7f53ef1f394276acc3fde0f80e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/zetacomponents/MvcAuthenticationTiein/zipball/9bae3a7313e2ef7f53ef1f394276acc3fde0f80e",
+                "reference": "9bae3a7313e2ef7f53ef1f394276acc3fde0f80e",
+                "shasum": ""
+            },
+            "time": "1337593613",
+            "type": "library",
+            "installation-source": "source",
+            "autoload": {
+                "classmap": [
+                    "src"
+                ]
+            }
         },
         {
-            "package": "zetacomponents/configuration",
+            "name": "zetacomponents/mvc-tools",
             "version": "dev-master",
-            "source-reference": "10ae09f42768d4657b2d1a66226ee63cbd8754b2",
-            "commit-date": "1337594132"
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zetacomponents/MvcTools.git",
+                "reference": "6f2c1eb079faee98f37643d212cec0aa925313b2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/zetacomponents/MvcTools/zipball/6f2c1eb079faee98f37643d212cec0aa925313b2",
+                "reference": "6f2c1eb079faee98f37643d212cec0aa925313b2",
+                "shasum": ""
+            },
+            "require": {
+                "zetacomponents/base": "*"
+            },
+            "require-dev": {
+                "zetacomponents/unit-test": "*"
+            },
+            "time": "1337594182",
+            "type": "library",
+            "installation-source": "source",
+            "autoload": {
+                "classmap": [
+                    "src"
+                ]
+            }
         },
         {
-            "package": "zetacomponents/console-tools",
+            "name": "zetacomponents/persistent-object",
             "version": "dev-master",
-            "source-reference": "90156abef01e4215fda8b9740f77c322f126fb02",
-            "commit-date": "1337594134"
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zetacomponents/PersistentObject.git",
+                "reference": "a4c8b95157919d71db0b380ea7c6375be117eca2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/zetacomponents/PersistentObject/zipball/a4c8b95157919d71db0b380ea7c6375be117eca2",
+                "reference": "a4c8b95157919d71db0b380ea7c6375be117eca2",
+                "shasum": ""
+            },
+            "require": {
+                "zetacomponents/base": "*"
+            },
+            "require-dev": {
+                "zetacomponents/unit-test": "*"
+            },
+            "time": "1337594185",
+            "type": "library",
+            "installation-source": "source",
+            "autoload": {
+                "classmap": [
+                    "src"
+                ]
+            }
         },
         {
-            "package": "zetacomponents/database",
+            "name": "zetacomponents/php-generator",
             "version": "dev-master",
-            "source-reference": "0e8ddef8ce616bc18365efa2eef2161de3d7f74f",
-            "commit-date": "1337594140"
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zetacomponents/PhpGenerator.git",
+                "reference": "b51935ec5b763e5bad2182d810e1b752fcc83903"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/zetacomponents/PhpGenerator/zipball/b51935ec5b763e5bad2182d810e1b752fcc83903",
+                "reference": "b51935ec5b763e5bad2182d810e1b752fcc83903",
+                "shasum": ""
+            },
+            "require": {
+                "zetacomponents/base": "*"
+            },
+            "require-dev": {
+                "zetacomponents/unit-test": "*"
+            },
+            "time": "1337594190",
+            "type": "library",
+            "installation-source": "source",
+            "autoload": {
+                "classmap": [
+                    "src"
+                ]
+            }
         },
         {
-            "package": "zetacomponents/debug",
+            "name": "zetacomponents/signal-slot",
             "version": "dev-master",
-            "source-reference": "0d8cc8fae2765c22f3f1930e4cf738304fbadbaf",
-            "commit-date": "1337594145"
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zetacomponents/SignalSlot.git",
+                "reference": "74deb412339a9e9af5937a5d8726f8246b6a9ccc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/zetacomponents/SignalSlot/zipball/74deb412339a9e9af5937a5d8726f8246b6a9ccc",
+                "reference": "74deb412339a9e9af5937a5d8726f8246b6a9ccc",
+                "shasum": ""
+            },
+            "require": {
+                "zetacomponents/base": "*"
+            },
+            "require-dev": {
+                "zetacomponents/unit-test": "*"
+            },
+            "time": "1337609183",
+            "type": "library",
+            "installation-source": "source",
+            "autoload": {
+                "classmap": [
+                    "src"
+                ]
+            }
         },
         {
-            "package": "zetacomponents/feed",
+            "name": "zetacomponents/system-information",
             "version": "dev-master",
-            "source-reference": "e0190e90caf6f49771410b485fc43ff09a62b725",
-            "commit-date": "1337594158"
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zetacomponents/SystemInformation.git",
+                "reference": "674336286f189d222a275bec32be9123d9faf477"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/zetacomponents/SystemInformation/zipball/674336286f189d222a275bec32be9123d9faf477",
+                "reference": "674336286f189d222a275bec32be9123d9faf477",
+                "shasum": ""
+            },
+            "require": {
+                "zetacomponents/base": "*"
+            },
+            "require-dev": {
+                "zetacomponents/unit-test": "*"
+            },
+            "time": "1337594201",
+            "type": "library",
+            "installation-source": "source",
+            "autoload": {
+                "classmap": [
+                    "src"
+                ]
+            }
         },
         {
-            "package": "zetacomponents/mail",
-            "version": "dev-master",
-            "source-reference": "e0120aad96efb41bdfac5583d9cb3863bc2823e7",
-            "commit-date": "1337594175"
-        },
-        {
-            "package": "zetacomponents/mvc-authentication-tiein",
-            "version": "dev-master",
-            "source-reference": "9bae3a7313e2ef7f53ef1f394276acc3fde0f80e",
-            "commit-date": "1337593613"
-        },
-        {
-            "package": "zetacomponents/mvc-tools",
-            "version": "dev-master",
-            "source-reference": "6f2c1eb079faee98f37643d212cec0aa925313b2",
-            "commit-date": "1337594182"
-        },
-        {
-            "package": "zetacomponents/persistent-object",
-            "version": "dev-master",
-            "source-reference": "a4c8b95157919d71db0b380ea7c6375be117eca2",
-            "commit-date": "1337594185"
-        },
-        {
-            "package": "zetacomponents/php-generator",
-            "version": "dev-master",
-            "source-reference": "b51935ec5b763e5bad2182d810e1b752fcc83903",
-            "commit-date": "1337594190"
-        },
-        {
-            "package": "zetacomponents/signal-slot",
-            "version": "dev-master",
-            "source-reference": "74deb412339a9e9af5937a5d8726f8246b6a9ccc",
-            "commit-date": "1337609183"
-        },
-        {
-            "package": "zetacomponents/system-information",
-            "version": "dev-master",
-            "source-reference": "674336286f189d222a275bec32be9123d9faf477",
-            "commit-date": "1337594201"
-        },
-        {
-            "package": "zetacomponents/webdav",
-            "version": "1.1rc1"
+            "name": "zetacomponents/webdav",
+            "version": "1.1rc1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zetacomponents/Webdav.git",
+                "reference": "1.1rc1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/zetacomponents/Webdav/zipball/1.1rc1",
+                "reference": "1.1rc1",
+                "shasum": ""
+            },
+            "time": "2008-12-15 01:05:06",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "classmap": [
+                    "src"
+                ]
+            }
         }
     ],
     "packages-dev": null,
