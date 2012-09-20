@@ -7,18 +7,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/common",
-                "reference": "24c761bf0f8337064b961a8fad85631a561d26c7"
+                "reference": "bb0aebbf234db52df476a2b473d434745b34221c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/doctrine/common/zipball/24c761bf0f8337064b961a8fad85631a561d26c7",
-                "reference": "24c761bf0f8337064b961a8fad85631a561d26c7",
+                "url": "https://github.com/doctrine/common/zipball/bb0aebbf234db52df476a2b473d434745b34221c",
+                "reference": "bb0aebbf234db52df476a2b473d434745b34221c",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.2"
             },
-            "time": "1347882477",
+            "time": "1348120518",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -246,12 +246,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony-cmf/Routing",
-                "reference": "85f49287e94a38d3e93ecb74de83ec877da53147"
+                "reference": "5b56ecfaa74813ae88f175b42ee1b480f0e9e161"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony-cmf/Routing/zipball/85f49287e94a38d3e93ecb74de83ec877da53147",
-                "reference": "85f49287e94a38d3e93ecb74de83ec877da53147",
+                "url": "https://github.com/symfony-cmf/Routing/zipball/5b56ecfaa74813ae88f175b42ee1b480f0e9e161",
+                "reference": "5b56ecfaa74813ae88f175b42ee1b480f0e9e161",
                 "shasum": ""
             },
             "require": {
@@ -357,12 +357,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/symfony/symfony.git",
-                "reference": "f1e6063c0a42065adf026811127f3db1d7a79eb5"
+                "reference": "9fd2baa502ea6700461cce89f2295a695c20e430"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony/symfony/zipball/f1e6063c0a42065adf026811127f3db1d7a79eb5",
-                "reference": "f1e6063c0a42065adf026811127f3db1d7a79eb5",
+                "url": "https://github.com/symfony/symfony/zipball/9fd2baa502ea6700461cce89f2295a695c20e430",
+                "reference": "9fd2baa502ea6700461cce89f2295a695c20e430",
                 "shasum": ""
             },
             "require": {
@@ -411,7 +411,7 @@
                 "propel/propel1": "dev-master",
                 "monolog/monolog": "dev-master"
             },
-            "time": "1348035223",
+            "time": "1348130370",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -993,7 +993,7 @@
                 "reference": "1.1rc1",
                 "shasum": ""
             },
-            "time": "2008-12-15 01:05:06",
+            "time": "2008-12-14 23:05:06",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
