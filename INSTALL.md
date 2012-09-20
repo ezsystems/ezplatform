@@ -68,8 +68,8 @@ $ sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs
     * Copy `app/config/parameters.yml.dist` to `app/config/parameters.yml`
     * Edit `app/config/parameters.yml` and configure
 
-         * `ezpublish.api.storage_engine.legacy.dsn`: DSN to your database connection (only MySQL and PostgreSQL are supported at the moment)
-         * `ezpublish.siteaccess.default`: Should be a **valid siteaccess** (preferably the same than `[SiteSettings].DefaultAccess` set in your `settings/override/site.ini.append.php`
+         * `ezpublish.system.ezdemo_group.database`: Your database settings (only MySQL and PostgreSQL are supported at the moment)
+         * `ezpublish.siteaccess.default_siteaccess`: Should be a **valid siteaccess** (preferably the same than `[SiteSettings].DefaultAccess` set in your `settings/override/site.ini.append.php`
 
 2. Dump your assets in your webroot:
 
