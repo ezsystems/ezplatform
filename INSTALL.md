@@ -75,12 +75,14 @@ $ sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs
 
     ```bash
     php app/console assets:install --symlink web
-    php app/console ezpublish:legacy:assets_install
+    php app/console ezpublish:legacy:assets_install --symlink web
     ```
     The first command will symlink all the assets from your bundles in the `web/` folder, in a `bundles/` sub-folder.
 
     The second command will symlink assets from your eZ Publish legacy directory and add wrapper scripts around the legacy front controllers
     (basically `index_treemenu.php`, `index_rest.php` and `index_cluster.php`)
+
+    In both cases "web" is the default folder, --relative can be added for relative symlinks and further help is available with -h.
 
 3. *Optional* - Configure a VirtualHost:
 
