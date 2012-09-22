@@ -8,8 +8,7 @@
  * @version //autogentag//
  */
 
-use Doctrine\Common\Annotations\AnnotationRegistry,
-    Symfony\Component\ClassLoader\ApcClassLoader;
+use Doctrine\Common\Annotations\AnnotationRegistry;
 
 $loader = require __DIR__.'/../vendor/autoload.php';
 
@@ -17,19 +16,9 @@ $loader = require __DIR__.'/../vendor/autoload.php';
 if ( !function_exists( 'intl_get_error_code' ) )
 {
     require_once __DIR__.'/../vendor/symfony/symfony/src/Symfony/Component/Locale/Resources/stubs/functions.php';
-
     $loader->add( '', __DIR__.'/../vendor/symfony/symfony/src/Symfony/Component/Locale/Resources/stubs' );
 }
 
 AnnotationRegistry::registerLoader( array( $loader, 'loadClass' ) );
-
-// Use APC class loader if APC is loaded, to improve loading performance.
-// Change "ezpublish" prefix if needed, in order not to conflict with another application.
-if ( extension_loaded( "APC" ) )
-{
-    require_once __DIR__ . '/../vendor/symfony/symfony/src/Symfony/Component/ClassLoader/ApcClassLoader.php';
-    $loader = new ApcClassLoader( 'ezpublish', $loader );
-    $loader->register( true );
-}
 
 return $loader;
