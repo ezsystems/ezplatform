@@ -18,6 +18,7 @@
             "require": {
                 "php": ">=5.3.2"
             },
+            "time": "1348120518",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -66,8 +67,7 @@
                 "eventmanager",
                 "annotations",
                 "persistence"
-            ],
-            "time": "1348120518"
+            ]
         },
         {
             "name": "ezsystems/ezpublish",
@@ -75,12 +75,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezp-next.git",
-                "reference": "6fac4bc5cf922e755ffc3f1112ad4adbf8c028c1"
+                "reference": "dc71ebeeaa20eb9e07f387bc73b73defe6c17043"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/ezsystems/ezp-next/zipball/6fac4bc5cf922e755ffc3f1112ad4adbf8c028c1",
-                "reference": "6fac4bc5cf922e755ffc3f1112ad4adbf8c028c1",
+                "url": "https://github.com/ezsystems/ezp-next/zipball/dc71ebeeaa20eb9e07f387bc73b73defe6c17043",
+                "reference": "dc71ebeeaa20eb9e07f387bc73b73defe6c17043",
                 "shasum": ""
             },
             "require": {
@@ -109,7 +109,7 @@
                 "qafoo/rmf": "dev-master",
                 "ezsystems/ezpublish-legacy": "dev-master"
             },
-            "time": "1348335661",
+            "time": "1348493185",
             "type": "library",
             "installation-source": "source",
             "autoload": {
@@ -158,6 +158,7 @@
                 "ptachoire/cssembed": "Assetic provides the integration with phpcssembed to embed data uris",
                 "leafo/scssphp-compass": "Assetic provides the integration with the SCSS compass plugin"
             },
+            "time": "1347622188",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -189,8 +190,7 @@
                 "assets",
                 "compression",
                 "minification"
-            ],
-            "time": "1347622188"
+            ]
         },
         {
             "name": "sensio/generator-bundle",
@@ -216,6 +216,7 @@
                 "doctrine/orm": ">=2.1,<2.4-dev",
                 "twig/twig": ">=1.8,<2.0-dev"
             },
+            "time": "1348030981",
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
@@ -237,8 +238,7 @@
                     "email": "fabien@symfony.com"
                 }
             ],
-            "description": "This bundle generates code for you",
-            "time": "1348030981"
+            "description": "This bundle generates code for you"
         },
         {
             "name": "symfony-cmf/routing",
@@ -247,12 +247,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony-cmf/Routing",
-                "reference": "a5810c9be0c1b29f9f32e23e117a3530d0a32300"
+                "reference": "42b54cf62223be20ee184a50413bc8fee60aa37a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony-cmf/Routing/zipball/a5810c9be0c1b29f9f32e23e117a3530d0a32300",
-                "reference": "a5810c9be0c1b29f9f32e23e117a3530d0a32300",
+                "url": "https://github.com/symfony-cmf/Routing/zipball/42b54cf62223be20ee184a50413bc8fee60aa37a",
+                "reference": "42b54cf62223be20ee184a50413bc8fee60aa37a",
                 "shasum": ""
             },
             "require": {
@@ -260,7 +260,7 @@
                 "symfony/routing": "2.1.*",
                 "symfony/http-kernel": "2.1.*"
             },
-            "time": "1348216257",
+            "time": "1348485995",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -321,6 +321,7 @@
             "suggest": {
                 "symfony/twig-bundle": "2.1.*"
             },
+            "time": "1347626244",
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
@@ -349,8 +350,7 @@
                 "assets",
                 "compression",
                 "minification"
-            ],
-            "time": "1347626244"
+            ]
         },
         {
             "name": "symfony/symfony",
@@ -358,12 +358,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/symfony/symfony.git",
-                "reference": "237629ad64b4b6ce2d2c6ad15a2085f128d6f11e"
+                "reference": "21d16e60fa2d4dc12a489817070896daf806b55d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony/symfony/zipball/237629ad64b4b6ce2d2c6ad15a2085f128d6f11e",
-                "reference": "237629ad64b4b6ce2d2c6ad15a2085f128d6f11e",
+                "url": "https://github.com/symfony/symfony/zipball/21d16e60fa2d4dc12a489817070896daf806b55d",
+                "reference": "21d16e60fa2d4dc12a489817070896daf806b55d",
                 "shasum": ""
             },
             "require": {
@@ -412,7 +412,7 @@
                 "propel/propel1": "dev-master",
                 "monolog/monolog": "dev-master"
             },
-            "time": "1348209286",
+            "time": "1348488710",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -462,6 +462,7 @@
             "require": {
                 "twig/twig": "1.*"
             },
+            "time": "1346770278",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -473,8 +474,7 @@
                 "psr-0": {
                     "Twig_Extensions_": "lib/"
                 }
-            },
-            "time": "1346770278"
+            }
         },
         {
             "name": "twig/twig",
@@ -493,6 +493,7 @@
             "require": {
                 "php": ">=5.2.4"
             },
+            "time": "1347961095",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -522,8 +523,7 @@
             "homepage": "http://twig.sensiolabs.org",
             "keywords": [
                 "templating"
-            ],
-            "time": "1347961095"
+            ]
         },
         {
             "name": "zetacomponents/archive",
@@ -1127,7 +1127,7 @@
                 "reference": "1.1rc1",
                 "shasum": ""
             },
-            "time": "2008-12-14 19:05:06",
+            "time": "2008-12-14 21:05:06",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1137,9 +1137,7 @@
             }
         }
     ],
-    "packages-dev": [
-
-    ],
+    "packages-dev": null,
     "aliases": [
 
     ],
