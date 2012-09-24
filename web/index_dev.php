@@ -7,7 +7,7 @@ require_once __DIR__ . '/../app/EzPublishKernel.php';
 require_once __DIR__ . '/../app/EzPublishCache.php';
 
 $kernel = new EzPublishKernel( 'dev', true );
-//$kernel->loadClassCache();
+$kernel->loadClassCache();
 $request = Request::createFromGlobals();
 $response = $kernel->handle( $request );
 $response->send();

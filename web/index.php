@@ -6,11 +6,13 @@ use Symfony\Component\ClassLoader\ApcClassLoader;;
 $loader = require_once __DIR__ . '/../app/autoload.php';
 
 
-// Use APC for autoloading to improve performance.
-// Change 'sf2' to a unique prefix in order to prevent cache key conflicts
+// Use APC for autoloading to improve performance:
+// Change 'ezpublish5' to a unique prefix in order to prevent cache key conflicts
 // with other applications also using APC.
+//
+// ( Not needed when using `php composer.phar dump-autoload --optimize` )
 /*
-$loader = new ApcClassLoader('sf2', $loader);
+$loader = new ApcClassLoader('ezpublish5', $loader);
 $loader->register(true);
 */
 
