@@ -7,6 +7,11 @@ _ezpublishRoutes:
 _ezpublishLegacyRoutes:
     resource: "@EzPublishLegacyBundle/Resources/config/routing.yml"
 
+_ezpublishRestRoutes:
+    resource: "@EzPublishRestBundle/Resources/config/routing.yml"
+    prefix:   /api/ezp/v2
+
 _internal:
     resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
     prefix:   /_internal
+

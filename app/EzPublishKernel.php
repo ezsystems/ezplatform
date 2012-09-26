@@ -9,6 +9,7 @@
 
 use eZ\Bundle\EzPublishCoreBundle\EzPublishCoreBundle,
     eZ\Bundle\EzPublishLegacyBundle\EzPublishLegacyBundle,
+    eZ\Bundle\EzPublishRestBundle\EzPublishRestBundle,
     EzSystems\DemoBundle\EzSystemsDemoBundle,
     Symfony\Component\HttpKernel\Kernel,
     Symfony\Bundle\FrameworkBundle\FrameworkBundle,
@@ -49,6 +50,7 @@ class EzPublishKernel extends Kernel
             new EzPublishCoreBundle(),
             new EzPublishLegacyBundle(),
             new EzSystemsDemoBundle(),
+            new EzPublishRestBundle()
         );
 
         if ( $this->getEnvironment() === 'dev' )
