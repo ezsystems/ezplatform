@@ -98,7 +98,8 @@ $ sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs
         </Directory>
 
         RewriteEngine On
-        RewriteRule ^/api/ /index_rest.php [L]
+        # v1 rest API is on Legacy
+        RewriteRule ^/api/[^/]+/v1/ /index_rest.php [L]
 
         # If using cluster, uncomment the following two lines:
         #RewriteRule ^/var/([^/]+/)?storage/images(-versioned)?/.* /index_cluster.php [L]
