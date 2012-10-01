@@ -18,7 +18,7 @@ $ sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs
 ```
 
 
-## Paths
+## Paths for future reference
 * `/<ezpubish5-root-dir>/`: The filesystem path where eZ Publish 5 is installed in, examples: "/home/myuser/www/" or "/var/sites/ezpublish/"
 * `/<ezpubish5-root-dir>/app/ezpublish_legacy/`:
 	* "Legacy" aka "Legacy Stack" refers to the eZ Publish 4.x installation which is bundled with eZ Publish 5 normally inside "app/ezpublish_legacy/"
