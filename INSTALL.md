@@ -103,20 +103,40 @@ $ sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs
         # If using cluster, uncomment the following two lines:
         #RewriteRule ^/var/([^/]+/)?storage/images(-versioned)?/.* /index_cluster.php [L]
         #RewriteRule ^/var/([^/]+/)?cache/(texttoimage|public)/.* /index_cluster.php [L]
-        
-        RewriteRule ^/var/([^/]+/)?storage/.* - [L]
+
+        RewriteRule ^/var/([^/]+/)?storage/images(-versioned)?/.* - [L]
         RewriteRule ^/var/([^/]+/)?cache/(texttoimage|public)/.* - [L]
-        RewriteRule ^/design/([^/]+/)?(stylesheets|images|javascript)/.* - [L]
+        RewriteRule ^/design/[^/]+/(stylesheets|images|javascript)/.* - [L]
         RewriteRule ^/share/icons/.* - [L]
-        RewriteRule ^/extension/[^/]+/design/[^/]+/(lib|stylesheets|images|javascripts?)/.* - [L]
+        RewriteRule ^/extension/[^/]+/design/[^/]+/(stylesheets|flash|images|lib|javascripts?)/.* - [L]
         RewriteRule ^/packages/styles/.+/(stylesheets|images|javascript)/[^/]+/.* - [L]
         RewriteRule ^/packages/styles/.+/thumbnail/.* - [L]
         RewriteRule ^/var/storage/packages/.* - [L]
+
+        #  Makes it possible to place your favicon at the root of your
+        #  eZ Publish instance. It will then be served directly.
         RewriteRule ^/favicon\.ico - [L]
+        # Uncomment the line below if you want you favicon be served
+        # from the standard design. You can customize the path to
+        # favicon.ico by changing /design/standard/images/favicon\.ico
+        #RewriteRule ^/favicon\.ico /design/standard/images/favicon.ico [L]
+        RewriteRule ^/design/standard/images/favicon\.ico - [L]
+
+        # Give direct access to robots.txt for use by crawlers (Google,
+        # Bing, Spammers..)
         RewriteRule ^/robots\.txt - [L]
-   
+
+        # Platform for Privacy Preferences Project ( P3P ) related files
+        # for Internet Explorer
+        # More info here : http://en.wikipedia.org/wiki/P3p
+        RewriteRule ^/w3c/p3p\.xml - [L]
+
+        # Uncomment the following lines when using popup style debug in legacy
+        #RewriteRule ^/var/([^/]+/)?cache/debug\.html.* - [L]
+
         # Following rule is needed to correctly display assets from bundles
         RewriteRule ^/bundles/ - [L]
+
         RewriteRule .* /index.php
     </VirtualHost>
     ```
