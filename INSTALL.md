@@ -98,6 +98,8 @@ $ sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs
         </Directory>
 
         RewriteEngine On
+        # Uncomment in FastCGI mode, to get basic auth working.
+        #RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
         # v1 rest API is on Legacy
         RewriteRule ^/api/[^/]+/v1/ /index_rest.php [L]
 
