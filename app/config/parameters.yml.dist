@@ -48,4 +48,3 @@ parameters:
     session_name: "eZSESSID{siteaccess_hash}"
 
     ezpublish_legacy.view.default_layout: eZDemoBundle::pagelayout.html.twig
-    ezpublish_legacy.view.content_block_name: content

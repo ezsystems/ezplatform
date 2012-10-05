@@ -1,4 +1,4 @@
-{% extends "eZDemoBundle::pagelayout.html.twig" %}
+{% extends noLayout ? viewbaseLayout : "eZDemoBundle::pagelayout.html.twig" %}
 
 {% block content %}
 <div class="attribute-header">
