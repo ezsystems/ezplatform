@@ -13,6 +13,7 @@ use eZ\Bundle\EzPublishCoreBundle\EzPublishCoreBundle,
     EzSystems\DemoBundle\EzSystemsDemoBundle,
     Symfony\Component\HttpKernel\Kernel,
     Symfony\Bundle\FrameworkBundle\FrameworkBundle,
+    Symfony\Bundle\SecurityBundle\SecurityBundle,
     Symfony\Bundle\TwigBundle\TwigBundle,
     Symfony\Bundle\AsseticBundle\AsseticBundle,
     Symfony\Bundle\WebProfilerBundle\WebProfilerBundle,
@@ -44,6 +45,7 @@ class EzPublishKernel extends Kernel
     {
         $bundles = array(
             new FrameworkBundle(),
+            new SecurityBundle(),
             new TwigBundle(),
             new AsseticBundle(),
             new SensioGeneratorBundle(),
