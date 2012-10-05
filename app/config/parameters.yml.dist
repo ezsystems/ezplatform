@@ -43,6 +43,8 @@ ezpublish:
             url_alias_router: false
 
 parameters:
+    secret: ThisTokenIsNotSoSecretChangeIt
+
     # The session name.
     # Using "{siteaccess_hash}" in the session name will make the session relative to the siteaccess.
     session_name: "eZSESSID{siteaccess_hash}"
