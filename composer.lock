@@ -75,12 +75,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezp-next.git",
-                "reference": "dc71ebeeaa20eb9e07f387bc73b73defe6c17043"
+                "reference": "c1adfdc66ee05920979371881b5df2e004657fc1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/ezsystems/ezp-next/zipball/dc71ebeeaa20eb9e07f387bc73b73defe6c17043",
-                "reference": "dc71ebeeaa20eb9e07f387bc73b73defe6c17043",
+                "url": "https://github.com/ezsystems/ezp-next/zipball/c1adfdc66ee05920979371881b5df2e004657fc1",
+                "reference": "c1adfdc66ee05920979371881b5df2e004657fc1",
                 "shasum": ""
             },
             "require": {
@@ -102,14 +102,15 @@
                 "zetacomponents/signal-slot": "dev-master",
                 "zetacomponents/system-information": "dev-master",
                 "zetacomponents/webdav": "1.1.0-rc1",
-                "symfony-cmf/routing": "1.0.*"
+                "symfony/symfony": "2.1.*",
+                "symfony-cmf/routing": "1.0.*",
+                "qafoo/rmf": "1.0.0"
             },
             "require-dev": {
-                "symfony/symfony": "2.1.1",
-                "qafoo/rmf": "dev-master",
-                "ezsystems/ezpublish-legacy": "dev-master"
+                "ezsystems/ezpublish-legacy": "dev-master",
+                "mikey179/vfsstream": "1.1.0"
             },
-            "time": "1348493185",
+            "time": "1349454907",
             "type": "library",
             "installation-source": "source",
             "autoload": {
@@ -193,6 +194,30 @@
             ]
         },
         {
+            "name": "qafoo/rmf",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "git://github.com/Qafoo/REST-Micro-Framework.git",
+                "reference": "1.0.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/Qafoo/REST-Micro-Framework/zipball/1.0.0",
+                "reference": "1.0.0",
+                "shasum": ""
+            },
+            "time": "2012-09-03 18:24:11",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-0": {
+                    "Qafoo\\RMF": "src/main/"
+                }
+            },
+            "description": "Very simple VC framework which makes it easy to build HTTP applications / REST webservices"
+        },
+        {
             "name": "sensio/generator-bundle",
             "version": "2.1.x-dev",
             "target-dir": "Sensio/Bundle/GeneratorBundle",
@@ -247,12 +272,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony-cmf/Routing",
-                "reference": "42b54cf62223be20ee184a50413bc8fee60aa37a"
+                "reference": "946c70b0751c9c6a2c09eb38293bc115a929fd03"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony-cmf/Routing/zipball/42b54cf62223be20ee184a50413bc8fee60aa37a",
-                "reference": "42b54cf62223be20ee184a50413bc8fee60aa37a",
+                "url": "https://github.com/symfony-cmf/Routing/zipball/946c70b0751c9c6a2c09eb38293bc115a929fd03",
+                "reference": "946c70b0751c9c6a2c09eb38293bc115a929fd03",
                 "shasum": ""
             },
             "require": {
@@ -260,7 +285,7 @@
                 "symfony/routing": "2.1.*",
                 "symfony/http-kernel": "2.1.*"
             },
-            "time": "1348485995",
+            "time": "1349088254",
             "type": "library",
             "extra": {
                 "branch-alias": {
