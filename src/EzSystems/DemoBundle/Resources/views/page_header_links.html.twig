@@ -5,10 +5,9 @@
 {% if false %}
     <li id="shoppingbasket"><a href="{{ path( 'ez_legacy', {'module_uri': '/shop/basket/'} ) }}" title="{{ 'Shopping basket'|trans }}">{{ 'Shopping basket'|trans }}</a></li>
 {% endif %}
-{# TODO: add logic for currently logged in user, related to the session implementation #}
-{% if false %}
+{% if app.security.token.authenticated %}
     <li id="myprofile"><a href="{{ path( 'ez_legacy', {'module_uri': '/user/edit/'} ) }}" title="{{ 'My profile'|trans }}">{{ 'My profile'|trans }}</a></li>
-    <li id="logout"><a href="{{ path( 'ez_legacy', {'module_uri': '/user/logout'} ) }}" title="{{ 'Logout'|trans }}">{{ 'Logout'|trans }} ( {$current_user.contentobject.name|wash} )</a></li>
+    <li id="logout"><a href="{{ path( 'ez_legacy', {'module_uri': '/user/logout'} ) }}" title="{{ 'Logout'|trans }}">{{ 'Logout'|trans }} ( {{ app.user }} )</a></li>
 {% else %}
     {# TODO: add check if user registration is enabled #}
     {% if true %}
