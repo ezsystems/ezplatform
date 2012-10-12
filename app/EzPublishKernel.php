@@ -75,7 +75,7 @@ class EzPublishKernel extends Kernel
         $loader->load( __DIR__ . '/config/config_' . $this->getEnvironment() . '.yml' );
         try
         {
-            $loader->load( __DIR__ . '/config/ezpublish.yml' );
+            $loader->load( __DIR__ . '/config/ezpublish_' . $this->getEnvironment() . '.yml' );
         }
         catch( \InvalidArgumentException $e )
         {
