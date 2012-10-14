@@ -20,6 +20,10 @@ security:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
+        ezpublish_setup:
+            pattern: ^/ezsetup
+            security: false
+
         ezpublish_rest:
             pattern: ^/api/ezp/v2
             stateless: true

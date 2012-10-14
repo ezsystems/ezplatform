@@ -65,8 +65,11 @@ $ sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs
 
 ## Setup files
 1. Configure:
-    * Copy `app/config/parameters.yml.dist` to `app/config/parameters.yml`
-    * Edit `app/config/parameters.yml` and configure
+
+    **Note: this step can be ignored if you run the setup wizard as explained in a later section.**
+
+    * Copy `app/config/ezpublish.yml.example` to `app/config/ezpublish.yml`
+    * Edit `app/config/ezpublish.yml` and configure
 
          * `ezpublish.system.ezdemo_group.database`: Your database settings (only MySQL and PostgreSQL are supported at the moment)
          * `ezpublish.siteaccess.default_siteaccess`: Should be a **valid siteaccess** (preferably the same than `[SiteSettings].DefaultAccess` set in your `settings/override/site.ini.append.php`
@@ -157,8 +160,7 @@ $ sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs
 ### Clean installation using Setup wizard
 1. Run Setup wizard:
 
-    There is currently a known issue in eZ Publish 5's Symfony based stack when it comes to Setup wizard, so you will need to execute it directly from the `/<ezpubish5-root-dir>/app/ezpublish_legacy/` by exposing that as a internal virtual host as well.
-    This can be done in same way as described on doc.ez.no for Virtual host setups where "eZ Publish" path will be: `/<ezpubish5-root-dir>/app/ezpublish_legacy/`
+Access http://server/ezsetup to trigger the setup wizard.
 
 ##### Troubleshooting during Setup wizard
 You might get the following error:

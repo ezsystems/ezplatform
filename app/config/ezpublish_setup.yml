@@ -1,0 +1,22 @@
+imports:
+    - { resource: ezpublish.yml }
+
+ezpublish:
+    siteaccess:
+        # Available siteaccesses
+        list:
+            - setup
+        # Siteaccess groups. Use them to group common settings.
+        groups: []
+        default_siteaccess: setup
+        match: {}
+
+    system:
+        setup:
+            database:
+                type: mysql
+                user: user
+                password:
+                server:
+                database_name: none
+            languages: []

@@ -41,12 +41,3 @@ ezpublish:
         ezdemo_site_admin:
             # Bypass UrlAliasRouter to use the admin interface since everything needs to run via the legacy kernel
             url_alias_router: false
-
-parameters:
-    secret: ThisTokenIsNotSoSecretChangeIt
-
-    # The session name.
-    # Using "{siteaccess_hash}" in the session name will make the session relative to the siteaccess.
-    session_name: "eZSESSID{siteaccess_hash}"
-
-    ezpublish_legacy.view.default_layout: eZDemoBundle::pagelayout.html.twig
