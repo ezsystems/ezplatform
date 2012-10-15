@@ -112,7 +112,7 @@ $ sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs
 
         RewriteRule ^/var/([^/]+/)?storage/images(-versioned)?/.* - [L]
         RewriteRule ^/var/([^/]+/)?cache/(texttoimage|public)/.* - [L]
-        RewriteRule ^/design/[^/]+/(stylesheets|images|javascript)/.* - [L]
+        RewriteRule ^/design/[^/]+/(stylesheets|images|javascript|fonts)/.* - [L]
         RewriteRule ^/share/icons/.* - [L]
         RewriteRule ^/extension/[^/]+/design/[^/]+/(stylesheets|flash|images|lib|javascripts?)/.* - [L]
         RewriteRule ^/packages/styles/.+/(stylesheets|images|javascript)/[^/]+/.* - [L]
