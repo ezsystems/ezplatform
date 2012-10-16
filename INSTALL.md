@@ -13,7 +13,7 @@
 > **2. Using ACL on a system that does not support chmod +a**
 > Some systems don't support chmod +a, but do support another utility called setfacl. You may need to enable ACL support on your partition and install setfacl before using it (as is the case with Ubuntu), like so:
 ```
-$ sudo setfacl -R -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs
+$ sudo setfacl -R -m u:www-data:rwx -m u:www-data:rwx app/cache app/logs
 $ sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs
 ```
 
