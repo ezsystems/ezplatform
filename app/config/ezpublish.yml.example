@@ -19,6 +19,11 @@ ezpublish:
                 ezpublish.dev: ezdemo_site
                 admin.ezpublish.dev: ezdemo_site_admin
 
+    imagemagick:
+        enabled: true
+        # Absolute path to ImageMagick "convert" binary
+        path: /opt/local/bin/convert
+
     # System settings, grouped by siteaccess and/or siteaccess group
     system:
         ezdemo_group:
@@ -45,6 +50,17 @@ ezpublish:
                         match:
                             Identifier\ContentType: small_folder
                             Identifier\ParentContentType: [landing_page, frontpage]
+            # Define here your image variations (formerly known as "image aliases")
+            image_variations:
+                my_image_variation:
+                    reference: ~
+                    filters:
+                        - {name: geometry/scaledownonly, params: [400, 350]}
+                my_cropped_variation:
+                    reference: my_mage_variation
+                    filters:
+                        - {name: geometry/scalewidthdownonly, params: [300]}
+                        - {name: geometry/crop, params: [200, 200, 0, 0]}
         ezdemo_site_admin:
             # Bypass UrlAliasRouter to use the admin interface since everything needs to run via the legacy kernel
             url_alias_router: false
