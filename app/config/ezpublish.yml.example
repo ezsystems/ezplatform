@@ -3,15 +3,18 @@ ezpublish:
         # Available siteaccesses
         list:
             - ezdemo_site
+            - fre
             - ezdemo_site_admin
         # Siteaccess groups. Use them to group common settings.
         groups:
-            ezdemo_group: [ezdemo_site, ezdemo_site_admin]
+            ezdemo_group: [ezdemo_site, fre, ezdemo_site_admin]
+            frontend_group: [ezdemo_site, fre]
         default_siteaccess: ezdemo_site
         match:
             Map\URI:
                 ezdemo_site: ezdemo_site
                 ezdemo_site_admin: ezdemo_site_admin
+                fre: fre
             Map\Host:
                 ezpublish.dev: ezdemo_site
                 admin.ezpublish.dev: ezdemo_site_admin
@@ -26,6 +29,10 @@ ezpublish:
                 server: localhost
                 database_name: ezdemo
             languages: [eng-GB, fre-FR]
+        frontend_group:
+            # Session name will be common for all siteaccesses members of this group
+            # It means that session will be shared for frontend siteaccesses, but not with backoffice
+            session_name: MyFrontendSessionName
         ezdemo_site:
             content:
                 view_cache: true
