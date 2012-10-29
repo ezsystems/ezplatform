@@ -1,28 +1,28 @@
 # Installation instructions
 
 > **Side note for Linux users**:
-> One common issue is that the app/cache and app/logs directories must be writable both by the web server and the command line user.
+> One common issue is that the ezpublish/cache and ezpublish/logs directories must be writable both by the web server and the command line user.
 > If your web server user is different from your command line user, you can run the following commands just once in your project to ensure that permissions will be set up properly. Change www-data to your web server user:
 > **1. Using ACL on a system that supports chmod +a**
 ```
- $ rm -rf app/cache/*
- $ rm -rf app/logs/*
- $ sudo chmod +a "www-data allow delete,write,append,file_inherit,directory_inherit" app/cache app/logs
- $ sudo chmod +a "`whoami` allow delete,write,append,file_inherit,directory_inherit" app/cache app/logs
+ $ rm -rf ezpublish/cache/*
+ $ rm -rf ezpublish/logs/*
+ $ sudo chmod +a "www-data allow delete,write,append,file_inherit,directory_inherit" ezpublish/cache ezpublish/logs
+ $ sudo chmod +a "`whoami` allow delete,write,append,file_inherit,directory_inherit" ezpublish/cache ezpublish/logs
 ```
 > **2. Using ACL on a system that does not support chmod +a**
 > Some systems don't support chmod +a, but do support another utility called setfacl. You may need to enable ACL support on your partition and install setfacl before using it (as is the case with Ubuntu), like so:
 ```
-$ sudo setfacl -R -m u:www-data:rwx -m u:www-data:rwx app/cache app/logs
-$ sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs
+$ sudo setfacl -R -m u:www-data:rwx -m u:www-data:rwx ezpublish/cache ezpublish/logs
+$ sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx ezpublish/cache ezpublish/logs
 ```
 
 
 ## Paths for future reference
 * `/<ezpubish5-root-dir>/`: The filesystem path where eZ Publish 5 is installed in, examples: "/home/myuser/www/" or "/var/sites/ezpublish/"
-* `/<ezpubish5-root-dir>/app/ezpublish_legacy/`:
-	* "Legacy" aka "Legacy Stack" refers to the eZ Publish 4.x installation which is bundled with eZ Publish 5 normally inside "app/ezpublish_legacy/"
-	* Example: "/home/myuser/www/app/ezpublish_legacy/"
+* `/<ezpubish5-root-dir>/ezpublish_legacy/`:
+	* "Legacy" aka "Legacy Stack" refers to the eZ Publish 4.x installation which is bundled with eZ Publish 5 normally inside "ezpublish/ezpublish_legacy/"
+	* Example: "/home/myuser/www/ezpublish_legacy/"
 
 ## Installation
 
@@ -38,10 +38,13 @@ $ sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs
        ```
 
 2. Get eZ Publish Legacy
+
        ```bash
-       cd /<ezpubish5-root-dir>/app/
+       cd /<ezpubish5-root-dir>/
        git clone https://github.com/ezsystems/ezpublish.git ezpublish_legacy
        ```
+
+       **Important note:** By doing so, you'll need to have [Zeta Components installed and available](http://zetacomponents.org/documentation/install.html) from your include path.
 
 3. *Optional* Upgrade eZ Publish Community Project installation
     1. Start from / upgrade to [latest](http://share.ez.no/downloads/downloads) eZ Publish CP installation.
@@ -68,8 +71,8 @@ $ sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs
 
     **Note: this step can be ignored if you run the setup wizard as explained in a later section.**
 
-    * Copy `app/config/ezpublish.yml.example` to `app/config/ezpublish.yml`
-    * Edit `app/config/ezpublish.yml` and configure
+    * Copy `ezpublish/config/ezpublish.yml.example` to `ezpublish/config/ezpublish.yml`
+    * Edit `ezpublish/config/ezpublish.yml` and configure
 
          * `ezpublish.system.ezdemo_group.database`: Your database settings (only MySQL and PostgreSQL are supported at the moment)
          * `ezpublish.siteaccess.default_siteaccess`: Should be a **valid siteaccess** (preferably the same than `[SiteSettings].DefaultAccess` set in your `settings/override/site.ini.append.php`
@@ -77,8 +80,8 @@ $ sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs
 2. Dump your assets in your webroot:
 
     ```bash
-    php app/console assets:install --symlink web
-    php app/console ezpublish:legacy:assets_install --symlink web
+    php ezpublish/console assets:install --symlink web
+    php ezpublish/console ezpublish:legacy:assets_install --symlink web
     ```
     The first command will symlink all the assets from your bundles in the `web/` folder, in a `bundles/` sub-folder.
 
@@ -147,16 +150,6 @@ $ sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs
     </VirtualHost>
     ```
 
-## Run eZ Publish
-
-1. *Optional*, **Development ONLY** - Take advantage of PHP 5.4 built-in web server:
-
-    ```bash
-    php app/console server:run localhost:8000
-    ```
-    The command above will run the built-in web server on localhost, on port 8000.
-    You will have access to eZ Publish by going to `http://localhost:8000` from your browser.
-
 ### Clean installation using Setup wizard
 1. Run Setup wizard:
 
@@ -168,7 +161,7 @@ You might get the following error:
 >
 > Remote repository URL: http://packages.ez.no/ezpublish/5.0/5.0.0[-alpha1]/
 
-This should only happen when you install from GIT or use pre realease packages
+This should only happen when you install from GIT or use pre-release packages
 To fix it, tweak your `settings/package.ini` by overriding it with a valid version:
 
 ```ini
