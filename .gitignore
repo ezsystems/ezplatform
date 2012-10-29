@@ -2,9 +2,9 @@
 .php~
 /nbproject/
 /.idea/
-/app/cache/
-/app/ezpublish_legacy
-/app/config/parameters.yml
+/ezpublish/cache/
+/ezpublish_legacy
+/ezpublish/config/parameters.yml
 /web/index_treemenu.php
 /web/index_rest.php
 /web/index_cluster.php
