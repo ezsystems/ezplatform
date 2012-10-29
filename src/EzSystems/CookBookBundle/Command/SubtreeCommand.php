@@ -1,12 +1,12 @@
 <?php
 /**
- * File containing the AssignContentToSectionCommand class.
+ * File containing the SubtreeCommand class.
  *
  * @copyright Copyright (C) 2012 eZ Systems AS. All rights reserved.
  * @license http://www.gnu.org/licenses/gpl-2.0.txt GNU General Public License v2
  * @version //autogentag//
  */
-namespace eZ\Publish\Bundles\CookBookBundle\Command;
+namespace EzSystems\CookBookBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
@@ -14,17 +14,18 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
-class AssignContentToSectionCommand extends ContainerAwareCommand
+class SubtreeCommand extends ContainerAwareCommand
 {
     /**
      * This method override configures on input argument for the content id
      */
     protected function configure()
     {
-        $this->setName( 'ezp_cookbook:assignsection' )->setDefinition(
+        $this->setName( 'ezp_cookbook:subtree' )->setDefinition(
                 array(
-                        new InputArgument( 'contentId', InputArgument::REQUIRED, 'An existing content id' ),
-                        new InputArgument( 'sectionId', InputArgument::REQUIRED, 'An existing section id' ),
+                        new InputArgument( 'operation', InputArgument::REQUIRED, 'copy or move' ),
+                        new InputArgument( 'locationId', InputArgument::REQUIRED, 'An existing location id' ),
+                        new InputArgument( 'parentLocationId', InputArgument::REQUIRED, 'An existing parent location (node) id' ),
                 )
         );
     }
@@ -36,11 +37,14 @@ class AssignContentToSectionCommand extends ContainerAwareCommand
      */
     protected function execute( InputInterface $input, OutputInterface $output )
     {
-        // fetch the location argument
-        $sectionId = $input->getArgument( 'sectionId' );
+        // fetch operation (copy or move)
+        $operation = $input->getArgument('operation');
 
         // fetch the location argument
-        $contentId = $input->getArgument( 'contentId' );
+        $parentLocationId = $input->getArgument( 'parentLocationId' );
+
+        // fetch the location argument
+        $locationId = $input->getArgument( 'locationId' );
 
         // get the repository from the di container
         $repository = $this->getContainer()->get( 'ezpublish.api.repository' );
@@ -48,8 +52,8 @@ class AssignContentToSectionCommand extends ContainerAwareCommand
         // get the content service from the repsitory
         $contentService = $repository->getContentService();
 
-        // get the section service from the repsitory
-        $sectionService = $repository->getSectionService();
+        // get the location service from the repsitory
+        $locationService = $repository->getLocationService();
 
         // get the user service from the repsitory
         $userService = $repository->getUserService();
@@ -63,22 +67,30 @@ class AssignContentToSectionCommand extends ContainerAwareCommand
 
         try
         {
-            // load the content info from the given content id
-            $contentInfo = $contentService->loadContentInfo($contentId);
+            // load the location from the given location id
+            $location = $locationService->loadLocation($locationId);
 
-            // load the section
-            $section = $sectionService->loadSection($sectionId);
+            // load the parent location to move/copy to
+            $parentLocation = $locationService->loadLocation($parentLocationId);
 
-            // assign the section to the content
-            $sectionService->assignSection($contentInfo, $section);
+            if($operation == 'copy') {
+                $newLocation = $locationService->copySubtree($location, $parentLocation);
+            }
+            else if($operation == 'move')
+            {
+                $newLocation = $locationService->moveSubtree($location, $parentLocation);
+            }
+            else
+            {
+                $output->writeln("operation must be copy or move");
+                return;
+            }
 
-            // realod an print out
-            $contentInfo =  $contentService->loadContentInfo($contentId);
-            $output->writeln($contentInfo->sectionId);
+            print_r($newLocation);
         }
         catch(\eZ\Publish\API\Repository\Exceptions\NotFoundException $e)
         {
-            // react on content or section not found
+            // react on content or location not found
             $output->writeln($e->getMessage());
         }
         catch(\eZ\Publish\API\Repository\Exceptions\UnauthorizedException $e)

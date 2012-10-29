@@ -1,12 +1,12 @@
 <?php
 /**
- * File containing the CopyContentCommand class.
+ * File containing the AssignContentToSectionCommand class.
  *
  * @copyright Copyright (C) 2012 eZ Systems AS. All rights reserved.
  * @license http://www.gnu.org/licenses/gpl-2.0.txt GNU General Public License v2
  * @version //autogentag//
  */
-namespace eZ\Publish\Bundles\CookBookBundle\Command;
+namespace EzSystems\CookBookBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
@@ -14,17 +14,17 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
-class CopyContentCommand extends ContainerAwareCommand
+class AssignContentToSectionCommand extends ContainerAwareCommand
 {
     /**
      * This method override configures on input argument for the content id
      */
     protected function configure()
     {
-        $this->setName( 'ezp_cookbook:copycontent' )->setDefinition(
+        $this->setName( 'ezp_cookbook:assignsection' )->setDefinition(
                 array(
                         new InputArgument( 'contentId', InputArgument::REQUIRED, 'An existing content id' ),
-                        new InputArgument( 'parentLocationId', InputArgument::REQUIRED, 'An existing parent location (node) id' ),
+                        new InputArgument( 'sectionId', InputArgument::REQUIRED, 'An existing section id' ),
                 )
         );
     }
@@ -37,7 +37,7 @@ class CopyContentCommand extends ContainerAwareCommand
     protected function execute( InputInterface $input, OutputInterface $output )
     {
         // fetch the location argument
-        $parentLocationId = $input->getArgument( 'parentLocationId' );
+        $sectionId = $input->getArgument( 'sectionId' );
 
         // fetch the location argument
         $contentId = $input->getArgument( 'contentId' );
@@ -48,8 +48,8 @@ class CopyContentCommand extends ContainerAwareCommand
         // get the content service from the repsitory
         $contentService = $repository->getContentService();
 
-        // get the location service from the repsitory
-        $locationService = $repository->getLocationService();
+        // get the section service from the repsitory
+        $sectionService = $repository->getSectionService();
 
         // get the user service from the repsitory
         $userService = $repository->getUserService();
@@ -63,24 +63,22 @@ class CopyContentCommand extends ContainerAwareCommand
 
         try
         {
-
-            // instanciate a location create struct
-            $locationCreateStruct = $locationService->newLocationCreateStruct($parentLocationId);
-
             // load the content info from the given content id
             $contentInfo = $contentService->loadContentInfo($contentId);
 
-            // copy the content - all versions are also copied. If only a specific version
-            // should be copied it can be passed as third parameter
-            // NOTE: the children are not copied wit this method - use LocationService::copySubtree instead
-            $copiedContent = $contentService->copyContent($contentInfo, $locationCreateStruct);
+            // load the section
+            $section = $sectionService->loadSection($sectionId);
 
-            // print out the content
-            print_r($copiedContent);
+            // assign the section to the content
+            $sectionService->assignSection($contentInfo, $section);
+
+            // realod an print out
+            $contentInfo =  $contentService->loadContentInfo($contentId);
+            $output->writeln($contentInfo->sectionId);
         }
         catch(\eZ\Publish\API\Repository\Exceptions\NotFoundException $e)
         {
-            // react on content not found
+            // react on content or section not found
             $output->writeln($e->getMessage());
         }
         catch(\eZ\Publish\API\Repository\Exceptions\UnauthorizedException $e)
@@ -91,4 +89,5 @@ class CopyContentCommand extends ContainerAwareCommand
 
     }
 }
+
 

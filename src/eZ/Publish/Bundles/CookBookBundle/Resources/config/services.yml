@@ -1,7 +1,0 @@
-parameters:
-#    e_z_publish_bundles_cook_book.example.class: eZ\Publish\Bundles\CookBookBundle\Example
-
-services:
-#    e_z_publish_bundles_cook_book.example:
-#        class: %e_z_publish_bundles_cook_book.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]

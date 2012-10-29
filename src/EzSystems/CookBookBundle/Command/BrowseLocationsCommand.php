@@ -1,12 +1,12 @@
 <?php
 /**
- * File containing the DeleteSubtree class.
+ * File containing the BrowseLocationsCommand class.
  *
  * @copyright Copyright (C) 2012 eZ Systems AS. All rights reserved.
  * @license http://www.gnu.org/licenses/gpl-2.0.txt GNU General Public License v2
  * @version //autogentag//
  */
-namespace eZ\Publish\Bundles\CookBookBundle\Command;
+namespace EzSystems\CookBookBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
@@ -15,7 +15,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 use eZ\Publish\API\Repository\Values\Content\Location;
 
-class DeleteSubtree extends ContainerAwareCommand
+class BrowseLocationsCommand extends ContainerAwareCommand
 {
     /**
      * @var \eZ\Publish\API\Repository\LocationService
@@ -33,11 +33,38 @@ class DeleteSubtree extends ContainerAwareCommand
      */
     protected function configure()
     {
-        $this->setName( 'ezp_cookbook:deletesubtree' )->setDefinition(
+        $this->setName( 'ezp_cookbook:browseLocations' )->setDefinition(
                 array(
                         new InputArgument( 'locationId', InputArgument::REQUIRED, 'An existing location id' )
                 )
         );
+    }
+
+    /**
+     * this method prints out the location name and calls this method recursive for the locations children
+     *
+     * @param \eZ\Publish\API\Repository\Values\Content\Location $location
+     * @param int $depth the current depth
+     * @param OutputInterface $output
+     */
+    private function browseLocation(Location $location, $depth, OutputInterface $output) {
+
+        // indent according to depth
+        for($k=0;$k<$depth;$k++)
+        {
+            $output->write(' ');
+        }
+
+        // write the content name
+        $output->writeln($location->contentInfo->name);
+
+        // get location children
+        $children = $this->locationService->loadLocationChildren($location);
+
+        // browse children
+        foreach($children as $childLocation) {
+            $this->browseLocation($childLocation, $depth +1,$output);
+        }
     }
 
     /**
@@ -53,25 +80,16 @@ class DeleteSubtree extends ContainerAwareCommand
         // get the repository from the di container
         $repository = $this->getContainer()->get( 'ezpublish.api.repository' );
 
-        // get the user service from the repsitory
-        $userService = $repository->getUserService();
-
-        // load admin user
-        $user = $userService->loadUser(14);
-
-        // set current user to admin
-        $repository->setCurrentUser($user);
+        // get the content service from the repsitory
+        $this->contentService = $repository->getContentService();
 
         // get the location service from the repsitory
         $this->locationService = $repository->getLocationService();
 
         try
         {
-            // load the location from the given id
-            $location = $locationService->loadLocation($locationId);
-
-            // delete location (permanently)
-            $locationService->deleteLocation($locationId);
+            $location = $this->locationService->loadLocation($locationId);
+            $this->browseLocation($location,0,$output);
         }
         catch( \eZ\Publish\API\Repository\Exceptions\NotFoundException $e )
         {
