@@ -1,3 +1,7 @@
+e_z_publish_bundles_cook_book:
+    resource: "@eZPublishBundlesCookBookBundle/Resources/config/routing.yml"
+    prefix:   /
+
 eZDemoBundle:
     resource: "@eZDemoBundle/Resources/config/routing.yml"
 

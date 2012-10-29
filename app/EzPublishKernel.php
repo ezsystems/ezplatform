@@ -52,7 +52,8 @@ class EzPublishKernel extends Kernel
             new EzPublishCoreBundle(),
             new EzPublishLegacyBundle(),
             new EzSystemsDemoBundle(),
-            new EzPublishRestBundle()
+            new EzPublishRestBundle(),
+            new eZ\Publish\Bundles\CookBookBundle\eZPublishBundlesCookBookBundle(),
         );
 
         if ( $this->getEnvironment() === 'dev' )
