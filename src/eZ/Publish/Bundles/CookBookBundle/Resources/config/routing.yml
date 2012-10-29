@@ -1,3 +1,0 @@
-e_z_publish_bundles_cook_book_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: eZPublishBundlesCookBookBundle:Default:index }
