@@ -18,8 +18,8 @@ class PreContentViewListener
         $contentView = $event->getContentView();
         $contentView->addParameters(
             array(
-                 'foo'          => 'bar',
-                 'osTypes'      => array( 'osx', 'linux', 'win' )
+                'foo' => 'bar',
+                'osTypes' => array( 'osx', 'linux', 'win' )
             )
         );
     }

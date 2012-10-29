@@ -37,7 +37,7 @@ class DemoController extends Controller
                 "title" => "eZ Publish 5",
                 "subtitle" => "Welcome to the future !",
                 "messageForLegacy" => "All your eZ Publish base are belong to us ;-)",
-                "content"      => $this->getRepository()->getContentService()->loadContent( $contentId )
+                "content" => $this->getRepository()->getContentService()->loadContent( $contentId )
             )
         );
     }
@@ -81,15 +81,15 @@ class DemoController extends Controller
         $contentType = $this->getRepository()->getContentTypeService()->loadContentTypeByIdentifier( $contentTypeIdentifier );
         $query = new Query(
             array(
-                 'criterion' => new Criterion\LogicalAnd(
-                     array(
-                          new Criterion\Subtree( $pathString ),
-                          new Criterion\ContentTypeId( $contentType->id )
-                     )
-                 ),
-                 'sortClauses' => array(
-                     new SortClause\DatePublished( Query::SORT_DESC )
-                 )
+                'criterion' => new Criterion\LogicalAnd(
+                    array(
+                        new Criterion\Subtree( $pathString ),
+                        new Criterion\ContentTypeId( $contentType->id )
+                    )
+                ),
+                'sortClauses' => array(
+                    new SortClause\DatePublished( Query::SORT_DESC )
+                )
             )
         );
         $query->limit = $limit;
@@ -112,15 +112,15 @@ class DemoController extends Controller
 
         $query = new Query(
             array(
-                 'criterion' => new Criterion\LogicalAnd(
-                     array(
-                          new Criterion\Subtree( '/1/2/' ),
-                          new Criterion\ContentTypeId( $contentType->id )
-                     )
-                 ),
-                 'sortClauses' => array(
-                     new SortClause\DatePublished( Query::SORT_DESC )
-                 )
+                'criterion' => new Criterion\LogicalAnd(
+                    array(
+                        new Criterion\Subtree( '/1/2/' ),
+                        new Criterion\ContentTypeId( $contentType->id )
+                    )
+                ),
+                'sortClauses' => array(
+                    new SortClause\DatePublished( Query::SORT_DESC )
+                )
             )
         );
         $query->limit = 1;

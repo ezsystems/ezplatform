@@ -12,7 +12,8 @@ use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputOption;
+use eZ\Publish\API\Repository\Exceptions\NotFoundException;
+use eZ\Publish\API\Repository\Exceptions\UnauthorizedException;
 
 class HideLocationCommand extends ContainerAwareCommand
 {
@@ -22,14 +23,15 @@ class HideLocationCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this->setName( 'ezp_cookbook:addlocation' )->setDefinition(
-                array(
-                        new InputArgument( 'locationId', InputArgument::REQUIRED, 'An existing location id' ),
-                )
+            array(
+                new InputArgument( 'locationId', InputArgument::REQUIRED, 'An existing location id' ),
+            )
         );
     }
 
     /**
-     * execute the command
+     * Executes the command
+     *
      * @param InputInterface $input
      * @param OutputInterface $output
      */
@@ -53,38 +55,33 @@ class HideLocationCommand extends ContainerAwareCommand
         // set current user to admin
         $repository->setCurrentUser($user);
 
-
         try
         {
-
-             // load the location info from the given location id
-            $location = $contentService->loadContentInfo($contentId);
+            // load the location info from the given location id
+            $location = $contentService->loadContentInfo( $contentId );
 
             // hide the location
-            $hiddenLocation = $locationService->hideLocation($location);
+            $hiddenLocation = $locationService->hideLocation( $location );
 
             // print out the location
-            print_r($hiddenLocation);
+            print_r( $hiddenLocation );
 
             // unhide the location
-            $unhiddenLocation = $locationService->unhideLocation($hiddenLocation);
+            $unhiddenLocation = $locationService->unhideLocation( $hiddenLocation );
 
             // print out the location
-            print_r($unhiddenLocation);
+            print_r( $unhiddenLocation );
 
         }
-        catch(\eZ\Publish\API\Repository\Exceptions\NotFoundException $e)
+        catch ( NotFoundException $e )
         {
             // react on content or location not found
-            $output->writeln($e->getMessage());
+            $output->writeln( $e->getMessage() );
         }
-        catch(\eZ\Publish\API\Repository\Exceptions\UnauthorizedException $e)
+        catch ( UnauthorizedException $e )
         {
             // react on permission denied
-            $output->writeln($e->getMessage());
+            $output->writeln( $e->getMessage() );
         }
-
     }
 }
-
-

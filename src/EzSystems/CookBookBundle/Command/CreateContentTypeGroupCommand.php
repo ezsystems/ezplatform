@@ -12,9 +12,8 @@ use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputOption;
-use eZ\Publish\API\Repository\Repository;
-use eZ\Publish\API\Repository\ContentTypeService;
+use eZ\Publish\API\Repository\Exceptions\UnauthorizedException;
+use eZ\Publish\API\Repository\Exceptions\ForbiddenException;
 
 class CreateContentTypeGroupCommand extends ContainerAwareCommand
 {
@@ -25,49 +24,46 @@ class CreateContentTypeGroupCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this->setName( 'ezp_cookbook:createcontenttypegroup' )->setDefinition(
-           array(
-               new InputArgument( 'content_type_group_identifier', InputArgument::REQUIRED, 'a content type group identifier' ),
-           )
+            array(
+                new InputArgument( 'content_type_group_identifier', InputArgument::REQUIRED, 'a content type group identifier' ),
+            )
         );
     }
 
     /**
-     * execute create group command
+     * Executes create group command
+     *
      * @param InputInterface $input
      * @param OutputInterface $output
      */
     protected function execute( InputInterface $input, OutputInterface $output )
     {
-
-        $groupIdentifier = $input->getArgument( 'content_type_group_identifier' );
-
         $repository = $this->getContainer()->get( 'ezpublish.api.repository' );
 
-        $userService = $repository->getUserService();
-        $user = $userService->loadUserByCredentials("admin","admin");
-        $repository->setCurrentUser($user);
-
-
-        $contentTypeService = $repository->getContentTypeService();
+        $repository->setCurrentUser(
+            $repository->getUserService()->loadUserByCredentials( "admin", "admin" )
+        );
 
         try
         {
             // instanciate a create struct
-            $groupCreate = $this->contentTypeService->newContentTypeGroupCreateStruct($groupIdentifier);
+            $groupCreate = $this->contentTypeService->newContentTypeGroupCreateStruct(
+                $input->getArgument( 'content_type_group_identifier' )
+            );
             // call service method
             $contentTypeGroup =  $this->contentTypeService->createContentTypeGroup( $groupCreate );
             // print out the group
-            print_r($contentTypeGroup);
+            print_r( $contentTypeGroup );
         }
-        catch( \eZ\Publish\API\Repository\Exceptions\UnauthorizedException $e )
+        catch ( UnauthorizedException $e )
         {
             // react on permission denied
-            $output->writeln($e->getMessage());
+            $output->writeln( $e->getMessage() );
         }
-        catch( \eZ\Publish\API\Repository\Exceptions\ForbiddenException $e )
+        catch ( ForbiddenException $e )
         {
             // react on identifier already exists
-            $output->writeln($e->getMessage());
+            $output->writeln( $e->getMessage() );
         }
     }
 }
