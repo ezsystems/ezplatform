@@ -21,7 +21,7 @@ $ sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx ezpublish/cache ezpublish
 ## Paths for future reference
 * `/<ezpubish5-root-dir>/`: The filesystem path where eZ Publish 5 is installed in, examples: "/home/myuser/www/" or "/var/sites/ezpublish/"
 * `/<ezpubish5-root-dir>/ezpublish_legacy/`:
-	* "Legacy" aka "Legacy Stack" refers to the eZ Publish 4.x installation which is bundled with eZ Publish 5 normally inside "ezpublish/ezpublish_legacy/"
+	* "Legacy" aka "Legacy Stack" refers to the eZ Publish 4.x installation which is bundled with eZ Publish 5 normally inside "ezpublish_legacy/"
 	* Example: "/home/myuser/www/ezpublish_legacy/"
 
 ## Installation
