@@ -90,7 +90,7 @@ class CreateContentTypeCommand extends ContainerAwareCommand
         // set an group for the field
         $titleFieldCreateStruct->fieldGroup = 'content';
         // set position inside the content type
-        $titleFieldCreateStruct->position = 1;
+        $titleFieldCreateStruct->position = 10;
         // enable translation
         $titleFieldCreateStruct->isTranslatable = true;
         // require this field to set on content creation
@@ -107,7 +107,7 @@ class CreateContentTypeCommand extends ContainerAwareCommand
         $bodyFieldCreate->names = array('eng-GB' => 'Body','ger-DE' => 'Text');
         $bodyFieldCreate->descriptions = array('eng-GB' => 'Description for Body','ger-DE' => 'Beschreibung Text');
         $bodyFieldCreate->fieldGroup = 'content';
-        $bodyFieldCreate->position = 2;
+        $bodyFieldCreate->position = 20;
         $bodyFieldCreate->isTranslatable = true;
         $bodyFieldCreate->isRequired = true;
         $bodyFieldCreate->isSearchable = true;
