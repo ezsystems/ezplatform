@@ -18,7 +18,6 @@
             "require": {
                 "php": ">=5.3.2"
             },
-            "time": "1348120518",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -67,7 +66,8 @@
                 "eventmanager",
                 "annotations",
                 "persistence"
-            ]
+            ],
+            "time": "1348120518"
         },
         {
             "name": "ezsystems/ezpublish",
@@ -75,12 +75,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezp-next.git",
-                "reference": "263e9891eba49724c35719951b9055bc1bf8958a"
+                "reference": "6aa5d7ae054278499087c44bb029fb9b6fd819a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/ezsystems/ezp-next/zipball/263e9891eba49724c35719951b9055bc1bf8958a",
-                "reference": "263e9891eba49724c35719951b9055bc1bf8958a",
+                "url": "https://github.com/ezsystems/ezp-next/zipball/6aa5d7ae054278499087c44bb029fb9b6fd819a8",
+                "reference": "6aa5d7ae054278499087c44bb029fb9b6fd819a8",
                 "shasum": ""
             },
             "require": {
@@ -110,7 +110,7 @@
                 "ezsystems/ezpublish-legacy": "dev-master",
                 "mikey179/vfsstream": "1.1.0"
             },
-            "time": "1351499386",
+            "time": "1351593005",
             "type": "library",
             "installation-source": "source",
             "autoload": {
@@ -159,7 +159,6 @@
                 "ptachoire/cssembed": "Assetic provides the integration with phpcssembed to embed data uris",
                 "leafo/scssphp-compass": "Assetic provides the integration with the SCSS compass plugin"
             },
-            "time": "1349004759",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -191,7 +190,8 @@
                 "assets",
                 "compression",
                 "minification"
-            ]
+            ],
+            "time": "1349004759"
         },
         {
             "name": "qafoo/rmf",
@@ -241,7 +241,6 @@
                 "doctrine/orm": ">=2.1,<2.4-dev",
                 "twig/twig": ">=1.8,<2.0-dev"
             },
-            "time": "1348030981",
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
@@ -263,7 +262,8 @@
                     "email": "fabien@symfony.com"
                 }
             ],
-            "description": "This bundle generates code for you"
+            "description": "This bundle generates code for you",
+            "time": "1348030981"
         },
         {
             "name": "symfony-cmf/routing",
@@ -285,7 +285,6 @@
                 "symfony/routing": ">=2.1,<2.3-dev",
                 "symfony/http-kernel": ">=2.1,<2.3-dev"
             },
-            "time": "1351276175",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -312,7 +311,8 @@
             "keywords": [
                 "database",
                 "routing"
-            ]
+            ],
+            "time": "1351276175"
         },
         {
             "name": "symfony/assetic-bundle",
@@ -346,7 +346,6 @@
             "suggest": {
                 "symfony/twig-bundle": ">=2.1.0,<2.3-dev"
             },
-            "time": "1348938560",
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
@@ -375,7 +374,8 @@
                 "assets",
                 "compression",
                 "minification"
-            ]
+            ],
+            "time": "1348938560"
         },
         {
             "name": "symfony/symfony",
@@ -487,7 +487,6 @@
             "require": {
                 "twig/twig": "1.*"
             },
-            "time": "1346770278",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -499,7 +498,8 @@
                 "psr-0": {
                     "Twig_Extensions_": "lib/"
                 }
-            }
+            },
+            "time": "1346770278"
         },
         {
             "name": "twig/twig",
@@ -518,7 +518,6 @@
             "require": {
                 "php": ">=5.2.4"
             },
-            "time": "1349702400",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -548,7 +547,8 @@
             "homepage": "http://twig.sensiolabs.org",
             "keywords": [
                 "templating"
-            ]
+            ],
+            "time": "1349702400"
         },
         {
             "name": "zetacomponents/archive",
@@ -895,7 +895,6 @@
             "require-dev": {
                 "zetacomponents/unit-test": "*"
             },
-            "time": "1338191285",
             "type": "library",
             "installation-source": "source",
             "autoload": {
@@ -939,7 +938,8 @@
                 }
             ],
             "description": "A set of classes to apply different filters on images, such as colour changes, resizing and special effects.",
-            "homepage": "https://github.com/zetacomponents"
+            "homepage": "https://github.com/zetacomponents",
+            "time": "1338191285"
         },
         {
             "name": "zetacomponents/mail",
