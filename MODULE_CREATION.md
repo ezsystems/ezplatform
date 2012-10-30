@@ -16,8 +16,8 @@ Special note
 Autoloading
 ~~~~~~~~~~~
 
-Custom autoloaders may be plugged-in. Create the file `app/config/autoload.php`
+Custom autoloaders may be plugged-in. Create the file `ezpublish/config/autoload.php`
 which will be automatically included if it exists. An example of how this file
-can be used is shown in `app/config/autoload.php-EXAMPLE`.
+can be used is shown in `ezpublish/config/autoload.php-EXAMPLE`.
 
-Please DO NOT modify `app/autoload.php`.
+Please DO NOT modify `ezpublish/autoload.php`.
