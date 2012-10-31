@@ -1,23 +1,5 @@
 # Installation instructions
 
-> **Side note for Linux users**:
-> One common issue is that the ezpublish/cache and ezpublish/logs directories must be writable both by the web server and the command line user.
-> If your web server user is different from your command line user, you can run the following commands just once in your project to ensure that permissions will be set up properly. Change www-data to your web server user:
-> **1. Using ACL on a system that supports chmod +a**
-```
- $ rm -rf ezpublish/cache/*
- $ rm -rf ezpublish/logs/*
- $ sudo chmod +a "www-data allow delete,write,append,file_inherit,directory_inherit" ezpublish/cache ezpublish/logs
- $ sudo chmod +a "`whoami` allow delete,write,append,file_inherit,directory_inherit" ezpublish/cache ezpublish/logs
-```
-> **2. Using ACL on a system that does not support chmod +a**
-> Some systems don't support chmod +a, but do support another utility called setfacl. You may need to enable ACL support on your partition and install setfacl before using it (as is the case with Ubuntu), like so:
-```
-$ sudo setfacl -R -m u:www-data:rwx -m u:www-data:rwx ezpublish/cache ezpublish/logs
-$ sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx ezpublish/cache ezpublish/logs
-```
-
-
 ## Paths for future reference
 * `/<ezpubish5-root-dir>/`: The filesystem path where eZ Publish 5 is installed in, examples: "/home/myuser/www/" or "/var/sites/ezpublish/"
 * `/<ezpubish5-root-dir>/ezpublish_legacy/`:
@@ -89,6 +71,23 @@ $ sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx ezpublish/cache ezpublish
     (basically `index_treemenu.php`, `index_rest.php` and `index_cluster.php`)
 
     In both cases "web" is the default folder, --relative can be added for relative symlinks and further help is available with -h.
+
+> **Side note for Linux users**:
+> One common issue is that the ezpublish/cache and ezpublish/logs directories must be writable both by the web server and the command line user.
+> If your web server user is different from your command line user, you can run the following commands just once in your project to ensure that permissions will be set up properly. Change www-data to your web server user:
+> **1. Using ACL on a system that supports chmod +a**
+```
+ $ rm -rf ezpublish/cache/*
+ $ rm -rf ezpublish/logs/*
+ $ sudo chmod +a "www-data allow delete,write,append,file_inherit,directory_inherit" ezpublish/cache ezpublish/logs
+ $ sudo chmod +a "`whoami` allow delete,write,append,file_inherit,directory_inherit" ezpublish/cache ezpublish/logs
+```
+> **2. Using ACL on a system that does not support chmod +a**
+> Some systems don't support chmod +a, but do support another utility called setfacl. You may need to enable ACL support on your partition and install setfacl before using it (as is the case with Ubuntu), like so:
+```
+$ sudo setfacl -R -m u:www-data:rwx -m u:www-data:rwx ezpublish/cache ezpublish/logs
+$ sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx ezpublish/cache ezpublish/logs
+```
 
 3. *Optional* - Configure a VirtualHost:
 
