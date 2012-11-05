@@ -62,7 +62,8 @@ class BrowseLocationsCommand extends ContainerAwareCommand
         $children = $this->locationService->loadLocationChildren($location);
 
         // browse children
-        foreach($children as $childLocation) {
+        foreach($children as $childLocation)
+        {
             $this->browseLocation($childLocation, $depth +1,$output);
         }
     }

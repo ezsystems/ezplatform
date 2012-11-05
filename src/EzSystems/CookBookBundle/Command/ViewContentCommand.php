@@ -56,7 +56,8 @@ class ViewContentCommand extends ContainerAwareCommand
             $contentType = $content->contentType;
 
             // iterate over field definitions
-            foreach($contentType->fieldDefinitions as $fieldDefinition ) {
+            foreach($contentType->fieldDefinitions as $fieldDefinition )
+            {
                 // ignore ezpage
                 if($fieldDefinition->fieldTypeIdentifier == 'ezpage') continue;
 

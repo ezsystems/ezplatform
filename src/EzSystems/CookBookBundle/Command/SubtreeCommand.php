@@ -73,7 +73,8 @@ class SubtreeCommand extends ContainerAwareCommand
             // load the parent location to move/copy to
             $parentLocation = $locationService->loadLocation($parentLocationId);
 
-            if($operation == 'copy') {
+            if($operation == 'copy')
+            {
                 $newLocation = $locationService->copySubtree($location, $parentLocation);
             }
             else if($operation == 'move')

@@ -48,7 +48,7 @@ class FindContentCommand extends ContainerAwareCommand
         $query = new \eZ\Publish\API\Repository\Values\Content\Query();
 
         // add a fulltext criterion
-        $query->criterion = new \eZ\Publish\API\Repository\Values\Content\Query\Criterion\Fulltext($text);
+        $query->criterion = new \eZ\Publish\API\Repository\Values\Content\Query\Criterion\FullText($text);
 
         // call findContent
         $result = $searchService->findContent($query);
@@ -57,7 +57,8 @@ class FindContentCommand extends ContainerAwareCommand
         $output->writeln('Found ' . $result->totalCount . ' items');
 
         // iterate over the search hits
-        foreach( $result->searchHits as $searchHit ) {
+        foreach( $result->searchHits as $searchHit )
+        {
             // print out the content name
             $output->writeln($searchHit->valueObject->contentInfo->name);
         }

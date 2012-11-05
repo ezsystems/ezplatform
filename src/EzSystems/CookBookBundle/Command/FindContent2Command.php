@@ -89,7 +89,8 @@ class FindContent2Command extends ContainerAwareCommand
         $output->writeln('Found ' . $result->totalCount . ' items');
 
         // iterate over the search hits
-        foreach( $result->searchHits as $searchHit ) {
+        foreach( $result->searchHits as $searchHit )
+        {
             // print out the content name
             $output->writeln($searchHit->valueObject->contentInfo->name);
         }
