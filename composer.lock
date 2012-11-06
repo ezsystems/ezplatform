@@ -1,5 +1,5 @@
 {
-    "hash": "e0384a23e90ebdfe38cd3f880e982e95",
+    "hash": "188e862bd022d2ed3e35a38f4f0b9456",
     "packages": [
         {
             "name": "doctrine/common",
@@ -192,6 +192,51 @@
                 "minification"
             ],
             "time": "1349004759"
+        },
+        {
+            "name": "kriswallsmith/buzz",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "http://github.com/kriswallsmith/Buzz.git",
+                "reference": "988bf14201ffbed940f23b42f87302e6adec4c21"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/kriswallsmith/Buzz/zipball/988bf14201ffbed940f23b42f87302e6adec4c21",
+                "reference": "988bf14201ffbed940f23b42f87302e6adec4c21",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "suggest": {
+                "ext-curl": "*"
+            },
+            "time": "1345206213",
+            "type": "library",
+            "installation-source": "source",
+            "autoload": {
+                "psr-0": {
+                    "Buzz": "lib/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kris Wallsmith",
+                    "email": "kris.wallsmith@gmail.com",
+                    "homepage": "http://kriswallsmith.net/"
+                }
+            ],
+            "description": "Lightweight HTTP client",
+            "homepage": "https://github.com/kriswallsmith/Buzz",
+            "keywords": [
+                "curl",
+                "http client"
+            ]
         },
         {
             "name": "qafoo/rmf",
@@ -1168,6 +1213,7 @@
     ],
     "minimum-stability": "dev",
     "stability-flags": {
-        "ezsystems/ezpublish": 20
+        "ezsystems/ezpublish": 20,
+        "kriswallsmith/buzz": 20
     }
 }

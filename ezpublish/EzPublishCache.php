@@ -7,7 +7,7 @@
  * @version //autogentag//
  */
 
-use Symfony\Bundle\FrameworkBundle\HttpCache\HttpCache;
+use eZ\Bundle\EzPublishCoreBundle\HttpCache;
 
 class EzPublishCache extends HttpCache
 {
