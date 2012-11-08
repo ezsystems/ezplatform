@@ -1,14 +1,14 @@
 # Installation instructions
 
-       These are instructions for installing via GIT (development version), look in INSTALL.md
-       in your downloaded archive for instructions on how to install a eZ Publish 5 build/archive.
+  These are instructions for installing via GIT (development version), look in INSTALL.md
+  in your downloaded archive for instructions on how to install a eZ Publish 5 build/archive.
 
 ## Paths for future reference
-    * `/<ezpubish5-root-dir>/`: The filesystem path where eZ Publish 5 is installed in,
-        * Examples: "/home/myuser/www/" or "/var/sites/ezpublish/"
-    * `/<ezpubish5-root-dir>/ezpublish_legacy/`
-        * "Legacy" aka "Legacy Stack" refers to the eZ Publish 4.x installation which is bundled with eZ Publish 5 inside "ezpublish_legacy/"
-	    * Examples: "/home/myuser/www/ezpublish_legacy/" or "/var/sites/ezpublish/ezpublish_legacy/"
+  * `/<ezpubish5-root-dir>/`: The filesystem path where eZ Publish 5 is installed in,
+   ** Examples: "/home/myuser/www/" or "/var/sites/ezpublish/"
+  * `/<ezpubish5-root-dir>/ezpublish_legacy/`
+   ** "Legacy" aka "Legacy Stack" refers to the eZ Publish 4.x installation which is bundled with eZ Publish 5 inside "ezpublish_legacy/"
+   ** Examples: "/home/myuser/www/ezpublish_legacy/" or "/var/sites/ezpublish/ezpublish_legacy/"
 
 ## Installation
 
@@ -171,19 +171,19 @@
 ### Clean installation using Setup wizard
 1. Run Setup wizard:
 
-      Access http://<your-host-name>/ezsetup to trigger the setup wizard.
+  Access http://<your-host-name>/ezsetup to trigger the setup wizard.
 
 ##### Troubleshooting during Setup wizard
 
-       You might get the following error:
-       > Retrieving remote site packages list failed. You may upload packages manually.
-       >
-       > Remote repository URL: http://packages.ez.no/ezpublish/5.0/5.0.0[-alpha1]/
+  You might get the following error:
+  > Retrieving remote site packages list failed. You may upload packages manually.
+  >
+  > Remote repository URL: http://packages.ez.no/ezpublish/5.0/5.0.0[-alpha1]/
 
-       This should only happen when you install from GIT or use pre-release packages
-       To fix it, tweak your `settings/package.ini` by overriding it with a valid version:
+  This should only happen when you install from GIT or use pre-release packages
+  To fix it, tweak your `settings/package.ini` by overriding it with a valid version:
 
-       ```ini
-       [RepositorySettings]
-       RemotePackagesIndexURL=http://packages.ez.no/ezpublish/5.0/5.0.0-alpha1
-       ```
+  ```ini
+  [RepositorySettings]
+  RemotePackagesIndexURL=http://packages.ez.no/ezpublish/5.0/5.0.0-alpha1
+  ```
