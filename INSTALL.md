@@ -59,8 +59,10 @@
        ```bash
        $ rm -rf ezpublish/cache/*
        $ rm -rf ezpublish/logs/*
-       $ sudo chmod +a "www-data allow delete,write,append,file_inherit,directory_inherit" ezpublish/cache ezpublish/logs ezpublish/config
-       $ sudo chmod +a "`whoami` allow delete,write,append,file_inherit,directory_inherit" ezpublish/cache ezpublish/logs ezpublish/config
+       $ sudo chmod +a "www-data allow delete,write,append,file_inherit,directory_inherit" \
+         ezpublish/{cache,logs,config} ezpublish_legacy/{design,extension,share,settings,var}
+       $ sudo chmod +a "`whoami` allow delete,write,append,file_inherit,directory_inherit" \
+         ezpublish/{cache,logs,config} ezpublish_legacy/{design,extension,share,settings,var}
        ```
 
        B. **Using ACL on a system that does not support chmod +a**
@@ -68,8 +70,29 @@
        Some systems don't support chmod +a, but do support another utility called setfacl. You may need to enable ACL support on your partition and install setfacl before using it (as is the case with Ubuntu), like so:
 
        ```bash
-       $ sudo setfacl -R -m u:www-data:rwx -m u:www-data:rwx ezpublish/cache ezpublish/logs ezpublish/config
-       $ sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx ezpublish/cache ezpublish/logs ezpublish/config
+       $ sudo setfacl -R -m u:www-data:rwx -m u:www-data:rwx \
+         ezpublish/{cache,logs,config} ezpublish_legacy/{design,extension,share,settings,var}
+       $ sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx \
+         ezpublish/{cache,logs,config} ezpublish_legacy/{design,extension,share,settings,var}
+       ```
+
+       C. **Using chown on systems that don't support ACL**
+
+       Some systems don't support ACL at all. You will either need to set your web server's user as the owner of the required directories.
+
+       ```bash
+       $ sudo chown -R www-data:www-data ezpublish/{cache,logs,config} ezpublish_legacy/{design,extension,share,settings,var}
+       $ sudo find {ezpublish/{cache,logs,config},ezpublish_legacy/{design,extension,share,settings,var}} -type d | xargs chmod -R 775
+       $ sudo find {ezpublish/{cache,logs,config},ezpublish_legacy/{design,extension,share,settings,var}} -type f | xargs chmod -R 664
+       ```
+
+       D. **Using chmod**
+
+       If you can't use ACL and aren't allowed to change owner, you can use chmod, making the files writable by everybody. Note that this method really isn't recommended as it allows any user to do anything.
+
+       ```bash
+       $ sudo find {ezpublish/{cache,logs,config},ezpublish_legacy/{design,extension,share,settings,var}} -type d | xargs chmod -R 777
+       $ sudo find {ezpublish/{cache,logs,config},ezpublish_legacy/{design,extension,share,settings,var}} -type f | xargs chmod -R 666
        ```
 
 ## Setup files
@@ -81,14 +104,14 @@
        cover single site setups.
 
        Perform the following command, where: `<package>` is one of (ezdemo_site[_clean], ezflow_site[_clean],
-       ezwebin_site[_clean], plain_site) and `<adminsiteaccess>` is for instance 'ezdemo_site_admin':
+       ezwebin_site[_clean], plain_site) or your project's name, and `<adminsiteaccess>` is for instance 'ezdemo_site_admin':
 
        ```bash
        cd /<ezpubish5-root-dir>/
        php ezpublish/console ezpublish:configure --env=prod <package> <adminsiteaccess>
        ```
 
-       If you instead would likt to manually create your yml config, do the following:
+       If you instead would like to manually create your yml config, do the following:
        * Copy `ezpublish/config/ezpublish.yml.example` to `ezpublish/config/ezpublish_prod.yml`
        * Edit `ezpublish/config/ezpublish_prod.yml`
 
@@ -187,3 +210,4 @@
   [RepositorySettings]
   RemotePackagesIndexURL=http://packages.ez.no/ezpublish/5.0/5.0.0-alpha1
   ```
+
