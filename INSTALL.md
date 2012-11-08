@@ -83,21 +83,21 @@
 ```
  $ rm -rf ezpublish/cache/*
  $ rm -rf ezpublish/logs/*
- $ sudo chmod +a "www-data allow delete,write,append,file_inherit,directory_inherit" ezpublish/cache ezpublish/logs
- $ sudo chmod +a "`whoami` allow delete,write,append,file_inherit,directory_inherit" ezpublish/cache ezpublish/logs
+ $ sudo chmod +a "www-data allow delete,write,append,file_inherit,directory_inherit" ezpublish/cache ezpublish/logs ezpublish/config
+ $ sudo chmod +a "`whoami` allow delete,write,append,file_inherit,directory_inherit" ezpublish/cache ezpublish/logs ezpublish/config
 ```
 > 2. **Using ACL on a system that does not support chmod +a**
 > Some systems don't support chmod +a, but do support another utility called setfacl. You may need to enable ACL support on your partition and install setfacl before using it (as is the case with Ubuntu), like so:
 ```
-$ sudo setfacl -R -m u:www-data:rwx -m u:www-data:rwx ezpublish/cache ezpublish/logs
-$ sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx ezpublish/cache ezpublish/logs
+$ sudo setfacl -R -m u:www-data:rwx -m u:www-data:rwx ezpublish/cache ezpublish/logs ezpublish/config
+$ sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx ezpublish/cache ezpublish/logs ezpublish/config
 ```
 
 3. *Optional* - Configure a VirtualHost:
 
     ```apache
     <VirtualHost *:80>
-        ServerName your-host-name
+        ServerName <your-host-name>
         DocumentRoot /<ezpubish5-root-dir>/web/
 
         <Directory /<ezpubish5-root-dir>/>
@@ -156,7 +156,7 @@ $ sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx ezpublish/cache ezpublish
 ### Clean installation using Setup wizard
 1. Run Setup wizard:
 
-Access http://server/ezsetup to trigger the setup wizard.
+Access http://<your-host-name>/ezsetup to trigger the setup wizard.
 
 ##### Troubleshooting during Setup wizard
 You might get the following error:
