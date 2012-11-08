@@ -81,7 +81,7 @@
        cover single site setups.
 
        Perform the following command, where: `<package>` is one of (ezdemo_site[_clean], ezflow_site[_clean],
-       ezwebin_site[_clean], plain_site) and `<adminsiteaccess>` is, for instance, 'ezdemo_site_admin':
+       ezwebin_site[_clean], plain_site) and `<adminsiteaccess>` is for instance 'ezdemo_site_admin':
 
        ```bash
        cd /<ezpubish5-root-dir>/
