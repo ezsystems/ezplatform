@@ -103,12 +103,12 @@
        To generate yml configuration for the new Symfony stack a console command has been provided to
        cover single site setups.
 
-       Perform the following command, where: `<package>` is one of (ezdemo_site[_clean], ezflow_site[_clean],
-       ezwebin_site[_clean], plain_site) or your project's name, and `<adminsiteaccess>` is for instance 'ezdemo_site_admin':
+       Perform the following command where `<group>` is the siteaccess group name, for instance package name like
+       'ezdemo_site', 'ezwebin_site' or 'ezflow_site'. And `<admin_siteaccess>` is, for instance, 'ezdemo_site_admin':
 
        ```bash
        cd /<ezpubish5-root-dir>/
-       php ezpublish/console ezpublish:configure --env=prod <package> <adminsiteaccess>
+       php ezpublish/console ezpublish:configure --env=prod <group> <admin_siteaccess>
        ```
 
        If you instead would like to manually create your yml config, do the following:
