@@ -60,9 +60,9 @@
        $ rm -rf ezpublish/cache/*
        $ rm -rf ezpublish/logs/*
        $ sudo chmod +a "www-data allow delete,write,append,file_inherit,directory_inherit" \
-         ezpublish/{cache,logs,config} ezpublish_legacy/{design,extension,share,settings,var}
+         ezpublish/{cache,logs,config} ezpublish_legacy/{design,extension,settings,var}
        $ sudo chmod +a "`whoami` allow delete,write,append,file_inherit,directory_inherit" \
-         ezpublish/{cache,logs,config} ezpublish_legacy/{design,extension,share,settings,var}
+         ezpublish/{cache,logs,config} ezpublish_legacy/{design,extension,settings,var}
        ```
 
        B. **Using ACL on a system that does not support chmod +a**
@@ -71,9 +71,9 @@
 
        ```bash
        $ sudo setfacl -R -m u:www-data:rwx -m u:www-data:rwx \
-         ezpublish/{cache,logs,config} ezpublish_legacy/{design,extension,share,settings,var}
+         ezpublish/{cache,logs,config} ezpublish_legacy/{design,extension,settings,var}
        $ sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx \
-         ezpublish/{cache,logs,config} ezpublish_legacy/{design,extension,share,settings,var}
+         ezpublish/{cache,logs,config} ezpublish_legacy/{design,extension,settings,var}
        ```
 
        C. **Using chown on systems that don't support ACL**
@@ -81,9 +81,9 @@
        Some systems don't support ACL at all. You will either need to set your web server's user as the owner of the required directories.
 
        ```bash
-       $ sudo chown -R www-data:www-data ezpublish/{cache,logs,config} ezpublish_legacy/{design,extension,share,settings,var}
-       $ sudo find {ezpublish/{cache,logs,config},ezpublish_legacy/{design,extension,share,settings,var}} -type d | xargs chmod -R 775
-       $ sudo find {ezpublish/{cache,logs,config},ezpublish_legacy/{design,extension,share,settings,var}} -type f | xargs chmod -R 664
+       $ sudo chown -R www-data:www-data ezpublish/{cache,logs,config} ezpublish_legacy/{design,extension,settings,var}
+       $ sudo find {ezpublish/{cache,logs,config},ezpublish_legacy/{design,extension,settings,var}} -type d | xargs chmod -R 775
+       $ sudo find {ezpublish/{cache,logs,config},ezpublish_legacy/{design,extension,settings,var}} -type f | xargs chmod -R 664
        ```
 
        D. **Using chmod**
@@ -91,8 +91,8 @@
        If you can't use ACL and aren't allowed to change owner, you can use chmod, making the files writable by everybody. Note that this method really isn't recommended as it allows any user to do anything.
 
        ```bash
-       $ sudo find {ezpublish/{cache,logs,config},ezpublish_legacy/{design,extension,share,settings,var}} -type d | xargs chmod -R 777
-       $ sudo find {ezpublish/{cache,logs,config},ezpublish_legacy/{design,extension,share,settings,var}} -type f | xargs chmod -R 666
+       $ sudo find {ezpublish/{cache,logs,config},ezpublish_legacy/{design,extension,settings,var}} -type d | xargs chmod -R 777
+       $ sudo find {ezpublish/{cache,logs,config},ezpublish_legacy/{design,extension,settings,var}} -type f | xargs chmod -R 666
        ```
 
 ## Setup files
