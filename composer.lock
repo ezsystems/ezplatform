@@ -1,5 +1,5 @@
 {
-    "hash": "188e862bd022d2ed3e35a38f4f0b9456",
+    "hash": "1573a4187cb083ac1daf8845c6ed98bb",
     "packages": [
         {
             "name": "doctrine/common",
@@ -75,12 +75,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezp-next.git",
-                "reference": "6aa5d7ae054278499087c44bb029fb9b6fd819a8"
+                "reference": "89d8c1f3d8ffeb97356c5fa1a1ff8d52bebed8bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/ezsystems/ezp-next/zipball/6aa5d7ae054278499087c44bb029fb9b6fd819a8",
-                "reference": "6aa5d7ae054278499087c44bb029fb9b6fd819a8",
+                "url": "https://github.com/ezsystems/ezp-next/zipball/89d8c1f3d8ffeb97356c5fa1a1ff8d52bebed8bf",
+                "reference": "89d8c1f3d8ffeb97356c5fa1a1ff8d52bebed8bf",
                 "shasum": ""
             },
             "require": {
@@ -102,15 +102,16 @@
                 "zetacomponents/signal-slot": "dev-master",
                 "zetacomponents/system-information": "dev-master",
                 "zetacomponents/webdav": "1.1.0-rc1",
-                "symfony/symfony": "2.1.*",
+                "symfony/symfony": "2.1.3",
                 "symfony-cmf/routing": "1.0.*",
-                "qafoo/rmf": "1.0.0"
+                "qafoo/rmf": "1.0.0",
+                "kriswallsmith/buzz": "dev-master"
             },
             "require-dev": {
                 "ezsystems/ezpublish-legacy": "dev-master",
                 "mikey179/vfsstream": "1.1.0"
             },
-            "time": "1351593005",
+            "time": "1352915250",
             "type": "library",
             "installation-source": "source",
             "autoload": {
@@ -133,12 +134,12 @@
             "source": {
                 "type": "git",
                 "url": "http://github.com/kriswallsmith/assetic.git",
-                "reference": "e22c5e07e672bb0cf43127e97e9368b53abf4aa8"
+                "reference": "d6203098559cf9fc90e2890c10533d0adad33bd0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/kriswallsmith/assetic/zipball/e22c5e07e672bb0cf43127e97e9368b53abf4aa8",
-                "reference": "e22c5e07e672bb0cf43127e97e9368b53abf4aa8",
+                "url": "https://github.com/kriswallsmith/assetic/archive/d6203098559cf9fc90e2890c10533d0adad33bd0.zip",
+                "reference": "d6203098559cf9fc90e2890c10533d0adad33bd0",
                 "shasum": ""
             },
             "require": {
@@ -159,6 +160,7 @@
                 "ptachoire/cssembed": "Assetic provides the integration with phpcssembed to embed data uris",
                 "leafo/scssphp-compass": "Assetic provides the integration with the SCSS compass plugin"
             },
+            "time": "1352285252",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -190,8 +192,7 @@
                 "assets",
                 "compression",
                 "minification"
-            ],
-            "time": "1349004759"
+            ]
         },
         {
             "name": "kriswallsmith/buzz",
@@ -203,7 +204,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/kriswallsmith/Buzz/zipball/988bf14201ffbed940f23b42f87302e6adec4c21",
+                "url": "https://github.com/kriswallsmith/Buzz/archive/988bf14201ffbed940f23b42f87302e6adec4c21.zip",
                 "reference": "988bf14201ffbed940f23b42f87302e6adec4c21",
                 "shasum": ""
             },
@@ -239,6 +240,62 @@
             ]
         },
         {
+            "name": "monolog/monolog",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Seldaek/monolog",
+                "reference": "b23cfd3d6ce0b6c050dda723040b83a1a6d7637e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/Seldaek/monolog/archive/b23cfd3d6ce0b6c050dda723040b83a1a6d7637e.zip",
+                "reference": "b23cfd3d6ce0b6c050dda723040b83a1a6d7637e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "mlehner/gelf-php": "1.0.*"
+            },
+            "suggest": {
+                "mlehner/gelf-php": "Allow sending log messages to a GrayLog2 server",
+                "ext-amqp": "Allow sending log messages to an AMQP server (1.0+ required)",
+                "ext-mongo": "Allow sending log messages to a MongoDB server"
+            },
+            "time": "1352907970",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.3.x-dev"
+                }
+            },
+            "installation-source": "source",
+            "autoload": {
+                "psr-0": {
+                    "Monolog": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jordi Boggiano",
+                    "email": "j.boggiano@seld.be",
+                    "homepage": "http://seld.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Logging for PHP 5.3",
+            "homepage": "http://github.com/Seldaek/monolog",
+            "keywords": [
+                "log",
+                "logging"
+            ]
+        },
+        {
             "name": "qafoo/rmf",
             "version": "1.0.0",
             "source": {
@@ -269,12 +326,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensio/SensioGeneratorBundle",
-                "reference": "3a65c9bf7d31aecacffc15a48f5eb2ece3615ef0"
+                "reference": "56c2029d1f3f41b39dd0df40009cb448df010bf1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/sensio/SensioGeneratorBundle/zipball/3a65c9bf7d31aecacffc15a48f5eb2ece3615ef0",
-                "reference": "3a65c9bf7d31aecacffc15a48f5eb2ece3615ef0",
+                "url": "https://github.com/sensio/SensioGeneratorBundle/archive/56c2029d1f3f41b39dd0df40009cb448df010bf1.zip",
+                "reference": "56c2029d1f3f41b39dd0df40009cb448df010bf1",
                 "shasum": ""
             },
             "require": {
@@ -286,6 +343,7 @@
                 "doctrine/orm": ">=2.1,<2.4-dev",
                 "twig/twig": ">=1.8,<2.0-dev"
             },
+            "time": "1352464423",
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
@@ -307,8 +365,56 @@
                     "email": "fabien@symfony.com"
                 }
             ],
-            "description": "This bundle generates code for you",
-            "time": "1348030981"
+            "description": "This bundle generates code for you"
+        },
+        {
+            "name": "swiftmailer/swiftmailer",
+            "version": "v4.2.2",
+            "source": {
+                "type": "git",
+                "url": "git://github.com/swiftmailer/swiftmailer.git",
+                "reference": "v4.2.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/swiftmailer/swiftmailer/zipball/v4.2.2",
+                "reference": "v4.2.2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.4"
+            },
+            "time": "2012-10-25 01:30:40",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.2-dev"
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "files": [
+                    "lib/swift_required.php"
+                ]
+            },
+            "license": [
+                "LGPL"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Chris Corbyn"
+                }
+            ],
+            "description": "Swiftmailer, free feature-rich PHP mailer",
+            "homepage": "http://swiftmailer.org",
+            "keywords": [
+                "mail",
+                "mailer"
+            ]
         },
         {
             "name": "symfony-cmf/routing",
@@ -317,12 +423,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony-cmf/Routing",
-                "reference": "ad024d9d3125a1ee30c391d4d12e33bf534ac684"
+                "reference": "928d2e377a374075de6000917bf82fff796c5ea4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony-cmf/Routing/zipball/ad024d9d3125a1ee30c391d4d12e33bf534ac684",
-                "reference": "ad024d9d3125a1ee30c391d4d12e33bf534ac684",
+                "url": "https://github.com/symfony-cmf/Routing/archive/928d2e377a374075de6000917bf82fff796c5ea4.zip",
+                "reference": "928d2e377a374075de6000917bf82fff796c5ea4",
                 "shasum": ""
             },
             "require": {
@@ -330,6 +436,7 @@
                 "symfony/routing": ">=2.1,<2.3-dev",
                 "symfony/http-kernel": ">=2.1,<2.3-dev"
             },
+            "time": "1352370041",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -356,8 +463,7 @@
             "keywords": [
                 "database",
                 "routing"
-            ],
-            "time": "1351276175"
+            ]
         },
         {
             "name": "symfony/assetic-bundle",
@@ -366,12 +472,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/AsseticBundle",
-                "reference": "5ebcf72d9b2d7028ca8c9b71b464ccc81d4795d2"
+                "reference": "30d3841dc9643d352503a72f3cdf93d193c439d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony/AsseticBundle/zipball/5ebcf72d9b2d7028ca8c9b71b464ccc81d4795d2",
-                "reference": "5ebcf72d9b2d7028ca8c9b71b464ccc81d4795d2",
+                "url": "https://github.com/symfony/AsseticBundle/archive/30d3841dc9643d352503a72f3cdf93d193c439d2.zip",
+                "reference": "30d3841dc9643d352503a72f3cdf93d193c439d2",
                 "shasum": ""
             },
             "require": {
@@ -391,6 +497,7 @@
             "suggest": {
                 "symfony/twig-bundle": ">=2.1.0,<2.3-dev"
             },
+            "time": "1352285268",
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
@@ -419,8 +526,117 @@
                 "assets",
                 "compression",
                 "minification"
+            ]
+        },
+        {
+            "name": "symfony/monolog-bundle",
+            "version": "dev-master",
+            "target-dir": "Symfony/Bundle/MonologBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/MonologBundle",
+                "reference": "51517152a608926ee6b40ed8cfbba1a708f0a14f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/symfony/MonologBundle/archive/51517152a608926ee6b40ed8cfbba1a708f0a14f.zip",
+                "reference": "51517152a608926ee6b40ed8cfbba1a708f0a14f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2",
+                "monolog/monolog": "1.*",
+                "symfony/monolog-bridge": ">=2.1.0,<2.3-dev",
+                "symfony/dependency-injection": ">=2.1.0,<2.3-dev",
+                "symfony/config": ">=2.1.0,<2.3-dev"
+            },
+            "require-dev": {
+                "symfony/yaml": ">=2.1.0,<2.3-dev",
+                "symfony/config": ">=2.1.0,<2.3-dev"
+            },
+            "time": "1348137624",
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.1.x-dev"
+                }
+            },
+            "installation-source": "source",
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Bundle\\MonologBundle": ""
+                }
+            },
+            "license": [
+                "MIT"
             ],
-            "time": "1348938560"
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony MonologBundle",
+            "homepage": "http://symfony.com"
+        },
+        {
+            "name": "symfony/swiftmailer-bundle",
+            "version": "dev-master",
+            "target-dir": "Symfony/Bundle/SwiftmailerBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/SwiftmailerBundle",
+                "reference": "2393ba6d4f1b544349123e24a16bbc749bef9e55"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/symfony/SwiftmailerBundle/archive/2393ba6d4f1b544349123e24a16bbc749bef9e55.zip",
+                "reference": "2393ba6d4f1b544349123e24a16bbc749bef9e55",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2",
+                "swiftmailer/swiftmailer": ">=4.2.0,<4.3-dev",
+                "symfony/swiftmailer-bridge": ">=2.1.0,<2.3-dev"
+            },
+            "require-dev": {
+                "symfony/dependency-injection": ">=2.1.0,<2.3-dev",
+                "symfony/http-kernel": ">=2.1.0,<2.3-dev",
+                "symfony/config": ">=2.1.0,<2.3-dev",
+                "symfony/yaml": ">=2.1.0,<2.3-dev"
+            },
+            "time": "1350447491",
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.1-dev"
+                }
+            },
+            "installation-source": "source",
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Bundle\\SwiftmailerBundle": ""
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony SwiftmailerBundle",
+            "homepage": "http://symfony.com"
         },
         {
             "name": "symfony/symfony",
@@ -521,17 +737,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabpot/Twig-extensions",
-                "reference": "f904575642b1213db69b4a98f08397e722ba1cae"
+                "reference": "dcdff02fbac1282e6b8f4d0558cc7e9580105688"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/fabpot/Twig-extensions/zipball/f904575642b1213db69b4a98f08397e722ba1cae",
-                "reference": "f904575642b1213db69b4a98f08397e722ba1cae",
+                "url": "https://github.com/fabpot/Twig-extensions/archive/dcdff02fbac1282e6b8f4d0558cc7e9580105688.zip",
+                "reference": "dcdff02fbac1282e6b8f4d0558cc7e9580105688",
                 "shasum": ""
             },
             "require": {
                 "twig/twig": "1.*"
             },
+            "time": "1349889206",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -544,7 +761,22 @@
                     "Twig_Extensions_": "lib/"
                 }
             },
-            "time": "1346770278"
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Common additional features for Twig that do not directly belong in core",
+            "homepage": "https://github.com/fabpot/Twig-extensions",
+            "keywords": [
+                "debug",
+                "i18n",
+                "text"
+            ]
         },
         {
             "name": "twig/twig",
@@ -552,22 +784,22 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/fabpot/Twig.git",
-                "reference": "0879472d7ecfd6b5714b066da152e005d7781b5b"
+                "reference": "e1ad2bde9c2cf12e65a89ef5eadcccd048f1af0c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/fabpot/Twig/zipball/0879472d7ecfd6b5714b066da152e005d7781b5b",
-                "reference": "0879472d7ecfd6b5714b066da152e005d7781b5b",
+                "url": "https://github.com/fabpot/Twig/archive/e1ad2bde9c2cf12e65a89ef5eadcccd048f1af0c.zip",
+                "reference": "e1ad2bde9c2cf12e65a89ef5eadcccd048f1af0c",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2.4"
             },
-            "time": "1351620822",
+            "time": "1352899988",
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.11-dev"
+                    "dev-master": "1.12-dev"
                 }
             },
             "installation-source": "source",
@@ -1213,7 +1445,6 @@
     ],
     "minimum-stability": "dev",
     "stability-flags": {
-        "ezsystems/ezpublish": 20,
-        "kriswallsmith/buzz": 20
+        "ezsystems/ezpublish": 20
     }
 }
