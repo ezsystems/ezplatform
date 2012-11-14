@@ -58,7 +58,7 @@ class DemoController extends Controller
         return $this->render(
             "eZDemoBundle::page_topmenu.html.twig",
             array(
-                "locations" => $this->getRepository()->getLocationService()->loadLocationChildren( $location )
+                "locationList" => $this->getRepository()->getLocationService()->loadLocationChildren( $location )
             ),
             $response
         );
