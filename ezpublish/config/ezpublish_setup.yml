@@ -1,6 +1,3 @@
-imports:
-    - { resource: ezpublish.yml }
-
 ezpublish:
     siteaccess:
         # Available siteaccesses

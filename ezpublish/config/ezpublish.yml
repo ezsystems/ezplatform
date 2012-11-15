@@ -1,5 +1,0 @@
-# eZ Publish settings
-# Settings placed here will be common to all environments.
-# Create an ezpublish_<env>.yml that imports this file (e.g. ezpublish_dev.yml).
-#
-# This file will be filled by setup wizard.
