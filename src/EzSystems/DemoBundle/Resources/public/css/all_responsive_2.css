@@ -116,6 +116,14 @@
     clear: both;
     display: block;
   }
+  header,
+  header > .container {
+    min-height: 70px;
+  }
+  header .logo {
+    width: 110px;
+    height: 37px;
+  }
   header .row > .span8,
   header .row > .form-search {
     display: inline-block;
@@ -128,8 +136,11 @@
     border: none;
   }
   .navbar.main-navi ul li a {
-    font-size: 30px;
-    line-height: 45px;
+    font-size: 18px;
+    line-height: 32px;
+  }
+  .block-type-campaign .attribute-caption > p {
+    display: none;
   }
 }
 @media (max-width: 767px) {
@@ -360,6 +371,19 @@
   textarea.span12,
   .uneditable-input.span12 {
     width: 714px;
+  }
+  .block-type-content-grid .row-fluid {
+    width: 100%;
+  }
+  .block-type-content-grid .row {
+    margin-left: 0;
+  }
+  .block-type-content-grid .row > [class*="span"],
+  .block-type-content-grid .row-fluid > [class*="span"] {
+    float: none;
+    display: block;
+    width: auto;
+    margin: 0;
   }
 }
 @media (max-width: 979px) {

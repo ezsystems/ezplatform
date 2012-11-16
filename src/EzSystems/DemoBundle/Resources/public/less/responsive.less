@@ -129,8 +129,14 @@
             display: block;
         }
     }
-
-
+    header,
+    header > .container {
+        min-height: 70px;
+    }
+    header .logo {
+        width: 110px;
+        height: 37px;
+    }
     header {
         .row > .span8, .row > .form-search {
             display:inline-block;
@@ -143,13 +149,19 @@
             li {
                 border: none;
                 a {
-                    font-size: 30px;
-                    line-height: 45px;
+                    font-size: 18px;
+                    line-height: 32px;
                 }
             }
         }
     }
-
+    .block-type-campaign {
+        .attribute-caption {
+            > p {
+                display: none;
+            }
+        }
+    }
 }
 
 
@@ -209,6 +221,21 @@
   // Input grid
   #inputGridSystem > .generate(12, 42px, 20px);
 
+  .block-type-content-grid {
+    .row-fluid {
+      width: 100%;
+    }
+    .row {
+      margin-left: 0;
+    }
+    .row > [class*="span"],
+    .row-fluid > [class*="span"] {
+      float: none;
+      display: block;
+      width: auto;
+      margin: 0;
+    }
+  }
 }
 
 

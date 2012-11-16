@@ -919,8 +919,8 @@ aside > .content-view-aside:last-child > article:last-child:after {
 .content-view-embed .attribute-header h6 {
   border-bottom: 1px solid #ebebeb;
 }
-.content-view-embed .attribute-header  + div,
-.content-view-embed .attribute-header  + form {
+.content-view-embed .attribute-header + div,
+.content-view-embed .attribute-header + form {
   background-color: #fbfbfb;
   background-image: -moz-linear-gradient(top, #f9f9f9, #ffffff);
   background-image: -ms-linear-gradient(top, #f9f9f9, #ffffff);
@@ -931,7 +931,7 @@ aside > .content-view-aside:last-child > article:last-child:after {
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9f9f9', endColorstr='#ffffff', GradientType=0);
 }
-.content-view-embed .attribute-header  + form {
+.content-view-embed .attribute-header + form {
   padding-top: 10px;
 }
 .attribute-header + .comment,
@@ -1077,6 +1077,9 @@ aside > .content-view-aside:last-child > article:last-child:after {
 }
 .comment-form .logging-message {
   margin-bottom: 10px;
+}
+.video-js {
+  width: 100% !important;
 }
 .tags-wrapper {
   display: block;
@@ -1485,6 +1488,9 @@ aside > .content-view-aside:last-child > article:last-child:after {
 }
 .user-login .button-right {
   float: none;
+}
+.class-call-to-action .attribute-header {
+  padding-bottom: 20px;
 }
 #ajaxsearchbox .textfield {
   width: 150px;
@@ -3022,7 +3028,6 @@ table .span12 {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e6e6e6', GradientType=0);
   border-color: #e6e6e6 #e6e6e6 #bfbfbf;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
   border: 1px solid #ccc;
   border-bottom-color: #bbb;
   -webkit-border-radius: 4px;
@@ -3859,9 +3864,9 @@ input[type="submit"].btn.small {
 .btn-navbar {
   display: none;
   *zoom: 1;
-  padding: 12px 10px;
+  padding: 4px 5px;
   border: 1px solid #dbdbdc;
-  font-size: 30px;
+  font-size: 16px;
   text-align: left;
   color: #6f6f6f;
   margin-bottom: 5px;
@@ -3881,11 +3886,11 @@ input[type="submit"].btn.small {
 .btn-navbar:after {
   content: "";
   position: absolute;
-  width: 17px;
-  height: 26px;
-  background: transparent url('/bundles/ezdemo/images/ez-sprite.png') no-repeat -128px -22px;
+  width: 10px;
+  height: 16px;
+  background: transparent url('/bundles/ezdemo/images/ez-sprite.png') no-repeat -132px -28px;
   right: 7px;
-  top: 10px;
+  top: 7px;
 }
 .nav-collapse.collapse {
   height: auto;
@@ -4848,6 +4853,7 @@ a.thumbnail:hover {
 }
 .block-type-campaign .images li {
   display: inline-block;
+  width: 100%;
 }
 .block-type-campaign .images li:before {
   display: none;
@@ -5131,21 +5137,21 @@ div.ezcom-setting-mail {
     width: 100%;
     min-height: 28px;
     /* Make inputs at least the height of their button counterpart */
-  
+
     /* Makes inputs behave like true block-level elements */
-  
+
     -webkit-box-sizing: border-box;
     /* Older Webkit */
-  
+
     -moz-box-sizing: border-box;
     /* Older FF */
-  
+
     -ms-box-sizing: border-box;
     /* IE8 */
-  
+
     box-sizing: border-box;
     /* CSS3 spec*/
-  
+
   }
   .input-prepend input[class*="span"],
   .input-append input[class*="span"] {
@@ -5209,6 +5215,14 @@ div.ezcom-setting-mail {
     clear: both;
     display: block;
   }
+  header,
+  header > .container {
+    min-height: 70px;
+  }
+  header .logo {
+    width: 110px;
+    height: 37px;
+  }
   header .row > .span8,
   header .row > .form-search {
     display: inline-block;
@@ -5221,8 +5235,11 @@ div.ezcom-setting-mail {
     border: none;
   }
   .navbar.main-navi ul li a {
-    font-size: 30px;
-    line-height: 45px;
+    font-size: 18px;
+    line-height: 32px;
+  }
+  .block-type-campaign .attribute-caption > p {
+    display: none;
   }
 }
 @media (max-width: 767px) {
@@ -5453,6 +5470,19 @@ div.ezcom-setting-mail {
   textarea.span12,
   .uneditable-input.span12 {
     width: 714px;
+  }
+  .block-type-content-grid .row-fluid {
+    width: 100%;
+  }
+  .block-type-content-grid .row {
+    margin-left: 0;
+  }
+  .block-type-content-grid .row > [class*="span"],
+  .block-type-content-grid .row-fluid > [class*="span"] {
+    float: none;
+    display: block;
+    width: auto;
+    margin: 0;
   }
 }
 @media (max-width: 979px) {
