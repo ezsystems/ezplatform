@@ -62,5 +62,5 @@ ezpublish:
                         - {name: geometry/scalewidthdownonly, params: [300]}
                         - {name: geometry/crop, params: [200, 200, 0, 0]}
         ezdemo_site_admin:
-            # Bypass UrlAliasRouter to use the admin interface since everything needs to run via the legacy kernel
-            url_alias_router: false
+            # Use legacy mode to use the admin interface since everything needs to run via the legacy kernel
+            legacy_mode: true
