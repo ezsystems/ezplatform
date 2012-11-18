@@ -8,6 +8,8 @@ require_once __DIR__ . '/../ezpublish/EzPublishCache.php';
 
 $kernel = new EzPublishKernel( 'dev', true );
 $kernel->loadClassCache();
+// Uncomment the following to activate HttpCache.
+//$kernel = new EzPublishCache( $kernel );
 $request = Request::createFromGlobals();
 $response = $kernel->handle( $request );
 $response->send();
