@@ -75,12 +75,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezp-next.git",
-                "reference": "89d8c1f3d8ffeb97356c5fa1a1ff8d52bebed8bf"
+                "reference": "5e7b5084bc626c8214d41c5e3f4c2783b5b4de05"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/ezsystems/ezp-next/zipball/89d8c1f3d8ffeb97356c5fa1a1ff8d52bebed8bf",
-                "reference": "89d8c1f3d8ffeb97356c5fa1a1ff8d52bebed8bf",
+                "url": "https://github.com/ezsystems/ezp-next/zipball/5e7b5084bc626c8214d41c5e3f4c2783b5b4de05",
+                "reference": "5e7b5084bc626c8214d41c5e3f4c2783b5b4de05",
                 "shasum": ""
             },
             "require": {
@@ -111,7 +111,7 @@
                 "ezsystems/ezpublish-legacy": "dev-master",
                 "mikey179/vfsstream": "1.1.0"
             },
-            "time": "1352915250",
+            "time": "1353195711",
             "type": "library",
             "installation-source": "source",
             "autoload": {
@@ -423,12 +423,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony-cmf/Routing",
-                "reference": "928d2e377a374075de6000917bf82fff796c5ea4"
+                "reference": "ad024d9d3125a1ee30c391d4d12e33bf534ac684"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony-cmf/Routing/archive/928d2e377a374075de6000917bf82fff796c5ea4.zip",
-                "reference": "928d2e377a374075de6000917bf82fff796c5ea4",
+                "url": "https://github.com/symfony-cmf/Routing/archive/ad024d9d3125a1ee30c391d4d12e33bf534ac684.zip",
+                "reference": "ad024d9d3125a1ee30c391d4d12e33bf534ac684",
                 "shasum": ""
             },
             "require": {
@@ -436,7 +436,7 @@
                 "symfony/routing": ">=2.1,<2.3-dev",
                 "symfony/http-kernel": ">=2.1,<2.3-dev"
             },
-            "time": "1352370041",
+            "time": "1351276175",
             "type": "library",
             "extra": {
                 "branch-alias": {
