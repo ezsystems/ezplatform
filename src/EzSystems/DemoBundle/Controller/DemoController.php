@@ -70,7 +70,8 @@ class DemoController extends Controller
         }
         $criteria = array(
                 new Criterion\Subtree( $location->pathString ),
-                new Criterion\ParentLocationId( $locationId )
+                new Criterion\ParentLocationId( $locationId ),
+                new Criterion\Visibility( Criterion\Visibility::VISIBLE )
         );
 
         if ( !empty( $excludeCriterion ) )
@@ -136,7 +137,8 @@ class DemoController extends Controller
         }
         $criteria = array(
                 new Criterion\Subtree( $pathString ),
-                new Criterion\ContentTypeId( $contentType->id )
+                new Criterion\ContentTypeId( $contentType->id ),
+                new Criterion\Visibility( Criterion\Visibility::VISIBLE )
         );
 
         if ( !empty( $excludeCriterion ) )
