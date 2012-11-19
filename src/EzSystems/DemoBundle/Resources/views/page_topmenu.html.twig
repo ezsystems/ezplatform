@@ -5,7 +5,7 @@
 
         <div class="nav-collapse">
             <ul class="nav">
-                {% for location in locationList.locations %}
+                {% for location in locationList %}
                     {% if location.contentInfo.contentType.identifer == 'link' %}
                         <li id=""><a href="#">{{ location.contentInfo.name }}</a></li>
                     {% else %}

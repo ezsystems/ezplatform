@@ -23,7 +23,7 @@
     <div class="navbar main-navi">
         <!-- Top menu area: START -->
         {% block topMenu %}
-            {% render "eZDemoBundle:Demo:topMenu" with {'locationId': 2}, {'standalone': true} %}
+            {% render "eZDemoBundle:Demo:topMenu" with {'locationId': 2, 'excludeContentTypes': [ 'article' ]}, {'standalone': true} %}
         {% endblock %}
         <!-- Top menu area: END -->
         {# TODO: implement logic to control path visibility #}
