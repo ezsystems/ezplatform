@@ -70,22 +70,39 @@ class DemoController extends Controller
      * @param string $pathString
      * @param string $contentTypeIdentifier
      * @param int $limit
+     * @param array $excludeLocations
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function latestContentAction( $pathString, $contentTypeIdentifier, $limit )
+    public function latestContentAction( $pathString, $contentTypeIdentifier, $limit, array $excludeLocations = array() )
     {
         $response = new Response;
         $response->setPublic();
         $response->setMaxAge( 60 );
 
         $contentType = $this->getRepository()->getContentTypeService()->loadContentTypeByIdentifier( $contentTypeIdentifier );
+
+        $excludeCriterion = array();
+        if ( !empty( $excludeLocations ) )
+        {
+            foreach( $excludeLocations as $locationId )
+            {
+                $excludeCriterion[] = new Criterion\LogicalNot(
+                    new Criterion\LocationId( $locationId )
+                );
+            }
+        }
+        $criteria = array(
+                new Criterion\Subtree( $pathString ),
+                new Criterion\ContentTypeId( $contentType->id )
+        );
+
+        if ( !empty( $excludeCriterion ) )
+            $criteria[] = new Criterion\LogicalAnd( $excludeCriterion );
+
         $query = new Query(
             array(
                 'criterion' => new Criterion\LogicalAnd(
-                    array(
-                        new Criterion\Subtree( $pathString ),
-                        new Criterion\ContentTypeId( $contentType->id )
-                    )
+                    $criteria
                 ),
                 'sortClauses' => array(
                     new SortClause\DatePublished( Query::SORT_DESC )
@@ -103,30 +120,14 @@ class DemoController extends Controller
         );
     }
 
-    public function footerAction( $contentTypeIdentifier )
+    public function footerAction( $locationId )
     {
         $response = new Response;
         $response->setPublic();
         $response->setMaxAge( 60 );
-        $contentType = $this->getRepository()->getContentTypeService()->loadContentTypeByIdentifier( $contentTypeIdentifier );
 
-        $query = new Query(
-            array(
-                'criterion' => new Criterion\LogicalAnd(
-                    array(
-                        new Criterion\Subtree( '/1/2/' ),
-                        new Criterion\ContentTypeId( $contentType->id )
-                    )
-                ),
-                'sortClauses' => array(
-                    new SortClause\DatePublished( Query::SORT_DESC )
-                )
-            )
-        );
-        $query->limit = 1;
-
-        $searchResult = $this->getRepository()->getSearchService()->findContent( $query );
-        $content = isset( $searchResult->searchHits[0] ) ? $searchResult->searchHits[0]->valueObject : null;
+        $location = $this->getRepository()->getLocationService()->loadLocation( $locationId );
+        $content = $this->getRepository()->getContentService()->loadContent( $location->contentId );
 
         return $this->render(
             "eZDemoBundle::page_footer.html.twig",
