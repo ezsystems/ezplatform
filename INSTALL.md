@@ -1,7 +1,6 @@
 # Installation instructions
 
-  These are instructions for installing via GIT (development version), look in INSTALL.md
-  in your downloaded archive for instructions on how to install a eZ Publish 5 build/archive.
+  These are instructions for installing via GIT (development version), look in INSTALL_ARCHIVE.md for instructions on how to install a eZ Publish 5 build/archive.
 
 ## Paths for future reference
   * `/<ezpubish5-root-dir>/`: The filesystem path where eZ Publish 5 is installed in,
@@ -30,7 +29,8 @@
 3. *Optional* Upgrade eZ Publish Community Project installation
     1. Start from / upgrade to [latest](http://share.ez.no/downloads/downloads) eZ Publish CP installation.
 
-    2. Follow normal eZ Publish upgrade procedures for upgrading the distribution files and moving over extensions.
+    2. Follow normal eZ Publish upgrade procedures for upgrading the distribution files and moving over extensions as found here:
+       http://doc.ez.no/eZ-Publish/Upgrading/Upgrading-to-5.0/Upgrading-from-4.7-to-5.0
 
 4. Install the dependencies with [Composer](http://getcomposer.org).
 
@@ -131,65 +131,8 @@
 
 3. *Optional* - Configure a VirtualHost:
 
-       ( TODO: Point to http://doc.ez.no/eZ-Publish/Technical-manual/5.x/Installation/Virtual-host-setup when available )
+    See: http://doc.ez.no/eZ-Publish/Technical-manual/5.x/Installation/Virtual-host-setup
 
-    ```apache
-    <VirtualHost *:80>
-        ServerName <your-host-name>
-        DocumentRoot /<ezpubish5-root-dir>/web/
-
-        <Directory /<ezpubish5-root-dir>/>
-            Options FollowSymLinks
-            order allow,deny
-            allow from all
-        </Directory>
-
-        RewriteEngine On
-        # Uncomment in FastCGI mode, to get basic auth working.
-        #RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-        # v1 rest API is on Legacy
-        RewriteRule ^/api/[^/]+/v1/ /index_rest.php [L]
-
-        # If using cluster, uncomment the following two lines:
-        #RewriteRule ^/var/([^/]+/)?storage/images(-versioned)?/.* /index_cluster.php [L]
-        #RewriteRule ^/var/([^/]+/)?cache/(texttoimage|public)/.* /index_cluster.php [L]
-
-        RewriteRule ^/var/([^/]+/)?storage/images(-versioned)?/.* - [L]
-        RewriteRule ^/var/([^/]+/)?cache/(texttoimage|public)/.* - [L]
-        RewriteRule ^/design/[^/]+/(stylesheets|images|javascript|fonts)/.* - [L]
-        RewriteRule ^/share/icons/.* - [L]
-        RewriteRule ^/extension/[^/]+/design/[^/]+/(stylesheets|flash|images|lib|javascripts?)/.* - [L]
-        RewriteRule ^/packages/styles/.+/(stylesheets|images|javascript)/[^/]+/.* - [L]
-        RewriteRule ^/packages/styles/.+/thumbnail/.* - [L]
-        RewriteRule ^/var/storage/packages/.* - [L]
-
-        #  Makes it possible to place your favicon at the root of your
-        #  eZ Publish instance. It will then be served directly.
-        RewriteRule ^/favicon\.ico - [L]
-        # Uncomment the line below if you want you favicon be served
-        # from the standard design. You can customize the path to
-        # favicon.ico by changing /design/standard/images/favicon\.ico
-        #RewriteRule ^/favicon\.ico /design/standard/images/favicon.ico [L]
-        RewriteRule ^/design/standard/images/favicon\.ico - [L]
-
-        # Give direct access to robots.txt for use by crawlers (Google,
-        # Bing, Spammers..)
-        RewriteRule ^/robots\.txt - [L]
-
-        # Platform for Privacy Preferences Project ( P3P ) related files
-        # for Internet Explorer
-        # More info here : http://en.wikipedia.org/wiki/P3p
-        RewriteRule ^/w3c/p3p\.xml - [L]
-
-        # Uncomment the following lines when using popup style debug in legacy
-        #RewriteRule ^/var/([^/]+/)?cache/debug\.html.* - [L]
-
-        # Following rule is needed to correctly display assets from bundles
-        RewriteRule ^/bundles/ - [L]
-
-        RewriteRule .* /index.php
-    </VirtualHost>
-    ```
 
 ### Clean installation using Setup wizard
 1. Run Setup wizard:
