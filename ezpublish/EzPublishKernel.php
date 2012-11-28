@@ -23,18 +23,6 @@ use eZ\Bundle\EzPublishCoreBundle\EzPublishCoreBundle,
 class EzPublishKernel extends Kernel
 {
     /**
-     * Constructor.
-     *
-     * @param string $environment The environment
-     * @param bool $debug Whether to enable debugging or not
-     */
-    public function __construct( $environment, $debug )
-    {
-        parent::__construct( $environment, $debug );
-        $this->loadClassCache();
-    }
-
-    /**
      * Returns an array of bundles to registers.
      *
      * @return array An array of bundle instances.
