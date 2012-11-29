@@ -3,9 +3,9 @@
   These are instructions for installing via GIT (development version), look in INSTALL_ARCHIVE.md for instructions on how to install a eZ Publish 5 build/archive.
 
 ## Paths for future reference
-  * `/<ezpubish5-root-dir>/`: The filesystem path where eZ Publish 5 is installed in,
+  * `/<ezpublish5-root-dir>/`: The filesystem path where eZ Publish 5 is installed in,
     * Examples: "/home/myuser/www/" or "/var/sites/ezpublish/"
-  * `/<ezpubish5-root-dir>/ezpublish_legacy/`
+  * `/<ezpublish5-root-dir>/ezpublish_legacy/`
     * **Legacy** aka **Legacy Stack** refers to the eZ Publish 4.x installation which is bundled with eZ Publish 5 inside `ezpublish_legacy/`
     * **Examples**: `/home/myuser/www/ezpublish_legacy/` or `/var/sites/ezpublish/ezpublish_legacy/`
 
@@ -20,7 +20,7 @@
 2. Get eZ Publish Legacy
 
        ```bash
-       cd /<ezpubish5-root-dir>/
+       cd /<ezpublish5-root-dir>/
        git clone https://github.com/ezsystems/ezpublish.git ezpublish_legacy
        ```
 
@@ -36,21 +36,21 @@
 
        Download composer and install dependencies by running:
        ```bash
-       cd /<ezpubish5-root-dir>/
+       cd /<ezpublish5-root-dir>/
        curl -s http://getcomposer.org/installer | php
        php composer.phar install
        ```
 
        Note: Every time you want to get the latest updates of all your dependencies just run this command:
        ```bash
-       cd /<ezpubish5-root-dir>/
+       cd /<ezpublish5-root-dir>/
        php composer.phar update
        ```
 
 5. Setup folder rights **For *NIX users**:
 
        One common issue is that the `ezpublish/cache`, `ezpublish/logs` and `ezpublish/config` directories **must be writable both by the web server and the command line user**.
-       If your web server user is different from your command line user, you can run the following commands just once in your project to ensure that permissions will be set up properly. 
+       If your web server user is different from your command line user, you can run the following commands just once in your project to ensure that permissions will be set up properly.
 
        Change `www-data` to your web server user:
 
@@ -107,7 +107,7 @@
        'ezdemo_site', 'ezwebin_site' or 'ezflow_site'. And `<admin_siteaccess>` is, for instance, 'ezdemo_site_admin':
 
        ```bash
-       cd /<ezpubish5-root-dir>/
+       cd /<ezpublish5-root-dir>/
        php ezpublish/console ezpublish:configure --env=prod <group> <admin_siteaccess>
        ```
 
