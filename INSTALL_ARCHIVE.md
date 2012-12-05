@@ -1,4 +1,4 @@
-Select either installation or upgrade from options bellow:
+Select either installation or upgrade from the options below:
 
 # A. Installation instructions
 
