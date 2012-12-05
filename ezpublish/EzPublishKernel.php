@@ -41,6 +41,7 @@ class EzPublishKernel extends Kernel
             new EzPublishLegacyBundle(),
             new EzSystemsDemoBundle(),
             new EzPublishRestBundle(),
+            new BDunogier\EzDisqusBundle\EzDisqusBundle(),
         );
 
         if ( $this->getEnvironment() === 'dev' )
