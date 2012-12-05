@@ -25,7 +25,7 @@
        git clone https://github.com/ezsystems/ezpublish.git ezpublish_legacy
        ```
 
-3. Install the [Zeta Components installed and available](http://zetacomponents.org/documentation/install.html) and make sure they are available in your php include path.
+3. Install the [Zeta Components](http://zetacomponents.org/documentation/install.html) and make sure they are available in your php include path.
 
        **Note** this step is not required if instead of installing eZ Publish Legacy from GIT you start with an installation of eZ Publish Community Project, as it includes a complete copy of the Zeta Components.
 
