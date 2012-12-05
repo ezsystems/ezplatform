@@ -60,7 +60,7 @@ class DemoController extends Controller
         $excludeCriterion = array();
         if ( !empty( $excludeContentTypes ) )
         {
-            foreach( $excludeContentTypes as $contentTypeIdentifier )
+            foreach ( $excludeContentTypes as $contentTypeIdentifier )
             {
                 $contentType = $this->getRepository()->getContentTypeService()->loadContentTypeByIdentifier( $contentTypeIdentifier );
                 $excludeCriterion[] = new Criterion\LogicalNot(
@@ -69,9 +69,9 @@ class DemoController extends Controller
             }
         }
         $criteria = array(
-                new Criterion\Subtree( $location->pathString ),
-                new Criterion\ParentLocationId( $locationId ),
-                new Criterion\Visibility( Criterion\Visibility::VISIBLE )
+            new Criterion\Subtree( $location->pathString ),
+            new Criterion\ParentLocationId( $locationId ),
+            new Criterion\Visibility( Criterion\Visibility::VISIBLE )
         );
 
         if ( !empty( $excludeCriterion ) )
@@ -128,7 +128,7 @@ class DemoController extends Controller
         $excludeCriterion = array();
         if ( !empty( $excludeLocations ) )
         {
-            foreach( $excludeLocations as $locationId )
+            foreach ( $excludeLocations as $locationId )
             {
                 $excludeCriterion[] = new Criterion\LogicalNot(
                     new Criterion\LocationId( $locationId )
@@ -136,9 +136,9 @@ class DemoController extends Controller
             }
         }
         $criteria = array(
-                new Criterion\Subtree( $pathString ),
-                new Criterion\ContentTypeId( $contentType->id ),
-                new Criterion\Visibility( Criterion\Visibility::VISIBLE )
+            new Criterion\Subtree( $pathString ),
+            new Criterion\ContentTypeId( $contentType->id ),
+            new Criterion\Visibility( Criterion\Visibility::VISIBLE )
         );
 
         if ( !empty( $excludeCriterion ) )
