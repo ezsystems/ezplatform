@@ -4,9 +4,9 @@
 
 ## Paths for future reference
   * `/<ezpublish5-root-dir>/`: The filesystem path where eZ Publish 5 is installed in
-    * Examples: `/home/myuser/www/` or `/var/sites/ezpublish/`
+    Examples: `/home/myuser/www/` or `/var/sites/ezpublish/`
   * `/<ezpublish5-root-dir>/ezpublish_legacy/`: **Legacy** aka **Legacy Stack** refers to the eZ Publish 4.x installation which is bundled with eZ Publish 5 inside `ezpublish_legacy/`
-    * Examples: `/home/myuser/www/ezpublish_legacy/` or `/var/sites/ezpublish/ezpublish_legacy/`
+    Examples: `/home/myuser/www/ezpublish_legacy/` or `/var/sites/ezpublish/ezpublish_legacy/`
 
 ## Installation
 
@@ -24,16 +24,19 @@
        ```
 
 3. Install the [Zeta Components installed and available](http://zetacomponents.org/documentation/install.html) and make sure they are available in your php include path.
+
        **Note** this step is not required if instead of installing eZ Publish Legacy from GIT you start with an installation of eZ Publish Community Project, as it includes a complete copy of the Zeta Components.
 
 4. *Optional* Upgrade an eZ Publish Community Project installation
+
        If you have a working eZ Publish Community Project installation, omit steps 2 and 3 above and instead:
+
        1. Start from / upgrade to [latest](http://share.ez.no/downloads/downloads) eZ Publish CP installation.
 
        2. Follow normal eZ Publish upgrade procedures for upgrading the distribution files and moving over extensions as found here:
           http://doc.ez.no/eZ-Publish/Upgrading/Upgrading-to-5.0/Upgrading-from-4.7-to-5.0
 
-4. Install the dependencies with [Composer](http://getcomposer.org).
+5. Install the dependencies with [Composer](http://getcomposer.org).
 
        Download composer and install dependencies by running:
        ```bash
@@ -48,7 +51,7 @@
        php composer.phar update
        ```
 
-5. Setup folder rights **For *NIX users**:
+6. Setup folder rights **For *NIX users**:
 
        One common issue is that the `ezpublish/cache`, `ezpublish/logs` and `ezpublish/config` directories **must be writable both by the web server and the command line user**.
        If your web server user is different from your command line user, you can run the following commands just once in your project to ensure that permissions will be set up properly.
