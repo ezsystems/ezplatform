@@ -10,7 +10,7 @@
     
     Examples: `/home/myuser/www/ezpublish_legacy/` or `/var/sites/ezpublish/ezpublish_legacy/`
 
-## Installation
+## Install all components
 
 1. You can get eZ Publish using GIT with the following command:
 
@@ -101,7 +101,8 @@
        $ sudo find {ezpublish/{cache,logs,config},ezpublish_legacy/{design,extension,settings,var}} -type f | xargs chmod -R 666
        ```
 
-## Setup files
+## Configure the system
+
 1. *Optional* Upgrade Configuration: Generate eZ Publish 5 yml configuration
 
        **Note: this step in only valid for upgrades and can be ignored if you intend to run the setup wizard.**
@@ -140,13 +141,11 @@
 
     See: http://doc.ez.no/eZ-Publish/Technical-manual/5.x/Installation/Virtual-host-setup
 
-
-### Clean installation using Setup wizard
-1. Run the Setup wizard:
+4. Run the Setup wizard:
 
   Access http://`<your-host-name>`/ezsetup to trigger the setup wizard.
 
-##### Troubleshooting during Setup wizard
+  **Troubleshooting during Setup wizard**
 
   You might get the following error:
   > Retrieving remote site packages list failed. You may upload packages manually.
