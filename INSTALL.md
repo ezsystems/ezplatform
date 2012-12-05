@@ -4,8 +4,10 @@
 
 ## Paths for future reference
   * `/<ezpublish5-root-dir>/`: The filesystem path where eZ Publish 5 is installed in
+  
     Examples: `/home/myuser/www/` or `/var/sites/ezpublish/`
   * `/<ezpublish5-root-dir>/ezpublish_legacy/`: **Legacy** aka **Legacy Stack** refers to the eZ Publish 4.x installation which is bundled with eZ Publish 5 inside `ezpublish_legacy/`
+    
     Examples: `/home/myuser/www/ezpublish_legacy/` or `/var/sites/ezpublish/ezpublish_legacy/`
 
 ## Installation
