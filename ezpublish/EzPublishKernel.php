@@ -15,6 +15,7 @@ use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\SecurityBundle\SecurityBundle;
 use Symfony\Bundle\TwigBundle\TwigBundle;
+use Symfony\Bundle\MonologBundle\MonologBundle;
 use Symfony\Bundle\AsseticBundle\AsseticBundle;
 use Symfony\Bundle\WebProfilerBundle\WebProfilerBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
@@ -35,6 +36,7 @@ class EzPublishKernel extends Kernel
             new FrameworkBundle(),
             new SecurityBundle(),
             new TwigBundle(),
+            new MonologBundle(),
             new AsseticBundle(),
             new SensioGeneratorBundle(),
             new EzPublishCoreBundle(),
