@@ -135,7 +135,7 @@
 
        In both cases "web" is the default folder, --relative can be added for relative symlinks and further help is available with -h.
 
-       **Note:** you should not run the *ezpublish/console* command as root, as it will generate cache files which the webserver and command line users will not be able to update or delete later.
+       **Note:** you should **not** run the *ezpublish/console* command as root, as it will generate cache files which the webserver and command line users will not be able to update or delete later.
 
 3. Configure a VirtualHost:
 
