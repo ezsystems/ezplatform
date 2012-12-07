@@ -4030,7 +4030,7 @@ input[type="submit"].btn.small {
   display: block;
   float: right;
   margin: 0 10px 0 0;
-  height: 33px;
+  min-height: 33px;
 }
 .navbar .nav.pull-right {
   float: right;
