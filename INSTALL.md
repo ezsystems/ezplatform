@@ -25,11 +25,7 @@
        git clone https://github.com/ezsystems/ezpublish.git ezpublish_legacy
        ```
 
-3. Install the [Zeta Components](http://zetacomponents.org/documentation/install.html) and make sure they are available in your php include path.
-
-       **Note** this step is not required if instead of installing eZ Publish Legacy from GIT you start with an installation of eZ Publish Community Project, as it includes a complete copy of the Zeta Components.
-
-4. *Optional* Upgrade an eZ Publish Community Project installation
+3. *Optional* Upgrade an eZ Publish Community Project installation
 
        If you have a working eZ Publish Community Project installation, omit steps 2 and 3 above and instead:
 
@@ -38,7 +34,7 @@
        2. Follow normal eZ Publish upgrade procedures for upgrading the distribution files and moving over extensions as found here:
           http://doc.ez.no/eZ-Publish/Upgrading/Upgrading-to-5.0/Upgrading-from-4.7-to-5.0
 
-5. Install the dependencies with [Composer](http://getcomposer.org).
+4. Install the dependencies with [Composer](http://getcomposer.org).
 
        Download composer and install dependencies by running:
        ```bash
@@ -53,7 +49,7 @@
        php composer.phar update
        ```
 
-6. Setup folder rights **For *NIX users**:
+5. Setup folder rights **For *NIX users**:
 
        One common issue is that the `ezpublish/cache`, `ezpublish/logs` and `ezpublish/config` directories **must be writable both by the web server and the command line user**.
        If your web server user is different from your command line user, you can run the following commands just once in your project to ensure that permissions will be set up properly.
