@@ -23,7 +23,7 @@ $kernel = new EzPublishKernel( 'prod', false );
 $kernel->loadClassCache();
 $kernel = new EzPublishCache( $kernel );
 $request = Request::createFromGlobals();
-// Uncomment the following if your application is behinf a reverse proxy you manage and trust.
+// Uncomment the following if your application is behind a reverse proxy you manage and trust.
 //Request::trustProxyData();
 $response = $kernel->handle( $request );
 $response->send();
