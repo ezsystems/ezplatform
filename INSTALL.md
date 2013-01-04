@@ -149,10 +149,10 @@
   > Remote repository URL: http://packages.ez.no/ezpublish/5.0/5.0.0[-alpha1]/
 
   This should only happen when you install from GIT or use pre-release packages
-  To fix it, tweak your `settings/package.ini` by overriding it with a valid version:
+  To fix it, tweak your `settings/package.ini` by overriding it with latest valid version, for example:
 
   ```ini
   [RepositorySettings]
-  RemotePackagesIndexURL=http://packages.ez.no/ezpublish/5.0/5.0.0-alpha1
+  RemotePackagesIndexURL=http://packages.ez.no/ezpublish/5.0/5.0.0
   ```
 
