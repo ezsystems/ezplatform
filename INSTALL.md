@@ -40,13 +40,13 @@
        ```bash
        cd /<ezpublish5-root-dir>/
        curl -s http://getcomposer.org/installer | php
-       php composer.phar install
+       php composer.phar install --prefer-dist
        ```
 
        Note: Every time you want to get the latest updates of all your dependencies just run this command:
        ```bash
        cd /<ezpublish5-root-dir>/
-       php composer.phar update
+       php composer.phar update --prefer-dist
        ```
 
 5. Setup folder rights **For *NIX users**:
