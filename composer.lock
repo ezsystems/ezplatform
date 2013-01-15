@@ -1,5 +1,5 @@
 {
-    "hash": "0a435bd4fc7f03608128a0e5d2a73fcc",
+    "hash": "8b1006bf7d1c2fd786e7591e8336e4fc",
     "packages": [
         {
             "name": "doctrine/common",
@@ -24,7 +24,6 @@
                     "dev-master": "2.3.x-dev"
                 }
             },
-            "installation-source": "source",
             "autoload": {
                 "psr-0": {
                     "Doctrine\\Common": "lib/"
@@ -71,16 +70,16 @@
         },
         {
             "name": "ezsystems/ezpublish",
-            "version": "dev-master",
+            "version": "dev-spiPersistenceCache",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezp-next.git",
-                "reference": "afeb55002ab89e14b22d86e3f7777f1ef9271eee"
+                "reference": "39b88c308821c850d40c62286f0d69966ffefa7f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezp-next/zipball/afeb55002ab89e14b22d86e3f7777f1ef9271eee",
-                "reference": "afeb55002ab89e14b22d86e3f7777f1ef9271eee",
+                "url": "https://api.github.com/repos/ezsystems/ezp-next/zipball/39b88c308821c850d40c62286f0d69966ffefa7f",
+                "reference": "39b88c308821c850d40c62286f0d69966ffefa7f",
                 "shasum": ""
             },
             "require": {
@@ -106,15 +105,15 @@
                 "symfony/symfony": "2.1.*",
                 "symfony-cmf/routing": "1.0.*",
                 "qafoo/rmf": "1.0.0",
-                "kriswallsmith/buzz": "dev-master"
+                "kriswallsmith/buzz": "dev-master",
+                "tedivm/stash-bundle": "dev-master"
             },
             "require-dev": {
                 "ezsystems/ezpublish-legacy": "dev-master",
                 "mikey179/vfsstream": "1.1.0"
             },
-            "time": "2012-12-20 13:32:34",
+            "time": "2013-01-15 17:58:41",
             "type": "library",
-            "installation-source": "source",
             "autoload": {
                 "psr-0": {
                     "eZ": ""
@@ -126,7 +125,7 @@
             "description": "eZ Publish API and kernel. This is the heart of eZ Publish 5.",
             "homepage": "http://share.ez.no",
             "support": {
-                "source": "https://github.com/ezsystems/ezp-next/tree/master"
+                "source": "https://github.com/ezsystems/ezp-next/tree/spiPersistenceCache"
             }
         },
         {
@@ -135,12 +134,12 @@
             "source": {
                 "type": "git",
                 "url": "http://github.com/kriswallsmith/assetic.git",
-                "reference": "8ca1861fbed58e2c6ffcca5c0a1726c40a10a77c"
+                "reference": "5591252faa1c7f3299660daebffd63dee2746b7e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/kriswallsmith/assetic/archive/8ca1861fbed58e2c6ffcca5c0a1726c40a10a77c.zip",
-                "reference": "8ca1861fbed58e2c6ffcca5c0a1726c40a10a77c",
+                "url": "https://github.com/kriswallsmith/assetic/archive/5591252faa1c7f3299660daebffd63dee2746b7e.zip",
+                "reference": "5591252faa1c7f3299660daebffd63dee2746b7e",
                 "shasum": ""
             },
             "require": {
@@ -152,7 +151,11 @@
                 "leafo/lessphp": "*",
                 "leafo/scssphp": "*",
                 "ptachoire/cssembed": "*",
-                "leafo/scssphp-compass": "*"
+                "leafo/scssphp-compass": "*",
+                "cssmin/cssmin": "*",
+                "mrclay/minify": "*",
+                "kamicane/packager": "*",
+                "joliclic/javascript-packer": "*"
             },
             "suggest": {
                 "twig/twig": "Assetic provides the integration with the Twig templating engine",
@@ -161,14 +164,13 @@
                 "ptachoire/cssembed": "Assetic provides the integration with phpcssembed to embed data uris",
                 "leafo/scssphp-compass": "Assetic provides the integration with the SCSS compass plugin"
             },
-            "time": "2012-12-14 18:31:26",
+            "time": "2013-01-12 22:20:24",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "1.1-dev"
                 }
             },
-            "installation-source": "source",
             "autoload": {
                 "psr-0": {
                     "Assetic": "src/"
@@ -202,12 +204,12 @@
             "source": {
                 "type": "git",
                 "url": "http://github.com/kriswallsmith/Buzz.git",
-                "reference": "988bf14201ffbed940f23b42f87302e6adec4c21"
+                "reference": "8ff1d1910b9e04ac571bcf6d639559e065093136"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/kriswallsmith/Buzz/archive/988bf14201ffbed940f23b42f87302e6adec4c21.zip",
-                "reference": "988bf14201ffbed940f23b42f87302e6adec4c21",
+                "url": "https://github.com/kriswallsmith/Buzz/archive/8ff1d1910b9e04ac571bcf6d639559e065093136.zip",
+                "reference": "8ff1d1910b9e04ac571bcf6d639559e065093136",
                 "shasum": ""
             },
             "require": {
@@ -216,13 +218,14 @@
             "suggest": {
                 "ext-curl": "*"
             },
+            "time": "2013-01-14 16:07:06",
             "type": "library",
-            "installation-source": "source",
             "autoload": {
                 "psr-0": {
                     "Buzz": "lib/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -238,21 +241,20 @@
             "keywords": [
                 "curl",
                 "http client"
-            ],
-            "time": "2012-08-17 12:23:33"
+            ]
         },
         {
             "name": "monolog/monolog",
-            "version": "dev-master",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog",
-                "reference": "0df12342ef6c5efc748b27bb9ef92e1c95631058"
+                "reference": "1.2.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/Seldaek/monolog/archive/0df12342ef6c5efc748b27bb9ef92e1c95631058.zip",
-                "reference": "0df12342ef6c5efc748b27bb9ef92e1c95631058",
+                "url": "https://github.com/Seldaek/monolog/zipball/1.2.1",
+                "reference": "1.2.1",
                 "shasum": ""
             },
             "require": {
@@ -266,14 +268,13 @@
                 "ext-amqp": "Allow sending log messages to an AMQP server (1.0+ required)",
                 "ext-mongo": "Allow sending log messages to a MongoDB server"
             },
-            "time": "2012-12-14 11:27:44",
+            "time": "2012-08-29 04:53:20",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "1.3.x-dev"
                 }
             },
-            "installation-source": "source",
             "autoload": {
                 "psr-0": {
                     "Monolog": "src/"
@@ -312,9 +313,8 @@
                 "reference": "1.0.0",
                 "shasum": ""
             },
-            "time": "2012-09-03 11:24:11",
+            "time": "2012-09-03 18:24:11",
             "type": "library",
-            "installation-source": "dist",
             "autoload": {
                 "psr-0": {
                     "Qafoo\\RMF": "src/main/"
@@ -329,12 +329,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensio/SensioGeneratorBundle",
-                "reference": "v2.1.4"
+                "reference": "74f519a1c4414d4a45dd12c9e86e29efb5a90b2c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/sensio/SensioGeneratorBundle/archive/v2.1.4.zip",
-                "reference": "v2.1.4",
+                "url": "https://github.com/sensio/SensioGeneratorBundle/archive/74f519a1c4414d4a45dd12c9e86e29efb5a90b2c.zip",
+                "reference": "74f519a1c4414d4a45dd12c9e86e29efb5a90b2c",
                 "shasum": ""
             },
             "require": {
@@ -346,14 +346,13 @@
                 "doctrine/orm": ">=2.1,<2.4-dev",
                 "twig/twig": ">=1.8,<2.0-dev"
             },
-            "time": "2012-11-19 16:10:57",
+            "time": "2013-01-04 17:09:08",
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
                     "dev-master": "2.1.x-dev"
                 }
             },
-            "installation-source": "source",
             "autoload": {
                 "psr-0": {
                     "Sensio\\Bundle\\GeneratorBundle": ""
@@ -395,12 +394,12 @@
                     "dev-master": "4.2-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "files": [
                     "lib/swift_required.php"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "LGPL"
             ],
@@ -447,7 +446,6 @@
                     "dev-master": "1.0-dev"
                 }
             },
-            "installation-source": "source",
             "autoload": {
                 "psr-0": {
                     "Symfony\\Cmf\\Component\\Routing": ""
@@ -477,12 +475,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/AsseticBundle",
-                "reference": "bd91880b53f86689f6638c9a28b8cc17792896e2"
+                "reference": "c8a558c8be571376da0b5811fa298373f977f55a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony/AsseticBundle/archive/bd91880b53f86689f6638c9a28b8cc17792896e2.zip",
-                "reference": "bd91880b53f86689f6638c9a28b8cc17792896e2",
+                "url": "https://github.com/symfony/AsseticBundle/archive/c8a558c8be571376da0b5811fa298373f977f55a.zip",
+                "reference": "c8a558c8be571376da0b5811fa298373f977f55a",
                 "shasum": ""
             },
             "require": {
@@ -502,14 +500,13 @@
             "suggest": {
                 "symfony/twig-bundle": ">=2.1.0,<2.3-dev"
             },
-            "time": "2012-12-14 18:38:42",
+            "time": "2013-01-14 20:08:42",
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
                     "dev-master": "2.1.x-dev"
                 }
             },
-            "installation-source": "source",
             "autoload": {
                 "psr-0": {
                     "Symfony\\Bundle\\AsseticBundle": ""
@@ -536,42 +533,43 @@
         },
         {
             "name": "symfony/monolog-bundle",
-            "version": "dev-master",
+            "version": "2.1.x-dev",
             "target-dir": "Symfony/Bundle/MonologBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/MonologBundle",
-                "reference": "51517152a608926ee6b40ed8cfbba1a708f0a14f"
+                "reference": "v2.2.0-BETA1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony/MonologBundle/archive/51517152a608926ee6b40ed8cfbba1a708f0a14f.zip",
-                "reference": "51517152a608926ee6b40ed8cfbba1a708f0a14f",
+                "url": "https://github.com/symfony/MonologBundle/archive/v2.2.0-BETA1.zip",
+                "reference": "v2.2.0-BETA1",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.2",
-                "monolog/monolog": "1.*",
                 "symfony/monolog-bridge": ">=2.1.0,<2.3-dev",
                 "symfony/dependency-injection": ">=2.1.0,<2.3-dev",
-                "symfony/config": ">=2.1.0,<2.3-dev"
+                "symfony/config": ">=2.1.0,<2.3-dev",
+                "monolog/monolog": ">=1.0,<1.3-dev"
             },
             "require-dev": {
                 "symfony/yaml": ">=2.1.0,<2.3-dev",
                 "symfony/config": ">=2.1.0,<2.3-dev"
             },
+            "time": "2013-01-07 10:57:41",
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
                     "dev-master": "2.1.x-dev"
                 }
             },
-            "installation-source": "source",
             "autoload": {
                 "psr-0": {
                     "Symfony\\Bundle\\MonologBundle": ""
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -587,21 +585,24 @@
             ],
             "description": "Symfony MonologBundle",
             "homepage": "http://symfony.com",
-            "time": "2012-09-20 10:40:24"
+            "keywords": [
+                "log",
+                "logging"
+            ]
         },
         {
             "name": "symfony/swiftmailer-bundle",
-            "version": "dev-master",
+            "version": "2.1.x-dev",
             "target-dir": "Symfony/Bundle/SwiftmailerBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/SwiftmailerBundle",
-                "reference": "2393ba6d4f1b544349123e24a16bbc749bef9e55"
+                "reference": "2bf9cdefd8102e6409ec0762652cf81cb3b4c21a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony/SwiftmailerBundle/archive/2393ba6d4f1b544349123e24a16bbc749bef9e55.zip",
-                "reference": "2393ba6d4f1b544349123e24a16bbc749bef9e55",
+                "url": "https://github.com/symfony/SwiftmailerBundle/archive/2bf9cdefd8102e6409ec0762652cf81cb3b4c21a.zip",
+                "reference": "2bf9cdefd8102e6409ec0762652cf81cb3b4c21a",
                 "shasum": ""
             },
             "require": {
@@ -615,19 +616,19 @@
                 "symfony/config": ">=2.1.0,<2.3-dev",
                 "symfony/yaml": ">=2.1.0,<2.3-dev"
             },
-            "time": "2012-10-17 04:18:11",
+            "time": "2013-01-04 17:04:29",
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
                     "dev-master": "2.1-dev"
                 }
             },
-            "installation-source": "source",
             "autoload": {
                 "psr-0": {
                     "Symfony\\Bundle\\SwiftmailerBundle": ""
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -650,12 +651,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/symfony/symfony.git",
-                "reference": "4bee2e9d3a043f2f720d84e8d94f70f91e364c80"
+                "reference": "da0b0426efe708447a332e699eac5bc75b448f95"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony/symfony/archive/4bee2e9d3a043f2f720d84e8d94f70f91e364c80.zip",
-                "reference": "4bee2e9d3a043f2f720d84e8d94f70f91e364c80",
+                "url": "https://github.com/symfony/symfony/archive/da0b0426efe708447a332e699eac5bc75b448f95.zip",
+                "reference": "da0b0426efe708447a332e699eac5bc75b448f95",
                 "shasum": ""
             },
             "require": {
@@ -702,11 +703,10 @@
                 "doctrine/orm": ">=2.2.3,<2.4-dev",
                 "doctrine/data-fixtures": "1.0.*",
                 "propel/propel1": "dev-master",
-                "monolog/monolog": "1.*"
+                "monolog/monolog": ">=1.0,<1.3-dev"
             },
-            "time": "2012-12-20 07:21:29",
+            "time": "2013-01-12 20:28:26",
             "type": "library",
-            "installation-source": "source",
             "autoload": {
                 "psr-0": {
                     "Symfony": "src/",
@@ -734,30 +734,124 @@
             ]
         },
         {
+            "name": "tedivm/stash",
+            "version": "v0.9.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tedivm/Stash.git",
+                "reference": "v0.9.5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/tedivm/Stash/archive/v0.9.5.zip",
+                "reference": "v0.9.5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "time": "2012-03-09 10:00:53",
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Stash": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD"
+            ],
+            "authors": [
+                {
+                    "name": "Robert Hafner",
+                    "email": "tedivm@tedivm.com"
+                },
+                {
+                    "name": "Josh Hall-Bachner",
+                    "email": "charlequin@gmail.com"
+                }
+            ],
+            "description": "A place to keep your cache",
+            "homepage": "http://github.com/tedivm/Stash",
+            "keywords": [
+                "cache",
+                "caching"
+            ]
+        },
+        {
+            "name": "tedivm/stash-bundle",
+            "version": "dev-master",
+            "target-dir": "Tedivm/StashBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tedivm/TedivmStashBundle",
+                "reference": "ce4fbb2e580bd4d234910648853027d230ee440b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/tedivm/TedivmStashBundle/archive/ce4fbb2e580bd4d234910648853027d230ee440b.zip",
+                "reference": "ce4fbb2e580bd4d234910648853027d230ee440b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "tedivm/stash": "0.9.*",
+                "symfony/framework-bundle": "2.1.*",
+                "symfony/yaml": "2.1.*"
+            },
+            "time": "2013-01-08 18:53:22",
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "Tedivm\\StashBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Robert Hafner",
+                    "email": "tedivm@tedivm.com"
+                },
+                {
+                    "name": "Josh Hall-Bachner",
+                    "email": "jhallbachner@gmail.com"
+                }
+            ],
+            "description": "Incorporates the Stash caching library into Symfony.",
+            "homepage": "http://github.com/tedivm/TedivmStashBundle",
+            "keywords": [
+                "symfony",
+                "caching",
+                "sessions"
+            ]
+        },
+        {
             "name": "twig/extensions",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabpot/Twig-extensions",
-                "reference": "d1990ffaca93302709d1306d50ae153adb169f49"
+                "reference": "5c2d515d4624bdd588226d688173cf0399a4d8cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/fabpot/Twig-extensions/archive/d1990ffaca93302709d1306d50ae153adb169f49.zip",
-                "reference": "d1990ffaca93302709d1306d50ae153adb169f49",
+                "url": "https://github.com/fabpot/Twig-extensions/archive/5c2d515d4624bdd588226d688173cf0399a4d8cf.zip",
+                "reference": "5c2d515d4624bdd588226d688173cf0399a4d8cf",
                 "shasum": ""
             },
             "require": {
                 "twig/twig": "1.*"
             },
-            "time": "2012-12-15 09:26:10",
+            "time": "2013-01-04 16:55:05",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "1.0.x-dev"
                 }
             },
-            "installation-source": "source",
             "autoload": {
                 "psr-0": {
                     "Twig_Extensions_": "lib/"
@@ -787,25 +881,24 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/fabpot/Twig.git",
-                "reference": "f095f3a1777431412954e478f92e8a10cb7b6495"
+                "reference": "3111e1265db1026323c589a5bd2d152871d7bbab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/fabpot/Twig/archive/f095f3a1777431412954e478f92e8a10cb7b6495.zip",
-                "reference": "f095f3a1777431412954e478f92e8a10cb7b6495",
+                "url": "https://github.com/fabpot/Twig/archive/3111e1265db1026323c589a5bd2d152871d7bbab.zip",
+                "reference": "3111e1265db1026323c589a5bd2d152871d7bbab",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2.4"
             },
-            "time": "2012-12-18 10:01:32",
+            "time": "2013-01-08 16:56:12",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "1.12-dev"
                 }
             },
-            "installation-source": "source",
             "autoload": {
                 "psr-0": {
                     "Twig_": "lib/"
@@ -853,7 +946,6 @@
             },
             "time": "2012-05-21 09:54:03",
             "type": "library",
-            "installation-source": "source",
             "autoload": {
                 "classmap": [
                     "src"
@@ -882,7 +974,6 @@
             },
             "time": "2012-05-21 09:55:21",
             "type": "library",
-            "installation-source": "source",
             "autoload": {
                 "classmap": [
                     "src"
@@ -908,7 +999,6 @@
             },
             "time": "2012-05-21 11:21:36",
             "type": "library",
-            "installation-source": "source",
             "autoload": {
                 "classmap": [
                     "src"
@@ -937,7 +1027,6 @@
             },
             "time": "2012-05-21 09:55:29",
             "type": "library",
-            "installation-source": "source",
             "autoload": {
                 "classmap": [
                     "src"
@@ -966,7 +1055,6 @@
             },
             "time": "2012-05-21 09:55:32",
             "type": "library",
-            "installation-source": "source",
             "autoload": {
                 "classmap": [
                     "src"
@@ -995,7 +1083,6 @@
             },
             "time": "2012-05-21 09:55:34",
             "type": "library",
-            "installation-source": "source",
             "autoload": {
                 "classmap": [
                     "src"
@@ -1024,7 +1111,6 @@
             },
             "time": "2012-05-21 09:55:40",
             "type": "library",
-            "installation-source": "source",
             "autoload": {
                 "classmap": [
                     "src"
@@ -1053,7 +1139,6 @@
             },
             "time": "2012-05-21 09:55:45",
             "type": "library",
-            "installation-source": "source",
             "autoload": {
                 "classmap": [
                     "src"
@@ -1076,7 +1161,6 @@
             },
             "time": "2009-06-29 03:55:08",
             "type": "library",
-            "installation-source": "dist",
             "autoload": {
                 "classmap": [
                     "src"
@@ -1143,7 +1227,6 @@
             },
             "time": "2012-05-21 09:55:58",
             "type": "library",
-            "installation-source": "source",
             "autoload": {
                 "classmap": [
                     "src"
@@ -1172,7 +1255,6 @@
             },
             "time": "2012-05-21 09:56:09",
             "type": "library",
-            "installation-source": "source",
             "autoload": {
                 "classmap": [
                     "src"
@@ -1238,7 +1320,6 @@
                 "zetacomponents/unit-test": "*"
             },
             "type": "library",
-            "installation-source": "source",
             "autoload": {
                 "classmap": [
                     "src"
@@ -1305,7 +1386,6 @@
             },
             "time": "2012-05-21 09:56:15",
             "type": "library",
-            "installation-source": "source",
             "autoload": {
                 "classmap": [
                     "src"
@@ -1328,7 +1408,6 @@
             },
             "time": "2012-05-21 09:46:53",
             "type": "library",
-            "installation-source": "source",
             "autoload": {
                 "classmap": [
                     "src"
@@ -1357,7 +1436,6 @@
             },
             "time": "2012-05-21 09:56:22",
             "type": "library",
-            "installation-source": "source",
             "autoload": {
                 "classmap": [
                     "src"
@@ -1386,7 +1464,6 @@
             },
             "time": "2012-05-21 09:56:25",
             "type": "library",
-            "installation-source": "source",
             "autoload": {
                 "classmap": [
                     "src"
@@ -1415,7 +1492,6 @@
             },
             "time": "2012-05-21 09:56:30",
             "type": "library",
-            "installation-source": "source",
             "autoload": {
                 "classmap": [
                     "src"
@@ -1444,7 +1520,6 @@
             },
             "time": "2012-05-21 14:06:23",
             "type": "library",
-            "installation-source": "source",
             "autoload": {
                 "classmap": [
                     "src"
@@ -1473,7 +1548,6 @@
             },
             "time": "2012-05-21 09:56:41",
             "type": "library",
-            "installation-source": "source",
             "autoload": {
                 "classmap": [
                     "src"
@@ -1496,7 +1570,6 @@
             },
             "time": "2009-11-09 05:34:07",
             "type": "library",
-            "installation-source": "dist",
             "autoload": {
                 "classmap": [
                     "src"
@@ -1542,9 +1615,7 @@
             "homepage": "https://github.com/zetacomponents"
         }
     ],
-    "packages-dev": [
-
-    ],
+    "packages-dev": null,
     "aliases": [
 
     ],
