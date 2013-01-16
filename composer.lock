@@ -74,12 +74,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezp-next.git",
-                "reference": "39b88c308821c850d40c62286f0d69966ffefa7f"
+                "reference": "05ad2c5edb96f70db371e7f2e38358d110c76aa7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezp-next/zipball/39b88c308821c850d40c62286f0d69966ffefa7f",
-                "reference": "39b88c308821c850d40c62286f0d69966ffefa7f",
+                "url": "https://api.github.com/repos/ezsystems/ezp-next/zipball/05ad2c5edb96f70db371e7f2e38358d110c76aa7",
+                "reference": "05ad2c5edb96f70db371e7f2e38358d110c76aa7",
                 "shasum": ""
             },
             "require": {
@@ -112,7 +112,7 @@
                 "ezsystems/ezpublish-legacy": "dev-master",
                 "mikey179/vfsstream": "1.1.0"
             },
-            "time": "2013-01-15 17:58:41",
+            "time": "2013-01-16 14:12:23",
             "type": "library",
             "autoload": {
                 "psr-0": {
@@ -651,12 +651,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/symfony/symfony.git",
-                "reference": "da0b0426efe708447a332e699eac5bc75b448f95"
+                "reference": "2dfe9660a26ab8f4a60509f186c648a1fa12527d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony/symfony/archive/da0b0426efe708447a332e699eac5bc75b448f95.zip",
-                "reference": "da0b0426efe708447a332e699eac5bc75b448f95",
+                "url": "https://github.com/symfony/symfony/archive/2dfe9660a26ab8f4a60509f186c648a1fa12527d.zip",
+                "reference": "2dfe9660a26ab8f4a60509f186c648a1fa12527d",
                 "shasum": ""
             },
             "require": {
@@ -705,7 +705,7 @@
                 "propel/propel1": "dev-master",
                 "monolog/monolog": ">=1.0,<1.3-dev"
             },
-            "time": "2013-01-12 20:28:26",
+            "time": "2013-01-16 09:27:54",
             "type": "library",
             "autoload": {
                 "psr-0": {
@@ -881,18 +881,18 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/fabpot/Twig.git",
-                "reference": "3111e1265db1026323c589a5bd2d152871d7bbab"
+                "reference": "3225226e0be466395414da4b362013531eedb580"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/fabpot/Twig/archive/3111e1265db1026323c589a5bd2d152871d7bbab.zip",
-                "reference": "3111e1265db1026323c589a5bd2d152871d7bbab",
+                "url": "https://github.com/fabpot/Twig/archive/3225226e0be466395414da4b362013531eedb580.zip",
+                "reference": "3225226e0be466395414da4b362013531eedb580",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2.4"
             },
-            "time": "2013-01-08 16:56:12",
+            "time": "2013-01-16 13:37:25",
             "type": "library",
             "extra": {
                 "branch-alias": {
