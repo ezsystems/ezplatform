@@ -74,12 +74,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezp-next.git",
-                "reference": "05ad2c5edb96f70db371e7f2e38358d110c76aa7"
+                "reference": "9e1e44da75cea2316fc18c34a1d9c74a3fa0565f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezp-next/zipball/05ad2c5edb96f70db371e7f2e38358d110c76aa7",
-                "reference": "05ad2c5edb96f70db371e7f2e38358d110c76aa7",
+                "url": "https://api.github.com/repos/ezsystems/ezp-next/zipball/9e1e44da75cea2316fc18c34a1d9c74a3fa0565f",
+                "reference": "9e1e44da75cea2316fc18c34a1d9c74a3fa0565f",
                 "shasum": ""
             },
             "require": {
@@ -112,7 +112,7 @@
                 "ezsystems/ezpublish-legacy": "dev-master",
                 "mikey179/vfsstream": "1.1.0"
             },
-            "time": "2013-01-16 14:12:23",
+            "time": "2013-01-17 14:11:54",
             "type": "library",
             "autoload": {
                 "psr-0": {
