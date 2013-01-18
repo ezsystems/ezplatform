@@ -4,11 +4,14 @@
 
 ## Paths for future reference
   * `/<ezpublish-community-root-dir>/`: The filesystem path where eZ Publish 5 is installed in
-  
+
     Examples: `/home/myuser/www/` or `/var/sites/ezpublish/`
   * `/<ezpublish-community-root-dir>/ezpublish_legacy/`: **Legacy** aka **Legacy Stack** refers to the eZ Publish 4.x installation which is bundled with eZ Publish 5 inside `ezpublish_legacy/`
-    
+
     Examples: `/home/myuser/www/ezpublish_legacy/` or `/var/sites/ezpublish/ezpublish_legacy/`
+  * `/<ezpublish-community-root-dir>/web/`: A directory meant to be the **DocumentRoot** of the eZ Publish 5.x installation (`ezpublish` & `ezpublish_legacy` are not supposed to be _viewable_ from user perspective)
+
+    Examples: `/home/myuser/www/web/` or `/var/sites/ezpublish/web/`
 
 ## Install all components
 
@@ -62,9 +65,9 @@
        $ rm -rf ezpublish/cache/*
        $ rm -rf ezpublish/logs/*
        $ sudo chmod +a "www-data allow delete,write,append,file_inherit,directory_inherit" \
-         ezpublish/{cache,logs,config} ezpublish_legacy/{design,extension,settings,var}
+         ezpublish/{cache,logs,config} ezpublish_legacy/{design,extension,settings,var} web
        $ sudo chmod +a "`whoami` allow delete,write,append,file_inherit,directory_inherit" \
-         ezpublish/{cache,logs,config} ezpublish_legacy/{design,extension,settings,var}
+         ezpublish/{cache,logs,config} ezpublish_legacy/{design,extension,settings,var} web
        ```
 
        B. **Using ACL on a system that does not support chmod +a**
@@ -73,9 +76,9 @@
 
        ```bash
        $ sudo setfacl -R -m u:www-data:rwx -m u:www-data:rwx \
-         ezpublish/{cache,logs,config} ezpublish_legacy/{design,extension,settings,var}
+         ezpublish/{cache,logs,config} ezpublish_legacy/{design,extension,settings,var} web
        $ sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx \
-         ezpublish/{cache,logs,config} ezpublish_legacy/{design,extension,settings,var}
+         ezpublish/{cache,logs,config} ezpublish_legacy/{design,extension,settings,var} web
        ```
 
        C. **Using chown on systems that don't support ACL**
@@ -83,9 +86,9 @@
        Some systems don't support ACL at all. You will either need to set your web server's user as the owner of the required directories.
 
        ```bash
-       $ sudo chown -R www-data:www-data ezpublish/{cache,logs,config} ezpublish_legacy/{design,extension,settings,var}
-       $ sudo find {ezpublish/{cache,logs,config},ezpublish_legacy/{design,extension,settings,var}} -type d | sudo xargs chmod -R 775
-       $ sudo find {ezpublish/{cache,logs,config},ezpublish_legacy/{design,extension,settings,var}} -type f | sudo xargs chmod -R 664
+       $ sudo chown -R www-data:www-data ezpublish/{cache,logs,config} ezpublish_legacy/{design,extension,settings,var} web
+       $ sudo find {ezpublish/{cache,logs,config},ezpublish_legacy/{design,extension,settings,var},web} -type d | sudo xargs chmod -R 775
+       $ sudo find {ezpublish/{cache,logs,config},ezpublish_legacy/{design,extension,settings,var},web} -type f | sudo xargs chmod -R 664
        ```
 
        D. **Using chmod**
@@ -93,8 +96,8 @@
        If you can't use ACL and aren't allowed to change owner, you can use chmod, making the files writable by everybody. Note that this method really isn't recommended as it allows any user to do anything.
 
        ```bash
-       $ sudo find {ezpublish/{cache,logs,config},ezpublish_legacy/{design,extension,settings,var}} -type d | xargs chmod -R 777
-       $ sudo find {ezpublish/{cache,logs,config},ezpublish_legacy/{design,extension,settings,var}} -type f | xargs chmod -R 666
+       $ sudo find {ezpublish/{cache,logs,config},ezpublish_legacy/{design,extension,settings,var},web} -type d | sudo xargs chmod -R 777
+       $ sudo find {ezpublish/{cache,logs,config},ezpublish_legacy/{design,extension,settings,var},web} -type f | sudo xargs chmod -R 666
        ```
 
 ## Configure the system
@@ -134,11 +137,16 @@
 
        In those commands, "web" is the default folder. In the first two commands, --relative can be added for relative symlinks and further help is available with -h.
 
-       **Note:(1)** you should **not** run the *ezpublish/console* command as root, as it will generate cache files which the webserver and command line users will not be able to update or delete later.
-              (2) If you are deploying ez publish 5 on windows 7+, you need to run the command as Administrator to avoid the following error:
-                  [Symfony\Component\Filesystem\Exception\IOException]
-                  Unable to create symlink due to error code 1314: 'A required privilege is not held by the client'. Do you have the required Administrator-rights?
-                  This is the first solution. But you can also edit the composer.json file by changing "symfony-assets-install": "symlink" to "symfony-assets-install": ""
+       **Note:(1)** you should **not** run the *ezpublish/console* command as root, as it will generate cache files which the webserver and command line users will not be able to update or delete later. If sudo is installed, then you can run it with `-u www-data` for instance (means that you are root or another user who has sudo rights as `www-data`). Example:
+       ```bash
+       $ sudo -u www-data php ezpublish/console assets:install --symlink web
+       ```
+       **Note:(2)** if you are deploying ez publish 5 on windows 7+, you need to run the command as Administrator to avoid the following error:
+
+       > [Symfony\Component\Filesystem\Exception\IOException]
+       > Unable to create symlink due to error code 1314: 'A required privilege is not held by the client'. Do you have the required Administrator-rights?
+       > This is the first solution. But you can also edit the composer.json file by changing "symfony-assets-install": "symlink" to "symfony-assets-install": ""
+
 3. Configure a VirtualHost:
 
     See: https://confluence.ez.no/display/EZP/Virtual+host+setup
