@@ -129,7 +129,7 @@ $myLegacySetting = $this->getLegacyKernel()->runCallback(
     function () use ( $settingName, $test )
     {
         // Here you can reuse $settingName and $test variables inside the legacy context
-        $ini = eZINI::instance( 'someconfig.ini' );
+        $ini = \eZINI::instance( 'someconfig.ini' );
         return $ini->variable( 'SomeSection', $settingName );
     }
 );
