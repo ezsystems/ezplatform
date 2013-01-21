@@ -122,6 +122,8 @@ It is however still possible to run some PHP code inside that sandbox through th
 
 ```php
 <?php
+use eZINI;
+...
 // Inside a controller/action
 $settingName = 'MySetting';
 $test = array( 'oneValue', 'anotherValue' );
@@ -129,7 +131,7 @@ $myLegacySetting = $this->getLegacyKernel()->runCallback(
     function () use ( $settingName, $test )
     {
         // Here you can reuse $settingName and $test variables inside the legacy context
-        $ini = \eZINI::instance( 'someconfig.ini' );
+        $ini = eZINI::instance( 'someconfig.ini' );
         return $ini->variable( 'SomeSection', $settingName );
     }
 );
