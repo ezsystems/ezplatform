@@ -18,13 +18,13 @@
     ],
     "require": {
         "php": ">=5.3.3",
-        "symfony/symfony": "2.1.*",
+        "symfony/symfony": "2.2.*",
         "symfony/assetic-bundle": "2.1.*",
         "symfony/monolog-bundle": "2.1.*",
-        "symfony/swiftmailer-bundle": "2.1.*",
+        "symfony/swiftmailer-bundle": "2.2.*",
         "twig/extensions": "1.0.*",
-        "ezsystems/ezpublish": "dev-master",
-        "sensio/generator-bundle": "2.1.*"
+        "ezsystems/ezpublish": "dev-symfony2.2",
+        "sensio/generator-bundle": "2.2.*"
     },
     "autoload": {
         "psr-0": {
