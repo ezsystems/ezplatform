@@ -23,7 +23,7 @@
     <div class="navbar main-navi">
         <!-- Top menu area: START -->
         {% block topMenu %}
-            {% render "eZDemoBundle:Demo:topMenu" with {'locationId': 2, 'excludeContentTypes': [ 'article' ]}, {'standalone': true} %}
+            {% render controller( "eZDemoBundle:Demo:topMenu", {'locationId': 2, 'excludeContentTypes': [ 'article' ]} ), {'strategy': 'esi'} %}
         {% endblock %}
         <!-- Top menu area: END -->
         {# TODO: implement logic to control path visibility #}
@@ -46,7 +46,7 @@
     </div>
     <!-- Footer area: START -->
     {% block footer %}
-        {% render "eZDemoBundle:Demo:footer" with {'locationId': 60}, {'standalone': true} %}
+        {% render controller( "eZDemoBundle:Demo:footer", {'locationId': 60} ), {'strategy': 'esi'} %}
     {% endblock %}
     <!-- Footer area: END -->
 </div>
