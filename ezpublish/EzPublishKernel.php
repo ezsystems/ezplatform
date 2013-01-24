@@ -8,6 +8,7 @@
  */
 
 use eZ\Bundle\EzPublishCoreBundle\EzPublishCoreBundle;
+use Egulias\ListenersDebugCommandBundle\EguliasListenersDebugCommandBundle;
 use eZ\Bundle\EzPublishLegacyBundle\EzPublishLegacyBundle;
 use eZ\Bundle\EzPublishRestBundle\EzPublishRestBundle;
 use EzSystems\DemoBundle\EzSystemsDemoBundle;
@@ -48,6 +49,7 @@ class EzPublishKernel extends Kernel
         if ( $this->getEnvironment() === 'dev' )
         {
             $bundles[] = new WebProfilerBundle();
+            $bundles[] = new EguliasListenersDebugCommandBundle();
         }
 
         return $bundles;

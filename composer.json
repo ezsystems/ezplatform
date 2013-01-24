@@ -20,11 +20,12 @@
         "php": ">=5.3.3",
         "symfony/symfony": "2.2.*",
         "symfony/assetic-bundle": "2.1.*",
-        "symfony/monolog-bundle": "2.1.*",
+        "symfony/monolog-bundle": "2.2.*",
         "symfony/swiftmailer-bundle": "2.2.*",
         "twig/extensions": "1.0.*",
         "ezsystems/ezpublish": "dev-symfony2.2",
-        "sensio/generator-bundle": "2.2.*"
+        "sensio/generator-bundle": "2.2.*",
+        "egulias/listeners-debug-command-bundle": "dev-master"
     },
     "autoload": {
         "psr-0": {
