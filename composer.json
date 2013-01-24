@@ -1,19 +1,19 @@
 {
-    "name": "ezsystems/ezpublish5-standard",
-    "description": "eZ Publish 5 standard distribution",
+    "name": "ezsystems/ezpublish-community",
+    "description": "eZ Publish 5 community distribution",
     "version": "5.0-dev",
     "homepage": "http://share.ez.no",
     "license": "GPL-2.0",
     "authors": [
         {
             "name": "eZ Publish dev-team & eZ Community",
-            "homepage": "https://github.com/ezsystems/ezpublish5/contributors"
+            "homepage": "https://github.com/ezsystems/ezpublish-community/contributors"
         }
     ],
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/ezsystems/ezp-next.git"
+            "url": "https://github.com/ezsystems/ezpublish-kernel.git"
     }
     ],
     "require": {

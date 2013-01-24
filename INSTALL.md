@@ -3,10 +3,10 @@
   These are instructions for installing via GIT (development version), look in INSTALL_ARCHIVE.md for instructions on how to install a eZ Publish 5 build/archive.
 
 ## Paths for future reference
-  * `/<ezpublish5-root-dir>/`: The filesystem path where eZ Publish 5 is installed in
+  * `/<ezpublish-community-root-dir>/`: The filesystem path where eZ Publish 5 is installed in
   
     Examples: `/home/myuser/www/` or `/var/sites/ezpublish/`
-  * `/<ezpublish5-root-dir>/ezpublish_legacy/`: **Legacy** aka **Legacy Stack** refers to the eZ Publish 4.x installation which is bundled with eZ Publish 5 inside `ezpublish_legacy/`
+  * `/<ezpublish-community-root-dir>/ezpublish_legacy/`: **Legacy** aka **Legacy Stack** refers to the eZ Publish 4.x installation which is bundled with eZ Publish 5 inside `ezpublish_legacy/`
     
     Examples: `/home/myuser/www/ezpublish_legacy/` or `/var/sites/ezpublish/ezpublish_legacy/`
 
@@ -15,13 +15,13 @@
 1. You can get eZ Publish using GIT with the following command:
 
        ```bash
-       git clone https://github.com/ezsystems/ezpublish5.git
+       git clone https://github.com/ezsystems/ezpublish-community.git
        ```
 
 2. Get eZ Publish Legacy
 
        ```bash
-       cd /<ezpublish5-root-dir>/
+       cd /<ezpublish-community-root-dir>/
        git clone https://github.com/ezsystems/ezpublish.git ezpublish_legacy
        ```
 
@@ -38,14 +38,14 @@
 
        Download composer and install dependencies by running:
        ```bash
-       cd /<ezpublish5-root-dir>/
+       cd /<ezpublish-community-root-dir>/
        curl -s http://getcomposer.org/installer | php
        php composer.phar install --prefer-dist
        ```
 
        Note: Every time you want to get the latest updates of all your dependencies just run this command:
        ```bash
-       cd /<ezpublish5-root-dir>/
+       cd /<ezpublish-community-root-dir>/
        php composer.phar update --prefer-dist
        ```
 
@@ -110,7 +110,7 @@
        'ezdemo_site', 'ezwebin_site' or 'ezflow_site'. And `<admin_siteaccess>` is, for instance, 'ezdemo_site_admin':
 
        ```bash
-       cd /<ezpublish5-root-dir>/
+       cd /<ezpublish-community-root-dir>/
        php ezpublish/console ezpublish:configure --env=prod <group> <admin_siteaccess>
        ```
 

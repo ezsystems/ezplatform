@@ -8,9 +8,9 @@ browser based it can be used from anywhere as long as you have
 access to the Internet.
 
 ## Install, Upgrade and Getting started
-For installation & upgrade instructions, see [INSTALL.md](https://github.com/ezsystems/ezpublish5/blob/master/INSTALL.md).
+For installation & upgrade instructions, see [INSTALL.md](https://github.com/ezsystems/ezpublish-community/blob/master/INSTALL.md).
 
-To get started with coding, see [GETTING_STARTED.md](https://github.com/ezsystems/ezpublish5/blob/master/GETTING_STARTED.md).
+To get started with coding, see [GETTING_STARTED.md](https://github.com/ezsystems/ezpublish-community/blob/master/GETTING_STARTED.md).
 
 ## Requirements
 **eZ Publish 5** has the same requirements as [Symfony2](http://symfony.com/doc/master/reference/requirements.html),
