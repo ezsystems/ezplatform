@@ -1,5 +1,5 @@
 {
-    "hash": "cc2e354bddea466efd66c14a46ade829",
+    "hash": "df97ebb82577159319fd43db4944f388",
     "packages": [
         {
             "name": "doctrine/common",
@@ -111,16 +111,16 @@
         },
         {
             "name": "ezsystems/ezpublish",
-            "version": "dev-symfony2.2",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezp-next.git",
-                "reference": "f8ece0c2eb7c47b81bf90e7c4536a12376314985"
+                "reference": "768d041c28c4888b33db8fa5da4b9ff47f462522"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezp-next/zipball/f8ece0c2eb7c47b81bf90e7c4536a12376314985",
-                "reference": "f8ece0c2eb7c47b81bf90e7c4536a12376314985",
+                "url": "https://api.github.com/repos/ezsystems/ezp-next/zipball/768d041c28c4888b33db8fa5da4b9ff47f462522",
+                "reference": "768d041c28c4888b33db8fa5da4b9ff47f462522",
                 "shasum": ""
             },
             "require": {
@@ -152,7 +152,7 @@
                 "ezsystems/ezpublish-legacy": "dev-master",
                 "mikey179/vfsstream": "1.1.0"
             },
-            "time": "2013-01-23 15:13:18",
+            "time": "2013-01-25 16:16:55",
             "type": "library",
             "autoload": {
                 "psr-0": {
@@ -165,7 +165,7 @@
             "description": "eZ Publish API and kernel. This is the heart of eZ Publish 5.",
             "homepage": "http://share.ez.no",
             "support": {
-                "source": "https://github.com/ezsystems/ezp-next/tree/symfony2.2"
+                "source": "https://github.com/ezsystems/ezp-next/tree/master"
             }
         },
         {
@@ -409,17 +409,17 @@
         },
         {
             "name": "sensio/generator-bundle",
-            "version": "dev-master",
+            "version": "v2.2.0-BETA2",
             "target-dir": "Sensio/Bundle/GeneratorBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensio/SensioGeneratorBundle",
-                "reference": "5adbe8b38f9a16461fa13f2ed587967e8e989b35"
+                "reference": "v2.2.0-BETA2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/sensio/SensioGeneratorBundle/archive/5adbe8b38f9a16461fa13f2ed587967e8e989b35.zip",
-                "reference": "5adbe8b38f9a16461fa13f2ed587967e8e989b35",
+                "url": "https://github.com/sensio/SensioGeneratorBundle/archive/v2.2.0-BETA2.zip",
+                "reference": "v2.2.0-BETA2",
                 "shasum": ""
             },
             "require": {
@@ -427,12 +427,9 @@
                 "symfony/console": "2.2.*"
             },
             "require-dev": {
+                "symfony/doctrine-bridge": "2.2.*",
                 "doctrine/orm": ">=2.1,<2.4-dev",
-                "twig/twig": ">=1.8,<2.0-dev",
-                "symfony/doctrine-bridge": "2.2.*"
-            },
-            "suggest": {
-                "doctrine/doctrine-bundle": "to generate entities and their crud controller"
+                "twig/twig": ">=1.8,<2.0-dev"
             },
             "time": "2013-01-18 06:54:44",
             "type": "symfony-bundle",
@@ -514,12 +511,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony-cmf/Routing",
-                "reference": "ea4a10dd971580a9a57a69397f165e25233ba667"
+                "reference": "72df1da07b3c4edf16df169fb7987f504070fe0d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony-cmf/Routing/archive/ea4a10dd971580a9a57a69397f165e25233ba667.zip",
-                "reference": "ea4a10dd971580a9a57a69397f165e25233ba667",
+                "url": "https://github.com/symfony-cmf/Routing/archive/72df1da07b3c4edf16df169fb7987f504070fe0d.zip",
+                "reference": "72df1da07b3c4edf16df169fb7987f504070fe0d",
                 "shasum": ""
             },
             "require": {
@@ -527,7 +524,7 @@
                 "symfony/routing": ">=2.1,<2.3-dev",
                 "symfony/http-kernel": ">=2.1,<2.3-dev"
             },
-            "time": "2013-01-21 20:33:16",
+            "time": "2013-01-24 16:09:01",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -626,12 +623,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/MonologBundle",
-                "reference": "3011c79d719bd2e625e3022fdaf2ce799b7bb79a"
+                "reference": "v2.2.0-BETA2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony/MonologBundle/archive/3011c79d719bd2e625e3022fdaf2ce799b7bb79a.zip",
-                "reference": "3011c79d719bd2e625e3022fdaf2ce799b7bb79a",
+                "url": "https://github.com/symfony/MonologBundle/archive/v2.2.0-BETA2.zip",
+                "reference": "v2.2.0-BETA2",
                 "shasum": ""
             },
             "require": {
@@ -679,23 +676,23 @@
         },
         {
             "name": "symfony/swiftmailer-bundle",
-            "version": "dev-master",
+            "version": "v2.2.0-BETA2",
             "target-dir": "Symfony/Bundle/SwiftmailerBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/SwiftmailerBundle",
-                "reference": "v2.2.0-BETA1"
+                "reference": "v2.2.0-BETA2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony/SwiftmailerBundle/archive/v2.2.0-BETA1.zip",
-                "reference": "v2.2.0-BETA1",
+                "url": "https://github.com/symfony/SwiftmailerBundle/archive/v2.2.0-BETA2.zip",
+                "reference": "v2.2.0-BETA2",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.2",
-                "symfony/swiftmailer-bridge": ">=2.1.0,<2.3-dev",
-                "swiftmailer/swiftmailer": ">=4.2.0,<4.4-dev"
+                "swiftmailer/swiftmailer": ">=4.2.0,<4.4-dev",
+                "symfony/swiftmailer-bridge": ">=2.1.0,<2.3-dev"
             },
             "require-dev": {
                 "symfony/dependency-injection": ">=2.1.0,<2.3-dev",
@@ -738,12 +735,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/symfony/symfony.git",
-                "reference": "9e8b2f01f66fd3969aba5c8173fafa973779515f"
+                "reference": "5381faed6d0c8c4398c731cba7bbc6c963005471"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony/symfony/archive/9e8b2f01f66fd3969aba5c8173fafa973779515f.zip",
-                "reference": "9e8b2f01f66fd3969aba5c8173fafa973779515f",
+                "url": "https://github.com/symfony/symfony/archive/5381faed6d0c8c4398c731cba7bbc6c963005471.zip",
+                "reference": "5381faed6d0c8c4398c731cba7bbc6c963005471",
                 "shasum": ""
             },
             "require": {
@@ -798,7 +795,7 @@
             "suggest": {
                 "doctrine/data-fixtures": "1.0.*"
             },
-            "time": "2013-01-24 10:00:40",
+            "time": "2013-01-25 06:59:49",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -2234,7 +2231,9 @@
     ],
     "minimum-stability": "dev",
     "stability-flags": {
+        "symfony/swiftmailer-bundle": 10,
         "ezsystems/ezpublish": 20,
+        "sensio/generator-bundle": 10,
         "egulias/listeners-debug-command-bundle": 20
     }
 }
