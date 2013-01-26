@@ -12,7 +12,7 @@
                 {% include "eZDemoBundle:footer:address.html.twig" with {'content': content} %}
             </div>
             <div class="span4 nav-collapse">
-                {% render "eZDemoBundle:Demo:latestContent" with {'pathString': '/1/2/', 'contentTypeIdentifier': 'article', 'limit': '7', 'excludeLocations': [ content.contentInfo.mainLocationId ]}, {'standalone': true} %}
+                {% render controller( "eZDemoBundle:Demo:latestContent", {'pathString': '/1/2/', 'contentTypeIdentifier': 'article', 'limit': '7', 'excludeLocations': [ content.contentInfo.mainLocationId ]} ), {'strategy': 'esi'} %}
             </div>
             <div class="span4 nav-collapse">
                 {% include "eZDemoBundle:footer:links.html.twig" with {'content': content} %}

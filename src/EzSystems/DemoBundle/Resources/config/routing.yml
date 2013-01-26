@@ -1,5 +1,5 @@
 eZTest:
-    pattern: /test/{contentId}
+    path: /test/{contentId}
     defaults:
         _controller: eZDemoBundle:Demo:test
         contentId: 102
@@ -7,7 +7,7 @@ eZTest:
         contentId: \d+
 
 eZTestWithLegacy:
-    pattern: /test/legacy/{contentId}
+    path: /test/legacy/{contentId}
     defaults:
         _controller: eZDemoBundle:Demo:testWithLegacy
         contentId: 102

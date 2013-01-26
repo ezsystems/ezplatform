@@ -3,7 +3,8 @@ imports:
     - { resource: security.yml }
 
 framework:
-    esi:             { enabled: true }
+    esi: ~
+    router_proxy: ~
     #translator:      { fallback: %locale% }
     # The secret parameter is used to generate CSRF tokens
     secret:          %secret%

@@ -14,17 +14,23 @@
         {
             "type": "vcs",
             "url": "https://github.com/ezsystems/ezp-next.git"
-    }
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/andrerom/TedivmStashBundle"
+        }
     ],
     "require": {
         "php": ">=5.3.3",
-        "symfony/symfony": "2.1.*",
+        "symfony/symfony": "2.2.*",
         "symfony/assetic-bundle": "2.1.*",
-        "symfony/monolog-bundle": "2.1.*",
-        "symfony/swiftmailer-bundle": "2.1.*",
+        "symfony/monolog-bundle": "2.2.*",
+        "symfony/swiftmailer-bundle": "2.2.0-BETA2",
         "twig/extensions": "1.0.*",
+        "tedivm/stash-bundle": "dev-sf22",
         "ezsystems/ezpublish": "dev-spiPersistenceCache",
-        "sensio/generator-bundle": "2.1.*"
+        "sensio/generator-bundle": "2.2.0-BETA2",
+        "egulias/listeners-debug-command-bundle": "dev-master"
     },
     "autoload": {
         "psr-0": {

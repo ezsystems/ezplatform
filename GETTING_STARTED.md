@@ -122,6 +122,9 @@ It is however still possible to run some PHP code inside that sandbox through th
 
 ```php
 <?php
+// Declare use statements for the classes you may need
+use eZINI;
+
 // Inside a controller/action
 $settingName = 'MySetting';
 $test = array( 'oneValue', 'anotherValue' );
@@ -141,3 +144,4 @@ eZ Publish 5 development is still at an early stage (*pre-beta*) and as such the
 
 - Field templates can't be overridden for now
 - Still a lot of work to do ;-)
+

@@ -1,5 +1,5 @@
 {
-    "hash": "8b1006bf7d1c2fd786e7591e8336e4fc",
+    "hash": "e63b88827ae0aea6338ba24b3b19b46c",
     "packages": [
         {
             "name": "doctrine/common",
@@ -69,17 +69,56 @@
             "time": "2012-09-20 05:55:18"
         },
         {
+            "name": "egulias/listeners-debug-command-bundle",
+            "version": "dev-master",
+            "target-dir": "Egulias/ListenersDebugCommandBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/egulias/ListenersDebugCommandBundle",
+                "reference": "a5753ad91c200b26aa3d50238ad409221ffd5a4e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/egulias/ListenersDebugCommandBundle/archive/a5753ad91c200b26aa3d50238ad409221ffd5a4e.zip",
+                "reference": "a5753ad91c200b26aa3d50238ad409221ffd5a4e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "symfony/symfony": ">=2.0"
+            },
+            "time": "2012-07-22 19:43:27",
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "Egulias\\ListenersDebugCommandBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eduardo Gulias Davis",
+                    "homepage": "http://egulias.com"
+                }
+            ],
+            "description": "Symfony 2 console command to debug listeners",
+            "homepage": "https://github.com/egulias/ListenersDebugCommandBundle.git"
+        },
+        {
             "name": "ezsystems/ezpublish",
             "version": "dev-spiPersistenceCache",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezp-next.git",
-                "reference": "9e1e44da75cea2316fc18c34a1d9c74a3fa0565f"
+                "reference": "5df8ca1216bb4c68917438439d2605e6ce4a1cec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezp-next/zipball/9e1e44da75cea2316fc18c34a1d9c74a3fa0565f",
-                "reference": "9e1e44da75cea2316fc18c34a1d9c74a3fa0565f",
+                "url": "https://api.github.com/repos/ezsystems/ezp-next/zipball/5df8ca1216bb4c68917438439d2605e6ce4a1cec",
+                "reference": "5df8ca1216bb4c68917438439d2605e6ce4a1cec",
                 "shasum": ""
             },
             "require": {
@@ -102,17 +141,17 @@
                 "zetacomponents/signal-slot": "dev-master",
                 "zetacomponents/system-information": "dev-master",
                 "zetacomponents/webdav": "1.1.3",
-                "symfony/symfony": "2.1.*",
+                "symfony/symfony": "2.2.*",
                 "symfony-cmf/routing": "1.0.*",
                 "qafoo/rmf": "1.0.0",
                 "kriswallsmith/buzz": "dev-master",
-                "tedivm/stash-bundle": "dev-master"
+                "tedivm/stash-bundle": "dev-sf22"
             },
             "require-dev": {
                 "ezsystems/ezpublish-legacy": "dev-master",
                 "mikey179/vfsstream": "1.1.0"
             },
-            "time": "2013-01-17 14:11:54",
+            "time": "2013-01-26 11:56:10",
             "type": "library",
             "autoload": {
                 "psr-0": {
@@ -245,34 +284,39 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "1.2.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog",
-                "reference": "1.2.1"
+                "reference": "957ee8d0d62fad0c336797f0fb1ffa63ae6d6c71"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/Seldaek/monolog/zipball/1.2.1",
-                "reference": "1.2.1",
+                "url": "https://github.com/Seldaek/monolog/archive/957ee8d0d62fad0c336797f0fb1ffa63ae6d6c71.zip",
+                "reference": "957ee8d0d62fad0c336797f0fb1ffa63ae6d6c71",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0"
+                "php": ">=5.3.0",
+                "psr/log": ">=1.0,<2.0"
             },
             "require-dev": {
-                "mlehner/gelf-php": "1.0.*"
+                "mlehner/gelf-php": "1.0.*",
+                "doctrine/couchdb": "dev-master",
+                "raven/raven": "0.3.*"
             },
             "suggest": {
                 "mlehner/gelf-php": "Allow sending log messages to a GrayLog2 server",
                 "ext-amqp": "Allow sending log messages to an AMQP server (1.0+ required)",
-                "ext-mongo": "Allow sending log messages to a MongoDB server"
+                "ext-mongo": "Allow sending log messages to a MongoDB server",
+                "doctrine/couchdb": "Allow sending log messages to a CouchDB server",
+                "raven/raven": "Allow sending log messages to a Sentry server"
             },
-            "time": "2012-08-29 04:53:20",
+            "time": "2013-01-22 15:02:20",
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.3.x-dev"
+                    "dev-master": "1.4.x-dev"
                 }
             },
             "autoload": {
@@ -292,11 +336,50 @@
                     "role": "Developer"
                 }
             ],
-            "description": "Logging for PHP 5.3",
+            "description": "Sends your logs to files, sockets, inboxes, databases and various web services",
             "homepage": "http://github.com/Seldaek/monolog",
             "keywords": [
                 "log",
-                "logging"
+                "logging",
+                "psr-3"
+            ]
+        },
+        {
+            "name": "psr/log",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/log",
+                "reference": "1.0.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/php-fig/log/archive/1.0.0.zip",
+                "reference": "1.0.0",
+                "shasum": ""
+            },
+            "time": "2012-12-21 11:40:51",
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Psr\\Log\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for logging libraries",
+            "keywords": [
+                "log",
+                "psr",
+                "psr-3"
             ]
         },
         {
@@ -313,7 +396,7 @@
                 "reference": "1.0.0",
                 "shasum": ""
             },
-            "time": "2012-09-03 18:24:11",
+            "time": "2012-09-03 11:24:11",
             "type": "library",
             "autoload": {
                 "psr-0": {
@@ -324,33 +407,33 @@
         },
         {
             "name": "sensio/generator-bundle",
-            "version": "2.1.x-dev",
+            "version": "v2.2.0-BETA2",
             "target-dir": "Sensio/Bundle/GeneratorBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensio/SensioGeneratorBundle",
-                "reference": "74f519a1c4414d4a45dd12c9e86e29efb5a90b2c"
+                "reference": "v2.2.0-BETA2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/sensio/SensioGeneratorBundle/archive/74f519a1c4414d4a45dd12c9e86e29efb5a90b2c.zip",
-                "reference": "74f519a1c4414d4a45dd12c9e86e29efb5a90b2c",
+                "url": "https://github.com/sensio/SensioGeneratorBundle/archive/v2.2.0-BETA2.zip",
+                "reference": "v2.2.0-BETA2",
                 "shasum": ""
             },
             "require": {
-                "symfony/framework-bundle": "2.1.*",
-                "symfony/console": "2.1.*"
+                "symfony/framework-bundle": "2.2.*",
+                "symfony/console": "2.2.*"
             },
             "require-dev": {
-                "symfony/doctrine-bridge": "2.1.*",
+                "symfony/doctrine-bridge": "2.2.*",
                 "doctrine/orm": ">=2.1,<2.4-dev",
                 "twig/twig": ">=1.8,<2.0-dev"
             },
-            "time": "2013-01-04 17:09:08",
+            "time": "2013-01-18 06:54:44",
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.1.x-dev"
+                    "dev-master": "2.2.x-dev"
                 }
             },
             "autoload": {
@@ -372,26 +455,26 @@
         },
         {
             "name": "swiftmailer/swiftmailer",
-            "version": "v4.2.2",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git://github.com/swiftmailer/swiftmailer.git",
-                "reference": "v4.2.2"
+                "reference": "3aec9a30346ebf54100a38ba7c71fb8aafae3e9a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/swiftmailer/swiftmailer/zipball/v4.2.2",
-                "reference": "v4.2.2",
+                "url": "https://github.com/swiftmailer/swiftmailer/archive/3aec9a30346ebf54100a38ba7c71fb8aafae3e9a.zip",
+                "reference": "3aec9a30346ebf54100a38ba7c71fb8aafae3e9a",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2.4"
             },
-            "time": "2012-10-25 01:30:40",
+            "time": "2013-01-21 16:17:20",
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.2-dev"
+                    "dev-master": "4.3-dev"
                 }
             },
             "autoload": {
@@ -426,12 +509,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony-cmf/Routing",
-                "reference": "1.0.0-alpha3"
+                "reference": "72df1da07b3c4edf16df169fb7987f504070fe0d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony-cmf/Routing/archive/1.0.0-alpha3.zip",
-                "reference": "1.0.0-alpha3",
+                "url": "https://github.com/symfony-cmf/Routing/archive/72df1da07b3c4edf16df169fb7987f504070fe0d.zip",
+                "reference": "72df1da07b3c4edf16df169fb7987f504070fe0d",
                 "shasum": ""
             },
             "require": {
@@ -439,7 +522,7 @@
                 "symfony/routing": ">=2.1,<2.3-dev",
                 "symfony/http-kernel": ">=2.1,<2.3-dev"
             },
-            "time": "2012-12-16 17:52:57",
+            "time": "2013-01-24 16:09:01",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -475,12 +558,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/AsseticBundle",
-                "reference": "c8a558c8be571376da0b5811fa298373f977f55a"
+                "reference": "f65ce4736fa79c60fdfc9805abb38aaaef728e95"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony/AsseticBundle/archive/c8a558c8be571376da0b5811fa298373f977f55a.zip",
-                "reference": "c8a558c8be571376da0b5811fa298373f977f55a",
+                "url": "https://github.com/symfony/AsseticBundle/archive/f65ce4736fa79c60fdfc9805abb38aaaef728e95.zip",
+                "reference": "f65ce4736fa79c60fdfc9805abb38aaaef728e95",
                 "shasum": ""
             },
             "require": {
@@ -500,7 +583,7 @@
             "suggest": {
                 "symfony/twig-bundle": ">=2.1.0,<2.3-dev"
             },
-            "time": "2013-01-14 20:08:42",
+            "time": "2013-01-26 01:02:24",
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
@@ -533,35 +616,34 @@
         },
         {
             "name": "symfony/monolog-bundle",
-            "version": "2.1.x-dev",
+            "version": "dev-master",
             "target-dir": "Symfony/Bundle/MonologBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/MonologBundle",
-                "reference": "v2.2.0-BETA1"
+                "reference": "v2.2.0-BETA2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony/MonologBundle/archive/v2.2.0-BETA1.zip",
-                "reference": "v2.2.0-BETA1",
+                "url": "https://github.com/symfony/MonologBundle/archive/v2.2.0-BETA2.zip",
+                "reference": "v2.2.0-BETA2",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.2",
-                "symfony/monolog-bridge": ">=2.1.0,<2.3-dev",
-                "symfony/dependency-injection": ">=2.1.0,<2.3-dev",
-                "symfony/config": ">=2.1.0,<2.3-dev",
-                "monolog/monolog": ">=1.0,<1.3-dev"
+                "symfony/monolog-bridge": ">=2.2,<3.0",
+                "symfony/dependency-injection": ">=2.2,<3.0",
+                "symfony/config": ">=2.2,<3.0",
+                "monolog/monolog": ">=1.3,<2.0"
             },
             "require-dev": {
-                "symfony/yaml": ">=2.1.0,<2.3-dev",
-                "symfony/config": ">=2.1.0,<2.3-dev"
+                "symfony/yaml": ">=2.2,<3.0"
             },
-            "time": "2013-01-07 10:57:41",
+            "time": "2013-01-12 13:42:55",
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.1.x-dev"
+                    "dev-master": "2.2.x-dev"
                 }
             },
             "autoload": {
@@ -592,22 +674,22 @@
         },
         {
             "name": "symfony/swiftmailer-bundle",
-            "version": "2.1.x-dev",
+            "version": "v2.2.0-BETA2",
             "target-dir": "Symfony/Bundle/SwiftmailerBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/SwiftmailerBundle",
-                "reference": "2bf9cdefd8102e6409ec0762652cf81cb3b4c21a"
+                "reference": "v2.2.0-BETA2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony/SwiftmailerBundle/archive/2bf9cdefd8102e6409ec0762652cf81cb3b4c21a.zip",
-                "reference": "2bf9cdefd8102e6409ec0762652cf81cb3b4c21a",
+                "url": "https://github.com/symfony/SwiftmailerBundle/archive/v2.2.0-BETA2.zip",
+                "reference": "v2.2.0-BETA2",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.2",
-                "swiftmailer/swiftmailer": ">=4.2.0,<4.3-dev",
+                "swiftmailer/swiftmailer": ">=4.2.0,<4.4-dev",
                 "symfony/swiftmailer-bridge": ">=2.1.0,<2.3-dev"
             },
             "require-dev": {
@@ -616,11 +698,11 @@
                 "symfony/config": ">=2.1.0,<2.3-dev",
                 "symfony/yaml": ">=2.1.0,<2.3-dev"
             },
-            "time": "2013-01-04 17:04:29",
+            "time": "2013-01-08 20:24:29",
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.1-dev"
+                    "dev-master": "2.2-dev"
                 }
             },
             "autoload": {
@@ -647,22 +729,23 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "2.1.x-dev",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git://github.com/symfony/symfony.git",
-                "reference": "2dfe9660a26ab8f4a60509f186c648a1fa12527d"
+                "reference": "163e607781e71338a1b8b08a8d635b327501f2b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony/symfony/archive/2dfe9660a26ab8f4a60509f186c648a1fa12527d.zip",
-                "reference": "2dfe9660a26ab8f4a60509f186c648a1fa12527d",
+                "url": "https://github.com/symfony/symfony/archive/163e607781e71338a1b8b08a8d635b327501f2b6.zip",
+                "reference": "163e607781e71338a1b8b08a8d635b327501f2b6",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3",
                 "doctrine/common": ">2.2,<2.4-dev",
-                "twig/twig": ">=1.9.1,<2.0-dev"
+                "php": ">=5.3.3",
+                "twig/twig": ">=1.11.0,<2.0-dev",
+                "psr/log": ">=1.0,<2.0"
             },
             "replace": {
                 "symfony/doctrine-bridge": "self.version",
@@ -696,22 +779,35 @@
                 "symfony/templating": "self.version",
                 "symfony/translation": "self.version",
                 "symfony/validator": "self.version",
-                "symfony/yaml": "self.version"
+                "symfony/yaml": "self.version",
+                "symfony/stopwatch": "self.version",
+                "symfony/property-access": "self.version"
             },
             "require-dev": {
-                "doctrine/dbal": ">=2.2,<2.4-dev",
-                "doctrine/orm": ">=2.2.3,<2.4-dev",
                 "doctrine/data-fixtures": "1.0.*",
                 "propel/propel1": "dev-master",
-                "monolog/monolog": ">=1.0,<1.3-dev"
+                "doctrine/dbal": ">=2.2,<2.4-dev",
+                "doctrine/orm": ">=2.2.3,<2.4-dev",
+                "monolog/monolog": ">=1.3,<2.0"
             },
-            "time": "2013-01-16 09:27:54",
+            "suggest": {
+                "doctrine/data-fixtures": "1.0.*"
+            },
+            "time": "2013-01-25 16:50:23",
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2-dev"
+                }
+            },
             "autoload": {
                 "psr-0": {
-                    "Symfony": "src/",
-                    "SessionHandlerInterface": "src/Symfony/Component/HttpFoundation/Resources/stubs"
-                }
+                    "Symfony\\": "src/"
+                },
+                "classmap": [
+                    "src/Symfony/Component/HttpFoundation/Resources/stubs",
+                    "src/Symfony/Component/Locale/Resources/stubs"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -780,53 +876,55 @@
         },
         {
             "name": "tedivm/stash-bundle",
-            "version": "dev-master",
+            "version": "dev-sf22",
             "target-dir": "Tedivm/StashBundle",
             "source": {
                 "type": "git",
-                "url": "https://github.com/tedivm/TedivmStashBundle",
-                "reference": "ce4fbb2e580bd4d234910648853027d230ee440b"
+                "url": "https://github.com/andrerom/TedivmStashBundle",
+                "reference": "475736c4e5e6faa3d07f94aa7f1870052276f71a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/tedivm/TedivmStashBundle/archive/ce4fbb2e580bd4d234910648853027d230ee440b.zip",
-                "reference": "ce4fbb2e580bd4d234910648853027d230ee440b",
+                "url": "https://api.github.com/repos/andrerom/TedivmStashBundle/zipball/475736c4e5e6faa3d07f94aa7f1870052276f71a",
+                "reference": "475736c4e5e6faa3d07f94aa7f1870052276f71a",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0",
                 "tedivm/stash": "0.9.*",
-                "symfony/framework-bundle": "2.1.*",
-                "symfony/yaml": "2.1.*"
+                "symfony/framework-bundle": ">=2.2,<3.0",
+                "symfony/yaml": ">=2.2,<3.0"
             },
-            "time": "2013-01-08 18:53:22",
+            "time": "2013-01-26 12:07:15",
             "type": "symfony-bundle",
             "autoload": {
                 "psr-0": {
                     "Tedivm\\StashBundle": ""
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
             "authors": [
                 {
-                    "name": "Robert Hafner",
-                    "email": "tedivm@tedivm.com"
-                },
-                {
                     "name": "Josh Hall-Bachner",
                     "email": "jhallbachner@gmail.com"
+                },
+                {
+                    "name": "Robert Hafner",
+                    "email": "tedivm@tedivm.com"
                 }
             ],
             "description": "Incorporates the Stash caching library into Symfony.",
             "homepage": "http://github.com/tedivm/TedivmStashBundle",
             "keywords": [
-                "symfony",
                 "caching",
+                "symfony",
                 "sessions"
-            ]
+            ],
+            "support": {
+                "source": "https://github.com/andrerom/TedivmStashBundle/tree/sf22"
+            }
         },
         {
             "name": "twig/extensions",
@@ -881,18 +979,18 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/fabpot/Twig.git",
-                "reference": "3225226e0be466395414da4b362013531eedb580"
+                "reference": "93c6a8dedc46c73ccdd61342de3d5e761e4412f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/fabpot/Twig/archive/3225226e0be466395414da4b362013531eedb580.zip",
-                "reference": "3225226e0be466395414da4b362013531eedb580",
+                "url": "https://github.com/fabpot/Twig/archive/93c6a8dedc46c73ccdd61342de3d5e761e4412f6.zip",
+                "reference": "93c6a8dedc46c73ccdd61342de3d5e761e4412f6",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2.4"
             },
-            "time": "2013-01-16 13:37:25",
+            "time": "2013-01-18 09:58:04",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1615,12 +1713,18 @@
             "homepage": "https://github.com/zetacomponents"
         }
     ],
-    "packages-dev": null,
+    "packages-dev": [
+
+    ],
     "aliases": [
 
     ],
     "minimum-stability": "dev",
     "stability-flags": {
-        "ezsystems/ezpublish": 20
+        "symfony/swiftmailer-bundle": 10,
+        "tedivm/stash-bundle": 20,
+        "ezsystems/ezpublish": 20,
+        "sensio/generator-bundle": 10,
+        "egulias/listeners-debug-command-bundle": 20
     }
 }
