@@ -41,7 +41,6 @@ class EzPublishKernel extends Kernel
             new TwigBundle(),
             new MonologBundle(),
             new AsseticBundle(),
-            new SensioGeneratorBundle(),
             new TedivmStashBundle(),
             new EzPublishCoreBundle(),
             new EzPublishLegacyBundle(),
@@ -50,9 +49,10 @@ class EzPublishKernel extends Kernel
             new SensioDistributionBundle(),
         );
 
-        if ( $this->getEnvironment() === 'dev' )
+        if ( in_array( $this->getEnvironment(), array( 'dev', 'test' ), true ) )
         {
             $bundles[] = new WebProfilerBundle();
+            $bundles[] = new SensioGeneratorBundle();
             $bundles[] = new EguliasListenersDebugCommandBundle();
         }
 

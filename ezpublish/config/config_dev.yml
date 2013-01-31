@@ -10,15 +10,18 @@ web_profiler:
     position: bottom
     intercept_redirects: false
 
-assetic:
-    use_controller: true
-
 monolog:
     handlers:
         main:
             type:  stream
-            path:  "%kernel.logs_dir%/%kernel.environment%.log"
+            path:  %kernel.logs_dir%/%kernel.environment%.log
             level: debug
         firephp:
             type:  firephp
             level: info
+        chromephp:
+            type:  chromephp
+            level: info
+
+assetic:
+    use_controller: true
