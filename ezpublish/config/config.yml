@@ -4,7 +4,7 @@ imports:
 
 framework:
     esi: ~
-    router_proxy: ~
+    fragments: ~
     #translator:      { fallback: %locale% }
     # The secret parameter is used to generate CSRF tokens
     secret:          %secret%
