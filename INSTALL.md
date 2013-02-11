@@ -131,8 +131,11 @@
 
        In both cases "web" is the default folder, --relative can be added for relative symlinks and further help is available with -h.
 
-       **Note:** you should **not** run the *ezpublish/console* command as root, as it will generate cache files which the webserver and command line users will not be able to update or delete later.
-
+       **Note:(1)** you should **not** run the *ezpublish/console* command as root, as it will generate cache files which the webserver and command line users will not be able to update or delete later.
+              (2) If you are deploying ez publish 5 on windows 7+, you need to run the command as Administrator to avoid the following error:
+                  [Symfony\Component\Filesystem\Exception\IOException]
+                  Unable to create symlink due to error code 1314: 'A required privilege is not held by the client'. Do you have the required Administrator-rights?
+                  This is the first solution. But you can also edit the composer.json file by changing "symfony-assets-install": "symlink" to "symfony-assets-install": ""
 3. Configure a VirtualHost:
 
     See: http://doc.ez.no/eZ-Publish/Technical-manual/5.x/Installation/Virtual-host-setup
