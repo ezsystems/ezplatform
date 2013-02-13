@@ -22,7 +22,7 @@
 
        ```bash
        cd /<ezpublish-community-root-dir>/
-       git clone https://github.com/ezsystems/ezpublish.git ezpublish_legacy
+       git clone https://github.com/ezsystems/ezpublish-legacy.git ezpublish_legacy
        ```
 
 3. *Optional* Upgrade an eZ Publish Community Project installation
