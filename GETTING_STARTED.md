@@ -9,9 +9,9 @@ in order to get the basics.
 ## Demo bundle
 > "Bundle" is the name used for an extension in Symfony.
 
-A demo bundle, [EzDemoBundle](https://github.com/ezsystems/ezpublish5/tree/master/src/EzSystems/DemoBundle), is provided
+A demo bundle, [EzDemoBundle](https://github.com/ezsystems/ezpublish-community/tree/master/src/EzSystems/DemoBundle), is provided
 in the *src/* directory under the *EzSystems* namespace and, among others, provides implementation for the demo design.
-This demo bundle already exposes [some routes](https://github.com/ezsystems/ezpublish5/blob/master/src/EzSystems/DemoBundle/Resources/config/routing.yml)
+This demo bundle already exposes [some routes](https://github.com/ezsystems/ezpublish-community/blob/master/src/EzSystems/DemoBundle/Resources/config/routing.yml)
 allowing to make some tests and hacking.
 
 The most interesting routes for a start are :
@@ -87,9 +87,9 @@ This will render it using a template (only the internal one for now) and inject 
 {% ez_render_field( content, 'my_field_identifier' ) %}
 ```
 
-PHP code corresponding to this helper is located in [Twig ContentExtension](https://github.com/ezsystems/ezp-next/blob/master/eZ/Publish/MVC/Templating/Twig/Extension/ContentExtension.php).
+PHP code corresponding to this helper is located in [Twig ContentExtension](https://github.com/ezsystems/ezpublish-kernel/blob/master/eZ/Publish/MVC/Templating/Twig/Extension/ContentExtension.php).
 
-Base Twig code can be found in the [base template](https://github.com/ezsystems/ezp-next/blob/master/eZ/Publish/MVC/Resources/views/Content/content_fields.html.twig).
+Base Twig code can be found in the [base template](https://github.com/ezsystems/ezpublish-kernel/blob/master/eZ/Publish/MVC/Resources/views/Content/content_fields.html.twig).
 
 > **Warning**
 >

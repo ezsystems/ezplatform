@@ -426,12 +426,12 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/ezsystems/ezp-next.git",
+                "url": "https://github.com/ezsystems/ezpublish-kernel.git",
                 "reference": "fd9bf7c1f150da1607a255570237c8266b2ad249"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezp-next/zipball/fd9bf7c1f150da1607a255570237c8266b2ad249",
+                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/fd9bf7c1f150da1607a255570237c8266b2ad249",
                 "reference": "fd9bf7c1f150da1607a255570237c8266b2ad249",
                 "shasum": ""
             },
@@ -477,7 +477,7 @@
             "description": "eZ Publish API and kernel. This is the heart of eZ Publish 5.",
             "homepage": "http://share.ez.no",
             "support": {
-                "source": "https://github.com/ezsystems/ezp-next/tree/master"
+                "source": "https://github.com/ezsystems/ezpublish-kernel/tree/master"
             }
         },
         {
