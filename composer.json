@@ -23,7 +23,7 @@
         "symfony/monolog-bundle": "2.2.*",
         "symfony/swiftmailer-bundle": "2.2.*",
         "twig/extensions": "1.0.*",
-        "ezsystems/ezpublish": "dev-master",
+        "ezsystems/ezpublish-kernel": "dev-master",
         "sensio/generator-bundle": "2.2.*",
         "egulias/listeners-debug-command-bundle": "dev-master"
     },
