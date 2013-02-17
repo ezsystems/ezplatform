@@ -138,7 +138,7 @@
                   This is the first solution. But you can also edit the composer.json file by changing "symfony-assets-install": "symlink" to "symfony-assets-install": ""
 3. Configure a VirtualHost:
 
-    See: http://doc.ez.no/eZ-Publish/Technical-manual/5.x/Installation/Virtual-host-setup
+    See: https://confluence.ez.no/display/EZP/Virtual+host+setup
 
 4. Run the Setup wizard:
 
