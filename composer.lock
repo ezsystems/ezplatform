@@ -427,12 +427,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-kernel.git",
-                "reference": "05a8e4a826ad65dd8268933d3c0a2af93adaaa0d"
+                "reference": "5f6c2f7002f5def74d6b4a1104a06e833fa35917"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/05a8e4a826ad65dd8268933d3c0a2af93adaaa0d",
-                "reference": "05a8e4a826ad65dd8268933d3c0a2af93adaaa0d",
+                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/5f6c2f7002f5def74d6b4a1104a06e833fa35917",
+                "reference": "5f6c2f7002f5def74d6b4a1104a06e833fa35917",
                 "shasum": ""
             },
             "require": {
@@ -482,7 +482,7 @@
             "support": {
                 "source": "https://github.com/ezsystems/ezpublish-kernel/tree/spiPersistenceCache"
             },
-            "time": "2013-02-21 15:57:14"
+            "time": "2013-02-21 16:53:22"
         },
         {
             "name": "kriswallsmith/assetic",
