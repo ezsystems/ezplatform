@@ -8,9 +8,9 @@ browser based it can be used from anywhere as long as you have
 access to the Internet.
 
 ## Install, Upgrade and Getting started
-For installation & upgrade instructions, see [INSTALL.md](https://github.com/ezsystems/ezpublish5/blob/master/INSTALL.md).
+For installation & upgrade instructions, see [INSTALL.md](https://github.com/ezsystems/ezpublish-community/blob/master/INSTALL.md).
 
-To get started with coding, see [GETTING_STARTED.md](https://github.com/ezsystems/ezpublish5/blob/master/GETTING_STARTED.md).
+To get started with coding, see [GETTING_STARTED.md](https://github.com/ezsystems/ezpublish-community/blob/master/GETTING_STARTED.md).
 
 ## Requirements
 **eZ Publish 5** has the same requirements as [Symfony2](http://symfony.com/doc/master/reference/requirements.html),
@@ -46,7 +46,7 @@ The default template engine used by the system is **[Twig](http://twig.sensiolab
 
 
 ## COPYRIGHT
-Copyright (C) 1999-2012 eZ Systems AS. All rights reserved.
+Copyright (C) 1999-2013 eZ Systems AS. All rights reserved.
 
 ## LICENSE
 http://www.gnu.org/licenses/gpl-2.0.txt GNU General Public License v2

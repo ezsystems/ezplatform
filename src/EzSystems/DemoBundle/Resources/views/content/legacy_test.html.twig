@@ -4,5 +4,5 @@
 <h1>{{ title }}</h1>
 <h2>{{ subtitle }}</h2>
 {{ content.contentInfo.name }}
-{% ez_legacy_include 'design:test/helloworld.tpl' with {'message': messageForLegacy, 'konamiCode': ['Up', 'Up', 'Down', 'Down', 'Left', 'Right', 'Left', 'Right', 'B', 'A'], 'content': content} %}
+{% include 'design:test/helloworld.tpl' with {'message': messageForLegacy, 'konamiCode': ['Up', 'Up', 'Down', 'Down', 'Left', 'Right', 'Left', 'Right', 'B', 'A'], 'content': content} %}
 {% endblock %}
