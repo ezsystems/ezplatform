@@ -1,5 +1,5 @@
 {
-    "hash": "1cb8b8a9e308796a739b96813f506620",
+    "hash": "d04e587b3ac3c71545cf13e1c8d0a5e3",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -22,7 +22,6 @@
             "require-dev": {
                 "doctrine/cache": "1.*"
             },
-            "time": "2013-01-12 19:23:32",
             "type": "library",
             "autoload": {
                 "psr-0": {
@@ -65,7 +64,8 @@
                 "annotations",
                 "docblock",
                 "parser"
-            ]
+            ],
+            "time": "2013-01-12 19:23:32"
         },
         {
             "name": "doctrine/cache",
@@ -84,7 +84,6 @@
             "require": {
                 "php": ">=5.3.2"
             },
-            "time": "2013-01-10 22:43:46",
             "type": "library",
             "autoload": {
                 "psr-0": {
@@ -126,7 +125,8 @@
             "keywords": [
                 "cache",
                 "caching"
-            ]
+            ],
+            "time": "2013-01-10 22:43:46"
         },
         {
             "name": "doctrine/collections",
@@ -145,7 +145,6 @@
             "require": {
                 "php": ">=5.3.2"
             },
-            "time": "2013-01-12 16:36:50",
             "type": "library",
             "autoload": {
                 "psr-0": {
@@ -188,7 +187,8 @@
                 "array",
                 "collections",
                 "iterator"
-            ]
+            ],
+            "time": "2013-01-12 16:36:50"
         },
         {
             "name": "doctrine/common",
@@ -212,7 +212,6 @@
                 "doctrine/lexer": "1.*",
                 "php": ">=5.3.2"
             },
-            "time": "2013-02-19 09:37:33",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -262,7 +261,8 @@
                 "eventmanager",
                 "persistence",
                 "spl"
-            ]
+            ],
+            "time": "2013-02-19 09:37:33"
         },
         {
             "name": "doctrine/inflector",
@@ -281,7 +281,6 @@
             "require": {
                 "php": ">=5.3.2"
             },
-            "time": "2013-01-10 21:49:15",
             "type": "library",
             "autoload": {
                 "psr-0": {
@@ -325,7 +324,8 @@
                 "pluarlize",
                 "singuarlize",
                 "string"
-            ]
+            ],
+            "time": "2013-01-10 21:49:15"
         },
         {
             "name": "doctrine/lexer",
@@ -344,7 +344,6 @@
             "require": {
                 "php": ">=5.3.2"
             },
-            "time": "2013-01-12 18:59:04",
             "type": "library",
             "autoload": {
                 "psr-0": {
@@ -377,7 +376,8 @@
             "keywords": [
                 "lexer",
                 "parser"
-            ]
+            ],
+            "time": "2013-01-12 18:59:04"
         },
         {
             "name": "egulias/listeners-debug-command-bundle",
@@ -398,7 +398,6 @@
                 "php": ">=5.3.3",
                 "symfony/symfony": ">=2.0"
             },
-            "time": "2013-01-30 15:40:58",
             "type": "symfony-bundle",
             "autoload": {
                 "psr-0": {
@@ -419,7 +418,49 @@
             "homepage": "https://github.com/egulias/ListenersDebugCommandBundle.git",
             "keywords": [
                 "listener events"
-            ]
+            ],
+            "time": "2013-01-30 15:40:58"
+        },
+        {
+            "name": "ezsystems/demobundle",
+            "version": "dev-master",
+            "target-dir": "EzSystems/DemoBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ezsystems/DemoBundle.git",
+                "reference": "1232d73c137ee0d5f54781551ac800482a2ac90d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ezsystems/DemoBundle/zipball/1232d73c137ee0d5f54781551ac800482a2ac90d",
+                "reference": "1232d73c137ee0d5f54781551ac800482a2ac90d",
+                "shasum": ""
+            },
+            "require": {
+                "ezsystems/ezpublish-kernel": "dev-master",
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "EzSystems\\DemoBundle": ""
+                }
+            },
+            "license": [
+                "GPL-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "eZ Publish dev-team & eZ Community",
+                    "homepage": "https://github.com/ezsystems/DemoBundle/graphs/contributors"
+                }
+            ],
+            "description": "Demo bundle for eZ Publish Platform",
+            "support": {
+                "source": "https://github.com/ezsystems/DemoBundle/tree/master",
+                "issues": "https://github.com/ezsystems/DemoBundle/issues"
+            },
+            "time": "2013-02-28 11:30:18"
         },
         {
             "name": "ezsystems/ezpublish-kernel",
@@ -467,7 +508,6 @@
                 "ezsystems/ezpublish-legacy": "dev-master",
                 "mikey179/vfsstream": "1.1.0"
             },
-            "time": "2013-02-26 13:57:35",
             "type": "library",
             "autoload": {
                 "psr-0": {
@@ -481,7 +521,8 @@
             "homepage": "http://share.ez.no",
             "support": {
                 "source": "https://github.com/ezsystems/ezpublish-kernel/tree/master"
-            }
+            },
+            "time": "2013-02-26 13:57:35"
         },
         {
             "name": "kriswallsmith/assetic",
@@ -520,7 +561,6 @@
                 "ptachoire/cssembed": "Assetic provides the integration with phpcssembed to embed data uris",
                 "twig/twig": "Assetic provides the integration with the Twig templating engine"
             },
-            "time": "2013-02-24 17:22:20",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -552,7 +592,8 @@
                 "assets",
                 "compression",
                 "minification"
-            ]
+            ],
+            "time": "2013-02-24 17:22:20"
         },
         {
             "name": "kriswallsmith/buzz",
@@ -577,7 +618,6 @@
             "suggest": {
                 "ext-curl": "*"
             },
-            "time": "2013-02-24 20:22:58",
             "type": "library",
             "autoload": {
                 "psr-0": {
@@ -600,7 +640,8 @@
             "keywords": [
                 "curl",
                 "http client"
-            ]
+            ],
+            "time": "2013-02-24 20:22:58"
         },
         {
             "name": "monolog/monolog",
@@ -632,7 +673,6 @@
                 "mlehner/gelf-php": "Allow sending log messages to a GrayLog2 server",
                 "raven/raven": "Allow sending log messages to a Sentry server"
             },
-            "time": "2013-02-26 10:18:11",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -662,7 +702,8 @@
                 "log",
                 "logging",
                 "psr-3"
-            ]
+            ],
+            "time": "2013-02-26 10:18:11"
         },
         {
             "name": "psr/log",
@@ -678,7 +719,6 @@
                 "reference": "1.0.0",
                 "shasum": ""
             },
-            "time": "2012-12-21 11:40:51",
             "type": "library",
             "autoload": {
                 "psr-0": {
@@ -700,7 +740,8 @@
                 "log",
                 "psr",
                 "psr-3"
-            ]
+            ],
+            "time": "2012-12-21 11:40:51"
         },
         {
             "name": "qafoo/rmf",
@@ -716,7 +757,6 @@
                 "reference": "1.0.0",
                 "shasum": ""
             },
-            "time": "2012-09-03 11:24:11",
             "type": "library",
             "autoload": {
                 "psr-0": {
@@ -724,7 +764,8 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "description": "Very simple VC framework which makes it easy to build HTTP applications / REST webservices"
+            "description": "Very simple VC framework which makes it easy to build HTTP applications / REST webservices",
+            "time": "2012-09-03 11:24:11"
         },
         {
             "name": "sensio/generator-bundle",
@@ -750,7 +791,6 @@
                 "symfony/doctrine-bridge": ">=2.2,<3.0",
                 "twig/twig": ">=1.11.0,<2.0"
             },
-            "time": "2013-02-22 17:59:21",
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
@@ -772,7 +812,8 @@
                     "email": "fabien@symfony.com"
                 }
             ],
-            "description": "This bundle generates code for you"
+            "description": "This bundle generates code for you",
+            "time": "2013-02-22 17:59:21"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -791,7 +832,6 @@
             "require": {
                 "php": ">=5.2.4"
             },
-            "time": "2013-02-04 10:09:01",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -821,7 +861,8 @@
             "keywords": [
                 "mail",
                 "mailer"
-            ]
+            ],
+            "time": "2013-02-04 10:09:01"
         },
         {
             "name": "symfony-cmf/routing",
@@ -843,7 +884,6 @@
                 "symfony/http-kernel": ">=2.1,<2.3-dev",
                 "symfony/routing": ">=2.1,<2.3-dev"
             },
-            "time": "2013-02-22 13:50:34",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -870,7 +910,8 @@
             "keywords": [
                 "database",
                 "routing"
-            ]
+            ],
+            "time": "2013-02-22 13:50:34"
         },
         {
             "name": "symfony/assetic-bundle",
@@ -904,7 +945,6 @@
             "suggest": {
                 "symfony/twig-bundle": ">=2.1.0,<2.3-dev"
             },
-            "time": "2013-02-24 18:21:16",
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
@@ -933,7 +973,8 @@
                 "assets",
                 "compression",
                 "minification"
-            ]
+            ],
+            "time": "2013-02-24 18:21:16"
         },
         {
             "name": "symfony/monolog-bundle",
@@ -960,7 +1001,6 @@
             "require-dev": {
                 "symfony/yaml": ">=2.2-beta2,<3.0"
             },
-            "time": "2013-02-23 17:18:24",
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
@@ -991,7 +1031,8 @@
             "keywords": [
                 "log",
                 "logging"
-            ]
+            ],
+            "time": "2013-02-23 17:18:24"
         },
         {
             "name": "symfony/swiftmailer-bundle",
@@ -1019,7 +1060,6 @@
                 "symfony/http-kernel": ">=2.1.0,<2.3-dev",
                 "symfony/yaml": ">=2.1.0,<2.3-dev"
             },
-            "time": "2013-01-08 20:24:29",
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
@@ -1046,7 +1086,8 @@
                 }
             ],
             "description": "Symfony SwiftmailerBundle",
-            "homepage": "http://symfony.com"
+            "homepage": "http://symfony.com",
+            "time": "2013-01-08 20:24:29"
         },
         {
             "name": "symfony/symfony",
@@ -1111,7 +1152,6 @@
                 "monolog/monolog": ">=1.3,<2.0",
                 "propel/propel1": "1.6.*"
             },
-            "time": "2013-02-24 12:07:19",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1145,7 +1185,8 @@
             "homepage": "http://symfony.com",
             "keywords": [
                 "framework"
-            ]
+            ],
+            "time": "2013-02-24 12:07:19"
         },
         {
             "name": "twig/extensions",
@@ -1164,7 +1205,6 @@
             "require": {
                 "twig/twig": "1.*"
             },
-            "time": "2013-01-04 16:55:05",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1192,7 +1232,8 @@
                 "debug",
                 "i18n",
                 "text"
-            ]
+            ],
+            "time": "2013-01-04 16:55:05"
         },
         {
             "name": "twig/twig",
@@ -1211,7 +1252,6 @@
             "require": {
                 "php": ">=5.2.4"
             },
-            "time": "2013-02-26 13:03:39",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1241,7 +1281,8 @@
             "homepage": "http://twig.sensiolabs.org",
             "keywords": [
                 "templating"
-            ]
+            ],
+            "time": "2013-02-26 13:03:39"
         },
         {
             "name": "zetacomponents/archive",
@@ -1263,7 +1304,6 @@
             "require-dev": {
                 "zetacomponents/unit-test": "*"
             },
-            "time": "2012-05-21 09:54:03",
             "type": "library",
             "autoload": {
                 "classmap": [
@@ -1307,7 +1347,8 @@
                 }
             ],
             "description": "The component allows you to create, modify, and extract archive files of  various formats.  The currently supported archives formats are Tar (with  the flavours: ustar, v7, pax, and gnu) and Zip.",
-            "homepage": "https://github.com/zetacomponents"
+            "homepage": "https://github.com/zetacomponents",
+            "time": "2012-05-21 09:54:03"
         },
         {
             "name": "zetacomponents/authentication",
@@ -1329,7 +1370,6 @@
             "require-dev": {
                 "zetacomponents/unit-test": "*"
             },
-            "time": "2012-05-21 09:55:21",
             "type": "library",
             "autoload": {
                 "classmap": [
@@ -1373,7 +1413,8 @@
                 }
             ],
             "description": "The purpose of the Authentication component is to provide support for different means of identification and authentication of users using different providers and protocols.",
-            "homepage": "https://github.com/zetacomponents"
+            "homepage": "https://github.com/zetacomponents",
+            "time": "2012-05-21 09:55:21"
         },
         {
             "name": "zetacomponents/base",
@@ -1392,7 +1433,6 @@
             "require-dev": {
                 "zetacomponents/unit-test": "*"
             },
-            "time": "2012-05-21 11:21:36",
             "type": "library",
             "autoload": {
                 "classmap": [
@@ -1436,7 +1476,8 @@
                 }
             ],
             "description": "The Base package provides the basic infrastructure that all packages rely on. Therefore every component relies on this package.",
-            "homepage": "https://github.com/zetacomponents"
+            "homepage": "https://github.com/zetacomponents",
+            "time": "2012-05-21 11:21:36"
         },
         {
             "name": "zetacomponents/cache",
@@ -1458,7 +1499,6 @@
             "require-dev": {
                 "zetacomponents/unit-test": "*"
             },
-            "time": "2012-05-21 09:55:29",
             "type": "library",
             "autoload": {
                 "classmap": [
@@ -1505,7 +1545,8 @@
                 }
             ],
             "description": "A solution for caching, supporting multiple backends allowing you to specify the best performing solution for your caching-problem.",
-            "homepage": "https://github.com/zetacomponents"
+            "homepage": "https://github.com/zetacomponents",
+            "time": "2012-05-21 09:55:29"
         },
         {
             "name": "zetacomponents/configuration",
@@ -1527,7 +1568,6 @@
             "require-dev": {
                 "zetacomponents/unit-test": "*"
             },
-            "time": "2012-05-21 09:55:32",
             "type": "library",
             "autoload": {
                 "classmap": [
@@ -1571,7 +1611,8 @@
                 }
             ],
             "description": "A component that allows you to use configuration files in different formats. The formats include the standard .ini file, and an array based format.",
-            "homepage": "https://github.com/zetacomponents"
+            "homepage": "https://github.com/zetacomponents",
+            "time": "2012-05-21 09:55:32"
         },
         {
             "name": "zetacomponents/console-tools",
@@ -1593,7 +1634,6 @@
             "require-dev": {
                 "zetacomponents/unit-test": "*"
             },
-            "time": "2012-05-21 09:55:34",
             "type": "library",
             "autoload": {
                 "classmap": [
@@ -1637,7 +1677,8 @@
                 }
             ],
             "description": "A set of classes to do different actions with the console (also called shell). It can render a progress bar, tables and a status bar and contains a class for parsing command line options.",
-            "homepage": "https://github.com/zetacomponents"
+            "homepage": "https://github.com/zetacomponents",
+            "time": "2012-05-21 09:55:34"
         },
         {
             "name": "zetacomponents/database",
@@ -1659,7 +1700,6 @@
             "require-dev": {
                 "zetacomponents/unit-test": "*"
             },
-            "time": "2012-05-21 09:55:40",
             "type": "library",
             "autoload": {
                 "classmap": [
@@ -1712,7 +1752,8 @@
                 }
             ],
             "description": "A lightweight database layer on top of PHP's PDO that allows you to utilize a database without having to take care of differences in SQL dialects.",
-            "homepage": "https://github.com/zetacomponents"
+            "homepage": "https://github.com/zetacomponents",
+            "time": "2012-05-21 09:55:40"
         },
         {
             "name": "zetacomponents/debug",
@@ -1734,7 +1775,6 @@
             "require-dev": {
                 "zetacomponents/unit-test": "*"
             },
-            "time": "2012-05-21 09:55:45",
             "type": "library",
             "autoload": {
                 "classmap": [
@@ -1778,7 +1818,8 @@
                 }
             ],
             "description": "This component provides a set of classes that help you to debug an application. It provides timers and report generators for different formats that give a summary of warnings and errors that occurred within your application.",
-            "homepage": "https://github.com/zetacomponents"
+            "homepage": "https://github.com/zetacomponents",
+            "time": "2012-05-21 09:55:45"
         },
         {
             "name": "zetacomponents/event-log",
@@ -1794,7 +1835,6 @@
                 "reference": "1.4",
                 "shasum": ""
             },
-            "time": "2009-06-29 03:55:08",
             "type": "library",
             "autoload": {
                 "classmap": [
@@ -1838,7 +1878,8 @@
                 }
             ],
             "description": "Allows you to log events or audit trails into files or other storage spaces in different formats.",
-            "homepage": "https://github.com/zetacomponents"
+            "homepage": "https://github.com/zetacomponents",
+            "time": "2009-06-29 03:55:08"
         },
         {
             "name": "zetacomponents/feed",
@@ -1860,7 +1901,6 @@
             "require-dev": {
                 "zetacomponents/unit-test": "*"
             },
-            "time": "2012-05-21 09:55:58",
             "type": "library",
             "autoload": {
                 "classmap": [
@@ -1904,7 +1944,8 @@
                 }
             ],
             "description": "This component handles parsing and creating RSS1, RSS2 and ATOM feeds, with support for different feed modules (dc, content, creativeCommons, geo, iTunes).",
-            "homepage": "https://github.com/zetacomponents"
+            "homepage": "https://github.com/zetacomponents",
+            "time": "2012-05-21 09:55:58"
         },
         {
             "name": "zetacomponents/image-analysis",
@@ -1926,7 +1967,6 @@
             "require-dev": {
                 "zetacomponents/unit-test": "*"
             },
-            "time": "2012-05-21 09:56:09",
             "type": "library",
             "autoload": {
                 "classmap": [
@@ -1970,7 +2010,8 @@
                 }
             ],
             "description": "This class allows you to analyse image files in different ways. At least the MIME type of the file is returned. In some cases (JPEG, TIFF and GIF) additional information is gathered as well.",
-            "homepage": "https://github.com/zetacomponents"
+            "homepage": "https://github.com/zetacomponents",
+            "time": "2012-05-21 09:56:09"
         },
         {
             "name": "zetacomponents/image-conversion",
@@ -1993,7 +2034,6 @@
             "require-dev": {
                 "zetacomponents/unit-test": "*"
             },
-            "time": "2012-05-28 07:48:05",
             "type": "library",
             "autoload": {
                 "classmap": [
@@ -2037,7 +2077,8 @@
                 }
             ],
             "description": "A set of classes to apply different filters on images, such as colour changes, resizing and special effects.",
-            "homepage": "https://github.com/zetacomponents"
+            "homepage": "https://github.com/zetacomponents",
+            "time": "2012-05-28 07:48:05"
         },
         {
             "name": "zetacomponents/mail",
@@ -2059,7 +2100,6 @@
             "require-dev": {
                 "zetacomponents/unit-test": "*"
             },
-            "time": "2012-05-21 09:56:15",
             "type": "library",
             "autoload": {
                 "classmap": [
@@ -2112,7 +2152,8 @@
                 }
             ],
             "description": "The component allows you construct and/or parse Mail messages conforming to  the mail standard. It has support for attachments, multipart messages and HTML  mail. It also interfaces with SMTP to send mail or IMAP, POP3 or mbox to  retrieve e-mail.",
-            "homepage": "https://github.com/zetacomponents"
+            "homepage": "https://github.com/zetacomponents",
+            "time": "2012-05-21 09:56:15"
         },
         {
             "name": "zetacomponents/mvc-authentication-tiein",
@@ -2128,7 +2169,6 @@
                 "reference": "9bae3a7313e2ef7f53ef1f394276acc3fde0f80e",
                 "shasum": ""
             },
-            "time": "2012-05-21 09:46:53",
             "type": "library",
             "autoload": {
                 "classmap": [
@@ -2157,7 +2197,8 @@
                 }
             ],
             "description": "This component provides authentication filters for the MvcTools component.",
-            "homepage": "https://github.com/zetacomponents"
+            "homepage": "https://github.com/zetacomponents",
+            "time": "2012-05-21 09:46:53"
         },
         {
             "name": "zetacomponents/mvc-tools",
@@ -2179,7 +2220,6 @@
             "require-dev": {
                 "zetacomponents/unit-test": "*"
             },
-            "time": "2012-05-21 09:56:22",
             "type": "library",
             "autoload": {
                 "classmap": [
@@ -2211,7 +2251,8 @@
                 }
             ],
             "description": "The MvcTools component provides functionality for request parsing, routing, dispatching, views and response writing. With the tools in this component you can very easily build an MVC framework.",
-            "homepage": "https://github.com/zetacomponents"
+            "homepage": "https://github.com/zetacomponents",
+            "time": "2012-05-21 09:56:22"
         },
         {
             "name": "zetacomponents/persistent-object",
@@ -2233,7 +2274,6 @@
             "require-dev": {
                 "zetacomponents/unit-test": "*"
             },
-            "time": "2012-05-21 09:56:25",
             "type": "library",
             "autoload": {
                 "classmap": [
@@ -2280,7 +2320,8 @@
                 }
             ],
             "description": "This component allows you to store an arbitrary data structures to a fixed database table. The component provides all the functionality needed to fetch, list, delete etc these datastructures.",
-            "homepage": "https://github.com/zetacomponents"
+            "homepage": "https://github.com/zetacomponents",
+            "time": "2012-05-21 09:56:25"
         },
         {
             "name": "zetacomponents/php-generator",
@@ -2302,7 +2343,6 @@
             "require-dev": {
                 "zetacomponents/unit-test": "*"
             },
-            "time": "2012-05-21 09:56:30",
             "type": "library",
             "autoload": {
                 "classmap": [
@@ -2346,7 +2386,8 @@
                 }
             ],
             "description": "Provides a simple interface for creating PHP files and executing PHP code.",
-            "homepage": "https://github.com/zetacomponents"
+            "homepage": "https://github.com/zetacomponents",
+            "time": "2012-05-21 09:56:30"
         },
         {
             "name": "zetacomponents/signal-slot",
@@ -2368,7 +2409,6 @@
             "require-dev": {
                 "zetacomponents/unit-test": "*"
             },
-            "time": "2012-05-21 14:06:23",
             "type": "library",
             "autoload": {
                 "classmap": [
@@ -2412,7 +2452,8 @@
                 }
             ],
             "description": "The SignalSlot component implements a mechanism for inter and intra object communication through the use of signals and slots.",
-            "homepage": "https://github.com/zetacomponents"
+            "homepage": "https://github.com/zetacomponents",
+            "time": "2012-05-21 14:06:23"
         },
         {
             "name": "zetacomponents/system-information",
@@ -2434,7 +2475,6 @@
             "require-dev": {
                 "zetacomponents/unit-test": "*"
             },
-            "time": "2012-05-21 09:56:41",
             "type": "library",
             "autoload": {
                 "classmap": [
@@ -2478,7 +2518,8 @@
                 }
             ],
             "description": "Provides access to common system variables, such as CPU type and speed, and the available amount of memory.",
-            "homepage": "https://github.com/zetacomponents"
+            "homepage": "https://github.com/zetacomponents",
+            "time": "2012-05-21 09:56:41"
         },
         {
             "name": "zetacomponents/webdav",
@@ -2494,7 +2535,6 @@
                 "reference": "1.1.3",
                 "shasum": ""
             },
-            "time": "2009-11-09 05:34:07",
             "type": "library",
             "autoload": {
                 "classmap": [
@@ -2538,7 +2578,8 @@
                 }
             ],
             "description": "This component allows you to set up and run your own WebDAV (RFC 2518) server, to enable online content editing for the users of your system through the WebDAV HTTP extension.",
-            "homepage": "https://github.com/zetacomponents"
+            "homepage": "https://github.com/zetacomponents",
+            "time": "2009-11-09 05:34:07"
         }
     ],
     "packages-dev": null,
@@ -2549,6 +2590,7 @@
     "stability-flags": {
         "symfony/symfony": 5,
         "ezsystems/ezpublish-kernel": 20,
+        "ezsystems/demobundle": 20,
         "egulias/listeners-debug-command-bundle": 20
     }
 }
