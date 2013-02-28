@@ -1,5 +1,5 @@
 {
-    "hash": "d04e587b3ac3c71545cf13e1c8d0a5e3",
+    "hash": "b7aa7843f5078155d0deb4c8e754c6e8",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -468,12 +468,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-kernel.git",
-                "reference": "20c9c3d37434b6a8d3d868de699c3adeee833737"
+                "reference": "dc67811ad301f72861c95de4dea8275e1f56e2e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/20c9c3d37434b6a8d3d868de699c3adeee833737",
-                "reference": "20c9c3d37434b6a8d3d868de699c3adeee833737",
+                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/dc67811ad301f72861c95de4dea8275e1f56e2e2",
+                "reference": "dc67811ad301f72861c95de4dea8275e1f56e2e2",
                 "shasum": ""
             },
             "require": {
@@ -514,15 +514,13 @@
                     "eZ": ""
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "GPL-2.0"
             ],
             "description": "eZ Publish API and kernel. This is the heart of eZ Publish 5.",
             "homepage": "http://share.ez.no",
-            "support": {
-                "source": "https://github.com/ezsystems/ezpublish-kernel/tree/master"
-            },
-            "time": "2013-02-26 13:57:35"
+            "time": "2013-02-28 10:53:03"
         },
         {
             "name": "kriswallsmith/assetic",
@@ -601,12 +599,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kriswallsmith/Buzz.git",
-                "reference": "03642f8a6e33f33ccf93fb95a93b0ed171fa7f83"
+                "reference": "aeb9feefb389d077bc685ed2d5224afaab864fac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kriswallsmith/Buzz/zipball/03642f8a6e33f33ccf93fb95a93b0ed171fa7f83",
-                "reference": "03642f8a6e33f33ccf93fb95a93b0ed171fa7f83",
+                "url": "https://api.github.com/repos/kriswallsmith/Buzz/zipball/aeb9feefb389d077bc685ed2d5224afaab864fac",
+                "reference": "aeb9feefb389d077bc685ed2d5224afaab864fac",
                 "shasum": ""
             },
             "require": {
@@ -641,7 +639,7 @@
                 "curl",
                 "http client"
             ],
-            "time": "2013-02-24 20:22:58"
+            "time": "2013-02-27 23:12:29"
         },
         {
             "name": "monolog/monolog",

@@ -10,12 +10,6 @@
             "homepage": "https://github.com/ezsystems/ezpublish-community/contributors"
         }
     ],
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/ezsystems/ezpublish-kernel.git"
-    }
-    ],
     "require": {
         "php": ">=5.3.3",
         "symfony/symfony": "2.2.0-RC3",
