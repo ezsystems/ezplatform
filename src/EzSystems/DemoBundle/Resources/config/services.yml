@@ -1,8 +1,0 @@
-parameters:
-    ezdemo.pre_content_view_listener.class: EzSystems\DemoBundle\EventListener\PreContentViewListener
-
-services:
-#    ezdemo.pre_content_view_listener:
-#        class: %ezdemo.pre_content_view_listener.class%
-#        tags:
-#            - {name: kernel.event_listener, event: ezpublish.pre_content_view, method: onPreContentView}
