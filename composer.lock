@@ -1,5 +1,5 @@
 {
-    "hash": "b7aa7843f5078155d0deb4c8e754c6e8",
+    "hash": "e07b62d1ea37d5f4395fb5250bf9c096",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -468,12 +468,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-kernel.git",
-                "reference": "dc67811ad301f72861c95de4dea8275e1f56e2e2"
+                "reference": "b8cd6bac1399e34576637c80873c279301ea00f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/dc67811ad301f72861c95de4dea8275e1f56e2e2",
-                "reference": "dc67811ad301f72861c95de4dea8275e1f56e2e2",
+                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/b8cd6bac1399e34576637c80873c279301ea00f1",
+                "reference": "b8cd6bac1399e34576637c80873c279301ea00f1",
                 "shasum": ""
             },
             "require": {
@@ -481,7 +481,7 @@
                 "php": ">=5.3.3",
                 "qafoo/rmf": "1.0.0",
                 "symfony-cmf/routing": "1.0.*",
-                "symfony/symfony": "2.2.0-RC3",
+                "symfony/symfony": "2.2.0",
                 "zetacomponents/archive": "dev-master",
                 "zetacomponents/authentication": "dev-master",
                 "zetacomponents/cache": "dev-master",
@@ -520,7 +520,7 @@
             ],
             "description": "eZ Publish API and kernel. This is the heart of eZ Publish 5.",
             "homepage": "http://share.ez.no",
-            "time": "2013-02-28 10:53:03"
+            "time": "2013-03-01 09:46:48"
         },
         {
             "name": "kriswallsmith/assetic",
@@ -1089,16 +1089,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.2.0-RC3",
+            "version": "v2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "v2.2.0-RC3"
+                "reference": "v2.2.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/v2.2.0-RC3",
-                "reference": "v2.2.0-RC3",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/v2.2.0",
+                "reference": "v2.2.0",
                 "shasum": ""
             },
             "require": {
@@ -1184,7 +1184,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2013-02-24 12:07:19"
+            "time": "2013-03-01 06:52:29"
         },
         {
             "name": "twig/extensions",
@@ -1239,12 +1239,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabpot/Twig.git",
-                "reference": "bc30d9b7e24b0cd2f02078064b2d9fe1c20aa1aa"
+                "reference": "39d94faabcea7d60b90c2996d51e1b6691ab39d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/Twig/zipball/bc30d9b7e24b0cd2f02078064b2d9fe1c20aa1aa",
-                "reference": "bc30d9b7e24b0cd2f02078064b2d9fe1c20aa1aa",
+                "url": "https://api.github.com/repos/fabpot/Twig/zipball/39d94faabcea7d60b90c2996d51e1b6691ab39d2",
+                "reference": "39d94faabcea7d60b90c2996d51e1b6691ab39d2",
                 "shasum": ""
             },
             "require": {
@@ -1280,7 +1280,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2013-02-26 13:03:39"
+            "time": "2013-02-28 14:08:49"
         },
         {
             "name": "zetacomponents/archive",
@@ -2586,7 +2586,6 @@
     ],
     "minimum-stability": "dev",
     "stability-flags": {
-        "symfony/symfony": 5,
         "ezsystems/ezpublish-kernel": 20,
         "ezsystems/demobundle": 20,
         "egulias/listeners-debug-command-bundle": 20
