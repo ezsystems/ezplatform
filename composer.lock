@@ -1,5 +1,5 @@
 {
-    "hash": "7709020ad5a08ac0e5e0fe522ecb7bae",
+    "hash": "401f24ce2852870b6fc991bcfa5056ca",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -427,12 +427,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-kernel.git",
-                "reference": "5f6c2f7002f5def74d6b4a1104a06e833fa35917"
+                "reference": "ed0969ddea6c0ebab77c39a2e7989c62a0f5e45e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/5f6c2f7002f5def74d6b4a1104a06e833fa35917",
-                "reference": "5f6c2f7002f5def74d6b4a1104a06e833fa35917",
+                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/ed0969ddea6c0ebab77c39a2e7989c62a0f5e45e",
+                "reference": "ed0969ddea6c0ebab77c39a2e7989c62a0f5e45e",
                 "shasum": ""
             },
             "require": {
@@ -440,8 +440,8 @@
                 "php": ">=5.3.3",
                 "qafoo/rmf": "1.0.0",
                 "symfony-cmf/routing": "1.0.*",
-                "symfony/symfony": "2.2.0-RC2",
-                "tedivm/stash-bundle": "dev-sf22",
+                "symfony/symfony": "2.2.0",
+                "tedivm/stash-bundle": "dev-blackhole",
                 "zetacomponents/archive": "dev-master",
                 "zetacomponents/authentication": "dev-master",
                 "zetacomponents/cache": "dev-master",
@@ -482,7 +482,7 @@
             "support": {
                 "source": "https://github.com/ezsystems/ezpublish-kernel/tree/spiPersistenceCache"
             },
-            "time": "2013-02-21 16:53:22"
+            "time": "2013-03-03 11:38:05"
         },
         {
             "name": "kriswallsmith/assetic",
@@ -490,12 +490,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kriswallsmith/assetic.git",
-                "reference": "v1.1.0-alpha3"
+                "reference": "df03baa337ae1c87803a7b1a76a393f8a59813f3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kriswallsmith/assetic/zipball/v1.1.0-alpha3",
-                "reference": "v1.1.0-alpha3",
+                "url": "https://api.github.com/repos/kriswallsmith/assetic/zipball/df03baa337ae1c87803a7b1a76a393f8a59813f3",
+                "reference": "df03baa337ae1c87803a7b1a76a393f8a59813f3",
                 "shasum": ""
             },
             "require": {
@@ -553,7 +553,7 @@
                 "compression",
                 "minification"
             ],
-            "time": "2013-02-18 16:17:57"
+            "time": "2013-02-24 17:22:20"
         },
         {
             "name": "kriswallsmith/buzz",
@@ -561,12 +561,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kriswallsmith/Buzz.git",
-                "reference": "e22555003e0cce08be1c2f4659fd410d7d9f3cc0"
+                "reference": "9bc2ff5b82d40edeba07cfb28d84b8ed21bae31e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kriswallsmith/Buzz/zipball/e22555003e0cce08be1c2f4659fd410d7d9f3cc0",
-                "reference": "e22555003e0cce08be1c2f4659fd410d7d9f3cc0",
+                "url": "https://api.github.com/repos/kriswallsmith/Buzz/zipball/9bc2ff5b82d40edeba07cfb28d84b8ed21bae31e",
+                "reference": "9bc2ff5b82d40edeba07cfb28d84b8ed21bae31e",
                 "shasum": ""
             },
             "require": {
@@ -601,7 +601,7 @@
                 "curl",
                 "http client"
             ],
-            "time": "2013-02-19 13:52:29"
+            "time": "2013-03-02 00:25:43"
         },
         {
             "name": "monolog/monolog",
@@ -609,12 +609,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "953f21a7d83d19ecb8793e7a59e2395c32a8d480"
+                "reference": "041aa3930f8d2b466ae897440ec9471d5159c5bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/953f21a7d83d19ecb8793e7a59e2395c32a8d480",
-                "reference": "953f21a7d83d19ecb8793e7a59e2395c32a8d480",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/041aa3930f8d2b466ae897440ec9471d5159c5bf",
+                "reference": "041aa3930f8d2b466ae897440ec9471d5159c5bf",
                 "shasum": ""
             },
             "require": {
@@ -663,7 +663,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2013-02-21 10:03:40"
+            "time": "2013-02-26 10:18:11"
         },
         {
             "name": "psr/log",
@@ -732,13 +732,13 @@
             "target-dir": "Sensio/Bundle/GeneratorBundle",
             "source": {
                 "type": "git",
-                "url": "https://github.com/sensio/SensioGeneratorBundle",
-                "reference": "v2.2.0-RC1"
+                "url": "https://github.com/sensio/SensioGeneratorBundle.git",
+                "reference": "v2.2.0-RC3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensio/SensioGeneratorBundle/zipball/v2.2.0-RC1",
-                "reference": "v2.2.0-RC1",
+                "url": "https://api.github.com/repos/sensio/SensioGeneratorBundle/zipball/v2.2.0-RC3",
+                "reference": "v2.2.0-RC3",
                 "shasum": ""
             },
             "require": {
@@ -749,9 +749,6 @@
                 "doctrine/orm": ">=2.2,<3.0,>=2.2.3",
                 "symfony/doctrine-bridge": ">=2.2,<3.0",
                 "twig/twig": ">=1.11.0,<2.0"
-            },
-            "suggest": {
-                "doctrine/doctrine-bundle": "to generate entities and their crud controller"
             },
             "type": "symfony-bundle",
             "extra": {
@@ -775,7 +772,7 @@
                 }
             ],
             "description": "This bundle generates code for you",
-            "time": "2013-02-05 08:54:29"
+            "time": "2013-02-22 17:59:21"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -832,13 +829,13 @@
             "target-dir": "Symfony/Cmf/Component/Routing",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony-cmf/Routing",
-                "reference": "72df1da07b3c4edf16df169fb7987f504070fe0d"
+                "url": "https://github.com/symfony-cmf/Routing.git",
+                "reference": "43585d83fb07f9354c098fcae593010567f53d45"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony-cmf/Routing/archive/72df1da07b3c4edf16df169fb7987f504070fe0d.zip",
-                "reference": "72df1da07b3c4edf16df169fb7987f504070fe0d",
+                "url": "https://api.github.com/repos/symfony-cmf/Routing/zipball/43585d83fb07f9354c098fcae593010567f53d45",
+                "reference": "43585d83fb07f9354c098fcae593010567f53d45",
                 "shasum": ""
             },
             "require": {
@@ -873,7 +870,7 @@
                 "database",
                 "routing"
             ],
-            "time": "2013-01-24 16:09:01"
+            "time": "2013-02-22 13:50:34"
         },
         {
             "name": "symfony/assetic-bundle",
@@ -882,12 +879,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/AsseticBundle.git",
-                "reference": "bc24734343cc6a77dc143d0cf80f33b5e18e4cc0"
+                "reference": "6985b26ba44f12a3804af8beb53f6b6e49da5b04"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/AsseticBundle/zipball/bc24734343cc6a77dc143d0cf80f33b5e18e4cc0",
-                "reference": "bc24734343cc6a77dc143d0cf80f33b5e18e4cc0",
+                "url": "https://api.github.com/repos/symfony/AsseticBundle/zipball/6985b26ba44f12a3804af8beb53f6b6e49da5b04",
+                "reference": "6985b26ba44f12a3804af8beb53f6b6e49da5b04",
                 "shasum": ""
             },
             "require": {
@@ -936,7 +933,7 @@
                 "compression",
                 "minification"
             ],
-            "time": "2013-02-18 16:21:03"
+            "time": "2013-02-24 18:21:16"
         },
         {
             "name": "symfony/monolog-bundle",
@@ -945,12 +942,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/MonologBundle.git",
-                "reference": "df2a8e33bdb98f848dce28e0d14e318fea71b45f"
+                "reference": "v2.2.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/MonologBundle/zipball/df2a8e33bdb98f848dce28e0d14e318fea71b45f",
-                "reference": "df2a8e33bdb98f848dce28e0d14e318fea71b45f",
+                "url": "https://api.github.com/repos/symfony/MonologBundle/zipball/v2.2.0",
+                "reference": "v2.2.0",
                 "shasum": ""
             },
             "require": {
@@ -994,7 +991,7 @@
                 "log",
                 "logging"
             ],
-            "time": "2013-02-14 10:33:50"
+            "time": "2013-02-23 17:18:24"
         },
         {
             "name": "symfony/swiftmailer-bundle",
@@ -1003,12 +1000,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/SwiftmailerBundle.git",
-                "reference": "v2.2.0-BETA1"
+                "reference": "v2.2.0-BETA2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/SwiftmailerBundle/zipball/v2.2.0-BETA1",
-                "reference": "v2.2.0-BETA1",
+                "url": "https://api.github.com/repos/symfony/SwiftmailerBundle/zipball/v2.2.0-BETA2",
+                "reference": "v2.2.0-BETA2",
                 "shasum": ""
             },
             "require": {
@@ -1053,16 +1050,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.2.0-RC2",
+            "version": "v2.2.0",
             "source": {
                 "type": "git",
-                "url": "git://github.com/symfony/symfony.git",
-                "reference": "v2.2.0-RC2"
+                "url": "https://github.com/symfony/symfony.git",
+                "reference": "v2.2.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/v2.2.0-RC2",
-                "reference": "v2.2.0-RC2",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/v2.2.0",
+                "reference": "v2.2.0",
                 "shasum": ""
             },
             "require": {
@@ -1148,20 +1145,20 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2013-02-11 12:46:49"
+            "time": "2013-03-01 06:52:29"
         },
         {
             "name": "tedivm/stash",
-            "version": "v0.9.5",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tedivm/Stash.git",
-                "reference": "v0.9.5"
+                "reference": "071352c5905706b74b9b2fb925493935975e4d25"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/tedivm/Stash/archive/v0.9.5.zip",
-                "reference": "v0.9.5",
+                "url": "https://api.github.com/repos/tedivm/Stash/zipball/071352c5905706b74b9b2fb925493935975e4d25",
+                "reference": "071352c5905706b74b9b2fb925493935975e4d25",
                 "shasum": ""
             },
             "require": {
@@ -1170,12 +1167,13 @@
             "type": "library",
             "autoload": {
                 "psr-0": {
-                    "Stash": "src/"
+                    "Stash": "src/",
+                    "Stash\\Test": "tests/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD"
+                "BSD-3-Clause"
             ],
             "authors": [
                 {
@@ -1190,31 +1188,33 @@
             "description": "A place to keep your cache",
             "homepage": "http://github.com/tedivm/Stash",
             "keywords": [
-                "cache",
-                "caching"
+                "caching",
+                "performance",
+                "scalability",
+                "sessions"
             ],
-            "time": "2012-03-09 10:00:53"
+            "time": "2013-03-03 00:18:55"
         },
         {
             "name": "tedivm/stash-bundle",
-            "version": "dev-sf22",
+            "version": "dev-blackhole",
             "target-dir": "Tedivm/StashBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/andrerom/TedivmStashBundle.git",
-                "reference": "577d2d5c652b8f62919a92d10799d3d31f3d92c0"
+                "reference": "9b83333a9bf046321c3d7c2d43ef2e3209707563"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/andrerom/TedivmStashBundle/zipball/577d2d5c652b8f62919a92d10799d3d31f3d92c0",
-                "reference": "577d2d5c652b8f62919a92d10799d3d31f3d92c0",
+                "url": "https://api.github.com/repos/andrerom/TedivmStashBundle/zipball/9b83333a9bf046321c3d7c2d43ef2e3209707563",
+                "reference": "9b83333a9bf046321c3d7c2d43ef2e3209707563",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0",
-                "symfony/framework-bundle": "2.2.0-RC2",
-                "symfony/yaml": "2.2.0-RC2",
-                "tedivm/stash": "0.9.*"
+                "symfony/framework-bundle": ">=2.2,<3.0",
+                "symfony/yaml": ">=2.2,<3.0",
+                "tedivm/stash": "dev-master#071352c5905706b74b9b2fb925493935975e4d25"
             },
             "type": "symfony-bundle",
             "autoload": {
@@ -1243,9 +1243,9 @@
                 "symfony"
             ],
             "support": {
-                "source": "https://github.com/andrerom/TedivmStashBundle/tree/sf22"
+                "source": "https://github.com/andrerom/TedivmStashBundle/tree/blackhole"
             },
-            "time": "2013-02-21 15:53:41"
+            "time": "2013-03-03 11:30:46"
         },
         {
             "name": "twig/extensions",
@@ -1253,12 +1253,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabpot/Twig-extensions.git",
-                "reference": "5c2d515d4624bdd588226d688173cf0399a4d8cf"
+                "reference": "921799aaf05f88af749d72912d6b154dfeb9a03e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/Twig-extensions/zipball/5c2d515d4624bdd588226d688173cf0399a4d8cf",
-                "reference": "5c2d515d4624bdd588226d688173cf0399a4d8cf",
+                "url": "https://api.github.com/repos/fabpot/Twig-extensions/zipball/921799aaf05f88af749d72912d6b154dfeb9a03e",
+                "reference": "921799aaf05f88af749d72912d6b154dfeb9a03e",
                 "shasum": ""
             },
             "require": {
@@ -1292,7 +1292,7 @@
                 "i18n",
                 "text"
             ],
-            "time": "2013-01-04 16:55:05"
+            "time": "2013-02-28 14:21:30"
         },
         {
             "name": "twig/twig",
@@ -1300,12 +1300,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabpot/Twig.git",
-                "reference": "15336c154c960f7e55e8b9fc1043ce7764ed7edc"
+                "reference": "39d94faabcea7d60b90c2996d51e1b6691ab39d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/Twig/zipball/15336c154c960f7e55e8b9fc1043ce7764ed7edc",
-                "reference": "15336c154c960f7e55e8b9fc1043ce7764ed7edc",
+                "url": "https://api.github.com/repos/fabpot/Twig/zipball/39d94faabcea7d60b90c2996d51e1b6691ab39d2",
+                "reference": "39d94faabcea7d60b90c2996d51e1b6691ab39d2",
                 "shasum": ""
             },
             "require": {
@@ -1341,7 +1341,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2013-02-21 06:47:52"
+            "time": "2013-02-28 14:08:49"
         },
         {
             "name": "zetacomponents/archive",
@@ -2042,7 +2042,6 @@
     ],
     "minimum-stability": "dev",
     "stability-flags": {
-        "symfony/symfony": 5,
         "tedivm/stash-bundle": 20,
         "ezsystems/ezpublish-kernel": 20,
         "egulias/listeners-debug-command-bundle": 20

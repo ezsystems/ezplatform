@@ -17,3 +17,10 @@ ezpublish:
                 server:
                 database_name: none
             languages: []
+
+stash:
+    caches:
+        default:
+            handlers: [ BlackHole ]
+            inMemory: true
+            registerDoctrineAdapter: false

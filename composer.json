@@ -22,12 +22,12 @@
     ],
     "require": {
         "php": ">=5.3.3",
-        "symfony/symfony": "2.2.0-RC2",
+        "symfony/symfony": "2.2.0",
         "symfony/assetic-bundle": "2.1.*",
         "symfony/monolog-bundle": "2.2.*",
         "symfony/swiftmailer-bundle": "2.2.*",
         "twig/extensions": "1.0.*",
-        "tedivm/stash-bundle": "dev-sf22",
+        "tedivm/stash-bundle": "dev-blackhole",
         "ezsystems/ezpublish-kernel": "dev-spiPersistenceCache",
         "sensio/generator-bundle": "2.2.*",
         "egulias/listeners-debug-command-bundle": "dev-master"

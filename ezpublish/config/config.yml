@@ -34,13 +34,6 @@ assetic:
             node: /opt/local/bin/node
             node_paths: [/opt/local/lib/node_modules]
 
-stash:
-    caches:
-        default:
-            handlers: [ Apc ]
-            inMemory: false
-            registerDoctrineAdapter: false
-
 ez_publish_legacy:
     enabled: true
     root_dir: %kernel.root_dir%/../ezpublish_legacy
