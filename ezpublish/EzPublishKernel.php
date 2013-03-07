@@ -21,6 +21,7 @@ use Symfony\Bundle\AsseticBundle\AsseticBundle;
 use Symfony\Bundle\WebProfilerBundle\WebProfilerBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle;
+use Tedivm\StashBundle\TedivmStashBundle;
 
 class EzPublishKernel extends Kernel
 {
@@ -40,6 +41,7 @@ class EzPublishKernel extends Kernel
             new MonologBundle(),
             new AsseticBundle(),
             new SensioGeneratorBundle(),
+            new TedivmStashBundle(),
             new EzPublishCoreBundle(),
             new EzPublishLegacyBundle(),
             new EzSystemsDemoBundle(),

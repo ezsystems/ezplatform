@@ -10,6 +10,12 @@
             "homepage": "https://github.com/ezsystems/ezpublish-community/contributors"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/andrerom/TedivmStashBundle"
+        }
+    ],
     "require": {
         "php": ">=5.3.3",
         "symfony/symfony": "2.2.0",
@@ -17,6 +23,7 @@
         "symfony/monolog-bundle": "2.2.*",
         "symfony/swiftmailer-bundle": "2.2.*",
         "twig/extensions": "1.0.*",
+        "tedivm/stash-bundle": "dev-blackhole",
         "ezsystems/ezpublish-kernel": "dev-master",
         "ezsystems/demobundle": "dev-master",
         "sensio/generator-bundle": "2.2.*",
