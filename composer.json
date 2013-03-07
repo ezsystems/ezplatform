@@ -13,10 +13,6 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/ezsystems/ezpublish-kernel.git"
-        },
-        {
-            "type": "vcs",
             "url": "https://github.com/andrerom/TedivmStashBundle"
         }
     ],
@@ -28,7 +24,8 @@
         "symfony/swiftmailer-bundle": "2.2.*",
         "twig/extensions": "1.0.*",
         "tedivm/stash-bundle": "dev-blackhole",
-        "ezsystems/ezpublish-kernel": "dev-spiPersistenceCache",
+        "ezsystems/ezpublish-kernel": "dev-master",
+        "ezsystems/demobundle": "dev-master",
         "sensio/generator-bundle": "2.2.*",
         "egulias/listeners-debug-command-bundle": "dev-master"
     },
