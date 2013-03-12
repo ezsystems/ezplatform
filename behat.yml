@@ -1,7 +1,7 @@
 default:
   extensions:
     Behat\MinkExtension\Extension:
-      base_url: 'http://ezpublish'
+      base_url: 'http://ezpublish.local'
       goutte: ~
       selenium: ~
 
