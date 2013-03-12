@@ -6,6 +6,7 @@ use Behat\Behat\Context\ClosuredContextInterface,
     Behat\Behat\Exception\PendingException;
 use Behat\Gherkin\Node\PyStringNode,
     Behat\Gherkin\Node\TableNode;
+use Behat\MinkExtension\Context\MinkContext;
 
 //
 // Require 3rd-party libraries here:
@@ -27,7 +28,7 @@ class FeatureContext extends BehatContext
      */
     public function __construct(array $parameters)
     {
-        // Initialize your context here
+        $this->useContext( 'mink', new MinkContext );
     }
 
 //
