@@ -1,0 +1,10 @@
+default:
+  extensions:
+    Behat\MinkExtension\Extension:
+      base_url: 'http://ezpublish'
+      goutte: ~
+      selenium: ~
+
+      javascript_session: sahi
+      browser_name: firefox
+
