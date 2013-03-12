@@ -5,6 +5,6 @@ default:
       goutte: ~
       selenium: ~
 
-      javascript_session: sahi
+      javascript_session: selenium
       browser_name: firefox
 
