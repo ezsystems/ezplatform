@@ -21,6 +21,10 @@ use PHPUnit_Framework_Assert as Assertion;
  */
 class FeatureContext extends MinkContext
 {
+    protected $pageIdentifierMap = array(
+        'Search Page' => '/content/search',
+    );
+
     /**
      * Initializes context.
      * Every scenario gets it's own context object.
@@ -54,13 +58,27 @@ class FeatureContext extends MinkContext
 
         $currentUrl = $this->getUrlWithoutQueryString($this->getSession()->getCurrentUrl());
 
-        $expectedUrl = $this->locatePath('/content/search');
+        $expectedUrl = $this->locatePath($this->getPathByPageIdentifier($pageIdentifier));
 
         Assertion::assertEquals(
             $expectedUrl,
             $currentUrl,
             "Unexpected URL of the current site."
         );
+    }
+
+    /**
+     * Returns the path associated with $pageIdentifier
+     *
+     * @param string $pageIdentifier
+     * @return string
+     */
+    protected function getPathByPageIdentifier($pageIdentifier)
+    {
+        if (!isset($this->pageIdentifierMap[$pageIdentifier])) {
+            throw new \RuntimeException("Unknown page identifier '{$pageIdentifier}'.");
+        }
+        return $this->pageIdentifierMap[$pageIdentifier];
     }
 
     /**
