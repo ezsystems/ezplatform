@@ -52,9 +52,7 @@ class FeatureContext extends MinkContext
         // FIXME: Replace with waiting for the page to load
         $this->getSession()->wait(5000);
 
-        // FIXME: Sanitize URLs in a central place
-        $currentFullUrl = $this->getSession()->getCurrentUrl();
-        $currentUrl = substr($currentFullUrl, 0, strpos($currentFullUrl, '?'));
+        $currentUrl = $this->getUrlWithoutQueryString($this->getSession()->getCurrentUrl());
 
         $expectedUrl = $this->locatePath('/content/search');
 
@@ -63,6 +61,20 @@ class FeatureContext extends MinkContext
             $currentUrl,
             "Unexpected URL of the current site."
         );
+    }
+
+    /**
+     * Returns $url without its query string
+     *
+     * @param string $url
+     * @return string
+     */
+    protected function getUrlWithoutQueryString($url)
+    {
+        if (strpos($url, '?') !== false) {
+            $url = substr($url, 0, strpos($url, '?'));
+        }
+        return $url;
     }
 
     /**
