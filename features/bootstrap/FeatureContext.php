@@ -7,6 +7,7 @@ use Behat\Behat\Context\ClosuredContextInterface,
 use Behat\Gherkin\Node\PyStringNode,
     Behat\Gherkin\Node\TableNode;
 use Behat\MinkExtension\Context\MinkContext;
+use PHPUnit_Framework_Assert as Assertion;
 
 //
 // Require 3rd-party libraries here:
@@ -37,6 +38,8 @@ class FeatureContext extends MinkContext
     {
         $searchField = $this->getSession()->getPage()->findById('site-wide-search-field');
 
+        Assertion::assertNotNull($searchField, 'Search field not found.');
+
         $searchField->setValue($searchPhrase);
         $this->getSession()->executeScript("$('#site-wide-search').submit();");
     }
@@ -55,10 +58,11 @@ class FeatureContext extends MinkContext
 
         $expectedUrl = $this->locatePath('/content/search');
 
-        // TODO: Use assertions
-        if ($currentUrl !== $expectedUrl) {
-            throw new \RuntimeException("Incorrect URL: '{$currentUrl}'. Expected: '{$expectedUrl}'");
-        }
+        Assertion::assertEquals(
+            $expectedUrl,
+            $currentUrl,
+            "Unexpected URL of the current site."
+        );
     }
 
     /**
@@ -68,15 +72,17 @@ class FeatureContext extends MinkContext
     {
         $resultCountElement = $this->getSession()->getPage()->find('css', 'div.feedback');
 
-        // TODO: Use assertions
-        if ($resultCountElement === null) {
-            throw new \RuntimeException("Could not find text with number of search results.");
-        }
+        Assertion::assertNotNull(
+            $resultCountElement,
+            'Could not find result count text element.'
+        );
 
         $resultText = $resultCountElement->getText();
-        if ($resultText !== 'Search for "welcome" returned 1 matches') {
-            throw new \RuntimeException("Result text '{$resultText}' did not match.");
-        }
+
+        Assertion::assertEquals(
+            'Search for "welcome" returned 1 matches',
+            $resultText
+        );
     }
 
 
