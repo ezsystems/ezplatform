@@ -45,7 +45,8 @@ class FeatureContext extends MinkContext
         Assertion::assertNotNull($searchField, 'Search field not found.');
 
         $searchField->setValue($searchPhrase);
-        $this->getSession()->executeScript("$('#site-wide-search').submit();");
+        $searchField->keyPress(13);
+        // $this->getSession()->executeScript("$('#site-wide-search').submit();");
     }
 
     /**
