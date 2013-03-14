@@ -3,8 +3,8 @@ default:
     Behat\MinkExtension\Extension:
       base_url: 'http://ezpublish.local'
       goutte: ~
-      selenium: ~
+      sahi: ~
 
-      javascript_session: selenium
+      javascript_session: sahi
       browser_name: firefox
 

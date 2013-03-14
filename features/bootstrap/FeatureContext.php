@@ -57,9 +57,6 @@ class FeatureContext extends MinkContext
      */
     public function iAmOnThe($pageIdentifier)
     {
-        // FIXME: Replace with waiting for the page to load
-        $this->getSession()->wait(5000);
-
         $currentUrl = $this->getUrlWithoutQueryString($this->getSession()->getCurrentUrl());
 
         $expectedUrl = $this->locatePath($this->getPathByPageIdentifier($pageIdentifier));
@@ -67,7 +64,7 @@ class FeatureContext extends MinkContext
         Assertion::assertEquals(
             $expectedUrl,
             $currentUrl,
-            "Unexpected URL of the current site."
+            "Unexpected URL of the current site. Expected: '$expectedUrl'. Actual: '$currentUrl'."
         );
     }
 
@@ -148,9 +145,6 @@ class FeatureContext extends MinkContext
      */
     public function iShouldBeRedirectedTo($redirectTarget)
     {
-        // FIXME: Should be not needed for Sahi and friends
-        $this->getSession()->wait(500);
-
         $redirectForm = $this->getSession()->getPage()->find('css', 'form[name="Redirect"]');
 
         Assertion::assertNotNull(
