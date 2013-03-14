@@ -3,7 +3,8 @@
 use Behat\Behat\Context\ClosuredContextInterface,
     Behat\Behat\Context\TranslatedContextInterface,
     Behat\Behat\Context\BehatContext,
-    Behat\Behat\Exception\PendingException;
+    Behat\Behat\Exception\PendingException,
+    Behat\Behat\Context\Step;
 use Behat\Gherkin\Node\PyStringNode,
     Behat\Gherkin\Node\TableNode;
 use Behat\MinkExtension\Context\MinkContext;
@@ -115,6 +116,46 @@ class FeatureContext extends MinkContext
             $resultText
         );
     }
+
+    /**
+     * @Given /^I am logged in as "([^"]*)" with password "([^"]*)"$/
+     */
+    public function iAmLoggedInAsWithPassword($user, $password)
+    {
+        return array(
+            new Step\Given('I am on "/user/login"'),
+            new Step\When('I fill in "Username" with "' . $user . '"'),
+            new Step\When('I fill in "Password" with "' . $password . '"'),
+            new Step\When('I press "Login"'),
+            new Step\Then('I should be redirected to "/"'),
+        );
+    }
+
+    /**
+     * @Then /^I should be redirected to "([^"]*)"$/
+     */
+    public function iShouldBeRedirectedTo($redirectTarget)
+    {
+        $this->getSession()->wait(500);
+
+        $redirectForm = $this->getSession()->getPage()->find('css', 'form[name="Redirect"]');
+
+        Assertion::assertNotNull(
+            $redirectForm,
+            'Missing redirect form.'
+        );
+
+        Assertion::assertEquals($redirectTarget, $redirectForm->getAttribute('action'));
+    }
+
+    /**
+     * @Then /^I see (\d+) "([^"]*)" listed$/
+     */
+    public function iSeeListed($count, $objectType)
+    {
+        
+    }
+
 
 
 //
