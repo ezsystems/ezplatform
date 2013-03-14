@@ -49,7 +49,6 @@ class FeatureContext extends MinkContext
 
         $searchField->setValue($searchPhrase);
         $searchField->keyPress(13);
-        // $this->getSession()->executeScript("$('#site-wide-search').submit();");
     }
 
     /**
