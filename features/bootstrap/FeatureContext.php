@@ -24,6 +24,7 @@ class FeatureContext extends MinkContext
 {
     protected $pageIdentifierMap = array(
         'Search Page' => '/content/search',
+        'Admin Section List Page' => '/admin/section/list',
     );
 
     /**
@@ -66,6 +67,16 @@ class FeatureContext extends MinkContext
             $expectedUrl,
             $currentUrl,
             "Unexpected URL of the current site."
+        );
+    }
+
+    /**
+     * @When /^I go to the "([^"]*)"$/
+     */
+    public function iGoToThe($pageIdentifier)
+    {
+        return array(
+            new Step\When('I am on "' . $this->getPathByPageIdentifier($pageIdentifier) . '"'),
         );
     }
 
@@ -136,6 +147,7 @@ class FeatureContext extends MinkContext
      */
     public function iShouldBeRedirectedTo($redirectTarget)
     {
+        // FIXME: Should be not needed for Sahi and friends
         $this->getSession()->wait(500);
 
         $redirectForm = $this->getSession()->getPage()->find('css', 'form[name="Redirect"]');
@@ -149,11 +161,25 @@ class FeatureContext extends MinkContext
     }
 
     /**
-     * @Then /^I see (\d+) "([^"]*)" listed$/
+     * @Then /^I see (\d+) "([^"]*)" elements listed$/
      */
-    public function iSeeListed($count, $objectType)
+    public function iSeeListedElements($count, $objectType)
     {
-        
+        $objectListTable = $this->getSession()->getPage()->find(
+            'xpath',
+            '//table[../h1 = "' . $objectType  . ' list"]'
+        );
+
+        Assertion::assertNotNull(
+            $objectListTable,
+            'Could not find listing table for ' . $objectType
+        );
+
+        Assertion::assertCount(
+            $count + 1,
+            $objectListTable->findAll('css', 'tr'),
+            'Found incorrect number of table rows.'
+        );
     }
 
 
