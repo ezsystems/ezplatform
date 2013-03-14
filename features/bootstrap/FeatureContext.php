@@ -25,6 +25,7 @@ class FeatureContext extends MinkContext
     protected $pageIdentifierMap = array(
         'Search Page' => '/content/search',
         'Admin Section List Page' => '/admin/section/list',
+        'Admin Section Create Page' => '/admin/section/create',
     );
 
     /**
