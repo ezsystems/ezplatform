@@ -84,7 +84,7 @@ This will render it using a template (only the internal one for now) and inject 
 ```jinja
 {# TestBundle::test.html.twig #}
 {# Assuming that a "content" variable has been exposed and that it's an object returned by API #}
-{% ez_render_field( content, 'my_field_identifier' ) %}
+{{ ez_render_field( content, 'my_field_identifier' ) }}
 ```
 
 PHP code corresponding to this helper is located in [Twig ContentExtension](https://github.com/ezsystems/ezpublish-kernel/blob/master/eZ/Publish/MVC/Templating/Twig/Extension/ContentExtension.php).
