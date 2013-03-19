@@ -428,12 +428,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/DemoBundle.git",
-                "reference": "1232d73c137ee0d5f54781551ac800482a2ac90d"
+                "reference": "94fbbcc879e3ca25208690dbe6e0216add74f40c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/DemoBundle/zipball/1232d73c137ee0d5f54781551ac800482a2ac90d",
-                "reference": "1232d73c137ee0d5f54781551ac800482a2ac90d",
+                "url": "https://api.github.com/repos/ezsystems/DemoBundle/zipball/94fbbcc879e3ca25208690dbe6e0216add74f40c",
+                "reference": "94fbbcc879e3ca25208690dbe6e0216add74f40c",
                 "shasum": ""
             },
             "require": {
@@ -457,7 +457,7 @@
                 }
             ],
             "description": "Demo bundle for eZ Publish Platform",
-            "time": "2013-02-28 11:30:18"
+            "time": "2013-03-19 15:43:54"
         },
         {
             "name": "ezsystems/ezpublish-kernel",
@@ -465,12 +465,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-kernel.git",
-                "reference": "1dbc98bb75d4d5c0c905f06a04a08572ef1c634c"
+                "reference": "61ab19b34bac5ab89017ec36f50b74ea67c8d437"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/1dbc98bb75d4d5c0c905f06a04a08572ef1c634c",
-                "reference": "1dbc98bb75d4d5c0c905f06a04a08572ef1c634c",
+                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/61ab19b34bac5ab89017ec36f50b74ea67c8d437",
+                "reference": "61ab19b34bac5ab89017ec36f50b74ea67c8d437",
                 "shasum": ""
             },
             "require": {
@@ -518,7 +518,7 @@
             ],
             "description": "eZ Publish API and kernel. This is the heart of eZ Publish 5.",
             "homepage": "http://share.ez.no",
-            "time": "2013-03-07 10:57:30"
+            "time": "2013-03-19 15:43:34"
         },
         {
             "name": "kriswallsmith/assetic",
@@ -759,8 +759,9 @@
                     "Qafoo\\RMF": "src/main/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "description": "Very simple VC framework which makes it easy to build HTTP applications / REST webservices",
-            "time": "2012-09-03 18:24:11"
+            "time": "2012-09-03 11:24:11"
         },
         {
             "name": "sensio/generator-bundle",
@@ -866,12 +867,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony-cmf/Routing.git",
-                "reference": "4706313dc7708633cfb1228c8b44e807aa44b6bf"
+                "reference": "1.0.0-beta1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony-cmf/Routing/zipball/4706313dc7708633cfb1228c8b44e807aa44b6bf",
-                "reference": "4706313dc7708633cfb1228c8b44e807aa44b6bf",
+                "url": "https://api.github.com/repos/symfony-cmf/Routing/zipball/1.0.0-beta1",
+                "reference": "1.0.0-beta1",
                 "shasum": ""
             },
             "require": {
@@ -906,7 +907,7 @@
                 "database",
                 "routing"
             ],
-            "time": "2013-03-06 09:12:29"
+            "time": "2013-03-18 08:20:28"
         },
         {
             "name": "symfony/assetic-bundle",
@@ -1035,7 +1036,7 @@
             "target-dir": "Symfony/Bundle/SwiftmailerBundle",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/SwiftmailerBundle.git",
+                "url": "https://github.com/symfony/SwiftmailerBundle",
                 "reference": "v2.2.0-BETA2"
             },
             "dist": {
@@ -1389,7 +1390,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/zetacomponents/Archive/zipball/4b2c4a1c24b1e1f831b015c8ff72181aece7b421",
+                "url": "https://api.github.com/repos/zetacomponents/Archive/zipball/4b2c4a1c24b1e1f831b015c8ff72181aece7b421",
                 "reference": "4b2c4a1c24b1e1f831b015c8ff72181aece7b421",
                 "shasum": ""
             },
@@ -1405,6 +1406,44 @@
                     "src"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Sergey Alexeev"
+                },
+                {
+                    "name": "Sebastian Bergmann"
+                },
+                {
+                    "name": "Jan Borsodi"
+                },
+                {
+                    "name": "Raymond Bosman"
+                },
+                {
+                    "name": "Frederik Holljen"
+                },
+                {
+                    "name": "Kore Nordmann"
+                },
+                {
+                    "name": "Derick Rethans"
+                },
+                {
+                    "name": "Vadym Savchuk"
+                },
+                {
+                    "name": "Tobias Schlitt"
+                },
+                {
+                    "name": "Alexandru Stanoi"
+                }
+            ],
+            "description": "The component allows you to create, modify, and extract archive files of  various formats.  The currently supported archives formats are Tar (with  the flavours: ustar, v7, pax, and gnu) and Zip.",
+            "homepage": "https://github.com/zetacomponents",
             "time": "2012-05-21 09:54:03"
         },
         {
@@ -1417,7 +1456,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/zetacomponents/Authentication/zipball/c422670d09967491c1c8c98f9334f1a738617bd0",
+                "url": "https://api.github.com/repos/zetacomponents/Authentication/zipball/c422670d09967491c1c8c98f9334f1a738617bd0",
                 "reference": "c422670d09967491c1c8c98f9334f1a738617bd0",
                 "shasum": ""
             },
@@ -1433,6 +1472,44 @@
                     "src"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Sergey Alexeev"
+                },
+                {
+                    "name": "Sebastian Bergmann"
+                },
+                {
+                    "name": "Jan Borsodi"
+                },
+                {
+                    "name": "Raymond Bosman"
+                },
+                {
+                    "name": "Frederik Holljen"
+                },
+                {
+                    "name": "Kore Nordmann"
+                },
+                {
+                    "name": "Derick Rethans"
+                },
+                {
+                    "name": "Vadym Savchuk"
+                },
+                {
+                    "name": "Tobias Schlitt"
+                },
+                {
+                    "name": "Alexandru Stanoi"
+                }
+            ],
+            "description": "The purpose of the Authentication component is to provide support for different means of identification and authentication of users using different providers and protocols.",
+            "homepage": "https://github.com/zetacomponents",
             "time": "2012-05-21 09:55:21"
         },
         {
@@ -1445,7 +1522,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/zetacomponents/Base/zipball/642f63a8a72c32996f1aaf8a317fdf746bc32ce7",
+                "url": "https://api.github.com/repos/zetacomponents/Base/zipball/642f63a8a72c32996f1aaf8a317fdf746bc32ce7",
                 "reference": "642f63a8a72c32996f1aaf8a317fdf746bc32ce7",
                 "shasum": ""
             },
@@ -1458,6 +1535,44 @@
                     "src"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Sergey Alexeev"
+                },
+                {
+                    "name": "Sebastian Bergmann"
+                },
+                {
+                    "name": "Jan Borsodi"
+                },
+                {
+                    "name": "Raymond Bosman"
+                },
+                {
+                    "name": "Frederik Holljen"
+                },
+                {
+                    "name": "Kore Nordmann"
+                },
+                {
+                    "name": "Derick Rethans"
+                },
+                {
+                    "name": "Vadym Savchuk"
+                },
+                {
+                    "name": "Tobias Schlitt"
+                },
+                {
+                    "name": "Alexandru Stanoi"
+                }
+            ],
+            "description": "The Base package provides the basic infrastructure that all packages rely on. Therefore every component relies on this package.",
+            "homepage": "https://github.com/zetacomponents",
             "time": "2012-05-21 11:21:36"
         },
         {
@@ -1470,7 +1585,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/zetacomponents/Cache/zipball/34fa794d0b5aeef67fee609c52c5d24fa4604bbd",
+                "url": "https://api.github.com/repos/zetacomponents/Cache/zipball/34fa794d0b5aeef67fee609c52c5d24fa4604bbd",
                 "reference": "34fa794d0b5aeef67fee609c52c5d24fa4604bbd",
                 "shasum": ""
             },
@@ -1486,6 +1601,47 @@
                     "src"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Sergey Alexeev"
+                },
+                {
+                    "name": "Sebastian Bergmann"
+                },
+                {
+                    "name": "Jan Borsodi"
+                },
+                {
+                    "name": "Raymond Bosman"
+                },
+                {
+                    "name": "Frederik Holljen"
+                },
+                {
+                    "name": "Kore Nordmann"
+                },
+                {
+                    "name": "Derick Rethans"
+                },
+                {
+                    "name": "Vadym Savchuk"
+                },
+                {
+                    "name": "Tobias Schlitt"
+                },
+                {
+                    "name": "Alexandru Stanoi"
+                },
+                {
+                    "name": "Grady Kuhnline"
+                }
+            ],
+            "description": "A solution for caching, supporting multiple backends allowing you to specify the best performing solution for your caching-problem.",
+            "homepage": "https://github.com/zetacomponents",
             "time": "2012-05-21 09:55:29"
         },
         {
@@ -1498,7 +1654,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/zetacomponents/Configuration/zipball/10ae09f42768d4657b2d1a66226ee63cbd8754b2",
+                "url": "https://api.github.com/repos/zetacomponents/Configuration/zipball/10ae09f42768d4657b2d1a66226ee63cbd8754b2",
                 "reference": "10ae09f42768d4657b2d1a66226ee63cbd8754b2",
                 "shasum": ""
             },
@@ -1514,6 +1670,44 @@
                     "src"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Sergey Alexeev"
+                },
+                {
+                    "name": "Sebastian Bergmann"
+                },
+                {
+                    "name": "Jan Borsodi"
+                },
+                {
+                    "name": "Raymond Bosman"
+                },
+                {
+                    "name": "Frederik Holljen"
+                },
+                {
+                    "name": "Kore Nordmann"
+                },
+                {
+                    "name": "Derick Rethans"
+                },
+                {
+                    "name": "Vadym Savchuk"
+                },
+                {
+                    "name": "Tobias Schlitt"
+                },
+                {
+                    "name": "Alexandru Stanoi"
+                }
+            ],
+            "description": "A component that allows you to use configuration files in different formats. The formats include the standard .ini file, and an array based format.",
+            "homepage": "https://github.com/zetacomponents",
             "time": "2012-05-21 09:55:32"
         },
         {
@@ -1526,7 +1720,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/zetacomponents/ConsoleTools/zipball/90156abef01e4215fda8b9740f77c322f126fb02",
+                "url": "https://api.github.com/repos/zetacomponents/ConsoleTools/zipball/90156abef01e4215fda8b9740f77c322f126fb02",
                 "reference": "90156abef01e4215fda8b9740f77c322f126fb02",
                 "shasum": ""
             },
@@ -1542,6 +1736,44 @@
                     "src"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Sergey Alexeev"
+                },
+                {
+                    "name": "Sebastian Bergmann"
+                },
+                {
+                    "name": "Jan Borsodi"
+                },
+                {
+                    "name": "Raymond Bosman"
+                },
+                {
+                    "name": "Frederik Holljen"
+                },
+                {
+                    "name": "Kore Nordmann"
+                },
+                {
+                    "name": "Derick Rethans"
+                },
+                {
+                    "name": "Vadym Savchuk"
+                },
+                {
+                    "name": "Tobias Schlitt"
+                },
+                {
+                    "name": "Alexandru Stanoi"
+                }
+            ],
+            "description": "A set of classes to do different actions with the console (also called shell). It can render a progress bar, tables and a status bar and contains a class for parsing command line options.",
+            "homepage": "https://github.com/zetacomponents",
             "time": "2012-05-21 09:55:34"
         },
         {
@@ -1554,7 +1786,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/zetacomponents/Database/zipball/0e8ddef8ce616bc18365efa2eef2161de3d7f74f",
+                "url": "https://api.github.com/repos/zetacomponents/Database/zipball/0e8ddef8ce616bc18365efa2eef2161de3d7f74f",
                 "reference": "0e8ddef8ce616bc18365efa2eef2161de3d7f74f",
                 "shasum": ""
             },
@@ -1570,6 +1802,53 @@
                     "src"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Sergey Alexeev"
+                },
+                {
+                    "name": "Sebastian Bergmann"
+                },
+                {
+                    "name": "Jan Borsodi"
+                },
+                {
+                    "name": "Raymond Bosman"
+                },
+                {
+                    "name": "Frederik Holljen"
+                },
+                {
+                    "name": "Kore Nordmann"
+                },
+                {
+                    "name": "Derick Rethans"
+                },
+                {
+                    "name": "Vadym Savchuk"
+                },
+                {
+                    "name": "Tobias Schlitt"
+                },
+                {
+                    "name": "Alexandru Stanoi"
+                },
+                {
+                    "name": "Joel Arvidsson"
+                },
+                {
+                    "name": "Friedel Hill"
+                },
+                {
+                    "name": "Christian Michel"
+                }
+            ],
+            "description": "A lightweight database layer on top of PHP's PDO that allows you to utilize a database without having to take care of differences in SQL dialects.",
+            "homepage": "https://github.com/zetacomponents",
             "time": "2012-05-21 09:55:40"
         },
         {
@@ -1582,7 +1861,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/zetacomponents/Debug/zipball/0d8cc8fae2765c22f3f1930e4cf738304fbadbaf",
+                "url": "https://api.github.com/repos/zetacomponents/Debug/zipball/0d8cc8fae2765c22f3f1930e4cf738304fbadbaf",
                 "reference": "0d8cc8fae2765c22f3f1930e4cf738304fbadbaf",
                 "shasum": ""
             },
@@ -1598,6 +1877,44 @@
                     "src"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Sergey Alexeev"
+                },
+                {
+                    "name": "Sebastian Bergmann"
+                },
+                {
+                    "name": "Jan Borsodi"
+                },
+                {
+                    "name": "Raymond Bosman"
+                },
+                {
+                    "name": "Frederik Holljen"
+                },
+                {
+                    "name": "Kore Nordmann"
+                },
+                {
+                    "name": "Derick Rethans"
+                },
+                {
+                    "name": "Vadym Savchuk"
+                },
+                {
+                    "name": "Tobias Schlitt"
+                },
+                {
+                    "name": "Alexandru Stanoi"
+                }
+            ],
+            "description": "This component provides a set of classes that help you to debug an application. It provides timers and report generators for different formats that give a summary of warnings and errors that occurred within your application.",
+            "homepage": "https://github.com/zetacomponents",
             "time": "2012-05-21 09:55:45"
         },
         {
@@ -1670,7 +1987,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/zetacomponents/Feed/zipball/e0190e90caf6f49771410b485fc43ff09a62b725",
+                "url": "https://api.github.com/repos/zetacomponents/Feed/zipball/e0190e90caf6f49771410b485fc43ff09a62b725",
                 "reference": "e0190e90caf6f49771410b485fc43ff09a62b725",
                 "shasum": ""
             },
@@ -1686,6 +2003,44 @@
                     "src"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Sergey Alexeev"
+                },
+                {
+                    "name": "Sebastian Bergmann"
+                },
+                {
+                    "name": "Jan Borsodi"
+                },
+                {
+                    "name": "Raymond Bosman"
+                },
+                {
+                    "name": "Frederik Holljen"
+                },
+                {
+                    "name": "Kore Nordmann"
+                },
+                {
+                    "name": "Derick Rethans"
+                },
+                {
+                    "name": "Vadym Savchuk"
+                },
+                {
+                    "name": "Tobias Schlitt"
+                },
+                {
+                    "name": "Alexandru Stanoi"
+                }
+            ],
+            "description": "This component handles parsing and creating RSS1, RSS2 and ATOM feeds, with support for different feed modules (dc, content, creativeCommons, geo, iTunes).",
+            "homepage": "https://github.com/zetacomponents",
             "time": "2012-05-21 09:55:58"
         },
         {
@@ -1698,7 +2053,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/zetacomponents/ImageAnalysis/zipball/634a30042a0a76fc509ae933fced2c30bacd38b4",
+                "url": "https://api.github.com/repos/zetacomponents/ImageAnalysis/zipball/634a30042a0a76fc509ae933fced2c30bacd38b4",
                 "reference": "634a30042a0a76fc509ae933fced2c30bacd38b4",
                 "shasum": ""
             },
@@ -1714,6 +2069,7 @@
                     "src"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "Apache-2.0"
             ],
@@ -1763,7 +2119,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/zetacomponents/ImageConversion/zipball/aed8cf2e3a17b049add7578fa199c02e3af903c1",
+                "url": "https://api.github.com/repos/zetacomponents/ImageConversion/zipball/aed8cf2e3a17b049add7578fa199c02e3af903c1",
                 "reference": "aed8cf2e3a17b049add7578fa199c02e3af903c1",
                 "shasum": ""
             },
@@ -1780,6 +2136,7 @@
                     "src"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "Apache-2.0"
             ],
@@ -1829,7 +2186,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/zetacomponents/Mail/zipball/e0120aad96efb41bdfac5583d9cb3863bc2823e7",
+                "url": "https://api.github.com/repos/zetacomponents/Mail/zipball/e0120aad96efb41bdfac5583d9cb3863bc2823e7",
                 "reference": "e0120aad96efb41bdfac5583d9cb3863bc2823e7",
                 "shasum": ""
             },
@@ -1845,6 +2202,53 @@
                     "src"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Sergey Alexeev"
+                },
+                {
+                    "name": "Sebastian Bergmann"
+                },
+                {
+                    "name": "Jan Borsodi"
+                },
+                {
+                    "name": "Raymond Bosman"
+                },
+                {
+                    "name": "Frederik Holljen"
+                },
+                {
+                    "name": "Kore Nordmann"
+                },
+                {
+                    "name": "Derick Rethans"
+                },
+                {
+                    "name": "Vadym Savchuk"
+                },
+                {
+                    "name": "Tobias Schlitt"
+                },
+                {
+                    "name": "Alexandru Stanoi"
+                },
+                {
+                    "name": "Sinisa Dukaric"
+                },
+                {
+                    "name": "Mikko Koppanen"
+                },
+                {
+                    "name": "Christian Michel"
+                }
+            ],
+            "description": "The component allows you construct and/or parse Mail messages conforming to  the mail standard. It has support for attachments, multipart messages and HTML  mail. It also interfaces with SMTP to send mail or IMAP, POP3 or mbox to  retrieve e-mail.",
+            "homepage": "https://github.com/zetacomponents",
             "time": "2012-05-21 09:56:15"
         },
         {
@@ -1857,7 +2261,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/zetacomponents/MvcAuthenticationTiein/zipball/9bae3a7313e2ef7f53ef1f394276acc3fde0f80e",
+                "url": "https://api.github.com/repos/zetacomponents/MvcAuthenticationTiein/zipball/9bae3a7313e2ef7f53ef1f394276acc3fde0f80e",
                 "reference": "9bae3a7313e2ef7f53ef1f394276acc3fde0f80e",
                 "shasum": ""
             },
@@ -1867,6 +2271,29 @@
                     "src"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "apache2"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian Bergmann"
+                },
+                {
+                    "name": "Kore Nordmann"
+                },
+                {
+                    "name": "Derick Rethans"
+                },
+                {
+                    "name": "Tobias Schlitt"
+                },
+                {
+                    "name": "Alexandru Stanoi"
+                }
+            ],
+            "description": "This component provides authentication filters for the MvcTools component.",
+            "homepage": "https://github.com/zetacomponents",
             "time": "2012-05-21 09:46:53"
         },
         {
@@ -1879,7 +2306,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/zetacomponents/MvcTools/zipball/6f2c1eb079faee98f37643d212cec0aa925313b2",
+                "url": "https://api.github.com/repos/zetacomponents/MvcTools/zipball/6f2c1eb079faee98f37643d212cec0aa925313b2",
                 "reference": "6f2c1eb079faee98f37643d212cec0aa925313b2",
                 "shasum": ""
             },
@@ -1895,6 +2322,32 @@
                     "src"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian Bergmann"
+                },
+                {
+                    "name": "Kore Nordmann"
+                },
+                {
+                    "name": "Derick Rethans"
+                },
+                {
+                    "name": "Tobias Schlitt"
+                },
+                {
+                    "name": "Alexandru Stanoi"
+                },
+                {
+                    "name": "James Pic"
+                }
+            ],
+            "description": "The MvcTools component provides functionality for request parsing, routing, dispatching, views and response writing. With the tools in this component you can very easily build an MVC framework.",
+            "homepage": "https://github.com/zetacomponents",
             "time": "2012-05-21 09:56:22"
         },
         {
@@ -1907,7 +2360,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/zetacomponents/PersistentObject/zipball/a4c8b95157919d71db0b380ea7c6375be117eca2",
+                "url": "https://api.github.com/repos/zetacomponents/PersistentObject/zipball/a4c8b95157919d71db0b380ea7c6375be117eca2",
                 "reference": "a4c8b95157919d71db0b380ea7c6375be117eca2",
                 "shasum": ""
             },
@@ -1923,6 +2376,47 @@
                     "src"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Sergey Alexeev"
+                },
+                {
+                    "name": "Sebastian Bergmann"
+                },
+                {
+                    "name": "Jan Borsodi"
+                },
+                {
+                    "name": "Raymond Bosman"
+                },
+                {
+                    "name": "Frederik Holljen"
+                },
+                {
+                    "name": "Kore Nordmann"
+                },
+                {
+                    "name": "Derick Rethans"
+                },
+                {
+                    "name": "Vadym Savchuk"
+                },
+                {
+                    "name": "Tobias Schlitt"
+                },
+                {
+                    "name": "Alexandru Stanoi"
+                },
+                {
+                    "name": "Joel Arvidsson"
+                }
+            ],
+            "description": "This component allows you to store an arbitrary data structures to a fixed database table. The component provides all the functionality needed to fetch, list, delete etc these datastructures.",
+            "homepage": "https://github.com/zetacomponents",
             "time": "2012-05-21 09:56:25"
         },
         {
@@ -1935,7 +2429,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/zetacomponents/PhpGenerator/zipball/b51935ec5b763e5bad2182d810e1b752fcc83903",
+                "url": "https://api.github.com/repos/zetacomponents/PhpGenerator/zipball/b51935ec5b763e5bad2182d810e1b752fcc83903",
                 "reference": "b51935ec5b763e5bad2182d810e1b752fcc83903",
                 "shasum": ""
             },
@@ -1951,6 +2445,44 @@
                     "src"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Sergey Alexeev"
+                },
+                {
+                    "name": "Sebastian Bergmann"
+                },
+                {
+                    "name": "Jan Borsodi"
+                },
+                {
+                    "name": "Raymond Bosman"
+                },
+                {
+                    "name": "Frederik Holljen"
+                },
+                {
+                    "name": "Kore Nordmann"
+                },
+                {
+                    "name": "Derick Rethans"
+                },
+                {
+                    "name": "Vadym Savchuk"
+                },
+                {
+                    "name": "Tobias Schlitt"
+                },
+                {
+                    "name": "Alexandru Stanoi"
+                }
+            ],
+            "description": "Provides a simple interface for creating PHP files and executing PHP code.",
+            "homepage": "https://github.com/zetacomponents",
             "time": "2012-05-21 09:56:30"
         },
         {
@@ -1963,7 +2495,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/zetacomponents/SignalSlot/zipball/74deb412339a9e9af5937a5d8726f8246b6a9ccc",
+                "url": "https://api.github.com/repos/zetacomponents/SignalSlot/zipball/74deb412339a9e9af5937a5d8726f8246b6a9ccc",
                 "reference": "74deb412339a9e9af5937a5d8726f8246b6a9ccc",
                 "shasum": ""
             },
@@ -1979,6 +2511,44 @@
                     "src"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Sergey Alexeev"
+                },
+                {
+                    "name": "Sebastian Bergmann"
+                },
+                {
+                    "name": "Jan Borsodi"
+                },
+                {
+                    "name": "Raymond Bosman"
+                },
+                {
+                    "name": "Frederik Holljen"
+                },
+                {
+                    "name": "Kore Nordmann"
+                },
+                {
+                    "name": "Derick Rethans"
+                },
+                {
+                    "name": "Vadym Savchuk"
+                },
+                {
+                    "name": "Tobias Schlitt"
+                },
+                {
+                    "name": "Alexandru Stanoi"
+                }
+            ],
+            "description": "The SignalSlot component implements a mechanism for inter and intra object communication through the use of signals and slots.",
+            "homepage": "https://github.com/zetacomponents",
             "time": "2012-05-21 14:06:23"
         },
         {
@@ -1991,7 +2561,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/zetacomponents/SystemInformation/zipball/674336286f189d222a275bec32be9123d9faf477",
+                "url": "https://api.github.com/repos/zetacomponents/SystemInformation/zipball/674336286f189d222a275bec32be9123d9faf477",
                 "reference": "674336286f189d222a275bec32be9123d9faf477",
                 "shasum": ""
             },
@@ -2007,6 +2577,44 @@
                     "src"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Sergey Alexeev"
+                },
+                {
+                    "name": "Sebastian Bergmann"
+                },
+                {
+                    "name": "Jan Borsodi"
+                },
+                {
+                    "name": "Raymond Bosman"
+                },
+                {
+                    "name": "Frederik Holljen"
+                },
+                {
+                    "name": "Kore Nordmann"
+                },
+                {
+                    "name": "Derick Rethans"
+                },
+                {
+                    "name": "Vadym Savchuk"
+                },
+                {
+                    "name": "Tobias Schlitt"
+                },
+                {
+                    "name": "Alexandru Stanoi"
+                }
+            ],
+            "description": "Provides access to common system variables, such as CPU type and speed, and the available amount of memory.",
+            "homepage": "https://github.com/zetacomponents",
             "time": "2012-05-21 09:56:41"
         },
         {
