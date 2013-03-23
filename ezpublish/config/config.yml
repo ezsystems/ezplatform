@@ -5,7 +5,7 @@ imports:
 framework:
     esi: ~
     fragments: ~
-    #translator:      { fallback: %locale% }
+    translator:      { fallback: %locale_fallback% }
     # The secret parameter is used to generate CSRF tokens
     secret:          %secret%
     router:          { resource: "%kernel.root_dir%/config/routing.yml" }

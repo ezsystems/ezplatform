@@ -1,3 +1,4 @@
 parameters:
     secret: ThisTokenIsNotSoSecretChangeIt
+    locale_fallback: en
     ezpublish_legacy.view.default_layout: eZDemoBundle::pagelayout.html.twig
