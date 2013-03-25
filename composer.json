@@ -1,7 +1,7 @@
 {
     "name": "ezsystems/ezpublish-community",
     "description": "eZ Publish 5 community distribution",
-    "version": "5.0-dev",
+    "version": "5.1-dev",
     "homepage": "http://share.ez.no",
     "license": "GPL-2.0",
     "authors": [
