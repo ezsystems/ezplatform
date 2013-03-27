@@ -485,12 +485,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-kernel.git",
-                "reference": "e40cb6f7847064f36b0b61da9799b8b4cdb8f669"
+                "reference": "113c109e3dc2494d23d4db2e2665f11d81b01921"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/e40cb6f7847064f36b0b61da9799b8b4cdb8f669",
-                "reference": "e40cb6f7847064f36b0b61da9799b8b4cdb8f669",
+                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/113c109e3dc2494d23d4db2e2665f11d81b01921",
+                "reference": "113c109e3dc2494d23d4db2e2665f11d81b01921",
                 "shasum": ""
             },
             "require": {
@@ -538,7 +538,7 @@
             ],
             "description": "eZ Publish API and kernel. This is the heart of eZ Publish 5.",
             "homepage": "http://share.ez.no",
-            "time": "2013-03-26 10:10:13"
+            "time": "2013-03-27 12:51:41"
         },
         {
             "name": "kriswallsmith/assetic",
@@ -1261,12 +1261,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/lolautruche/TedivmStashBundle.git",
-                "reference": "3dbbcaddbb8e0ab780b57c5573552f4fc00faaca"
+                "reference": "b802491bf986cf81b2560ae6bd9c7fc09c5cb84a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lolautruche/TedivmStashBundle/zipball/3dbbcaddbb8e0ab780b57c5573552f4fc00faaca",
-                "reference": "3dbbcaddbb8e0ab780b57c5573552f4fc00faaca",
+                "url": "https://api.github.com/repos/lolautruche/TedivmStashBundle/zipball/b802491bf986cf81b2560ae6bd9c7fc09c5cb84a",
+                "reference": "b802491bf986cf81b2560ae6bd9c7fc09c5cb84a",
                 "shasum": ""
             },
             "require": {
@@ -1304,7 +1304,7 @@
             "support": {
                 "source": "https://github.com/lolautruche/TedivmStashBundle/tree/blackhole"
             },
-            "time": "2013-03-25 17:27:55"
+            "time": "2013-03-27 15:09:46"
         },
         {
             "name": "twig/extensions",
