@@ -14,10 +14,6 @@
         {
             "type": "vcs",
             "url": "https://github.com/lolautruche/TedivmStashBundle"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/lolautruche/Stash"
         }
     ],
     "require": {
