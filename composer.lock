@@ -1,5 +1,5 @@
 {
-    "hash": "942bdb9b9eb3578eaeedf92e6714ab0c",
+    "hash": "6275e88b213216c6e7ee417414a5865d",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -52,9 +52,9 @@
                     "email": "kontakt@beberlei.de"
                 },
                 {
-                    "name": "Johannes Schmitt",
+                    "name": "Johannes M. Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "http://jmsyst.com",
+                    "homepage": "https://github.com/schmittjoh",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -119,9 +119,9 @@
                     "email": "kontakt@beberlei.de"
                 },
                 {
-                    "name": "Johannes Schmitt",
+                    "name": "Johannes M. Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "http://jmsyst.com",
+                    "homepage": "https://github.com/schmittjoh",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -185,9 +185,9 @@
                     "email": "kontakt@beberlei.de"
                 },
                 {
-                    "name": "Johannes Schmitt",
+                    "name": "Johannes M. Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "http://jmsyst.com",
+                    "homepage": "https://github.com/schmittjoh",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -257,9 +257,9 @@
                     "email": "kontakt@beberlei.de"
                 },
                 {
-                    "name": "Johannes Schmitt",
+                    "name": "Johannes M. Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "http://jmsyst.com",
+                    "homepage": "https://github.com/schmittjoh",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -326,9 +326,9 @@
                     "email": "kontakt@beberlei.de"
                 },
                 {
-                    "name": "Johannes Schmitt",
+                    "name": "Johannes M. Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "http://jmsyst.com",
+                    "homepage": "https://github.com/schmittjoh",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -485,21 +485,21 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-kernel.git",
-                "reference": "113c109e3dc2494d23d4db2e2665f11d81b01921"
+                "reference": "0be5445346c297691000de6224279ff7788ddade"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/113c109e3dc2494d23d4db2e2665f11d81b01921",
-                "reference": "113c109e3dc2494d23d4db2e2665f11d81b01921",
+                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/0be5445346c297691000de6224279ff7788ddade",
+                "reference": "0be5445346c297691000de6224279ff7788ddade",
                 "shasum": ""
             },
             "require": {
                 "kriswallsmith/buzz": "dev-master",
                 "php": ">=5.3.3",
                 "qafoo/rmf": "1.0.0",
-                "symfony-cmf/routing": "1.0.*",
+                "symfony-cmf/routing": "1.0.0",
                 "symfony/symfony": "2.2.0",
-                "tedivm/stash-bundle": "dev-blackhole",
+                "tedivm/stash": "0.10.*",
                 "zetacomponents/archive": "dev-master",
                 "zetacomponents/authentication": "dev-master",
                 "zetacomponents/cache": "dev-master",
@@ -538,7 +538,7 @@
             ],
             "description": "eZ Publish API and kernel. This is the heart of eZ Publish 5.",
             "homepage": "http://share.ez.no",
-            "time": "2013-03-27 12:51:41"
+            "time": "2013-04-05 13:58:26"
         },
         {
             "name": "kriswallsmith/assetic",
@@ -546,12 +546,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kriswallsmith/assetic.git",
-                "reference": "50a24301b40cd7df29a7da4efd5573a9ef4622f8"
+                "reference": "0a55a9ba70bd9250899ad77deceaf8cb9e145371"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kriswallsmith/assetic/zipball/50a24301b40cd7df29a7da4efd5573a9ef4622f8",
-                "reference": "50a24301b40cd7df29a7da4efd5573a9ef4622f8",
+                "url": "https://api.github.com/repos/kriswallsmith/assetic/zipball/0a55a9ba70bd9250899ad77deceaf8cb9e145371",
+                "reference": "0a55a9ba70bd9250899ad77deceaf8cb9e145371",
                 "shasum": ""
             },
             "require": {
@@ -609,7 +609,7 @@
                 "compression",
                 "minification"
             ],
-            "time": "2013-03-25 20:14:55"
+            "time": "2013-04-02 21:36:28"
         },
         {
             "name": "kriswallsmith/buzz",
@@ -617,12 +617,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kriswallsmith/Buzz.git",
-                "reference": "e4310004bced0598b690fd648df9c0e97fa8f984"
+                "reference": "309e674e87bca0850bd0ec17226ff9beb86d7651"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kriswallsmith/Buzz/zipball/e4310004bced0598b690fd648df9c0e97fa8f984",
-                "reference": "e4310004bced0598b690fd648df9c0e97fa8f984",
+                "url": "https://api.github.com/repos/kriswallsmith/Buzz/zipball/309e674e87bca0850bd0ec17226ff9beb86d7651",
+                "reference": "309e674e87bca0850bd0ec17226ff9beb86d7651",
                 "shasum": ""
             },
             "require": {
@@ -657,7 +657,7 @@
                 "curl",
                 "http client"
             ],
-            "time": "2013-03-06 06:11:47"
+            "time": "2013-03-29 13:04:03"
         },
         {
             "name": "monolog/monolog",
@@ -665,12 +665,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "d13bd6e1acb4b7e413320d0b8854d39b1b5d8979"
+                "reference": "88d705c19f8cc08c2cc5a0a615907df5e9dd376e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/d13bd6e1acb4b7e413320d0b8854d39b1b5d8979",
-                "reference": "d13bd6e1acb4b7e413320d0b8854d39b1b5d8979",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/88d705c19f8cc08c2cc5a0a615907df5e9dd376e",
+                "reference": "88d705c19f8cc08c2cc5a0a615907df5e9dd376e",
                 "shasum": ""
             },
             "require": {
@@ -719,7 +719,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2013-03-24 12:38:38"
+            "time": "2013-04-05 13:36:57"
         },
         {
             "name": "psr/log",
@@ -790,12 +790,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensio/SensioGeneratorBundle.git",
-                "reference": "0f35f2003420f1dc28e80be256c4dc3d0bddd5c6"
+                "reference": "3cda2a6d6bae7456e1568d6f45c873b0b5322a72"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensio/SensioGeneratorBundle/zipball/0f35f2003420f1dc28e80be256c4dc3d0bddd5c6",
-                "reference": "0f35f2003420f1dc28e80be256c4dc3d0bddd5c6",
+                "url": "https://api.github.com/repos/sensio/SensioGeneratorBundle/zipball/3cda2a6d6bae7456e1568d6f45c873b0b5322a72",
+                "reference": "3cda2a6d6bae7456e1568d6f45c873b0b5322a72",
                 "shasum": ""
             },
             "require": {
@@ -829,7 +829,7 @@
                 }
             ],
             "description": "This bundle generates code for you",
-            "time": "2013-03-21 16:38:44"
+            "time": "2013-04-01 17:59:21"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -837,12 +837,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "7d490f435afdde9b54633bc2ecab6c153720614a"
+                "reference": "9dacda8baba697fe6d71251b3f424ffdb3b30425"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/7d490f435afdde9b54633bc2ecab6c153720614a",
-                "reference": "7d490f435afdde9b54633bc2ecab6c153720614a",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/9dacda8baba697fe6d71251b3f424ffdb3b30425",
+                "reference": "9dacda8baba697fe6d71251b3f424ffdb3b30425",
                 "shasum": ""
             },
             "require": {
@@ -878,11 +878,11 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2013-03-22 14:03:11"
+            "time": "2013-04-05 04:38:57"
         },
         {
             "name": "symfony-cmf/routing",
-            "version": "dev-master",
+            "version": "1.0.0",
             "target-dir": "Symfony/Cmf/Component/Routing",
             "source": {
                 "type": "git",
@@ -1206,16 +1206,16 @@
         },
         {
             "name": "tedivm/stash",
-            "version": "dev-master",
+            "version": "v0.10.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tedivm/Stash.git",
-                "reference": "7cbe1b212a0715acbbe407a93a67bb14e71de7a7"
+                "reference": "v0.10.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tedivm/Stash/zipball/7cbe1b212a0715acbbe407a93a67bb14e71de7a7",
-                "reference": "7cbe1b212a0715acbbe407a93a67bb14e71de7a7",
+                "url": "https://api.github.com/repos/tedivm/Stash/zipball/v0.10.3",
+                "reference": "v0.10.3",
                 "shasum": ""
             },
             "require": {
@@ -1253,24 +1253,24 @@
         },
         {
             "name": "tedivm/stash-bundle",
-            "version": "dev-blackhole",
+            "version": "dev-master",
             "target-dir": "Tedivm/StashBundle",
             "source": {
                 "type": "git",
-                "url": "https://github.com/lolautruche/TedivmStashBundle.git",
-                "reference": "60c2b8fdd343af9a2976709110edfa862945de34"
+                "url": "https://github.com/tedivm/TedivmStashBundle.git",
+                "reference": "19325338534431eeb1d214a6953688941d726418"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lolautruche/TedivmStashBundle/zipball/60c2b8fdd343af9a2976709110edfa862945de34",
-                "reference": "60c2b8fdd343af9a2976709110edfa862945de34",
+                "url": "https://api.github.com/repos/tedivm/TedivmStashBundle/zipball/19325338534431eeb1d214a6953688941d726418",
+                "reference": "19325338534431eeb1d214a6953688941d726418",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0",
                 "symfony/framework-bundle": ">=2.2,<3.0",
                 "symfony/yaml": ">=2.2,<3.0",
-                "tedivm/stash": "dev-master#7cbe1b212a0715acbbe407a93a67bb14e71de7a7"
+                "tedivm/stash": "0.10.*"
             },
             "type": "symfony-bundle",
             "autoload": {
@@ -1278,17 +1278,18 @@
                     "Tedivm\\StashBundle": ""
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
             "authors": [
                 {
-                    "name": "Josh Hall-Bachner",
-                    "email": "jhallbachner@gmail.com"
-                },
-                {
                     "name": "Robert Hafner",
                     "email": "tedivm@tedivm.com"
+                },
+                {
+                    "name": "Josh Hall-Bachner",
+                    "email": "jhallbachner@gmail.com"
                 }
             ],
             "description": "Incorporates the Stash caching library into Symfony.",
@@ -1298,10 +1299,7 @@
                 "sessions",
                 "symfony"
             ],
-            "support": {
-                "source": "https://github.com/lolautruche/TedivmStashBundle/tree/blackhole"
-            },
-            "time": "2013-04-02 15:42:18"
+            "time": "2013-03-30 23:19:43"
         },
         {
             "name": "twig/extensions",
@@ -1356,12 +1354,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabpot/Twig.git",
-                "reference": "e8991cc2f9c84b2b5c782203904898717d46e56a"
+                "reference": "399916916533589c95dc04e1afd4aeefa34928ad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/Twig/zipball/e8991cc2f9c84b2b5c782203904898717d46e56a",
-                "reference": "e8991cc2f9c84b2b5c782203904898717d46e56a",
+                "url": "https://api.github.com/repos/fabpot/Twig/zipball/399916916533589c95dc04e1afd4aeefa34928ad",
+                "reference": "399916916533589c95dc04e1afd4aeefa34928ad",
                 "shasum": ""
             },
             "require": {
@@ -1397,7 +1395,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2013-03-25 07:43:31"
+            "time": "2013-04-01 08:27:18"
         },
         {
             "name": "zetacomponents/archive",
