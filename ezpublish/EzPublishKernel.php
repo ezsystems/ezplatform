@@ -46,6 +46,7 @@ class EzPublishKernel extends Kernel
             new EzPublishLegacyBundle(),
             new EzSystemsDemoBundle(),
             new EzPublishRestBundle(),
+            new Acme\TestBundle\AcmeTestBundle(),
         );
 
         if ( $this->getEnvironment() === 'dev' )

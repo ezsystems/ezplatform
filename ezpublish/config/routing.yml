@@ -1,3 +1,6 @@
+TestBundle:
+    resource: "@AcmeTestBundle/Resources/config/routing.yml"
+
 _ezpublishRoutes:
     resource: "@EzPublishCoreBundle/Resources/config/routing/internal.yml"
 
