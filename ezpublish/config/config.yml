@@ -18,22 +18,11 @@ framework:
         # Defaut session name is "eZSESSID{siteaccess_hash}" (unique session name per siteaccess).
         # See ezpublish.yml.example for an example on how to configure this.
 
-# Requirements for less parser
-# Mac OS X:
-# Install Node.js
-# $ sudo port install node
-# Install npm
-# $ sudo port install npm
-# Install less via npm, but globally
-# $ sudo npm install -g less
 assetic:
     debug: %kernel.debug%
     use_controller: false
     filters:
         cssrewrite: ~
-        less:
-            node: /opt/local/bin/node
-            node_paths: [/opt/local/lib/node_modules]
 
 ez_publish_legacy:
     enabled: true
