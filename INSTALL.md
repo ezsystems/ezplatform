@@ -123,13 +123,16 @@
        ```bash
        php ezpublish/console assets:install --symlink web
        php ezpublish/console ezpublish:legacy:assets_install --symlink web
+       php ezpublish/console assetic:dump --env=prod web
        ```
        The first command will symlink all the assets from your bundles in the `web/` folder, in a `bundles/` sub-folder.
 
        The second command will symlink assets from your eZ Publish legacy directory and add wrapper scripts around the legacy front controllers
        (basically `index_treemenu.php`, `index_rest.php` and `index_cluster.php`)
 
-       In both cases "web" is the default folder, --relative can be added for relative symlinks and further help is available with -h.
+       The third command will generate the CSS and JavaScript files for the *prod* environement.
+
+       In those commands, "web" is the default folder. In the first two commands, --relative can be added for relative symlinks and further help is available with -h.
 
        **Note:(1)** you should **not** run the *ezpublish/console* command as root, as it will generate cache files which the webserver and command line users will not be able to update or delete later.
               (2) If you are deploying ez publish 5 on windows 7+, you need to run the command as Administrator to avoid the following error:
