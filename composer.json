@@ -12,24 +12,49 @@
     ],
     "require": {
         "php": ">=5.3.3",
-        "symfony/symfony": "2.2.1",
+        "symfony/symfony": "2.2.*",
         "symfony/assetic-bundle": "2.1.*",
+        "kriswallsmith/assetic": "1.1.*@dev",
         "symfony/monolog-bundle": "2.2.*",
         "symfony/swiftmailer-bundle": "2.2.*",
+        "symfony-cmf/routing": "1.0.*",
         "twig/extensions": "1.0.*",
-        "tedivm/stash-bundle": "dev-master",
-        "ezsystems/ezpublish-kernel": "dev-master",
-        "ezsystems/demobundle": "dev-master",
+        "tedivm/stash-bundle": "@dev",
+        "ezsystems/ezpublish-kernel": "5.1.*@dev",
+        "ezsystems/demobundle": "@dev",
         "sensio/generator-bundle": "2.2.*",
-        "egulias/listeners-debug-command-bundle": "dev-master"
+        "egulias/listeners-debug-command-bundle": "1.4.*",
+        "zetacomponents/archive": "@dev",
+        "zetacomponents/authentication": "@dev",
+        "zetacomponents/authentication-database-tiein": "@dev",
+        "zetacomponents/cache": "@dev",
+        "zetacomponents/configuration": "@dev",
+        "zetacomponents/console-tools": "@dev",
+        "zetacomponents/database": "@dev",
+        "zetacomponents/debug": "@dev",
+        "zetacomponents/feed": "@dev",
+        "zetacomponents/image-conversion": "@dev",
+        "zetacomponents/mail": "@dev",
+        "zetacomponents/mvc-tools": "@dev",
+        "zetacomponents/mvc-authentication-tiein": "@dev",
+        "zetacomponents/persistent-object": "@dev",
+        "zetacomponents/php-generator": "@dev",
+        "zetacomponents/signal-slot": "@dev",
+        "zetacomponents/system-information": "@dev"
     },
     "autoload": {
         "psr-0": {
             "": "src/"
         }
     },
-    "minimum-stability": "dev",
     "config": {
         "process-timeout": 3000
+    },
+    "extra": {
+        "symfony-app-dir": "ezpublish",
+        "symfony-web-dir": "web",
+        "branch-alias": {
+            "dev-master": "5.1.x-dev"
+        }
     }
 }
