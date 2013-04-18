@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "7b99f71167e2fd51058c0b167049600d",
+    "hash": "fe2ba8969005144fb5f10660df05ca3b",
     "packages": [
         {
             "name": "doctrine/common",
@@ -76,17 +76,17 @@
         },
         {
             "name": "egulias/listeners-debug-command-bundle",
-            "version": "dev-master",
+            "version": "1.4.1",
             "target-dir": "Egulias/ListenersDebugCommandBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/egulias/ListenersDebugCommandBundle.git",
-                "reference": "6a3b563966c4b80fbe81118d73329e183e809d27"
+                "reference": "1.4.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/egulias/ListenersDebugCommandBundle/zipball/6a3b563966c4b80fbe81118d73329e183e809d27",
-                "reference": "6a3b563966c4b80fbe81118d73329e183e809d27",
+                "url": "https://api.github.com/repos/egulias/ListenersDebugCommandBundle/zipball/1.4.1",
+                "reference": "1.4.1",
                 "shasum": ""
             },
             "require": {
@@ -112,9 +112,10 @@
             "description": "Symfony 2 console command to debug listeners",
             "homepage": "https://github.com/egulias/ListenersDebugCommandBundle.git",
             "keywords": [
-                "listener events"
+                "events",
+                "listener"
             ],
-            "time": "2013-01-30 15:40:58"
+            "time": "2013-04-17 20:34:07"
         },
         {
             "name": "ezsystems/demobundle",
@@ -160,12 +161,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-kernel.git",
-                "reference": "d8a5ffac20a640ecb76b3bc5bd05acdd26e6d806"
+                "reference": "edff7a8362fa5dfd694495a6f23396bf7fcf2288"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/d8a5ffac20a640ecb76b3bc5bd05acdd26e6d806",
-                "reference": "d8a5ffac20a640ecb76b3bc5bd05acdd26e6d806",
+                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/edff7a8362fa5dfd694495a6f23396bf7fcf2288",
+                "reference": "edff7a8362fa5dfd694495a6f23396bf7fcf2288",
                 "shasum": ""
             },
             "require": {
@@ -219,7 +220,7 @@
             ],
             "description": "eZ Publish API and kernel. This is the heart of eZ Publish 5.",
             "homepage": "http://share.ez.no",
-            "time": "2013-04-17 16:16:15"
+            "time": "2013-04-18 09:55:21"
         },
         {
             "name": "kriswallsmith/assetic",
@@ -2445,7 +2446,6 @@
         "tedivm/stash-bundle": 20,
         "ezsystems/ezpublish-kernel": 20,
         "ezsystems/demobundle": 20,
-        "egulias/listeners-debug-command-bundle": 20,
         "zetacomponents/archive": 20,
         "zetacomponents/authentication": 20,
         "zetacomponents/authentication-database-tiein": 20,
