@@ -10,7 +10,7 @@ framework:
     secret:          %secret%
     router:          { resource: "%kernel.root_dir%/config/routing.yml" }
     form:            true
-    csrf_protection: false
+    csrf_protection: { enabled: true }
     validation:      { enable_annotations: true }
     templating:      { engines: ['twig', 'eztpl'] } #assets_version: SomeVersionScheme
     session: ~
