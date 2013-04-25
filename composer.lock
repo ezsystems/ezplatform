@@ -124,12 +124,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/DemoBundle.git",
-                "reference": "4086ad1e95dc3d9eefb19642b5aede1175d75f7b"
+                "reference": "ee16772443dc6bf0154ac72ca6c10f7cd850c39e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/DemoBundle/zipball/4086ad1e95dc3d9eefb19642b5aede1175d75f7b",
-                "reference": "4086ad1e95dc3d9eefb19642b5aede1175d75f7b",
+                "url": "https://api.github.com/repos/ezsystems/DemoBundle/zipball/ee16772443dc6bf0154ac72ca6c10f7cd850c39e",
+                "reference": "ee16772443dc6bf0154ac72ca6c10f7cd850c39e",
                 "shasum": ""
             },
             "require": {
@@ -153,7 +153,7 @@
                 }
             ],
             "description": "Demo bundle for eZ Publish Platform",
-            "time": "2013-04-12 12:07:27"
+            "time": "2013-03-25 14:05:08"
         },
         {
             "name": "ezsystems/ezpublish-kernel",
@@ -161,12 +161,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-kernel.git",
-                "reference": "edff7a8362fa5dfd694495a6f23396bf7fcf2288"
+                "reference": "845a00c7f991f88b78c4ed05c0267d31e9a24d15"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/edff7a8362fa5dfd694495a6f23396bf7fcf2288",
-                "reference": "edff7a8362fa5dfd694495a6f23396bf7fcf2288",
+                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/845a00c7f991f88b78c4ed05c0267d31e9a24d15",
+                "reference": "845a00c7f991f88b78c4ed05c0267d31e9a24d15",
                 "shasum": ""
             },
             "require": {
@@ -220,7 +220,7 @@
             ],
             "description": "eZ Publish API and kernel. This is the heart of eZ Publish 5.",
             "homepage": "http://share.ez.no",
-            "time": "2013-04-18 09:55:21"
+            "time": "2013-04-25 11:25:00"
         },
         {
             "name": "kriswallsmith/assetic",
@@ -940,18 +940,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/tedivm/TedivmStashBundle.git",
-                "reference": "0baf224cfbe75fd9b48001d9292325300f8bf9af"
+                "reference": "19325338534431eeb1d214a6953688941d726418"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tedivm/TedivmStashBundle/zipball/0baf224cfbe75fd9b48001d9292325300f8bf9af",
-                "reference": "0baf224cfbe75fd9b48001d9292325300f8bf9af",
+                "url": "https://api.github.com/repos/tedivm/TedivmStashBundle/zipball/19325338534431eeb1d214a6953688941d726418",
+                "reference": "19325338534431eeb1d214a6953688941d726418",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0",
-                "symfony/framework-bundle": ">=2.1,<3.0",
-                "symfony/yaml": ">=2.1,<3.0",
+                "symfony/framework-bundle": ">=2.2,<3.0",
+                "symfony/yaml": ">=2.2,<3.0",
                 "tedivm/stash": "0.10.*"
             },
             "type": "symfony-bundle",
@@ -981,7 +981,7 @@
                 "sessions",
                 "symfony"
             ],
-            "time": "2013-04-08 16:53:09"
+            "time": "2013-03-30 23:19:43"
         },
         {
             "name": "twig/extensions",
@@ -1871,12 +1871,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/zetacomponents/ImageConversion.git",
-                "reference": "aed8cf2e3a17b049add7578fa199c02e3af903c1"
+                "reference": "36f34c8987ed4f2300cda683d75258cff1f5fa7f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zetacomponents/ImageConversion/zipball/aed8cf2e3a17b049add7578fa199c02e3af903c1",
-                "reference": "aed8cf2e3a17b049add7578fa199c02e3af903c1",
+                "url": "https://api.github.com/repos/zetacomponents/ImageConversion/zipball/36f34c8987ed4f2300cda683d75258cff1f5fa7f",
+                "reference": "36f34c8987ed4f2300cda683d75258cff1f5fa7f",
                 "shasum": ""
             },
             "require": {
@@ -1884,7 +1884,7 @@
                 "zetacomponents/image-analysis": ">=1.1.3"
             },
             "require-dev": {
-                "zetacomponents/unit-test": "*"
+                "zetacomponents/unit-test": "@dev"
             },
             "type": "library",
             "autoload": {
@@ -1930,7 +1930,7 @@
             ],
             "description": "A set of classes to apply different filters on images, such as colour changes, resizing and special effects.",
             "homepage": "https://github.com/zetacomponents",
-            "time": "2012-05-28 07:48:05"
+            "time": "2013-04-24 05:01:17"
         },
         {
             "name": "zetacomponents/mail",
