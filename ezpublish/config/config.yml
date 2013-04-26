@@ -10,7 +10,11 @@ framework:
     secret:          %secret%
     router:          { resource: "%kernel.root_dir%/config/routing.yml" }
     form:            true
-    csrf_protection: { enabled: true }
+    csrf_protection:
+        enabled: true
+        # Note: changing this will break legacy extensions that rely on the default name to alter AJAX requests
+        # See https://jira.ez.no/browse/EZP-20783
+        field_name: ezxform_token
     validation:      { enable_annotations: true }
     templating:      { engines: ['twig', 'eztpl'] } #assets_version: SomeVersionScheme
     session: ~
