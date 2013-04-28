@@ -22,6 +22,7 @@ use Symfony\Bundle\WebProfilerBundle\WebProfilerBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle;
 use Tedivm\StashBundle\TedivmStashBundle;
+use Sensio\Bundle\DistributionBundle\SensioDistributionBundle;
 
 class EzPublishKernel extends Kernel
 {
@@ -46,12 +47,14 @@ class EzPublishKernel extends Kernel
             new EzPublishLegacyBundle(),
             new EzSystemsDemoBundle(),
             new EzPublishRestBundle(),
+            new SensioDistributionBundle(),
         );
 
         if ( $this->getEnvironment() === 'dev' )
         {
             $bundles[] = new WebProfilerBundle();
             $bundles[] = new EguliasListenersDebugCommandBundle();
+            $bundles[] = new SensioDistributionBundle();
         }
 
         return $bundles;
