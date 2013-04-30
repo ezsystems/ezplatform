@@ -54,7 +54,6 @@ class EzPublishKernel extends Kernel
         {
             $bundles[] = new WebProfilerBundle();
             $bundles[] = new EguliasListenersDebugCommandBundle();
-            $bundles[] = new SensioDistributionBundle();
         }
 
         return $bundles;
