@@ -124,16 +124,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/DemoBundle.git",
-                "reference": "ee16772443dc6bf0154ac72ca6c10f7cd850c39e"
+                "reference": "5.1.0-RC1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/DemoBundle/zipball/ee16772443dc6bf0154ac72ca6c10f7cd850c39e",
-                "reference": "ee16772443dc6bf0154ac72ca6c10f7cd850c39e",
+                "url": "https://api.github.com/repos/ezsystems/DemoBundle/zipball/5.1.0-RC1",
+                "reference": "5.1.0-RC1",
                 "shasum": ""
             },
             "require": {
-                "ezsystems/ezpublish-kernel": "dev-master",
+                "ezsystems/ezpublish-kernel": "*",
                 "php": ">=5.3.3"
             },
             "type": "library",
@@ -153,7 +153,7 @@
                 }
             ],
             "description": "Demo bundle for eZ Publish Platform",
-            "time": "2013-03-25 14:05:08"
+            "time": "2013-04-30 12:07:14"
         },
         {
             "name": "ezsystems/ezpublish-kernel",
@@ -161,18 +161,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-kernel.git",
-                "reference": "845a00c7f991f88b78c4ed05c0267d31e9a24d15"
+                "reference": "b42623709c5000edccacc42815fc61958136cfa3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/845a00c7f991f88b78c4ed05c0267d31e9a24d15",
-                "reference": "845a00c7f991f88b78c4ed05c0267d31e9a24d15",
+                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/b42623709c5000edccacc42815fc61958136cfa3",
+                "reference": "b42623709c5000edccacc42815fc61958136cfa3",
                 "shasum": ""
             },
             "require": {
                 "kriswallsmith/buzz": ">=0.9",
                 "php": ">=5.3.3",
                 "qafoo/rmf": "1.0.*",
+                "sensio/distribution-bundle": "2.2.*",
                 "symfony-cmf/routing": "1.0.*",
                 "symfony/symfony": "2.2.*",
                 "tedivm/stash-bundle": "@dev",
@@ -220,7 +221,7 @@
             ],
             "description": "eZ Publish API and kernel. This is the heart of eZ Publish 5.",
             "homepage": "http://share.ez.no",
-            "time": "2013-04-25 11:25:00"
+            "time": "2013-04-30 14:54:19"
         },
         {
             "name": "kriswallsmith/assetic",
@@ -228,12 +229,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kriswallsmith/assetic.git",
-                "reference": "0a55a9ba70bd9250899ad77deceaf8cb9e145371"
+                "reference": "1b17f9a239276f24344f9f7d7be8293f6dca4e19"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kriswallsmith/assetic/zipball/0a55a9ba70bd9250899ad77deceaf8cb9e145371",
-                "reference": "0a55a9ba70bd9250899ad77deceaf8cb9e145371",
+                "url": "https://api.github.com/repos/kriswallsmith/assetic/zipball/1b17f9a239276f24344f9f7d7be8293f6dca4e19",
+                "reference": "1b17f9a239276f24344f9f7d7be8293f6dca4e19",
                 "shasum": ""
             },
             "require": {
@@ -291,7 +292,7 @@
                 "compression",
                 "minification"
             ],
-            "time": "2013-04-02 21:36:28"
+            "time": "2013-04-27 14:32:20"
         },
         {
             "name": "kriswallsmith/buzz",
@@ -343,16 +344,16 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "1.4.1",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "1.4.1"
+                "reference": "1.5.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/1.4.1",
-                "reference": "1.4.1",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/1.5.0",
+                "reference": "1.5.0",
                 "shasum": ""
             },
             "require": {
@@ -401,7 +402,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2013-04-01 10:04:58"
+            "time": "2013-04-23 10:09:48"
         },
         {
             "name": "psr/log",
@@ -464,6 +465,52 @@
             "notification-url": "https://packagist.org/downloads/",
             "description": "Very simple VC framework which makes it easy to build HTTP applications / REST webservices",
             "time": "2012-09-03 11:24:11"
+        },
+        {
+            "name": "sensio/distribution-bundle",
+            "version": "v2.2.1",
+            "target-dir": "Sensio/Bundle/DistributionBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sensio/SensioDistributionBundle.git",
+                "reference": "v2.2.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sensio/SensioDistributionBundle/zipball/v2.2.1",
+                "reference": "v2.2.1",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/framework-bundle": ">=2.2,<3.0"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Sensio\\Bundle\\DistributionBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "The base bundle for the Symfony Distributions",
+            "keywords": [
+                "configuration",
+                "distribution"
+            ],
+            "time": "2013-03-26 08:24:36"
         },
         {
             "name": "sensio/generator-bundle",
@@ -564,23 +611,26 @@
         },
         {
             "name": "symfony-cmf/routing",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "target-dir": "Symfony/Cmf/Component/Routing",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony-cmf/Routing.git",
-                "reference": "1.0.0"
+                "reference": "1.0.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony-cmf/Routing/zipball/1.0.0",
-                "reference": "1.0.0",
+                "url": "https://api.github.com/repos/symfony-cmf/Routing/zipball/1.0.1",
+                "reference": "1.0.1",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.2",
                 "symfony/http-kernel": ">=2.1,<2.3-dev",
                 "symfony/routing": ">=2.1,<2.3-dev"
+            },
+            "suggest": {
+                "symfony/http-foundation": "ChainRouter/DynamicRouter have optional support for Request instances, several enhancers require a Request instances, >=2.1,<2.3-dev"
             },
             "type": "library",
             "extra": {
@@ -609,7 +659,7 @@
                 "database",
                 "routing"
             ],
-            "time": "2013-03-25 15:02:40"
+            "time": "2013-04-30 09:20:58"
         },
         {
             "name": "symfony/assetic-bundle",
@@ -940,18 +990,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/tedivm/TedivmStashBundle.git",
-                "reference": "19325338534431eeb1d214a6953688941d726418"
+                "reference": "0baf224cfbe75fd9b48001d9292325300f8bf9af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tedivm/TedivmStashBundle/zipball/19325338534431eeb1d214a6953688941d726418",
-                "reference": "19325338534431eeb1d214a6953688941d726418",
+                "url": "https://api.github.com/repos/tedivm/TedivmStashBundle/zipball/0baf224cfbe75fd9b48001d9292325300f8bf9af",
+                "reference": "0baf224cfbe75fd9b48001d9292325300f8bf9af",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0",
-                "symfony/framework-bundle": ">=2.2,<3.0",
-                "symfony/yaml": ">=2.2,<3.0",
+                "symfony/framework-bundle": ">=2.1,<3.0",
+                "symfony/yaml": ">=2.1,<3.0",
                 "tedivm/stash": "0.10.*"
             },
             "type": "symfony-bundle",
@@ -981,7 +1031,7 @@
                 "sessions",
                 "symfony"
             ],
-            "time": "2013-03-30 23:19:43"
+            "time": "2013-04-08 16:53:09"
         },
         {
             "name": "twig/extensions",
