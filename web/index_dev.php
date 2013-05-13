@@ -1,16 +1,3 @@
 <?php
-
-use Symfony\Component\HttpFoundation\Request;
-
-require_once __DIR__ . '/../ezpublish/autoload.php';
-require_once __DIR__ . '/../ezpublish/EzPublishKernel.php';
-require_once __DIR__ . '/../ezpublish/EzPublishCache.php';
-
-$kernel = new EzPublishKernel( 'dev', true );
-$kernel->loadClassCache();
-// Uncomment the following to activate HttpCache.
-//$kernel = new EzPublishCache( $kernel );
-$request = Request::createFromGlobals();
-$response = $kernel->handle( $request );
-$response->send();
-$kernel->terminate( $request, $response );
+putenv( "ENVIRONMENT=dev" );
+require "index.php";
