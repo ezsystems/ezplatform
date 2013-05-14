@@ -147,13 +147,14 @@
        > Unable to create symlink due to error code 1314: 'A required privilege is not held by the client'. Do you have the required Administrator-rights?
        > This is the first solution. But you can also edit the composer.json file by changing "symfony-assets-install": "symlink" to "symfony-assets-install": ""
 
-3. Configure a VirtualHost:
+3. [Optional] Configure a VirtualHost:
 
     See: https://confluence.ez.no/display/EZP/Virtual+host+setup
 
 4. Run the Setup wizard:
 
-  Access http://`<your-host-name>`/ezsetup to trigger the setup wizard.
+  In Virtual host mode access http://`<your-host-name>`/ezsetup to trigger the setup wizard.
+  In Non-Virtual Host mode access eZ Publish like: http://localhost/ezp5/index.php/ezsetup
 
   **Troubleshooting during Setup wizard**
 
