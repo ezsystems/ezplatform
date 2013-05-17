@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "fe2ba8969005144fb5f10660df05ca3b",
+    "hash": "29462074d110a836f352ccf5275b6b93",
     "packages": [
         {
             "name": "doctrine/common",
@@ -124,12 +124,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/DemoBundle.git",
-                "reference": "5.1.0-RC1"
+                "reference": "9aee676269fc9536ab6692585b6493451571f171"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/DemoBundle/zipball/5.1.0-RC1",
-                "reference": "5.1.0-RC1",
+                "url": "https://api.github.com/repos/ezsystems/DemoBundle/zipball/9aee676269fc9536ab6692585b6493451571f171",
+                "reference": "9aee676269fc9536ab6692585b6493451571f171",
                 "shasum": ""
             },
             "require": {
@@ -153,7 +153,7 @@
                 }
             ],
             "description": "Demo bundle for eZ Publish Platform",
-            "time": "2013-04-30 12:07:14"
+            "time": "2013-05-17 08:21:07"
         },
         {
             "name": "ezsystems/ezpublish-kernel",
@@ -161,12 +161,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-kernel.git",
-                "reference": "b42623709c5000edccacc42815fc61958136cfa3"
+                "reference": "194f1d9339681a22db187b617c31a76145cbce2f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/b42623709c5000edccacc42815fc61958136cfa3",
-                "reference": "b42623709c5000edccacc42815fc61958136cfa3",
+                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/194f1d9339681a22db187b617c31a76145cbce2f",
+                "reference": "194f1d9339681a22db187b617c31a76145cbce2f",
                 "shasum": ""
             },
             "require": {
@@ -221,20 +221,20 @@
             ],
             "description": "eZ Publish API and kernel. This is the heart of eZ Publish 5.",
             "homepage": "http://share.ez.no",
-            "time": "2013-04-30 14:54:19"
+            "time": "2013-05-16 15:23:13"
         },
         {
             "name": "kriswallsmith/assetic",
-            "version": "dev-master",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kriswallsmith/assetic.git",
-                "reference": "1b17f9a239276f24344f9f7d7be8293f6dca4e19"
+                "reference": "v1.1.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kriswallsmith/assetic/zipball/1b17f9a239276f24344f9f7d7be8293f6dca4e19",
-                "reference": "1b17f9a239276f24344f9f7d7be8293f6dca4e19",
+                "url": "https://api.github.com/repos/kriswallsmith/assetic/zipball/v1.1.0",
+                "reference": "v1.1.0",
                 "shasum": ""
             },
             "require": {
@@ -249,9 +249,9 @@
                 "leafo/scssphp": "*",
                 "leafo/scssphp-compass": "*",
                 "mrclay/minify": "*",
-                "phpunit/phpunit": "3.7.*",
+                "phpunit/phpunit": ">=3.7,<4.0",
                 "ptachoire/cssembed": "*",
-                "twig/twig": ">=1.6.0,<2.0"
+                "twig/twig": ">=1.6,<2.0"
             },
             "suggest": {
                 "leafo/lessphp": "Assetic provides the integration with the lessphp LESS compiler",
@@ -292,7 +292,7 @@
                 "compression",
                 "minification"
             ],
-            "time": "2013-04-27 14:32:20"
+            "time": "2013-05-16 05:28:39"
         },
         {
             "name": "kriswallsmith/buzz",
@@ -1082,16 +1082,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.12.3",
+            "version": "v1.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabpot/Twig.git",
-                "reference": "v1.12.3"
+                "reference": "v1.13.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/Twig/zipball/v1.12.3",
-                "reference": "v1.12.3",
+                "url": "https://api.github.com/repos/fabpot/Twig/zipball/v1.13.0",
+                "reference": "v1.13.0",
                 "shasum": ""
             },
             "require": {
@@ -1100,7 +1100,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.12-dev"
+                    "dev-master": "1.13-dev"
                 }
             },
             "autoload": {
@@ -1127,7 +1127,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2013-04-08 12:40:11"
+            "time": "2013-05-10 15:12:43"
         },
         {
             "name": "zetacomponents/archive",
@@ -2492,7 +2492,6 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
-        "kriswallsmith/assetic": 20,
         "tedivm/stash-bundle": 20,
         "ezsystems/ezpublish-kernel": 20,
         "ezsystems/demobundle": 20,
