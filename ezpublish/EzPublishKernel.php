@@ -23,7 +23,7 @@ use Symfony\Component\Config\Loader\LoaderInterface;
 use Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle;
 use Tedivm\StashBundle\TedivmStashBundle;
 use Sensio\Bundle\DistributionBundle\SensioDistributionBundle;
-use RuntimeException;
+use \RuntimeException;
 
 class EzPublishKernel extends Kernel
 {
