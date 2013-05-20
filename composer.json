@@ -13,7 +13,7 @@
     "require": {
         "php": ">=5.3.3",
         "symfony/symfony": "2.2.*",
-        "symfony/assetic-bundle": "2.1.*",
+        "symfony/assetic-bundle": "2.3.*",
         "symfony/monolog-bundle": "2.2.*",
         "symfony/swiftmailer-bundle": "2.2.*",
         "symfony-cmf/routing": "1.0.*",
