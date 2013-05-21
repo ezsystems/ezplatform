@@ -7,7 +7,6 @@ framework:
 
 web_profiler:
     toolbar: true
-    position: bottom
     intercept_redirects: false
 
 monolog:

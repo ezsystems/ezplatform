@@ -9,18 +9,22 @@
             "homepage": "https://github.com/ezsystems/ezpublish-community/contributors"
         }
     ],
+    "autoload": {
+        "psr-0": { "": "src/" }
+    },
     "require": {
         "php": ">=5.3.3",
         "symfony/symfony": "2.2.*",
-        "symfony/assetic-bundle": "2.3.*",
-        "symfony/monolog-bundle": "2.2.*",
-        "symfony/swiftmailer-bundle": "2.2.*",
-        "symfony-cmf/routing": "1.0.*",
         "twig/extensions": "1.0.*",
+        "symfony/assetic-bundle": "2.3.*",
+        "symfony/swiftmailer-bundle": "2.2.*",
+        "symfony/monolog-bundle": "2.2.*",
+        "sensio/distribution-bundle": "2.2.*",
+        "sensio/generator-bundle": "2.2.*",
+        "symfony-cmf/routing": "1.0.*",
         "tedivm/stash-bundle": "@dev",
         "ezsystems/ezpublish-kernel": "5.1.*@dev",
         "ezsystems/demobundle": "@dev",
-        "sensio/generator-bundle": "2.2.*",
         "egulias/listeners-debug-command-bundle": "1.4.*",
         "zetacomponents/archive": "@dev",
         "zetacomponents/authentication": "@dev",
@@ -40,18 +44,30 @@
         "zetacomponents/signal-slot": "@dev",
         "zetacomponents/system-information": "@dev"
     },
-    "autoload": {
-        "psr-0": {
-            "": "src/"
-        }
+    "scripts": {
+        "post-install-cmd": [
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
+        ],
+        "post-update-cmd": [
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
+        ]
     },
     "config": {
-        "process-timeout": 3000
+        "process-timeout": 3000,
+        "bin-dir": "bin"
     },
     "extra": {
         "symfony-app-dir": "ezpublish",
         "symfony-web-dir": "web",
         "ezpublish-legacy-dir": "ezpublish_legacy",
+        "symfony-assets-install_comment_": "One of 'symlink', 'relative' (symlinks) or 'hard'",
+        "symfony-assets-install": "relative",
         "branch-alias": {
             "dev-master": "5.2.x-dev"
         }

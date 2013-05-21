@@ -7,22 +7,22 @@
  * @version //autogentag//
  */
 
-use eZ\Bundle\EzPublishCoreBundle\EzPublishCoreBundle;
 use Egulias\ListenersDebugCommandBundle\EguliasListenersDebugCommandBundle;
+use eZ\Bundle\EzPublishCoreBundle\EzPublishCoreBundle;
 use eZ\Bundle\EzPublishLegacyBundle\EzPublishLegacyBundle;
 use eZ\Bundle\EzPublishRestBundle\EzPublishRestBundle;
 use EzSystems\DemoBundle\EzSystemsDemoBundle;
 use Symfony\Component\HttpKernel\Kernel;
+use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\SecurityBundle\SecurityBundle;
 use Symfony\Bundle\TwigBundle\TwigBundle;
 use Symfony\Bundle\MonologBundle\MonologBundle;
 use Symfony\Bundle\AsseticBundle\AsseticBundle;
 use Symfony\Bundle\WebProfilerBundle\WebProfilerBundle;
-use Symfony\Component\Config\Loader\LoaderInterface;
 use Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle;
-use Tedivm\StashBundle\TedivmStashBundle;
 use Sensio\Bundle\DistributionBundle\SensioDistributionBundle;
+use Tedivm\StashBundle\TedivmStashBundle;
 
 class EzPublishKernel extends Kernel
 {
@@ -46,12 +46,12 @@ class EzPublishKernel extends Kernel
             new EzPublishLegacyBundle(),
             new EzSystemsDemoBundle(),
             new EzPublishRestBundle(),
-            new SensioDistributionBundle(),
         );
 
         if ( in_array( $this->getEnvironment(), array( 'dev', 'test' ), true ) )
         {
             $bundles[] = new WebProfilerBundle();
+            $bundles[] = new SensioDistributionBundle();
             $bundles[] = new SensioGeneratorBundle();
             $bundles[] = new EguliasListenersDebugCommandBundle();
         }

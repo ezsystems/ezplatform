@@ -10,7 +10,7 @@ if ( $environment === false )
     $environment = "prod";
 }
 
-$loader = require_once __DIR__ . '/../ezpublish/autoload.php';
+$loader = require_once __DIR__ . '/../ezpublish/bootstrap.php.cache';
 
 // Depending on the USE_APC_CLASSLOADER environment variable, use APC for autoloading to improve performance.
 // If not set it is not used.
