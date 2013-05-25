@@ -30,7 +30,7 @@
 
 3. *Optional* Upgrade an eZ Publish Community Project installation
 
-       If you have a working eZ Publish Community Project installation, omit steps 2 and 3 above and instead:
+       If you have a working eZ Publish Community Project installation, omit step 2 above and instead:
 
        1. Start from / upgrade to [latest](http://share.ez.no/downloads/downloads) eZ Publish CP installation.
 
@@ -147,11 +147,13 @@
        > Unable to create symlink due to error code 1314: 'A required privilege is not held by the client'. Do you have the required Administrator-rights?
        > This is the first solution. But you can also edit the composer.json file by changing "symfony-assets-install": "symlink" to "symfony-assets-install": ""
 
-3. [Optional] Configure a VirtualHost:
+3. *Optional* Configure a VirtualHost:
 
     See: https://confluence.ez.no/display/EZP/Virtual+host+setup
 
 4. Run the Setup wizard:
+
+  **Note: this step in only valid for clean install and can be ignored if you are performing an upgrade.**
 
   In Virtual host mode access http://`<your-host-name>`/ezsetup to trigger the setup wizard.
   In Non-Virtual Host mode access eZ Publish like: http://localhost/ezp5/index.php/ezsetup
