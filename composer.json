@@ -1,7 +1,7 @@
 {
     "name": "ezsystems/ezpublish-community",
     "description": "eZ Publish 5 community distribution",
-    "version": "5.1-dev",
+    "version": "5.2-dev",
     "homepage": "http://share.ez.no",
     "license": "GPL-2.0",
     "authors": [
@@ -53,7 +53,7 @@
         "symfony-app-dir": "ezpublish",
         "symfony-web-dir": "web",
         "branch-alias": {
-            "dev-master": "5.1.x-dev"
+            "dev-master": "5.2.x-dev"
         }
     }
 }
