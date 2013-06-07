@@ -39,7 +39,8 @@
         "zetacomponents/persistent-object": "@dev",
         "zetacomponents/php-generator": "@dev",
         "zetacomponents/signal-slot": "@dev",
-        "zetacomponents/system-information": "@dev"
+        "zetacomponents/system-information": "@dev",
+        "ezsystems/ezpublish-legacy": "@dev"
     },
     "autoload": {
         "psr-0": {
@@ -52,6 +53,7 @@
     "extra": {
         "symfony-app-dir": "ezpublish",
         "symfony-web-dir": "web",
+        "ezpublish-legacy-dir": "ezpublish_legacy",
         "branch-alias": {
             "dev-master": "5.2.x-dev"
         }
