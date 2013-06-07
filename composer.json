@@ -53,6 +53,7 @@
     "extra": {
         "symfony-app-dir": "ezpublish",
         "symfony-web-dir": "web",
+        "ezpublish-legacy-dir": "ezpublish_legacy",
         "branch-alias": {
             "dev-master": "5.2.x-dev"
         }
