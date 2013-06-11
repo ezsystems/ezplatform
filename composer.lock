@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "51b31e7f435eeb83326e13c83fe39cf4",
+    "hash": "c754c7d6f7ea389166d1931ea95c725e",
     "packages": [
         {
             "name": "doctrine/common",
@@ -161,12 +161,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-kernel.git",
-                "reference": "aa72a7d611de98c1befb5a2a32dc8bc6207221e2"
+                "reference": "219f354dd0a58c9e5a8eb5a6969d5ca9b1e91368"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/aa72a7d611de98c1befb5a2a32dc8bc6207221e2",
-                "reference": "aa72a7d611de98c1befb5a2a32dc8bc6207221e2",
+                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/219f354dd0a58c9e5a8eb5a6969d5ca9b1e91368",
+                "reference": "219f354dd0a58c9e5a8eb5a6969d5ca9b1e91368",
                 "shasum": ""
             },
             "require": {
@@ -221,79 +221,7 @@
             ],
             "description": "eZ Publish API and kernel. This is the heart of eZ Publish 5.",
             "homepage": "http://share.ez.no",
-            "time": "2013-06-07 12:37:20"
-        },
-        {
-            "name": "ezsystems/ezpublish-legacy",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ezsystems/ezpublish-legacy.git",
-                "reference": "98b3a02448f428a8bbfdee4cad2b9c5e4615eacd"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezpublish-legacy/zipball/98b3a02448f428a8bbfdee4cad2b9c5e4615eacd",
-                "reference": "98b3a02448f428a8bbfdee4cad2b9c5e4615eacd",
-                "shasum": ""
-            },
-            "require": {
-                "ezsystems/ezpublish-legacy-installer": "*",
-                "php": ">=5.3.3"
-            },
-            "type": "ezpublish-legacy",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "5.2.x-dev"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0"
-            ],
-            "description": "eZ Publish LegacyStack (4.x)",
-            "homepage": "http://share.ez.no",
-            "time": "2013-06-07 09:10:26"
-        },
-        {
-            "name": "ezsystems/ezpublish-legacy-installer",
-            "version": "v1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ezsystems/ezpublish-legacy-installer.git",
-                "reference": "v1.0.0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezpublish-legacy-installer/zipball/v1.0.0",
-                "reference": "v1.0.0",
-                "shasum": ""
-            },
-            "type": "composer-installer",
-            "extra": {
-                "class": "eZ\\Publish\\Composer\\LegacyInstaller"
-            },
-            "autoload": {
-                "psr-0": {
-                    "eZ\\Publish\\Composer": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "Jérôme Vieilledent",
-                    "email": "lolautruche@gmail.com"
-                },
-                {
-                    "name": "Gaetano Giunta",
-                    "email": "gaetano.giunta@ez.no"
-                }
-            ],
-            "description": "Installer for eZ Publish legacy extensions and legacy kernel itself.",
-            "time": "2013-06-07 08:11:03"
+            "time": "2013-06-11 10:13:35"
         },
         {
             "name": "kriswallsmith/assetic",
@@ -2583,8 +2511,7 @@
         "zetacomponents/persistent-object": 20,
         "zetacomponents/php-generator": 20,
         "zetacomponents/signal-slot": 20,
-        "zetacomponents/system-information": 20,
-        "ezsystems/ezpublish-legacy": 20
+        "zetacomponents/system-information": 20
     },
     "platform": {
         "php": ">=5.3.3"

@@ -38,8 +38,7 @@
         "zetacomponents/persistent-object": "@dev",
         "zetacomponents/php-generator": "@dev",
         "zetacomponents/signal-slot": "@dev",
-        "zetacomponents/system-information": "@dev",
-        "ezsystems/ezpublish-legacy": "@dev"
+        "zetacomponents/system-information": "@dev"
     },
     "autoload": {
         "psr-0": {
