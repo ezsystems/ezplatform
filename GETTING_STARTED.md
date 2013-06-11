@@ -1,9 +1,9 @@
 # Hacking on eZ Publish 5
 
-eZ Publish 5 is built on top of **Symfony2 full stack framework** (version **2.1**), and as such all guidelines,
+eZ Publish 5 is built on top of **Symfony2 full stack framework** (version **2.x**), and as such all guidelines,
 requirements and best practices remain the same.
 
-The best way to kickstart is to read the [Symfony2 documentation](http://symfony.com/doc/master/book/page_creation.html)
+The best way to kickstart is to read the [Symfony2 documentation](http://symfony.com/doc/current/book/page_creation.html)
 in order to get the basics.
 
 ## Demo bundle
@@ -28,7 +28,7 @@ The most interesting routes for a start are :
 
 ## Guidelines and features available
 ### Generating a bundle
-eZ Publish 5 comes with [SensioGeneratorBundle](http://symfony.com/doc/master/bundles/SensioGeneratorBundle/index.html).
+eZ Publish 5 comes with [SensioGeneratorBundle](http://symfony.com/doc/current/bundles/SensioGeneratorBundle/index.html).
 This bundle provides useful commands, including one to easily generate a new bundle from command line:
 
 ```bash
@@ -37,7 +37,7 @@ php ezpublish/console generate:bundle
 
 Please note that `yml` is the preferred format for configuration.
 
-For more information, [check the documentation for this command](http://symfony.com/doc/master/bundles/SensioGeneratorBundle/index.html).
+For more information, [check the documentation for this command](http://symfony.com/doc/current/bundles/SensioGeneratorBundle/index.html).
 
 > Note: By choosing *yes* to *generate the whole directory structure*, you will have a complete bundle, including the *DependencyInjection*
 > part and a directory for tests.
@@ -108,7 +108,7 @@ It is possible to include old templates (**.tpl*) into new ones:
 ```jinja
 {# Twig template #}
 {# Following code will include my/old_template.tpl, exposing $someVar variable in it #}
-{% ez_legacy_include "design:my/old_template.tpl" with {"someVar": "someValue"} %}
+{% include "design:my/old_template.tpl" with {"someVar": "someValue"} %}
 ```
 
 > **Note**
