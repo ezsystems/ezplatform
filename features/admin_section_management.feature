@@ -4,7 +4,7 @@ Feature: Sections can be managed through the admin interface.
     Scenario: Default sections are listed.
         Given I am logged in as "admin" with password "publish"
          When I go to the "Admin Section List Page"
-         Then I see 5 "Section" elements listed
+         Then I see 6 "Section" elements listed
 
     @javascript
         Scenario: Default sections are listed.
@@ -21,7 +21,7 @@ Feature: Sections can be managed through the admin interface.
           And I fill in "Identifier" with "foo"
           And I press "Create the section"
          Then I am on the "Admin Section List Page"
-          And I see 6 "Section" elements listed
+          And I see 7 "Section" elements listed
           And I should see "FooSection"
 
 
