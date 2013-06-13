@@ -33,12 +33,27 @@ class FeatureContext extends MinkContext
      */
     public function iSearchFor( $searchPhrase )
     {
-        $searchField = $this->getSession()->getPage()->findById( 'site-wide-search-field' );
+        $session = $this->getSession();
+        $searchField = $session->getPage()->findById( 'site-wide-search-field' );
 
         Assertion::assertNotNull( $searchField, 'Search field not found.' );
 
         $searchField->setValue( $searchPhrase );
-        $searchField->keyPress( 13 );
+
+        // Ideally, using keyPress(), but doesn't work since no keypress handler exists
+        // http://sahi.co.in/forums/discussion/2717/keypress-in-java/p1
+        //     $searchField->keyPress( 13 );
+        //
+        // Using JS instead:
+        // Note:
+        //     $session->executeScript("$('#site-wide-search').submit();");
+        // Gives:
+        //     error:_call($('#site-wide-search').submit();)
+        //     SyntaxError: missing ) after argument list
+        //     Sahi.ex@http://<hostname>/_s_/spr/concat.js:3480
+        //     @http://<hostname>/_s_/spr/concat.js:3267
+        // Solution: Encapsulating code in a closure.
+        $session->executeScript("(function(){ $('#site-wide-search').submit(); })()");
     }
 
     /**
