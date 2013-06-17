@@ -1,32 +1,43 @@
 <?php
 
-use Behat\Behat\Context\ClosuredContextInterface;
-use Behat\Behat\Context\TranslatedContextInterface;
-use Behat\Behat\Context\BehatContext;
-use Behat\Behat\Exception\PendingException;
-use Behat\Behat\Context\Step;
-use Behat\Gherkin\Node\PyStringNode;
-use Behat\Gherkin\Node\TableNode;
-use Behat\MinkExtension\Context\MinkContext;
-use PHPUnit_Framework_Assert as Assertion;
+namespace EzSystems\BehatBundle\Features\Context;
 
-//
-// Require 3rd-party libraries here:
-//
-//   require_once 'PHPUnit/Autoload.php';
-//   require_once 'PHPUnit/Framework/Assert/Functions.php';
-//
+use Behat\Behat\Context\Step;
+use Behat\MinkExtension\Context\MinkContext;
+use Behat\Symfony2Extension\Context\KernelAwareInterface;
+use PHPUnit_Framework_Assert as Assertion;
+use Symfony\Component\HttpKernel\KernelInterface;
 
 /**
- * Features context.
+ * Feature context.
  */
-class FeatureContext extends MinkContext
+class FeatureContext extends MinkContext implements KernelAwareInterface
 {
-    protected $pageIdentifierMap = array(
-        'Search Page' => '/content/search',
-        'Admin Section List Page' => '/admin/section/list',
-        'Admin Section Create Page' => '/admin/section/create',
-    );
+    private $kernel;
+    private $parameters;
+
+    protected $pageIdentifierMap = array();
+
+    /**
+     * Initializes context with parameters from behat.yml.
+     *
+     * @param array $parameters
+     */
+    public function __construct(array $parameters)
+    {
+        $this->parameters = $parameters;
+    }
+
+    /**
+     * Sets HttpKernel instance.
+     * This method will be automatically called by Symfony2Extension ContextInitializer.
+     *
+     * @param KernelInterface $kernel
+     */
+    public function setKernel(KernelInterface $kernel)
+    {
+        $this->kernel = $kernel;
+    }
 
     /**
      * @When /^I search for "([^"]*)"$/
