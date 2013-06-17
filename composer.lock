@@ -161,12 +161,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-kernel.git",
-                "reference": "219f354dd0a58c9e5a8eb5a6969d5ca9b1e91368"
+                "reference": "aa72a7d611de98c1befb5a2a32dc8bc6207221e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/219f354dd0a58c9e5a8eb5a6969d5ca9b1e91368",
-                "reference": "219f354dd0a58c9e5a8eb5a6969d5ca9b1e91368",
+                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/aa72a7d611de98c1befb5a2a32dc8bc6207221e2",
+                "reference": "aa72a7d611de98c1befb5a2a32dc8bc6207221e2",
                 "shasum": ""
             },
             "require": {
@@ -221,7 +221,7 @@
             ],
             "description": "eZ Publish API and kernel. This is the heart of eZ Publish 5.",
             "homepage": "http://share.ez.no",
-            "time": "2013-06-11 10:13:35"
+            "time": "2013-06-07 12:37:20"
         },
         {
             "name": "kriswallsmith/assetic",
@@ -938,16 +938,16 @@
         },
         {
             "name": "tedivm/stash",
-            "version": "v0.10.3",
+            "version": "v0.10.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tedivm/Stash.git",
-                "reference": "v0.10.3"
+                "reference": "v0.10.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tedivm/Stash/zipball/v0.10.3",
-                "reference": "v0.10.3",
+                "url": "https://api.github.com/repos/tedivm/Stash/zipball/v0.10.4",
+                "reference": "v0.10.4",
                 "shasum": ""
             },
             "require": {
@@ -981,7 +981,7 @@
                 "scalability",
                 "sessions"
             ],
-            "time": "2013-03-30 23:24:06"
+            "time": "2013-06-13 07:13:33"
         },
         {
             "name": "tedivm/stash-bundle",
@@ -990,12 +990,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/tedivm/TedivmStashBundle.git",
-                "reference": "14aa3c253e45fb6db8553d08d50e44416a2eb2dc"
+                "reference": "03a675f55673195fa67924568584b8674c3afb98"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tedivm/TedivmStashBundle/zipball/14aa3c253e45fb6db8553d08d50e44416a2eb2dc",
-                "reference": "14aa3c253e45fb6db8553d08d50e44416a2eb2dc",
+                "url": "https://api.github.com/repos/tedivm/TedivmStashBundle/zipball/03a675f55673195fa67924568584b8674c3afb98",
+                "reference": "03a675f55673195fa67924568584b8674c3afb98",
                 "shasum": ""
             },
             "require": {
@@ -1031,7 +1031,7 @@
                 "sessions",
                 "symfony"
             ],
-            "time": "2013-06-07 06:20:01"
+            "time": "2013-06-16 23:57:16"
         },
         {
             "name": "twig/extensions",
