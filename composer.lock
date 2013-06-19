@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "c754c7d6f7ea389166d1931ea95c725e",
+    "hash": "e4a05ba59fcb38d8ce201f959f4dec5a",
     "packages": [
         {
             "name": "doctrine/common",
@@ -161,12 +161,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-kernel.git",
-                "reference": "aa72a7d611de98c1befb5a2a32dc8bc6207221e2"
+                "reference": "528823330c5c0ff1a200b6330b2706e16d4fa5bc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/aa72a7d611de98c1befb5a2a32dc8bc6207221e2",
-                "reference": "aa72a7d611de98c1befb5a2a32dc8bc6207221e2",
+                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/528823330c5c0ff1a200b6330b2706e16d4fa5bc",
+                "reference": "528823330c5c0ff1a200b6330b2706e16d4fa5bc",
                 "shasum": ""
             },
             "require": {
@@ -221,7 +221,7 @@
             ],
             "description": "eZ Publish API and kernel. This is the heart of eZ Publish 5.",
             "homepage": "http://share.ez.no",
-            "time": "2013-06-07 12:37:20"
+            "time": "2013-06-18 17:11:55"
         },
         {
             "name": "kriswallsmith/assetic",
@@ -985,17 +985,17 @@
         },
         {
             "name": "tedivm/stash-bundle",
-            "version": "dev-master",
+            "version": "v0.2.1",
             "target-dir": "Tedivm/StashBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tedivm/TedivmStashBundle.git",
-                "reference": "03a675f55673195fa67924568584b8674c3afb98"
+                "reference": "v0.2.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tedivm/TedivmStashBundle/zipball/03a675f55673195fa67924568584b8674c3afb98",
-                "reference": "03a675f55673195fa67924568584b8674c3afb98",
+                "url": "https://api.github.com/repos/tedivm/TedivmStashBundle/zipball/v0.2.1",
+                "reference": "v0.2.1",
                 "shasum": ""
             },
             "require": {
@@ -2492,7 +2492,6 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
-        "tedivm/stash-bundle": 20,
         "ezsystems/ezpublish-kernel": 20,
         "ezsystems/demobundle": 20,
         "zetacomponents/archive": 20,
