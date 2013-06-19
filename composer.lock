@@ -839,16 +839,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.2.2",
+            "version": "v2.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "v2.2.2"
+                "reference": "v2.2.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/v2.2.2",
-                "reference": "v2.2.2",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/v2.2.3",
+                "reference": "v2.2.3",
                 "shasum": ""
             },
             "require": {
@@ -934,7 +934,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2013-06-02 13:03:09"
+            "time": "2013-06-19 12:09:49"
         },
         {
             "name": "tedivm/stash",
