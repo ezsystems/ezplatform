@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "0812437069b0aa783be964a2da46adfc",
+    "hash": "ba8e4755fb212fd58e8f5895e8dcd50d",
     "packages": [
         {
             "name": "doctrine/common",
@@ -2492,7 +2492,6 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
-        "tedivm/stash-bundle": 20,
         "ezsystems/ezpublish-kernel": 20,
         "ezsystems/demobundle": 20,
         "zetacomponents/archive": 20,
