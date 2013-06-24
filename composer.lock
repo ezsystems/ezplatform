@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "0c34955c35cddbdb2376d6c4ad58d474",
+    "hash": "0812437069b0aa783be964a2da46adfc",
     "packages": [
         {
             "name": "doctrine/common",
@@ -161,12 +161,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-kernel.git",
-                "reference": "fda877845e049fa4a06a8e81d6d8bb0639b37fe5"
+                "reference": "300e1896c9efd6799b0b93337f8e1d475b2c242d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/fda877845e049fa4a06a8e81d6d8bb0639b37fe5",
-                "reference": "fda877845e049fa4a06a8e81d6d8bb0639b37fe5",
+                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/300e1896c9efd6799b0b93337f8e1d475b2c242d",
+                "reference": "300e1896c9efd6799b0b93337f8e1d475b2c242d",
                 "shasum": ""
             },
             "require": {
@@ -176,7 +176,7 @@
                 "sensio/distribution-bundle": "2.2.*",
                 "symfony-cmf/routing": "1.0.*",
                 "symfony/symfony": "2.2.*",
-                "tedivm/stash-bundle": "@dev",
+                "tedivm/stash-bundle": "0.2.*",
                 "zetacomponents/archive": "@dev",
                 "zetacomponents/authentication": "@dev",
                 "zetacomponents/authentication-database-tiein": "@dev",
@@ -221,7 +221,7 @@
             ],
             "description": "eZ Publish API and kernel. This is the heart of eZ Publish 5.",
             "homepage": "http://share.ez.no",
-            "time": "2013-06-18 15:53:25"
+            "time": "2013-06-24 13:53:38"
         },
         {
             "name": "kriswallsmith/assetic",
@@ -468,7 +468,7 @@
         },
         {
             "name": "sensio/distribution-bundle",
-            "version": "v2.2.2",
+            "version": "v2.2.3",
             "target-dir": "Sensio/Bundle/DistributionBundle",
             "source": {
                 "type": "git",
@@ -514,17 +514,17 @@
         },
         {
             "name": "sensio/generator-bundle",
-            "version": "v2.2.2",
+            "version": "v2.2.3",
             "target-dir": "Sensio/Bundle/GeneratorBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioGeneratorBundle.git",
-                "reference": "v2.2.2"
+                "reference": "v2.2.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioGeneratorBundle/zipball/v2.2.2",
-                "reference": "v2.2.2",
+                "url": "https://api.github.com/repos/sensiolabs/SensioGeneratorBundle/zipball/v2.2.3",
+                "reference": "v2.2.3",
                 "shasum": ""
             },
             "require": {
@@ -784,17 +784,17 @@
         },
         {
             "name": "symfony/swiftmailer-bundle",
-            "version": "v2.2.2",
+            "version": "v2.2.3",
             "target-dir": "Symfony/Bundle/SwiftmailerBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/SwiftmailerBundle.git",
-                "reference": "v2.3.0-RC1"
+                "reference": "v2.3.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/SwiftmailerBundle/zipball/v2.3.0-RC1",
-                "reference": "v2.3.0-RC1",
+                "url": "https://api.github.com/repos/symfony/SwiftmailerBundle/zipball/v2.3.1",
+                "reference": "v2.3.1",
                 "shasum": ""
             },
             "require": {
@@ -839,16 +839,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.2.2",
+            "version": "v2.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "v2.2.2"
+                "reference": "v2.2.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/v2.2.2",
-                "reference": "v2.2.2",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/v2.2.3",
+                "reference": "v2.2.3",
                 "shasum": ""
             },
             "require": {
@@ -934,20 +934,20 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2013-06-02 13:03:09"
+            "time": "2013-06-19 12:09:49"
         },
         {
             "name": "tedivm/stash",
-            "version": "v0.10.4",
+            "version": "v0.10.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tedivm/Stash.git",
-                "reference": "v0.10.4"
+                "reference": "v0.10.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tedivm/Stash/zipball/v0.10.4",
-                "reference": "v0.10.4",
+                "url": "https://api.github.com/repos/tedivm/Stash/zipball/v0.10.5",
+                "reference": "v0.10.5",
                 "shasum": ""
             },
             "require": {
@@ -981,11 +981,11 @@
                 "scalability",
                 "sessions"
             ],
-            "time": "2013-06-13 07:13:33"
+            "time": "2013-06-21 04:09:01"
         },
         {
             "name": "tedivm/stash-bundle",
-            "version": "dev-master",
+            "version": "v0.2.1",
             "target-dir": "Tedivm/StashBundle",
             "source": {
                 "type": "git",

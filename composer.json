@@ -23,7 +23,7 @@
         "sensio/generator-bundle": "2.2.*",
         "symfony-cmf/routing": "1.0.*",
         "tedivm/stash-bundle": "@dev",
-        "ezsystems/ezpublish-kernel": "5.1.*@dev",
+        "ezsystems/ezpublish-kernel": "dev-master@dev",
         "ezsystems/demobundle": "@dev",
         "egulias/listeners-debug-command-bundle": "1.4.*",
         "zetacomponents/archive": "@dev",
