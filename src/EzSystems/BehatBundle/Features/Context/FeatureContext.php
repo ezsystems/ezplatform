@@ -32,7 +32,7 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
      *
      * @param array $parameters
      */
-    public function __construct(array $parameters)
+    public function __construct( array $parameters )
     {
         $this->parameters = $parameters;
     }
@@ -43,7 +43,7 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
      *
      * @param KernelInterface $kernel
      */
-    public function setKernel(KernelInterface $kernel)
+    public function setKernel( KernelInterface $kernel )
     {
         $this->kernel = $kernel;
     }
@@ -66,14 +66,14 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
         //
         // Using JS instead:
         // Note:
-        //     $session->executeScript("$('#site-wide-search').submit();");
+        //     $session->executeScript( "$('#site-wide-search').submit();" );
         // Gives:
         //     error:_call($('#site-wide-search').submit();)
         //     SyntaxError: missing ) after argument list
         //     Sahi.ex@http://<hostname>/_s_/spr/concat.js:3480
         //     @http://<hostname>/_s_/spr/concat.js:3267
         // Solution: Encapsulating code in a closure.
-        $session->executeScript("(function(){ $('#site-wide-search').submit(); })()");
+        $session->executeScript( "(function(){ $('#site-wide-search').submit(); })()" );
     }
 
     /**

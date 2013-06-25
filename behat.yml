@@ -1,14 +1,14 @@
 default:
-  extensions:
-    Behat\MinkExtension\Extension:
-      base_url: 'http://ezpublish.local'
-      goutte: ~
-      sahi: ~
+    extensions:
+        Behat\MinkExtension\Extension:
+            base_url: 'http://ezpublish.local'
+            goutte: ~
+            sahi: ~
 
-      javascript_session: sahi
-      browser_name: firefox
+            javascript_session: sahi
+            browser_name: firefox
 
-    Behat\Symfony2Extension\Extension:
-      kernel:
-        path: ezpublish/EzPublishKernel.php
-        class: EzPublishKernel
+        Behat\Symfony2Extension\Extension:
+            kernel:
+                path: ezpublish/EzPublishKernel.php
+                class: EzPublishKernel
