@@ -12,7 +12,6 @@ use Egulias\ListenersDebugCommandBundle\EguliasListenersDebugCommandBundle;
 use eZ\Bundle\EzPublishLegacyBundle\EzPublishLegacyBundle;
 use eZ\Bundle\EzPublishRestBundle\EzPublishRestBundle;
 use EzSystems\DemoBundle\EzSystemsDemoBundle;
-use EzSystems\AdminBundle\EzSystemsEzPublishAdminBundle;
 use EzSystems\BehatBundle\EzSystemsEzPublishBehatBundle;
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
@@ -50,7 +49,6 @@ class EzPublishKernel extends Kernel
             new EzSystemsDemoBundle(),
             new EzPublishRestBundle(),
             new SensioDistributionBundle(),
-            new EzSystemsEzPublishAdminBundle(),
         );
 
         switch ( $this->getEnvironment() )
