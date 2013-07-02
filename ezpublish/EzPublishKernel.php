@@ -12,6 +12,7 @@ use eZ\Bundle\EzPublishCoreBundle\EzPublishCoreBundle;
 use eZ\Bundle\EzPublishLegacyBundle\EzPublishLegacyBundle;
 use eZ\Bundle\EzPublishRestBundle\EzPublishRestBundle;
 use EzSystems\DemoBundle\EzSystemsDemoBundle;
+use EzSystems\BehatBundle\EzSystemsEzPublishBehatBundle;
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
@@ -48,12 +49,16 @@ class EzPublishKernel extends Kernel
             new EzPublishRestBundle(),
         );
 
-        if ( in_array( $this->getEnvironment(), array( 'dev', 'test' ), true ) )
+        switch ( $this->getEnvironment() )
         {
-            $bundles[] = new WebProfilerBundle();
-            $bundles[] = new SensioDistributionBundle();
-            $bundles[] = new SensioGeneratorBundle();
-            $bundles[] = new EguliasListenersDebugCommandBundle();
+            case "test":
+                $bundles[] = new EzSystemsEzPublishBehatBundle();
+                // No break, test also needs dev bundles
+            case "dev":
+                $bundles[] = new WebProfilerBundle();
+                $bundles[] = new SensioDistributionBundle();
+                $bundles[] = new SensioGeneratorBundle();
+                $bundles[] = new EguliasListenersDebugCommandBundle();
         }
 
         return $bundles;
