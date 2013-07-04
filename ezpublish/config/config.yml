@@ -3,13 +3,14 @@ imports:
     - { resource: security.yml }
 
 framework:
-    esi: ~
-    fragments: ~
+    esi:             ~
     translator:      { fallback: %locale_fallback% }
     # The secret parameter is used to generate CSRF tokens
     secret:          %secret%
-    router:          { resource: "%kernel.root_dir%/config/routing.yml" }
-    form:            true
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: %kernel.debug%
+    form:            ~
     csrf_protection:
         enabled: true
         # Note: changing this will break legacy extensions that rely on the default name to alter AJAX requests
@@ -17,16 +18,30 @@ framework:
         field_name: ezxform_token
     validation:      { enable_annotations: true }
     templating:      { engines: ['twig', 'eztpl'] } #assets_version: SomeVersionScheme
-    session: ~
+    trusted_proxies: ~
+    session:         ~
         # The session name defined here will be overridden by the one defined in your ezpublish.yml, for your siteaccess.
         # Defaut session name is "eZSESSID{siteaccess_hash}" (unique session name per siteaccess).
         # See ezpublish.yml.example for an example on how to configure this.
+    fragments:       ~
 
+# Twig Configuration
+twig:
+    debug:            %kernel.debug%
+    strict_variables: %kernel.debug%
+
+# Assetic Configuration
 assetic:
-    debug: %kernel.debug%
+    debug:          %kernel.debug%
     use_controller: false
+    bundles:        [ ]
+    #java: /usr/bin/java
     filters:
         cssrewrite: ~
+        #closure:
+        #    jar: %kernel.root_dir%/Resources/java/compiler.jar
+        #yui_css:
+        #    jar: %kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar
 
 ez_publish_legacy:
     enabled: true

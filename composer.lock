@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "e4a05ba59fcb38d8ce201f959f4dec5a",
+    "hash": "d59de992935c7c3be10c61cfc7362f57",
     "packages": [
         {
             "name": "doctrine/common",
@@ -124,12 +124,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/DemoBundle.git",
-                "reference": "9aee676269fc9536ab6692585b6493451571f171"
+                "reference": "98819b0a08a7f49a909860114a966f8586c66ad7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/DemoBundle/zipball/9aee676269fc9536ab6692585b6493451571f171",
-                "reference": "9aee676269fc9536ab6692585b6493451571f171",
+                "url": "https://api.github.com/repos/ezsystems/DemoBundle/zipball/98819b0a08a7f49a909860114a966f8586c66ad7",
+                "reference": "98819b0a08a7f49a909860114a966f8586c66ad7",
                 "shasum": ""
             },
             "require": {
@@ -153,7 +153,7 @@
                 }
             ],
             "description": "Demo bundle for eZ Publish Platform",
-            "time": "2013-05-17 08:21:07"
+            "time": "2013-06-26 12:59:24"
         },
         {
             "name": "ezsystems/ezpublish-kernel",
@@ -161,12 +161,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-kernel.git",
-                "reference": "528823330c5c0ff1a200b6330b2706e16d4fa5bc"
+                "reference": "303aec57b8606775cb35416d8778975106fc7ebe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/528823330c5c0ff1a200b6330b2706e16d4fa5bc",
-                "reference": "528823330c5c0ff1a200b6330b2706e16d4fa5bc",
+                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/303aec57b8606775cb35416d8778975106fc7ebe",
+                "reference": "303aec57b8606775cb35416d8778975106fc7ebe",
                 "shasum": ""
             },
             "require": {
@@ -176,7 +176,7 @@
                 "sensio/distribution-bundle": "2.2.*",
                 "symfony-cmf/routing": "1.0.*",
                 "symfony/symfony": "2.2.*",
-                "tedivm/stash-bundle": "@dev",
+                "tedivm/stash-bundle": "0.2.*",
                 "zetacomponents/archive": "@dev",
                 "zetacomponents/authentication": "@dev",
                 "zetacomponents/authentication-database-tiein": "@dev",
@@ -221,7 +221,7 @@
             ],
             "description": "eZ Publish API and kernel. This is the heart of eZ Publish 5.",
             "homepage": "http://share.ez.no",
-            "time": "2013-06-18 17:11:55"
+            "time": "2013-07-02 09:41:41"
         },
         {
             "name": "kriswallsmith/assetic",
@@ -468,7 +468,7 @@
         },
         {
             "name": "sensio/distribution-bundle",
-            "version": "v2.2.2",
+            "version": "v2.2.3",
             "target-dir": "Sensio/Bundle/DistributionBundle",
             "source": {
                 "type": "git",
@@ -514,17 +514,17 @@
         },
         {
             "name": "sensio/generator-bundle",
-            "version": "v2.2.2",
+            "version": "v2.2.3",
             "target-dir": "Sensio/Bundle/GeneratorBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioGeneratorBundle.git",
-                "reference": "v2.2.2"
+                "reference": "v2.2.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioGeneratorBundle/zipball/v2.2.2",
-                "reference": "v2.2.2",
+                "url": "https://api.github.com/repos/sensiolabs/SensioGeneratorBundle/zipball/v2.2.3",
+                "reference": "v2.2.3",
                 "shasum": ""
             },
             "require": {
@@ -562,16 +562,16 @@
         },
         {
             "name": "swiftmailer/swiftmailer",
-            "version": "v5.0.0",
+            "version": "v5.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "v5.0.0"
+                "reference": "v5.0.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/v5.0.0",
-                "reference": "v5.0.0",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/v5.0.1",
+                "reference": "v5.0.1",
                 "shasum": ""
             },
             "require": {
@@ -580,7 +580,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "5.0-dev"
+                    "dev-master": "5.1-dev"
                 }
             },
             "autoload": {
@@ -607,7 +607,7 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2013-04-30 17:35:30"
+            "time": "2013-06-17 13:32:32"
         },
         {
             "name": "symfony-cmf/routing",
@@ -784,17 +784,17 @@
         },
         {
             "name": "symfony/swiftmailer-bundle",
-            "version": "v2.2.2",
+            "version": "v2.2.3",
             "target-dir": "Symfony/Bundle/SwiftmailerBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/SwiftmailerBundle.git",
-                "reference": "v2.3.0-RC1"
+                "reference": "v2.3.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/SwiftmailerBundle/zipball/v2.3.0-RC1",
-                "reference": "v2.3.0-RC1",
+                "url": "https://api.github.com/repos/symfony/SwiftmailerBundle/zipball/v2.3.1",
+                "reference": "v2.3.1",
                 "shasum": ""
             },
             "require": {
@@ -938,16 +938,16 @@
         },
         {
             "name": "tedivm/stash",
-            "version": "v0.10.4",
+            "version": "v0.10.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tedivm/Stash.git",
-                "reference": "v0.10.4"
+                "reference": "v0.10.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tedivm/Stash/zipball/v0.10.4",
-                "reference": "v0.10.4",
+                "url": "https://api.github.com/repos/tedivm/Stash/zipball/v0.10.5",
+                "reference": "v0.10.5",
                 "shasum": ""
             },
             "require": {
@@ -981,21 +981,21 @@
                 "scalability",
                 "sessions"
             ],
-            "time": "2013-06-13 07:13:33"
+            "time": "2013-06-21 04:09:01"
         },
         {
             "name": "tedivm/stash-bundle",
-            "version": "v0.2.1",
+            "version": "v0.2.2",
             "target-dir": "Tedivm/StashBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tedivm/TedivmStashBundle.git",
-                "reference": "v0.2.1"
+                "reference": "v0.2.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tedivm/TedivmStashBundle/zipball/v0.2.1",
-                "reference": "v0.2.1",
+                "url": "https://api.github.com/repos/tedivm/TedivmStashBundle/zipball/v0.2.2",
+                "reference": "v0.2.2",
                 "shasum": ""
             },
             "require": {
@@ -1031,7 +1031,7 @@
                 "sessions",
                 "symfony"
             ],
-            "time": "2013-06-16 23:57:16"
+            "time": "2013-06-26 06:19:15"
         },
         {
             "name": "twig/extensions",
@@ -2527,28 +2527,31 @@
         },
         {
             "name": "behat/behat",
-            "version": "v2.4.5",
+            "version": "v2.4.6",
             "source": {
                 "type": "git",
-                "url": "git://github.com/Behat/Behat.git",
-                "reference": "v2.4.5"
+                "url": "https://github.com/Behat/Behat.git",
+                "reference": "v2.4.6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/Behat/Behat/archive/v2.4.5.zip",
-                "reference": "v2.4.5",
+                "url": "https://api.github.com/repos/Behat/Behat/zipball/v2.4.6",
+                "reference": "v2.4.6",
                 "shasum": ""
             },
             "require": {
-                "behat/gherkin": ">=2.2.4,<2.3-dev",
+                "behat/gherkin": ">=2.2.9,<2.3",
                 "php": ">=5.3.1",
-                "symfony/config": ">=2.0,<2.3-dev",
-                "symfony/console": ">=2.0,<2.3-dev",
-                "symfony/dependency-injection": ">=2.0,<2.3-dev",
-                "symfony/event-dispatcher": ">=2.0,<2.3-dev",
-                "symfony/finder": ">=2.0,<2.3-dev",
-                "symfony/translation": ">=2.0,<2.3-dev",
-                "symfony/yaml": ">=2.0,<2.3-dev"
+                "symfony/config": ">=2.0,<3.0",
+                "symfony/console": ">=2.0,<3.0",
+                "symfony/dependency-injection": ">=2.0,<3.0",
+                "symfony/event-dispatcher": ">=2.0,<3.0",
+                "symfony/finder": ">=2.0,<3.0",
+                "symfony/translation": ">=2.0,<3.0",
+                "symfony/yaml": ">=2.0,<3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">=3.7.19.0,<3.8"
             },
             "suggest": {
                 "behat/mink-extension": "for integration with Mink testing framework",
@@ -2587,7 +2590,7 @@
                 "Behat",
                 "Symfony2"
             ],
-            "time": "2013-01-27 14:45:41"
+            "time": "2013-06-06 10:46:48"
         },
         {
             "name": "behat/gherkin",
@@ -2762,16 +2765,16 @@
         },
         {
             "name": "behat/mink-extension",
-            "version": "v1.1.0",
+            "version": "v1.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/MinkExtension.git",
-                "reference": "v1.1.0"
+                "reference": "v1.1.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/MinkExtension/zipball/v1.1.0",
-                "reference": "v1.1.0",
+                "url": "https://api.github.com/repos/Behat/MinkExtension/zipball/v1.1.4",
+                "reference": "v1.1.4",
                 "shasum": ""
             },
             "require": {
@@ -2785,7 +2788,7 @@
             "type": "behat-extension",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "1.1.x-dev"
                 }
             },
             "autoload": {
@@ -2812,7 +2815,7 @@
                 "test",
                 "web"
             ],
-            "time": "2013-05-23 12:32:57"
+            "time": "2013-06-04 12:18:22"
         },
         {
             "name": "behat/mink-goutte-driver",
@@ -3021,33 +3024,33 @@
         },
         {
             "name": "behat/symfony2-extension",
-            "version": "v1.0.1",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/Symfony2Extension.git",
-                "reference": "v1.0.1"
+                "reference": "v1.0.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/Symfony2Extension/zipball/v1.0.1",
-                "reference": "v1.0.1",
+                "url": "https://api.github.com/repos/Behat/Symfony2Extension/zipball/v1.0.2",
+                "reference": "v1.0.2",
                 "shasum": ""
             },
             "require": {
-                "behat/behat": ">=2.4,<2.5-dev",
+                "behat/behat": ">=2.4.5,<2.5",
                 "php": ">=5.3.2",
-                "symfony/framework-bundle": ">=2.0,<2.3-dev"
+                "symfony/framework-bundle": ">=2.0,<3.0"
             },
             "require-dev": {
-                "behat/mink": ">=1.4,<2.5-dev",
-                "behat/mink-browserkit-driver": "1.0.*",
-                "behat/mink-extension": "1.0.*",
-                "symfony/symfony": ">=2.1,<2.3-dev"
+                "behat/mink": ">=1.4.3,<1.5",
+                "behat/mink-browserkit-driver": ">=1.0.4,<1.1",
+                "behat/mink-extension": ">=1.0.1,<1.1",
+                "symfony/symfony": ">=2.1,<3.0"
             },
             "type": "behat-extension",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0-dev"
+                    "dev-master": "1.0.x-dev"
                 }
             },
             "autoload": {
@@ -3073,7 +3076,7 @@
                 "framework",
                 "symfony"
             ],
-            "time": "2013-02-20 00:10:12"
+            "time": "2013-06-06 20:36:08"
         },
         {
             "name": "fabpot/goutte",

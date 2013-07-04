@@ -37,22 +37,7 @@
        2. Follow normal eZ Publish upgrade procedures for upgrading the distribution files and moving over extensions as found here:
           http://doc.ez.no/eZ-Publish/Upgrading/Upgrading-to-5.0/Upgrading-from-4.7-to-5.0
 
-4. Install the dependencies with [Composer](http://getcomposer.org).
-
-       Download composer and install dependencies by running:
-       ```bash
-       cd /<ezpublish-community-root-dir>/
-       curl -s http://getcomposer.org/installer | php
-       php composer.phar install --prefer-dist
-       ```
-
-       Note: Every time you want to get the latest updates of all your dependencies just run this command:
-       ```bash
-       cd /<ezpublish-community-root-dir>/
-       php composer.phar update --prefer-dist
-       ```
-
-5. Setup folder rights **For *NIX users**:
+4. Setup folder rights **For *NIX users**:
 
        One common issue is that the `ezpublish/cache`, `ezpublish/logs` and `ezpublish/config` directories **must be writable both by the web server and the command line user**.
        If your web server user is different from your command line user, you can run the following commands just once in your project to ensure that permissions will be set up properly.
@@ -100,6 +85,24 @@
        $ sudo find {ezpublish/{cache,logs,config},ezpublish_legacy/{design,extension,settings,var},web} -type f | sudo xargs chmod -R 666
        ```
 
+5. Install the dependencies with [Composer](http://getcomposer.org).
+
+       **Note: The following step will also install assets, if you prefer to install assets using hard copy or symlink
+               instead of default relative symlink, edit 'symfony-assets-install' setting in composer.json**
+
+       Download composer and install dependencies by running:
+       ```bash
+       cd /<ezpublish-community-root-dir>/
+       curl -s http://getcomposer.org/installer | php
+       php composer.phar install --prefer-dist
+       ```
+
+       Note: Every time you want to get the latest updates of all your dependencies just run this command:
+       ```bash
+       cd /<ezpublish-community-root-dir>/
+       php composer.phar update --prefer-dist
+       ```
+
 ## Configure the system
 
 1. *Optional* Upgrade Configuration: Generate eZ Publish 5 yml configuration
@@ -121,7 +124,11 @@
        * Copy `ezpublish/config/ezpublish.yml.example` to `ezpublish/config/ezpublish_prod.yml`
        * Edit `ezpublish/config/ezpublish_prod.yml`
 
-2. Dump your assets in your webroot:
+2. *Optional* Dump your assets in your webroot:
+
+      This step is optional as it is automatically done for you when you install / update vendors via composer which
+      you did a few steps up. However during development you will need to execute these (especially last one) to get
+      assets to be updated in prod environment, so they are kept here for reference.
 
        ```bash
        php ezpublish/console assets:install --symlink web
