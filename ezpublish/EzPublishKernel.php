@@ -13,7 +13,7 @@ use eZ\Bundle\EzPublishLegacyBundle\EzPublishLegacyBundle;
 use eZ\Bundle\EzPublishRestBundle\EzPublishRestBundle;
 use EzSystems\DemoBundle\EzSystemsDemoBundle;
 use EzSystems\BehatBundle\EzSystemsEzPublishBehatBundle;
-use Symfony\Component\HttpKernel\Kernel;
+use eZ\Bundle\EzPublishCoreBundle\Kernel;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\SecurityBundle\SecurityBundle;
 use Symfony\Bundle\TwigBundle\TwigBundle;
