@@ -21,6 +21,7 @@ use Symfony\Bundle\TwigBundle\TwigBundle;
 use Symfony\Bundle\MonologBundle\MonologBundle;
 use Symfony\Bundle\AsseticBundle\AsseticBundle;
 use Symfony\Bundle\WebProfilerBundle\WebProfilerBundle;
+use Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle;
 use Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle;
 use Sensio\Bundle\DistributionBundle\SensioDistributionBundle;
 use Tedivm\StashBundle\TedivmStashBundle;
@@ -41,6 +42,7 @@ class EzPublishKernel extends Kernel
             new SecurityBundle(),
             new TwigBundle(),
             new MonologBundle(),
+            new SwiftmailerBundle(),
             new AsseticBundle(),
             new TedivmStashBundle(),
             new EzPublishCoreBundle(),
