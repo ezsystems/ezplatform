@@ -124,12 +124,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/DemoBundle.git",
-                "reference": "133c1934b6a4f5ec1831e36481448141431ede32"
+                "reference": "218e76685519e413c17c109c6955388c665a6fcb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/DemoBundle/zipball/133c1934b6a4f5ec1831e36481448141431ede32",
-                "reference": "133c1934b6a4f5ec1831e36481448141431ede32",
+                "url": "https://api.github.com/repos/ezsystems/DemoBundle/zipball/218e76685519e413c17c109c6955388c665a6fcb",
+                "reference": "218e76685519e413c17c109c6955388c665a6fcb",
                 "shasum": ""
             },
             "require": {
@@ -153,7 +153,7 @@
                 }
             ],
             "description": "Demo bundle for eZ Publish Platform",
-            "time": "2013-07-04 12:03:59"
+            "time": "2013-07-08 08:15:21"
         },
         {
             "name": "ezsystems/ezpublish-kernel",
@@ -161,12 +161,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-kernel.git",
-                "reference": "00aa3059fcbb123124d17b0f69cd59fcd47b06c0"
+                "reference": "8e26e2d99d15f2d542f2b75a85e28b7203358f6e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/00aa3059fcbb123124d17b0f69cd59fcd47b06c0",
-                "reference": "00aa3059fcbb123124d17b0f69cd59fcd47b06c0",
+                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/8e26e2d99d15f2d542f2b75a85e28b7203358f6e",
+                "reference": "8e26e2d99d15f2d542f2b75a85e28b7203358f6e",
                 "shasum": ""
             },
             "require": {
@@ -221,7 +221,7 @@
             ],
             "description": "eZ Publish API and kernel. This is the heart of eZ Publish 5.",
             "homepage": "http://share.ez.no",
-            "time": "2013-07-07 20:31:07"
+            "time": "2013-07-08 08:53:49"
         },
         {
             "name": "kriswallsmith/assetic",
