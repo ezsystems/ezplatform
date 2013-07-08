@@ -24,6 +24,7 @@ framework:
         # Defaut session name is "eZSESSID{siteaccess_hash}" (unique session name per siteaccess).
         # See ezpublish.yml.example for an example on how to configure this.
     fragments:       ~
+    http_method_override: true
 
 # Twig Configuration
 twig:

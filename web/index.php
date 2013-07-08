@@ -2,6 +2,7 @@
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\ClassLoader\ApcClassLoader;
+use Symfony\Component\Debug\Debug;
 
 // Environment is taken from "ENVIRONMENT" variable, if not set, defaults to "prod"
 $environment = getenv( "ENVIRONMENT" );
@@ -30,6 +31,10 @@ require_once __DIR__ . '/../ezpublish/EzPublishCache.php';
 if ( ( $useDebugging = getenv( "USE_DEBUGGING" ) ) === false )
 {
     $useDebugging = $environment === "dev";
+}
+if ( $useDebugging )
+{
+    Debug::enable();
 }
 
 $kernel = new EzPublishKernel( $environment, $useDebugging );

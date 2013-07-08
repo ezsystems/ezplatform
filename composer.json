@@ -14,16 +14,17 @@
     },
     "require": {
         "php": ">=5.3.3",
-        "symfony/symfony": "2.2.*",
+        "symfony/symfony": "2.3.*",
         "twig/extensions": "1.0.*",
         "symfony/assetic-bundle": "2.3.*",
-        "symfony/swiftmailer-bundle": "2.2.*",
-        "symfony/monolog-bundle": "2.2.*",
-        "sensio/distribution-bundle": "2.2.*",
-        "sensio/generator-bundle": "2.2.*",
-        "symfony-cmf/routing": "1.0.*",
+        "symfony/swiftmailer-bundle": "2.3.*",
+        "symfony/monolog-bundle": "2.3.*",
+        "sensio/distribution-bundle": "2.3.*",
+        "sensio/generator-bundle": "2.3.*",
+        "incenteev/composer-parameter-handler": "~2.0",
+        "symfony-cmf/routing": "1.1.*@beta",
         "tedivm/stash-bundle": "0.2.*",
-        "ezsystems/ezpublish-kernel": "dev-master@dev",
+        "ezsystems/ezpublish-kernel": "dev-master",
         "ezsystems/demobundle": "@dev",
         "egulias/listeners-debug-command-bundle": "1.4.*",
         "zetacomponents/archive": "@dev",
@@ -56,6 +57,7 @@
     },
     "scripts": {
         "post-install-cmd": [
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
@@ -64,6 +66,7 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
         ],
         "post-update-cmd": [
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
@@ -82,6 +85,9 @@
         "ezpublish-legacy-dir": "ezpublish_legacy",
         "symfony-assets-install_comment_": "One of 'symlink', 'relative' (symlinks) or 'hard'",
         "symfony-assets-install": "relative",
+        "incenteev-parameters": {
+            "file": "ezpublish/config/parameters.yml"
+        },
         "branch-alias": {
             "dev-master": "5.2.x-dev"
         }
