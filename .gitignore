@@ -3,6 +3,7 @@
 /nbproject/
 /.idea/
 /ezpublish/cache/
+/ezpublish/logs/
 /ezpublish_legacy
 /ezpublish/config/parameters.yml
 /ezpublish/config/ezpublish_prod.yml
