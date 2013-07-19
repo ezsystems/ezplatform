@@ -2,6 +2,8 @@
 .php~
 /nbproject/
 /.idea/
+/bin/behat
+/bin/phpunit
 /ezpublish/cache/
 /ezpublish_legacy
 /ezpublish/config/parameters.yml
