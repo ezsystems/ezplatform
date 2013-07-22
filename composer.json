@@ -9,6 +9,12 @@
             "homepage": "https://github.com/ezsystems/ezpublish-community/contributors"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/lolautruche/Archive.git"
+        }
+    ],
     "autoload": {
         "psr-0": { "": "src/" }
     },
@@ -27,7 +33,7 @@
         "ezsystems/ezpublish-kernel": "dev-master",
         "ezsystems/demobundle": "@dev",
         "egulias/listeners-debug-command-bundle": "1.4.*",
-        "zetacomponents/archive": "@dev",
+        "zetacomponents/archive": "dev-fixUnpackPHP55",
         "zetacomponents/authentication": "@dev",
         "zetacomponents/authentication-database-tiein": "@dev",
         "zetacomponents/cache": "@dev",

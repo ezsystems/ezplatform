@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "6ee26496dd9e4f623b21a02f0bd2d00c",
+    "hash": "1a9e875c195d72696f1987b1554eb787",
     "packages": [
         {
             "name": "doctrine/common",
@@ -59,7 +59,7 @@
                 {
                     "name": "Johannes Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "https://github.com/schmittjoh",
+                    "homepage": "http://jmsyst.com",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -161,12 +161,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-kernel.git",
-                "reference": "73bca3b85a24c172f6e2e21b9e31a70910fee812"
+                "reference": "736e110b659bdc2f3bb2f54435793c4656bddf59"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/73bca3b85a24c172f6e2e21b9e31a70910fee812",
-                "reference": "73bca3b85a24c172f6e2e21b9e31a70910fee812",
+                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/736e110b659bdc2f3bb2f54435793c4656bddf59",
+                "reference": "736e110b659bdc2f3bb2f54435793c4656bddf59",
                 "shasum": ""
             },
             "require": {
@@ -222,7 +222,7 @@
             ],
             "description": "eZ Publish API and kernel. This is the heart of eZ Publish 5.",
             "homepage": "http://share.ez.no",
-            "time": "2013-07-19 18:32:32"
+            "time": "2013-07-22 14:01:34"
         },
         {
             "name": "incenteev/composer-parameter-handler",
@@ -724,16 +724,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/AsseticBundle.git",
-                "reference": "v2.3.0-beta1"
+                "reference": "v2.3.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/AsseticBundle/zipball/v2.3.0-beta1",
-                "reference": "v2.3.0-beta1",
+                "url": "https://api.github.com/repos/symfony/AsseticBundle/zipball/v2.3.0",
+                "reference": "v2.3.0",
                 "shasum": ""
             },
             "require": {
-                "kriswallsmith/assetic": ">=1.1-beta1,<1.2",
+                "kriswallsmith/assetic": ">=1.1,<2.0",
                 "php": ">=5.3.0",
                 "symfony/framework-bundle": ">=2.1,<3.0"
             },
@@ -778,7 +778,7 @@
                 "compression",
                 "minification"
             ],
-            "time": "2013-05-13 15:39:47"
+            "time": "2013-05-16 05:32:23"
         },
         {
             "name": "symfony/icu",
@@ -1244,16 +1244,16 @@
         },
         {
             "name": "zetacomponents/archive",
-            "version": "dev-master",
+            "version": "dev-fixUnpackPHP55",
             "source": {
                 "type": "git",
-                "url": "https://github.com/zetacomponents/Archive.git",
-                "reference": "4b2c4a1c24b1e1f831b015c8ff72181aece7b421"
+                "url": "https://github.com/lolautruche/Archive.git",
+                "reference": "bdfa77cde862a92bc42a11b8d21ba21b177acc4f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zetacomponents/Archive/zipball/4b2c4a1c24b1e1f831b015c8ff72181aece7b421",
-                "reference": "4b2c4a1c24b1e1f831b015c8ff72181aece7b421",
+                "url": "https://api.github.com/repos/lolautruche/Archive/zipball/bdfa77cde862a92bc42a11b8d21ba21b177acc4f",
+                "reference": "bdfa77cde862a92bc42a11b8d21ba21b177acc4f",
                 "shasum": ""
             },
             "require": {
@@ -1268,7 +1268,6 @@
                     "src"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "Apache-2.0"
             ],
@@ -1306,7 +1305,10 @@
             ],
             "description": "The component allows you to create, modify, and extract archive files of  various formats.  The currently supported archives formats are Tar (with  the flavours: ustar, v7, pax, and gnu) and Zip.",
             "homepage": "https://github.com/zetacomponents",
-            "time": "2012-05-21 09:54:03"
+            "support": {
+                "source": "https://github.com/lolautruche/Archive/tree/fixUnpackPHP55"
+            },
+            "time": "2013-07-22 13:15:50"
         },
         {
             "name": "zetacomponents/authentication",
