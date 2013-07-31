@@ -161,12 +161,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-kernel.git",
-                "reference": "v2013.07.1"
+                "reference": "a0fe0587b5c9a1f51f38b1862d6a993b081fc8b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/v2013.07.1",
-                "reference": "v2013.07.1",
+                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/a0fe0587b5c9a1f51f38b1862d6a993b081fc8b6",
+                "reference": "a0fe0587b5c9a1f51f38b1862d6a993b081fc8b6",
                 "shasum": ""
             },
             "require": {
@@ -222,7 +222,7 @@
             ],
             "description": "eZ Publish API and kernel. This is the heart of eZ Publish 5.",
             "homepage": "http://share.ez.no",
-            "time": "2013-07-30 10:23:45"
+            "time": "2013-07-30 15:52:19"
         },
         {
             "name": "incenteev/composer-parameter-handler",
