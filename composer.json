@@ -46,7 +46,11 @@
         "zetacomponents/persistent-object": "@dev",
         "zetacomponents/php-generator": "@dev",
         "zetacomponents/signal-slot": "@dev",
-        "zetacomponents/system-information": "@dev"
+        "zetacomponents/system-information": "@dev",
+        "hautelook/templated-uri-bundle": "~1.0"
+    },
+    "conflict": {
+        "symfony/symfony": "2.3.9"
     },
     "require-dev": {
         "behat/behat": "2.5.*",
