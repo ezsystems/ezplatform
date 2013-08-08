@@ -19,6 +19,7 @@ framework:
     validation:      { enable_annotations: true }
     templating:      { engines: ['twig', 'eztpl'] } #assets_version: SomeVersionScheme
     trusted_proxies: ~
+    trusted_hosts: []
     session:         ~
         # The session name defined here will be overridden by the one defined in your ezpublish.yml, for your siteaccess.
         # Defaut session name is "eZSESSID{siteaccess_hash}" (unique session name per siteaccess).
