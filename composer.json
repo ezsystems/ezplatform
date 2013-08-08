@@ -90,7 +90,7 @@
         "symfony-app-dir": "ezpublish",
         "symfony-web-dir": "web",
         "ezpublish-legacy-dir": "ezpublish_legacy",
-        "symfony-assets-install_comment_": "One of 'symlink', 'relative' (symlinks) or 'hard'",
+        "_symfony-assets-install_comment_": "One of 'symlink', 'relative' (symlinks) or 'hard'",
         "symfony-assets-install": "relative",
         "incenteev-parameters": {
             "file": "ezpublish/config/parameters.yml"
