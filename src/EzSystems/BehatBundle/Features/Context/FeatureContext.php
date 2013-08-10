@@ -13,6 +13,7 @@ namespace EzSystems\BehatBundle\Features\Context;
 
 use Behat\Behat\Context\Step;
 use Behat\MinkExtension\Context\MinkContext;
+use Behat\Mink\Exception\UnsupportedDriverActionException as MinkUnsupportedDriverActionException;
 use Behat\Symfony2Extension\Context\KernelAwareInterface;
 use PHPUnit_Framework_Assert as Assertion;
 use Symfony\Component\HttpKernel\KernelInterface;
@@ -36,6 +37,11 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
      * @var array Array to map identifier to urls, should be set by child classes.
      */
     protected $pageIdentifierMap = array();
+
+    /**
+     * @var string
+     */
+    private $priorSearchPhrase = '';
 
     /**
      * Initializes context with parameters from behat.yml.
@@ -83,7 +89,19 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
         //     Sahi.ex@http://<hostname>/_s_/spr/concat.js:3480
         //     @http://<hostname>/_s_/spr/concat.js:3267
         // Solution: Encapsulating code in a closure.
-        $session->executeScript( "(function(){ $('#site-wide-search').submit(); })()" );
+        // @todo submit support where recently added to MinkCoreDriver, should us it when the drivers we use support it
+        try
+        {
+            $session->executeScript( "(function(){ $('#site-wide-search').submit(); })()" );
+        }
+        catch ( MinkUnsupportedDriverActionException $e )
+        {
+            // For drivers not able to do javascript we assume we can click the hidden button
+            $searchField->getParent()->findButton( 'SearchButton' )->click();
+        }
+
+        // Store for reuse in result page
+        $this->priorSearchPhrase = $searchPhrase;
     }
 
     /**
@@ -100,6 +118,14 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
             $currentUrl,
             "Unexpected URL of the current site. Expected: '$expectedUrl'. Actual: '$currentUrl'."
         );
+    }
+
+    /**
+     * @Then /^(?:|I )want dump of (?:|the )page$/
+     */
+    public function iWantDumpOfThePage()
+    {
+        echo $this->getSession()->getPage()->getContent();
     }
 
     /**
@@ -159,7 +185,7 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
         );
 
         Assertion::assertEquals(
-            'Search for "welcome" returned 1 matches',
+            "Search for \"{$this->priorSearchPhrase}\" returned {$arg1} matches",
             $resultCountElement->getText()
         );
     }

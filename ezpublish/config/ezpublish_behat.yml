@@ -1,0 +1,35 @@
+ezpublish:
+    siteaccess:
+        # Available siteaccesses
+        list:
+            - behat_site
+            - behat_site_admin
+        # Siteaccess groups. Use them to group common settings.
+        groups:
+            behat_group: [behat_site, behat_site_admin]
+        default_siteaccess: behat_site
+        match:
+            Map\URI:
+                behat_site_admin: behat_site_admin
+            Map\Host:
+                localhost: behat_site
+    system:
+        behat_group:
+            database:
+                type: mysql
+                user: root
+                server: localhost
+                database_name: behattestdb
+            languages: [eng-GB]
+            var_dir: var/behat_site
+        behat_site:
+            legacy_mode: false
+        behat_site_admin:
+            legacy_mode: true
+
+stash:
+    caches:
+        default:
+            handlers: [ FileSystem ]
+            inMemory: true
+            registerDoctrineAdapter: false

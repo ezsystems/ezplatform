@@ -1,7 +1,7 @@
 default:
     extensions:
         Behat\MinkExtension\Extension:
-            base_url: 'http://ezpublish.local'
+            base_url: 'http://localhost'
             goutte: ~
             sahi: ~
 
@@ -10,5 +10,8 @@ default:
 
         Behat\Symfony2Extension\Extension:
             kernel:
+                bootstrap: ezpublish/autoload.php
                 path: ezpublish/EzPublishKernel.php
                 class: EzPublishKernel
+                env: behat
+                debug: true

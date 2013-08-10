@@ -1,0 +1,11 @@
+<browserTypes>
+	<browserType>
+		<name>firefox</name>
+		<displayName>Firefox</displayName>
+		<icon>firefox.png</icon>
+		<path>/usr/local/bin/firefox</path>
+		<options>-profile "$userDir/browser/ff/profiles/sahi$threadNo" -no-remote</options>
+		<processName>firefox</processName>
+		<capacity>5</capacity>
+	</browserType>
+</browserTypes>
