@@ -22,9 +22,19 @@ use Symfony\Component\HttpKernel\KernelInterface;
  */
 class FeatureContext extends MinkContext implements KernelAwareInterface
 {
+    /**
+     * @var \Symfony\Component\HttpKernel\KernelInterface
+     */
     private $kernel;
+
+    /**
+     * @var array
+     */
     private $parameters;
 
+    /**
+     * @var array Array to map identifier to urls, should be set by child classes.
+     */
     protected $pageIdentifierMap = array();
 
     /**
