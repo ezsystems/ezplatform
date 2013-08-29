@@ -41,6 +41,7 @@
         "zetacomponents/console-tools": "@dev",
         "zetacomponents/database": "@dev",
         "zetacomponents/debug": "@dev",
+        "zetacomponents/event-log": "@dev",
         "zetacomponents/feed": "@dev",
         "zetacomponents/image-conversion": "@dev",
         "zetacomponents/mail": "@dev",
