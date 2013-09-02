@@ -1,0 +1,58 @@
+<VirtualHost *:80>
+    ServerName localhost
+    DirectoryIndex index.php
+    DocumentRoot %basedir%/web
+
+    #LogLevel debug
+
+    SetEnv ENVIRONMENT "behat"
+    SetEnv USE_DEBUGGING 1
+    #SetEnv USE_HTTP_CACHE 1
+    #SetEnv TRUSTED_PROXIES "127.0.0.1"
+
+    <Directory %basedir%/web>
+        Options FollowSymLinks
+        AllowOverride None
+    </Directory>
+
+    <IfModule mod_rewrite.c>
+        RewriteEngine On
+
+        # CVE-2012-6432
+        RewriteRule ^/_internal - [R=403,L]
+
+        # Uncomment in FastCGI mode, to get basic auth working.
+        RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+        RewriteCond %{REQUEST_URI} ^/php5.fastcgi(.*)
+        RewriteRule . - [L]
+
+        # v1 rest API is on Legacy
+        RewriteRule ^/api/[^/]+/v1/ /index_rest.php [L]
+
+        # If using cluster, uncomment the following two lines:
+        #RewriteRule ^/var/([^/]+/)?storage/images(-versioned)?/.* /index_cluster.php [L]
+        #RewriteRule ^/var/([^/]+/)?cache/(texttoimage|public)/.* /index_cluster.php [L]
+
+        RewriteRule ^/var/([^/]+/)?storage/images(-versioned)?/.* - [L]
+        RewriteRule ^/var/([^/]+/)?cache/(texttoimage|public)/.* - [L]
+        RewriteRule ^/design/[^/]+/(stylesheets|images|javascript|fonts)/.* - [L]
+        RewriteRule ^/share/icons/.* - [L]
+        RewriteRule ^/extension/[^/]+/design/[^/]+/(stylesheets|flash|images|lib|javascripts?)/.* - [L]
+        RewriteRule ^/packages/styles/.+/(stylesheets|images|javascript)/[^/]+/.* - [L]
+        RewriteRule ^/packages/styles/.+/thumbnail/.* - [L]
+        RewriteRule ^/var/storage/packages/.* - [L]
+
+        RewriteRule ^/favicon\.ico - [L]
+        RewriteRule ^/design/standard/images/favicon\.ico - [L]
+
+        # Following rule is needed to correctly display assets from eZ Publish5 / Symfony bundles
+        RewriteRule ^/bundles/ - [L]
+
+        # Additional Assetic rules for eZ Publish 5.1 / 2013.4 and higher:
+        RewriteRule ^/css/.*\.css - [L]
+        RewriteRule ^/js/.*\.js - [L]
+
+        RewriteRule .* /index.php
+    </IfModule>
+</VirtualHost>

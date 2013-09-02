@@ -54,6 +54,7 @@ class EzPublishKernel extends Kernel
         switch ( $this->getEnvironment() )
         {
             case "test":
+            case "behat":
                 $bundles[] = new EzSystemsEzPublishBehatBundle();
                 // No break, test also needs dev bundles
             case "dev":

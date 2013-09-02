@@ -1,0 +1,14 @@
+<IfModule mod_fastcgi.c>
+        Alias /php5.fastcgi /var/lib/apache2/fastcgi/php5.fastcgi
+        AddHandler php-script .php
+        FastCGIExternalServer /var/lib/apache2/fastcgi/php5.fastcgi -socket /tmp/php-fpm.sock -idle-timeout 610
+        Action php-script /php5.fastcgi virtual
+
+        # Forbid access to the fastcgi handler.
+        <Directory /var/lib/apache2/fastcgi>
+                <Files php5.fastcgi>
+                        Order deny,allow
+                        Allow from all
+                </Files>
+        </Directory>
+</IfModule>

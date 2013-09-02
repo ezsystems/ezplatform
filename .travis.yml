@@ -1,0 +1,36 @@
+language: php
+
+# run tests on php 5.4 only and let unit / integration tests deal with php differences
+php:
+  - 5.4
+
+# list of paths/bundle to execute
+env:
+  - TEST_SUIT="@eZDemoBundle"
+#  - TEST_SUIT="vendor/ezsystems/demobundle/EzSystems/DemoBundle/Features/"
+
+
+# test only master (+ Pull requests)
+branches:
+  only:
+    - master
+
+# install packages
+before_install:
+  - ./bin/.travis/behat_before_install.sh
+
+# setup requirements for running tests
+before_script:
+  - ./bin/.travis/behat_before_script1.sh
+  - ./bin/.travis/behat_before_script2.sh
+
+# execute behat as the script command
+script: "bin/behat $TEST_SUIT"
+
+# disable mail notifications
+notification:
+  email: false
+
+# reduce depth (history) of git checkout
+git:
+  depth: 30
