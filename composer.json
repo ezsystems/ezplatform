@@ -28,11 +28,11 @@
         "sensio/distribution-bundle": "2.3.*",
         "sensio/generator-bundle": "2.3.*",
         "incenteev/composer-parameter-handler": "~2.0",
-        "symfony-cmf/routing": "1.1.*@beta",
+        "symfony-cmf/routing": "1.1.*@rc",
         "tedivm/stash-bundle": "0.2.*",
-        "ezsystems/ezpublish-kernel": "dev-master",
+        "ezsystems/ezpublish-kernel": "5.2.*@dev",
         "ezsystems/demobundle": "@dev",
-        "egulias/listeners-debug-command-bundle": "1.4.*",
+        "egulias/listeners-debug-command-bundle": "1.6.*",
         "zetacomponents/archive": "dev-fixUnpackPHP55",
         "zetacomponents/authentication": "@dev",
         "zetacomponents/authentication-database-tiein": "@dev",
@@ -53,14 +53,13 @@
         "zetacomponents/system-information": "@dev"
     },
     "require-dev": {
-        "behat/behat": "2.4.*",
+        "behat/behat": "2.5.*",
         "behat/symfony2-extension": "*",
         "behat/sahi-client": "dev-master as 1.1.1",
         "behat/mink-extension": "*",
         "behat/mink-goutte-driver": "*",
         "behat/mink-selenium-driver": "*",
         "behat/mink-sahi-driver": "*",
-        "symfony/icu": "~1.0",
         "phpunit/phpunit": "3.7.*"
     },
     "scripts": {
