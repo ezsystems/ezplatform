@@ -3,9 +3,17 @@
 ## What is eZ Publish?
 **eZ Publish 5** is a professional PHP CMS (content management system).
 
-It is database, platform and browser independent. Because it is
-browser based it can be used from anywhere as long as you have
-access to the Internet.
+It strives to be database, platform and browser independent. Because it is
+browser based it can be used from anywhere, on any device, as long as you have
+access to the Internet. One of it's unique features is how you can model
+content without having to change your database. It allows you to effectively
+define model structures using fields, trees and relations, and has a very
+flexible permission system which allows you to define who has access to
+perform actions under which limiting factors.
+
+eZ Publish exists in two versions; this, the community version is available under
+the GPLv2 license, while several extended versions for enterprise & business is available
+under a more permissive business license, see [ez.no](http://ez.no/) for more info.
 
 ## Install, Upgrade and Getting started
 For installation & upgrade instructions, see [INSTALL.md](https://github.com/ezsystems/ezpublish-community/blob/master/INSTALL.md).
@@ -19,17 +27,18 @@ plus the [regular eZ Publish 4 ones](http://doc.ez.no/eZ-Publish/Technical-manua
 Minimum PHP version is 5.3.3, but 5.4.x is recommended.
 
 ## Backwards compatibility
-eZ Publish 5 is **100% data compatible** with version 4 (the same database can be used).
+eZ Publish 5 is **100% data compatible** with version 4, as in the same
+database can be used by following the [normal](http://doc.ez.no/eZ-Publish/Upgrading) upgrade path.
 
 ## Architecture
 
 ### Public API
 **eZ Publish 5** relies on a flexible, layered, service oriented API.
-The Public API consistst of the Model (the M in MVC) and all
+The Public API consists of the Model (the M in MVC) and all
 apis related to operations available for this Model. More info can be found
-in /vendor/ezsystems/ezpublish/Readme.md after installation.
+in /vendor/ezsystems/ezpublish-kernel/Readme.md after installation.
 
-### HMVC
+### MVC
 eZ Publish 5 is built on top of **[Symfony2](http://symfony.com)** full stack framework, taking advantage of
 every component provided, including all its **Hierarchical Model View Controller** (aka *HMVC*) power.
 
