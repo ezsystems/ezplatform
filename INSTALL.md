@@ -90,6 +90,9 @@
        **Note: The following step will also install assets, if you prefer to install assets using hard copy or symlink
                instead of default relative symlink, edit 'symfony-assets-install' setting in composer.json**
 
+       **Dev: For dev use change '--prefer-dist' for '--prefer-source' to get full git clones
+              and add '--dev' to get phpunit and behat installed.**
+
        Download composer and install dependencies by running:
        ```bash
        cd /<ezpublish-community-root-dir>/
@@ -97,7 +100,7 @@
        php composer.phar install --prefer-dist
        ```
 
-       Note: Every time you want to get the latest updates of all your dependencies just run this command:
+       Update note: Every time you want to get the latest updates of all your dependencies just run this command:
        ```bash
        cd /<ezpublish-community-root-dir>/
        php composer.phar update --prefer-dist
