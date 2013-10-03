@@ -26,6 +26,7 @@
         "tedivm/stash-bundle": "0.2.*",
         "ezsystems/ezpublish-kernel": "5.2.*@dev",
         "ezsystems/demobundle": "@dev",
+        "ezsystems/comments-bundle": "@dev",
         "egulias/listeners-debug-command-bundle": "1.6.*",
         "zetacomponents/archive": "@dev",
         "zetacomponents/authentication": "@dev",
