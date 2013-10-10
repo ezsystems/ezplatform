@@ -26,6 +26,7 @@ use Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle;
 use Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle;
 use Sensio\Bundle\DistributionBundle\SensioDistributionBundle;
 use Tedivm\StashBundle\TedivmStashBundle;
+use WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle;
 
 class EzPublishKernel extends Kernel
 {
@@ -50,7 +51,8 @@ class EzPublishKernel extends Kernel
             new EzPublishLegacyBundle(),
             new EzSystemsDemoBundle(),
             new EzPublishRestBundle(),
-            new EzSystemsCommentsBundle()
+            new EzSystemsCommentsBundle(),
+            new WhiteOctoberPagerfantaBundle(),
         );
 
         switch ( $this->getEnvironment() )
