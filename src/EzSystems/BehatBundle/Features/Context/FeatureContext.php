@@ -15,6 +15,7 @@ use Behat\Behat\Context\Step;
 use Behat\MinkExtension\Context\MinkContext;
 use Behat\Mink\Exception\UnsupportedDriverActionException as MinkUnsupportedDriverActionException;
 use Behat\Symfony2Extension\Context\KernelAwareInterface;
+use eZ\Publish\Core\MVC\Symfony\SiteAccess;
 use PHPUnit_Framework_Assert as Assertion;
 use Symfony\Component\HttpKernel\KernelInterface;
 
@@ -23,6 +24,8 @@ use Symfony\Component\HttpKernel\KernelInterface;
  */
 class FeatureContext extends MinkContext implements KernelAwareInterface
 {
+    const DEFAULT_SITEACCESS_NAME = 'behat_site';
+
     /**
      * @var \Symfony\Component\HttpKernel\KernelInterface
      */
@@ -62,6 +65,23 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
     public function setKernel( KernelInterface $kernel )
     {
         $this->kernel = $kernel;
+        $this->kernel->getContainer()->set( 'ezpublish.siteaccess', $this->generateSiteAccess() );
+    }
+
+    /**
+     * Generates the siteaccess
+     *
+     * @return \eZ\Publish\Core\MVC\Symfony\SiteAccess
+     */
+    protected function generateSiteAccess()
+    {
+        $siteAccessName = getenv( 'EZPUBLISH_SITEACCESS' );
+        if ( !$siteAccessName )
+        {
+            $siteAccessName = static::DEFAULT_SITEACCESS_NAME;
+        }
+
+        return new SiteAccess( $siteAccessName, 'cli' );
     }
 
     /**
