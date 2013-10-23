@@ -12,6 +12,8 @@
 namespace EzSystems\BehatBundle\Features\Context;
 
 use Behat\Behat\Context\Step;
+use Behat\Behat\Event\OutlineExampleEvent;
+use Behat\Behat\Event\ScenarioEvent;
 use Behat\MinkExtension\Context\MinkContext;
 use Behat\Mink\Exception\UnsupportedDriverActionException as MinkUnsupportedDriverActionException;
 use Behat\Symfony2Extension\Context\KernelAwareInterface;
@@ -66,12 +68,17 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
     public function setKernel( KernelInterface $kernel )
     {
         $this->kernel = $kernel;
-        $container = $this->kernel->getContainer();
+    }
+
+    /**
+     * @BeforeScenario
+     *
+     * @param ScenarioEvent|OutlineExampleEvent $event
+     */
+    public function prepareFeature( $event )
+    {
         // Inject a properly generated siteaccess if the kernel is booted, and thus container is available.
-        if ( $container instanceof ContainerInterface )
-        {
-            $container->set( 'ezpublish.siteaccess', $this->generateSiteAccess() );
-        }
+        $this->kernel->getContainer()->set( 'ezpublish.siteaccess', $this->generateSiteAccess() );
     }
 
     /**
