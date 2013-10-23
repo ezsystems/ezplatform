@@ -17,6 +17,7 @@ use Behat\Mink\Exception\UnsupportedDriverActionException as MinkUnsupportedDriv
 use Behat\Symfony2Extension\Context\KernelAwareInterface;
 use eZ\Publish\Core\MVC\Symfony\SiteAccess;
 use PHPUnit_Framework_Assert as Assertion;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
 
 /**
@@ -65,7 +66,12 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
     public function setKernel( KernelInterface $kernel )
     {
         $this->kernel = $kernel;
-        $this->kernel->getContainer()->set( 'ezpublish.siteaccess', $this->generateSiteAccess() );
+        $container = $this->kernel->getContainer();
+        // Inject a properly generated siteaccess if the kernel is booted, and thus container is available.
+        if ( $container instanceof ContainerInterface )
+        {
+            $container->set( 'ezpublish.siteaccess', $this->generateSiteAccess() );
+        }
     }
 
     /**
