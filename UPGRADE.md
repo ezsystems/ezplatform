@@ -1,6 +1,6 @@
 # Upgrade instructions
 
-For installation procedures, please go to our online documentation:
+For upgrade procedures, please go to our online documentation:
 * Go to https://confluence.ez.no/display/MAIN
 * Click on the version you have
 * Go to "Installation and Upgrade Guides"
