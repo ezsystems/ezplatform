@@ -23,7 +23,7 @@
         "sensio/generator-bundle": "2.3.*",
         "incenteev/composer-parameter-handler": "~2.0",
         "tedivm/stash-bundle": "0.2.*",
-        "ezsystems/ezpublish-kernel": "5.2.*@dev",
+        "ezsystems/ezpublish-kernel": "5.3.*@dev",
         "ezsystems/demobundle": "@dev",
         "ezsystems/comments-bundle": "@dev",
         "egulias/listeners-debug-command-bundle": "1.6.*",
@@ -91,7 +91,7 @@
             "file": "ezpublish/config/parameters.yml"
         },
         "branch-alias": {
-            "dev-master": "5.2.x-dev"
+            "dev-master": "5.3.x-dev"
         }
     }
 }
