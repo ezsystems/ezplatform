@@ -32,7 +32,9 @@ security:
 
         ezpublish_front:
             pattern: ^/
-            ezpublish: true
+            anonymous: ~
+            form_login: ~
+            logout: ~
 
 #        secured_area:
 #            pattern:    ^/demo/secured/
