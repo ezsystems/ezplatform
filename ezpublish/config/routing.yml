@@ -7,3 +7,8 @@ _ezpublishLegacyRoutes:
 _ezpublishRestRoutes:
     resource: "@EzPublishRestBundle/Resources/config/routing.yml"
     prefix:   %ezpublish_rest.path_prefix%
+
+_ezpublishRestOptionsRoutes:
+    resource: "@EzPublishRestBundle/Resources/config/routing.yml"
+    prefix: %ezpublish_rest.path_prefix%
+    type: rest_options
