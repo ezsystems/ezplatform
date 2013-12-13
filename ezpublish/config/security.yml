@@ -33,7 +33,8 @@ security:
         ezpublish_front:
             pattern: ^/
             anonymous: ~
-            form_login: ~
+            form_login:
+                require_previous_session: false
             logout: ~
 
 #        secured_area:
