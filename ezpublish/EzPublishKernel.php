@@ -27,6 +27,7 @@ use Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle;
 use Sensio\Bundle\DistributionBundle\SensioDistributionBundle;
 use Tedivm\StashBundle\TedivmStashBundle;
 use WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle;
+use Nelmio\CorsBundle\NelmioCorsBundle;
 
 class EzPublishKernel extends Kernel
 {
@@ -53,6 +54,7 @@ class EzPublishKernel extends Kernel
             new EzPublishRestBundle(),
             new EzSystemsCommentsBundle(),
             new WhiteOctoberPagerfantaBundle(),
+            new NelmioCorsBundle(),
         );
 
         switch ( $this->getEnvironment() )
