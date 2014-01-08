@@ -1,3 +1,11 @@
+login:
+    pattern:   /login
+    defaults:  { _controller: ezpublish.security.controller:loginAction }
+login_check:
+    pattern:   /login_check
+logout:
+    pattern:   /logout
+
 _ezpublishRoutes:
     resource: "@EzPublishCoreBundle/Resources/config/routing/internal.yml"
 
