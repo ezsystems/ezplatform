@@ -28,6 +28,7 @@ use Sensio\Bundle\DistributionBundle\SensioDistributionBundle;
 use Tedivm\StashBundle\TedivmStashBundle;
 use WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle;
 use Nelmio\CorsBundle\NelmioCorsBundle;
+use Hautelook\TemplatedUriBundle\HautelookTemplatedUriBundle;
 
 class EzPublishKernel extends Kernel
 {
@@ -48,6 +49,7 @@ class EzPublishKernel extends Kernel
             new SwiftmailerBundle(),
             new AsseticBundle(),
             new TedivmStashBundle(),
+            new HautelookTemplatedUriBundle(),
             new EzPublishCoreBundle(),
             new EzPublishLegacyBundle(),
             new EzSystemsDemoBundle(),
