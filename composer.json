@@ -28,7 +28,7 @@
         "ezsystems/comments-bundle": "@dev",
         "egulias/listeners-debug-command-bundle": "1.6.*",
         "white-october/pagerfanta-bundle": "1.0.*",
-        "nelmio/cors-bundle": "dev-abstract_cors_configuration",
+        "nelmio/cors-bundle": "@dev",
         "zetacomponents/archive": "@dev",
         "zetacomponents/authentication": "@dev",
         "zetacomponents/authentication-database-tiein": "@dev",
@@ -98,11 +98,5 @@
         "branch-alias": {
             "dev-master": "5.3.x-dev"
         }
-    },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/bdunogier/NelmioCorsBundle"
-        }
-    ]
+    }
 }
