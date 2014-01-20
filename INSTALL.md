@@ -97,13 +97,13 @@
        ```bash
        cd /<ezpublish-community-root-dir>/
        curl -s http://getcomposer.org/installer | php
-       php composer.phar install --prefer-dist
+       php -d memory_limit=-1 composer.phar install --prefer-dist
        ```
 
        Update note: Every time you want to get the latest updates of all your dependencies just run this command:
        ```bash
        cd /<ezpublish-community-root-dir>/
-       php composer.phar update --prefer-dist
+       php -d memory_limit=-1 composer.phar update --prefer-dist
        ```
 
 ## Configure the system
