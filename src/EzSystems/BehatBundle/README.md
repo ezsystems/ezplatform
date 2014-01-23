@@ -17,12 +17,12 @@ For the following documentation you should remember:
 
 ```Cucumber
     I am on "<name>" page
-    I am on <name> page for "<special-location>"
-    I am <action> <what>
-    I am logged in as "<username>" with "<password>"
-    I am logged in as a <type> user
-    I have "<what>" [type]
-    test is pending <some-reason>
+    I am on "<name>" page for "<special-location>"
+    I am "<action>" "<what>"
+    I am logged in as "<username>" with password "<password>"
+    I am logged in as a "<type>" user
+    I have "<what>" "[type]"
+    test is pending "<some-reason>"
 ```
 
 
@@ -31,9 +31,9 @@ For the following documentation you should remember:
 Notice that several When sentences can and should also be used in Given sentences.
 
 ```Cucumber
-    I [action] "<what>" [type]
-    I [action] "<what>" [type] to "<where>"
-    I on [place] [action] "<what>" [type]
+    I "[action]" "<what>" "[type]"
+    I "[action]" "<what>" "[type]" to "<where>"
+    I on "[place]" "[action]" "<what>" "[type]"
     I follow "<link>"
     I go to "<page>"
     I go to "<page>" at "<special-case>"
@@ -42,29 +42,29 @@ Notice that several When sentences can and should also be used in Given sentence
     I attach "<what>"
     I attach "<what>" in "<where>"
     I fill in "<key>" with "<value>"
-    I fill a valid <which> form
+    I fill a valid "<which>" form
 ```
 
 
 ### Then
 
 ```Cucumber
-    I see "<what>" [type]
-    I see "<what>" [type] with "<value>"
-    I see "<what>" [type] emphasized
-    I see search <total> results
+    I see "<what>" "[type]"
+    I see "<what>" "[type]" with "<value>"
+    I see "<what>" "[type]" emphasized
+    I see search "<total>" results
     I see a "<block>" on the page
-    on [place] I see "<what>" [type]
+    on "[place]" I see "<what>" [type]
     I see key "<key>" with value "<value>"
-    I check <name> page for "<special>" Location
-    I see [type] for Content object
+    I check "<name>" page for "<special>" Location
+    I see "[type]" for Content object
 ```
 
 ```Cucumber
     I don't see "<what>" [type]
     I con't see "<what>" [type] with "<value>"
     I don't see key "<key>" with value "<value>"
-    on [place] I don't see "<what>" [type]
+    on "[place]" I don't see "<what>" "[type]"
 ```
 
 
@@ -87,26 +87,26 @@ readability.
 ```Cucumber
     I fill the form with:
         | Key | Value |
-    I fill <which> form with:
+    I fill "<which>" form with:
 ```
 
 
 ### Then
 
 ```Cucumber
-    I see [type]:
-    I see [type] with:
-    I see [type] in following order:
-    on [place] I see "<what>" [type] in following order:
+    I see "[type]":
+    I see "[type]" with:
+    I see "[type]" in following order:
+    on "[place]" I see "<what>" "[type]" in following order:
     I see form filled with:
     I see "<what>" [type] with attributes:
-    I see [type] for [eZ Content]:
-    I see [type] for [eZ Content] in following order:
+    I see "[type]" for "[eZ Content]":
+    I see "[type]" for "[eZ Content]" in following order:
 ```
 
 ```Cucumber
-    I don't see [type]:
-    I don't see [type] with:
+    I don't see "[type]":
+    I don't see "[type]" with:
     I don't see form filled with:
 ```
 
