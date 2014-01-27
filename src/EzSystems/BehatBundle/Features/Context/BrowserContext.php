@@ -237,7 +237,7 @@ class BrowserContext extends BaseFeatureContext
     }
 
     /**
-     * @Then /^I (?:don\'t|do not) see (?:a |)"([^"]*)" link$
+     * @Then /^I (?:don\'t|do not) see (?:a |)"([^"]*)" link$/
      */
     public function iDontSeeALink( $link )
     {
