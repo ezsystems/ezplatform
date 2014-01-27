@@ -176,7 +176,6 @@ class BrowserContext extends BaseFeatureContext
     }
 
     /**
-     * @Then /^(?:|I )am (?:at|on) the "([^"]*)"(?:| page)$/
      * @Then /^(?:|I )see "([^"]*)" page$/
      */
     public function iAmOnThe( $pageIdentifier )
