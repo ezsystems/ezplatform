@@ -4,6 +4,8 @@ default:
             base_url: 'http://localhost'
             goutte: ~
             sahi: ~
+            selenium2:
+                capabilities: { "browser": "firefox", "version": "17"}
 
             javascript_session: sahi
             browser_name: firefox
