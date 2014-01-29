@@ -59,7 +59,9 @@ class BrowserContext extends BaseFeatureContext
     protected function makeXpathForBlock( $block = 'main' )
     {
         if ( !isset( $this->mainAttributes[strtolower( $block )] ) )
+        {
             return "";
+        }
 
         $xpath = $this->mainAttributes[strtolower( $block )];
 
@@ -71,14 +73,20 @@ class BrowserContext extends BaseFeatureContext
             if ( isset( $xpath['tag'] ) )
             {
                 if ( strpos( $xpath, "/" ) === 0 || strpos( $xpath, "(" ) === 0 )
+                {
                     $nuXpath = $xpath['tag'];
+                }
                 else
+                {
                     $nuXpath = "//" . $xpath['tag'];
+                }
 
                 unset( $xpath['tag'] );
             }
             else
+            {
                 $nuXpath = "//*";
+            }
 
             foreach ( $xpath as $key => $value )
             {
@@ -96,8 +104,10 @@ class BrowserContext extends BaseFeatureContext
         }
 
         //  if the string is an Xpath
-        if ( strpos( $xpath, "/" ) === 0 || strpos( $xpath, "(" ) === 0  )
+        if ( strpos( $xpath, "/" ) === 0 || strpos( $xpath, "(" ) === 0 )
+        {
             return $xpath;
+        }
 
         // if xpath is an simple tag
         return "//$xpath";
@@ -116,12 +126,12 @@ class BrowserContext extends BaseFeatureContext
     protected function getTagsFor( $type )
     {
         switch ( strtolower( $type ) ){
-        case "topic":
-        case "header":
-        case "title":
-            return array( "h1", "h2", "h3" );
-        case "list":
-            return array( "li" );
+            case "topic":
+            case "header":
+            case "title":
+                return array( "h1", "h2", "h3" );
+            case "list":
+                return array( "li" );
         }
 
         throw new PendingException( "Tag's for '$type' type not defined" );
@@ -144,7 +154,9 @@ class BrowserContext extends BaseFeatureContext
         {
             $finalXpath .= "//{$tags[$i]}$xpath";
             if ( !empty($tags[$i + 1]) )
+            {
                 $finalXpath .= " | ";
+            }
         }
 
         return $finalXpath;
@@ -232,8 +244,10 @@ class BrowserContext extends BaseFeatureContext
     public function onSomePlaceIClickAtLink( $somePlace, $link )
     {
         $base = $this->makeXpathForBlock( $somePlace );
-        if( empty( $base ) )
+        if ( empty( $base ) )
+        {
             throw new PendingException( "Element '$somePlace' is not defined" );
+        }
 
         $literal = $this->literal( $link );
         $el = $this->getSession()->getPage()->find(
@@ -261,7 +275,9 @@ class BrowserContext extends BaseFeatureContext
     {
         $xpath = $this->makeXpathForBlock( $somePlace );
         if ( empty( $xpath ) )
+        {
             throw new PendingException( "Element '$somePlace' not defined" );
+        }
 
         $literal = $this->literal( $link );
 
@@ -315,7 +331,9 @@ class BrowserContext extends BaseFeatureContext
     {
         $xpath = $this->makeXpathForBlock( $element );
         if ( empty( $xpath ) )
+        {
             throw new PendingException( "Element '$element' not defined" );
+        }
 
         $el = $this->getSession()->getPage()->find( "xpath", $xpath );
 
@@ -417,8 +435,10 @@ class BrowserContext extends BaseFeatureContext
         $found = false;
         for ( $i = 0; $i < count( $elements ) && !$found; $i++ )
         {
-            if( strpos( $elements[$i]->getText(), $label ) !== false )
+            if ( strpos( $elements[$i]->getText(), $label ) !== false )
+            {
                 $found = true;
+            }
         }
 
         // assert that it was found
@@ -442,8 +462,10 @@ class BrowserContext extends BaseFeatureContext
     public function onSomePlaceISeeAnElement( $somePlace, $element )
     {
         $base = $this->makeXpathForBlock( $somePlace );
-        if( empty( $base ) )
+        if ( empty( $base ) )
+        {
             throw new PendingException( "Element '$somePlace' not defined" );
+        }
 
         // an element can't be search through content, so lets find through
         // id, class, name, src or href
@@ -543,10 +565,14 @@ class BrowserContext extends BaseFeatureContext
         $links = $parents = array();
         foreach ( $rows as $row )
         {
-            if( count( $row ) >= 2 )
+            if ( count( $row ) >= 2 )
+            {
                 list( $links[], $parents[] ) = $row;
+            }
             else
+            {
                 $links[] = $row[0];
+            }
         }
 
         // check links
@@ -635,8 +661,10 @@ class BrowserContext extends BaseFeatureContext
                 $i++;
 
             $test = !null;
-            if( empty( $available[$i] ) )
+            if ( empty( $available[$i] ) )
+            {
                 $test = null;
+            }
 
             // check if the link was found or the $i >= $count
             Assertion::assertNotNull( $test, "Couldn't find '$name' link" );
@@ -670,9 +698,13 @@ class BrowserContext extends BaseFeatureContext
         foreach ( $rows as $row )
         {
             if ( count( $row ) >= 2 )
+            {
                 list( $links[], $parents[] ) = $row;
+            }
             else
+            {
                 $links[] = $row[0];
+            }
         }
 
         // now verify the link order
@@ -710,8 +742,10 @@ class BrowserContext extends BaseFeatureContext
                 $i++;
 
             $test = !null;
-            if( empty( $available[$i] ) )
+            if ( empty( $available[$i] ) )
+            {
                 $test = null;
+            }
 
             // check if the link was found or the $i >= $count
             Assertion::assertNotNull( $test, "Couldn't find '$name' after '$last'" );
@@ -790,8 +824,10 @@ class BrowserContext extends BaseFeatureContext
     public function onSomePlaceISeeAKey( $somePlace, $key )
     {
         $base = $this->makeXpathForBlock( $somePlace );
-        if( empty( $base ) )
+        if ( empty( $base ) )
+        {
             throw new PendingException( "Element '$somePlace' is not defined" );
+        }
 
         $literal = $this->literal( $key );
 
@@ -826,8 +862,10 @@ class BrowserContext extends BaseFeatureContext
     public function iSeeSomeElement( $element )
     {
         $xpath = $this->makeXpathForBlock( $element );
-        if( empty( $xpath ) )
+        if ( empty( $xpath ) )
+        {
             throw new PendingException( "Element '$element' is not defined" );
+        }
 
         $el = $this->getSession()->getPage()->find( "xpath", $xpath );
 
@@ -852,8 +890,12 @@ class BrowserContext extends BaseFeatureContext
             $found = false;
             $maxFound = count( $foundRows );
             for ( $i = 0; $i < $maxFound && !$found; $i++ )
-                if( $this->assertTableRow( $foundRows[$i], $row, $headers ) )
+            {
+                if ( $this->assertTableRow( $foundRows[$i], $row, $headers ) )
+                {
                     $found = true;
+                }
+            }
 
             $message = "Couldn't find row with elements: '" . implode( ",", array_merge( array( $mainColumn ), $row ) ) . "'";
             Assertion::assertTrue( $found, $message );
@@ -880,14 +922,18 @@ class BrowserContext extends BaseFeatureContext
         for ( $i = 0; $i < $max; $i++ )
         {
             $position = "";
-            if( !empty( $columnsPositions[$i] ) )
+            if ( !empty( $columnsPositions[$i] ) )
+            {
                 $position = "[{$this->getNumberFromString( $columnsPositions[$i] )}]";
+            }
 
             $el = $row->find( "xpath", "$type$position" );
 
             // check if match with expected if not return false
-            if ( $el === null || $columns[$i] !== $el->getText())
+            if ( $el === null || $columns[$i] !== $el->getText() )
+            {
                 return false;
+            }
         }
 
         // if we're here then it means all have ran as expected
@@ -909,12 +955,18 @@ class BrowserContext extends BaseFeatureContext
         if ( !empty( $column ) )
         {
             if ( is_integer( $column ) )
+            {
                 $columnNumber = "[$column]";
+            }
             else
+            {
                 $columnNumber = "[{$this->getNumberFromString( $column )}]";
+            }
         }
         else
+        {
             $columnNumber = "";
+        }
 
         // get all possible elements
         $elements = array_merge(
@@ -927,8 +979,10 @@ class BrowserContext extends BaseFeatureContext
         $i = 0;
         while ( $i < $total )
         {
-            if(strpos( $elements[$i]->getText(), $text ) !== false )
+            if ( strpos( $elements[$i]->getText(), $text ) !== false )
+            {
                 $foundXpath[] = $elements[$i]->getParent();
+            }
 
             $i++;
         }
@@ -977,14 +1031,18 @@ class BrowserContext extends BaseFeatureContext
     {
         // verify it has the attribute we're looking for
         if ( !$el->hasAttribute( $attribute ) )
+        {
             return false;
+        }
 
         // get the attribute
         $attr = $el->getAttribute( $attribute );
 
         // check if want to test specific characteristic and if it is present
         if ( !empty( $characteristic) && strpos( $attr, $characteristic ) === false )
+        {
             return false;
+        }
 
         // if we're here it is emphasized
         return true;
