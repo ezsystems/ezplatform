@@ -9,6 +9,7 @@
 
 use Egulias\ListenersDebugCommandBundle\EguliasListenersDebugCommandBundle;
 use eZ\Bundle\EzPublishCoreBundle\EzPublishCoreBundle;
+use eZ\Bundle\EzPublishDebugBundle\EzPublishDebugBundle;
 use eZ\Bundle\EzPublishLegacyBundle\EzPublishLegacyBundle;
 use eZ\Bundle\EzPublishRestBundle\EzPublishRestBundle;
 use EzSystems\CommentsBundle\EzSystemsCommentsBundle;
@@ -66,6 +67,7 @@ class EzPublishKernel extends Kernel
                 $bundles[] = new EzSystemsEzPublishBehatBundle();
                 // No break, test also needs dev bundles
             case "dev":
+                $bundles[] = new EzPublishDebugBundle();
                 $bundles[] = new WebProfilerBundle();
                 $bundles[] = new SensioDistributionBundle();
                 $bundles[] = new SensioGeneratorBundle();
