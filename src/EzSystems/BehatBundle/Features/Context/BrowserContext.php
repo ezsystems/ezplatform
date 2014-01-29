@@ -161,18 +161,26 @@ class BrowserContext extends BaseFeatureContext
         return $this->getSession()->getSelectorsHandler()->xpathLiteral( $text );
     }
 
-    /**
+ /**
      * @Given /^(?:|I )am logged in as "([^"]*)" with password "([^"]*)"$/
+     * @Given /^(?:|I )am logged in as "([^"]*)"$/
      */
-    public function iAmLoggedInAsWithPassword( $user, $password )
+    public function iAmLoggedInAsWithPassword( $user, $password = NULL )
     {
-        return array(
-            new Step\Given( 'I am on "/user/login"' ),
-            new Step\When( 'I fill in "Username" with "' . $user . '"' ),
-            new Step\When( 'I fill in "Password" with "' . $password . '"' ),
-            new Step\When( 'I press "Login"' ),
-            new Step\Then( 'I should be on "/"' ),
-        );
+        if( !isset( $password ) ) {
+            return array(
+                new Step\Given( 'I am on "/logout"' ),
+                new Step\Then( 'I should be on "/"' ),
+            );
+        } else {
+            return array(
+                new Step\Given( 'I am on "/user/login"' ), // @todo /user/login needs to be updated to /login
+                new Step\When( 'I fill in "Username" with "' . $user . '"' ),
+                new Step\When( 'I fill in "Password" with "' . $password . '"' ),
+                new Step\When( 'I press "Login"' ),
+                new Step\Then( 'I should be on "/"' ),
+            );
+        }
     }
 
     /**
