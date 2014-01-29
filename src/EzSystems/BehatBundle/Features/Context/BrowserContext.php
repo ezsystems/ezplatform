@@ -41,7 +41,7 @@ class BrowserContext extends BaseFeatureContext
 
     public function __construct( array $parameters )
     {
-        parent::__construct($parameters);
+        parent::__construct( $parameters );
 
         // add home to the page identifiers
         $this->pageIdentifierMap += array( "home" => "/" );
@@ -167,12 +167,15 @@ class BrowserContext extends BaseFeatureContext
      */
     public function iAmLoggedInAsWithPassword( $user, $password = NULL )
     {
-        if( !isset( $password ) ) {
+        if ( !isset( $password ) )
+        {
             return array(
                 new Step\Given( 'I am on "/logout"' ),
                 new Step\Then( 'I should be on "/"' ),
             );
-        } else {
+        }
+        else
+        {
             return array(
                 new Step\Given( 'I am on "/user/login"' ), // @todo /user/login needs to be updated to /login
                 new Step\When( 'I fill in "Username" with "' . $user . '"' ),
@@ -412,7 +415,7 @@ class BrowserContext extends BaseFeatureContext
         Assertion::assertNotEquals( count( $elements ), 0, "Coudn't find any checkbox" );
 
         $found = false;
-        for( $i = 0; $i < count( $elements ) && !$found; $i++ )
+        for ( $i = 0; $i < count( $elements ) && !$found; $i++ )
         {
             if( strpos( $elements[$i]->getText(), $label ) !== false )
                 $found = true;
@@ -448,11 +451,11 @@ class BrowserContext extends BaseFeatureContext
         $el = $this->getSession()->getPage()->find(
             "xpath",
             "$base//*["
-                . "contains( @id, $literal )"
-                . "or contains( @class, $literal )"
-                . "or contains( @name, $literal )"
-                . "or contains( @src, $literal )"
-                . "or contains( @href, $literal )"
+            . "contains( @id, $literal )"
+            . "or contains( @class, $literal )"
+            . "or contains( @name, $literal )"
+            . "or contains( @src, $literal )"
+            . "or contains( @href, $literal )"
             . "]"
         );
 
@@ -467,7 +470,7 @@ class BrowserContext extends BaseFeatureContext
         $el = $this->getSession()->getPage()->find(
             "xpath",
             "//*[contains( @class, 'warning' ) or contains( @class, 'error' )]"
-                . "//*[contains( text(), " . $this->literal( $error ) . " )]"
+            . "//*[contains( text(), " . $this->literal( $error ) . " )]"
         );
 
         Assertion::assertNotNull( $el, "Couldn't find error message '$error'" );
@@ -487,7 +490,7 @@ class BrowserContext extends BaseFeatureContext
         Assertion::assertNotNull( $el, "Couldn't find tag with '$key' text" );
 
         $found = false;
-        for( $i = 0; $i < count( $el ) && !$found; $i++ )
+        for ( $i = 0; $i < count( $el ) && !$found; $i++ )
         {
             $found = strpos( $el[$i]->getParent()->getText(), $value );
         }
@@ -841,7 +844,7 @@ class BrowserContext extends BaseFeatureContext
 
         $max = count( $headers );
         $mainHeader = array_shift( $headers );
-        foreach( $rows as $row )
+        foreach ( $rows as $row )
         {
             $mainColumn = array_shift( $row );
             $foundRows = $this->getTableRow( $mainColumn, $mainHeader );
@@ -852,7 +855,7 @@ class BrowserContext extends BaseFeatureContext
                 if( $this->assertTableRow( $foundRows[$i], $row, $headers ) )
                     $found = true;
 
-            $message = "Couldn't find row with elements: '" . implode( ",", array_merge( array($mainColumn), $row ) ) . "'";
+            $message = "Couldn't find row with elements: '" . implode( ",", array_merge( array( $mainColumn ), $row ) ) . "'";
             Assertion::assertTrue( $found, $message );
         }
     }
@@ -874,7 +877,7 @@ class BrowserContext extends BaseFeatureContext
         $type = ( empty( $elType ) ) ? '/td': '/th';
 
         $max = count( $columns );
-        for( $i = 0; $i < $max; $i++ )
+        for ( $i = 0; $i < $max; $i++ )
         {
             $position = "";
             if( !empty( $columnsPositions[$i] ) )
