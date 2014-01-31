@@ -5,5 +5,6 @@
  * @version //autogentag//
  */
 
-putenv("ENVIRONMENT=behat");
+putenv( "ENVIRONMENT=behat" );
 require __DIR__ . "/../ezrouter.php";
+
