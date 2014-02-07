@@ -62,7 +62,7 @@ Notice that several When sentences can and should also be used in Given sentence
 
 ```Cucumber
     I don't see "<what>" [type]
-    I con't see "<what>" [type] with "<value>"
+    I don't see "<what>" [type] with "<value>"
     I don't see key "<key>" with value "<value>"
     on "[place]" I don't see "<what>" "[type]"
 ```
@@ -170,7 +170,7 @@ Content object )
 
 
 
-## Addicional information
+## Additional information
 
 In general the sentences can have the appropriated sentence construction,
 since it has many optional words like:
@@ -188,7 +188,7 @@ In Then sentences for almost each positive sentence, there is/should be/exist a
 negative sentence also.
 
 
-## Usefull links
+## Useful links
 
 Complete list for avaliable sentences - [BehatBundle/Sentences.md](https://github.com/ezsystems/ezpublish-community/blob/master/src/EzSystems/BehatBundle/Sentences.md)
 
