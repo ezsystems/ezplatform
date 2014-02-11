@@ -52,7 +52,7 @@ class EzPublishKernel extends Kernel
             new TedivmStashBundle(),
             new HautelookTemplatedUriBundle(),
             new EzPublishCoreBundle(),
-            new EzPublishLegacyBundle(),
+            new EzPublishLegacyBundle( $this ),
             new EzSystemsDemoBundle(),
             new EzPublishRestBundle(),
             new EzSystemsCommentsBundle(),
