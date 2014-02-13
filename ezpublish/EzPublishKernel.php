@@ -16,6 +16,7 @@ use EzSystems\CommentsBundle\EzSystemsCommentsBundle;
 use EzSystems\DemoBundle\EzSystemsDemoBundle;
 use EzSystems\BehatBundle\EzSystemsEzPublishBehatBundle;
 use eZ\Bundle\EzPublishCoreBundle\Kernel;
+use EzSystems\NgsymfonytoolsBundle\EzSystemsNgsymfonytoolsBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\SecurityBundle\SecurityBundle;
@@ -56,6 +57,7 @@ class EzPublishKernel extends Kernel
             new EzSystemsDemoBundle(),
             new EzPublishRestBundle(),
             new EzSystemsCommentsBundle(),
+            new EzSystemsNgsymfonytoolsBundle(),
             new WhiteOctoberPagerfantaBundle(),
             new NelmioCorsBundle(),
         );
