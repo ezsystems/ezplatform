@@ -20,3 +20,6 @@ _ezpublishRestOptionsRoutes:
     resource: "@EzPublishRestBundle/Resources/config/routing.yml"
     prefix: %ezpublish_rest.path_prefix%
     type: rest_options
+
+_ezpublishDemoRoutes:
+    resource: "@eZDemoBundle/Resources/config/routing.yml"
