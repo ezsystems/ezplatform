@@ -47,7 +47,8 @@
         "zetacomponents/php-generator": "@dev",
         "zetacomponents/signal-slot": "@dev",
         "zetacomponents/system-information": "@dev",
-        "hautelook/templated-uri-bundle": "~1.0"
+        "hautelook/templated-uri-bundle": "~1.0",
+        "doctrine/doctrine-bundle": "1.2.*"
     },
     "conflict": {
         "symfony/symfony": "2.3.9"
