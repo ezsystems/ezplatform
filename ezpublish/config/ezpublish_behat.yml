@@ -1,4 +1,16 @@
+doctrine:
+    dbal:
+        connections:
+            default:
+                driver: pdo_mysql
+                host: localhost
+                user: root
+                dbname: behattestdb
+                charset: UTF8
+
 ezpublish:
+    repositories:
+        behat: ~
     siteaccess:
         # Available siteaccesses
         list:
@@ -15,11 +27,7 @@ ezpublish:
                 localhost: behat_site
     system:
         behat_group:
-            database:
-                type: mysql
-                user: root
-                server: localhost
-                database_name: behattestdb
+            repository: behat
             languages: [eng-GB]
             var_dir: var/behat_site
         behat_site:
