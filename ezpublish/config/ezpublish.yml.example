@@ -1,4 +1,38 @@
+# Doctrine DBAL configuration
+doctrine:
+    dbal:
+        connections:
+            default:
+                driver: pdo_mysql
+                host: localhost
+                user: root
+                password: root
+                dbname: ezdemo
+                charset: UTF8
+
+# Stash is used for persistence cache
+stash:
+    caches:
+        default:
+            handlers:
+                # When using multiple webservers, you must use Memcache or Redis
+                - FileSystem
+            inMemory: true
+            registerDoctrineAdapter: false
+            # On Windows, using FileSystem, to avoid hitting filesystem limitations
+            # you need to change the keyHashFunction used to generate cache directories to "crc32"
+            # FileSystem
+            #    keyHashFunction: crc32
+
 ezpublish:
+    # Define all your repositories here
+    # If you use multi-site with multiple databases, you shall define multiple repositories
+    repositories:
+        # "main" repository, with default values
+        # Same as:
+        # main: { engine: legacy, connection: default }
+        main: ~
+
     siteaccess:
         # Available siteaccesses
         list:
@@ -27,22 +61,21 @@ ezpublish:
     # System settings, grouped by siteaccess and/or siteaccess group
     system:
         ezdemo_group:
-            database:
-                type: mysql
-                user: root
-                password: root
-                server: localhost
-                database_name: ezdemo
+            # The repository to use. Here "main", which is defined in "repositories" above.
+            repository: main
             languages: [eng-GB, fre-FR]
         frontend_group:
             # Session name will be common for all siteaccesses members of this group
             # It means that session will be shared for frontend siteaccesses, but not with backoffice
-            session_name: MyFrontendSessionName
+            session:
+                name: MyFrontendSessionName
         ezdemo_site:
             content:
                 view_cache: true
                 ttl_cache: true
-                default_ttl: 30
+                # TTL cache (http) in seconds
+                # Note that Http cache for a given content is always invalidated when publishing that content
+                default_ttl: 300
             location_view:
                 full:
                     smallFolder:

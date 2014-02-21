@@ -1,4 +1,15 @@
+doctrine:
+    dbal:
+        connections:
+            default:
+                driver: pdo_mysql
+                host: localhost
+                user: root
+                dbname: none
+
 ezpublish:
+    repositories:
+        setup: ~
     siteaccess:
         # Available siteaccesses
         list:
@@ -10,12 +21,6 @@ ezpublish:
 
     system:
         setup:
-            database:
-                type: mysql
-                user: user
-                password:
-                server:
-                database_name: none
             languages: []
 
 stash:
