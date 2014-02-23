@@ -11,7 +11,7 @@ namespace EzSystems\BehatBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class EzSystemsEzPublishBehatBundle extends Bundle
+class EzSystemsBehatBundle extends Bundle
 {
     protected $name = 'eZBehatBundle';
 }
