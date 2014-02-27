@@ -6,7 +6,7 @@ php:
 
 # list of paths/bundle to execute
 env:
-  - TEST_SUIT="@eZDemoBundle"
+  - TEST_SUIT="--profile democontent"
 #  - TEST_SUIT="vendor/ezsystems/demobundle/EzSystems/DemoBundle/Features/"
 
 

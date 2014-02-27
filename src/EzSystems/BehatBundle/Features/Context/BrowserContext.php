@@ -18,6 +18,8 @@ use Behat\Gherkin\Node\TableNode;
 use Behat\Behat\Exception\PendingException;
 use Behat\Mink\Exception\UnsupportedDriverActionException as MinkUnsupportedDriverActionException;
 use Behat\Mink\Element\NodeElement;
+use Behat\Mink\Exception\UnsupportedDriverActionException;
+use Behat\Mink\Driver\GoutteDriver;
 
 /**
  * Browser interface helper context.
@@ -34,6 +36,10 @@ class BrowserContext extends BaseFeatureContext
      *      "menu"      => "//xpath/for/the[menu]",
      *      ...
      * );
+     *
+     * Is possible to define the specific xpath for a block, and all the other
+     * options won't be processed, however this should ONLY be used when testing
+     * content, otherwise if something changes on block it won't work
      *
      * @var array This will have a ( identifier => array )
      */
@@ -58,21 +64,27 @@ class BrowserContext extends BaseFeatureContext
      */
     protected function makeXpathForBlock( $block = 'main' )
     {
-        if ( !isset( $this->mainAttributes[strtolower( $block )] ) )
-        {
-            return "";
-        }
+        $parameter = ( isset( $this->mainAttributes[strtolower( $block )] ) ) ?
+            $this->mainAttributes[strtolower( $block )] :
+            NULL;
+
+        Assertion::assertNotNull( $parameter, "Element {$block} is not defined" );
 
         $xpath = $this->mainAttributes[strtolower( $block )];
-
         // check if value is a composed array
         if ( is_array( $xpath ) )
         {
+            // if there is an xpath defined look no more!
+            if ( isset( $xpath['xpath'] ) )
+            {
+                return $xpath['xpath'];
+            }
+
             $nuXpath = "";
             // verify if there is a tag
             if ( isset( $xpath['tag'] ) )
             {
-                if ( strpos( $xpath, "/" ) === 0 || strpos( $xpath, "(" ) === 0 )
+                if ( strpos( $xpath['tag'], "/" ) === 0 || strpos( $xpath['tag'], "(" ) === 0 )
                 {
                     $nuXpath = $xpath['tag'];
                 }
@@ -90,12 +102,13 @@ class BrowserContext extends BaseFeatureContext
 
             foreach ( $xpath as $key => $value )
             {
-                switch ( $key ) {
-                case "text":
-                    $att = "text()";
-                    break;
-                default:
-                    $att = "@$key";
+                switch ( $key )
+                {
+                    case "text":
+                        $att = "text()";
+                        break;
+                    default:
+                        $att = "@$key";
                 }
                 $nuXpath .= "[contains($att, {$this->literal( $value )})]";
             }
@@ -119,13 +132,14 @@ class BrowserContext extends BaseFeatureContext
      *
      * @param  string $type Type of text (ie: if header/title, or list element, ...)
      *
-     * @return string Xpath string for searching elements insed those tags
+     * @return string Xpath string for searching elements inside those tags
      *
      * @throws PendingException If the $type isn't defined yet
      */
     protected function getTagsFor( $type )
     {
-        switch ( strtolower( $type ) ){
+        switch ( strtolower( $type ) )
+        {
             case "topic":
             case "header":
             case "title":
@@ -153,7 +167,7 @@ class BrowserContext extends BaseFeatureContext
         for ( $i = 0; !empty( $tags[$i] ); $i++ )
         {
             $finalXpath .= "//{$tags[$i]}$xpath";
-            if ( !empty($tags[$i + 1]) )
+            if ( !empty( $tags[$i + 1] ) )
             {
                 $finalXpath .= " | ";
             }
@@ -173,7 +187,50 @@ class BrowserContext extends BaseFeatureContext
         return $this->getSession()->getSelectorsHandler()->xpathLiteral( $text );
     }
 
- /**
+    /**
+     * This function is used for testing if the driver supports redirect interception
+     * for the "I follow the redirection" step
+     *
+     * @throws UnsupportedDriverActionException
+     */
+    protected function canIntercept()
+    {
+        $driver = $this->getSession()->getDriver();
+        if ( !$driver instanceof GoutteDriver )
+        {
+            throw new UnsupportedDriverActionException(
+                'You need to tag the scenario with ' .
+                '"@mink:goutte" or "@mink:symfony". ' .
+                'Intercepting the redirections is not ' .
+                'supported by %s', $driver
+            );
+        }
+    }
+
+    /**
+     * @When /^I follow the redirection$/
+     * @Then /^I should be redirected$/
+     */
+    public function iFollowTheRedirection()
+    {
+        $this->canIntercept();
+        $client = $this->getSession()->getDriver()->getClient();
+        $client->followRedirects( true );
+        $client->followRedirect();
+    }
+
+    /**
+     * @Given /^I am not logged in$/
+     */
+    public function iAmNotLoggedIn()
+    {
+        return array(
+            new Step\Given( 'I am on "/user/logout"' ),
+            new Step\Then( 'I see "Homepage" page' ),
+        );
+    }
+
+    /**
      * @Given /^(?:|I )am logged in as "([^"]*)" with password "([^"]*)"$/
      * @Given /^(?:|I )am logged in as "([^"]*)"$/
      */
@@ -199,9 +256,24 @@ class BrowserContext extends BaseFeatureContext
     }
 
     /**
-     * @Then /^(?:|I )see "([^"]*)" page$/
+     * @Given /^I am logged in as an "([^"]*)"$/
      */
-    public function iAmOnThe( $pageIdentifier )
+    public function iAmLoggedInAsAn( $role )
+    {
+        switch ( $role )
+        {
+            case 'administrator':
+                return new Step\Given( "I am logged in as \"Admin\" with password \"publish\"" );
+            default:
+                throw new PendingException( "Role {$role} does not exists" );
+        }
+    }
+
+    /**
+     * @Then /^(?:|I )see "([^"]*)" page$/
+     *
+     */
+    public function iSeePage( $pageIdentifier )
     {
         $currentUrl = $this->getUrlWithoutQueryString( $this->getSession()->getCurrentUrl() );
 
@@ -244,10 +316,6 @@ class BrowserContext extends BaseFeatureContext
     public function onSomePlaceIClickAtLink( $somePlace, $link )
     {
         $base = $this->makeXpathForBlock( $somePlace );
-        if ( empty( $base ) )
-        {
-            throw new PendingException( "Element '$somePlace' is not defined" );
-        }
 
         $literal = $this->literal( $link );
         $el = $this->getSession()->getPage()->find(
@@ -258,6 +326,39 @@ class BrowserContext extends BaseFeatureContext
         Assertion::assertNotNull( $el, "Couldn't find '$link' link" );
 
         $el->click();
+    }
+
+    /**
+     * @When /^on "([^"]*)" I click (?:at |on |)"([^"]*)" button$/
+     */
+    public function onSomePlaceIClickAtButton( $somePlace, $button )
+    {
+        $base = $this->makeXpathForBlock( $somePlace );
+
+        $literal = $this->literal( $button );
+        $el = $this->getSession()->getPage()->find(
+            "xpath", "$base//button" .
+            "[contains(text(),{$literal}) " .
+            "or contains(@id,{$literal}) " .
+            "or contains(@class, {$literal}) " .
+            "or contains(@name,{$literal})]"
+        );
+
+        Assertion::assertNotNull( $el, "Couldn't find '$button' button" );
+
+        $el->click();
+    }
+
+    /**
+     * @Then /^on "([^"]*)" I see (\d+) links$/
+     */
+    public function onSomePlaceISeeNumberOfLinks( $somePlace, $totalLinks )
+    {
+        $base = $this->makeXpathForBlock( $somePlace );
+
+        $allLinks = $this->getSession()->getPage()->findAll( "xpath", "{$base}//a[@href]" );
+
+        Assertion::assertEquals( count( $allLinks ), $totalLinks );
     }
 
     /**
@@ -274,10 +375,6 @@ class BrowserContext extends BaseFeatureContext
     public function onSomePlaceIDonTSeeALink( $somePlace, $link )
     {
         $xpath = $this->makeXpathForBlock( $somePlace );
-        if ( empty( $xpath ) )
-        {
-            throw new PendingException( "Element '$somePlace' not defined" );
-        }
 
         $literal = $this->literal( $link );
 
@@ -338,6 +435,21 @@ class BrowserContext extends BaseFeatureContext
         $el = $this->getSession()->getPage()->find( "xpath", $xpath );
 
         Assertion::assertNull( $el, "Element '$element' was unexpectly found" );
+    }
+
+    /**
+     * @Then /^on "([^"]*)" I see "([^"]*)" video$/
+     */
+    public function onSomePlaceISeeVideo( $somePlace, $video )
+    {
+        //TODO: Check Selenium behaviour
+        $base = $this->makeXpathForBlock( $somePlace );
+
+        $videoSource = $this->getPathByFileSource( $video );
+        $el = $this->getSession()->getPage()->find( "xpath", "{$base}//video//source" );
+
+        Assertion::assertNotNull( $el, "Video object {$video} not found" );
+        Assertion::assertEquals( $el->getAttribute( 'src' ), $videoSource );
     }
 
     /**
@@ -442,13 +554,17 @@ class BrowserContext extends BaseFeatureContext
         }
 
         // assert that it was found
-        Assertion::assertEquals( true, $found, "Couldn't find a checkbox with label '$label'" );
+        Assertion::assertEquals(
+            true,
+            $found,
+            "Couldn't find a checkbox with label '$label'"
+        );
     }
 
     /**
      * @Then /^I see (?:the|a|an) "([^"]*)" element$/
      */
-    public function iSeeAnElement( $element)
+    public function iSeeAnElement( $element )
     {
         $this->onSomePlaceISeeAnElement( 'main', $element );
     }
@@ -462,10 +578,6 @@ class BrowserContext extends BaseFeatureContext
     public function onSomePlaceISeeAnElement( $somePlace, $element )
     {
         $base = $this->makeXpathForBlock( $somePlace );
-        if ( empty( $base ) )
-        {
-            throw new PendingException( "Element '$somePlace' not defined" );
-        }
 
         // an element can't be search through content, so lets find through
         // id, class, name, src or href
@@ -506,7 +618,7 @@ class BrowserContext extends BaseFeatureContext
     {
         $el = $this->getSession()->getPage()->findAll(
             "xpath",
-            "//*[contains( text(), " . $this->literal( $key ) ." )]"
+            "//*[contains( text(), " . $this->literal( $key ) . " )]"
         );
 
         Assertion::assertNotNull( $el, "Couldn't find tag with '$key' text" );
@@ -620,7 +732,7 @@ class BrowserContext extends BaseFeatureContext
     /**
      * @Then /^on "([A-Za-z\s]*)" I see links:$/
      */
-    public function onSomeSeeIPlaceLinks( $somePlace, TableNode $table )
+    public function onSomePlaceISeeLinks( $somePlace, TableNode $table )
     {
         $base = $this->makeXpathForBlock( $somePlace );
         // get all links
@@ -628,7 +740,6 @@ class BrowserContext extends BaseFeatureContext
 
         $rows = $table->getRows();
         array_shift( $rows );   // this is needed to take the first row ( readability only )
-
         // remove links from embeded arrays
         $links = array();
         foreach ( $rows as $row )
@@ -653,9 +764,9 @@ class BrowserContext extends BaseFeatureContext
             $url = str_replace( ' ', '-', $name );
 
             $i = 0;
-            while(
+            while (
                 !empty( $available[$i] )
-                && strpos( $available[$i]->getAttribute( "href" ), $url ) === false
+                && strpos( $available[$i]->getattribute( "href" ), $url ) === false
                 && strpos( $available[$i]->getText(), $name ) === false
             )
                 $i++;
@@ -692,7 +803,6 @@ class BrowserContext extends BaseFeatureContext
 
         $rows = $table->getRows();
         array_shift( $rows );   // this is needed to take the first row ( readability only )
-
         // make link and parent arrays:
         $links = $parents = array();
         foreach ( $rows as $row )
@@ -734,7 +844,7 @@ class BrowserContext extends BaseFeatureContext
             $url = str_replace( ' ', '-', $name );
 
             // find the object
-            while(
+            while (
                 !empty( $available[$i] )
                 && strpos( $available[$i]->getAttribute( "href" ), $url ) === false
                 && strpos( $available[$i]->getText(), $name ) === false
@@ -772,7 +882,10 @@ class BrowserContext extends BaseFeatureContext
         foreach ( $rows as $row )
         {
             // prepare data
-            Assertion::assertEquals( count( $row ), 2, "The table should be have array with link and tag" );
+            Assertion::assertEquals(
+                count( $row ), 2,
+                "The table should be have array with link and tag"
+            );
             list( $link, $type ) = $row;
 
             // make xpath
@@ -795,7 +908,7 @@ class BrowserContext extends BaseFeatureContext
     {
         $objectListTable = $this->getSession()->getPage()->find(
             'xpath',
-            '//table[../h1 = "' . $objectType  . ' list"]'
+            '//table[../h1 = "' . $objectType . ' list"]'
         );
 
         Assertion::assertNotNull(
@@ -824,10 +937,6 @@ class BrowserContext extends BaseFeatureContext
     public function onSomePlaceISeeAKey( $somePlace, $key )
     {
         $base = $this->makeXpathForBlock( $somePlace );
-        if ( empty( $base ) )
-        {
-            throw new PendingException( "Element '$somePlace' is not defined" );
-        }
 
         $literal = $this->literal( $key );
 
@@ -916,7 +1025,7 @@ class BrowserContext extends BaseFeatureContext
     {
         // find which kind of column is in this row
         $elType = $row->find( 'xpath', "/th" );
-        $type = ( empty( $elType ) ) ? '/td': '/th';
+        $type = ( empty( $elType ) ) ? '/td' : '/th';
 
         $max = count( $columns );
         for ( $i = 0; $i < $max; $i++ )
@@ -951,7 +1060,7 @@ class BrowserContext extends BaseFeatureContext
      */
     protected function getTableRow( $text, $column = null, $tableXpath = null )
     {
-         // check column
+        // check column
         if ( !empty( $column ) )
         {
             if ( is_integer( $column ) )
@@ -1009,7 +1118,7 @@ class BrowserContext extends BaseFeatureContext
         Assertion::assertNotNull( $el, "Coudn't find text '$text' at '$somePlace' content" );
 
         // verify only one was found
-        Assertion::assertEquals( count( $el ), 1, "Expecting to find '1' found '" . count( $el ) ."'" );
+        Assertion::assertEquals( count( $el ), 1, "Expecting to find '1' found '" . count( $el ) . "'" );
 
         // finaly verify if it has custom charecteristics
         Assertion::assertTrue(
@@ -1039,7 +1148,7 @@ class BrowserContext extends BaseFeatureContext
         $attr = $el->getAttribute( $attribute );
 
         // check if want to test specific characteristic and if it is present
-        if ( !empty( $characteristic) && strpos( $attr, $characteristic ) === false )
+        if ( !empty( $characteristic ) && strpos( $attr, $characteristic ) === false )
         {
             return false;
         }
@@ -1077,12 +1186,11 @@ class BrowserContext extends BaseFeatureContext
     {
         $redirectForm = $this->getSession()->getPage()->find( 'css', 'form[name="Redirect"]' );
 
-        Assertion::assertNotNull(
-            $redirectForm,
-            'Missing redirect form.'
+        Assertion::assertNotNull( $redirectForm, 'Missing redirect form.' );
+        Assertion::assertEquals(
+            $redirectTarget,
+            $redirectForm->getAttribute( 'action' )
         );
-
-        Assertion::assertEquals( $redirectTarget, $redirectForm->getAttribute( 'action' ) );
     }
 
     /**

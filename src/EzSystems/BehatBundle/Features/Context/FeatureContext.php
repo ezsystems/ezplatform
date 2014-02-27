@@ -42,6 +42,18 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
     protected $pageIdentifierMap = array();
 
     /**
+     * This will containt the source path for media files
+     *
+     * ex:
+     * $fileSource = array(
+     * 	    "Video 1" => "/var/storage/original/media/video1.mp4",
+     * );
+     *
+     * @var array This will have a ( 'identifier' => 'path' )
+     */
+    protected $fileSource = array();
+
+    /**
      * @var string
      */
     private $priorSearchPhrase = '';
@@ -109,6 +121,23 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
         }
 
         return $this->pageIdentifierMap[$pageIdentifier];
+    }
+
+    /**
+     * Returns the path associated with the $fileSource
+     *
+     * @param sring $fileSource
+     *
+     * @return string
+     */
+    protected function getPathByFileSource( $file )
+    {
+        if ( !isset( $this->fileSource[$file] ) )
+        {
+            throw new \RuntimeException( "Unknown file '{$file}'." );
+        }
+
+        return $this->fileSource[$file];
     }
 
     /**
