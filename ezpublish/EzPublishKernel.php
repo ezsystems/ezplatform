@@ -14,7 +14,7 @@ use eZ\Bundle\EzPublishLegacyBundle\EzPublishLegacyBundle;
 use eZ\Bundle\EzPublishRestBundle\EzPublishRestBundle;
 use EzSystems\CommentsBundle\EzSystemsCommentsBundle;
 use EzSystems\DemoBundle\EzSystemsDemoBundle;
-use EzSystems\BehatBundle\EzSystemsEzPublishBehatBundle;
+use EzSystems\BehatBundle\EzSystemsBehatBundle;
 use eZ\Bundle\EzPublishCoreBundle\Kernel;
 use EzSystems\NgsymfonytoolsBundle\EzSystemsNgsymfonytoolsBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
@@ -68,7 +68,7 @@ class EzPublishKernel extends Kernel
         {
             case "test":
             case "behat":
-                $bundles[] = new EzSystemsEzPublishBehatBundle();
+                $bundles[] = new EzSystemsBehatBundle();
                 // No break, test also needs dev bundles
             case "dev":
                 $bundles[] = new EzPublishDebugBundle();
