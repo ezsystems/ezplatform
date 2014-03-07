@@ -22,7 +22,7 @@
         "sensio/distribution-bundle": "2.3.*",
         "sensio/generator-bundle": "2.3.*",
         "incenteev/composer-parameter-handler": "~2.0",
-        "tedivm/stash-bundle": "0.2.*",
+        "tedivm/stash-bundle": "0.3.*",
         "ezsystems/ezpublish-kernel": "5.3.*@dev",
         "ezsystems/demobundle": "@dev",
         "ezsystems/comments-bundle": "@dev",
