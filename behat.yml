@@ -6,7 +6,7 @@ default:
             sahi: ~
             selenium2:
                 capabilities: { "browser": "firefox", "version": "17"}
-
+            # This should be updated to selenium2 as soon as travis is running with selenium
             javascript_session: sahi
             browser_name: firefox
 
@@ -17,3 +17,15 @@ default:
                 class: EzPublishKernel
                 env: behat
                 debug: true
+            mink_driver: true
+    paths:
+        features: vendor/ezsystems/
+
+democontent:
+    context:
+        class: EzSystems\DemoBundle\Features\Context\ContentContext
+    paths:
+        features: vendor/ezsystems/demobundle/EzSystems/DemoBundle/Features
+        bootstrap: vendor/ezsystems/demobundle/EzSystems/DemoBundle/Features/Context
+    filters:
+        tags: '@democontent'
