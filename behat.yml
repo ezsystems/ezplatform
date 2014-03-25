@@ -21,6 +21,22 @@ default:
     paths:
         features: vendor/ezsystems/
 
+installdemocontent:
+    context:
+        class: eZ\Bundle\EzPublishLegacyBundle\Features\Context\FeatureContext
+    paths:
+        bootstrap: vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishLegacyBundle/Features/Context/FeatureContext
+    filters:
+        tags: '@democontent_install'
+
+installdemoclean:
+    context:
+        class: eZ\Bundle\EzPublishLegacyBundle\Features\Context\FeatureContext
+    paths:
+        bootstrap: vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishLegacyBundle/Features/Context/FeatureContext
+    filters:
+        tags: '@democlean_install'
+
 democontent:
     context:
         class: EzSystems\DemoBundle\Features\Context\ContentContext
