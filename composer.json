@@ -24,6 +24,7 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "tedivm/stash-bundle": "0.3.*",
         "ezsystems/ezpublish-kernel": "5.3.*@dev",
+        "ezsystems/ezpublish-legacy": "@dev",
         "ezsystems/demobundle": "@dev",
         "ezsystems/comments-bundle": "@dev",
         "egulias/listeners-debug-command-bundle": "~1.9",

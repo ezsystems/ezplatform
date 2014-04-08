@@ -1,12 +1,9 @@
 #!/bin/sh
 
-if [ -d ezpublish_legacy ]; then
-    echo "Legacy folder exists already, KTHXBYE"
+if [ -d ezpublish_legacy_packages ]; then
+    echo "Legacy packages folder exists already, KTHXBYE"
     exit 1
 fi
-
-# Get eZ Publish Legacy
-git clone --depth 1 https://github.com/ezsystems/ezpublish-legacy.git ezpublish_legacy
 
 # Get package extensions
 mkdir ezpublish_legacy_packages
