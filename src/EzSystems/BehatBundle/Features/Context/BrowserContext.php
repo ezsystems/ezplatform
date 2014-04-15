@@ -45,6 +45,11 @@ class BrowserContext extends BaseFeatureContext
      */
     protected $mainAttributes = array();
 
+    /**
+     * @var string
+     */
+    protected $priorSearchPhrase = '';
+
     public function __construct( array $parameters )
     {
         parent::__construct( $parameters );

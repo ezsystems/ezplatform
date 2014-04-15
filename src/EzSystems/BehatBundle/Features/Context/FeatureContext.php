@@ -54,11 +54,6 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
     protected $fileSource = array();
 
     /**
-     * @var string
-     */
-    private $priorSearchPhrase = '';
-
-    /**
      * Initializes context with parameters from behat.yml.
      *
      * @param array $parameters
