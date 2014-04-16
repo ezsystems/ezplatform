@@ -23,6 +23,12 @@ use Behat\Gherkin\Node\TableNode;
 interface BrowserInternalSentences
 {
     /**
+     * @Given /^I checked "(?P<label>[^"]*)" checkbox$/
+     * @When /^I check "(?P<label>[^"]*)" checkbox$/
+     */
+    public function checkOption( $option );
+
+    /**
      * @Given /^I clicked (?:on|at) (?:the |)"(?P<button>[^"]*)" button$/
      * @When /^I click (?:on|at) (?:the |)"(?P<button>[^"]*)" button$/
      */
@@ -47,6 +53,12 @@ interface BrowserInternalSentences
     public function onPageSectionIClickAtLink( $pageSection, $link );
 
     /**
+     * @Given /^I filled form with(?:|\:)$/
+     * @When /^I fill form with(?:|\:)$/
+     */
+    public function iFillFormWith( TableNode $table );
+
+    /**
      * @Given /^I am (?:at|on) (?:|the) "(?P<page>[^"]*)" page$/
      * @When  /^I go to (?:|the) "(?P<page>[^"]*)"(?:| page)$/
      */
@@ -56,6 +68,20 @@ interface BrowserInternalSentences
      * @When /^I search for "(?P<searchPhrase>[^"]*)"$/
      */
     public function iSearchFor( $searchPhrase );
+
+    /**
+     * @When /^I select "(?P<option>[^"]*)"$/
+     *
+     * IMPORTANT:
+     *  This will thrown an error if it find's more than 1 select/dropdown on page
+     */
+    public function iSelect( $option );
+
+    /**
+     * @Given /^I selected "(?P<label>[^"]*)" radio button$/
+     * @When /^I select "(?P<abel>[^"]*)" radio button$/
+     */
+    public function iSelectRadioButon( $label );
 
     /**
      * @When /^I follow the redirection$/
@@ -227,6 +253,11 @@ interface BrowserInternalSentences
      * @Then /^I see "(?P<message>[^"]*)" (?:message|text)$/
      */
     public function iSeeMessage( $text );
+
+    /**
+     * @Given /^I (?:don\'t|do not) see "(?P<text>[^"]*)" message$/
+     */
+    public function iDonTSeeMessage( $message );
 
     /**
      * @Then /^I see "(?P<page>[^"]*)" page$/
