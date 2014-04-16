@@ -15,6 +15,7 @@ use Behat\Behat\Event\OutlineExampleEvent;
 use Behat\Behat\Event\ScenarioEvent;
 use Behat\MinkExtension\Context\MinkContext;
 use Behat\Symfony2Extension\Context\KernelAwareInterface;
+use eZ\Publish\Core\MVC\Symfony\SiteAccess;
 use Symfony\Component\HttpKernel\KernelInterface;
 
 /**
@@ -129,7 +130,7 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
     /**
      * Returns the path associated with the $fileSource
      *
-     * @param sring $file
+     * @param string $file
      *
      * @return string
      */
