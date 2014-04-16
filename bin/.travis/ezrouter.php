@@ -7,4 +7,3 @@
 
 putenv( "ENVIRONMENT=behat" );
 require __DIR__ . "/../ezrouter.php";
-

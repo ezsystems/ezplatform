@@ -6,8 +6,8 @@ php:
 
 # list of paths/bundle to execute
 env:
-  - TEST_SUIT="--profile democontent"
-#  - TEST_SUIT="vendor/ezsystems/demobundle/EzSystems/DemoBundle/Features/"
+    # run setup wizard to install Demo+Content and then test demo with content
+  - INSTALL="installdemocontent" PROFILE="democontent"
 
 
 # test only master (+ Pull requests)
@@ -17,15 +17,18 @@ branches:
 
 # install packages
 before_install:
-  - ./bin/.travis/behat_before_install.sh
+  - ./bin/.travis/prepare_system.sh
+#  - ./bin/.travis/prepare_sahi.sh
+  - ./bin/.travis/prepare_selenium2.sh
 
 # setup requirements for running tests
 before_script:
-  - ./bin/.travis/behat_before_script1.sh
-  - ./bin/.travis/behat_before_script2.sh
+  - ./bin/.travis/prepare_ezpublish.sh
 
 # execute behat as the script command
-script: "bin/behat $TEST_SUIT"
+script:
+    - php bin/behat --profile $INSTALL
+    - php bin/behat --profile $PROFILE
 
 # disable mail notifications
 notification:
