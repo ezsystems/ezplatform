@@ -26,7 +26,28 @@
        Follow normal eZ Publish upgrade procedures for upgrading the distribution files and moving over extensions as found for instance here:
        http://doc.ez.no/eZ-Publish/Upgrading/Upgrading-to-5.0/Upgrading-from-4.7-to-5.0
 
-3. Setup folder rights **For *NIX users**:
+3. Install the dependencies with [Composer](http://getcomposer.org).
+
+       **Note: The following step will also install assets, if you prefer to install assets using hard copy or symlink
+               instead of default relative symlink, edit 'symfony-assets-install' setting in composer.json**
+
+       **Dev: For dev use change '--prefer-dist' for '--prefer-source' to get full git clones
+              and add '--dev' to get phpunit and behat installed.**
+
+       Download composer and install dependencies by running:
+       ```bash
+       cd /<ezpublish-community-root-dir>/
+       curl -s http://getcomposer.org/installer | php
+       php -d memory_limit=-1 composer.phar install --prefer-dist
+       ```
+
+       Update note: Every time you want to get the latest updates of all your dependencies just run this command:
+       ```bash
+       cd /<ezpublish-community-root-dir>/
+       php -d memory_limit=-1 composer.phar update --prefer-dist
+       ```
+
+4. Setup folder rights **For *NIX users**:
 
        One common issue is that the `ezpublish/cache`, `ezpublish/logs` and `ezpublish/config` directories **must be writable both by the web server and the command line user**.
        If your web server user is different from your command line user, you can run the following commands just once in your project to ensure that permissions will be set up properly.
@@ -72,27 +93,6 @@
        ```bash
        $ sudo find {ezpublish/{cache,logs,config},ezpublish_legacy/{design,extension,settings,var},web} -type d | sudo xargs chmod -R 777
        $ sudo find {ezpublish/{cache,logs,config},ezpublish_legacy/{design,extension,settings,var},web} -type f | sudo xargs chmod -R 666
-       ```
-
-4. Install the dependencies with [Composer](http://getcomposer.org).
-
-       **Note: The following step will also install assets, if you prefer to install assets using hard copy or symlink
-               instead of default relative symlink, edit 'symfony-assets-install' setting in composer.json**
-
-       **Dev: For dev use change '--prefer-dist' for '--prefer-source' to get full git clones
-              and add '--dev' to get phpunit and behat installed.**
-
-       Download composer and install dependencies by running:
-       ```bash
-       cd /<ezpublish-community-root-dir>/
-       curl -s http://getcomposer.org/installer | php
-       php -d memory_limit=-1 composer.phar install --prefer-dist
-       ```
-
-       Update note: Every time you want to get the latest updates of all your dependencies just run this command:
-       ```bash
-       cd /<ezpublish-community-root-dir>/
-       php -d memory_limit=-1 composer.phar update --prefer-dist
        ```
 
 ## Configure the system
