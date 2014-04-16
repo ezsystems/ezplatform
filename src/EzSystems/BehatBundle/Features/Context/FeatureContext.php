@@ -16,7 +16,6 @@ use Behat\Behat\Event\ScenarioEvent;
 use Behat\MinkExtension\Context\MinkContext;
 use Behat\Symfony2Extension\Context\KernelAwareInterface;
 use eZ\Publish\Core\MVC\Symfony\SiteAccess;
-use PHPUnit_Framework_Assert as Assertion;
 use Symfony\Component\HttpKernel\KernelInterface;
 
 /**
@@ -29,7 +28,7 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
     /**
      * @var \Symfony\Component\HttpKernel\KernelInterface
      */
-    private $kernel;
+    protected $kernel;
 
     /**
      * @var array
@@ -72,6 +71,16 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
     public function setKernel( KernelInterface $kernel )
     {
         $this->kernel = $kernel;
+    }
+
+    /**
+     * Get repository
+     *
+     * @return \eZ\Publish\API\Repository\Repository
+     */
+    public function getRepository()
+    {
+        return $this->kernel->getContainer()->get( 'ezpublish.api.repository' );
     }
 
     /**
@@ -121,7 +130,7 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
     /**
      * Returns the path associated with the $fileSource
      *
-     * @param sring $fileSource
+     * @param string $file
      *
      * @return string
      */
