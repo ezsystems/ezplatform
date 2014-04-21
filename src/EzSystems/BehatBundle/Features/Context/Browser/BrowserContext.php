@@ -653,11 +653,14 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
         $this->browserFillField( $fieldElement, true );
     }
 
+    public function pressButton( $button )
+    {
+        $this->iClickAtButton( $button );
+    }
+
     public function iClickAtButton( $button )
     {
-        return array(
-            new Step\When( "I press \"{$button}\"" )
-        );
+        $this->onPageSectionIClickAtButton( 'main', $button );
     }
 
     public function onPageSectionIClickAtButton( $pageSection, $button )
@@ -665,12 +668,16 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
         $base = $this->makeXpathForBlock( $pageSection );
 
         $literal = $this->literal( $button );
+        $contains = "[contains(text(),{$literal}) "
+            . "or contains(@value,{$literal}) "
+            . "or contains(@id,{$literal}) "
+            . "or contains(@class, {$literal}) "
+            . "or contains(@name,{$literal})]"
+            . "[not( contains( @style, 'hidden' ) )]";
+
         $el = $this->getSession()->getPage()->find(
-            "xpath", "$base//button" .
-            "[contains(text(),{$literal}) " .
-            "or contains(@id,{$literal}) " .
-            "or contains(@class, {$literal}) " .
-            "or contains(@name,{$literal})]"
+            "xpath",
+            "$base//button$contains | //input[@type = 'submit' or @type = 'button' or @type = 'image']$contains"
         );
 
         Assertion::assertNotNull( $el, "Couldn't find '$button' button" );
