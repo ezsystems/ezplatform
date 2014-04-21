@@ -7,8 +7,8 @@ default:
             selenium2:
                 capabilities: { "browser": "firefox", "version": "17"}
             # This should be updated to selenium2 as soon as travis is running with selenium
-#            javascript_session: sahi
-            javascript_session: selenium2
+            javascript_session: sahi
+#            javascript_session: selenium2
             browser_name: firefox
 
         Behat\Symfony2Extension\Extension:

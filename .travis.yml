@@ -18,8 +18,8 @@ branches:
 # install packages
 before_install:
   - ./bin/.travis/prepare_system.sh
-#  - ./bin/.travis/prepare_sahi.sh
-  - ./bin/.travis/prepare_selenium2.sh
+  - ./bin/.travis/prepare_sahi.sh
+#  - ./bin/.travis/prepare_selenium2.sh
 
 # setup requirements for running tests
 before_script:
