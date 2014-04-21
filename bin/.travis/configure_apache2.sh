@@ -33,6 +33,8 @@ pm.max_children = 2
 php_admin_value[memory_limit] = 128M
 " > $PHP_FPM_CONF
 
+echo 'date.timezone = "Europe/Oslo"' >> ~/.phpenv/versions/$TRAVIS_PHP_VERSION/etc/conf.d/travis.ini
+
 # restart
 sudo $PHP_FPM_BIN --fpm-config "$PHP_FPM_CONF"
 sudo service apache2 restart
