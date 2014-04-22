@@ -150,7 +150,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
      *
      * @return string Xpath string for searching elements inside those tags
      *
-     * @throws PendingException If the $type isn't defined yet
+     * @throws \Behat\Behat\Exception\PendingException If the $type isn't defined yet
      */
     protected function getTagsFor( $type )
     {
@@ -209,7 +209,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
      * This function is used for testing if the driver supports redirect interception
      * for the "I follow the redirection" step
      *
-     * @throws UnsupportedDriverActionException
+     * @throws \Behat\Mink\Exception\UnsupportedDriverActionException
      */
     protected function canIntercept()
     {
@@ -375,7 +375,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
      * @param string|int    $column     In which column the text should be found
      * @param string        $tableXpath If there is a specific table
      *
-     * @return Behat\Mink\Element\NodeElement[]
+     * @return \Behat\Mink\Element\NodeElement[]
      */
     protected function getTableRow( $text, $column = null, $tableXpath = null )
     {
@@ -456,7 +456,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
      *
      * @param string $field Can be id, name, label, value
      *
-     * @return Behat\Mink\Element\NodeElement
+     * @return \Behat\Mink\Element\NodeElement
      */
     protected function findFieldElement( $field )
     {
@@ -487,7 +487,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
      * Browser fill field is more than the TraversableElement::fillField since a
      * simple Element::setValue won't do the job in several cases
      *
-     * @param Behat\Mink\Element\Element $field The html input node
+     * @param \Behat\Mink\Element\Element $field The html input node
      * @param mixed $value The value that should be setted onto the field
      */
     protected function browserFillField( Element $field, $value = null )
@@ -498,47 +498,48 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
             $typeAttributeOrTag = $field->getTagName();
         }
 
-        switch ( strtolower( $typeAttributeOrTag ) ) {
-        case "select":
-            $field->selectOption( $value );
-            break;
+        switch ( strtolower( $typeAttributeOrTag ) )
+        {
+            case "select":
+                $field->selectOption( $value );
+                break;
 
-        case "radio":
-            // Goutte can't use click on a non submit so it needs to set
-            // the value for the radio button
-            if ( $this->getSession()->getDriver() instanceof GoutteDriver )
-            {
-                if ( empty( $value ) )
+            case "radio":
+                // Goutte can't use click on a non submit so it needs to set
+                // the value for the radio button
+                if ( $this->getSession()->getDriver() instanceof GoutteDriver )
                 {
-                    $value = $field->getAttribute( 'value' );
+                    if ( empty( $value ) )
+                    {
+                        $value = $field->getAttribute( 'value' );
+                    }
+
+                    $field->setValue( $value );
                 }
+                else
+                {
+                    $field->click();
+                }
+                break;
 
+            case "checkbox":
+                if ( $value && $value !== "false" )
+                {
+                    $field->check();
+                }
+                else
+                {
+                    $field->uncheck();
+                }
+                break;
+
+            case "file":
+                $field->attachFile( $value );
+                break;
+
+            // most cases simple set value will do
+            default:
                 $field->setValue( $value );
-            }
-            else
-            {
-                $field->click();
-            }
-            break;
-
-        case "checkbox":
-            if ( $value && $value !== "false" )
-            {
-                $field->check();
-            }
-            else
-            {
-                $field->uncheck();
-            }
-            break;
-
-        case "file":
-            $field->attachFile( $value );
-            break;
-
-        // most cases simple set value will do
-        default:
-            $field->setValue( $value );
         }
     }
 
