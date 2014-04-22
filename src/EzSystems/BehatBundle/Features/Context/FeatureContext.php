@@ -161,7 +161,7 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
         // prepare given data
         $i = 0;
         $rows = $table->getRows();
-        array_shift( $rows );   // this is needed to take the first row ( readability only )
+        $headers = array_shift( $rows );   // this is needed to take the first row ( readability only )
         foreach ( $rows as $row )
         {
             $count = count( array_filter( $row ) );
@@ -191,7 +191,14 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
 
             // case 2 is the most simple case where "| field1 | as value 1 |"
             case 2:
-                $value = $row[1];
+                if ( count( $headers ) === 1 )
+                {
+                    $value = $row[0];
+                }
+                else
+                {
+                    $value = $row[1];
+                }
                 break;
 
             // this is for the cases where there are several values for the same
@@ -213,6 +220,8 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
      * @param string $pageIdentifier
      *
      * @return string
+     *
+     * @throws \RuntimeException If $pageIdentifier is not set
      */
     protected function getPathByPageIdentifier( $pageIdentifier )
     {
@@ -230,6 +239,8 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
      * @param string $file
      *
      * @return string
+     *
+     * @throws \RuntimeException If file is not set
      */
     protected function getPathByFileSource( $file )
     {
