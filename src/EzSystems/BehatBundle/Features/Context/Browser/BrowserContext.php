@@ -910,7 +910,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
 
     public function iSeeText( $text )
     {
-        $this->onPageSectionISeeAKey( 'main', $text );
+        $this->onPageSectionISeeText( 'main', $text );
     }
 
     public function onPageSectionISeeText( $pageSection, $text )
@@ -966,7 +966,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
 
     public function iSeeLinks( TableNode $table )
     {
-        $this->onSomeSeeIPlaceLinks( 'main', $table );
+        $this->onPageSectionISeeLinks( 'main', $table );
     }
 
     public function onPageSectionISeeLinks( $pageSection, TableNode $table )
@@ -1081,7 +1081,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
 
     public function iDontSeeLink( $link )
     {
-        $this->onPageSectionIDonTSeeALink( 'main', $link );
+        $this->onPageSectionIDonTSeeLink( 'main', $link );
     }
 
     public function onPageSectionIDonTSeeLink( $pageSection, $link )
@@ -1100,7 +1100,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
 
     public function iDonTSeeLinks( TableNode $table )
     {
-        $this->onPageSectionIDonTSeeTheLinks( 'main', $table );
+        $this->onPageSectionIDonTSeeLinks( 'main', $table );
     }
 
     public function onPageSectionIDonTSeeLinks( $pageSection, TableNode $table )

@@ -59,8 +59,8 @@ interface BrowserInternalSentences
     public function iFillFormWith( TableNode $table );
 
     /**
-     * @Given /^I am (?:at|on) (?:|the) "(?P<page>[^"]*)" page$/
-     * @When  /^I go to (?:|the) "(?P<page>[^"]*)"(?:| page)$/
+     * @Given /^I am (?:at|on) (?:|the )"(?P<page>[^"]*)" page$/
+     * @When  /^I go to (?:| the)"(?P<page>[^"]*)"(?:| page)$/
      */
     public function iGoToThe( $pageIdentifier );
 
@@ -245,7 +245,7 @@ interface BrowserInternalSentences
     public function iDonTSeeLinks( TableNode $table );
 
     /**
-     * @Then /^on "(?P<pagePart>[A-Za-z0-9\s-_]*)" I (?:don\'t|do not) see the links(?:|\:)$/
+     * @Then /^on "(?P<pagePart>[A-Za-z0-9\s-_]*)" I (?:don\'t|do not) see (?: the|)links(?:|\:)$/
      */
     public function onPageSectionIDonTSeeLinks( $pageSection, TableNode $table );
 

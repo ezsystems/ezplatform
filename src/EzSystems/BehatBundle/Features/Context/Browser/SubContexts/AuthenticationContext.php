@@ -51,7 +51,7 @@ class AuthenticationContext extends BrowserSubContext implements Authentication
     {
         return array(
             new Step\Given( 'I am on "/logout"' ),
-            new Step\Then( 'I see "Homepage" page' ),
+            new Step\Then( 'I should be on "/"' ),
         );
     }
 }

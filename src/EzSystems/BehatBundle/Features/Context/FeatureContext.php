@@ -215,6 +215,41 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
     }
 
     /**
+     * Parameter given trough the BDD may come in so many ways like:
+     * "Column 1"
+     * "column1"
+     * "Column 1 Row 2"
+     * So it is needed a way to effectively get the number it's pretended for a
+     * more accurate search through xpath
+     *
+     * @param string $string
+     *
+     * @return string
+     */
+    protected function getNumberFromString( $string )
+    {
+        $max = strlen( $string );
+        $result = "";
+
+        // go through each character
+        for ( $i = 0; $i < $max; $i++ )
+        {
+            // check if it is a number and add it to result
+            if ( $string[$i] >= '0' && $string[$i] <= '9' )
+            {
+                $result .= $string[$i];
+            }
+            // if not verify if the number was already found
+            else if ( $result !== "" )
+            {
+                return $result;
+            }
+        }
+
+        return $result;
+    }
+
+    /**
      * Returns the path associated with $pageIdentifier
      *
      * @param string $pageIdentifier
