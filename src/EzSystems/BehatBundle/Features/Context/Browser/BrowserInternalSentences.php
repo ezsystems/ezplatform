@@ -265,6 +265,11 @@ interface BrowserInternalSentences
     public function iSeePage( $pageIdentifier );
 
     /**
+     * @Then /^I see homepage$/
+     */
+    public function iSeeHomepage();
+
+    /**
      * @Then /^I see search (?P<total>\d+) result$/
      */
     public function iSeeSearchResults( $total );

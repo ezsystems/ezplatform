@@ -722,9 +722,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
 
     public function iGoToThe( $pageIdentifier )
     {
-        return array(
-            new Step\When( 'I am on "' . $this->getPathByPageIdentifier( $pageIdentifier ) . '"' ),
-        );
+        return new Step\When( 'I am on "' . $this->getPathByPageIdentifier( $pageIdentifier ) . '"' );
     }
 
     public function iSearchFor( $searchPhrase )
@@ -1137,6 +1135,18 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
         $currentUrl = $this->getUrlWithoutQueryString( $this->getSession()->getCurrentUrl() );
 
         $expectedUrl = $this->locatePath( $this->getPathByPageIdentifier( $pageIdentifier ) );
+
+        Assertion::assertEquals(
+            $expectedUrl,
+            $currentUrl,
+            "Unexpected URL of the current site. Expected: '$expectedUrl'. Actual: '$currentUrl'."
+        );
+    }
+
+    public function iSeeHomepage()
+    {
+        $currentUrl = $this->getUrlWithoutQueryString( $this->getSession()->getCurrentUrl() );
+        $expectedUrl = $this->locatePath( "/" );
 
         Assertion::assertEquals(
             $expectedUrl,
