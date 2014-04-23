@@ -8,6 +8,7 @@ default:
                 capabilities: { "browser": "firefox", "version": "17"}
             # This should be updated to selenium2 as soon as travis is running with selenium
             javascript_session: sahi
+#            javascript_session: selenium2
             browser_name: firefox
 
         Behat\Symfony2Extension\Extension:
@@ -20,6 +21,22 @@ default:
             mink_driver: true
     paths:
         features: vendor/ezsystems/
+
+installdemocontent:
+    context:
+        class: eZ\Bundle\EzPublishLegacyBundle\Features\Context\FeatureContext
+    paths:
+        bootstrap: vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishLegacyBundle/Features/Context/FeatureContext
+    filters:
+        tags: '@democontent_install'
+
+installdemoclean:
+    context:
+        class: eZ\Bundle\EzPublishLegacyBundle\Features\Context\FeatureContext
+    paths:
+        bootstrap: vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishLegacyBundle/Features/Context/FeatureContext
+    filters:
+        tags: '@democlean_install'
 
 democontent:
     context:

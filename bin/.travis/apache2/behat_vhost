@@ -2,6 +2,7 @@
     ServerName localhost
     DirectoryIndex index.php
     DocumentRoot %basedir%/web
+    AcceptPathInfo On
 
     #LogLevel debug
 

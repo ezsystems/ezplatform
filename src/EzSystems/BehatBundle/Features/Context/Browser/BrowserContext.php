@@ -18,6 +18,7 @@ use Behat\Behat\Context\Step;
 use Behat\Behat\Exception\PendingException;
 use Behat\Gherkin\Node\TableNode;
 use Behat\Mink\Element\NodeElement;
+use Behat\Mink\Element\Element;
 use Behat\Mink\Driver\GoutteDriver;
 use Behat\Mink\Exception\UnsupportedDriverActionException as MinkUnsupportedDriverActionException;
 
@@ -149,7 +150,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
      *
      * @return string Xpath string for searching elements inside those tags
      *
-     * @throws PendingException If the $type isn't defined yet
+     * @throws \Behat\Behat\Exception\PendingException If the $type isn't defined yet
      */
     protected function getTagsFor( $type )
     {
@@ -161,6 +162,8 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
                 return array( "h1", "h2", "h3" );
             case "list":
                 return array( "li" );
+            case "input":
+                return array( "input", "select", "textarea", );
         }
 
         throw new PendingException( "Tag's for '$type' type not defined" );
@@ -206,7 +209,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
      * This function is used for testing if the driver supports redirect interception
      * for the "I follow the redirection" step
      *
-     * @throws UnsupportedDriverActionException
+     * @throws \Behat\Mink\Exception\UnsupportedDriverActionException
      */
     protected function canIntercept()
     {
@@ -372,7 +375,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
      * @param string|int    $column     In which column the text should be found
      * @param string        $tableXpath If there is a specific table
      *
-     * @return Behat\Mink\Element\NodeElement[]
+     * @return \Behat\Mink\Element\NodeElement[]
      */
     protected function getTableRow( $text, $column = null, $tableXpath = null )
     {
@@ -446,16 +449,219 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
     }
 
     /**
+     * Find field element
+     * This is a complement to the normal search, because in some cases the
+     * label has no "for" attribute, so the normal search won't find it. So this
+     * will try to find an input right after a label with $field
+     *
+     * @param string $field Can be id, name, label, value
+     *
+     * @return \Behat\Mink\Element\NodeElement
+     */
+    protected function findFieldElement( $field )
+    {
+        $page = $this->getSession()->getPage();
+
+        // attempt to find field through id, name, or label
+        $fieldElement = $page->findField( $field );
+        if ( empty( $fieldElement ) )
+        {
+            // if field wasn't found, and there is an label for that, we will
+            // attempt to find the next input after the label
+            $fieldElement = $page->find(
+                "xpath",
+                "//*[self::" .
+                implode( " or self::", $this->getTagsFor( 'input' ) )
+                . "][preceding::label[contains( text(), "
+                . $this->literal( $field )
+                . " )]]"
+            );
+        }
+
+        Assertion::assertNotNull( $fieldElement, "Couldn't find '$field' field" );
+
+        return $fieldElement;
+    }
+
+    /**
+     * Browser fill field is more than the TraversableElement::fillField since a
+     * simple Element::setValue won't do the job in several cases
+     *
+     * @param \Behat\Mink\Element\Element $field The html input node
+     * @param mixed $value The value that should be setted onto the field
+     */
+    protected function browserFillField( Element $field, $value = null )
+    {
+        $typeAttributeOrTag = $field->getAttribute( "type" );
+        if ( empty( $typeAttributeOrTag ) )
+        {
+            $typeAttributeOrTag = $field->getTagName();
+        }
+
+        switch ( strtolower( $typeAttributeOrTag ) )
+        {
+            case "select":
+                $field->selectOption( $value );
+                break;
+
+            case "radio":
+                // Goutte can't use click on a non submit so it needs to set
+                // the value for the radio button
+                if ( $this->getSession()->getDriver() instanceof GoutteDriver )
+                {
+                    if ( empty( $value ) )
+                    {
+                        $value = $field->getAttribute( 'value' );
+                    }
+
+                    $field->setValue( $value );
+                }
+                else
+                {
+                    $field->click();
+                }
+                break;
+
+            case "checkbox":
+                if ( $value && $value !== "false" )
+                {
+                    $field->check();
+                }
+                else
+                {
+                    $field->uncheck();
+                }
+                break;
+
+            case "file":
+                $field->attachFile( $value );
+                break;
+
+            // most cases simple set value will do
+            default:
+                $field->setValue( $value );
+        }
+    }
+
+    /**
+     * Find and return the row (<tr>) where the passed element is
+     * This is useful when you intend to know if another element is in the same
+     * row
+     *
+     * @param \Behat\Mink\Element\Element $element The element in the intended row
+     *
+     * @return \Behat\Mink\Element\Element The <tr> element node
+     */
+    protected function findRow( Element $element )
+    {
+        $inicialTag = $element->getTagName();
+
+        while (
+            strtolower( $element->getTagName() ) !== "tr"
+            && strtolower( $element->getTagName() ) !== "body"
+        )
+        {
+            $element = $element->getParent();
+        }
+
+        Assertion::assertEquals(
+            strtolower( $element->getTagName() ),
+            "tr",
+            "Couldn't find a parent of '$inicialTag' that is a table row"
+        );
+
+        return $element;
+    }
+
+    /**
+     * In a list of elements returns a certain element (found through xpath) that
+     * is after a specific element (that is also found through xpath)
+     *
+     * <code>
+     * findElementAfterElement(
+     *      $arrayWithAllCellsOfARow,
+     *      $xpathForALabel
+     *      $xpathForAnInput
+     * );
+     * </code>
+     *
+     * @param array $elements
+     * @param type $firstXpath
+     * @param type $secondXpath
+     *
+     * @return type
+     */
+    protected function findElmentAfterElement( array $elements, $firstXpath, $secondXpath )
+    {
+        $foundFirstXpath = false;
+        foreach ( $elements as $element )
+        {
+            // choose what xpath to use
+            if ( !$foundFirstXpath )
+            {
+                $xpath = $firstXpath;
+            }
+            else
+            {
+                $xpath = $secondXpath;
+            }
+
+            $foundElement = $element->find( "xpath", $xpath );
+
+            // element found, if first start to look for the second one
+            // if second, than return this one
+            if ( !empty( $foundElement) )
+            {
+                if ( !$foundFirstXpath )
+                {
+                    $foundFirstXpath = true;
+                }
+                else
+                {
+                    return $foundElement;
+                }
+            }
+        }
+
+        Assertion::assertNotNull( null, "Couldn't find an element with '$secondXpath' xpath after '$firstXpath' xpath" );
+    }
+
+    /**
      * After this comment are the Browser sentences implementation
      *
      * @see BrowserInternalSentences
      */
 
+    public function checkOption( $option )
+    {
+        $page = $this->getSession()->getPage();
+        $fieldElement = $page->findField( $option );
+        Assertion::assertNotNull( $fieldElement, "Couldn't find '$option' checkbox" );
+
+        $type = $fieldElement->getAttribute( 'type' );
+
+        // this is needed for the cases where are checkboxes and radio's
+        // side by side, for main option the radio and the extra being the
+        // checkboxes values
+        if ( strtolower( $type ) !== 'checkbox' )
+        {
+            $value = $fieldElement->getAttribute( 'value' );
+            $fieldElement = $page->find( "xpath", "//input[@type='checkbox' and @value='$value']" );
+        }
+
+        Assertion::assertNotNull( $fieldElement, "Couldn't find a checkbox with '$value' value" );
+
+        $this->browserFillField( $fieldElement, true );
+    }
+
+    public function pressButton( $button )
+    {
+        $this->iClickAtButton( $button );
+    }
+
     public function iClickAtButton( $button )
     {
-        return array(
-            new Step\When( "I press \"{$button}\"" )
-        );
+        $this->onPageSectionIClickAtButton( 'main', $button );
     }
 
     public function onPageSectionIClickAtButton( $pageSection, $button )
@@ -463,12 +669,16 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
         $base = $this->makeXpathForBlock( $pageSection );
 
         $literal = $this->literal( $button );
+        $contains = "[contains(text(),{$literal}) "
+            . "or contains(@value,{$literal}) "
+            . "or contains(@id,{$literal}) "
+            . "or contains(@class, {$literal}) "
+            . "or contains(@name,{$literal})]"
+            . "[not( contains( @style, 'hidden' ) )]";
+
         $el = $this->getSession()->getPage()->find(
-            "xpath", "$base//button" .
-            "[contains(text(),{$literal}) " .
-            "or contains(@id,{$literal}) " .
-            "or contains(@class, {$literal}) " .
-            "or contains(@name,{$literal})]"
+            "xpath",
+            "$base//button$contains | //input[@type = 'submit' or @type = 'button' or @type = 'image']$contains"
         );
 
         Assertion::assertNotNull( $el, "Couldn't find '$button' button" );
@@ -496,6 +706,18 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
         Assertion::assertNotNull( $el, "Couldn't find '$link' link" );
 
         $el->click();
+    }
+
+    public function iFillFormWith( TableNode $table )
+    {
+        foreach ( $this->convertTableToArrayOfData( $table ) as $field => $value )
+        {
+            // fill the form
+            $this->browserFillField(
+                $this->findFieldElement( $field ),
+                $value
+            );
+        }
     }
 
     public function iGoToThe( $pageIdentifier )
@@ -540,6 +762,25 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
 
         // Store for reuse in result page
         $this->priorSearchPhrase = $searchPhrase;
+    }
+
+    public function iSelect( $option )
+    {
+        $elements = $this->getSession()->getPage()->findAll( "xpath", "//select" );
+
+        Assertion::assertNotNull( $elements, "Couldn't find any select element" );
+        Assertion::assertEquals( count( $elements ), 1, "Found more than 1 select element" );
+
+        $this->browserFillField( $elements[0], $option );
+    }
+
+    public function iSelectRadioButon( $label )
+    {
+        $el = $this->getSession()->getPage()->findField( $label );
+
+        Assertion::assertNotNull( $el, "Couldn't find a radio input with '$label'" );
+
+        $this->browserFillField( $el, true );
     }
 
     public function iFollowTheRedirection()
@@ -883,6 +1124,14 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
         return array( new Step\Then( "I should see \"$text\"" ) );
     }
 
+    public function iDonTSeeMessage( $message )
+    {
+        $literal = $this->literal( $message );
+        $el = $this->getSession()->getPage()->find( "xpath", "//*[@text = $literal]" );
+
+        Assertion::assertNull( $el, "Message $literal found" );
+    }
+
     public function iSeePage( $pageIdentifier )
     {
         $currentUrl = $this->getUrlWithoutQueryString( $this->getSession()->getCurrentUrl() );
@@ -1005,10 +1254,10 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
     }
 
     /**
-     * @Then /^(?:|I )want dump of (?:|the) page$/
+     * @Then /^(?:|I )want (?:|a )dump of (?:|the )page$/
      */
     public function iWantDumpOfThePage()
     {
-        echo $this->getSession()->getPage()->getContent();
+        $this->printDebug( $this->getSession()->getPage()->getContent() );
     }
 }
