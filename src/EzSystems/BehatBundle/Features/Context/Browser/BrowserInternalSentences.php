@@ -41,6 +41,12 @@ interface BrowserInternalSentences
     public function onPageSectionIClickAtButton( $pageSection, $button );
 
     /**
+     * @Given /^I clicked (?:at|on) "([^"]*)" image$/
+     * @When /^I click (?:at|on) "([^"]*)" image$/
+     */
+    public function iClickAtImage( $image );
+
+    /**
      * @Given /^I clicked (?:on|at) (?:the |)"(?P<link>[^"]*)" link$/
      * @When /^I click (?:on|at) (?:the |)"(?P<link>[^"]*)" link$/
      */

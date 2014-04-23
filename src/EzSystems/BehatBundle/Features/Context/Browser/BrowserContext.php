@@ -627,6 +627,42 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
     }
 
     /**
+     * Find an return a parent node with a specific tag
+     *
+     * @param \Behat\Mink\Element\NodeElement $el The element to get parent of
+     * @param string $tag Tag to lookup
+     * @param boolean $countMainNode In certain cases we do not pretend to check actual node
+     *
+     * @return \Behat\Mink\Element\NodeElement
+     */
+    protected function getParentNodeWithTag( NodeElement $el, $tag, $countMainNode = true )
+    {
+        $mainTag = strtolower( $el->getTagName() );
+        Assertion::assertNotEquals(
+            $mainTag,
+            "html",
+            "Couldn't find tag '$tag', already in master node 'html'"
+        );
+
+        $tag = strtolower( $tag );
+        if ( $mainTag === $tag && $countMainNode )
+            return $el;
+
+        $el = $el->getParent();
+        while ( strtolower( $el->getTagName() ) !== $tag )
+        {
+            Assertion::assertNotEquals(
+                $mainTag,
+                "html",
+                "Couldn't find tag '$tag', already in master node 'html'"
+            );
+            $el = $el->getParent();
+        }
+
+        return $el;
+    }
+
+    /**
      * After this comment are the Browser sentences implementation
      *
      * @see BrowserInternalSentences
@@ -684,6 +720,20 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
         Assertion::assertNotNull( $el, "Couldn't find '$button' button" );
 
         $el->click();
+    }
+
+    public function iClickAtImage( $image )
+    {
+        $xpath = ( isset( $this->mainAttributes[strtolower( $image )] ) ) ?
+            $this->makeXpathForBlock( $image ):
+            "//img[contains( @id, '$image') or contains( @src, '$image' )]";
+
+        $el = $this->getSession()->getPage()->find( 'xpath', $xpath );
+
+        Assertion::assertNotNull( $el, "Couldn't find '$image' image\nXPath = $xpath" );
+
+        $imageLink = $this->getParentNodeWithTag( $el, 'a' );
+        $imageLink->click();
     }
 
     public function iClickAtLink( $link )
