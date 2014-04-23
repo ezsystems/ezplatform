@@ -38,11 +38,16 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
 
     /**
      * @var array Array to map identifier to urls, should be set by child classes.
+     *
+     * Important:
+     *  this is an associative array( ex: array( 'key' => '/some/url') ) they keys
+     *  should be set (on contexts) as lower cases since the
+     *  FeatureContext::getPathByPageIdentifier() will check for lower case
      */
     protected $pageIdentifierMap = array();
 
     /**
-     * This will containt the source path for media files
+     * This will contains the source path for media files
      *
      * ex:
      * $fileSource = array(
@@ -260,12 +265,12 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
      */
     protected function getPathByPageIdentifier( $pageIdentifier )
     {
-        if ( !isset( $this->pageIdentifierMap[$pageIdentifier] ) )
+        if ( !isset( $this->pageIdentifierMap[strtolower( $pageIdentifier )] ) )
         {
             throw new \RuntimeException( "Unknown page identifier '{$pageIdentifier}'." );
         }
 
-        return $this->pageIdentifierMap[$pageIdentifier];
+        return $this->pageIdentifierMap[strtolower( $pageIdentifier )];
     }
 
     /**
