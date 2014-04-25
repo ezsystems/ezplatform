@@ -20,7 +20,8 @@ framework:
     templating:      { engines: ['twig', 'eztpl'] } #assets_version: SomeVersionScheme
     trusted_proxies: ~
     trusted_hosts: []
-    session:         ~
+    session:
+        save_path: "%kernel.root_dir%/sessions"
         # The session name defined here will be overridden by the one defined in your ezpublish.yml, for your siteaccess.
         # Defaut session name is "eZSESSID{siteaccess_hash}" (unique session name per siteaccess).
         # See ezpublish.yml.example for an example on how to configure this.
