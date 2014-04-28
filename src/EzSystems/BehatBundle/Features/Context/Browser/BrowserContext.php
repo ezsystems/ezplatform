@@ -78,7 +78,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
      *
      * @see $this->mainAttributes
      */
-    protected function makeXpathForBlock( $block = 'main' )
+    public function makeXpathForBlock( $block = 'main' )
     {
         $parameter = ( isset( $this->mainAttributes[strtolower( $block )] ) ) ?
             $this->mainAttributes[strtolower( $block )] :
@@ -152,7 +152,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
      *
      * @throws \Behat\Behat\Exception\PendingException If the $type isn't defined yet
      */
-    protected function getTagsFor( $type )
+    public function getTagsFor( $type )
     {
         switch ( strtolower( $type ) )
         {
@@ -179,7 +179,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
      *
      * @return string
      */
-    protected function concatTagsWithXpath( array $tags, $xpath = null )
+    public function concatTagsWithXpath( array $tags, $xpath = null )
     {
         $finalXpath = "";
         for ( $i = 0; !empty( $tags[$i] ); $i++ )
@@ -200,7 +200,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
      *
      * @param string $text
      */
-    protected function literal( $text )
+    public function literal( $text )
     {
         return $this->getSession()->getSelectorsHandler()->xpathLiteral( $text );
     }
@@ -211,7 +211,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
      *
      * @throws \Behat\Mink\Exception\UnsupportedDriverActionException
      */
-    protected function canIntercept()
+    public function canIntercept()
     {
         $driver = $this->getSession()->getDriver();
         if ( !$driver instanceof GoutteDriver )
@@ -234,7 +234,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
      * @todo verify if the links are for objects
      * @todo check if it has a different url alias
      */
-    protected function checkLinksForContentObjects( array $links, $where )
+    public function checkLinksForContentObjects( array $links, $where )
     {
         $base = $this->makeXpathForBlock( $where );
         foreach ( $links as $link )
@@ -257,7 +257,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
      * @param array         $links
      * @param NodeElement[] $available
      */
-    protected function checkLinksExistence( array $links, array $available )
+    public function checkLinksExistence( array $links, array $available )
     {
         // verify if every required link is in available
         foreach ( $links as $link )
@@ -293,7 +293,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
      * @param array         $links
      * @param NodeElement[] $available
      */
-    protected function checkLinkOrder( array $links, array $available )
+    public function checkLinkOrder( array $links, array $available )
     {
         $i = $passed = 0;
         $last = '';
@@ -340,7 +340,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
      *
      * @return boolean
      */
-    protected function assertTableRow( NodeElement $row, array $columns, array $columnsPositions = null )
+    public function assertTableRow( NodeElement $row, array $columns, array $columnsPositions = null )
     {
         // find which kind of column is in this row
         $elType = $row->find( 'xpath', "/th" );
@@ -377,7 +377,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
      *
      * @return \Behat\Mink\Element\NodeElement[]
      */
-    protected function getTableRow( $text, $column = null, $tableXpath = null )
+    public function getTableRow( $text, $column = null, $tableXpath = null )
     {
         // check column
         if ( !empty( $column ) )
@@ -427,7 +427,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
      *
      * @return boolean
      */
-    protected function assertElementEmphasized( NodeElement $el, $characteristic = null, $attribute = "style" )
+    public function assertElementEmphasized( NodeElement $el, $characteristic = null, $attribute = "style" )
     {
         // verify it has the attribute we're looking for
         if ( !$el->hasAttribute( $attribute ) )
@@ -458,7 +458,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
      *
      * @return \Behat\Mink\Element\NodeElement
      */
-    protected function findFieldElement( $field )
+    public function findFieldElement( $field )
     {
         $page = $this->getSession()->getPage();
 
@@ -490,7 +490,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
      * @param \Behat\Mink\Element\Element $field The html input node
      * @param mixed $value The value that should be setted onto the field
      */
-    protected function browserFillField( Element $field, $value = null )
+    public function browserFillField( Element $field, $value = null )
     {
         $typeAttributeOrTag = $field->getAttribute( "type" );
         if ( empty( $typeAttributeOrTag ) )
@@ -552,7 +552,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
      *
      * @return \Behat\Mink\Element\Element The <tr> element node
      */
-    protected function findRow( Element $element )
+    public function findRow( Element $element )
     {
         $inicialTag = $element->getTagName();
 
@@ -591,7 +591,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
      *
      * @return type
      */
-    protected function findElmentAfterElement( array $elements, $firstXpath, $secondXpath )
+    public function findElmentAfterElement( array $elements, $firstXpath, $secondXpath )
     {
         $foundFirstXpath = false;
         foreach ( $elements as $element )
@@ -635,7 +635,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
      *
      * @return \Behat\Mink\Element\NodeElement
      */
-    protected function getParentNodeWithTag( NodeElement $el, $tag, $countMainNode = true )
+    public function getParentNodeWithTag( NodeElement $el, $tag, $countMainNode = true )
     {
         $mainTag = strtolower( $el->getTagName() );
         Assertion::assertNotEquals(

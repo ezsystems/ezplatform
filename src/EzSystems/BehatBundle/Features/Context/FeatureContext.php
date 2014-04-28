@@ -231,7 +231,7 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
      *
      * @return string
      */
-    protected function getNumberFromString( $string )
+    public function getNumberFromString( $string )
     {
         $max = strlen( $string );
         $result = "";
@@ -263,7 +263,7 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
      *
      * @throws \RuntimeException If $pageIdentifier is not set
      */
-    protected function getPathByPageIdentifier( $pageIdentifier )
+    public function getPathByPageIdentifier( $pageIdentifier )
     {
         if ( !isset( $this->pageIdentifierMap[strtolower( $pageIdentifier )] ) )
         {
@@ -282,7 +282,7 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
      *
      * @throws \RuntimeException If file is not set
      */
-    protected function getPathByFileSource( $file )
+    public function getPathByFileSource( $file )
     {
         if ( !isset( $this->fileSource[$file] ) )
         {
@@ -299,7 +299,7 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
      *
      * @return string
      */
-    protected function getUrlWithoutQueryString( $url )
+    public function getUrlWithoutQueryString( $url )
     {
         if ( strpos( $url, '?' ) !== false )
         {
