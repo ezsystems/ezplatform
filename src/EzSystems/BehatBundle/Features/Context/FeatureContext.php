@@ -11,6 +11,7 @@
 
 namespace EzSystems\BehatBundle\Features\Context;
 
+use EzSystems\BehatBundle\ObjectGivenContexts;
 use eZ\Publish\Core\MVC\Symfony\SiteAccess;
 use EzSystems\BehatBundle\Helpers\ValueObjectHelper;
 use Behat\Behat\Event\OutlineExampleEvent;
@@ -73,6 +74,9 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
     {
         $this->parameters = $parameters;
         $this->valueObjectHelper = new ValueObjectHelper();
+
+        // add Given steps sub contexts
+        $this->useContext( 'GivenContentTypeGroup', new ObjectGivenContexts\GivenContentTypeGroupContext() );
     }
 
     /**
