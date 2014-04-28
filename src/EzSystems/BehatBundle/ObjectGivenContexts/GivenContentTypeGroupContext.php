@@ -12,6 +12,7 @@
 namespace EzSystems\BehatBundle\ObjectGivenContexts;
 
 use EzSystems\BehatBundle\ObjectGivenContexts\GivenContexts;
+use eZ\Publish\API\Repository\Values\ValueObject;
 use eZ\Publish\API\Repository\Exceptions\NotFoundException;
 use Behat\Gherkin\Node\TableNode;
 
@@ -23,7 +24,7 @@ class GivenContentTypeGroupContext extends GivenContexts
     public function iHaveContentTypeGroup( $identifier )
     {
         /** @var \eZ\Publish\API\Repository\Repository $repository */
-        $repository = $this->getMainContext()->getRepository();
+        $repository = $this->getRepository();
         $contentTypeService = $repository->getContentTypeService();
 
         // verify if the content type group exists
@@ -31,10 +32,10 @@ class GivenContentTypeGroupContext extends GivenContexts
         {
             $contentTypeService->loadContentTypeGroupByIdentifier( $identifier );
         }
-        // other wise create it
+            // other wise create it
         catch ( NotFoundException $e )
         {
-            $repository->sudo(
+            $this->createdObjects[] = $repository->sudo(
                 function() use( $identifier, $contentTypeService )
                 {
                     $ContentTypeGroupCreateStruct = $contentTypeService->newContentTypeGroupCreateStruct( $identifier );
@@ -50,7 +51,7 @@ class GivenContentTypeGroupContext extends GivenContexts
     public function iDonTHaveContentTypeGroup( $identifier )
     {
         /** @var \eZ\Publish\API\Repository\Repository $repository */
-        $repository = $this->getMainContext()->getRepository();
+        $repository = $this->getRepository();
         $contentTypeService = $repository->getContentTypeService();
 
         // attempt to delete the content type group with the identifier
@@ -65,7 +66,7 @@ class GivenContentTypeGroupContext extends GivenContexts
                 }
             );
         }
-        // other wise do nothing
+            // other wise do nothing
         catch ( NotFoundException $e )
         {
             // needed for CS
@@ -84,5 +85,24 @@ class GivenContentTypeGroupContext extends GivenContexts
         {
             $this->iHaveContentTypeGroup( $group[0] );
         }
+    }
+
+    /**
+     * This is used by the __destruct() function to delete/remove all the objects
+     * that were created for testing
+     *
+     * @param \eZ\Publish\API\Repository\Values\ValueObject $object Object that should be destroyed/removed
+     */
+    protected function destroy( ValueObject $object )
+    {
+        /** @var \eZ\Publish\API\Repository\Repository $repository */
+        $repository = $this->getRepository();
+
+        $repository->sudo(
+            function() use( $repository, $object )
+            {
+                $repository->getContentTypeService()->deleteContentTypeGroup( $object );
+            }
+        );
     }
 }
