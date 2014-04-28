@@ -646,7 +646,9 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
 
         $tag = strtolower( $tag );
         if ( $mainTag === $tag && $countMainNode )
+        {
             return $el;
+        }
 
         $el = $el->getParent();
         while ( strtolower( $el->getTagName() ) !== $tag )
