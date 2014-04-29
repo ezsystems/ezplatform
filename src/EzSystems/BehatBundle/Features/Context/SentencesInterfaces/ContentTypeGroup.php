@@ -19,7 +19,6 @@ use Behat\Gherkin\Node\TableNode;
 interface ContentTypeGroup
 {
     /**
-     * @When /^I create a Content Type Group "(?P<identifier>[A-Z])"$/
      * @When /^I create a Content Type Group with identifier "(?P<identifier>[^"]*)"$/
      */
     public function iCreateContentTypeGroup( $identifier );
@@ -30,13 +29,11 @@ interface ContentTypeGroup
     public function iReadContentTypeGroupsList();
 
     /**
-     * @Then /^I see a Content Type Group "(?P<identifier>[A-Z])"$/
      * @Then /^I see a Content Type Group with identifier "(?P<identifier>[^"]*)"$/
      */
     public function iSeeContentTypeGroup( $identifier );
 
     /**
-     * @Then /^I see (?P<total>\d+) Content Type Group(?:s|) "(?P<identifier>[A-Z])"$/
      * @Then /^I see (?P<total>\d+) Content Type Group(?:s|) with identifier "(?P<identifier>[^"]*)"$/
      */
     public function iSeeTotalContentTypeGroup( $total, $identifier );
