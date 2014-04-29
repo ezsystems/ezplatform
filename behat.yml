@@ -46,3 +46,12 @@ democontent:
         bootstrap: vendor/ezsystems/demobundle/EzSystems/DemoBundle/Features/Context
     filters:
         tags: '@democontent'
+
+restapi:
+    context:
+        class: eZ\Bundle\EzPublishRestBundle\Features\Context\FeatureContext
+    paths:
+        features: src/EzSystems/BehatBundle/Features
+        bootstrap: vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishRestBundle/Features/Context
+    filters:
+        tags: '@adminFeature'

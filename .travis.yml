@@ -8,6 +8,8 @@ php:
 env:
     # run setup wizard to install Demo+Content and then test demo with content
   - INSTALL="installdemocontent" PROFILE="democontent"
+    # test REST
+  - INSTALL="installdemoclean" PROFILE="restapi"
 
 
 # test only master (+ Pull requests)
