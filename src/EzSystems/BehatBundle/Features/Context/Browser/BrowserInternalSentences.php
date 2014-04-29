@@ -276,7 +276,7 @@ interface BrowserInternalSentences
     public function iSeeHomepage();
 
     /**
-     * @Then /^I see search (?P<total>\d+) result$/
+     * @Then /^I see (?P<total>\d+) search result$/
      */
     public function iSeeSearchResults( $total );
 
