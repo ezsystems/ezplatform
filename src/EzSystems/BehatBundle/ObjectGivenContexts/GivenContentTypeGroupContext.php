@@ -66,7 +66,7 @@ class GivenContentTypeGroupContext extends GivenContexts
                 }
             );
         }
-            // other wise do nothing
+        // other wise do nothing
         catch ( NotFoundException $e )
         {
             // needed for CS
