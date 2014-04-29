@@ -11,13 +11,14 @@
 
 namespace EzSystems\BehatBundle\Features\Context;
 
+use eZ\Publish\Core\MVC\Symfony\SiteAccess;
+use EzSystems\BehatBundle\Helpers\ValueObjectHelper;
 use Behat\Behat\Event\OutlineExampleEvent;
 use Behat\Behat\Event\ScenarioEvent;
+use Behat\Gherkin\Node\TableNode;
 use Behat\MinkExtension\Context\MinkContext;
 use Behat\Symfony2Extension\Context\KernelAwareInterface;
-use eZ\Publish\Core\MVC\Symfony\SiteAccess;
 use Symfony\Component\HttpKernel\KernelInterface;
-use Behat\Gherkin\Node\TableNode;
 
 /**
  * Feature context.
@@ -35,6 +36,11 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
      * @var array
      */
     private $parameters;
+
+    /**
+     * @var \EzSystems\BehatBundle\Helpers\ValueObjectHelper;
+     */
+    public $valueObjectHelper;
 
     /**
      * @var array Array to map identifier to urls, should be set by child classes.
@@ -61,6 +67,7 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
     public function __construct( array $parameters )
     {
         $this->parameters = $parameters;
+        $this->valueObjectHelper = new ValueObjectHelper();
     }
 
     /**
