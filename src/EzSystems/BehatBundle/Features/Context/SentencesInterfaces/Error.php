@@ -17,12 +17,13 @@ namespace EzSystems\BehatBundle\Features\Context\SentencesInterfaces;
 interface Error
 {
     /**
-     * @Then /^I see an invalid field error$/
+     * @Then /^I see (?:an |)invalid field error$/
      */
     public function iSeeAnInvalidFieldError();
 
     /**
-     * @Then /^I see not authorized error$/
+     * @Then /^I see (?:a |)not authorized error$/
+     * @Then /^I see (?:an |)unauthorized error$/
      */
     public function iSeeNotAuthorizedError();
 }
