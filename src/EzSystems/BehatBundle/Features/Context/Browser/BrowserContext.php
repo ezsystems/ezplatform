@@ -78,7 +78,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
      *
      * @see $this->mainAttributes
      */
-    protected function makeXpathForBlock( $block = 'main' )
+    public function makeXpathForBlock( $block = 'main' )
     {
         $parameter = ( isset( $this->mainAttributes[strtolower( $block )] ) ) ?
             $this->mainAttributes[strtolower( $block )] :
@@ -152,7 +152,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
      *
      * @throws \Behat\Behat\Exception\PendingException If the $type isn't defined yet
      */
-    protected function getTagsFor( $type )
+    public function getTagsFor( $type )
     {
         switch ( strtolower( $type ) )
         {
@@ -179,7 +179,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
      *
      * @return string
      */
-    protected function concatTagsWithXpath( array $tags, $xpath = null )
+    public function concatTagsWithXpath( array $tags, $xpath = null )
     {
         $finalXpath = "";
         for ( $i = 0; !empty( $tags[$i] ); $i++ )
@@ -200,7 +200,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
      *
      * @param string $text
      */
-    protected function literal( $text )
+    public function literal( $text )
     {
         return $this->getSession()->getSelectorsHandler()->xpathLiteral( $text );
     }
@@ -211,7 +211,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
      *
      * @throws \Behat\Mink\Exception\UnsupportedDriverActionException
      */
-    protected function canIntercept()
+    public function canIntercept()
     {
         $driver = $this->getSession()->getDriver();
         if ( !$driver instanceof GoutteDriver )
@@ -234,7 +234,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
      * @todo verify if the links are for objects
      * @todo check if it has a different url alias
      */
-    protected function checkLinksForContentObjects( array $links, $where )
+    public function checkLinksForContentObjects( array $links, $where )
     {
         $base = $this->makeXpathForBlock( $where );
         foreach ( $links as $link )
@@ -257,7 +257,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
      * @param array         $links
      * @param NodeElement[] $available
      */
-    protected function checkLinksExistence( array $links, array $available )
+    public function checkLinksExistence( array $links, array $available )
     {
         // verify if every required link is in available
         foreach ( $links as $link )
@@ -293,7 +293,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
      * @param array         $links
      * @param NodeElement[] $available
      */
-    protected function checkLinkOrder( array $links, array $available )
+    public function checkLinkOrder( array $links, array $available )
     {
         $i = $passed = 0;
         $last = '';
@@ -340,7 +340,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
      *
      * @return boolean
      */
-    protected function assertTableRow( NodeElement $row, array $columns, array $columnsPositions = null )
+    public function assertTableRow( NodeElement $row, array $columns, array $columnsPositions = null )
     {
         // find which kind of column is in this row
         $elType = $row->find( 'xpath', "/th" );
@@ -377,7 +377,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
      *
      * @return \Behat\Mink\Element\NodeElement[]
      */
-    protected function getTableRow( $text, $column = null, $tableXpath = null )
+    public function getTableRow( $text, $column = null, $tableXpath = null )
     {
         // check column
         if ( !empty( $column ) )
@@ -427,7 +427,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
      *
      * @return boolean
      */
-    protected function assertElementEmphasized( NodeElement $el, $characteristic = null, $attribute = "style" )
+    public function assertElementEmphasized( NodeElement $el, $characteristic = null, $attribute = "style" )
     {
         // verify it has the attribute we're looking for
         if ( !$el->hasAttribute( $attribute ) )
@@ -458,7 +458,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
      *
      * @return \Behat\Mink\Element\NodeElement
      */
-    protected function findFieldElement( $field )
+    public function findFieldElement( $field )
     {
         $page = $this->getSession()->getPage();
 
@@ -490,7 +490,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
      * @param \Behat\Mink\Element\Element $field The html input node
      * @param mixed $value The value that should be setted onto the field
      */
-    protected function browserFillField( Element $field, $value = null )
+    public function browserFillField( Element $field, $value = null )
     {
         $typeAttributeOrTag = $field->getAttribute( "type" );
         if ( empty( $typeAttributeOrTag ) )
@@ -552,7 +552,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
      *
      * @return \Behat\Mink\Element\Element The <tr> element node
      */
-    protected function findRow( Element $element )
+    public function findRow( Element $element )
     {
         $inicialTag = $element->getTagName();
 
@@ -591,7 +591,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
      *
      * @return type
      */
-    protected function findElmentAfterElement( array $elements, $firstXpath, $secondXpath )
+    public function findElmentAfterElement( array $elements, $firstXpath, $secondXpath )
     {
         $foundFirstXpath = false;
         foreach ( $elements as $element )
@@ -624,6 +624,44 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
         }
 
         Assertion::assertNotNull( null, "Couldn't find an element with '$secondXpath' xpath after '$firstXpath' xpath" );
+    }
+
+    /**
+     * Find an return a parent node with a specific tag
+     *
+     * @param \Behat\Mink\Element\NodeElement $el The element to get parent of
+     * @param string $tag Tag to lookup
+     * @param boolean $countMainNode In certain cases we do not pretend to check actual node
+     *
+     * @return \Behat\Mink\Element\NodeElement
+     */
+    public function getParentNodeWithTag( NodeElement $el, $tag, $countMainNode = true )
+    {
+        $mainTag = strtolower( $el->getTagName() );
+        Assertion::assertNotEquals(
+            $mainTag,
+            "html",
+            "Couldn't find tag '$tag', already in master node 'html'"
+        );
+
+        $tag = strtolower( $tag );
+        if ( $mainTag === $tag && $countMainNode )
+        {
+            return $el;
+        }
+
+        $el = $el->getParent();
+        while ( strtolower( $el->getTagName() ) !== $tag )
+        {
+            Assertion::assertNotEquals(
+                $mainTag,
+                "html",
+                "Couldn't find tag '$tag', already in master node 'html'"
+            );
+            $el = $el->getParent();
+        }
+
+        return $el;
     }
 
     /**
@@ -686,6 +724,20 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
         $el->click();
     }
 
+    public function iClickAtImage( $image )
+    {
+        $xpath = ( isset( $this->mainAttributes[strtolower( $image )] ) ) ?
+            $this->makeXpathForBlock( $image ):
+            "//img[contains( @id, '$image') or contains( @src, '$image' )]";
+
+        $el = $this->getSession()->getPage()->find( 'xpath', $xpath );
+
+        Assertion::assertNotNull( $el, "Couldn't find '$image' image\nXPath = $xpath" );
+
+        $imageLink = $this->getParentNodeWithTag( $el, 'a' );
+        $imageLink->click();
+    }
+
     public function iClickAtLink( $link )
     {
         return array(
@@ -722,9 +774,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
 
     public function iGoToThe( $pageIdentifier )
     {
-        return array(
-            new Step\When( 'I am on "' . $this->getPathByPageIdentifier( $pageIdentifier ) . '"' ),
-        );
+        return new Step\When( 'I am on "' . $this->getPathByPageIdentifier( $pageIdentifier ) . '"' );
     }
 
     public function iSearchFor( $searchPhrase )
@@ -910,7 +960,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
 
     public function iSeeText( $text )
     {
-        $this->onPageSectionISeeAKey( 'main', $text );
+        $this->onPageSectionISeeText( 'main', $text );
     }
 
     public function onPageSectionISeeText( $pageSection, $text )
@@ -966,7 +1016,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
 
     public function iSeeLinks( TableNode $table )
     {
-        $this->onSomeSeeIPlaceLinks( 'main', $table );
+        $this->onPageSectionISeeLinks( 'main', $table );
     }
 
     public function onPageSectionISeeLinks( $pageSection, TableNode $table )
@@ -1081,7 +1131,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
 
     public function iDontSeeLink( $link )
     {
-        $this->onPageSectionIDonTSeeALink( 'main', $link );
+        $this->onPageSectionIDonTSeeLink( 'main', $link );
     }
 
     public function onPageSectionIDonTSeeLink( $pageSection, $link )
@@ -1100,7 +1150,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
 
     public function iDonTSeeLinks( TableNode $table )
     {
-        $this->onPageSectionIDonTSeeTheLinks( 'main', $table );
+        $this->onPageSectionIDonTSeeLinks( 'main', $table );
     }
 
     public function onPageSectionIDonTSeeLinks( $pageSection, TableNode $table )
@@ -1137,6 +1187,18 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
         $currentUrl = $this->getUrlWithoutQueryString( $this->getSession()->getCurrentUrl() );
 
         $expectedUrl = $this->locatePath( $this->getPathByPageIdentifier( $pageIdentifier ) );
+
+        Assertion::assertEquals(
+            $expectedUrl,
+            $currentUrl,
+            "Unexpected URL of the current site. Expected: '$expectedUrl'. Actual: '$currentUrl'."
+        );
+    }
+
+    public function iSeeHomepage()
+    {
+        $currentUrl = $this->getUrlWithoutQueryString( $this->getSession()->getCurrentUrl() );
+        $expectedUrl = $this->locatePath( "/" );
 
         Assertion::assertEquals(
             $expectedUrl,

@@ -41,6 +41,12 @@ interface BrowserInternalSentences
     public function onPageSectionIClickAtButton( $pageSection, $button );
 
     /**
+     * @Given /^I clicked (?:at|on) "([^"]*)" image$/
+     * @When /^I click (?:at|on) "([^"]*)" image$/
+     */
+    public function iClickAtImage( $image );
+
+    /**
      * @Given /^I clicked (?:on|at) (?:the |)"(?P<link>[^"]*)" link$/
      * @When /^I click (?:on|at) (?:the |)"(?P<link>[^"]*)" link$/
      */
@@ -59,8 +65,8 @@ interface BrowserInternalSentences
     public function iFillFormWith( TableNode $table );
 
     /**
-     * @Given /^I am (?:at|on) (?:|the) "(?P<page>[^"]*)" page$/
-     * @When  /^I go to (?:|the) "(?P<page>[^"]*)"(?:| page)$/
+     * @Given /^I am (?:at|on) (?:|the )"(?P<page>[^"]*)" page$/
+     * @When  /^I go to (?:| the)"(?P<page>[^"]*)"(?:| page)$/
      */
     public function iGoToThe( $pageIdentifier );
 
@@ -245,7 +251,7 @@ interface BrowserInternalSentences
     public function iDonTSeeLinks( TableNode $table );
 
     /**
-     * @Then /^on "(?P<pagePart>[A-Za-z0-9\s-_]*)" I (?:don\'t|do not) see the links(?:|\:)$/
+     * @Then /^on "(?P<pagePart>[A-Za-z0-9\s-_]*)" I (?:don\'t|do not) see (?: the|)links(?:|\:)$/
      */
     public function onPageSectionIDonTSeeLinks( $pageSection, TableNode $table );
 
@@ -265,7 +271,12 @@ interface BrowserInternalSentences
     public function iSeePage( $pageIdentifier );
 
     /**
-     * @Then /^I see search (?P<total>\d+) result$/
+     * @Then /^I see homepage$/
+     */
+    public function iSeeHomepage();
+
+    /**
+     * @Then /^I see (?P<total>\d+) search result$/
      */
     public function iSeeSearchResults( $total );
 

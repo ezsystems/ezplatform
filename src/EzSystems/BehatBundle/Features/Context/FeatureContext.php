@@ -38,11 +38,16 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
 
     /**
      * @var array Array to map identifier to urls, should be set by child classes.
+     *
+     * Important:
+     *  this is an associative array( ex: array( 'key' => '/some/url') ) they keys
+     *  should be set (on contexts) as lower cases since the
+     *  FeatureContext::getPathByPageIdentifier() will check for lower case
      */
     protected $pageIdentifierMap = array();
 
     /**
-     * This will containt the source path for media files
+     * This will contains the source path for media files
      *
      * ex:
      * $fileSource = array(
@@ -215,6 +220,41 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
     }
 
     /**
+     * Parameter given trough the BDD may come in so many ways like:
+     * "Column 1"
+     * "column1"
+     * "Column 1 Row 2"
+     * So it is needed a way to effectively get the number it's pretended for a
+     * more accurate search through xpath
+     *
+     * @param string $string
+     *
+     * @return string
+     */
+    public function getNumberFromString( $string )
+    {
+        $max = strlen( $string );
+        $result = "";
+
+        // go through each character
+        for ( $i = 0; $i < $max; $i++ )
+        {
+            // check if it is a number and add it to result
+            if ( $string[$i] >= '0' && $string[$i] <= '9' )
+            {
+                $result .= $string[$i];
+            }
+            // if not verify if the number was already found
+            else if ( $result !== "" )
+            {
+                return $result;
+            }
+        }
+
+        return $result;
+    }
+
+    /**
      * Returns the path associated with $pageIdentifier
      *
      * @param string $pageIdentifier
@@ -223,14 +263,14 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
      *
      * @throws \RuntimeException If $pageIdentifier is not set
      */
-    protected function getPathByPageIdentifier( $pageIdentifier )
+    public function getPathByPageIdentifier( $pageIdentifier )
     {
-        if ( !isset( $this->pageIdentifierMap[$pageIdentifier] ) )
+        if ( !isset( $this->pageIdentifierMap[strtolower( $pageIdentifier )] ) )
         {
             throw new \RuntimeException( "Unknown page identifier '{$pageIdentifier}'." );
         }
 
-        return $this->pageIdentifierMap[$pageIdentifier];
+        return $this->pageIdentifierMap[strtolower( $pageIdentifier )];
     }
 
     /**
@@ -242,7 +282,7 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
      *
      * @throws \RuntimeException If file is not set
      */
-    protected function getPathByFileSource( $file )
+    public function getPathByFileSource( $file )
     {
         if ( !isset( $this->fileSource[$file] ) )
         {
@@ -259,7 +299,7 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
      *
      * @return string
      */
-    protected function getUrlWithoutQueryString( $url )
+    public function getUrlWithoutQueryString( $url )
     {
         if ( strpos( $url, '?' ) !== false )
         {
