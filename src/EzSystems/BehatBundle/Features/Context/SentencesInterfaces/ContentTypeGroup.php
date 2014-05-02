@@ -29,6 +29,11 @@ interface ContentTypeGroup
     public function iReadContentTypeGroupsList();
 
     /**
+     * @When /^I update Content Type Group with identifier "(?P<actualIdentifier>[^"]*)" to "(?P<newIdentifier>[^"]*)"$/
+     */
+    public function iUpdateContentTypeGroupIdentifier( $actualIdentifier, $newIdentifier );
+
+    /**
      * @Then /^I see a Content Type Group with identifier "(?P<identifier>[^"]*)"$/
      */
     public function iSeeContentTypeGroup( $identifier );
