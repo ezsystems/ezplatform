@@ -326,7 +326,7 @@ class BrowserContext extends BaseFeatureContext implements BrowserInternalSenten
         Assertion::assertEquals(
             count( $links ),
             $passed,
-            "Expected to evaluate '{count( $links )}' links evaluated '{$passed}'"
+            "Expected to evaluate '" . count( $links ) . "' links evaluated '{$passed}'"
         );
     }
 
