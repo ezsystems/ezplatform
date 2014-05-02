@@ -1,4 +1,4 @@
-@contenttypegroup @adminFeature
+@contentTypeGroup @adminFeature
 Feature: Creating a Content Type Group
     Create Content Type Group
     As an administrator or anonymous user

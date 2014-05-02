@@ -74,7 +74,7 @@ class GivenContentTypeGroupContext extends GivenContexts
     }
 
     /**
-     * @Given /^I have (?:the |)following ContentTypeGroups(?:\:|)$/
+     * @Given /^I have (?:the |)following Content Type Groups(?:\:|)$/
      */
     public function iHaveTheFollowingContentTypeGroups( TableNode $table )
     {
