@@ -39,7 +39,7 @@ interface ContentTypeGroup
     public function iSeeTotalContentTypeGroup( $total, $identifier );
 
     /**
-     * @Then /^I see the following ContentTypeGroups:$/
+     * @Then /^I see the following Content Type Groups:$/
      */
     public function iSeeTheFollowingContentTypeGroups( TableNode $groups );
 }
