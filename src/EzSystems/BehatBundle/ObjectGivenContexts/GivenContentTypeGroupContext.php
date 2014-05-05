@@ -15,6 +15,7 @@ use EzSystems\BehatBundle\ObjectGivenContexts\GivenContexts;
 use eZ\Publish\API\Repository\Values\ValueObject;
 use eZ\Publish\API\Repository\Exceptions\NotFoundException;
 use Behat\Gherkin\Node\TableNode;
+use PHPUnit_Framework_Assert as Assertion;
 
 class GivenContentTypeGroupContext extends GivenContexts
 {

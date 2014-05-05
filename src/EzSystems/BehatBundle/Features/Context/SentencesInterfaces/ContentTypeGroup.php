@@ -34,6 +34,11 @@ interface ContentTypeGroup
     public function iUpdateContentTypeGroupIdentifier( $actualIdentifier, $newIdentifier );
 
     /**
+     * @When /^I delete Content Type Group with identifier "(?P<identifier>[^"]*)"$/
+     */
+    public function iDeleteContentTypeGroup( $identifier );
+
+    /**
      * @Then /^I see a Content Type Group with identifier "(?P<identifier>[^"]*)"$/
      */
     public function iSeeContentTypeGroup( $identifier );
