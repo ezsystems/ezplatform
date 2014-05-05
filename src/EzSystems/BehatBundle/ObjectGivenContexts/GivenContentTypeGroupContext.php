@@ -101,7 +101,14 @@ class GivenContentTypeGroupContext extends GivenContexts
         $repository->sudo(
             function() use( $repository, $object )
             {
-                $repository->getContentTypeService()->deleteContentTypeGroup( $object );
+                try
+                {
+                    $repository->getContentTypeService()->deleteContentTypeGroup( $object );
+                }
+                catch ( NotFoundException $e )
+                {
+                    // nothing to do
+                }
             }
         );
     }
