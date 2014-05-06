@@ -28,3 +28,5 @@ Feature: Update a Content Type Group
         And I don't have a Content Type Group with identifier "another_string"
         When I update Content Type Group with identifier "some_string" to "another_string"
         Then I see an unauthorized error
+        And I see 1 Content Type Group with identifier "some_string"
+        And I don't see a Content Type Group with identifier "another_string"
