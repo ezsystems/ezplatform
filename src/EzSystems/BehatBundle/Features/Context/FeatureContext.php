@@ -112,6 +112,18 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
     }
 
     /**
+     * Remove the objects created by Given steps
+     *
+     * @AfterScenario
+     *
+     * @param $event
+     */
+    public function cleanGivenObjects( $event )
+    {
+        $this->getSubContext( 'GivenContentTypeGroup' )->clean();
+    }
+
+    /**
      * Generates the siteaccess
      *
      * @return \eZ\Publish\Core\MVC\Symfony\SiteAccess
