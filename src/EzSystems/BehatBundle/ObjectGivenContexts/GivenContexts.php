@@ -51,12 +51,14 @@ abstract class GivenContexts extends BehatContext
     /**
      * Destroy/remove/delete all created objects (from given steps)
      */
-    public function __destruct()
+    public function clean()
     {
         foreach ( $this->createdObjects as $object )
         {
             $this->destroy( $object );
         }
+
+        $this->createdObjects = array();
     }
 
     /**

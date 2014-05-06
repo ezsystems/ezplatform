@@ -27,21 +27,27 @@ class GivenContentTypeGroupContext extends GivenContexts
         $repository = $this->getRepository();
         $contentTypeService = $repository->getContentTypeService();
 
-        // verify if the content type group exists
-        try
-        {
-            $contentTypeService->loadContentTypeGroupByIdentifier( $identifier );
-        }
-            // other wise create it
-        catch ( NotFoundException $e )
-        {
-            $this->createdObjects[] = $repository->sudo(
-                function() use( $identifier, $contentTypeService )
+        $newContentTypeGroup = $repository->sudo(
+            function() use( $identifier, $contentTypeService )
+            {
+                // verify if the content type group exists
+                try
+                {
+                    $contentTypeService->loadContentTypeGroupByIdentifier( $identifier );
+                    return null;
+                }
+                // other wise create it
+                catch ( NotFoundException $e )
                 {
                     $ContentTypeGroupCreateStruct = $contentTypeService->newContentTypeGroupCreateStruct( $identifier );
                     return $contentTypeService->createContentTypeGroup( $ContentTypeGroupCreateStruct );
                 }
-            );
+            }
+        );
+
+        if ( !empty( $newContentTypeGroup ) )
+        {
+            $this->createdObjects[] = $newContentTypeGroup;
         }
     }
 
@@ -54,23 +60,23 @@ class GivenContentTypeGroupContext extends GivenContexts
         $repository = $this->getRepository();
         $contentTypeService = $repository->getContentTypeService();
 
-        // attempt to delete the content type group with the identifier
-        try
-        {
-            $repository->sudo(
-                function() use( $identifier, $contentTypeService )
+        $repository->sudo(
+            function() use( $identifier, $contentTypeService )
+            {
+                // attempt to delete the content type group with the identifier
+                try
                 {
                     $contentTypeService->deleteContentTypeGroup(
                         $contentTypeService->loadContentTypeGroupByIdentifier( $identifier )
                     );
                 }
-            );
-        }
-        // other wise do nothing
-        catch ( NotFoundException $e )
-        {
-            // needed for CS
-        }
+                // other wise do nothing
+                catch ( NotFoundException $e )
+                {
+                    // nothing to do
+                }
+            }
+        );
     }
 
     /**
@@ -101,7 +107,15 @@ class GivenContentTypeGroupContext extends GivenContexts
         $repository->sudo(
             function() use( $repository, $object )
             {
-                $repository->getContentTypeService()->deleteContentTypeGroup( $object );
+                try
+                {
+                    $contentTypeService = $repository->getContentTypeService();
+                    $contentTypeService->deleteContentTypeGroup( $contentTypeService->loadContentTypeGroup( $object->id ) );
+                }
+                catch ( NotFoundException $e )
+                {
+                    // nothing to do
+                }
             }
         );
     }
