@@ -12,19 +12,19 @@ Feature: Update a Content Type Group
         Then I see a Content Type Group with identifier "another_string"
 
     Scenario: Can't update the identifier to an existing one
-      Given I am logged as an "administrator"
-      And I have the following Content Type Groups:
-          | groups         |
-          | some_string    |
-          | another_string |
-      When I update Content Type Group with identifier "some_string" to "another_string"
-      Then I see an invalid field error
-      And I see 1 Content Type Group with identifier "some_string"
-      And I see 1 Content Type Group with identifier "another_string"
+        Given I am logged as an "administrator"
+        And I have the following Content Type Groups:
+            | groups         |
+            | some_string    |
+            | another_string |
+        When I update Content Type Group with identifier "some_string" to "another_string"
+        Then I see an invalid field error
+        And I see 1 Content Type Group with identifier "some_string"
+        And I see 1 Content Type Group with identifier "another_string"
 
     Scenario: An anonymous can't update the identifier
-      Given I am not logged in
-      And I have a Content Type Group with identifier "some_string"
-      And I don't have a Content Type Group with identifier "another_string"
-      When I update Content Type Group with identifier "some_string" to "another_string"
-      Then I see an unauthorized error
+        Given I am not logged in
+        And I have a Content Type Group with identifier "some_string"
+        And I don't have a Content Type Group with identifier "another_string"
+        When I update Content Type Group with identifier "some_string" to "another_string"
+        Then I see an unauthorized error
