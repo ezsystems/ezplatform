@@ -19,6 +19,7 @@ Feature: Update a Content Type Group
           | another_string |
       When I update Content Type Group with identifier "some_string" to "another_string"
       Then I see an invalid field error
+      And I see 1 Content Type Group with identifier "some_string"
       And I see 1 Content Type Group with identifier "another_string"
 
     Scenario: An anonymous can't update the identifier
