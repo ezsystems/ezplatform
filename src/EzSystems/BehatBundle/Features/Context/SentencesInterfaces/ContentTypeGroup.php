@@ -24,7 +24,7 @@ interface ContentTypeGroup
     public function iCreateContentTypeGroup( $identifier );
 
     /**
-     * @When /^I read ContentTypeGroups list$/
+     * @When /^I read Content Type Groups list$/
      */
     public function iReadContentTypeGroupsList();
 
