@@ -1,9 +1,8 @@
 #!/bin/sh
 
-# vhost & phpenv
+# vhost & fastcgi setup
 sed s?%basedir%?$TRAVIS_BUILD_DIR? bin/.travis/apache2/behat_vhost | sudo tee /etc/apache2/sites-available/behat > /dev/null
-sudo cp bin/.travis/apache2/phpenv /etc/apache2/conf.d/phpconfig
-
+sudo cp bin/.travis/apache2/php5-fcgi /etc/apache2/conf.d/php5-fcgi
 
 # modules enabling
 sudo a2enmod rewrite
