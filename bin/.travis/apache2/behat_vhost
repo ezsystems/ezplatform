@@ -24,7 +24,7 @@
         # Uncomment in FastCGI mode, to get basic auth working.
         RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
-        RewriteCond %{REQUEST_URI} ^/php5.fastcgi(.*)
+        RewriteCond %{REQUEST_URI} ^/php5-fcgi(.*)
         RewriteRule . - [L]
 
         # v1 rest API is on Legacy
