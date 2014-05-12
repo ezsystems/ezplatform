@@ -44,6 +44,11 @@ interface ContentTypeGroup
     public function iSeeContentTypeGroup( $identifier );
 
     /**
+     * @Then /^I don\'t see a Content Type Group with identifier "(?P<identifier>[^"]*)"$/
+     */
+    public function iDonTSeeAContentTypeGroup( $identifier );
+
+    /**
      * @Then /^I see (?P<total>\d+) Content Type Group(?:s|) with identifier "(?P<identifier>[^"]*)"$/
      */
     public function iSeeTotalContentTypeGroup( $total, $identifier );
