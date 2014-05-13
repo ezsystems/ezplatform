@@ -1,4 +1,7 @@
 default:
+    context:
+        parameters:
+            rest_url: 'http://localhost'
     extensions:
         Behat\MinkExtension\Extension:
             base_url: 'http://localhost'
