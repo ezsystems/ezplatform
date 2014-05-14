@@ -14,6 +14,7 @@ namespace EzSystems\BehatBundle\ObjectGivenContexts;
 use EzSystems\BehatBundle\ObjectGivenContexts\GivenContexts;
 use eZ\Publish\API\Repository\Values\ValueObject;
 use eZ\Publish\API\Repository\Exceptions\NotFoundException;
+use eZ\Publish\API\Repository\Exceptions\InvalidArgumentException;
 use Behat\Gherkin\Node\TableNode;
 
 class GivenContentTypeGroupContext extends GivenContexts
@@ -107,9 +108,20 @@ class GivenContentTypeGroupContext extends GivenContexts
         $repository->sudo(
             function() use( $repository, $object )
             {
+                $contentTypeService = $repository->getContentTypeService();
                 try
                 {
-                    $contentTypeService = $repository->getContentTypeService();
+                    $contentTypeService->deleteContentTypeGroup( $contentTypeService->loadContentTypeGroup( $object->id ) );
+                }
+                // if there it have Content Type's, then remove them
+                catch ( InvalidArgumentException $e )
+                {
+                    $contentTypeList = $contentTypeService->loadContentTypes( $object );
+                    foreach ( $contentTypeList as $contentType )
+                    {
+                        $contentTypeService->deleteContentType( $contentType );
+                    }
+
                     $contentTypeService->deleteContentTypeGroup( $contentTypeService->loadContentTypeGroup( $object->id ) );
                 }
                 catch ( NotFoundException $e )
