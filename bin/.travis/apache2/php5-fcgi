@@ -2,7 +2,7 @@
     AddHandler php5-fcgi .php
     Action php5-fcgi /php5-fcgi
     Alias /php5-fcgi /usr/lib/cgi-bin/php5-fcgi
-    FastCgiExternalServer /usr/lib/cgi-bin/php5-fcgi -socket /tmp/php-fpm.sock -pass-header Authorization -idle-timeout 60
+    FastCgiExternalServer /usr/lib/cgi-bin/php5-fcgi -socket /tmp/php-fpm.sock -pass-header Authorization -idle-timeout 180
 
     <Location "/usr/lib/cgi-bin/php5-fcgi">
         Order deny,allow

@@ -16,5 +16,5 @@ cd ~/sahi/bin
 sh -e ./sahi.sh &
 cd -
 
-# Give Sahi some time to start
-sleep 4
+# Give Sahi some time to start, otherwise tests will fail if high load on test servers
+sleep 8
