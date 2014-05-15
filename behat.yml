@@ -54,7 +54,7 @@ restapi:
     context:
         class: eZ\Bundle\EzPublishRestBundle\Features\Context\FeatureContext
     paths:
-        features: src/EzSystems/BehatBundle/Features
+        features: vendor/ezsystems/behatbundle/EzSystems/BehatBundle/Features
         bootstrap: vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishRestBundle/Features/Context
     filters:
         tags: '@adminFeature'
