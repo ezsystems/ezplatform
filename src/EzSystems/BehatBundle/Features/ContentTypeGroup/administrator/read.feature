@@ -2,7 +2,7 @@
 Feature: Read a Content Type Groups
     In order to read a Content Type Groups
     As an administrator
-    I can't read a Content Type Group
+    I need to be able to read a Content Type Group
 
     Scenario: Read a Content Type Group
         Given I am logged as an "administrator"

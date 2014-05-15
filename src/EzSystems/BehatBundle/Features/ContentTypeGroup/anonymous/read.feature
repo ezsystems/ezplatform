@@ -1,7 +1,7 @@
 @contentTypeGroup @adminFeature
 Feature: Read a Content Type Groups
     In order to prevent an unauthorized user to read a Content Type Group
-    As an administrator
+    As an anonymous
     I'm not allowed to read a Content Type Group
 
     Scenario: Can't read a Content Type Group
