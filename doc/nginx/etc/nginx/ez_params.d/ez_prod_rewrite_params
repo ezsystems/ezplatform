@@ -1,0 +1,7 @@
+
+# Additional Assetic rules for eZ Publish 5.1 / 2013.4 and higher.
+## Don't forget to run php ezpublish/console assetic:dump --env=prod
+## and make sure to comment these out in DEV environment.
+rewrite "^/css/(.*)\.css" "/css/$1.css" break;
+rewrite "^/js/(.*)\.js" "/js/$1.js" break;
+
