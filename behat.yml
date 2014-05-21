@@ -11,7 +11,7 @@ default:
                 capabilities: { "browser": "firefox", "version": "17"}
             # This should be updated to selenium2 as soon as travis is running with selenium
             javascript_session: sahi
-#            javascript_session: selenium2
+            #javascript_session: selenium2
             browser_name: firefox
 
         Behat\Symfony2Extension\Extension:
@@ -27,34 +27,24 @@ default:
 
 installdemocontent:
     context:
-        class: eZ\Bundle\EzPublishLegacyBundle\Features\Context\FeatureContext
-    paths:
-        bootstrap: vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishLegacyBundle/Features/Context/FeatureContext
+        class: eZ\Bundle\EzPublishLegacyBundle\BddTests\Context\SetupWizardContext
     filters:
         tags: '@democontent_install'
 
 installdemoclean:
     context:
-        class: eZ\Bundle\EzPublishLegacyBundle\Features\Context\FeatureContext
-    paths:
-        bootstrap: vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishLegacyBundle/Features/Context/FeatureContext
+        class: eZ\Bundle\EzPublishLegacyBundle\BddTests\Context\SetupWizardContext
     filters:
         tags: '@democlean_install'
 
 democontent:
     context:
-        class: EzSystems\DemoBundle\Features\Context\ContentContext
-    paths:
-        features: vendor/ezsystems/demobundle/EzSystems/DemoBundle/Features
-        bootstrap: vendor/ezsystems/demobundle/EzSystems/DemoBundle/Features/Context
+        class: EzSystems\DemoBundle\BddTests\Context\ContentContext
     filters:
         tags: '@democontent'
 
 restapi:
     context:
-        class: eZ\Bundle\EzPublishRestBundle\Features\Context\FeatureContext
-    paths:
-        features: vendor/ezsystems/behatbundle/EzSystems/BehatBundle/Features
-        bootstrap: vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishRestBundle/Features/Context
+        class: eZ\Bundle\EzPublishRestBundle\BddTests\Context\RestContext
     filters:
         tags: '@adminFeature'
