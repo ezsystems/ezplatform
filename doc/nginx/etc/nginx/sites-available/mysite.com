@@ -21,7 +21,7 @@ server {
     include ez_params.d/ez_rewrite_params;
 
     location / {
-        location ~ ^/(index|index_rest)\.php(/|$) {
+        location ~ ^/(index|index_(rest|cluster|treemenu_tags))\.php(/|$) {
             include ez_params.d/ez_fastcgi_params;
 
             # FPM socket
