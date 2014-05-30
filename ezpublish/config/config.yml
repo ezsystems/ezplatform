@@ -17,7 +17,10 @@ framework:
         # See https://jira.ez.no/browse/EZP-20783
         field_name: ezxform_token
     validation:      { enable_annotations: true }
-    templating:      { engines: ['twig', 'eztpl'] } #assets_version: SomeVersionScheme
+    # Place "eztpl" engine first intentionnally.
+    # This is to avoid template name parsing with Twig engine, refusing specific characters
+    # which are valid with legacy tpl files.
+    templating:      { engines: ['eztpl', 'twig'] } #assets_version: SomeVersionScheme
     trusted_proxies: ~
     trusted_hosts: []
     session:
