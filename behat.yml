@@ -27,24 +27,24 @@ default:
 
 installdemocontent:
     context:
-        class: eZ\Bundle\EzPublishLegacyBundle\BddTests\Context\SetupWizardContext
+        class: eZ\Bundle\EzPublishLegacyBundle\Features\Context\SetupWizardContext
     filters:
         tags: '@democontent_install'
 
 installdemoclean:
     context:
-        class: eZ\Bundle\EzPublishLegacyBundle\BddTests\Context\SetupWizardContext
+        class: eZ\Bundle\EzPublishLegacyBundle\Features\Context\SetupWizardContext
     filters:
         tags: '@democlean_install'
 
 democontent:
     context:
-        class: EzSystems\DemoBundle\BddTests\Context\ContentContext
+        class: EzSystems\DemoBundle\Features\Context\ContentContext
     filters:
         tags: '@democontent'
 
 restapi:
     context:
-        class: eZ\Bundle\EzPublishRestBundle\BddTests\Context\RestContext
+        class: eZ\Bundle\EzPublishRestBundle\Features\Context\RestContext
     filters:
         tags: '@adminFeature'
