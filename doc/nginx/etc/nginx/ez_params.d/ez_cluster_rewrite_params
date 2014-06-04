@@ -1,0 +1,2 @@
+rewrite "^/var/([^/]+/)?storage/images(-versioned)?/(.*)" "/index_cluster.php" break;
+rewrite "^/var/([^/]+/)?cache/(texttoimage|public)/(.*)" "/index_cluster.php" break;
