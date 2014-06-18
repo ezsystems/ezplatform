@@ -13,7 +13,7 @@
         "psr-0": { "": "src/" }
     },
     "require": {
-        "php": ">=5.3.3",
+        "php": ">=5.3.17",
         "symfony/symfony": "2.3.*",
         "twig/extensions": "1.0.*",
         "symfony/assetic-bundle": "2.3.*",
@@ -22,7 +22,7 @@
         "sensio/distribution-bundle": "2.3.*",
         "sensio/generator-bundle": "2.3.*",
         "incenteev/composer-parameter-handler": "~2.0",
-        "tedivm/stash-bundle": "0.3.*",
+        "tedivm/stash-bundle": "0.4.*",
         "ezsystems/ezpublish-kernel": "@dev",
         "ezsystems/ezpublish-legacy": "@dev",
         "ezsystems/demobundle": "@dev",
@@ -51,7 +51,8 @@
         "zetacomponents/signal-slot": "@dev",
         "zetacomponents/system-information": "@dev",
         "hautelook/templated-uri-bundle": "~1.0",
-        "doctrine/doctrine-bundle": "1.2.*"
+        "doctrine/dbal": "~2.5@beta",
+        "doctrine/doctrine-bundle": "~1.3@beta"
     },
     "conflict": {
         "symfony/symfony": "2.3.9 | 2.3.14 | 2.3.15"
