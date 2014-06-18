@@ -14,7 +14,7 @@ doctrine:
 stash:
     caches:
         default:
-            handlers:
+            drivers:
                 # When using multiple webservers, you must use Memcache or Redis
                 - FileSystem
             inMemory: true

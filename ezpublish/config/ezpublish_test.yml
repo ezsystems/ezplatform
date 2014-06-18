@@ -21,6 +21,6 @@ ezpublish:
 stash:
     caches:
         default:
-            handlers: [ Ephemeral ]
+            drivers: [ Ephemeral ]
             inMemory: false
             registerDoctrineAdapter: false

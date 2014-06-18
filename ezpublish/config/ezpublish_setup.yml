@@ -26,6 +26,6 @@ ezpublish:
 stash:
     caches:
         default:
-            handlers: [ BlackHole ]
+            drivers: [ BlackHole ]
             inMemory: true
             registerDoctrineAdapter: false
