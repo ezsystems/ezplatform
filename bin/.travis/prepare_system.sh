@@ -11,7 +11,7 @@
 # Install needed packages
 echo "> Installing needed packages";
 sudo apt-get update
-sudo apt-get install -q -y --force-yes apache2 libapache2-mod-fastcgi acl
+sudo apt-get install -q -y --force-yes apache2 libapache2-mod-fastcgi php5-fpm php5
 
 # Http Server
 echo "> Configure apache server"

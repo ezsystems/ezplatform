@@ -20,7 +20,8 @@ sudo echo "
 [www]
 user = $USER
 group = $USER
-listen = /tmp/php-fpm.sock
+
+listen = 127.0.0.1:9000
 pm = static
 pm.max_children = 2
 
@@ -31,5 +32,8 @@ sudo echo 'date.timezone = "Europe/Oslo"' >> ~/.phpenv/versions/$TRAVIS_PHP_VERS
 sudo echo "cgi.fix_pathinfo = 1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
 
 # restart
+echo "> restart FPM"
+sudo service php5-fpm stop
 sudo ~/.phpenv/versions/$(phpenv version-name)/sbin/php-fpm
+echo "> restart apache2"
 sudo service apache2 restart
