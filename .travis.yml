@@ -1,6 +1,6 @@
 language: php
 
-# run tests on php 5.4 only and let unit / integration tests deal with php differences
+# run tests on php 5.5 only and let unit / integration tests deal with php differences
 php:
   - 5.5
 
