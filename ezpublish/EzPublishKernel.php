@@ -33,6 +33,7 @@ use WhiteOctober\BreadcrumbsBundle\WhiteOctoberBreadcrumbsBundle;
 use Nelmio\CorsBundle\NelmioCorsBundle;
 use Hautelook\TemplatedUriBundle\HautelookTemplatedUriBundle;
 use Doctrine\Bundle\DoctrineBundle\DoctrineBundle;
+use Knp\Bundle\MenuBundle\KnpMenuBundle;
 
 class EzPublishKernel extends Kernel
 {
@@ -64,6 +65,7 @@ class EzPublishKernel extends Kernel
             new WhiteOctoberPagerfantaBundle(),
             new WhiteOctoberBreadcrumbsBundle(),
             new NelmioCorsBundle(),
+            new KnpMenuBundle()
         );
 
         switch ( $this->getEnvironment() )
