@@ -89,7 +89,8 @@ class EzPublishKernel extends Kernel
      * Loads the container configuration
      *
      * @param LoaderInterface $loader A LoaderInterface instance
-     *
+     * @throws \RuntimeException when config file is not readable
+
      * @api
      */
     public function registerContainerConfiguration( LoaderInterface $loader )
