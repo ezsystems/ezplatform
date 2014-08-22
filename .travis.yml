@@ -7,9 +7,9 @@ php:
 # list of paths/bundle to execute
 env:
     # run setup wizard to install Demo+Content and then test demo with content
-  - INSTALL="installdemocontent" PROFILE="democontent"
+  - INSTALL="swTravisDemoContent" PROFILE="demoContent"
     # test REST
-  - INSTALL="installdemoclean" PROFILE="restapi"
+  - INSTALL="swTravisDemoClean" PROFILE="restApi"
 
 
 # test only master (+ Pull requests)
