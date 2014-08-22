@@ -26,21 +26,21 @@ default:
                 debug: true
             mink_driver: true
 
-swTravisDemoContent:
+swCIDemoContent:
     context:
         class: eZ\Bundle\EzPublishLegacyBundle\Features\Context\SetupWizardContext
     paths:
         features: vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishLegacyBundle/Features/SetupWizard
     filters:
-        tags: '@travis && @demo && ~@clean'
+        tags: '@ci && @demo && ~@clean'
 
-swTravisDemoClean:
+swCIDemoClean:
     context:
         class: eZ\Bundle\EzPublishLegacyBundle\Features\Context\SetupWizardContext
     paths:
         features: vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishLegacyBundle/Features/SetupWizard
     filters:
-        tags: '@travis && @demo && ~@content'
+        tags: '@ci && @demo && ~@content'
 
 demoContent:
     context:
