@@ -2,6 +2,9 @@ default:
     context:
         parameters:
             rest_url: 'http://localhost'
+    paths:
+        features: vendor/ezsystems/
+
     extensions:
         Behat\MinkExtension\Extension:
             base_url: 'http://localhost'
@@ -22,29 +25,31 @@ default:
                 env: behat
                 debug: true
             mink_driver: true
+
+nonUniqueDatabaseSetupWizardDemoContent:
+    context:
+        class: eZ\Bundle\EzPublishLegacyBundle\Features\Context\SetupWizardContext
     paths:
-        features: vendor/ezsystems/
+        features: vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishLegacyBundle/Features/SetupWizard
+    filters:
+        tags: '@demo && ~@clean && ~@uniqueDatabaseSystem'
 
-installdemocontent:
+nonUniqueDatabaseSetupWizardDemoClean:
     context:
         class: eZ\Bundle\EzPublishLegacyBundle\Features\Context\SetupWizardContext
+    paths:
+        features: vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishLegacyBundle/Features/SetupWizard
     filters:
-        tags: '@democontent_install'
+        tags: '@demo && ~@content && ~@uniqueDatabaseSystem'
 
-installdemoclean:
-    context:
-        class: eZ\Bundle\EzPublishLegacyBundle\Features\Context\SetupWizardContext
-    filters:
-        tags: '@democlean_install'
-
-democontent:
+demoContent:
     context:
         class: EzSystems\DemoBundle\Features\Context\ContentContext
-    filters:
-        tags: '@democontent'
+    paths:
+        features: vendor/ezsystems/demobundle/EzSystems/DemoBundle/Features/Content
 
-restapi:
+restApi:
     context:
         class: eZ\Bundle\EzPublishRestBundle\Features\Context\RestContext
-    filters:
-        tags: '@adminFeature'
+    paths:
+        features: vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishRestBundle/Features
