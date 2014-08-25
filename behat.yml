@@ -53,3 +53,12 @@ restApi:
         class: eZ\Bundle\EzPublishRestBundle\Features\Context\RestContext
     paths:
         features: vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishRestBundle/Features
+
+admin2:
+    context:
+        class: eZ\Bundle\EzPublishLegacyBundle\Features\Context\Admin2Context
+    paths:
+        features: vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishLegacyBundle/Features/Admin2
+    extensions:
+        Behat\MinkExtension\Extension:
+            base_url: 'http://localhost/behat_site_admin'
