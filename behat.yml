@@ -26,21 +26,21 @@ default:
                 debug: true
             mink_driver: true
 
-swCIDemoContent:
+nonUniqueDatabaseSetupWizardDemoContent:
     context:
         class: eZ\Bundle\EzPublishLegacyBundle\Features\Context\SetupWizardContext
     paths:
         features: vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishLegacyBundle/Features/SetupWizard
     filters:
-        tags: '@ci && @demo && ~@clean'
+        tags: '@demo && ~@clean && ~@uniqueDatabaseSystem'
 
-swCIDemoClean:
+nonUniqueDatabaseSetupWizardDemoClean:
     context:
         class: eZ\Bundle\EzPublishLegacyBundle\Features\Context\SetupWizardContext
     paths:
         features: vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishLegacyBundle/Features/SetupWizard
     filters:
-        tags: '@ci && @demo && ~@content'
+        tags: '@demo && ~@content && ~@uniqueDatabaseSystem'
 
 demoContent:
     context:

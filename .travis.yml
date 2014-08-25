@@ -7,9 +7,9 @@ php:
 # list of paths/bundle to execute
 env:
     # run setup wizard to install Demo+Content and then test demo with content
-  - INSTALL="swCIDemoContent" PROFILE="demoContent"
+  - INSTALL="nonUniqueDatabaseSetupWizardDemoContent" PROFILE="demoContent"
     # test REST
-  - INSTALL="swCIDemoClean" PROFILE="restApi"
+  - INSTALL="nonUniqueDatabaseSetupWizardDemoClean" PROFILE="restApi"
 
 
 # test only master (+ Pull requests)
