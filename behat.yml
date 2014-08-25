@@ -2,8 +2,8 @@ default:
     context:
         parameters:
             rest_url: 'http://localhost'
-            # rest_client possible options [GuzzleDriver|BuzzDriver]
-            rest_client: BuzzDriver
+            # rest_driver possible options [GuzzleDriver|BuzzDriver]
+            rest_driver: BuzzDriver
     paths:
         features: vendor/ezsystems/
 
