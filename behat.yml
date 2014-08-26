@@ -54,7 +54,7 @@ restApi:
     paths:
         features: vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishRestBundle/Features
 
-admin2:
+legacyAdmin:
     context:
         class: eZ\Bundle\EzPublishLegacyBundle\Features\Context\Admin2Context
     paths:
