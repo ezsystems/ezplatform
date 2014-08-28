@@ -28,22 +28,6 @@ default:
                 debug: true
             mink_driver: true
 
-nonUniqueDatabaseSetupWizardDemoContent:
-    context:
-        class: eZ\Bundle\EzPublishLegacyBundle\Features\Context\SetupWizardContext
-    paths:
-        features: vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishLegacyBundle/Features/SetupWizard
-    filters:
-        tags: '@demo && ~@clean && ~@uniqueDatabaseSystem'
-
-nonUniqueDatabaseSetupWizardDemoClean:
-    context:
-        class: eZ\Bundle\EzPublishLegacyBundle\Features\Context\SetupWizardContext
-    paths:
-        features: vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishLegacyBundle/Features/SetupWizard
-    filters:
-        tags: '@demo && ~@content && ~@uniqueDatabaseSystem'
-
 demoContent:
     context:
         class: EzSystems\DemoBundle\Features\Context\ContentContext
@@ -64,3 +48,37 @@ legacyAdmin:
     extensions:
         Behat\MinkExtension\Extension:
             base_url: 'http://localhost/behat_site_admin'
+
+# Setup Wizard Installations
+
+setupWizardDemoContent:
+    context:
+        class: eZ\Bundle\EzPublishLegacyBundle\Features\Context\SetupWizardContext
+    paths:
+        features: vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishLegacyBundle/Features/SetupWizard
+    filters:
+        tags: '@demo && ~@clean && ~@skipByDefault'
+
+setupWizardDemoClean:
+    context:
+        class: eZ\Bundle\EzPublishLegacyBundle\Features\Context\SetupWizardContext
+    paths:
+        features: vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishLegacyBundle/Features/SetupWizard
+    filters:
+        tags: '@demo && ~@content && ~@skipByDefault'
+
+nonUniqueDatabaseSetupWizardDemoContent:
+    context:
+        class: eZ\Bundle\EzPublishLegacyBundle\Features\Context\SetupWizardContext
+    paths:
+        features: vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishLegacyBundle/Features/SetupWizard
+    filters:
+        tags: '@demo && ~@clean && ~@uniqueDatabaseSystem'
+
+nonUniqueDatabaseSetupWizardDemoClean:
+    context:
+        class: eZ\Bundle\EzPublishLegacyBundle\Features\Context\SetupWizardContext
+    paths:
+        features: vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishLegacyBundle/Features/SetupWizard
+    filters:
+        tags: '@demo && ~@content && ~@uniqueDatabaseSystem'
