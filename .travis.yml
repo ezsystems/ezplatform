@@ -7,9 +7,12 @@ php:
 # list of paths/bundle to execute
 env:
     # run setup wizard to install Demo+Content and then test demo with content
-  - INSTALL="nonUniqueDatabaseSetupWizardDemoContent" PROFILE="demoContent"
+  - INSTALL="demoContentNonUniqueDB" PROFILE="demo" TEST="content"
+    # test Legacy
+  - INSTALL="demoCleanNonUniqueDB" PROFILE="legacy" TEST="admin"
     # test REST
-  - INSTALL="nonUniqueDatabaseSetupWizardDemoClean" PROFILE="restApi"
+  - INSTALL="demoCleanNonUniqueDB" PROFILE="rest" TEST="fullJson"
+  - INSTALL="demoCleanNonUniqueDB" PROFILE="rest" TEST="fullXml"
 
 
 # test only master (+ Pull requests)
@@ -29,8 +32,8 @@ before_script:
 
 # execute behat as the script command
 script:
-    - php bin/behat --profile $INSTALL
-    - php bin/behat --profile $PROFILE
+    - php bin/behat --profile setupWizard --suite $INSTALL
+    - php bin/behat --profile $PROFILE --suite $TEST
 
 # disable mail notifications
 notification:
