@@ -9,7 +9,7 @@ env:
     # run setup wizard to install Demo+Content and then test demo with content
   - INSTALL="demoContentNonUniqueDB" PROFILE="demo" TEST="content"
     # test Legacy
-  - INSTALL="demoCleanNonUniqueDB" PROFILE="legacy" TEST="admin"
+  - INSTALL="demoCleanNonUniqueDB" PROFILE="legacyAdmin" TEST="full"
     # test REST
   - INSTALL="demoCleanNonUniqueDB" PROFILE="rest" TEST="fullJson"
   - INSTALL="demoCleanNonUniqueDB" PROFILE="rest" TEST="fullXml"

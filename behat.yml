@@ -47,14 +47,14 @@ demo:
             paths: [ vendor/ezsystems/demobundle/EzSystems/DemoBundle/Features/Content ]
             contexts: [ EzSystems\DemoBundle\Features\Context\ContentContext ]
 
-legacy:
+legacyAdmin:
+    extensions:
+        Behat\MinkExtension:
+            base_url: http://localhost/behat_site_admin
     suites:
-        admin:
+        full:
             paths: [ vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishLegacyBundle/Features/Admin2 ]
             contexts: [ eZ\Bundle\EzPublishLegacyBundle\Features\Context\Admin2Context ]
-            extensions:
-                Behat\MinkExtension:
-                    base_url: http://localhost/behat_site_admin
 
 setupWizard:
     suites:
