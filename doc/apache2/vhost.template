@@ -54,14 +54,6 @@
     # By default, no trusted proxies are set
     #SetEnv TRUSTED_PROXIES "%PROXY%"
 
-    <IfModule mod_php5.c>
-        php_admin_flag safe_mode Off
-        php_admin_value register_globals 0
-        php_value magic_quotes_gpc 0
-        php_value magic_quotes_runtime 0
-        php_value allow_call_time_pass_reference 0
-    </IfModule>
-
     <IfModule mod_rewrite.c>
         RewriteEngine On
 
