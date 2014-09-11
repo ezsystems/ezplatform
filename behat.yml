@@ -45,7 +45,7 @@ demo:
     suites:
         content:
             paths: [ vendor/ezsystems/demobundle/EzSystems/DemoBundle/Features/Content ]
-            contexts: [ EzSystems\DemoBundle\Features\Context\ContentContext ]
+            contexts: [ EzSystems\DemoBundle\Features\Context\Content\Context ]
 
 legacyAdmin:
     extensions:
@@ -53,28 +53,28 @@ legacyAdmin:
             base_url: http://localhost/behat_site_admin
     suites:
         full:
-            paths: [ vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishLegacyBundle/Features/Admin2 ]
-            contexts: [ eZ\Bundle\EzPublishLegacyBundle\Features\Context\Admin2Context ]
+            paths: [ vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishLegacyBundle/Features/Admin ]
+            contexts: [ eZ\Bundle\EzPublishLegacyBundle\Features\Context\Admin\Context ]
 
 setupWizard:
     suites:
         demoContent:
             paths: [ vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishLegacyBundle/Features/SetupWizard ]
-            contexts: [ eZ\Bundle\EzPublishLegacyBundle\Features\Context\SetupWizardContext ]
+            contexts: [ eZ\Bundle\EzPublishLegacyBundle\Features\Context\SetupWizard\Context ]
             filters:
                 tags: '@demo && ~@clean && ~@skipByDefault'
         demoClean:
             paths: [ vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishLegacyBundle/Features/SetupWizard ]
-            contexts: [ eZ\Bundle\EzPublishLegacyBundle\Features\Context\SetupWizardContext ]
+            contexts: [ eZ\Bundle\EzPublishLegacyBundle\Features\Context\SetupWizard\Context ]
             filters:
                 tags: '@demo && ~@content && ~@skipByDefault'
         demoContentNonUniqueDB:
             paths: [ vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishLegacyBundle/Features/SetupWizard ]
-            contexts: [ eZ\Bundle\EzPublishLegacyBundle\Features\Context\SetupWizardContext ]
+            contexts: [ eZ\Bundle\EzPublishLegacyBundle\Features\Context\SetupWizard\Context ]
             filters:
                 tags: '@demo && ~@clean && ~@uniqueDatabaseSystem'
         demoCleanNonUniqueDB:
             paths: [ vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishLegacyBundle/Features/SetupWizard ]
-            contexts: [ eZ\Bundle\EzPublishLegacyBundle\Features\Context\SetupWizardContext ]
+            contexts: [ eZ\Bundle\EzPublishLegacyBundle\Features\Context\SetupWizard\Context ]
             filters:
                 tags: '@demo && ~@content && ~@uniqueDatabaseSystem'
