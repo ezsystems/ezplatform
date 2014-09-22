@@ -59,7 +59,7 @@
     },
     "require-dev": {
         "behat/behat": "3.0.*",
-        "behat/symfony2-extension": "2.0.*@dev",
+        "behat/symfony2-extension": "2.0.*",
         "behat/sahi-client": "dev-master as 1.1.1",
         "behat/mink-extension": "*",
         "behat/mink-goutte-driver": "*",
