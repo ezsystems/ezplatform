@@ -33,7 +33,8 @@
         "nelmio/cors-bundle": "~1.3",
         "hautelook/templated-uri-bundle": "~1.0",
         "doctrine/dbal": "~2.5@beta",
-        "doctrine/doctrine-bundle": "~1.3@beta"
+        "doctrine/doctrine-bundle": "~1.3@beta",
+        "liip/imagine-bundle": "~1.0"
     },
     "conflict": {
         "symfony/symfony": "2.3.9 | 2.3.14 | 2.3.15"

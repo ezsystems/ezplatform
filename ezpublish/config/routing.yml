@@ -21,5 +21,8 @@ _ezpublishRestOptionsRoutes:
     prefix: %ezpublish_rest.path_prefix%
     type: rest_options
 
+_liip_imagine:
+    resource: "@LiipImagineBundle/Resources/config/routing.xml"
+
 _ezpublishDemoRoutes:
     resource: "@eZDemoBundle/Resources/config/routing.yml"

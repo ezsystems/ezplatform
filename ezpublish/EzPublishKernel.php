@@ -17,6 +17,7 @@ use EzSystems\DemoBundle\EzSystemsDemoBundle;
 use EzSystems\BehatBundle\EzSystemsBehatBundle;
 use eZ\Bundle\EzPublishCoreBundle\Kernel;
 use EzSystems\NgsymfonytoolsBundle\EzSystemsNgsymfonytoolsBundle;
+use Liip\ImagineBundle\LiipImagineBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\SecurityBundle\SecurityBundle;
@@ -56,6 +57,7 @@ class EzPublishKernel extends Kernel
             new DoctrineBundle(),
             new TedivmStashBundle(),
             new HautelookTemplatedUriBundle(),
+            new LiipImagineBundle(),
             new EzPublishCoreBundle(),
             new EzPublishLegacyBundle( $this ),
             new EzSystemsDemoBundle(),
