@@ -10,6 +10,7 @@
 use Egulias\ListenersDebugCommandBundle\EguliasListenersDebugCommandBundle;
 use eZ\Bundle\EzPublishCoreBundle\EzPublishCoreBundle;
 use eZ\Bundle\EzPublishDebugBundle\EzPublishDebugBundle;
+use eZ\Bundle\EzPublishIOBundle\EzPublishIOBundle;
 use eZ\Bundle\EzPublishLegacyBundle\EzPublishLegacyBundle;
 use eZ\Bundle\EzPublishRestBundle\EzPublishRestBundle;
 use EzSystems\CommentsBundle\EzSystemsCommentsBundle;
@@ -60,6 +61,7 @@ class EzPublishKernel extends Kernel
             new LiipImagineBundle(),
             new EzPublishCoreBundle(),
             new EzPublishLegacyBundle( $this ),
+            new EzPublishIOBundle(),
             new EzSystemsDemoBundle(),
             new EzPublishRestBundle(),
             new EzSystemsCommentsBundle(),
