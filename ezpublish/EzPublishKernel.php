@@ -18,6 +18,7 @@ use EzSystems\DemoBundle\EzSystemsDemoBundle;
 use EzSystems\BehatBundle\EzSystemsBehatBundle;
 use eZ\Bundle\EzPublishCoreBundle\Kernel;
 use EzSystems\NgsymfonytoolsBundle\EzSystemsNgsymfonytoolsBundle;
+use FOS\HttpCacheBundle\FOSHttpCacheBundle;
 use Liip\ImagineBundle\LiipImagineBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
@@ -37,6 +38,7 @@ use Hautelook\TemplatedUriBundle\HautelookTemplatedUriBundle;
 use Doctrine\Bundle\DoctrineBundle\DoctrineBundle;
 use Knp\Bundle\MenuBundle\KnpMenuBundle;
 use Oneup\FlysystemBundle\OneupFlysystemBundle;
+use Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle;
 
 class EzPublishKernel extends Kernel
 {
@@ -57,9 +59,11 @@ class EzPublishKernel extends Kernel
             new SwiftmailerBundle(),
             new AsseticBundle(),
             new DoctrineBundle(),
+            new SensioFrameworkExtraBundle(),
             new TedivmStashBundle(),
             new HautelookTemplatedUriBundle(),
             new LiipImagineBundle(),
+            new FOSHttpCacheBundle(),
             new EzPublishCoreBundle(),
             new EzPublishLegacyBundle( $this ),
             new EzPublishIOBundle(),
