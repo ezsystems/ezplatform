@@ -36,6 +36,7 @@ use Nelmio\CorsBundle\NelmioCorsBundle;
 use Hautelook\TemplatedUriBundle\HautelookTemplatedUriBundle;
 use Doctrine\Bundle\DoctrineBundle\DoctrineBundle;
 use Knp\Bundle\MenuBundle\KnpMenuBundle;
+use Oneup\FlysystemBundle\OneupFlysystemBundle;
 
 class EzPublishKernel extends Kernel
 {
@@ -69,7 +70,8 @@ class EzPublishKernel extends Kernel
             new WhiteOctoberPagerfantaBundle(),
             new WhiteOctoberBreadcrumbsBundle(),
             new NelmioCorsBundle(),
-            new KnpMenuBundle()
+            new KnpMenuBundle(),
+            new OneupFlysystemBundle()
         );
 
         switch ( $this->getEnvironment() )
