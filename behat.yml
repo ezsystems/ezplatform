@@ -1,84 +1,80 @@
 default:
-    context:
-        parameters:
-            rest_url: 'http://localhost'
-            # rest_driver possible options [GuzzleDriver|BuzzDriver]
-            rest_driver: BuzzDriver
-    paths:
-        features: vendor/ezsystems/
-
     extensions:
-        Behat\MinkExtension\Extension:
+        Behat\MinkExtension:
             base_url: 'http://localhost'
             goutte: ~
             sahi: ~
             selenium2:
                 capabilities: { "browser": "firefox", "version": "17"}
-            # This should be updated to selenium2 as soon as travis is running with selenium
             javascript_session: sahi
-            #javascript_session: selenium2
             browser_name: firefox
 
-        Behat\Symfony2Extension\Extension:
+        Behat\Symfony2Extension:
             kernel:
                 bootstrap: ezpublish/autoload.php
                 path: ezpublish/EzPublishKernel.php
                 class: EzPublishKernel
                 env: behat
                 debug: true
-            mink_driver: true
 
-demoContent:
-    context:
-        class: EzSystems\DemoBundle\Features\Context\ContentContext
-    paths:
-        features: vendor/ezsystems/demobundle/EzSystems/DemoBundle/Features/Content
+rest:
+    suites:
+        fullJson:
+            paths: [ vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishRestBundle/Features ]
+            contexts: 
+                - eZ\Bundle\EzPublishRestBundle\Features\Context\RestContext:
+                    url: http://localhost/api/ezp/v2/
+                    driver: BuzzDriver
+                    type: json
+        fullXml:
+            paths: [ vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishRestBundle/Features ]
+            contexts: 
+                - eZ\Bundle\EzPublishRestBundle\Features\Context\RestContext:
+                    url: http://localhost/api/ezp/v2/
+                    driver: BuzzDriver
+                    type: xml
+        guzzle:
+            paths: [ vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishRestBundle/Features ]
+            contexts: 
+                - eZ\Bundle\EzPublishRestBundle\Features\Context\RestContext:
+                    url: http://localhost/api/ezp/v2/
+                    driver: GuzzleDriver
+                    type: json
 
-restApi:
-    context:
-        class: eZ\Bundle\EzPublishRestBundle\Features\Context\RestContext
-    paths:
-        features: vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishRestBundle/Features
+demo:
+    suites:
+        content:
+            paths: [ vendor/ezsystems/demobundle/EzSystems/DemoBundle/Features/Content ]
+            contexts: [ EzSystems\DemoBundle\Features\Context\Content\Context ]
 
 legacyAdmin:
-    context:
-        class: eZ\Bundle\EzPublishLegacyBundle\Features\Context\Admin2Context
-    paths:
-        features: vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishLegacyBundle/Features/Admin2
     extensions:
-        Behat\MinkExtension\Extension:
-            base_url: 'http://localhost/behat_site_admin'
+        Behat\MinkExtension:
+            base_url: http://localhost/behat_site_admin
+    suites:
+        full:
+            paths: [ vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishLegacyBundle/Features/Admin ]
+            contexts: [ eZ\Bundle\EzPublishLegacyBundle\Features\Context\Admin\Context ]
 
-# Setup Wizard Installations
-
-setupWizardDemoContent:
-    context:
-        class: eZ\Bundle\EzPublishLegacyBundle\Features\Context\SetupWizardContext
-    paths:
-        features: vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishLegacyBundle/Features/SetupWizard
-    filters:
-        tags: '@demo && ~@clean && ~@skipByDefault'
-
-setupWizardDemoClean:
-    context:
-        class: eZ\Bundle\EzPublishLegacyBundle\Features\Context\SetupWizardContext
-    paths:
-        features: vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishLegacyBundle/Features/SetupWizard
-    filters:
-        tags: '@demo && ~@content && ~@skipByDefault'
-
-nonUniqueDatabaseSetupWizardDemoContent:
-    context:
-        class: eZ\Bundle\EzPublishLegacyBundle\Features\Context\SetupWizardContext
-    paths:
-        features: vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishLegacyBundle/Features/SetupWizard
-    filters:
-        tags: '@demo && ~@clean && ~@uniqueDatabaseSystem'
-
-nonUniqueDatabaseSetupWizardDemoClean:
-    context:
-        class: eZ\Bundle\EzPublishLegacyBundle\Features\Context\SetupWizardContext
-    paths:
-        features: vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishLegacyBundle/Features/SetupWizard
-    filters:
-        tags: '@demo && ~@content && ~@uniqueDatabaseSystem'
+setupWizard:
+    suites:
+        demoContent:
+            paths: [ vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishLegacyBundle/Features/SetupWizard ]
+            contexts: [ eZ\Bundle\EzPublishLegacyBundle\Features\Context\SetupWizard\Context ]
+            filters:
+                tags: '@demo && ~@clean && ~@skipByDefault'
+        demoClean:
+            paths: [ vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishLegacyBundle/Features/SetupWizard ]
+            contexts: [ eZ\Bundle\EzPublishLegacyBundle\Features\Context\SetupWizard\Context ]
+            filters:
+                tags: '@demo && ~@content && ~@skipByDefault'
+        demoContentNonUniqueDB:
+            paths: [ vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishLegacyBundle/Features/SetupWizard ]
+            contexts: [ eZ\Bundle\EzPublishLegacyBundle\Features\Context\SetupWizard\Context ]
+            filters:
+                tags: '@demo && ~@clean && ~@uniqueDatabaseSystem'
+        demoCleanNonUniqueDB:
+            paths: [ vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishLegacyBundle/Features/SetupWizard ]
+            contexts: [ eZ\Bundle\EzPublishLegacyBundle\Features\Context\SetupWizard\Context ]
+            filters:
+                tags: '@demo && ~@content && ~@uniqueDatabaseSystem'
