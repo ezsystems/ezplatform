@@ -11,6 +11,7 @@
 /ezpublish/config/ezpublish_prod.yml
 /ezpublish/config/ezpublish_dev.yml
 /ezpublish/sessions
+/ezpublish/bootstrap.php.cache
 /web/index_treemenu.php
 /web/index_rest.php
 /web/index_cluster.php
