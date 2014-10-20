@@ -17,7 +17,7 @@ server {
     ## and make sure to comment these out in DEV environment.
     include ez_params.d/ez_prod_rewrite_params;
 
-    # ez cluster rewrite rules, uncomment if vhost uses clustering
+    # ezlegacy cluster rewrite rules, uncomment if vhost uses DFS clustering
     #include ez_params.d/ez_cluster_rewrite_params;
 
     # ez rewrite rules
