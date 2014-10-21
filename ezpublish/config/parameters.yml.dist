@@ -1,4 +1,11 @@
+# This file is a "template" of what your parameters.yml file should look like
 parameters:
+    # A secret key that's used to generate certain security-related tokens
     secret: ThisTokenIsNotSoSecretChangeIt
     locale_fallback: en
     ezpublish_legacy.default.view_default_layout: eZDemoBundle::pagelayout.html.twig
+
+    # Settings to control dev environment settings
+    debug_toolbar:          true
+    debug_redirects:        false
+    use_assetic_controller: true

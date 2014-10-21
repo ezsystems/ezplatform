@@ -4,9 +4,9 @@ imports:
 
 framework:
     esi:             ~
-    translator:      { fallback: %locale_fallback% }
+    translator:      { fallback: "%locale_fallback%" }
     # The secret parameter is used to generate CSRF tokens
-    secret:          %secret%
+    secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
         strict_requirements: %kernel.debug%
@@ -24,30 +24,31 @@ framework:
     trusted_proxies: ~
     trusted_hosts: []
     session:
-        save_path: "%kernel.root_dir%/sessions"
-        # The session name defined here will be overridden by the one defined in your ezpublish.yml, for your siteaccess.
-        # Defaut session name is "eZSESSID{siteaccess_hash}" (unique session name per siteaccess).
-        # See ezpublish.yml.example for an example on how to configure this.
+        # handler_id set to null will use default session handler from php.ini
+        handler_id:  ~
+        # Note: eZ Publish also allows session name and session cookie configuration to be per SiteAccess, by
+        #       default session name will be set to "eZSESSID{siteaccess_hash}" (unique session name per siteaccess)
+        #       Further reading: https://doc.ez.no/display/EZP/Session+configuration
     fragments:       ~
     http_method_override: true
 
 # Twig Configuration
 twig:
-    debug:            %kernel.debug%
-    strict_variables: %kernel.debug%
+    debug:            "%kernel.debug%"
+    strict_variables: "%kernel.debug%"
 
 # Assetic Configuration
 assetic:
-    debug:          %kernel.debug%
+    debug:          "%kernel.debug%"
     use_controller: false
     bundles:        [ eZDemoBundle ]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
         #closure:
-        #    jar: %kernel.root_dir%/Resources/java/compiler.jar
+        #    jar: "%kernel.root_dir%/Resources/java/compiler.jar"
         #yui_css:
-        #    jar: %kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar
+        #    jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar"
 
 ez_publish_legacy:
     enabled: true
