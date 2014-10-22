@@ -4,12 +4,11 @@ imports:
 
 framework:
     esi:             ~
-    translator:      { fallback: "%locale_fallback%" }
-    # The secret parameter is used to generate CSRF tokens
+    #translator:      { fallback: "%locale_fallback%" }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
-        strict_requirements: %kernel.debug%
+        strict_requirements: ~
     form:            ~
     csrf_protection:
         enabled: true
@@ -21,8 +20,9 @@ framework:
     # This is to avoid template name parsing with Twig engine, refusing specific characters
     # which are valid with legacy tpl files.
     templating:      { engines: ['eztpl', 'twig'] } #assets_version: SomeVersionScheme
+    default_locale:  "%locale_fallback%"
+    trusted_hosts:   ~
     trusted_proxies: ~
-    trusted_hosts: []
     session:
         # handler_id set to null will use default session handler from php.ini
         handler_id:  ~
@@ -54,4 +54,10 @@ ez_publish_legacy:
     enabled: true
     root_dir: %kernel.root_dir%/../ezpublish_legacy
 
-parameters:
+# Swiftmailer Configuration
+swiftmailer:
+    transport: "%mailer_transport%"
+    host:      "%mailer_host%"
+    username:  "%mailer_user%"
+    password:  "%mailer_password%"
+    spool:     { type: memory }
