@@ -2,20 +2,12 @@
 # Script used to prepare for eZ Publish/Platfrom archives
 #
 # Pre-requirement for LTS (EE) archives (not affecting ezpublish-community):
-#     Because of authentication for packages, composer auth extension must be installed using:
-#     ```composer global require "bitexpert/composer-authstore-plugin=0.2.*"```
+#     auth.json needs to be placed in either eZ Publish directory or COMPOSER_HOME.
 #     If auth.json is placed in COMPOSER_HOME, it needs to be for same user as the one executing script.
 
 
-
-# TEMP: Force icu 1.1 for Redhat 6.x installs to not crash if 1.2 is picked
-composer require "symfony/icu 1.1.*" --no-update
-
 # Install all composer deps non-interactivly (yml parameters will be set to default values)
 composer install -n --prefer-dist --no-dev
-
-# TEMP: Cleanup after icu 1.1 so installations will get suitable version on update
-git checkout composer.json
 
 # Replace install instructions for archive instructions
 mv -f INSTALL_ARCHIVE.md INSTALL.md
