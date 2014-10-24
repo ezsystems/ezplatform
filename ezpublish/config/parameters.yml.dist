@@ -3,6 +3,12 @@ parameters:
     # A secret key that's used to generate certain security-related tokens
     secret: ThisTokenIsNotSoSecretChangeIt
     locale_fallback: en
+
+    mailer_transport:  smtp
+    mailer_host:       127.0.0.1
+    mailer_user:       ~
+    mailer_password:   ~
+
     ezpublish_legacy.default.view_default_layout: eZDemoBundle::pagelayout.html.twig
 
     # Settings to control dev environment settings
