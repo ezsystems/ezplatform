@@ -6,7 +6,7 @@ vcl 4.0;
 # Our Backend - Assuming that web server is listening on port 80
 # Replace the host to fit your setup
 backend ezpublish {
-    .host = "my_site.com";
+    .host = "127.0.0.1";
     .port = "80";
 }
 
@@ -26,7 +26,7 @@ acl debuggers {
 sub vcl_recv {
 
     # Set the backend
-    set req.backend = ezpublish;
+    set req.backend_hint = ezpublish;
 
     # Advertise Symfony for ESI support
     set req.http.Surrogate-Capability = "abc=ESI/1.0";
@@ -100,13 +100,15 @@ sub vcl_backend_response {
     # Don't cache response with Set-Cookie
     if (beresp.http.Set-Cookie) {
         set beresp.ttl = 0s;
-        return (hit_for_pass);
+        set beresp.uncacheable = true;
+        return (deliver);
     }
 
     # Respect the Cache-Control=private header from the backend
     if (beresp.http.Cache-Control ~ "private") {
         set beresp.ttl = 0s;
-        return (hit_for_pass);
+        set beresp.uncacheable = true;
+        return (deliver);
     }
 
     # Force TTL for some medias extension
