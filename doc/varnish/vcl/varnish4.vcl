@@ -111,15 +111,6 @@ sub vcl_backend_response {
         return (deliver);
     }
 
-    // Force TTL for some medias extension
-    //if (bereq.method == "GET" && bereq.url ~ "\.(gif|jpg|jpeg|bmp|png|tiff|tif|ico|img|tga|wmf|svg|swf|ico|mp3|mp4|m4a|ogg|mov|avi|wmv)$") {
-    //    set beresp.ttl = 7d;
-    //}
-    // Force TTL for various other content pages
-    //if (bereq.method == "GET" && bereq.url ~ "\.(css|js|html)$") {
-    //    set beresp.ttl = 1d;
-    //}
-
     // Allow stale content, in case the backend goes down or cache is not fresh any more
     // make Varnish keep all objects for 1 hours beyond their TTL
     set beresp.grace = 1h;

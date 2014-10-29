@@ -108,15 +108,6 @@ sub vcl_fetch {
         return (hit_for_pass);
     }
 
-    // Force TTL for some medias extension
-    //if (req.request == "GET" && req.url ~ "\.(gif|jpg|jpeg|bmp|png|tiff|tif|ico|img|tga|wmf|svg|swf|ico|mp3|mp4|m4a|ogg|mov|avi|wmv)$") {
-    //    set beresp.ttl = 7d;
-    //}
-    // Force TTL for various other content pages
-    //if (req.request == "GET" && req.url ~ "\.(css|js|html)$") {
-    //    set beresp.ttl = 1d;
-    //}
-
     return (deliver);
 }
 
