@@ -120,6 +120,10 @@ sub vcl_backend_response {
     //    set beresp.ttl = 1d;
     //}
 
+    // Allow stale content, in case the backend goes down or cache is not fresh any more
+    // make Varnish keep all objects for 1 hours beyond their TTL
+    set beresp.grace = 1h;
+
     return (deliver);
 }
 
