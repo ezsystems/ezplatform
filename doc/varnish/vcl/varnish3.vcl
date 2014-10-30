@@ -96,15 +96,9 @@ sub vcl_fetch {
         set beresp.do_esi = true;
     }
 
-    // Don't cache response with Set-Cookie
-    if ( beresp.http.Set-Cookie ) {
-        set beresp.ttl = 0s;
-        return (hit_for_pass);
-    }
-
     // Respect the Cache-Control=private header from the backend
     if (beresp.http.Cache-Control ~ "no-cache|no-store|private") {
-        set beresp.ttl = 0s;
+        set beresp.ttl = 120s;
         return (hit_for_pass);
     }
 

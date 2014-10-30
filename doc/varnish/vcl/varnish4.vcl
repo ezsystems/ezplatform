@@ -97,25 +97,9 @@ sub vcl_backend_response {
         set beresp.do_esi = true;
     }
 
-    // Don't cache response with Set-Cookie
-    if (beresp.http.Set-Cookie) {
-        set beresp.ttl = 0s;
-        set beresp.uncacheable = true;
-        return (deliver);
-    }
-
-    // Respect the Cache-Control=private header from the backend
-    if (beresp.http.Cache-Control ~ "no-cache|no-store|private") {
-        set beresp.ttl = 0s;
-        set beresp.uncacheable = true;
-        return (deliver);
-    }
-
     // Allow stale content, in case the backend goes down or cache is not fresh any more
     // make Varnish keep all objects for 1 hours beyond their TTL
     set beresp.grace = 1h;
-
-    return (deliver);
 }
 
 // Handle purge
