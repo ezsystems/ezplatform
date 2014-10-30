@@ -116,7 +116,7 @@ sub vcl_fetch {
 // See http://foshttpcache.readthedocs.org/en/latest/varnish-configuration.html#id4
 sub ez_purge {
 
-    if (req.request == "PURGE" || req.request == "BAN") {
+    if (req.request == "BAN") {
         if (!client.ip ~ invalidators) {
             error 405 "Method not allowed";
         }

@@ -123,7 +123,7 @@ sub vcl_backend_response {
 // See http://foshttpcache.readthedocs.org/en/latest/varnish-configuration.html#id4
 sub ez_purge {
 
-    if (req.method == "PURGE" || req.method == "BAN") {
+    if (req.method == "BAN") {
         if (!client.ip ~ invalidators) {
             return (synth(405, "Method not allowed"));
         }
