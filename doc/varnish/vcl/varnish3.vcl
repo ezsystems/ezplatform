@@ -8,8 +8,8 @@ backend ezpublish {
     .port = "80";
 }
 
-// ACL for purgers IP
-acl purgers {
+// ACL for invalidators IP
+acl invalidators {
     "127.0.0.1";
     "192.168.0.0"/16;
 }
@@ -117,7 +117,7 @@ sub vcl_fetch {
 sub ez_purge {
 
     if (req.request == "PURGE" || req.request == "BAN") {
-        if (!client.ip ~ purgers) {
+        if (!client.ip ~ invalidators) {
             error 405 "Method not allowed";
         }
 
