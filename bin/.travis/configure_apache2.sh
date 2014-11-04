@@ -1,7 +1,11 @@
 #!/bin/sh
 
 # vhost & fastcgi setup
-sed s?%basedir%?$TRAVIS_BUILD_DIR? bin/.travis/apache2/behat_vhost | sudo tee /etc/apache2/sites-available/behat > /dev/null
+sudo php bin/.travis/generatevhost.php \
+         --basedir=$TRAVIS_BUILD_DIR \
+         --env=behat \
+         doc/apache2/vhost.template \
+         /etc/apache2/sites-available/behat
 sudo cp bin/.travis/apache2/php5-fcgi /etc/apache2/conf.d/php5-fcgi
 
 # modules enabling

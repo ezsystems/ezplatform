@@ -8,6 +8,9 @@
 ##       https://github.com/facebook/hiphop-php/commit/4add8586c5d9e4eee20fe15ccd78db9e9c6b56aa
 ##       https://github.com/facebook/hiphop-php/commit/0b2dfdf4492eb06a125b068e939d092ec0588e5c
 
+# Disable xdebug to speed things up
+phpenv config-rm xdebug.ini
+
 # Install needed packages
 echo "> Installing needed packages";
 sudo apt-get update

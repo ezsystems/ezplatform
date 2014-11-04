@@ -1,0 +1,166 @@
+# Official VirtualHost configuration for Apache 2.x
+# Note: This is meant to be tailored for your needs, expires headers might for instance not work for dev.
+# Params: %PORT%, %HOST%, %HOST_ALIAS%, %BASEDIR%, %ENV% and %PROXY%
+
+<VirtualHost *:%PORT%>
+    ServerName %HOST%
+    ServerAlias %HOST_ALIAS%
+    DocumentRoot %BASEDIR%/web
+    DirectoryIndex index.php
+
+    # Enabled for Dev enviroment
+    # LogLevel debug
+
+    <Directory %BASEDIR%/web>
+        Options FollowSymLinks
+        AllowOverride None
+        # depending on your global Apache settings, you may need to uncomment and adapt
+        # for Apache 2.2 and earlier:
+        #Allow from all
+        # for Apache 2.4:
+        #Require all granted
+    </Directory>
+
+    # Environment.
+    # Possible values: "prod" and "dev" out-of-the-box, other values possible with proper configuration
+    # Defaults to "prod" if omitted (uses SetEnvIf so value can be used in rewrite rules)
+    SetEnvIf Request_URI ".*"  ENVIRONMENT=%ENV%
+
+    # Whether to use Symfony's ApcClassLoader.
+    # Possible values: 0 or 1
+    # Defaults to 0 if omitted
+    #SetEnv USE_APC_CLASSLOADER 0
+
+    # Prefix used when USE_APC_CLASSLOADER is set to 1.
+    # Use a unique prefix in order to prevent cache key conflicts
+    # with other applications also using APC.
+    # Defaults to "ezpublish" if omitted
+    #SetEnv APC_CLASSLOADER_PREFIX "ezpublish"
+
+    # Whether to use debugging.
+    # Possible values: 0 or 1
+    # Defaults to 0 if omitted, unless ENVIRONMENT is set to: "dev"
+    #SetEnv USE_DEBUGGING 0
+
+    # Whether to use Symfony's HTTP Caching.
+    # Disable it if you are using an external reverse proxy (e.g. Varnish)
+    # Possible values: 0 or 1
+    # Defaults to 1 if omitted, unless ENVIRONMENT is set to: "dev"
+    #SetEnv USE_HTTP_CACHE 1
+
+    # Defines the proxies to trust.
+    # Separate entries by a comma
+    # Example: "proxy1.example.com,proxy2.example.org"
+    # By default, no trusted proxies are set
+    #SetEnv TRUSTED_PROXIES "%PROXY%"
+
+    <IfModule mod_rewrite.c>
+        RewriteEngine On
+
+        # Uncomment in FastCGI mode or when using PHP-FPM, to get basic auth working.
+        RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+        # Needed atm on travis, could be becasue the fastcgi setup is wrong!
+        RewriteCond %{REQUEST_URI} ^/php5-fcgi(.*)
+        RewriteRule . - [L]
+
+        # v1 rest API is on Legacy
+        RewriteRule ^/api/[^/]+/v1/ /index_rest.php [L]
+
+        # If using cluster, uncomment the following two lines:
+        #RewriteRule ^/var/([^/]+/)?storage/images(-versioned)?/.* /index_cluster.php [L]
+        #RewriteRule ^/var/([^/]+/)?cache/(texttoimage|public)/.* /index_cluster.php [L]
+
+        RewriteRule ^/var/([^/]+/)?storage/images(-versioned)?/.* - [L]
+        RewriteRule ^/var/([^/]+/)?cache/(texttoimage|public)/.* - [L]
+        RewriteRule ^/design/[^/]+/(stylesheets|images|javascript|fonts)/.* - [L]
+        RewriteRule ^/share/icons/.* - [L]
+        RewriteRule ^/extension/[^/]+/design/[^/]+/(stylesheets|flash|images|lib|javascripts?)/.* - [L]
+        RewriteRule ^/packages/styles/.+/(stylesheets|images|javascript)/[^/]+/.* - [L]
+        RewriteRule ^/packages/styles/.+/thumbnail/.* - [L]
+        RewriteRule ^/var/storage/packages/.* - [L]
+
+        # Makes it possible to place your favicon at the root of your
+        # eZ Publish instance. It will then be served directly.
+        RewriteRule ^/favicon\.ico - [L]
+
+        # Uncomment the line below if you want you favicon be served
+        # from the standard design. You can customize the path to
+        # favicon.ico by changing /design/standard/images/favicon\.ico
+        #RewriteRule ^/favicon\.ico /design/standard/images/favicon.ico [L]
+        RewriteRule ^/design/standard/images/favicon\.ico - [L]
+
+        # Give direct access to robots.txt for use by crawlers (Google,
+        # Bing, Spammers..)
+        RewriteRule ^/robots\.txt - [L]
+
+        # Platform for Privacy Preferences Project ( P3P ) related files
+        # for Internet Explorer
+        # More info here : http://en.wikipedia.org/wiki/P3p
+        RewriteRule ^/w3c/p3p\.xml - [L]
+
+        # Uncomment the following lines when using popup style debug in legacy
+        #RewriteRule ^/var/([^/]+/)?cache/debug\.html.* - [L]
+
+        # Following rule is needed to correctly display assets from eZ Publish5 / Symfony bundles
+        RewriteRule ^/bundles/ - [L]
+
+        # Additional Assetic rules for prod env, remember to run php ezpublish/console assetic:dump --env=prod
+        RewriteCond %{ENV:ENVIRONMENT} "prod"
+        RewriteRule ^/(css|js)/.*\.(css|js) - [L]
+
+        # Conditions for enabling webdav and soap interfaces from legacy
+        ## Symlink files into your web folder and correct domain names to be valid server aliases
+        #RewriteCond %{HTTP_HOST} ^webdav\..*
+        #RewriteRule ^(.*) /webdav.php [L]
+        #RewriteCond %{HTTP_HOST} ^soap\..*
+        #RewriteRule ^(.*) /soap.php [L]
+
+        RewriteRule .* /index.php
+    </IfModule>
+
+    # Everything below is optional to improve performance by forcing
+    # clients to cache image and design files, change the expires time
+    # to suite project needs.
+    <IfModule mod_expires.c>
+        <LocationMatch "^/var/[^/]+/storage/images/.*">
+            # eZ Publish appends the version number to image URL (ezimage
+            # datatype) so when an image is updated, its URL changes to
+            ExpiresActive on
+            ExpiresDefault "now plus 10 years"
+        </LocationMatch>
+
+        <LocationMatch "^/extension/[^/]+/design/[^/]+/(stylesheets|images|javascripts?|flash)/.*">
+            # A good optimization if you don't change your design often
+            ExpiresActive on
+            ExpiresDefault "now plus 5 days"
+        </LocationMatch>
+
+        <LocationMatch "^/extension/[^/]+/design/[^/]+/lib/.*">
+            # Libraries get a new url (version number) on updates
+            ExpiresActive on
+            ExpiresDefault "now plus 90 days"
+        </LocationMatch>
+
+        <LocationMatch "^/design/[^/]+/(stylesheets|images|javascripts?|lib|flash)/.*">
+            # Same as above for bundled eZ Publish designs
+            ExpiresActive on
+            ExpiresDefault "now plus 7 days"
+        </LocationMatch>
+
+        <LocationMatch "^/share/icons/.*">
+            # Icons as used by admin interface, barly change
+            ExpiresActive on
+            ExpiresDefault "now plus 7 days"
+        </LocationMatch>
+
+        # When ezjscore.ini/[Packer]/AppendLastModifiedTime=enabled
+        # so that file names change when source files are modified
+        #<LocationMatch "^/var/[^/]+/cache/public/.*">
+            # Force ezjscore packer js/css files to be cached 30 days
+            # at client side
+            #ExpiresActive on
+            #ExpiresDefault "now plus 30 days"
+        #</LocationMatch>
+    </IfModule>
+</VirtualHost>

@@ -14,3 +14,6 @@ sudo find {ezpublish/{cache,logs,config,sessions},ezpublish_legacy/{design,exten
 
 echo "> Run assetic dump for behat env"
 php ezpublish/console --env=behat assetic:dump
+
+echo "> Clear and warm up caches for behat env"
+php ezpublish/console cache:clear --env=behat --no-debug
