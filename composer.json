@@ -46,8 +46,7 @@
         "behat/mink-selenium-driver": "*",
         "behat/mink-sahi-driver": "*",
         "behat/mink-selenium2-driver": "*",
-        "ezsystems/behatbundle": "@dev",
-        "phpunit/phpunit": "3.7.*"
+        "ezsystems/behatbundle": "@dev"
     },
     "scripts": {
         "post-install-cmd": [
