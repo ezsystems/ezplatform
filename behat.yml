@@ -3,7 +3,8 @@ default:
         Behat\MinkExtension:
             base_url: 'http://localhost'
             goutte: ~
-            sahi: ~
+            sahi:
+                limit: 1200
             selenium2:
                 capabilities: { "browser": "firefox", "version": "17"}
             javascript_session: sahi
@@ -15,7 +16,7 @@ default:
                 path: ezpublish/EzPublishKernel.php
                 class: EzPublishKernel
                 env: behat
-                debug: true
+                debug: false
 
 rest:
     suites:
