@@ -2,6 +2,9 @@
 
 # Script to prepare eZPublish installation
 
+echo "> Setup github auth key to not reach api limit"
+./bin/.travis/install_composer_github_key.sh
+
 echo "> Install dependencies through composer"
 composer install --dev --prefer-dist
 
