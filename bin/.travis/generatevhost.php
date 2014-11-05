@@ -13,9 +13,10 @@
 
 $generator = new ezpBinTravisHttpConfGenerator(
     "h::",
-    array( 'basedir:', 'port::', 'host::', 'host_alias::', 'env::', 'proxy::', 'help', 'dry-run' ),
+    array( 'basedir:', 'ip_address::', 'port::', 'host::', 'host_alias::', 'env::', 'proxy::', 'help', 'dry-run' ),
     array(
         'basedir' => null,// required
+        'ip_address' => '*',
         'port' => 80,
         'host' => 'localhost',
         'host_alias' => '*.localhost',
@@ -151,6 +152,7 @@ Format:
   \$ php generate_vhost.php
     --basedir=/var/www
     [--host=localhost]
+    [--ip_address=*]
     [--port=80]
     [--env=dev]
     [--proxy=127.0.0.1] : Used for http cache if you selected prod template

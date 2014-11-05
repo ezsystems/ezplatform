@@ -1,8 +1,10 @@
 # Official VirtualHost configuration for Apache 2.x
 # Note: This is meant to be tailored for your needs, expires headers might for instance not work for dev.
-# Params: %PORT%, %HOST%, %HOST_ALIAS%, %BASEDIR%, %ENV% and %PROXY%
+# Params: %IP_ADDRESS%, %PORT%, %HOST%, %HOST_ALIAS%, %BASEDIR%, %ENV% and %PROXY%
 
-<VirtualHost *:%PORT%>
+# NameVirtualHost %IP_ADDRESS%
+
+<VirtualHost %IP_ADDRESS%:%PORT%>
     ServerName %HOST%
     ServerAlias %HOST_ALIAS%
     DocumentRoot %BASEDIR%/web
@@ -24,7 +26,7 @@
     # Environment.
     # Possible values: "prod" and "dev" out-of-the-box, other values possible with proper configuration
     # Defaults to "prod" if omitted (uses SetEnvIf so value can be used in rewrite rules)
-    SetEnvIf Request_URI ".*"  ENVIRONMENT=%ENV%
+    SetEnvIf Request_URI ".*" ENVIRONMENT=%ENV%
 
     # Whether to use Symfony's ApcClassLoader.
     # Possible values: 0 or 1
@@ -60,7 +62,7 @@
         # Uncomment in FastCGI mode or when using PHP-FPM, to get basic auth working.
         RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
-        # Needed atm on travis, could be becasue the fastcgi setup is wrong!
+        # Needed for ci testing, remove in prod.
         RewriteCond %{REQUEST_URI} ^/php5-fcgi(.*)
         RewriteRule . - [L]
 
