@@ -28,30 +28,30 @@
 
     # Whether to use Symfony's ApcClassLoader.
     # Possible values: 0 or 1
-    # Defaults to 0 if omitted
+    # Defaults to 0 if omitted, supported on 5.2 and higher
     #SetEnv USE_APC_CLASSLOADER 0
 
     # Prefix used when USE_APC_CLASSLOADER is set to 1.
     # Use a unique prefix in order to prevent cache key conflicts
     # with other applications also using APC.
-    # Defaults to "ezpublish" if omitted
+    # Defaults to "ezpublish" if omitted, supported on 5.2 and higher
     #SetEnv APC_CLASSLOADER_PREFIX "ezpublish"
 
     # Whether to use debugging.
     # Possible values: 0 or 1
-    # Defaults to 0 if omitted, unless ENVIRONMENT is set to: "dev"
+    # Defaults to 0 if omitted, unless ENVIRONMENT is set to: "dev", supported on 5.2 and higher
     #SetEnv USE_DEBUGGING 0
 
     # Whether to use Symfony's HTTP Caching.
     # Disable it if you are using an external reverse proxy (e.g. Varnish)
     # Possible values: 0 or 1
-    # Defaults to 1 if omitted, unless ENVIRONMENT is set to: "dev"
+    # Defaults to 1 if omitted, unless ENVIRONMENT is set to: "dev", supported on 5.2 and higher
     #SetEnv USE_HTTP_CACHE 1
 
     # Defines the proxies to trust.
     # Separate entries by a comma
     # Example: "proxy1.example.com,proxy2.example.org"
-    # By default, no trusted proxies are set
+    # By default, no trusted proxies are set, supported on 5.2 and higher
     #SetEnv TRUSTED_PROXIES "%PROXY%"
 
     <IfModule mod_rewrite.c>
@@ -119,6 +119,10 @@
         #RewriteRule ^(.*) /webdav.php [L]
         #RewriteCond %{HTTP_HOST} ^soap\..*
         #RewriteRule ^(.*) /soap.php [L]
+
+        # For 5.x versions prior to 5.2, enable this to use dev evn based on ENVIRONMENT vaiable set above
+        #RewriteCond %{ENV:ENVIRONMENT} "dev"
+        #RewriteRule .* /index_dev.php
 
         RewriteRule .* /index.php
     </IfModule>
