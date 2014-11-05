@@ -1,4 +1,4 @@
-eZ Publish Apace 2.2 / 2.4  configuration
+eZ Publish Apache 2.2 / 2.4  configuration
 =========================================
 
 For information on which version of Apache is supported with your version of eZ Publish, consult with the online documentation on http://doc.ez.no.
