@@ -122,7 +122,7 @@
 
         # For 5.x versions prior to 5.2, enable this to use dev evn based on ENVIRONMENT vaiable set above
         #RewriteCond %{ENV:ENVIRONMENT} "dev"
-        #RewriteRule .* /index_dev.php
+        #RewriteRule .* /index_dev.php [L]
 
         RewriteRule .* /index.php
     </IfModule>
