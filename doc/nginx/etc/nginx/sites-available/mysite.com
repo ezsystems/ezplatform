@@ -18,7 +18,10 @@ server {
     include ez_params.d/ez_prod_rewrite_params;
 
     # ezlegacy cluster rewrite rules, uncomment if vhost uses DFS clustering
+    # For 5.4+:
     #include ez_params.d/ez_cluster_rewrite_params;
+    # For 5.3:
+    #include ez_params.d/5.3_cluster/ez_cluster_rewrite_params;
 
     # ez rewrite rules
     include ez_params.d/ez_rewrite_params;
