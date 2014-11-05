@@ -1,7 +1,6 @@
 default:
     extensions:
         Behat\MinkExtension:
-            # Note: travis-ci scripts expects this domain and uses it for cahce warmup
             base_url: 'http://localhost'
             goutte: ~
             sahi:
