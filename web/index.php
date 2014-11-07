@@ -1,7 +1,6 @@
 <?php
 
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\ClassLoader\ApcClassLoader;
 use Symfony\Component\Debug\Debug;
 
 // Environment is taken from "ENVIRONMENT" variable, if not set, defaults to "prod"
@@ -18,23 +17,18 @@ if ( ( $useDebugging = getenv( "USE_DEBUGGING" ) ) === false )
     $useDebugging = $environment === "dev";
 }
 
-if ( $useDebugging )
+// Depending on CUSTOM_CLASSLOADER_FILE use custom class loader, otherwise use bootstrap cache, or autoload in debug
+if ( ( $loaderFile = getenv( "CUSTOM_CLASSLOADER_FILE" ) ) !== false )
 {
-    $loader = require_once __DIR__ . '/../ezpublish/autoload.php';
+    require_once $loaderFile;
+}
+else if ( $useDebugging )
+{
+    require_once __DIR__ . '/../ezpublish/autoload.php';
 }
 else
 {
-    $loader = require_once __DIR__ . '/../ezpublish/bootstrap.php.cache';
-}
-
-// Depending on the USE_APC_CLASSLOADER environment variable, use APC for autoloading to improve performance.
-// If not set it is not used.
-if ( getenv( "USE_APC_CLASSLOADER" ) )
-{
-    $prefix = getenv( "APC_CLASSLOADER_PREFIX" );
-
-    $loader = new ApcClassLoader( $prefix ?: "ezpublish", $loader );
-    $loader->register( true );
+    require_once __DIR__ . '/../ezpublish/bootstrap.php.cache';
 }
 
 require_once __DIR__ . '/../ezpublish/EzPublishKernel.php';
@@ -58,11 +52,21 @@ if ( ( $useHttpCache = getenv( "USE_HTTP_CACHE" ) ) === false )
 {
     $useHttpCache = $environment !== "dev";
 }
+
 // Load HTTP Cache ...
 if ( $useHttpCache )
 {
-    require_once __DIR__ . '/../ezpublish/EzPublishCache.php';
-    $kernel = new EzPublishCache( $kernel );
+    // The standard HttpCache implementation can be overridden by setting the HTTP_CACHE_CLASS environment variable.
+    // Make sure to setup composer config so it is *autoloadable*, or fallback to use "CUSTOM_CLASSLOADER_FILE"
+    if ( ( $httpCacheClass = getenv( "HTTP_CACHE_CLASS" ) ) !== false )
+    {
+        $kernel = new $httpCacheClass( $kernel );
+    }
+    else
+    {
+        require_once __DIR__ . '/../ezpublish/EzPublishCache.php';
+        $kernel = new EzPublishCache( $kernel );
+    }
 }
 
 $request = Request::createFromGlobals();

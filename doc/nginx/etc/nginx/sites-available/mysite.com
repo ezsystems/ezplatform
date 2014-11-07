@@ -35,38 +35,52 @@ server {
             # FPM network
             #fastcgi_pass 127.0.0.1:9000;
 
+            ## eZ Publish ENVIRONMENT variables, used for customizing index.php execution (not used by console commands)
+
             # Environment.
             # Possible values: "prod" and "dev" out-of-the-box, other values possible with proper configuration
             # Make sure to comment the "ez_params.d/ez_prod_rewrite_params" include above in dev.
             # Defaults to "prod" if omitted
             #fastcgi_param ENVIRONMENT dev;
 
+            # Whether to use custom ClassLoader (autoloader) file
+            # Needs to be a valid path relative to root web/ directory
+            # Defaults to bootstrap.php.cache, or autoload.php in debug, supported on 2015.01 and higher
+            #fastcgi_param CUSTOM_CLASSLOADER_FILE "../ezpublish/autoload.php"
+
             # Whether to use Symfony's ApcClassLoader.
             # Possible values: 0 or 1
-            # Defaults to 0 if omitted
+            # Defaults to 0 if omitted, supported on 5.2 and higher
+            #! Not supported as of 2015.01, use CUSTOM_CLASSLOADER_FILE instead for this.
             #fastcgi_param USE_APC_CLASSLOADER 0
 
             # Prefix used when USE_APC_CLASSLOADER is set to 1.
             # Use a unique prefix in order to prevent cache key conflicts
             # with other applications also using APC.
-            # Defaults to "ezpublish" if omitted
+            # Defaults to "ezpublish" if omitted, supported on 5.2 and higher
+            #! Not supported as of 2015.01, use CUSTOM_CLASSLOADER_FILE instead for this.
             #fastcgi_param APC_CLASSLOADER_PREFIX "ezpublish"
 
             # Whether to use debugging.
             # Possible values: 0 or 1
-            # Defaults to 0 if omitted, unless ENVIRONMENT is set to: "dev"
+            # Defaults to 0 if omitted, unless ENVIRONMENT is set to: "dev", supported on 5.2 and higher
             #fastcgi_param USE_DEBUGGING 0
 
             # Whether to use Symfony's HTTP Caching.
             # Disable it if you are using an external reverse proxy (e.g. Varnish)
             # Possible values: 0 or 1
-            # Defaults to 1 if omitted, unless ENVIRONMENT is set to: "dev"
+            # Defaults to 1 if omitted, unless ENVIRONMENT is set to: "dev", supported on 5.2 and higher
             #fastcgi_param USE_HTTP_CACHE 1
+
+            # Whether to use custom HTTP Cache class if USE_HTTP_CACHE is enabled
+            # Value must be a autoloadable cache class
+            # Defaults to to use "EzPublishCache", supported on 2015.01 and higher
+            #fastcgi_param HTTP_CACHE_CLASS "\Vendor\Project\MyCache"
 
             # Defines the proxies to trust.
             # Separate entries by a comma
             # Example: "proxy1.example.com,proxy2.example.org"
-            # By default, no trusted proxies are set
+            # By default, no trusted proxies are set, supported on 5.2 and higher
             #fastcgi_param TRUSTED_PROXIES "%PROXY%"
         }
     }
