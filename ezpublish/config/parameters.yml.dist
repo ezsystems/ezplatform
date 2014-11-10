@@ -9,8 +9,6 @@ parameters:
     mailer_user:       ~
     mailer_password:   ~
 
-    ezpublish_legacy.default.view_default_layout: eZDemoBundle::pagelayout.html.twig
-
     # Settings to control dev environment settings
     debug_toolbar:          true
     debug_redirects:        false
