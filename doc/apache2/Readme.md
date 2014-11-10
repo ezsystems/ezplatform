@@ -22,7 +22,7 @@ Configuration
 - Create a symlink of /etc/apache2/sites-available/yoursite.com into /etc/apache2/sites-enabled/yoursite.com
 - restart Apache
 
-#### vhost.tempalte %VARIABLES%
+#### vhost.template %VARIABLES%
 
 | Name         | Description          |
 |--------------|----------------------|
@@ -36,7 +36,7 @@ Configuration
 
 #### Pure legacy setup
 
-In eZ Publish 5.x you can optionally set it up to only use legacy, this is usuafull for 4.x upgardes which only uses legacy.
+In eZ Publish 5.x you can optionally set it up to only use legacy, this is usuafull for 4.x upgrades which only uses legacy.
 *Warning: By doing this, absolutely no integrations between legacy and Platform works, so you can not use any of the Platform features (API, HttpCache, Symfony, ..) in this setup.*
 
 To setup pure legacy you will have to modify the vhost configuration to point to ezpublish_legacy folder as BASEDIR, and remove use of `/web` in the config.
