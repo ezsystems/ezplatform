@@ -10,7 +10,7 @@
     DocumentRoot %BASEDIR%/web
     DirectoryIndex index.php
 
-    # Enabled for Dev enviroment
+    # Enabled for Dev environment
     # LogLevel debug
 
     <Directory %BASEDIR%/web>
@@ -90,7 +90,7 @@
         # eZ Publish instance. It will then be served directly.
         RewriteRule ^/favicon\.ico - [L]
 
-        # Uncomment the line below if you want you favicon be served
+        # Uncomment the line below if you want your favicon be served
         # from the standard design. You can customize the path to
         # favicon.ico by changing /design/standard/images/favicon\.ico
         #RewriteRule ^/favicon\.ico /design/standard/images/favicon.ico [L]
@@ -122,7 +122,7 @@
         #RewriteCond %{HTTP_HOST} ^soap\..*
         #RewriteRule ^(.*) /soap.php [L]
 
-        # For 5.x versions prior to 5.2, enable this to use dev evn based on ENVIRONMENT vaiable set above
+        # For 5.x versions prior to 5.2, enable this to use dev env based on ENVIRONMENT variable set above
         #RewriteCond %{ENV:ENVIRONMENT} "dev"
         #RewriteRule .* /index_dev.php [L]
 
