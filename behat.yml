@@ -18,6 +18,9 @@ default:
                 env: behat
                 debug: false
 
+    # default profile: no suites
+    suites: ~
+
 rest:
     suites:
         fullJson:
