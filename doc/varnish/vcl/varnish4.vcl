@@ -202,4 +202,13 @@ sub vcl_deliver {
 
     // Sanity check to prevent ever exposing the hash to a client.
     unset resp.http.x-user-hash;
+
+    if (client.ip ~ debuggers) {
+        if (obj.hits > 0) {
+            set resp.http.X-Cache = "HIT";
+            set resp.http.X-Cache-Hits = obj.hits;
+        } else {
+            set resp.http.X-Cache = "MISS";
+        }
+    }
 }
