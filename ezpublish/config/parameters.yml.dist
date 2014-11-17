@@ -8,8 +8,3 @@ parameters:
     mailer_host:       127.0.0.1
     mailer_user:       ~
     mailer_password:   ~
-
-    # Settings to control dev environment settings
-    debug_toolbar:          true
-    debug_redirects:        false
-    use_assetic_controller: true
