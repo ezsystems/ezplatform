@@ -11,6 +11,9 @@
 # Disable xdebug to speed things up
 phpenv config-rm xdebug.ini
 
+# TEMP get latests version of composer which is faster
+composer self-update
+
 # Install needed packages
 echo "> Installing needed packages";
 sudo apt-get update
