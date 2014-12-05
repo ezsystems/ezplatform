@@ -32,7 +32,7 @@ EOT;
     exit;
 }
 
-// Use indev_dev.php front controller to have all debug tools and info unless ENVIRONMENT is set.
+// Use index_dev.php front controller to have all debug tools and info unless ENVIRONMENT is set.
 if ( getenv( "ENVIRONMENT" ) === false )
     $script = 'index_dev.php';
 else
