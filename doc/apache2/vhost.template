@@ -111,8 +111,9 @@
         # Following rule is needed to correctly display assets from eZ Publish5 / Symfony bundles
         RewriteRule ^/bundles/ - [L]
 
-        # Additional Assetic rules for prod env, remember to run php ezpublish/console assetic:dump --env=prod
-        RewriteCond %{ENV:ENVIRONMENT} "prod"
+        # Additional Assetic rules for environments different from dev,
+        # remember to run php ezpublish/console assetic:dump --env=prod
+        RewriteCond %{ENV:ENVIRONMENT} !("dev")
         RewriteRule ^/(css|js)/.*\.(css|js) - [L]
 
         # Conditions for enabling webdav and soap interfaces from legacy
