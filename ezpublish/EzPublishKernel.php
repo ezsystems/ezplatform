@@ -18,6 +18,8 @@ use EzSystems\DemoBundle\EzSystemsDemoBundle;
 use EzSystems\BehatBundle\EzSystemsBehatBundle;
 use eZ\Bundle\EzPublishCoreBundle\Kernel;
 use EzSystems\NgsymfonytoolsBundle\EzSystemsNgsymfonytoolsBundle;
+use EzSystems\PlatformUIBundle\EzSystemsPlatformUIBundle;
+use EzSystems\PlatformUIAssetsBundle\EzSystemsPlatformUIAssetsBundle;
 use FOS\HttpCacheBundle\FOSHttpCacheBundle;
 use Liip\ImagineBundle\LiipImagineBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
@@ -71,6 +73,8 @@ class EzPublishKernel extends Kernel
             new EzPublishRestBundle(),
             new EzSystemsCommentsBundle(),
             new EzSystemsNgsymfonytoolsBundle(),
+            new EzSystemsPlatformUIAssetsBundle(),
+            new EzSystemsPlatformUIBundle(),
             new WhiteOctoberPagerfantaBundle(),
             new WhiteOctoberBreadcrumbsBundle(),
             new NelmioCorsBundle(),

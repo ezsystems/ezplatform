@@ -25,6 +25,8 @@
         "tedivm/stash-bundle": "0.4.*",
         "ezsystems/ezpublish-kernel": "dev-master",
         "ezsystems/ezpublish-legacy": "dev-master",
+        "ezsystems/platform-ui-bundle": "dev-master",
+        "ezsystems/platform-ui-assets-bundle": "~0.1",
         "ezsystems/demobundle": "dev-master",
         "ezsystems/comments-bundle": "dev-master",
         "egulias/listeners-debug-command-bundle": "~1.9",
