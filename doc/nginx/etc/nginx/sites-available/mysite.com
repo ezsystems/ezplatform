@@ -73,8 +73,8 @@ server {
             #fastcgi_param USE_HTTP_CACHE 1
 
             # Whether to use custom HTTP Cache class if USE_HTTP_CACHE is enabled
-            # Value must be a autoloadable cache class
-            # Defaults to to use "EzPublishCache", supported on 2015.01 and higher
+            # Value must be na autoloadable cache class
+            # Defaults to "EzPublishCache", supported on 2015.01 and higher
             #fastcgi_param HTTP_CACHE_CLASS "\Vendor\Project\MyCache"
 
             # Defines the proxies to trust.
