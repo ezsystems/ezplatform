@@ -24,7 +24,7 @@ To get started with coding, see [GETTING_STARTED.md](https://github.com/ezsystem
 **eZ Publish 5** has the same requirements as [Symfony2](http://symfony.com/doc/master/reference/requirements.html),
 plus the [regular eZ Publish 4 ones](http://doc.ez.no/eZ-Publish/Technical-manual/4.x/Installation/Normal-installation/Requirements-for-doing-a-normal-installation).
 
-Minimum PHP version is 5.3.17, but 5.5.x is recommended.
+Minimum PHP version is 5.4.4, but 5.5.x is recommended.
 
 ## Backwards compatibility
 eZ Publish 5 is **100% data compatible** with version 4, as in the same
