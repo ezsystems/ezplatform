@@ -4,4 +4,9 @@
 ## and make sure to comment these out in DEV environment.
 rewrite "^/css/(.*)\.css" "/css/$1.css" break;
 rewrite "^/js/(.*)\.js" "/js/$1.js" break;
+rewrite "^/font/(.*)\.ttf" "/font/$1.ttf" break;
+rewrite "^/font/(.*)\.woff" "/font/$1.woff" break;
+rewrite "^/font/(.*)\.otf" "/font/$1.otf" break;
+rewrite "^/font/(.*)\.eot" "/font/$1.eot" break;
+rewrite "^/font/(.*)\.svg" "/font/$1.svg" break;
 
