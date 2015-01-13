@@ -50,10 +50,6 @@ assetic:
         #yui_css:
         #    jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar"
 
-ez_publish_legacy:
-    enabled: true
-    root_dir: %kernel.root_dir%/../ezpublish_legacy
-
 # Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"

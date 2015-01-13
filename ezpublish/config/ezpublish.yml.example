@@ -94,6 +94,10 @@ ezpublish:
                     filters:
                         - {name: geometry/scalewidthdownonly, params: [300]}
                         - {name: geometry/crop, params: [200, 200, 0, 0]}
+
+ez_publish_legacy:
+    enabled: true
+    system:
         ezdemo_site_admin:
-            # Use legacy mode to use the admin interface since everything needs to run via the legacy kernel
+            # Use legacy mode to use the admin interface since everything needs to be run via the legacy kernel
             legacy_mode: true
