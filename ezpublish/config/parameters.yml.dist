@@ -8,3 +8,10 @@ parameters:
     mailer_host:       127.0.0.1
     mailer_user:       ~
     mailer_password:   ~
+
+    database_driver: pdo_mysql
+    database_host: localhost
+    database_port: 3306
+    database_name: ezplatform
+    database_user: root
+    database_password:

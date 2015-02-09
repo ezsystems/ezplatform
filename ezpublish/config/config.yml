@@ -2,6 +2,17 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
 
+doctrine:
+    dbal:
+        connections:
+            default:
+                driver: %database_driver%
+                host: %database_host%
+                user: %database_user%
+                password: %database_password%
+                dbname: %database_name%
+                charset: UTF8
+
 framework:
     esi:             ~
     translator:      { fallback: "%locale_fallback%" }
