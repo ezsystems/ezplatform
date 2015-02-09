@@ -1,0 +1,14 @@
+# This file is auto-generated during the composer install
+parameters:
+    secret: ThisTokenIsNotSoSecretChangeIt
+    locale_fallback: en
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    database_driver: pdo_mysql
+    database_host: localhost
+    database_port: 3306
+    database_name: behattestdb
+    database_user: ezp
+    database_password: ezp

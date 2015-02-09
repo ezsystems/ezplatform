@@ -45,6 +45,18 @@ sed -i "s/engines: \['twig/engines: ['eztpl', 'twig/" ezpublish/config/config.ym
 echo "> Install dependencies through composer"
 composer install --dev --prefer-dist
 
+echo "> Copy parameters.yml"
+cp bin/.travis/parameters.yml ezpublish/config/
+
+
+if [ "$TEST" = "content" ] ; then
+  echo "> Install ezplatform demo"
+  php ezpublish/console ezplatform:install demo
+else
+  echo "> Install ezplatform clean"
+  php ezpublish/console ezplatform:install clean
+fi
+
 echo "> Set folder permissions"
 sudo find {ezpublish/{cache,logs,config,sessions},web} -type d | sudo xargs chmod -R 777
 sudo find {ezpublish/{cache,logs,config,sessions},web} -type f | sudo xargs chmod -R 666

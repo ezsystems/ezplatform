@@ -6,11 +6,8 @@ php:
 
 # list of paths/bundle to execute
 env:
-    # run setup wizard to install Demo+Content and then test demo with content
   - INSTALL="demoContentNonUniqueDB" PROFILE="demo" TEST="content"
-    # test Legacy
-  - INSTALL="demoCleanNonUniqueDB" PROFILE="legacyAdmin" TEST="full"
-    # test REST
+  - INSTALL="demoContentNonUniqueDB" PROFILE="demo" TEST="clean"
   - INSTALL="demoCleanNonUniqueDB" PROFILE="rest" TEST="fullJson"
   - INSTALL="demoCleanNonUniqueDB" PROFILE="rest" TEST="fullXml"
 
@@ -30,10 +27,6 @@ before_install:
 before_script:
   # Prepare eZ Publish (composer, permissions, assets, cache warmup)
   - ./bin/.travis/prepare_ezpublish.sh
-  # since setup wizard need to actually work to the other test suites to pass
-  # moved it to before_script so that the random timeout on package fetching 
-  # don't fail travis
-  - php bin/behat --profile setupWizard --suite $INSTALL
 
 # execute behat as the script command
 script:
