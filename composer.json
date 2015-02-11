@@ -26,7 +26,7 @@
         "ezsystems/ezpublish-kernel": "dev-master",
         "ezsystems/legacy-bridge": "dev-master",
         "ezsystems/platform-ui-bundle": "dev-master",
-        "ezsystems/platform-ui-assets-bundle": "~0.1",
+        "ezsystems/platform-ui-assets-bundle": "~0.2",
         "ezsystems/demobundle": "dev-master",
         "ezsystems/comments-bundle": "dev-master",
         "egulias/listeners-debug-command-bundle": "~1.9",
