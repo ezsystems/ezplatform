@@ -9,9 +9,6 @@ logout:
 _ezpublishRoutes:
     resource: "@EzPublishCoreBundle/Resources/config/routing/internal.yml"
 
-_ezpublishLegacyRoutes:
-    resource: "@EzPublishLegacyBundle/Resources/config/routing.yml"
-
 _ezpublishRestRoutes:
     resource: "@EzPublishRestBundle/Resources/config/routing.yml"
     prefix:   %ezpublish_rest.path_prefix%

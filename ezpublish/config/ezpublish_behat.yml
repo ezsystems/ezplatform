@@ -31,13 +31,6 @@ ezpublish:
             languages: [eng-GB]
             var_dir: var/behat_site
 
-ez_publish_legacy:
-    system:
-        behat_site:
-            legacy_mode: false
-        behat_site_admin:
-            legacy_mode: true
-
 stash:
     caches:
         default:
