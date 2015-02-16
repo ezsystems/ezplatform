@@ -12,8 +12,8 @@ echo "> Copy parameters.yml"
 cp bin/.travis/parameters.yml ezpublish/config/
 
 
-if [ "$TEST" = "content" ] ; then
-  echo "> Install ezplatform demo"
+if [ "$INSTALL" = "demoContentNonUniqueDB" ] ; then
+  echo "> Install ezplatform demo-content"
   php ezpublish/console ezplatform:install demo
 else
   echo "> Install ezplatform clean"
