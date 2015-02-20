@@ -6,7 +6,7 @@ echo "> Setup github auth key to not reach api limit"
 ./bin/.travis/install_composer_github_key.sh
 
 echo "> Install dependencies through composer"
-composer install --dev --prefer-dist
+composer install --prefer-dist
 
 echo "> Copy parameters.yml"
 cp bin/.travis/parameters.yml ezpublish/config/
