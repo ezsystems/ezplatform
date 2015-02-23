@@ -26,6 +26,10 @@ plus the [regular eZ Publish 4 ones](http://doc.ez.no/eZ-Publish/Technical-manua
 
 Minimum PHP version is 5.4.4, but 5.5.x is recommended.
 
+## Issue tracker
+Submitting bugs, improvements and stories is possible on https://jira.ez.no/browse/EZP.
+If you discover a security issue, please see how to responsibly report such issues on https://doc.ez.no/Security.
+
 ## Backwards compatibility
 eZ Publish 5 is **100% data compatible** with version 4, as in the same
 database can be used by following the [normal](http://doc.ez.no/eZ-Publish/Upgrading) upgrade path.
