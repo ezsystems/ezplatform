@@ -27,6 +27,10 @@ In addition, it has the same requirements than
 
 Minimum PHP version is 5.4.4, but 5.5.x is recommended.
 
+## Issue tracker
+Submitting bugs, improvements and stories is possible on https://jira.ez.no/browse/EZP.
+If you discover a security issue, please see how to responsibly report such issues on https://doc.ez.no/Security.
+
 ## Backwards compatibility
 eZ Platform is **100% data compatible** with eZ Platform.x, as in the same
 database can be used by following the [normal](http://doc.ez.no/eZ-Publish/Upgrading) upgrade path.
