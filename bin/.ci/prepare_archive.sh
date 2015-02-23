@@ -9,9 +9,6 @@
 # Install all composer deps non-interactivly (yml parameters will be set to default values)
 composer install -n --prefer-dist --no-dev
 
-# Replace install instructions for archive instructions
-mv -f INSTALL_ARCHIVE.md INSTALL.md
-
 # Rename .gitignore to make it optional as it is optimized for kernel development and not project development
 mv .gitignore .gitignore.dist
 
