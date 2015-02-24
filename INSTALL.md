@@ -14,7 +14,7 @@
 ## Prerequisite
 
   These instructions assume you have strong technical knowledge and have already installed PHP, web server & a database server with a corresponding clean database needed for this software.
-  For further information see: https://doc.ez.no/display/EZP/Requirements
+  For further information on requirements see: https://doc.ez.no/display/EZP/Requirements
 
 ## Install
 
@@ -22,8 +22,15 @@
 
     A. **Archive** (tar/zip)
 
-       - Extract the eZ Platform 2015.01 or higher archive to a directory (herby referred to as `<root-dir>`).
-       - Modify `ezpublish/config/parameters.yml` to reflect your database name/server.
+       Extract the eZ Platform 2015.01(or higher) archive to a directory, then execute post install scripts:
+
+       *Note: The post install scripts will ask you to fill in some settings, including database settings.*
+
+       ```bash
+       cd /<directory>/
+       curl -s http://getcomposer.org/installer | php
+       php -d memory_limit=-1 composer.phar run-script post-install-cmd
+       ```
 
 
     B. **Composer**
