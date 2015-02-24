@@ -5,12 +5,11 @@
 echo "> Setup github auth key to not reach api limit"
 ./bin/.travis/install_composer_github_key.sh
 
-echo "> Install dependencies through composer"
-composer install --prefer-dist
-
-echo "> Copy parameters.yml"
+echo "> Copy behat specific parameters.yml settings"
 cp bin/.travis/parameters.yml ezpublish/config/
 
+echo "> Install dependencies through composer"
+composer install -n --prefer-dist
 
 if [ "$INSTALL" = "demoContentNonUniqueDB" ] ; then
   echo "> Install ezplatform demo-content"
