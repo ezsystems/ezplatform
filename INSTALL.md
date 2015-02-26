@@ -11,24 +11,45 @@
 
     Examples: `/home/myuser/www/web/` or `/var/sites/<project-name>/web/`
 
-## Clean install
+## Prerequisite
 
-1. You can get eZ Platform using composer with the following commands:
+  These instructions assume you have strong technical knowledge and have already installed PHP, web server & a database server with a corresponding clean database needed for this software.
+  For further information on requirements see: https://doc.ez.no/display/EZP/Requirements
+
+## Install
+
+1. **Get eZ Platform**:
+
+    A. **Archive** (tar/zip)
+
+       Extract the eZ Platform 2015.01(or higher) archive to a directory, then execute post install scripts:
+
+       *Note: The post install scripts will ask you to fill in some settings, including database settings.*
+
+       ```bash
+       cd /<directory>/
+       curl -s http://getcomposer.org/installer | php
+       php -d memory_limit=-1 composer.phar run-script post-install-cmd
+       ```
+
+
+    B. **Composer**
+
+     You can get eZ Platform using composer with the following commands:
+
+     *Note: composer will take its time to download all libraries and when done you will be asked to fill in some settings, including database settings.*
 
        ```bash
        curl -s http://getcomposer.org/installer | php
        php -d memory_limit=-1 composer.phar create-project --no-dev --prefer-dist ezsystems/ezpublish-community <directory> <version>
        cd /<directory>/
        ```
-       
-      Options:
-      - `<version>`: `dev-master` to get current development version (pre release), `v2015.01` to pick a specific release, otherwise skip it to get latest stable release.
-      - For core development change '--prefer-dist' to '--prefer-source' to get full git clones, and remove '--no-dev' to get things like phpunit and behat installed.
 
-  After running command above, composer will take its time to download all libraries, then a wizard will ask you for setting to database and lastly a welcome screen should grant you instructions for finishing installation.
+     Options:
+       - `<version>`: `dev-master` to get current development version (pre release), `v2015.01` to pick a specific release, otherwise skip it to get latest stable release.
+       - For core development change '--prefer-dist' to '--prefer-source' to get full git clones, and remove '--no-dev' to get things like phpunit and behat installed.
 
-
-2. Setup folder rights **For *NIX users**:
+2. *Only for *NIX users* **Setup folder rights**:
 
        One common issue is that the `ezpublish/cache`, `ezpublish/logs` and `ezpublish/config` directories **must be writable both by the web server and the command line user**.
        If your web server user is different from your command line user, you can run the following commands just once in your project to ensure that permissions will be set up properly.
@@ -75,50 +96,17 @@
        $ sudo find {ezpublish/{cache,logs,config,sessions},web} -type f | sudo xargs chmod -R 666
        ```
 
-# Updating
-
-  Every time you want to get the latest updates of all your dependencies just run this command:
-
-  ```bash
-  $ cd /<root-dir>/
-  $ php -d memory_limit=-1 composer.phar update --prefer-dist
-  ```
-
-# Upgrading
-
-  Upgrade instructions are not written yet, they will before final version of eZ Platform. In the meantime follow upgrade instructions for eZ Publish 5.x as a guide if you already want to test your Platform code from 5.x on eZ Platform:
-  http://doc.ez.no/eZ-Platform/Upgrading/Upgrading-to-5.0/Upgrading-from-4.7-to-5.0
-
-
-## Configure the system
-
-1. *Optional* Dump your assets in your webroot:
-
-      This step is optional as it is automatically done for you when you install / update vendors via composer which
-      you did a few steps up. However during development you will need to execute these (especially last one) to get
-      assets to be updated in prod environment, so they are kept here for reference.
-
-       ```bash
-       php ezpublish/console assets:install --symlink web
-       php ezpublish/console assetic:dump --env=prod web
-       ```
-       The first command will symlink all the assets from your bundles in the `web/` folder, in a `bundles/` sub-folder.
-       The second command will generate the CSS and JavaScript files for the *prod* environement.
-
-       In those commands, "web" is the default folder. In the first two commands, --relative can be added for relative symlinks and further help is available with -h.
-
-       **Note:(1)** you should **not** run the *ezpublish/console* command as root, as it will generate cache files which the webserver and command line users will not be able to update or delete later. If sudo is installed, then you can run it with `-u www-data` for instance (means that you are root or another user who has sudo rights as `www-data`). Example:
-       ```bash
-       $ sudo -u www-data php ezpublish/console assets:install --symlink web
-       ```
-       **Note:(2)** if you are deploying ez platform on windows 7+, you need to run the command as Administrator to avoid the following error:
-
-       > [Symfony\Component\Filesystem\Exception\IOException]
-       > Unable to create symlink due to error code 1314: 'A required privilege is not held by the client'. Do you have the required Administrator-rights?
-       > This is the first solution. But you can also edit the composer.json file by changing "symfony-assets-install": "symlink" to "symfony-assets-install": ""
-
-2. *Optional* Configure a VirtualHost:
+3. *Optional* **Configure a VirtualHost**:
 
     See: https://confluence.ez.no/display/EZP/Virtual+host+setup
 
 
+4. **Run installation command**:
+
+    You may now complete the eZ Platform installation with ezplatform:install command, example of use:
+
+    ```bash
+    $ php ezpublish/console ezplatform:install --env prod demo-clean
+    ```
+
+You can now point your browser to the installation and browse the site. To access the Platform UI backend, use the `/shell` URL.
