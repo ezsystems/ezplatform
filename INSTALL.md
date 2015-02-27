@@ -22,7 +22,7 @@
 
     A. **Archive** (tar/zip)
 
-       Extract the eZ Platform 2015.01(or higher) archive to a directory, then execute post install scripts:
+       Extract the eZ Platform 15.01(or higher) archive to a directory, then execute post install scripts:
 
        *Note: The post install scripts will ask you to fill in some settings, including database settings.*
 
