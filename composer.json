@@ -1,12 +1,12 @@
 {
-    "name": "ezsystems/ezpublish-community",
-    "description": "eZ Publish 5 community distribution",
+    "name": "ezsystems/ezplatform",
+    "description": "eZ Platform distribution",
     "homepage": "http://share.ez.no",
     "license": "GPL-2.0",
     "authors": [
         {
-            "name": "eZ Publish dev-team & eZ Community",
-            "homepage": "https://github.com/ezsystems/ezpublish-community/contributors"
+            "name": "eZ dev-team & eZ Community",
+            "homepage": "https://github.com/ezsystems/ezplatform/contributors"
         }
     ],
     "autoload": {
