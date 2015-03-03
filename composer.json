@@ -1,7 +1,7 @@
 {
     "name": "ezsystems/ezplatform",
     "description": "eZ Platform distribution",
-    "homepage": "http://share.ez.no",
+    "homepage": "https://github.com/ezsystems/ezplatform",
     "license": "GPL-2.0",
     "authors": [
         {
@@ -9,6 +9,9 @@
             "homepage": "https://github.com/ezsystems/ezplatform/contributors"
         }
     ],
+    "replace": {
+        "ezsystems/ezpublish-community": "*"
+    },
     "autoload": {
         "psr-0": { "": "src/" }
     },
