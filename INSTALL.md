@@ -41,7 +41,7 @@
 
        ```bash
        curl -s http://getcomposer.org/installer | php
-       php -d memory_limit=-1 composer.phar create-project --no-dev --prefer-dist ezsystems/ezpublish-community <directory> <version>
+       php -d memory_limit=-1 composer.phar create-project --no-dev --prefer-dist ezsystems/ezplatform <directory> <version>
        cd /<directory>/
        ```
 
