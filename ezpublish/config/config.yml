@@ -8,6 +8,7 @@ doctrine:
             default:
                 driver: %database_driver%
                 host: %database_host%
+                port: %database_port%
                 user: %database_user%
                 password: %database_password%
                 dbname: %database_name%
