@@ -26,6 +26,9 @@ server {
     # ez rewrite rules
     include ez_params.d/ez_rewrite_params;
 
+    # upload max size
+    client_max_body_size 2m;
+
     location / {
         location ~ ^/(index|index_(rest|cluster|treemenu_tags))\.php(/|$) {
             include ez_params.d/ez_fastcgi_params;
