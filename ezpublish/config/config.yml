@@ -40,7 +40,7 @@ framework:
         handler_id:  ~
         # Note: eZ Publish also allows session name and session cookie configuration to be per SiteAccess, by
         #       default session name will be set to "eZSESSID{siteaccess_hash}" (unique session name per siteaccess)
-        #       Further reading: https://doc.ez.no/display/EZP/Session+configuration
+        #       Further reading on sessions: https://doc.ez.no/display/EZP/Session
     fragments:       ~
     http_method_override: true
 
