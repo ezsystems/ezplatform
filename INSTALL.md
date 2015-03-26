@@ -20,7 +20,7 @@
 
 1. **Get eZ Platform**:
 
-    A. **Archive** (tar/zip)
+    A. **Archive** (tar/zip) *from http://share.ez.no/downloads/downloads*
 
        Extract the eZ Platform 15.01(or higher) archive to a directory, then execute post install scripts:
 
@@ -41,13 +41,16 @@
 
        ```bash
        curl -s http://getcomposer.org/installer | php
-       php -d memory_limit=-1 composer.phar create-project --no-dev --prefer-dist ezsystems/ezplatform <directory> <version>
+       php -d memory_limit=-1 composer.phar create-project --no-dev ezsystems/ezplatform <directory> [<version>]
        cd /<directory>/
        ```
 
      Options:
-       - `<version>`: `dev-master` to get current development version (pre release), `v2015.01` to pick a specific release, otherwise skip it to get latest stable release.
-       - For core development change '--prefer-dist' to '--prefer-source' to get full git clones, and remove '--no-dev' to get things like phpunit and behat installed.
+       - `<version>`: Optional, if ommited you'll get latests stable, examples for specifying:
+        - `dev-master` to get current development version (pre release) `master` branch
+        - `v0.5.0` to pick a specific release
+       - For core development: Add '--prefer-source' to get full git clones, and remove '--no-dev' to get things like phpunit and behat installed.
+       - Further reading: https://getcomposer.org/doc/03-cli.md#create-project
 
 2. *Only for *NIX users* **Setup folder rights**:
 
