@@ -15,6 +15,7 @@
 
   These instructions assume you have strong technical knowledge and have already installed PHP, web server & a database server with a corresponding clean database needed for this software.
   For further information on requirements see: https://doc.ez.no/display/EZP/Requirements
+  *Note: set php.ini memory_limit=256M before running ezplatform::install command below
 
 ## Install
 
