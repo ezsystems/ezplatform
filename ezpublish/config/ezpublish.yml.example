@@ -30,7 +30,13 @@ ezpublish:
     repositories:
         # "main" repository, with default values
         # Same as:
-        # main: { engine: legacy, connection: default }
+        # main:
+        #     storage:
+        #         engine: legacy
+        #         connection: default
+        #     search:
+        #         engine: legacy
+        #         connection: default
         main: ~
 
     siteaccess:
