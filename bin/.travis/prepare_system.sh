@@ -9,7 +9,7 @@
 ##       https://github.com/facebook/hiphop-php/commit/0b2dfdf4492eb06a125b068e939d092ec0588e5c
 
 # Disable xdebug to speed things up
-if [[ "$DEBUG" == "" && "$TRAVIS_PHP_VERSION" != "" && "$TRAVIS_PHP_VERSION" != "hhvm" ]]; then
+if [[ "$USE_DEBUGGING" == "" && "$TRAVIS_PHP_VERSION" != "" && "$TRAVIS_PHP_VERSION" != "hhvm" ]]; then
     echo "> Disable xdebug";
     phpenv config-rm xdebug.ini ;
 fi
