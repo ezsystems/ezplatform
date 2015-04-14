@@ -31,6 +31,7 @@
         "ezsystems/platform-ui-assets-bundle": "~0.2",
         "ezsystems/demobundle": "dev-master",
         "ezsystems/comments-bundle": "dev-master",
+        "ezsystems/privacy-cookie-bundle": "~0.1",
         "egulias/listeners-debug-command-bundle": "~1.9",
         "white-october/pagerfanta-bundle": "1.0.*",
         "nelmio/cors-bundle": "~1.3",
