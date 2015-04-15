@@ -40,6 +40,7 @@ use Knp\Bundle\MenuBundle\KnpMenuBundle;
 use Oneup\FlysystemBundle\OneupFlysystemBundle;
 use Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle;
 use EzSystems\PlatformInstallerBundle\EzSystemsPlatformInstallerBundle;
+use EzSystems\PrivacyCookieBundle\EzSystemsPrivacyCookieBundle;
 
 class EzPublishKernel extends Kernel
 {
@@ -77,7 +78,8 @@ class EzPublishKernel extends Kernel
             new NelmioCorsBundle(),
             new KnpMenuBundle(),
             new OneupFlysystemBundle(),
-            new EzSystemsPlatformInstallerBundle()
+            new EzSystemsPlatformInstallerBundle(),
+            new EzSystemsPrivacyCookieBundle()
         );
 
         switch ( $this->getEnvironment() )
