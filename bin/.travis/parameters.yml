@@ -1,4 +1,4 @@
-# This file only contains settings different then defaults in parameters.yml.dist
+# Only settings different then parameters.yml.dist, buildParameters will inject those we don't define from there!
 parameters:
     database_name: behattestdb
     database_user: ezp
