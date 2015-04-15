@@ -7,10 +7,10 @@
 # before_install:
 #  - git fetch --unshallow && git checkout -b tmp_travis_branch
 #  - export BRANCH_BUILD_DIR=$TRAVIS_BUILD_DIR
-#  - export TRAVIS_BUILD_DIR="$HOME/build/ezpublish-community"
+#  - export TRAVIS_BUILD_DIR="$HOME/build/ezplatform"
 #  - cd "$HOME/build"
-#  - git clone --depth 1 --single-branch --branch master https://github.com/ezsystems/ezpublish-community.git
-#  - cd ezpublish-community
+#  - git clone --depth 1 --single-branch --branch master https://github.com/ezsystems/ezplatform.git
+#  - cd ezplatform
 #  - ./bin/.travis/setup_from_external_repo.sh $BRANCH_BUILD_DIR "ezsystems/demobundle:dev-tmp_travis_branch"
 
 REPO_DIR=$1
