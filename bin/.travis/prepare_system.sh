@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Script to do tasks before install, can install system packages / software
 ## See http://about.travis-ci.org/docs/user/build-configuration/
