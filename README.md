@@ -6,6 +6,11 @@
 eZ Platform is the 6th generation of eZ Publish, it is built on top of Symfony framework (Full Stack).
 It has been in development since 2011, and official part of the eZ Publish Platform 5.x as "Platform stack" since 2012. 
 
+## eZ Publish / eZ Platform
+This repository contains the eZ Platform (formerly eZ Publish 6) the next generation cms which uses the same Symfony kernel as eZ Publish 5, but does not include the legacy application, nor the dependent libraries. eZ Platform is where the new features are added.
+
+The [eZ Publish 5](https://github.com/ezsystems/ezpublish-community) repository, mostly maintained for backwards compatibility, integrates eZ Publish Legacy.
+
 ### Abstract:
 - **Very extensible** *You can extend the application and the content model many ways*
 - **Future & backwards compatible** *Strong BC policy on data as well as code*
