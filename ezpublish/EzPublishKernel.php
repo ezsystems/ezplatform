@@ -115,7 +115,8 @@ class EzPublishKernel extends Kernel
         $loader->load( __DIR__ . '/config/config_' . $environment . '.yml' );
         $configFile = __DIR__ . '/config/ezpublish_' . $environment . '.yml';
 
-        if ( !is_file( $configFile ) )
+        // if config file or base config file is missing, then install is not done yet
+        if ( !is_file( $configFile ) || !is_file( __DIR__ . '/config/ezpublish.yml' ) )
         {
             $configFile = __DIR__ . '/config/ezpublish_setup.yml';
         }
