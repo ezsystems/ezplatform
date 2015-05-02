@@ -32,6 +32,14 @@
        php -d memory_limit=-1 composer.phar run-script post-install-cmd
        ```
 
+       *Note: The post install scripts will fail if the archive does not contain the required libraries in vendor directory.*
+       *Then execute install command*
+
+       ```bash
+       cd /<directory>/
+       php -d memory_limit=-1 composer.phar install --no-dev
+       ```
+
 
     B. **Composer**
 
