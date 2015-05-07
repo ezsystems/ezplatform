@@ -13,6 +13,7 @@ echo "> Copy behat specific parameters.yml settings"
 cp bin/.travis/parameters.yml ezpublish/config/
 
 echo "> Install dependencies through composer"
+composer selfupdate
 composer install -n --prefer-dist
 
 if [ "$INSTALL" = "demoContentNonUniqueDB" ] ; then
