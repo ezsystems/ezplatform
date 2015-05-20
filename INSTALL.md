@@ -88,8 +88,8 @@
 
        ```bash
        $ sudo chown -R www-data:www-data ezpublish/{cache,logs,config,sessions} web
-       $ sudo find {ezpublish/{cache,logs,config,sessions},web} -type d | sudo xargs chmod -R 775
-       $ sudo find {ezpublish/{cache,logs,config},web} -type f | sudo xargs chmod -R 664
+       $ sudo find {ezpublish/{cache,logs,config,sessions},web} -type d | xargs sudo chmod -R 775
+       $ sudo find {ezpublish/{cache,logs,config},web} -type f | xargs sudo chmod -R 664
        ```
 
        D. **Using chmod**
@@ -97,8 +97,8 @@
        If you can't use ACL and aren't allowed to change owner, you can use chmod, making the files writable by everybody. Note that this method really isn't recommended as it allows any user to do anything.
 
        ```bash
-       $ sudo find {ezpublish/{cache,logs,config,sessions},web} -type d | sudo xargs chmod -R 777
-       $ sudo find {ezpublish/{cache,logs,config,sessions},web} -type f | sudo xargs chmod -R 666
+       $ sudo find {ezpublish/{cache,logs,config,sessions},web} -type d | xargs sudo chmod -R 777
+       $ sudo find {ezpublish/{cache,logs,config,sessions},web} -type f | xargs sudo chmod -R 666
        ```
 3. *Optional* **Install LegacyBridge and eZ Publish Legacy**:
 
