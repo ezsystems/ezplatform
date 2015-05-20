@@ -54,8 +54,6 @@
 
 2. *Only for *NIX users* **Setup folder rights**:
 
-       *Skip to step #3 if you plan to install LegacyBridge and eZ Publish Legacy with this installation!*
-
        One common issue is that the `ezpublish/cache`, `ezpublish/logs` and `ezpublish/config` directories **must be writable both by the web server and the command line user**.
        If your web server user is different from your command line user, you can run the following commands just once in your project to ensure that permissions will be set up properly.
 
@@ -100,18 +98,13 @@
        $ sudo find {ezpublish/{cache,logs,config,sessions},web} -type d | sudo xargs chmod -R 777
        $ sudo find {ezpublish/{cache,logs,config,sessions},web} -type f | sudo xargs chmod -R 666
        ```
-3. *Optional* **Install LegacyBridge and eZ Publish Legacy**:
 
-    eZ Platform, unlike eZ Publish 5.x, does not come with eZ Publish Legacy (the updated version of eZ Publish 4.x).
-    For the time being it is still possible to run Legacy side by side with eZ Platform, further instructions here:
-    https://doc.ez.no/display/EZP/Installing+eZ+Publish+Legacy+on+top+of+eZ+Platform
-
-4. *Optional* **Configure a VirtualHost**:
+3. *Optional* **Configure a VirtualHost**:
 
     See: https://confluence.ez.no/display/EZP/Virtual+host+setup
 
 
-5. **Run installation command**:
+4. **Run installation command**:
 
     You may now complete the eZ Platform installation with ezplatform:install command, example of use:
 
@@ -122,3 +115,10 @@
     **Note**: Password for the generated `admin` user is `publish`, this name and password is needed when you would like to login to backend Platform UI. Future versions will prompt you for a unique password during installation.
 
 You can now point your browser to the installation and browse the site. To access the Platform UI backend, use the `/shell` URL.
+
+5. *Optional* **Install LegacyBridge and eZ Publish Legacy**:
+
+    eZ Platform, unlike eZ Publish 5.x, does not come with eZ Publish Legacy (the updated version of eZ Publish 4.x).
+    For the time being it is still possible to run Legacy side by side with eZ Platform, further instructions here:
+    https://doc.ez.no/display/EZP/Installing+eZ+Publish+Legacy+on+top+of+eZ+Platform
+
