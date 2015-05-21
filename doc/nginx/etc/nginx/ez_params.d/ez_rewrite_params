@@ -2,9 +2,6 @@
 rewrite "^tags/treemenu/?" "index_treemenu_tags.php" last;
 rewrite "^index_treemenu_tags\.php" "/index_treemenu_tags.php" last;
 
-# v1 rest API is on Legacy
-rewrite "^/api/[^/]+/v1" "/index_rest.php" last;
-
 rewrite "^/var/([^/]+/)?storage/images(-versioned)?/(.*)" "/var/$1storage/images$2/$3" break;
 rewrite "^/var/([^/]+/)?cache/(texttoimage|public)/(.*)" "/var/$1cache/$2/$3" break;
 rewrite "^/design/([^/]+)/(stylesheets|images|javascript|fonts)/(.*)" "/design/$1/$2/$3" break;
