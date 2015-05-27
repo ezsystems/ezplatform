@@ -1,7 +1,7 @@
 #!/bin/bash
-# Script used to prepare for eZ Publish/Platform/Studio archives
+# Script used to prepare for eZ Publish/Platform archives
 #
-# Pre-requirement for eZ Studio archives:
+# Pre-requirement for LTS (EE) archives:
 #     auth.json needs to be placed in either root directory or COMPOSER_HOME.
 #     If auth.json is placed in COMPOSER_HOME, it needs to be for same user as the one executing script.
 

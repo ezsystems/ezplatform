@@ -80,9 +80,6 @@
         RewriteCond %{REQUEST_URI} ^/php5-fcgi(.*)
         RewriteRule . - [L]
 
-        # v1 rest API is on Legacy
-        RewriteRule ^/api/[^/]+/v1/ /index_rest.php [L]
-
         # If using cluster, uncomment the following two lines:
         ## For 5.4 and higher:
         #RewriteRule ^/var/([^/]+/)?storage/images(-versioned)?/.* /index.php [L]
