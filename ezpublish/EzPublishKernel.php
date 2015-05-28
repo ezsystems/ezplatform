@@ -48,7 +48,7 @@ class EzPublishKernel extends Kernel
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Oneup\FlysystemBundle\OneupFlysystemBundle(),
             new EzSystems\PlatformInstallerBundle\EzSystemsPlatformInstallerBundle(),
-            new EzSystems\PrivacyCookieBundle\EzSystemsPrivacyCookieBundle()
+            new EzSystems\PrivacyCookieBundle\EzSystemsPrivacyCookieBundle(),
         );
 
         switch ( $this->getEnvironment() )
