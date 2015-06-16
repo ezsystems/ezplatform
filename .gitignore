@@ -22,7 +22,6 @@
 /web/var
 /web/.htaccess
 composer.phar
-composer.lock
 .buildpath
 .project
 .settings/
