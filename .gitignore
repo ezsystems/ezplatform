@@ -25,4 +25,4 @@ composer.phar
 .buildpath
 .project
 .settings/
-
+behat.yml

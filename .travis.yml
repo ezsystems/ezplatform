@@ -33,7 +33,7 @@ before_script:
 
 # execute behat as the script command
 script:
-  - php bin/behat -vv --profile $PROFILE --suite $TEST
+  - php bin/behat -c behat.yml.dist -vv --profile $PROFILE --suite $TEST
 
 # disable mail notifications
 notification:
