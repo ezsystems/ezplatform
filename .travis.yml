@@ -36,7 +36,7 @@ script:
   - php bin/behat -c behat.yml.dist -vv --profile $PROFILE --suite $TEST
 
 # disable mail notifications
-notification:
+notifications:
   email: false
 
 # reduce depth (history) of git checkout
