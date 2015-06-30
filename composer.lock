@@ -852,12 +852,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/DemoBundle.git",
-                "reference": "442a6781e8cf22f3c5f899f31026da52b2201c52"
+                "reference": "44c0cde3d3ccbf648fa0b635054a873df542642b"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/ezsystems/DemoBundle/zipball/442a6781e8cf22f3c5f899f31026da52b2201c52",
-                "reference": "442a6781e8cf22f3c5f899f31026da52b2201c52",
+                "reference": "44c0cde3d3ccbf648fa0b635054a873df542642b",
                 "shasum": ""
             },
             "require": {
@@ -894,7 +894,7 @@
                 }
             ],
             "description": "Demo bundle for eZ Publish Platform",
-            "time": "2015-06-30 15:00:48"
+            "time": "2015-06-16 22:00:58"
         },
         {
             "name": "ezsystems/demobundle-data",
@@ -933,12 +933,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-kernel.git",
-                "reference": "35d37a6cbcd3d19a884f5434d59aa2a526ed5382"
+                "reference": "8dee4f20a99aefdd01f2f04921abd4b45c8de1ed"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/35d37a6cbcd3d19a884f5434d59aa2a526ed5382",
-                "reference": "35d37a6cbcd3d19a884f5434d59aa2a526ed5382",
+                "reference": "8dee4f20a99aefdd01f2f04921abd4b45c8de1ed",
                 "shasum": ""
             },
             "require": {
@@ -1006,7 +1006,7 @@
             ],
             "description": "eZ Publish API and kernel. This is the heart of eZ Publish 5.",
             "homepage": "http://share.ez.no",
-            "time": "2015-06-30 15:00:25"
+            "time": "2015-06-25 12:52:34"
         },
         {
             "name": "ezsystems/landing-page-fieldtype-bundle",
@@ -1086,7 +1086,7 @@
         },
         {
             "name": "ezsystems/platform-ui-bundle",
-            "version": "v0.9.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/PlatformUIBundle.git",
@@ -1094,7 +1094,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/PlatformUIBundle/zipball/1ac20b3f45a9e282dc1ffc790eb97989c8ac3fc9",
+                "url": "https://api.github.com/repos/ezsystems/PlatformUIBundle/zipball/89567f7aa7d6abe602d870f1168635ffcb40f3c0",
                 "reference": "1ac20b3f45a9e282dc1ffc790eb97989c8ac3fc9",
                 "shasum": ""
             },
