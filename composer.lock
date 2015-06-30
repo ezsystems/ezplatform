@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3654a1160fa98580f81d362a7f9d107a",
+    "hash": "a4d940d8fc9a22635bf5be1a34ad4ccd",
     "packages": [
         {
             "name": "components/bootstrap",
@@ -933,12 +933,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-kernel.git",
-                "reference": "f5a431f708d4fee73cae9aa586ae7cbf474f2c6a"
+                "reference": "8dee4f20a99aefdd01f2f04921abd4b45c8de1ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/f5a431f708d4fee73cae9aa586ae7cbf474f2c6a",
-                "reference": "f5a431f708d4fee73cae9aa586ae7cbf474f2c6a",
+                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/8dee4f20a99aefdd01f2f04921abd4b45c8de1ed",
+                "reference": "8dee4f20a99aefdd01f2f04921abd4b45c8de1ed",
                 "shasum": ""
             },
             "require": {
@@ -956,7 +956,7 @@
                 "hautelook/templated-uri-bundle": "~1.0 | ~2.0",
                 "kriswallsmith/buzz": ">=0.9",
                 "liip/imagine-bundle": "~1.0",
-                "nelmio/cors-bundle": "1.3.*",
+                "nelmio/cors-bundle": "^1.3.3",
                 "ocramius/proxy-manager": "~1.0",
                 "oneup/flysystem-bundle": "~0.4",
                 "pagerfanta/pagerfanta": "~1.0",
@@ -1006,20 +1006,60 @@
             ],
             "description": "eZ Publish API and kernel. This is the heart of eZ Publish 5.",
             "homepage": "http://share.ez.no",
-            "time": "2015-06-19 13:46:10"
+            "time": "2015-06-25 12:52:34"
         },
         {
-            "name": "ezsystems/platform-ui-assets-bundle",
-            "version": "v0.7.0",
+            "name": "ezsystems/landing-page-fieldtype-bundle",
+            "version": "v1.0.0-alpha1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/ezsystems/PlatformUIAssetsBundle.git",
-                "reference": "cb3e4dd242aa26d17082338f5251f9fd0ab5764f"
+                "url": "git@github.com:ezsystems/EzLandingPageFieldTypeBundle.git",
+                "reference": "ba845e0c72001b526bfbbaf9c16c0dad269d1b55"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/PlatformUIAssetsBundle/zipball/cb3e4dd242aa26d17082338f5251f9fd0ab5764f",
-                "reference": "cb3e4dd242aa26d17082338f5251f9fd0ab5764f",
+                "url": "https://updates.ez.no/studio/dist/ezsystems-landing-page-fieldtype-bundle-ba845e0c72001b526bfbbaf9c16c0dad269d1b55-zip-08953b.zip",
+                "reference": "ba845e0c72001b526bfbbaf9c16c0dad269d1b55",
+                "shasum": "129f6ded225b838342517045046576be3a5ef696"
+            },
+            "require": {
+                "ezsystems/ezpublish-kernel": "dev-master",
+                "zetacomponents/feed": "1.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.6.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "EzSystems\\LandingPageFieldTypeBundle\\": "src/"
+                }
+            },
+            "authors": [
+                {
+                    "name": "eZ Systems",
+                    "email": "dev-team@ez.no"
+                }
+            ],
+            "description": "eZ Platform Landing Page FieldType",
+            "support": {
+                "source": "https://github.com/ezsystems/EzLandingPageFieldTypeBundle/tree/master",
+                "issues": "https://github.com/ezsystems/EzLandingPageFieldTypeBundle/issues"
+            },
+            "time": "2015-06-02 16:47:09"
+        },
+        {
+            "name": "ezsystems/platform-ui-assets-bundle",
+            "version": "v0.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ezsystems/PlatformUIAssetsBundle.git",
+                "reference": "5d751c1f0a83739c61e899742ba7542b31e451e0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ezsystems/PlatformUIAssetsBundle/zipball/5d751c1f0a83739c61e899742ba7542b31e451e0",
+                "reference": "5d751c1f0a83739c61e899742ba7542b31e451e0",
                 "shasum": ""
             },
             "require": {
@@ -1042,7 +1082,7 @@
                 }
             ],
             "description": "External assets dependencies for PlatformUIBundle",
-            "time": "2015-06-23 06:25:35"
+            "time": "2015-06-25 13:44:32"
         },
         {
             "name": "ezsystems/platform-ui-bundle",
@@ -1050,12 +1090,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/PlatformUIBundle.git",
-                "reference": "c6eff3c0bede4eaa833fba060e025ea64ffc78ea"
+                "reference": "1ac20b3f45a9e282dc1ffc790eb97989c8ac3fc9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/PlatformUIBundle/zipball/c6eff3c0bede4eaa833fba060e025ea64ffc78ea",
-                "reference": "c6eff3c0bede4eaa833fba060e025ea64ffc78ea",
+                "url": "https://api.github.com/repos/ezsystems/PlatformUIBundle/zipball/1ac20b3f45a9e282dc1ffc790eb97989c8ac3fc9",
+                "reference": "1ac20b3f45a9e282dc1ffc790eb97989c8ac3fc9",
                 "shasum": ""
             },
             "require": {
@@ -1084,7 +1124,7 @@
                 "GPL-2.0"
             ],
             "description": "eZ Platform UI Bundle",
-            "time": "2015-06-17 16:20:45"
+            "time": "2015-06-29 12:49:29"
         },
         {
             "name": "ezsystems/privacy-cookie-bundle",
@@ -1134,12 +1174,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/repository-forms.git",
-                "reference": "1cd9454f6b97afb9015e9f0e1918ef9d24c4142f"
+                "reference": "dea93d5efceddbbe466ac99a9b4c71e6c54966e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/repository-forms/zipball/1cd9454f6b97afb9015e9f0e1918ef9d24c4142f",
-                "reference": "1cd9454f6b97afb9015e9f0e1918ef9d24c4142f",
+                "url": "https://api.github.com/repos/ezsystems/repository-forms/zipball/dea93d5efceddbbe466ac99a9b4c71e6c54966e1",
+                "reference": "dea93d5efceddbbe466ac99a9b4c71e6c54966e1",
                 "shasum": ""
             },
             "require": {
@@ -1175,7 +1215,43 @@
                 }
             ],
             "description": "Use Symfony forms with eZ Platform repository objects",
-            "time": "2015-06-18 08:33:03"
+            "time": "2015-06-29 07:48:28"
+        },
+        {
+            "name": "ezsystems/studio-ui-bundle",
+            "version": "v1.0.0-alpha2",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:ezsystems/StudioUIBundle.git",
+                "reference": "1fd55ff6792a3cae888a415ea68e4702ab820443"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://updates.ez.no/studio/dist/ezsystems-studio-ui-bundle-1fd55ff6792a3cae888a415ea68e4702ab820443-zip-f49d2f.zip",
+                "reference": "1fd55ff6792a3cae888a415ea68e4702ab820443",
+                "shasum": "4203daa962af9f165d12a03ab95f907b07ce3d3b"
+            },
+            "require-dev": {
+                "ezsystems/ezpublish-kernel": ">= 5.4",
+                "ezsystems/landing-page-fieldtype-bundle": "~1.0@alpha",
+                "ezsystems/platform-ui-bundle": "dev-master",
+                "phpunit/phpunit": "~4.1.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "EzSystems\\StudioUIBundle\\": ""
+                }
+            },
+            "license": [
+                "GPL-2.0"
+            ],
+            "description": "eZ Studio UI Bundle",
+            "support": {
+                "source": "https://github.com/ezsystems/StudioUIBundle/tree/master",
+                "issues": "https://github.com/ezsystems/StudioUIBundle/issues"
+            },
+            "time": "2015-06-03 11:44:40"
         },
         {
             "name": "friendsofsymfony/http-cache",
@@ -1875,16 +1951,16 @@
         },
         {
             "name": "kriswallsmith/buzz",
-            "version": "v0.14",
+            "version": "v0.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kriswallsmith/Buzz.git",
-                "reference": "f802a9b9d01b53496f50c9c5e09b5c779cbbd300"
+                "reference": "d4041666c3ffb379af02a92dabe81c904b35fab8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kriswallsmith/Buzz/zipball/f802a9b9d01b53496f50c9c5e09b5c779cbbd300",
-                "reference": "f802a9b9d01b53496f50c9c5e09b5c779cbbd300",
+                "url": "https://api.github.com/repos/kriswallsmith/Buzz/zipball/d4041666c3ffb379af02a92dabe81c904b35fab8",
+                "reference": "d4041666c3ffb379af02a92dabe81c904b35fab8",
                 "shasum": ""
             },
             "require": {
@@ -1919,7 +1995,7 @@
                 "curl",
                 "http client"
             ],
-            "time": "2015-06-02 16:48:29"
+            "time": "2015-06-25 17:26:56"
         },
         {
             "name": "league/flysystem",
@@ -2162,17 +2238,17 @@
         },
         {
             "name": "nelmio/cors-bundle",
-            "version": "1.3.3",
+            "version": "1.4.0",
             "target-dir": "Nelmio/CorsBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nelmio/NelmioCorsBundle.git",
-                "reference": "d482c01f6ca0840025b81b65534d0ffb7c18f425"
+                "reference": "553b4c5cdb3ff155f910e8f6e3e0806d42c763a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nelmio/NelmioCorsBundle/zipball/d482c01f6ca0840025b81b65534d0ffb7c18f425",
-                "reference": "d482c01f6ca0840025b81b65534d0ffb7c18f425",
+                "url": "https://api.github.com/repos/nelmio/NelmioCorsBundle/zipball/553b4c5cdb3ff155f910e8f6e3e0806d42c763a6",
+                "reference": "553b4c5cdb3ff155f910e8f6e3e0806d42c763a6",
                 "shasum": ""
             },
             "require": {
@@ -2213,7 +2289,7 @@
                 "cors",
                 "crossdomain"
             ],
-            "time": "2014-12-10 17:26:49"
+            "time": "2015-01-13 17:53:27"
         },
         {
             "name": "ocramius/proxy-manager",
@@ -4761,16 +4837,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "2.1.6",
+            "version": "2.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "631e365cf26bb2c078683e8d9bcf8bc631ac4d44"
+                "reference": "07e27765596d72c378a6103e80da5d84e802f1e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/631e365cf26bb2c078683e8d9bcf8bc631ac4d44",
-                "reference": "631e365cf26bb2c078683e8d9bcf8bc631ac4d44",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/07e27765596d72c378a6103e80da5d84e802f1e4",
+                "reference": "07e27765596d72c378a6103e80da5d84e802f1e4",
                 "shasum": ""
             },
             "require": {
@@ -4819,7 +4895,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-06-19 07:11:55"
+            "time": "2015-06-30 06:52:35"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -5001,16 +5077,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "4.7.5",
+            "version": "4.7.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "f6701ef3faea759acd1910a7751d8d102a7fd5bc"
+                "reference": "0ebabb4cda7d066be8391dfdbaf57fe70ac9a99b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/f6701ef3faea759acd1910a7751d8d102a7fd5bc",
-                "reference": "f6701ef3faea759acd1910a7751d8d102a7fd5bc",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/0ebabb4cda7d066be8391dfdbaf57fe70ac9a99b",
+                "reference": "0ebabb4cda7d066be8391dfdbaf57fe70ac9a99b",
                 "shasum": ""
             },
             "require": {
@@ -5069,7 +5145,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-06-21 07:23:36"
+            "time": "2015-06-30 06:53:57"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -5513,6 +5589,8 @@
         "ezsystems/platform-ui-bundle": 20,
         "ezsystems/demobundle": 20,
         "ezsystems/comments-bundle": 20,
+        "ezsystems/studio-ui-bundle": 15,
+        "ezsystems/landing-page-fieldtype-bundle": 15,
         "behat/sahi-client": 20,
         "ezsystems/behatbundle": 20
     },
