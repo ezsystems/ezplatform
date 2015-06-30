@@ -852,12 +852,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/DemoBundle.git",
-                "reference": "44c0cde3d3ccbf648fa0b635054a873df542642b"
+                "reference": "442a6781e8cf22f3c5f899f31026da52b2201c52"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/ezsystems/DemoBundle/zipball/442a6781e8cf22f3c5f899f31026da52b2201c52",
-                "reference": "44c0cde3d3ccbf648fa0b635054a873df542642b",
+                "reference": "442a6781e8cf22f3c5f899f31026da52b2201c52",
                 "shasum": ""
             },
             "require": {
@@ -894,7 +894,7 @@
                 }
             ],
             "description": "Demo bundle for eZ Publish Platform",
-            "time": "2015-06-16 22:00:58"
+            "time": "2015-06-30 15:00:48"
         },
         {
             "name": "ezsystems/demobundle-data",
@@ -933,12 +933,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-kernel.git",
-                "reference": "8dee4f20a99aefdd01f2f04921abd4b45c8de1ed"
+                "reference": "35d37a6cbcd3d19a884f5434d59aa2a526ed5382"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/35d37a6cbcd3d19a884f5434d59aa2a526ed5382",
-                "reference": "8dee4f20a99aefdd01f2f04921abd4b45c8de1ed",
+                "reference": "35d37a6cbcd3d19a884f5434d59aa2a526ed5382",
                 "shasum": ""
             },
             "require": {
@@ -1006,7 +1006,7 @@
             ],
             "description": "eZ Publish API and kernel. This is the heart of eZ Publish 5.",
             "homepage": "http://share.ez.no",
-            "time": "2015-06-25 12:52:34"
+            "time": "2015-06-30 15:00:25"
         },
         {
             "name": "ezsystems/landing-page-fieldtype-bundle",
@@ -1086,22 +1086,22 @@
         },
         {
             "name": "ezsystems/platform-ui-bundle",
-            "version": "dev-master",
+            "version": "v0.9.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/PlatformUIBundle.git",
-                "reference": "1ac20b3f45a9e282dc1ffc790eb97989c8ac3fc9"
+                "reference": "1ef79f1b42c55821de60c42df9c11130423d501d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/PlatformUIBundle/zipball/89567f7aa7d6abe602d870f1168635ffcb40f3c0",
-                "reference": "1ac20b3f45a9e282dc1ffc790eb97989c8ac3fc9",
+                "url": "https://api.github.com/repos/ezsystems/PlatformUIBundle/zipball/1ef79f1b42c55821de60c42df9c11130423d501d",
+                "reference": "1ef79f1b42c55821de60c42df9c11130423d501d",
                 "shasum": ""
             },
             "require": {
-                "ezsystems/ezpublish-kernel": "~6.0@dev",
-                "ezsystems/platform-ui-assets-bundle": "~0.2",
-                "ezsystems/repository-forms": "~0.1@dev",
+                "ezsystems/ezpublish-kernel": "~6.0@alpha",
+                "ezsystems/platform-ui-assets-bundle": "~0.8",
+                "ezsystems/repository-forms": "~0.1",
                 "zetacomponents/system-information": "~1.1"
             },
             "require-dev": {
@@ -1109,11 +1109,6 @@
                 "phpunit/phpunit": "~4.7"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.8.x-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "EzSystems\\PlatformUIBundle\\": ""
@@ -1124,7 +1119,7 @@
                 "GPL-2.0"
             ],
             "description": "eZ Platform UI Bundle",
-            "time": "2015-06-29 12:49:29"
+            "time": "2015-06-30 15:42:57"
         },
         {
             "name": "ezsystems/privacy-cookie-bundle",
@@ -1174,12 +1169,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/repository-forms.git",
-                "reference": "dea93d5efceddbbe466ac99a9b4c71e6c54966e1"
+                "reference": "a449a0239ae101d066706820a0e64fdbc5629536"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/repository-forms/zipball/dea93d5efceddbbe466ac99a9b4c71e6c54966e1",
-                "reference": "dea93d5efceddbbe466ac99a9b4c71e6c54966e1",
+                "url": "https://api.github.com/repos/ezsystems/repository-forms/zipball/a449a0239ae101d066706820a0e64fdbc5629536",
+                "reference": "a449a0239ae101d066706820a0e64fdbc5629536",
                 "shasum": ""
             },
             "require": {
@@ -1193,7 +1188,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.1.x-dev"
+                    "dev-master": "0.2.x-dev"
                 }
             },
             "autoload": {
@@ -1215,7 +1210,7 @@
                 }
             ],
             "description": "Use Symfony forms with eZ Platform repository objects",
-            "time": "2015-06-29 07:48:28"
+            "time": "2015-06-30 15:43:44"
         },
         {
             "name": "ezsystems/studio-ui-bundle",
