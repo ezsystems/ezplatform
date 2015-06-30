@@ -852,12 +852,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/DemoBundle.git",
-                "reference": "44c0cde3d3ccbf648fa0b635054a873df542642b"
+                "reference": "442a6781e8cf22f3c5f899f31026da52b2201c52"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/DemoBundle/zipball/44c0cde3d3ccbf648fa0b635054a873df542642b",
-                "reference": "44c0cde3d3ccbf648fa0b635054a873df542642b",
+                "url": "https://api.github.com/repos/ezsystems/DemoBundle/zipball/442a6781e8cf22f3c5f899f31026da52b2201c52",
+                "reference": "442a6781e8cf22f3c5f899f31026da52b2201c52",
                 "shasum": ""
             },
             "require": {
@@ -894,7 +894,7 @@
                 }
             ],
             "description": "Demo bundle for eZ Publish Platform",
-            "time": "2015-06-16 22:00:58"
+            "time": "2015-06-30 15:00:48"
         },
         {
             "name": "ezsystems/demobundle-data",
@@ -933,12 +933,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-kernel.git",
-                "reference": "8dee4f20a99aefdd01f2f04921abd4b45c8de1ed"
+                "reference": "35d37a6cbcd3d19a884f5434d59aa2a526ed5382"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/8dee4f20a99aefdd01f2f04921abd4b45c8de1ed",
-                "reference": "8dee4f20a99aefdd01f2f04921abd4b45c8de1ed",
+                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/35d37a6cbcd3d19a884f5434d59aa2a526ed5382",
+                "reference": "35d37a6cbcd3d19a884f5434d59aa2a526ed5382",
                 "shasum": ""
             },
             "require": {
@@ -1006,21 +1006,21 @@
             ],
             "description": "eZ Publish API and kernel. This is the heart of eZ Publish 5.",
             "homepage": "http://share.ez.no",
-            "time": "2015-06-25 12:52:34"
+            "time": "2015-06-30 15:00:25"
         },
         {
             "name": "ezsystems/landing-page-fieldtype-bundle",
-            "version": "v1.0.0-alpha1",
+            "version": "v1.0.0-alpha2",
             "source": {
                 "type": "git",
                 "url": "git@github.com:ezsystems/EzLandingPageFieldTypeBundle.git",
-                "reference": "ba845e0c72001b526bfbbaf9c16c0dad269d1b55"
+                "reference": "0b0437dd875e873da72d6efc435e6c2c90ee6972"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://updates.ez.no/studio/dist/ezsystems-landing-page-fieldtype-bundle-ba845e0c72001b526bfbbaf9c16c0dad269d1b55-zip-08953b.zip",
-                "reference": "ba845e0c72001b526bfbbaf9c16c0dad269d1b55",
-                "shasum": "129f6ded225b838342517045046576be3a5ef696"
+                "url": "https://updates.ez.no/studio/dist/ezsystems-landing-page-fieldtype-bundle-0b0437dd875e873da72d6efc435e6c2c90ee6972-zip-f2f4ef.zip",
+                "reference": "0b0437dd875e873da72d6efc435e6c2c90ee6972",
+                "shasum": "fd1acd49ff533bebb8fce3da6077a92eaf214c47"
             },
             "require": {
                 "ezsystems/ezpublish-kernel": "dev-master",
@@ -1046,7 +1046,7 @@
                 "source": "https://github.com/ezsystems/EzLandingPageFieldTypeBundle/tree/master",
                 "issues": "https://github.com/ezsystems/EzLandingPageFieldTypeBundle/issues"
             },
-            "time": "2015-06-02 16:47:09"
+            "time": "2015-06-30 11:57:28"
         },
         {
             "name": "ezsystems/platform-ui-assets-bundle",
@@ -1086,7 +1086,7 @@
         },
         {
             "name": "ezsystems/platform-ui-bundle",
-            "version": "dev-master",
+            "version": "v0.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/PlatformUIBundle.git",
@@ -1219,17 +1219,17 @@
         },
         {
             "name": "ezsystems/studio-ui-bundle",
-            "version": "v1.0.0-alpha2",
+            "version": "v1.0.0-alpha3",
             "source": {
                 "type": "git",
                 "url": "git@github.com:ezsystems/StudioUIBundle.git",
-                "reference": "1fd55ff6792a3cae888a415ea68e4702ab820443"
+                "reference": "4fa4b82e1655547729942d7c667666acfd83e526"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://updates.ez.no/studio/dist/ezsystems-studio-ui-bundle-1fd55ff6792a3cae888a415ea68e4702ab820443-zip-f49d2f.zip",
-                "reference": "1fd55ff6792a3cae888a415ea68e4702ab820443",
-                "shasum": "4203daa962af9f165d12a03ab95f907b07ce3d3b"
+                "url": "https://updates.ez.no/studio/dist/ezsystems-studio-ui-bundle-4fa4b82e1655547729942d7c667666acfd83e526-zip-78f091.zip",
+                "reference": "4fa4b82e1655547729942d7c667666acfd83e526",
+                "shasum": "ad8e6646f5cdc8959101038c37d1b0d8ee43ca6c"
             },
             "require-dev": {
                 "ezsystems/ezpublish-kernel": ">= 5.4",
@@ -1244,14 +1244,14 @@
                 }
             },
             "license": [
-                "GPL-2.0"
+                "BUL-2.1"
             ],
             "description": "eZ Studio UI Bundle",
             "support": {
-                "source": "https://github.com/ezsystems/StudioUIBundle/tree/master",
+                "source": "https://github.com/ezsystems/StudioUIBundle/tree/v1.0.0-alpha3",
                 "issues": "https://github.com/ezsystems/StudioUIBundle/issues"
             },
-            "time": "2015-06-03 11:44:40"
+            "time": "2015-06-30 13:47:17"
         },
         {
             "name": "friendsofsymfony/http-cache",
