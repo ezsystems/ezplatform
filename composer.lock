@@ -933,12 +933,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-kernel.git",
-                "reference": "5835473d2ea78e768f80a815ba9271e9e0d472fd"
+                "reference": "ad708478763e1c94312d2b1bb8918f56d507b452"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/5835473d2ea78e768f80a815ba9271e9e0d472fd",
-                "reference": "5835473d2ea78e768f80a815ba9271e9e0d472fd",
+                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/ad708478763e1c94312d2b1bb8918f56d507b452",
+                "reference": "ad708478763e1c94312d2b1bb8918f56d507b452",
                 "shasum": ""
             },
             "require": {
@@ -1006,7 +1006,7 @@
             ],
             "description": "eZ Publish API and kernel. This is the heart of eZ Publish 5.",
             "homepage": "http://share.ez.no",
-            "time": "2015-07-01 08:35:49"
+            "time": "2015-07-01 12:46:04"
         },
         {
             "name": "ezsystems/platform-ui-assets-bundle",
