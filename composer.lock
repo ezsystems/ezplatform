@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a4d940d8fc9a22635bf5be1a34ad4ccd",
+    "hash": "b491cf4c0295daefce9d006b95cc2f54",
     "packages": [
         {
             "name": "components/bootstrap",
@@ -898,16 +898,16 @@
         },
         {
             "name": "ezsystems/demobundle-data",
-            "version": "v0.1.0",
+            "version": "v0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/demobundle-data.git",
-                "reference": "69886dd4667d623a782d8455e96f3d10fc3c007b"
+                "reference": "7082500fef42ff01f5553029c05801932e724c30"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/demobundle-data/zipball/69886dd4667d623a782d8455e96f3d10fc3c007b",
-                "reference": "69886dd4667d623a782d8455e96f3d10fc3c007b",
+                "url": "https://api.github.com/repos/ezsystems/demobundle-data/zipball/7082500fef42ff01f5553029c05801932e724c30",
+                "reference": "7082500fef42ff01f5553029c05801932e724c30",
                 "shasum": ""
             },
             "require": {
@@ -925,7 +925,7 @@
                 }
             ],
             "description": "Data for ezsystems/demobundle",
-            "time": "2015-02-09 18:42:32"
+            "time": "2015-05-07 08:45:48"
         },
         {
             "name": "ezsystems/ezpublish-kernel",
@@ -933,12 +933,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-kernel.git",
-                "reference": "35d37a6cbcd3d19a884f5434d59aa2a526ed5382"
+                "reference": "e38d772ed7ba69743d88f5a75094051a019b5836"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/35d37a6cbcd3d19a884f5434d59aa2a526ed5382",
-                "reference": "35d37a6cbcd3d19a884f5434d59aa2a526ed5382",
+                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/e38d772ed7ba69743d88f5a75094051a019b5836",
+                "reference": "e38d772ed7ba69743d88f5a75094051a019b5836",
                 "shasum": ""
             },
             "require": {
@@ -1006,7 +1006,7 @@
             ],
             "description": "eZ Publish API and kernel. This is the heart of eZ Publish 5.",
             "homepage": "http://share.ez.no",
-            "time": "2015-06-30 15:00:25"
+            "time": "2015-07-02 09:17:41"
         },
         {
             "name": "ezsystems/landing-page-fieldtype-bundle",
@@ -1050,16 +1050,16 @@
         },
         {
             "name": "ezsystems/platform-ui-assets-bundle",
-            "version": "v0.8.0",
+            "version": "v0.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/PlatformUIAssetsBundle.git",
-                "reference": "5d751c1f0a83739c61e899742ba7542b31e451e0"
+                "reference": "661fa1994196741a712815a8b2c1b3d0fcb4d9b1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/PlatformUIAssetsBundle/zipball/5d751c1f0a83739c61e899742ba7542b31e451e0",
-                "reference": "5d751c1f0a83739c61e899742ba7542b31e451e0",
+                "url": "https://api.github.com/repos/ezsystems/PlatformUIAssetsBundle/zipball/661fa1994196741a712815a8b2c1b3d0fcb4d9b1",
+                "reference": "661fa1994196741a712815a8b2c1b3d0fcb4d9b1",
                 "shasum": ""
             },
             "require": {
@@ -1082,7 +1082,7 @@
                 }
             ],
             "description": "External assets dependencies for PlatformUIBundle",
-            "time": "2015-06-25 13:44:32"
+            "time": "2015-07-01 11:36:34"
         },
         {
             "name": "ezsystems/platform-ui-bundle",
