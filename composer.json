@@ -93,6 +93,9 @@
         "symfony-assets-install": "relative",
         "incenteev-parameters": {
             "file": "ezpublish/config/parameters.yml"
+        },
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
         }
     }
 }
