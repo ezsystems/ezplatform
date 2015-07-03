@@ -937,7 +937,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/e38d772ed7ba69743d88f5a75094051a019b5836",
+                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/bc6688c3c1b65adda7b138516fdd7139d808728e",
                 "reference": "e38d772ed7ba69743d88f5a75094051a019b5836",
                 "shasum": ""
             },
@@ -1214,17 +1214,17 @@
         },
         {
             "name": "ezsystems/studio-ui-bundle",
-            "version": "v1.0.0-alpha3",
+            "version": "v1.0.0-alpha4",
             "source": {
                 "type": "git",
                 "url": "git@github.com:ezsystems/StudioUIBundle.git",
-                "reference": "4fa4b82e1655547729942d7c667666acfd83e526"
+                "reference": "72a617eabe06a7bbfe6e6aa824be20851d8533e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://updates.ez.no/studio/dist/ezsystems-studio-ui-bundle-4fa4b82e1655547729942d7c667666acfd83e526-zip-78f091.zip",
-                "reference": "4fa4b82e1655547729942d7c667666acfd83e526",
-                "shasum": "ad8e6646f5cdc8959101038c37d1b0d8ee43ca6c"
+                "url": "https://updates.ez.no/studio/dist/ezsystems-studio-ui-bundle-72a617eabe06a7bbfe6e6aa824be20851d8533e3-zip-006c64.zip",
+                "reference": "72a617eabe06a7bbfe6e6aa824be20851d8533e3",
+                "shasum": "c2519d2c40233829d946dae124dccef010923751"
             },
             "require-dev": {
                 "ezsystems/ezpublish-kernel": ">= 5.4",
@@ -1243,10 +1243,10 @@
             ],
             "description": "eZ Studio UI Bundle",
             "support": {
-                "source": "https://github.com/ezsystems/StudioUIBundle/tree/v1.0.0-alpha3",
+                "source": "https://github.com/ezsystems/StudioUIBundle/tree/v1.0.0-alpha4",
                 "issues": "https://github.com/ezsystems/StudioUIBundle/issues"
             },
-            "time": "2015-06-30 13:47:17"
+            "time": "2015-07-03 12:53:54"
         },
         {
             "name": "friendsofsymfony/http-cache",
