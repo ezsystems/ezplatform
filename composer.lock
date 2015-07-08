@@ -1041,22 +1041,22 @@
         },
         {
             "name": "ezsystems/platform-ui-bundle",
-            "version": "v0.9.2",
+            "version": "v0.9.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/PlatformUIBundle.git",
-                "reference": "1ef79f1b42c55821de60c42df9c11130423d501d"
+                "reference": "bd18dc06937473a2b6a2ace84b9cd4066b4c989f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/PlatformUIBundle/zipball/1ef79f1b42c55821de60c42df9c11130423d501d",
-                "reference": "1ef79f1b42c55821de60c42df9c11130423d501d",
+                "url": "https://api.github.com/repos/ezsystems/PlatformUIBundle/zipball/bd18dc06937473a2b6a2ace84b9cd4066b4c989f",
+                "reference": "bd18dc06937473a2b6a2ace84b9cd4066b4c989f",
                 "shasum": ""
             },
             "require": {
-                "ezsystems/ezpublish-kernel": "~6.0@alpha",
-                "ezsystems/platform-ui-assets-bundle": "~0.8",
-                "ezsystems/repository-forms": "~0.1",
+                "ezsystems/ezpublish-kernel": "~6.0@dev",
+                "ezsystems/platform-ui-assets-bundle": "~0.2",
+                "ezsystems/repository-forms": "~0.1@dev",
                 "zetacomponents/system-information": "~1.1"
             },
             "require-dev": {
