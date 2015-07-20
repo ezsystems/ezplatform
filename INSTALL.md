@@ -122,4 +122,4 @@
 
     **Note**: Password for the generated `admin` user is `publish`, this name and password is needed when you would like to login to backend Platform UI. Future versions will prompt you for a unique password during installation.
 
-You can now point your browser to the installation and browse the site. To access the Platform UI backend, use the `/shell` URL.
+You can now point your browser to the installation and browse the site. To access the Platform UI backend, use the `/ez` URL.
