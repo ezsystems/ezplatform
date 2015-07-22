@@ -7,15 +7,14 @@
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  * @version //autogentag//
  */
-
 use Doctrine\Common\Annotations\AnnotationRegistry;
 use Composer\Autoload\ClassLoader;
 
 /**
- * @var $loader ClassLoader
+ * @var ClassLoader
  */
-$loader = require __DIR__.'/../vendor/autoload.php';
+$loader = require __DIR__ . '/../vendor/autoload.php';
 
-AnnotationRegistry::registerLoader( array( $loader, 'loadClass' ) );
+AnnotationRegistry::registerLoader(array($loader, 'loadClass'));
 
 return $loader;
