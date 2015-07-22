@@ -26,3 +26,4 @@ composer.phar
 .project
 .settings/
 behat.yml
+.php_cs.cache
