@@ -27,3 +27,4 @@ composer.lock
 .project
 .settings/
 behat.yml
+.php_cs.cache
