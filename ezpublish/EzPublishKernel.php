@@ -40,6 +40,8 @@ class EzPublishKernel extends Kernel
             new EzSystems\DemoBundle\EzSystemsDemoBundle(),
             new eZ\Bundle\EzPublishRestBundle\EzPublishRestBundle(),
             new EzSystems\CommentsBundle\EzSystemsCommentsBundle(),
+            new EzSystems\LandingPageFieldTypeBundle\EzSystemsLandingPageFieldTypeBundle(),
+            new EzSystems\StudioUIBundle\EzSystemsStudioUIBundle(),
             new EzSystems\PlatformUIAssetsBundle\EzSystemsPlatformUIAssetsBundle(),
             new EzSystems\PlatformUIBundle\EzSystemsPlatformUIBundle(),
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
@@ -50,8 +52,6 @@ class EzPublishKernel extends Kernel
             new EzSystems\PlatformInstallerBundle\EzSystemsPlatformInstallerBundle(),
             new EzSystems\PrivacyCookieBundle\EzSystemsPrivacyCookieBundle(),
             new EzSystems\RepositoryFormsBundle\EzSystemsRepositoryFormsBundle(),
-            new EzSystems\StudioUIBundle\EzSystemsStudioUIBundle(),
-            new EzSystems\LandingPageFieldTypeBundle\EzSystemsLandingPageFieldTypeBundle(),
         );
 
         switch ( $this->getEnvironment() )
