@@ -15,6 +15,7 @@
 
   These instructions assume you have strong technical knowledge and have already installed PHP, web server & a database server with a corresponding clean database needed for this software.
   For further information on requirements see: https://doc.ez.no/display/EZP/Requirements
+  *Note: set php.ini memory_limit=256M before running ezplatform::install command below
 
 ## Install
 
@@ -116,9 +117,9 @@
     You may now complete the eZ Platform installation with ezplatform:install command, example of use:
 
     ```bash
-    $ php ezpublish/console ezplatform:install --env prod demo-clean
+    $ php ezpublish/console ezplatform:install --env prod demo
     ```
 
     **Note**: Password for the generated `admin` user is `publish`, this name and password is needed when you would like to login to backend Platform UI. Future versions will prompt you for a unique password during installation.
 
-You can now point your browser to the installation and browse the site. To access the Platform UI backend, use the `/shell` URL.
+You can now point your browser to the installation and browse the site. To access the Platform UI backend, use the `/ez` URL.

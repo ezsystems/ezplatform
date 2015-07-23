@@ -10,8 +10,7 @@
  * WARNING !!! Use it for DEVELOPMENT purpose ONLY !!!
  * This script is provided as is, use it at your own risk !
  */
-if ( !isset( $_SERVER['SERVER_PROTOCOL'] ) )
-{
+if (!isset($_SERVER['SERVER_PROTOCOL'])) {
     echo <<<EOT
 This is a router script to be used with built-in PHP server (available as of PHP 5.4.0).
 It will set up all needed rewrite rules for eZ Publish.
@@ -36,28 +35,29 @@ $script = 'index.php';
 
 // To stick with regular Apache HTTPD behaviour, SCRIPT_NAME should equal to PHP_SELF.
 // Fix SCRIPT_NAME and PHP_SELF since we deal with virtual folders, so PHP server would append /index.php to it.
-$_SERVER['SCRIPT_NAME'] = $_SERVER['PHP_SELF'] = str_replace( '/index.php', '', $_SERVER['SCRIPT_NAME'] );
+$_SERVER['SCRIPT_NAME'] = $_SERVER['PHP_SELF'] = str_replace('/index.php', '', $_SERVER['SCRIPT_NAME']);
 
 // If requested resource exists, we serve it directly.
-if ( is_file( $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . $_SERVER['SCRIPT_NAME'] ) )
-{
+if (is_file($_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . $_SERVER['SCRIPT_NAME'])) {
     return false;
 }
 
 // REST API v1, you might want to adapt this pattern if you use custom legacy REST API.
 // @deprecated To be removed as legacy is no longer bundled
-if ( strpos( $_SERVER['REQUEST_URI'], '/api/ezp/v1' ) === 0 )
-{
+if (strpos($_SERVER['REQUEST_URI'], '/api/ezp/v1') === 0) {
     $script = 'index_rest.php';
 }
 
 // Setup some missing $_SERVER vars that are needed by legacy kernel.
-if ( !isset( $_SERVER['SERVER_ADDR'] ) )
-    $_SERVER['SERVER_ADDR'] = gethostbyname( $_SERVER['SERVER_NAME'] );
-if ( !isset( $_SERVER['QUERY_STRING'] ) )
+if (!isset($_SERVER['SERVER_ADDR'])) {
+    $_SERVER['SERVER_ADDR'] = gethostbyname($_SERVER['SERVER_NAME']);
+}
+if (!isset($_SERVER['QUERY_STRING'])) {
     $_SERVER['QUERY_STRING'] = '';
-if ( !isset( $_SERVER['CONTENT_LENGTH'] ) )
+}
+if (!isset($_SERVER['CONTENT_LENGTH'])) {
     $_SERVER['CONTENT_LENGTH'] = '';
+}
 
 $_SERVER['SCRIPT_FILENAME'] = $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . $script;
 require $script;
