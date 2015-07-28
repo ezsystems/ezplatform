@@ -798,16 +798,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/CommentsBundle.git",
-                "reference": "ace50c4d7c313ae334a7aea5c50afc990e543307"
+                "reference": "940dac0b1d4e73e0884cfebbfa2ef8a071a64b33"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/ezsystems/CommentsBundle/zipball/940dac0b1d4e73e0884cfebbfa2ef8a071a64b33",
-                "reference": "ace50c4d7c313ae334a7aea5c50afc990e543307",
+                "reference": "940dac0b1d4e73e0884cfebbfa2ef8a071a64b33",
                 "shasum": ""
             },
             "require": {
-                "ezsystems/ezpublish-kernel": "~6.0@dev",
+                "ezsystems/ezpublish-kernel": "~6.0@alpha",
                 "symfony-cmf/routing": "~1.1"
             },
             "require-dev": {
@@ -843,7 +843,7 @@
                 }
             ],
             "description": "Commenting system for eZ Publish",
-            "time": "2015-06-11 09:30:37"
+            "time": "2015-06-30 16:06:12"
         },
         {
             "name": "ezsystems/demobundle",
@@ -852,20 +852,20 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/DemoBundle.git",
-                "reference": "cb0ace4ed8bcf41673b08bb3cb1e83196c21c3c5"
+                "reference": "e402fe9e2e48f680f66e662136547ad14c725099"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/ezsystems/DemoBundle/zipball/e402fe9e2e48f680f66e662136547ad14c725099",
-                "reference": "cb0ace4ed8bcf41673b08bb3cb1e83196c21c3c5",
+                "reference": "e402fe9e2e48f680f66e662136547ad14c725099",
                 "shasum": ""
             },
             "require": {
                 "components/bootstrap": "3.3.2",
-                "ezsystems/comments-bundle": "~6.0@alpha",
+                "ezsystems/comments-bundle": "~6.0@dev",
                 "ezsystems/demobundle-data": "~0.1",
-                "ezsystems/ezpublish-kernel": "~6.0@alpha",
-                "ezsystems/platform-ui-assets-bundle": "~0.8",
+                "ezsystems/ezpublish-kernel": "~6.0@dev",
+                "ezsystems/platform-ui-assets-bundle": "~0.1",
                 "ezsystems/privacy-cookie-bundle": "~0.1",
                 "knplabs/knp-menu-bundle": "1.*",
                 "php": ">=5.3.3",
@@ -873,6 +873,11 @@
                 "zetacomponents/feed": "~1.4"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "6.0.x-dev"
+                }
+            },
             "autoload": {
                 "psr-0": {
                     "EzSystems\\DemoBundle": ""
@@ -889,7 +894,7 @@
                 }
             ],
             "description": "Demo bundle for eZ Publish Platform",
-            "time": "2015-06-30 15:50:48"
+            "time": "2015-07-06 07:19:50"
         },
         {
             "name": "ezsystems/demobundle-data",
@@ -1041,16 +1046,16 @@
         },
         {
             "name": "ezsystems/platform-ui-bundle",
-            "version": "v0.9.2",
+            "version": "v0.9.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/PlatformUIBundle.git",
-                "reference": "1ef79f1b42c55821de60c42df9c11130423d501d"
+                "reference": "6b185c2eaf9987c2fd4da60958b99f2f24b1ab40"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/PlatformUIBundle/zipball/1ef79f1b42c55821de60c42df9c11130423d501d",
-                "reference": "1ef79f1b42c55821de60c42df9c11130423d501d",
+                "url": "https://api.github.com/repos/ezsystems/PlatformUIBundle/zipball/6b185c2eaf9987c2fd4da60958b99f2f24b1ab40",
+                "reference": "6b185c2eaf9987c2fd4da60958b99f2f24b1ab40",
                 "shasum": ""
             },
             "require": {
@@ -1074,7 +1079,7 @@
                 "GPL-2.0"
             ],
             "description": "eZ Platform UI Bundle",
-            "time": "2015-06-30 15:42:57"
+            "time": "2015-07-08 10:29:06"
         },
         {
             "name": "ezsystems/privacy-cookie-bundle",
@@ -1120,16 +1125,16 @@
         },
         {
             "name": "ezsystems/repository-forms",
-            "version": "v0.1.0.1",
+            "version": "v0.1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/repository-forms.git",
-                "reference": "af19679c6226244e1862e6beb169ee6ec76df5ef"
+                "reference": "4186d812e31240d9bd2a559d0a680e797a8e063e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/repository-forms/zipball/af19679c6226244e1862e6beb169ee6ec76df5ef",
-                "reference": "af19679c6226244e1862e6beb169ee6ec76df5ef",
+                "url": "https://api.github.com/repos/ezsystems/repository-forms/zipball/4186d812e31240d9bd2a559d0a680e797a8e063e",
+                "reference": "4186d812e31240d9bd2a559d0a680e797a8e063e",
                 "shasum": ""
             },
             "require": {
@@ -1160,7 +1165,7 @@
                 }
             ],
             "description": "Use Symfony forms with eZ Platform repository objects",
-            "time": "2015-06-30 15:45:29"
+            "time": "2015-07-08 10:32:02"
         },
         {
             "name": "friendsofsymfony/http-cache",
@@ -1236,16 +1241,16 @@
         },
         {
             "name": "friendsofsymfony/http-cache-bundle",
-            "version": "1.3.1",
+            "version": "1.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSHttpCacheBundle.git",
-                "reference": "b048546bfcdef0c0cc0d196b1a62d821f429b8e7"
+                "reference": "ae7aca769497cd68ddf611caff11f22ddf420aba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSHttpCacheBundle/zipball/b048546bfcdef0c0cc0d196b1a62d821f429b8e7",
-                "reference": "b048546bfcdef0c0cc0d196b1a62d821f429b8e7",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSHttpCacheBundle/zipball/ae7aca769497cd68ddf611caff11f22ddf420aba",
+                "reference": "ae7aca769497cd68ddf611caff11f22ddf420aba",
                 "shasum": ""
             },
             "require": {
@@ -1309,7 +1314,7 @@
                 "purge",
                 "varnish"
             ],
-            "time": "2015-06-11 11:19:02"
+            "time": "2015-07-13 06:45:45"
         },
         {
             "name": "guzzle/guzzle",
@@ -1719,7 +1724,7 @@
                     "email": "stof@notk.org"
                 },
                 {
-                    "name": "KnpLabs",
+                    "name": "Knplabs",
                     "homepage": "http://knplabs.com"
                 },
                 {
@@ -1770,7 +1775,7 @@
                     "email": "stof@notk.org"
                 },
                 {
-                    "name": "Knplabs",
+                    "name": "KnpLabs",
                     "homepage": "http://knplabs.com"
                 },
                 {
@@ -2071,16 +2076,16 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "1.14.0",
+            "version": "1.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "b287fbbe1ca27847064beff2bad7fb6920bf08cc"
+                "reference": "dc5150cc608f2334c72c3b6a553ec9668a4156b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/b287fbbe1ca27847064beff2bad7fb6920bf08cc",
-                "reference": "b287fbbe1ca27847064beff2bad7fb6920bf08cc",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/dc5150cc608f2334c72c3b6a553ec9668a4156b0",
+                "reference": "dc5150cc608f2334c72c3b6a553ec9668a4156b0",
                 "shasum": ""
             },
             "require": {
@@ -2117,7 +2122,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.14.x-dev"
+                    "dev-master": "1.15.x-dev"
                 }
             },
             "autoload": {
@@ -2143,7 +2148,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2015-06-19 13:29:54"
+            "time": "2015-07-12 13:54:09"
         },
         {
             "name": "nelmio/cors-bundle",
@@ -2944,16 +2949,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.7.1",
+            "version": "v2.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "932b6e7499c670f4db6d0b871477a4a3ca161e74"
+                "reference": "969d709ad428076bf1084e386dc26dd904d9fb84"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/932b6e7499c670f4db6d0b871477a4a3ca161e74",
-                "reference": "932b6e7499c670f4db6d0b871477a4a3ca161e74",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/969d709ad428076bf1084e386dc26dd904d9fb84",
+                "reference": "969d709ad428076bf1084e386dc26dd904d9fb84",
                 "shasum": ""
             },
             "require": {
@@ -3062,7 +3067,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2015-06-11 21:15:28"
+            "time": "2015-07-13 19:27:49"
         },
         {
             "name": "tedivm/stash",
@@ -3386,20 +3391,20 @@
         },
         {
             "name": "zendframework/zend-code",
-            "version": "2.5.1",
+            "version": "2.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-code.git",
-                "reference": "5d998f261ec2a55171c71da57a11622745680153"
+                "reference": "a97ef49f82496fabc3b7379b37f6bbff925b58b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-code/zipball/5d998f261ec2a55171c71da57a11622745680153",
-                "reference": "5d998f261ec2a55171c71da57a11622745680153",
+                "url": "https://api.github.com/repos/zendframework/zend-code/zipball/a97ef49f82496fabc3b7379b37f6bbff925b58b8",
+                "reference": "a97ef49f82496fabc3b7379b37f6bbff925b58b8",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.23",
+                "php": ">=5.5",
                 "zendframework/zend-eventmanager": "~2.5"
             },
             "require-dev": {
@@ -3435,24 +3440,24 @@
                 "code",
                 "zf2"
             ],
-            "time": "2015-06-03 15:31:59"
+            "time": "2015-07-21 22:40:59"
         },
         {
             "name": "zendframework/zend-eventmanager",
-            "version": "2.5.1",
+            "version": "2.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-eventmanager.git",
-                "reference": "d94a16039144936f107f906896349900fd634443"
+                "reference": "135af03d07fd048c322259aab6611d2be290475c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-eventmanager/zipball/d94a16039144936f107f906896349900fd634443",
-                "reference": "d94a16039144936f107f906896349900fd634443",
+                "url": "https://api.github.com/repos/zendframework/zend-eventmanager/zipball/135af03d07fd048c322259aab6611d2be290475c",
+                "reference": "135af03d07fd048c322259aab6611d2be290475c",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.23",
+                "php": ">=5.5",
                 "zendframework/zend-stdlib": "~2.5"
             },
             "require-dev": {
@@ -3480,24 +3485,24 @@
                 "eventmanager",
                 "zf2"
             ],
-            "time": "2015-06-03 15:32:01"
+            "time": "2015-07-16 19:00:49"
         },
         {
             "name": "zendframework/zend-stdlib",
-            "version": "2.5.1",
+            "version": "2.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-stdlib.git",
-                "reference": "cc8e90a60dd5d44b9730b77d07b97550091da1ae"
+                "reference": "a35758803fc9051ec1aff43989e679b6b451b1b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-stdlib/zipball/cc8e90a60dd5d44b9730b77d07b97550091da1ae",
-                "reference": "cc8e90a60dd5d44b9730b77d07b97550091da1ae",
+                "url": "https://api.github.com/repos/zendframework/zend-stdlib/zipball/a35758803fc9051ec1aff43989e679b6b451b1b4",
+                "reference": "a35758803fc9051ec1aff43989e679b6b451b1b4",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.23"
+                "php": ">=5.5"
             },
             "require-dev": {
                 "fabpot/php-cs-fixer": "1.7.*",
@@ -3518,8 +3523,8 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.5-dev",
-                    "dev-develop": "2.6-dev"
+                    "dev-master": "2.6-dev",
+                    "dev-develop": "2.7-dev"
                 }
             },
             "autoload": {
@@ -3536,7 +3541,7 @@
                 "stdlib",
                 "zf2"
             ],
-            "time": "2015-06-03 15:32:03"
+            "time": "2015-07-21 17:08:05"
         },
         {
             "name": "zetacomponents/base",
