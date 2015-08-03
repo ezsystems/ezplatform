@@ -1,11 +1,11 @@
 eZ Publish Apache 2.2 / 2.4  configuration
-=========================================
+==========================================
 
-For information on which version of Apache is supported with your version of eZ Publish, consult with the online documentation on http://doc.ez.no.
+For information on which version of Apache is supported with your version of eZ Publish, consult the online documentation on http://doc.ez.no.
 
 
-Prerequisite
-------------
+Prerequisites
+-------------
 - Apache 2.x must be installed in prefork mode
 - Modules enabled: `mode_php`, `mod_rewrite`, `mod_setenvif` and optionally `mod_expires` for improved performance in production.
 
@@ -13,12 +13,12 @@ Prerequisite
 Configuration
 ------------
 - Copy the provided example file `etc/apache2/vhost.template` into target folder like `/etc/apache2/sites-available/yoursite.com`
--- Note that `apache2` target folder name on RHEL/Centos is `httpd`!
+-- Note that `/etc/apache2` target folder name on RHEL/Centos is `/etc/httpd`!
 - Edit it and adapt the configuration to suit your needs
 -- Make sure to replace all `%VARIABLES%`, further description below
--- For cluster setup, enable custom rewrite rules for this found inline in the vhost.tempalte
+-- For cluster setup, enable custom rewrite rules for it found inline in the vhost.template
 -- In 5.2 and higher you can optionally configure the eZ Publish front controller (`index.php`) using environment variables documented inline in the vhost template.
--- Adapt the ´<Directory´ section for your Apache version
+-- Adapt the ´<Directory>´ section for your Apache version
 - Create a symlink of /etc/apache2/sites-available/yoursite.com into /etc/apache2/sites-enabled/yoursite.com
 - restart Apache
 
@@ -36,12 +36,12 @@ Configuration
 
 #### Pure legacy setup
 
-In eZ Publish 5.x you can optionally set it up to only use legacy, this is useful for 4.x upgrades which only uses legacy.
-*Warning: By doing this, absolutely no integrations between legacy and Platform works, so you can not use any of the Platform features (API, HttpCache, Symfony, ..) in this setup.*
+eZ Publish 5.x can optionally be set up to only use the legacy kernel. This is useful for 4.x upgrades which only use legacy.
+*Warning: By doing this, absolutely no integrations between legacy and Platform work, so you can not use any of the Platform features (API, HttpCache, Symfony, ...) in this setup.*
 
-To setup pure legacy you will have to modify the vhost configuration to point to ezpublish_legacy folder as BASEDIR, and remove use of `/web` in the config.
-You'll also need to use the cluster rewrite rules for 5.3 and below if using cluster setup.
+To setup pure legacy you will have to modify the vhost configuration to point to ezpublish_legacy folder as BASEDIR, and remove usage of the `/web` suffix in the config.
+If using cluster setup you'll also need to use the cluster rewrite rules for 5.3 and below.
 
 #### NameVirtualHost conflicts
 
-The "NameVirtualHost" setting might already exist in the default configuration. Defining a new one will result in a conflict. If Apache reports errors such as "NameVirtualHost [IP_ADDRESS] has no VirtualHosts" or "Mixing * ports and non-* ports with a NameVirtualHost address is not supported", try skipping the NameVirtualHost line. See [more info about the NameVirtualHost directive](http://httpd.apache.org/docs/2.2/mod/core.html#namevirtualhost)
+The "NameVirtualHost" setting might already exist in the default configuration. Defining a new one will result in a conflict. If Apache reports errors such as "NameVirtualHost [IP_ADDRESS] has no VirtualHosts" or "Mixing * ports and non-* ports with a NameVirtualHost address is not supported", try removing the NameVirtualHost line. See [more info about the NameVirtualHost directive](http://httpd.apache.org/docs/2.4/mod/core.html#namevirtualhost)
