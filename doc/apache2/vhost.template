@@ -24,7 +24,7 @@
         #Require all granted
     </Directory>
 
-    ## eZ Publish ENVIRONMENT variables, used for customizing index.php execution (not used by console commands)
+    ## eZ Platform ENVIRONMENT variables, used for customizing index.php execution (not used by console commands)
 
     # Environment.
     # Possible values: "prod" and "dev" out-of-the-box, other values possible with proper configuration
@@ -98,7 +98,7 @@
         RewriteRule ^/packages/styles/.+/thumbnail/.* - [L]
         RewriteRule ^/var/storage/packages/.* - [L]
 
-        # Makes it possible to place your favicon at the root of your eZ Publish instance.
+        # Makes it possible to place your favicon at the root of your eZ Platform instance.
         # It will then be served directly.
         RewriteRule ^/favicon\.ico - [L]
 
@@ -117,7 +117,7 @@
         # Uncomment the following lines when using popup style debug in legacy
         #RewriteRule ^/var/([^/]+/)?cache/debug\.html.* - [L]
 
-        # The following rule is needed to correctly display assets from eZ Publish5 / Symfony bundles
+        # The following rule is needed to correctly display assets from eZ Platform / Symfony bundles
         RewriteRule ^/bundles/ - [L]
 
         # Additional Assetic rules for environments different from dev,
@@ -144,7 +144,7 @@
     # to suite project needs.
     <IfModule mod_expires.c>
         <LocationMatch "^/var/[^/]+/storage/images/.*">
-            # eZ Publish appends the version number to image URL (ezimage
+            # eZ Platform appends the version number to image URL (ezimage
             # datatype) so when an image is updated, its URL changes too
             ExpiresActive on
             ExpiresDefault "now plus 10 years"

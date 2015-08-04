@@ -1,5 +1,5 @@
-eZ Publish Varnish configuration
-================================
+eZ Platform Varnish configuration
+=================================
 
 Prerequisites
 -------------

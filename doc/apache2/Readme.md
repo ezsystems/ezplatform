@@ -1,7 +1,7 @@
-eZ Publish Apache 2.2 / 2.4  configuration
-==========================================
+eZ Platform Apache 2.2 / 2.4  configuration
+===========================================
 
-For information on which version of Apache is supported with your version of eZ Publish, consult the online documentation on http://doc.ez.no.
+For information on which version of Apache is supported with your version of eZ Platform, consult the online documentation on http://doc.ez.no.
 
 
 Prerequisites
@@ -17,7 +17,7 @@ Configuration
 - Edit it and adapt the configuration to suit your needs
 -- Make sure to replace all `%VARIABLES%`, further description below
 -- For cluster setup, enable custom rewrite rules for it found inline in the vhost.template
--- In 5.2 and higher you can optionally configure the eZ Publish front controller (`index.php`) using environment variables documented inline in the vhost template.
+-- In 5.2 and higher you can optionally configure the eZ Platform front controller (`index.php`) using environment variables documented inline in the vhost template.
 -- Adapt the ´<Directory>´ section for your Apache version
 - Create a symlink of /etc/apache2/sites-available/yoursite.com into /etc/apache2/sites-enabled/yoursite.com
 - restart Apache
@@ -30,17 +30,9 @@ Configuration
 | %PORT%       | The port on which the web server listens for incoming requests. This is an optional setting, the default port for http traffic is 80. |
 | %HOST%       | The host(/IP address) that Apache should use to match this virtual host config. |
 | %HOST_ALIAS% | Additional comma separated list of hosts(/IP addresses) that Apache should use to match this virtual host config. |
-| %BASEDIR%    | Full path to eZ Publish, for example "/var/www/ezpublish-5.3.0", where "web" directory and rest of eZ Publish 5.x exists. |
-| %ENV%        | eZ Publish (Symfony) environment, isolation of cache and config for different use cases, out of the box: `prod` or `dev`. |
+| %BASEDIR%    | Full path to eZ Platform, for example "/var/www/ezplatform-15.05", where "web" directory and rest of eZ Publish 5.x exists. |
+| %ENV%        | eZ Platform (Symfony) environment, isolation of cache and config for different use cases, out of the box: `prod` or `dev`. |
 | %PROXY%      | Optional, needs to be enabled in your vhost file. Defines the proxies to trust to get access to ESI resources and not be treated as remote IP. |
-
-#### Pure legacy setup
-
-eZ Publish 5.x can optionally be set up to only use the legacy kernel. This is useful for 4.x upgrades which only use legacy.
-*Warning: By doing this, absolutely no integrations between legacy and Platform work, so you can not use any of the Platform features (API, HttpCache, Symfony, ...) in this setup.*
-
-To setup pure legacy you will have to modify the vhost configuration to point to ezpublish_legacy folder as BASEDIR, and remove usage of the `/web` suffix in the config.
-If using cluster setup you'll also need to use the cluster rewrite rules for 5.3 and below.
 
 #### NameVirtualHost conflicts
 

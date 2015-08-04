@@ -1,7 +1,7 @@
 eZ Publish nginx configuration
 ==============================
 
-For information on nginx support with your version of eZ Publish, consult the online documentation on http://doc.ez.no.
+For information on nginx support with your version of eZ Platform, consult the online documentation on http://doc.ez.no.
 
 
 Prerequisites

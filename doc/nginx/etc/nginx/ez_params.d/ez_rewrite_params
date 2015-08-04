@@ -12,7 +12,7 @@ rewrite "^/packages/styles/(.+)/thumbnail/(.*)" "/packages/styles/$1/thumbnail/$
 rewrite "^/var/storage/packages/(.*)" "/var/storage/packages/$1" break;
 
 # Makes it possible to place your favicon at the root of your
-# eZ Publish instance. It will then be served directly.
+# eZ Platform instance. It will then be served directly.
 rewrite "^/favicon\.ico" "/favicon.ico" break;
 # Uncomment the line below if you want you favicon be served
 # from the standard design. You can customize the path to
@@ -32,7 +32,7 @@ rewrite "^/w3c/p3p\.xml" "/w3c/p3p.xml" break;
 # Uncomment the following lines when using popup style debug in legacy
 #rewrite "^/var/([^/]+/)?cache/debug\.html.*" "/var/$1cache/debug.html.$2" break;
 
-# Following rule is needed to correctly display assets from eZ Publish5 / Symfony bundles
+# Following rule is needed to correctly display assets from eZ Platform / Symfony bundles
 rewrite "^/bundles/(.*)" "/bundles/$1" break;
 
 rewrite "^(.*)$" "/index.php$1" last;
