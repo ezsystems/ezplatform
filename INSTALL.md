@@ -107,7 +107,7 @@
 
 4. *Optional* **Configure a VirtualHost**:
 
-    See: https://confluence.ez.no/display/EZP/Virtual+host+setup
+    See: https://doc.ez.no/display/EZP/Virtual+host+setup
 
 
 5. **Run installation command**:
