@@ -14,7 +14,7 @@
     # LogLevel debug
 
     <Directory %BASEDIR%/web>
-        # If using php configured in FastCGI mode, you will also need to add "ExecCGI" to the line below
+        # If using php configured in FastCGI mode, you might also need to add "ExecCGI" to the line below
         Options FollowSymLinks
         AllowOverride None
         # depending on your global Apache settings, you may need to uncomment and adapt:
@@ -78,6 +78,7 @@
         RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
         # Needed for ci testing, remove in prod.
+        RewriteCond %{ENV:ENVIRONMENT} !^(prod)
         RewriteCond %{REQUEST_URI} ^/php5-fcgi(.*)
         RewriteRule . - [L]
 
