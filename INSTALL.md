@@ -1,7 +1,5 @@
 # Installation instructions
 
-  These are instructions for installing via GIT (development version), look in INSTALL_ARCHIVE.md for instructions on how to install an eZ Platform build/archive.
-
 ## Paths for future reference
   * `/<root-dir>/`: The filesystem path where eZ Platform is installed in
 
