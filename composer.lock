@@ -929,16 +929,16 @@
         },
         {
             "name": "ezsystems/ezpublish-kernel",
-            "version": "v6.0.0-alpha3",
+            "version": "v6.0.0-alpha4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-kernel.git",
-                "reference": "b0f7bc610ed17aad6692b4c67aebc30abf68c88d"
+                "reference": "b66e4fb6087faf95a4353467b961438bf0a76088"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/b0f7bc610ed17aad6692b4c67aebc30abf68c88d",
-                "reference": "b0f7bc610ed17aad6692b4c67aebc30abf68c88d",
+                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/b66e4fb6087faf95a4353467b961438bf0a76088",
+                "reference": "b66e4fb6087faf95a4353467b961438bf0a76088",
                 "shasum": ""
             },
             "require": {
@@ -1006,7 +1006,7 @@
             ],
             "description": "eZ Publish API and kernel. This is the heart of eZ Publish 5.",
             "homepage": "http://share.ez.no",
-            "time": "2015-07-06 10:06:07"
+            "time": "2015-07-31 13:22:51"
         },
         {
             "name": "ezsystems/platform-ui-assets-bundle",
@@ -1046,21 +1046,21 @@
         },
         {
             "name": "ezsystems/platform-ui-bundle",
-            "version": "v0.9.3.1",
+            "version": "v0.9.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/PlatformUIBundle.git",
-                "reference": "6b185c2eaf9987c2fd4da60958b99f2f24b1ab40"
+                "reference": "63bca667608d80ff2c11f79ccb56a6dc858c9f69"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/PlatformUIBundle/zipball/6b185c2eaf9987c2fd4da60958b99f2f24b1ab40",
-                "reference": "6b185c2eaf9987c2fd4da60958b99f2f24b1ab40",
+                "url": "https://api.github.com/repos/ezsystems/PlatformUIBundle/zipball/63bca667608d80ff2c11f79ccb56a6dc858c9f69",
+                "reference": "63bca667608d80ff2c11f79ccb56a6dc858c9f69",
                 "shasum": ""
             },
             "require": {
                 "ezsystems/ezpublish-kernel": "~6.0@alpha",
-                "ezsystems/platform-ui-assets-bundle": "~0.8",
+                "ezsystems/platform-ui-assets-bundle": "~0.9",
                 "ezsystems/repository-forms": "~0.1",
                 "zetacomponents/system-information": "~1.1"
             },
@@ -1079,7 +1079,7 @@
                 "GPL-2.0"
             ],
             "description": "eZ Platform UI Bundle",
-            "time": "2015-07-08 10:29:06"
+            "time": "2015-08-05 13:14:27"
         },
         {
             "name": "ezsystems/privacy-cookie-bundle",
@@ -1125,16 +1125,16 @@
         },
         {
             "name": "ezsystems/repository-forms",
-            "version": "v0.1.1.1",
+            "version": "v0.1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/repository-forms.git",
-                "reference": "4186d812e31240d9bd2a559d0a680e797a8e063e"
+                "reference": "adf92441f0c79299173a6450af775905b679eef6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/repository-forms/zipball/4186d812e31240d9bd2a559d0a680e797a8e063e",
-                "reference": "4186d812e31240d9bd2a559d0a680e797a8e063e",
+                "url": "https://api.github.com/repos/ezsystems/repository-forms/zipball/adf92441f0c79299173a6450af775905b679eef6",
+                "reference": "adf92441f0c79299173a6450af775905b679eef6",
                 "shasum": ""
             },
             "require": {
@@ -1165,7 +1165,7 @@
                 }
             ],
             "description": "Use Symfony forms with eZ Platform repository objects",
-            "time": "2015-07-08 10:32:02"
+            "time": "2015-08-05 13:05:32"
         },
         {
             "name": "friendsofsymfony/http-cache",
@@ -1775,7 +1775,7 @@
                     "email": "stof@notk.org"
                 },
                 {
-                    "name": "KnpLabs",
+                    "name": "Knplabs",
                     "homepage": "http://knplabs.com"
                 },
                 {
@@ -2392,12 +2392,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "fe0936ee26643249e916849d48e3a51d5f5e278b"
+                "reference": "1.0.0"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/php-fig/log/zipball/fe0936ee26643249e916849d48e3a51d5f5e278b",
-                "reference": "fe0936ee26643249e916849d48e3a51d5f5e278b",
+                "reference": "1.0.0",
                 "shasum": ""
             },
             "type": "library",
@@ -2430,12 +2430,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Qafoo/REST-Micro-Framework.git",
-                "reference": "d382e9e20ff189c4351f12c70df083dac039e818"
+                "reference": "1.0.0"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/Qafoo/REST-Micro-Framework/zipball/d382e9e20ff189c4351f12c70df083dac039e818",
-                "reference": "d382e9e20ff189c4351f12c70df083dac039e818",
+                "reference": "1.0.0",
                 "shasum": ""
             },
             "type": "library",
@@ -2446,26 +2446,26 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "description": "Very simple VC framework which makes it easy to build HTTP applications / REST webservices",
-            "time": "2012-09-03 18:24:11"
+            "time": "2012-09-03 11:24:11"
         },
         {
             "name": "sensio/distribution-bundle",
-            "version": "v3.0.30",
+            "version": "v3.0.31",
             "target-dir": "Sensio/Bundle/DistributionBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
-                "reference": "f1758b30096202aeede61f79a1dffd69da091517"
+                "reference": "3a900814bd57bf20f9453ae81ff8772bc95d7fff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/f1758b30096202aeede61f79a1dffd69da091517",
-                "reference": "f1758b30096202aeede61f79a1dffd69da091517",
+                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/3a900814bd57bf20f9453ae81ff8772bc95d7fff",
+                "reference": "3a900814bd57bf20f9453ae81ff8772bc95d7fff",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3",
-                "sensiolabs/security-checker": "~2.0",
+                "sensiolabs/security-checker": "~3.0",
                 "symfony/class-loader": "~2.2",
                 "symfony/framework-bundle": "~2.3",
                 "symfony/process": "~2.2"
@@ -2506,20 +2506,20 @@
                 "configuration",
                 "distribution"
             ],
-            "time": "2015-06-05 22:32:22"
+            "time": "2015-08-03 10:07:12"
         },
         {
             "name": "sensio/framework-extra-bundle",
-            "version": "v3.0.9",
+            "version": "v3.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioFrameworkExtraBundle.git",
-                "reference": "0616fd568da051adc19ca63006cc808531ba2da4"
+                "reference": "18fc2063c4d6569cdca47a39fbac32342eb65f3c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioFrameworkExtraBundle/zipball/0616fd568da051adc19ca63006cc808531ba2da4",
-                "reference": "0616fd568da051adc19ca63006cc808531ba2da4",
+                "url": "https://api.github.com/repos/sensiolabs/SensioFrameworkExtraBundle/zipball/18fc2063c4d6569cdca47a39fbac32342eb65f3c",
+                "reference": "18fc2063c4d6569cdca47a39fbac32342eb65f3c",
                 "shasum": ""
             },
             "require": {
@@ -2561,7 +2561,7 @@
                 "annotations",
                 "controllers"
             ],
-            "time": "2015-06-05 13:59:21"
+            "time": "2015-08-03 11:59:27"
         },
         {
             "name": "sensio/generator-bundle",
@@ -2613,20 +2613,19 @@
         },
         {
             "name": "sensiolabs/security-checker",
-            "version": "v2.0.5",
+            "version": "v3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/security-checker.git",
-                "reference": "2c2a71f1c77d9765c12638c4724d9ca23658a810"
+                "reference": "8d32035cfe692efb3dddd0d828f8261280ec9006"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/security-checker/zipball/2c2a71f1c77d9765c12638c4724d9ca23658a810",
-                "reference": "2c2a71f1c77d9765c12638c4724d9ca23658a810",
+                "url": "https://api.github.com/repos/sensiolabs/security-checker/zipball/8d32035cfe692efb3dddd0d828f8261280ec9006",
+                "reference": "8d32035cfe692efb3dddd0d828f8261280ec9006",
                 "shasum": ""
             },
             "require": {
-                "ext-curl": "*",
                 "symfony/console": "~2.0"
             },
             "bin": [
@@ -2635,7 +2634,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0-dev"
+                    "dev-master": "3.0-dev"
                 }
             },
             "autoload": {
@@ -2654,7 +2653,7 @@
                 }
             ],
             "description": "A security checker for your composer.lock",
-            "time": "2015-05-28 14:22:40"
+            "time": "2015-08-03 10:03:32"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -2949,16 +2948,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.7.2",
+            "version": "v2.7.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "969d709ad428076bf1084e386dc26dd904d9fb84"
+                "reference": "a9af4708b4bb650c4897e9b8dfbfbdb2ea5f0486"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/969d709ad428076bf1084e386dc26dd904d9fb84",
-                "reference": "969d709ad428076bf1084e386dc26dd904d9fb84",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/a9af4708b4bb650c4897e9b8dfbfbdb2ea5f0486",
+                "reference": "a9af4708b4bb650c4897e9b8dfbfbdb2ea5f0486",
                 "shasum": ""
             },
             "require": {
@@ -3067,7 +3066,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2015-07-13 19:27:49"
+            "time": "2015-07-31 13:24:45"
         },
         {
             "name": "tedivm/stash",
@@ -3238,16 +3237,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.18.2",
+            "version": "v1.19.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "e8e6575abf6102af53ec283f7f14b89e304fa602"
+                "reference": "edbeaf43b0a606cdaadc32a11d2673614a377b90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/e8e6575abf6102af53ec283f7f14b89e304fa602",
-                "reference": "e8e6575abf6102af53ec283f7f14b89e304fa602",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/edbeaf43b0a606cdaadc32a11d2673614a377b90",
+                "reference": "edbeaf43b0a606cdaadc32a11d2673614a377b90",
                 "shasum": ""
             },
             "require": {
@@ -3256,7 +3255,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.18-dev"
+                    "dev-master": "1.19-dev"
                 }
             },
             "autoload": {
@@ -3291,7 +3290,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2015-06-06 23:31:24"
+            "time": "2015-07-31 13:45:26"
         },
         {
             "name": "white-october/pagerfanta-bundle",
