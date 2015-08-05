@@ -113,7 +113,7 @@
 4. **Configure a VirtualHost**:
 
     A virtual host setup is the recommended, most secure setup of eZ Publish.
-    General virtual host setup template for Apache and Nginx can be found in [doc/apache2 folder](doc/apache2).
+    General virtual host setup template for Apache and Nginx can be found in [doc/ folder](doc/).
 
 
 5. **Run installation command**:
