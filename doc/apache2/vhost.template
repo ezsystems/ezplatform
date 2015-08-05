@@ -78,7 +78,7 @@
         RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
         # Needed for ci testing, remove in prod.
-        RewriteCond %{ENV:ENVIRONMENT} !^(prod)
+        RewriteCond %{ENV:ENVIRONMENT} "behat"
         RewriteCond %{REQUEST_URI} ^/php5-fcgi(.*)
         RewriteRule . - [L]
 
