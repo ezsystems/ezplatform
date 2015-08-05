@@ -38,7 +38,7 @@ server {
             # FPM network
             #fastcgi_pass 127.0.0.1:9000;
 
-            ## eZ Publish ENVIRONMENT variables, used for customizing index.php execution (not used by console commands)
+            ## eZ Platform ENVIRONMENT variables, used for customizing index.php execution (not used by console commands)
 
             # Environment.
             # Possible values: "prod" and "dev" out-of-the-box, other values possible with proper configuration

@@ -1,6 +1,6 @@
-# Hacking on eZ Publish 5
+# Hacking on eZ Platform
 
-eZ Publish 5 is built on top of **Symfony2 full stack framework** (version **2.x**), and as such all guidelines,
+eZ Platform is built on top of **Symfony2 full stack framework** (version **2.x**), and as such all guidelines,
 requirements and best practices remain the same.
 
 The best way to kickstart is to read the [Symfony2 documentation](http://symfony.com/doc/current/book/page_creation.html)
@@ -24,11 +24,11 @@ The most interesting routes for a start are :
 > regarding that.
 >
 > To be able to show some content, please create a simple Content Type (formerly *content class*) via the admin interface
-> (you can access it from your eZ Publish 5 installation like you already did before).
+> (you can access it from your eZ Platform installation like you already did before).
 
 ## Guidelines and features available
 ### Generating a bundle
-eZ Publish 5 comes with [SensioGeneratorBundle](http://symfony.com/doc/current/bundles/SensioGeneratorBundle/index.html).
+eZ Platform comes with [SensioGeneratorBundle](http://symfony.com/doc/current/bundles/SensioGeneratorBundle/index.html).
 This bundle provides useful commands, including one to easily generate a new bundle from command line:
 
 ```bash
@@ -45,7 +45,7 @@ For more information, [check the documentation for this command](http://symfony.
 > Thus this is the recommended way of doing.
 
 ### Routing
-Any route that is not declared in eZ Publish 5 in an included `routing.yml` and that is not a valid *UrlAlias* will automatically fallback
+Any route that is not declared in eZ Platform in an included `routing.yml` and that is not a valid *UrlAlias* will automatically fallback
 to eZ Publish legacy (including admin interface).
 
 This allows your old modules to work as before out-of-the-box.
