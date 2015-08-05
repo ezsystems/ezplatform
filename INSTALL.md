@@ -11,11 +11,16 @@
 
 ## Prerequisite
 
-  These instructions assume you have strong technical knowledge and have already installed PHP, web server & *a database server with a corresponding empty database* needed for this software.
+  These instructions assume you have strong technical knowledge and have already installed PHP, web server & *a database server* needed for this software.
   For further information on requirements see: https://doc.ez.no/display/EZP/Requirements
   *Note: set php.ini memory_limit=256M before running ezplatform::install command below
 
 ## Install
+
+0. **Create a clean database**
+
+    The following step will ask you for credentials/details for which database to use, so make sure to create one first.
+    *Note: Right now installer only supports MySQL, Postgres support should be re added in one of the upcomming releases.*
 
 1. **Get eZ Platform**:
 
@@ -105,9 +110,10 @@
     For the time being it is still possible to run Legacy side by side with eZ Platform, further instructions here:
     https://doc.ez.no/display/EZP/Installing+eZ+Publish+Legacy+on+top+of+eZ+Platform
 
-4. *Optional* **Configure a VirtualHost**:
+4. **Configure a VirtualHost**:
 
-    See: https://doc.ez.no/display/EZP/Virtual+host+setup
+    A virtual host setup is the recommended, most secure setup of eZ Publish.
+    General virtual host setup template for Apache and Nginx can be found in [doc/apache2 folder](doc/apache2).
 
 
 5. **Run installation command**:
