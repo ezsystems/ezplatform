@@ -15,7 +15,7 @@ default:
                 path: ezpublish/EzPublishKernel.php
                 class: EzPublishKernel
                 env: behat
-                debug: true
+                debug: false
 
     # default profile: no suites
     suites: ~
