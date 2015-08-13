@@ -17,7 +17,7 @@ REPO_DIR=$1
 COMPOSER_REQUIRE=$2
 
 ./bin/.travis/prepare_system.sh
-./bin/.travis/prepare_sahi.sh
+./bin/.travis/prepare_selenium2.sh
 
 echo "> Modify composer.json to point to local checkout"
 sed -i '$d' composer.json

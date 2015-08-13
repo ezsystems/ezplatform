@@ -1,14 +1,11 @@
 #!/bin/sh
 
-# get selenium
-wget http://selenium.googlecode.com/files/selenium-server-standalone-2.35.0.jar
-
-# prepare X
+echo "> Prepare X and start Selenium"
 export DISPLAY=:99.0
 sh -e /etc/init.d/xvfb start
+wget http://selenium-release.storage.googleapis.com/2.47/selenium-server-standalone-2.47.1.jar
+java -jar selenium-server-standalone-2.47.1.jar > /dev/null &
+cd -
 
-# run selenium2
-java -jar selenium-server-standalone-2.35.0.jar > /dev/null &
-
-# Give Selenium2 some time to start
-sleep 5
+# Give Selenium some time to start, otherwise tests will fail under high load on test servers
+sleep 8

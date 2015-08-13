@@ -1,7 +1,5 @@
 # Installation instructions
 
-  These are instructions for installing via GIT (development version), look in INSTALL_ARCHIVE.md for instructions on how to install a eZ Platform build/archive.
-
 ## Paths for future reference
   * `/<root-dir>/`: The filesystem path where eZ Platform is installed in
 
@@ -13,17 +11,22 @@
 
 ## Prerequisite
 
-  These instructions assume you have strong technical knowledge and have already installed PHP, web server & a database server with a corresponding clean database needed for this software.
+  These instructions assume you have strong technical knowledge and have already installed PHP, web server & *a database server* needed for this software.
   For further information on requirements see: https://doc.ez.no/display/EZP/Requirements
   *Note: set php.ini memory_limit=256M before running ezplatform::install command below
 
 ## Install
 
+0. **Create a clean database**
+
+    The following step will ask you for credentials/details for which database to use, so make sure to create one first.
+    *Note: Right now installer only supports MySQL, Postgres support should be re added in one of the upcomming releases.*
+
 1. **Get eZ Platform**:
 
     A. **Archive** (tar/zip) *from http://share.ez.no/downloads/downloads*
 
-       Extract the eZ Platform 15.01(or higher) archive to a directory, then execute post install scripts:
+       Extract the eZ Platform 15.01 (or higher) archive to a directory, then execute post install scripts:
 
        *Note: The post install scripts will ask you to fill in some settings, including database settings.*
 
@@ -47,7 +50,7 @@
        ```
 
      Options:
-       - `<version>`: Optional, if ommited you'll get latests stable, examples for specifying:
+       - `<version>`: Optional, if omitted you'll get latest stable, examples for specifying:
         - `dev-master` to get current development version (pre release) `master` branch
         - `v0.5.0` to pick a specific release
        - For core development: Add '--prefer-source' to get full git clones, and remove '--no-dev' to get things like phpunit and behat installed.
@@ -107,9 +110,10 @@
     For the time being it is still possible to run Legacy side by side with eZ Platform, further instructions here:
     https://doc.ez.no/display/EZP/Installing+eZ+Publish+Legacy+on+top+of+eZ+Platform
 
-4. *Optional* **Configure a VirtualHost**:
+4. **Configure a VirtualHost**:
 
-    See: https://confluence.ez.no/display/EZP/Virtual+host+setup
+    A virtual host setup is the recommended, most secure setup of eZ Publish.
+    General virtual host setup template for Apache and Nginx can be found in [doc/ folder](doc/).
 
 
 5. **Run installation command**:
@@ -117,7 +121,7 @@
     You may now complete the eZ Platform installation with ezplatform:install command, example of use:
 
     ```bash
-    $ php ezpublish/console ezplatform:install --env prod demo
+    $ php -d memory_limit=-1 ezpublish/console ezplatform:install --env prod demo
     ```
 
     **Note**: Password for the generated `admin` user is `publish`, this name and password is needed when you would like to login to backend Platform UI. Future versions will prompt you for a unique password during installation.
