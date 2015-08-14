@@ -50,9 +50,10 @@
        ```
 
      Options:
-       - `<version>`: Optional, if omitted you'll get latest stable, examples for specifying:
+       - `<version>`: Optional, *if omitted you'll get latest*, examples for specifying:
         - `dev-master` to get current development version (pre release) `master` branch
-        - `v0.5.0` to pick a specific release
+        - `v0.9.0` to pick a specific release/tag
+        - `~0.9.0` to pick latests v0.9.x release
        - For core development: Add '--prefer-source' to get full git clones, and remove '--no-dev' to get things like phpunit and behat installed.
        - Further reading: https://getcomposer.org/doc/03-cli.md#create-project
 
