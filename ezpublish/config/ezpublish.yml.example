@@ -26,18 +26,22 @@ stash:
 
 ezpublish:
     # Define all your repositories here
-    # If you use multi-site with multiple databases, you shall define multiple repositories
+    # If you use multi-site with multiple databases, you should define multiple repositories
     repositories:
-        # "main" repository, with default values
+        # "main" repository, with default values for storage
         # Same as:
         # main:
         #     storage:
         #         engine: legacy
         #         connection: default
         #     search:
-        #         engine: legacy
+        #         engine: %search_engine%
         #         connection: default
-        main: ~
+        main:
+            storage: ~
+            search:
+                engine: %search_engine%
+                connection: default
 
     siteaccess:
         # Available siteaccesses
