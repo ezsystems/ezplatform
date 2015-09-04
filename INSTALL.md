@@ -17,12 +17,21 @@
 
 ## Install
 
-0. **Create a clean database**
+0. **Create an empty database**, and optionally setup Solr
 
     The following step will ask you for credentials/details for which database to use, so make sure to create one first.
-    *Note: Right now installer only supports MySQL, Postgres support should be re added in one of the upcomming releases.*
+
+    *Optional: At this point you can also setup Solr to be used by eZ Platform*
+
+    *Note: Right now installer only supports MySQL, Postgres support should be (re)added in one of the upcoming releases.*
 
 1. **Get eZ Platform**:
+
+    There are two ways to install eZ Platform described below, what is common is that you should make sure
+    relevant settings are generated into `ezpublish/config/parameters.yml` as a result of this step.
+
+    `parameters.yml` contains settings for your database, mail system, and optionally [Solr](http://lucene.apache.org/solr/)
+    if `search_engine` is configured as `solr`, as opposed to default `legacy` *(a limited database powered search engine)*.
 
     A. **Archive** (tar/zip) *from http://share.ez.no/downloads/downloads*
 
