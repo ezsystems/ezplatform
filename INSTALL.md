@@ -17,12 +17,21 @@
 
 ## Install
 
-0. **Create a clean database**
+0. **Create an empty database**, and optionally setup Solr
 
     The following step will ask you for credentials/details for which database to use, so make sure to create one first.
-    *Note: Right now installer only supports MySQL, Postgres support should be re added in one of the upcomming releases.*
+
+    *Optional: At this point you can also setup Solr to be used by eZ Platform*
+
+    *Note: Right now installer only supports MySQL, Postgres support should be (re)added in one of the upcoming releases.*
 
 1. **Get eZ Platform**:
+
+    There are two ways to install eZ Platform described below, what is common is that you should make sure
+    relevant settings are generated into `ezpublish/config/parameters.yml` as a result of this step.
+
+    `parameters.yml` contains settings for your database, mail system, and optionally [Solr](http://lucene.apache.org/solr/)
+    if `search_engine` is configured as `solr`, as opposed to default `legacy` *(a limited database powered search engine)*.
 
     A. **Archive** (tar/zip) *from http://share.ez.no/downloads/downloads*
 
@@ -50,9 +59,10 @@
        ```
 
      Options:
-       - `<version>`: Optional, if omitted you'll get latest stable, examples for specifying:
+       - `<version>`: Optional, *if omitted you'll get latest*, examples for specifying:
         - `dev-master` to get current development version (pre release) `master` branch
-        - `v0.5.0` to pick a specific release
+        - `v0.9.0` to pick a specific release/tag
+        - `~0.9.0` to pick latests v0.9.x release
        - For core development: Add '--prefer-source' to get full git clones, and remove '--no-dev' to get things like phpunit and behat installed.
        - Further reading: https://getcomposer.org/doc/03-cli.md#create-project
 
