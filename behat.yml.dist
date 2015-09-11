@@ -18,6 +18,10 @@ default:
                 env: behat
                 debug: false
 
+        jarnaiz\JUnitFormatter\JUnitFormatterExtension:
+            filename: report.xml
+            outputDir: %paths.base%/build/tests
+
     # default profile: no suites
     suites: ~
 
