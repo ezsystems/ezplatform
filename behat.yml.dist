@@ -34,6 +34,12 @@ platformui:
                   - EzSystems\PlatformUIBundle\Features\Context\PlatformUI:
                       uri: /ez
 
+core:
+    suites:
+        console:
+            paths: [ vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishCoreBundle/Features/Console]
+            contexts: [ eZ\Bundle\EzPublishCoreBundle\Features\Context\ConsoleContext ]
+
 rest:
     suites:
         fullJson:
