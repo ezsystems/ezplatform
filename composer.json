@@ -9,6 +9,12 @@
             "homepage": "https://github.com/ezsystems/ezplatform/contributors"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:vidarl/behat-junit-formatter.git"
+        }
+    ],
     "replace": {
         "ezsystems/ezpublish-community": "*"
     },
@@ -47,6 +53,7 @@
         "behat/mink-extension": "*",
         "behat/mink-goutte-driver": "*",
         "behat/mink-selenium2-driver": "*",
+        "jarnaiz/behat-junit-formatter": "dev-undefined_sentences",
         "ezsystems/behatbundle": "@dev"
     },
     "suggest": {
