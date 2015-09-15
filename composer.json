@@ -12,7 +12,7 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "git@github.com:vidarl/behat-junit-formatter.git"
+            "url": "https://github.com/vidarl/behat-junit-formatter.git"
         }
     ],
     "replace": {
