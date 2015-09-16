@@ -21,6 +21,25 @@ default:
     # default profile: no suites
     suites: ~
 
+platformui:
+      suites:
+          standard:
+              paths: [ vendor/ezsystems/platform-ui-bundle/Features/Standard ]
+              contexts:
+                  - EzSystems\PlatformUIBundle\Features\Context\PlatformUI:
+                      uri: /ez
+          CopyMoveDelete:
+              paths: [ vendor/ezsystems/platform-ui-bundle/Features/CopyMoveDelete ]
+              contexts:
+                  - EzSystems\PlatformUIBundle\Features\Context\PlatformUI:
+                      uri: /ez
+
+core:
+    suites:
+        console:
+            paths: [ vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishCoreBundle/Features/Console]
+            contexts: [ eZ\Bundle\EzPublishCoreBundle\Features\Context\ConsoleContext ]
+
 rest:
     suites:
         fullJson:

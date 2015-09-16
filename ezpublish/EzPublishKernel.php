@@ -58,6 +58,7 @@ class EzPublishKernel extends Kernel
             case 'test':
             case 'behat':
                 $bundles[] = new EzSystems\BehatBundle\EzSystemsBehatBundle();
+                $bundles[] = new EzSystems\PlatformBehatBundle\EzPlatformBehatBundle();
                 // No break, test also needs dev bundles
             case 'dev':
                 $bundles[] = new eZ\Bundle\EzPublishDebugBundle\EzPublishDebugBundle();
