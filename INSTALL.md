@@ -84,7 +84,7 @@
 
        C. **Using chown on systems that don't support ACL**
 
-       Some systems don't support ACL at all. You will either need to set your web server's user as the owner of the required directories.
+       Some systems don't support ACL at all. You will need to set your web server's user as the owner of the required directories.
 
        ```bash
        $ sudo chown -R www-data:www-data ezpublish/{cache,logs,config,sessions} web
@@ -100,6 +100,15 @@
        $ sudo find {ezpublish/{cache,logs,config,sessions},web} -type d | xargs sudo chmod -R 777
        $ sudo find {ezpublish/{cache,logs,config,sessions},web} -type f | xargs sudo chmod -R 666
        ```
+
+       When using chmod, note that newly created files (such as cache) owned by the web server's user may have different/restrictive permissions.
+       In this case, it may be required to change the umask so that the cache and log directories will be group-writable or world-writable (`umask(0002)` or `umask(0000)` respectively).
+
+       It may also possible to add the group ownership inheritance flag so new files inherit the current group, and use `775`/`664` in the command lines above instead of world-writable:
+       ```bash
+       $ sudo chmod g+s {ezpublish/{cache,logs,config,sessions},ezpublish_legacy/{design,extension,settings,var},web}
+       ```
+
 3. *Optional* **Install LegacyBridge and eZ Publish Legacy**:
 
     eZ Platform, unlike eZ Publish 5.x, does not come with eZ Publish Legacy (the updated version of eZ Publish 4.x).
