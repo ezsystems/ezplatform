@@ -4,7 +4,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Debug\Debug;
 
 // Environment is taken from "ENVIRONMENT" variable, if not set, defaults to "prod"
-$environment = getenv('ENVIRONMENT');
+$environment = getenv('SYMFONY_ENV');
 if ($environment === false) {
     $environment = 'prod';
 }
