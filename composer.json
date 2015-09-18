@@ -47,6 +47,7 @@
         "behat/mink-extension": "*",
         "behat/mink-goutte-driver": "*",
         "behat/mink-selenium2-driver": "*",
+        "jarnaiz/behat-junit-formatter": "^1.3",
         "ezsystems/behatbundle": "@dev"
     },
     "suggest": {
