@@ -20,7 +20,7 @@ default:
 
         jarnaiz\JUnitFormatter\JUnitFormatterExtension:
             filename: report.xml
-            outputDir: %paths.base%/build/tests
+            outputDir: %paths.base%/ezpublish/logs/junit
 
     # default profile: no suites
     suites: ~
