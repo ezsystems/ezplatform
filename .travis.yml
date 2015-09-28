@@ -3,9 +3,13 @@ language: php
 # We do Behat testing here, lots of sudo going on
 sudo: required
 
-# run tests on php 5.5 only and let unit / integration tests deal with php differences
+# run tests on php 7.0 only and let unit / integration tests deal with php differences
 php:
-  - 5.5
+  - 7.0
+
+# Specify latests esr Firefox version, as default one is rather old
+addons:
+  firefox: "latest-esr"
 
 # list of paths/bundle to execute
 env:
@@ -15,6 +19,7 @@ env:
   - PROFILE="rest" TEST="fullJson"
   - PROFILE="rest" TEST="fullXml"
   - PROFILE="core"
+  - PROFILE="platformui" TEST="standard"
 
 # test only master (+ Pull requests)
 branches:
