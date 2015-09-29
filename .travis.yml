@@ -14,6 +14,9 @@ env:
   - PROFILE="rest" TEST="fullJson"
   - PROFILE="rest" TEST="fullXml"
 
+# host aliases for behat tests to be able to align config and scripts for future docker changes
+addons:
+  hosts: [web, selenium, db]
 
 # test only master (+ Pull requests)
 branches:
