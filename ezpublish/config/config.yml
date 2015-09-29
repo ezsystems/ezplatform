@@ -1,4 +1,5 @@
 imports:
+    - { resource: default_parameters.yml }
     - { resource: parameters.yml }
     - { resource: security.yml }
 

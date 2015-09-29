@@ -1,0 +1,8 @@
+# This file contains defaults for optional parameters, which you can override in parameters.yml
+parameters:
+    ## Logging settings
+    # Log type is one of "stream", "error_log" or other types supported by monolog
+    log_type: stream
+
+    # Log path, where to store the log files. php://stderr may be used in order to log to standard error
+    log_path: "%kernel.logs_dir%/%kernel.environment%.log"
