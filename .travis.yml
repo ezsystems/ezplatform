@@ -13,7 +13,7 @@ env:
   - PROFILE="demo" TEST="clean"
   - PROFILE="rest" TEST="fullJson"
   - PROFILE="rest" TEST="fullXml"
-
+  - PROFILE="core"
 
 # test only master (+ Pull requests)
 branches:
@@ -32,7 +32,7 @@ before_script:
 
 # execute behat as the script command
 script:
-  - php bin/behat -vc behat.yml.dist --profile $PROFILE --suite $TEST
+  - if [ "$TEST" != "" ] ; then php bin/behat -vc behat.yml.dist --profile $PROFILE --suite $TEST ; else php bin/behat -vc behat.yml.dist --profile $PROFILE; fi
 
 # disable mail notifications
 notifications:
