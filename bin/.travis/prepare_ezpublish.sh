@@ -22,8 +22,8 @@ if [ "$INSTALL" = "demoContentNonUniqueDB" ] ; then
   echo "> Install ezplatform demo-content"
   php ezpublish/console ezplatform:install --env=behat --no-debug demo
 else
-  echo "> Install ezplatform clean"
-  php ezpublish/console ezplatform:install --env=behat --no-debug clean
+  echo "> Install ezplatform demo-clean"
+  php ezpublish/console ezplatform:install --env=behat --no-debug demo-clean
 fi
 
 echo "> Run assetic dump for behat env"
