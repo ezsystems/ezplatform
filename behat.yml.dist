@@ -43,6 +43,11 @@ core:
         console:
             paths: [ vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishCoreBundle/Features/Console]
             contexts: [ eZ\Bundle\EzPublishCoreBundle\Features\Context\ConsoleContext ]
+        # Web features (controllers, default templates, rendering features...)
+        web:
+            paths: [ vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishCoreBundle/Features/Content]
+            contexts: [ eZ\Bundle\EzPublishCoreBundle\Features\Context\ContentPreviewContext ]
+
 
 rest:
     suites:

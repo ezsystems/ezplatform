@@ -13,7 +13,7 @@
 
 $generator = new ezpBinTravisHttpConfGenerator(
     "h::",
-    array( 'basedir:', 'ip_address::', 'port::', 'host::', 'host_alias::', 'env::', 'proxy::', 'help', 'dry-run' ),
+    array( 'basedir:', 'ip_address::', 'port::', 'host::', 'host_alias::', 'env::', 'use-debugging::', 'proxy::', 'help', 'dry-run' ),
     array(
         'basedir' => null,// required
         'ip_address' => '*',
@@ -21,6 +21,7 @@ $generator = new ezpBinTravisHttpConfGenerator(
         'host' => 'localhost',
         'host_alias' => '*.localhost',
         'env' => 'prod',
+        'use-debugging' => 0,
         'proxy' => '127.0.0.1'
     )
 );
@@ -155,6 +156,7 @@ Format:
     [--ip_address=*]
     [--port=80]
     [--env=dev]
+    [--use-debugging=0]
     [--proxy=127.0.0.1] : Used for http cache if you selected prod template
     [-h|--help]         : Help text, this one more or less
     [--dry-run]         : Generate the result but echo to screen instead of writing
