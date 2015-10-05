@@ -68,4 +68,4 @@ as explained at https://doc.ez.no/display/EZP/Installing+eZ+Publish+Legacy+on+to
 Copyright (C) 1999-2015 eZ Systems AS. All rights reserved.
 
 ## LICENSE
-http://www.gnu.org/licenses/gpl-2.0.txt GNU General Public License v2
+http://ez.no/Products/About-our-Software/Licenses-and-agreements/eZ-Business-Use-License-Agreement-eZ-BUL-Version-2.1 eZ Business Use License Agreement eZ BUL Version 2.1
