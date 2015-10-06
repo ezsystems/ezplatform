@@ -81,35 +81,3 @@ demo:
         clean:
             paths: [ vendor/ezsystems/demobundle/EzSystems/DemoBundle/Features/Clean ]
             contexts: [ EzSystems\DemoBundle\Features\Context\Demo ]
-
-legacyAdmin:
-    extensions:
-        Behat\MinkExtension:
-            base_url: http://localhost/behat_site_admin
-    suites:
-        full:
-            paths: [ vendor/ezsystems/legacy-bridge/bundle/Features/Admin ]
-            contexts: [ eZ\Bundle\EzPublishLegacyBundle\Features\Context\Admin\Context ]
-
-setupWizard:
-    suites:
-        demoContent:
-            paths: [ vendor/ezsystems/legacy-bridge/bundle/Features/SetupWizard ]
-            contexts: [ eZ\Bundle\EzPublishLegacyBundle\Features\Context\SetupWizard\Context ]
-            filters:
-                tags: '@demo && ~@clean && ~@skipByDefault'
-        demoClean:
-            paths: [ vendor/ezsystems/legacy-bridge/bundle/Features/SetupWizard ]
-            contexts: [ eZ\Bundle\EzPublishLegacyBundle\Features\Context\SetupWizard\Context ]
-            filters:
-                tags: '@demo && ~@content && ~@skipByDefault'
-        demoContentNonUniqueDB:
-            paths: [ vendor/ezsystems/legacy-bridge/bundle/Features/SetupWizard ]
-            contexts: [ eZ\Bundle\EzPublishLegacyBundle\Features\Context\SetupWizard\Context ]
-            filters:
-                tags: '@demo && ~@clean && ~@uniqueDatabaseSystem'
-        demoCleanNonUniqueDB:
-            paths: [ vendor/ezsystems/legacy-bridge/bundle/Features/SetupWizard ]
-            contexts: [ eZ\Bundle\EzPublishLegacyBundle\Features\Context\SetupWizard\Context ]
-            filters:
-                tags: '@demo && ~@content && ~@uniqueDatabaseSystem'
