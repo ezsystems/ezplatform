@@ -68,8 +68,6 @@
 
 2. *Only for *NIX users* **Setup folder rights**:
 
-       *Skip to step #3 if you plan to install LegacyBridge and eZ Publish Legacy with this installation!*
-
        One common issue is that the `ezpublish/cache`, `ezpublish/logs` and `ezpublish/config` directories **must be writable both by the web server and the command line user**.
        If your web server user is different from your command line user, you can run the following commands just once in your project to ensure that permissions will be set up properly.
 
@@ -120,22 +118,16 @@
 
        It may also possible to add the group ownership inheritance flag so new files inherit the current group, and use `775`/`664` in the command lines above instead of world-writable:
        ```bash
-       $ sudo chmod g+s {ezpublish/{cache,logs,config,sessions},ezpublish_legacy/{design,extension,settings,var},web}
+       $ sudo chmod g+s {ezpublish/{cache,logs,config,sessions},web}
        ```
 
-3. *Optional* **Install LegacyBridge and eZ Publish Legacy**:
-
-    eZ Platform, unlike eZ Publish 5.x, does not come with eZ Publish Legacy (the updated version of eZ Publish 4.x).
-    For the time being it is still possible to run Legacy side by side with eZ Platform, further instructions here:
-    https://doc.ez.no/display/EZP/Installing+eZ+Publish+Legacy+on+top+of+eZ+Platform
-
-4. **Configure a VirtualHost**:
+3. **Configure a VirtualHost**:
 
     A virtual host setup is the recommended, most secure setup of eZ Publish.
     General virtual host setup template for Apache and Nginx can be found in [doc/ folder](doc/).
 
 
-5. **Run installation command**:
+4. **Run installation command**:
 
     You may now complete the eZ Platform installation with ezplatform:install command, example of use:
 

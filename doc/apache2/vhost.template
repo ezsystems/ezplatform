@@ -13,6 +13,7 @@
     # Enabled for Dev environment
     # LogLevel debug
 
+    # "web" folder is what we expose to the world, all rewrite rules further down is relative to it.
     <Directory %BASEDIR%/web>
         # If using php configured in FastCGI mode, you might also need to add "ExecCGI" to the line below
         Options FollowSymLinks
@@ -74,39 +75,26 @@
     <IfModule mod_rewrite.c>
         RewriteEngine On
 
-        # Uncomment in FastCGI mode or when using PHP-FPM, to get basic auth working.
+        # For FastCGI mode or when using PHP-FPM, to get basic auth working.
         RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
-        # Needed for ci testing, remove in prod.
+        # Needed for ci testing, you can optionally remove this.
         RewriteCond %{ENV:ENVIRONMENT} "behat"
         RewriteCond %{REQUEST_URI} ^/php5-fcgi(.*)
         RewriteRule . - [L]
 
-        # If using cluster, uncomment the following two lines:
-        ## For 5.4 and higher:
+        # Cluster/streamed files rewrite rules. Enable on cluster with DFS as a binary data handler
         #RewriteRule ^/var/([^/]+/)?storage/images(-versioned)?/.* /index.php [L]
-        #RewriteRule ^/var/([^/]+/)?cache/(texttoimage|public)/.* /index_cluster.php [L]
-        ## Versions prior to 5.4:
-        #RewriteRule ^/var/([^/]+/)?storage/images(-versioned)?/.* /index_cluster.php [L]
-        #RewriteRule ^/var/([^/]+/)?cache/(texttoimage|public)/.* /index_cluster.php [L]
 
         RewriteRule ^/var/([^/]+/)?storage/images(-versioned)?/.* - [L]
-        RewriteRule ^/var/([^/]+/)?cache/(texttoimage|public)/.* - [L]
-        RewriteRule ^/design/[^/]+/(stylesheets|images|javascript|fonts)/.* - [L]
-        RewriteRule ^/share/icons/.* - [L]
-        RewriteRule ^/extension/[^/]+/design/[^/]+/(stylesheets|flash|images|lib|javascripts?)/.* - [L]
-        RewriteRule ^/packages/styles/.+/(stylesheets|images|javascript)/[^/]+/.* - [L]
-        RewriteRule ^/packages/styles/.+/thumbnail/.* - [L]
-        RewriteRule ^/var/storage/packages/.* - [L]
 
         # Makes it possible to place your favicon at the root of your eZ Platform instance.
         # It will then be served directly.
         RewriteRule ^/favicon\.ico - [L]
 
         # Uncomment the line below if you want your favicon be served from the standard design.
-        # You can customize the path to favicon.ico by changing /design/standard/images/favicon\.ico
-        #RewriteRule ^/favicon\.ico /design/standard/images/favicon.ico [L]
-        RewriteRule ^/design/standard/images/favicon\.ico - [L]
+        # You can customize the path to favicon.ico by bundle name and/or path.
+        #RewriteRule ^/favicon\.ico /bundles/my-bundle/images/favicon.ico [L]
 
         # Give direct access to robots.txt for use by crawlers (Google, Bing, Spammers...)
         RewriteRule ^/robots\.txt - [L]
@@ -115,9 +103,6 @@
         # More info here : http://en.wikipedia.org/wiki/P3p
         RewriteRule ^/w3c/p3p\.xml - [L]
 
-        # Uncomment the following lines when using popup style debug in legacy
-        #RewriteRule ^/var/([^/]+/)?cache/debug\.html.* - [L]
-
         # The following rule is needed to correctly display assets from eZ Platform / Symfony bundles
         RewriteRule ^/bundles/ - [L]
 
@@ -125,17 +110,6 @@
         # remember to run php ezpublish/console assetic:dump --env=prod
         RewriteCond %{ENV:ENVIRONMENT} !^(dev)
         RewriteRule ^/(css|js|font)/.*\.(css|js|otf|eot|ttf|svg|woff) - [L]
-
-        # Conditions for enabling webdav and soap interfaces from legacy
-        ## Symlink the files into your web folder and correct domain names to be valid server aliases
-        #RewriteCond %{HTTP_HOST} ^webdav\..*
-        #RewriteRule ^(.*) /webdav.php [L]
-        #RewriteCond %{HTTP_HOST} ^soap\..*
-        #RewriteRule ^(.*) /soap.php [L]
-
-        # For 5.x versions prior to 5.2, enable this to use dev env based on ENVIRONMENT variable set above
-        #RewriteCond %{ENV:ENVIRONMENT} "dev"
-        #RewriteRule .* /index_dev.php [L]
 
         RewriteRule .* /index.php
     </IfModule>
@@ -150,38 +124,5 @@
             ExpiresActive on
             ExpiresDefault "now plus 10 years"
         </LocationMatch>
-
-        <LocationMatch "^/extension/[^/]+/design/[^/]+/(stylesheets|images|javascripts?|flash)/.*">
-            # A good optimization if you don't change your design often
-            ExpiresActive on
-            ExpiresDefault "now plus 5 days"
-        </LocationMatch>
-
-        <LocationMatch "^/extension/[^/]+/design/[^/]+/lib/.*">
-            # Libraries get a new url (version number) on updates
-            ExpiresActive on
-            ExpiresDefault "now plus 90 days"
-        </LocationMatch>
-
-        <LocationMatch "^/share/icons/.*">
-            # Icons as used by admin interface, barely change
-            ExpiresActive on
-            ExpiresDefault "now plus 7 days"
-        </LocationMatch>
-
-        <LocationMatch "^/design/[^/]+/(stylesheets|images|javascripts?|lib|flash)/.*">
-            # Same as above for elements bundled eZ Publish designs
-            ExpiresActive on
-            ExpiresDefault "now plus 7 days"
-        </LocationMatch>
-
-        # When ezjscore.ini/[Packer]/AppendLastModifiedTime=enabled
-        # so that file names change when source files are modified
-        #<LocationMatch "^/var/[^/]+/cache/public/.*">
-            # Force ezjscore packer js/css files to be cached 30 days
-            # at client side
-            #ExpiresActive on
-            #ExpiresDefault "now plus 30 days"
-        #</LocationMatch>
     </IfModule>
 </VirtualHost>
