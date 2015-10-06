@@ -7,8 +7,7 @@
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  *
  * @internal
- * @todo Exposed in symfony command and take advantage of components for better input validation if this ever
- *       is supposed to be moved out of private folder.
+ * @todo Rewrite to bash / plain bash eval approach to be able to generate vhost file also in web server containers.
  */
 
 $generator = new ezpBinTravisHttpConfGenerator(
