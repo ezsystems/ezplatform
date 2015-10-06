@@ -980,16 +980,16 @@
         },
         {
             "name": "ezsystems/ezpublish-kernel",
-            "version": "v6.0.0-beta1",
+            "version": "v6.0.0-beta2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-kernel.git",
-                "reference": "5535eea0747562b17d1b74a743299290a95f84e1"
+                "reference": "267b663e2af6bf72d0dbfb75f66b7a2d1c95ac19"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/5535eea0747562b17d1b74a743299290a95f84e1",
-                "reference": "5535eea0747562b17d1b74a743299290a95f84e1",
+                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/267b663e2af6bf72d0dbfb75f66b7a2d1c95ac19",
+                "reference": "267b663e2af6bf72d0dbfb75f66b7a2d1c95ac19",
                 "shasum": ""
             },
             "require": {
@@ -1059,7 +1059,7 @@
             ],
             "description": "eZ Publish API and kernel. This is the heart of eZ Publish 5.",
             "homepage": "http://share.ez.no",
-            "time": "2015-10-05 22:10:40"
+            "time": "2015-10-06 17:21:50"
         },
         {
             "name": "ezsystems/platform-ui-assets-bundle",
@@ -1099,16 +1099,16 @@
         },
         {
             "name": "ezsystems/platform-ui-bundle",
-            "version": "v1.0.0-beta2",
+            "version": "v1.0.0-beta3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/PlatformUIBundle.git",
-                "reference": "73fd60cb9c9462f92e952b08d3ccb791f56d6e48"
+                "reference": "20daf71e0fd897b142208d6f18b6298d75cf7bd3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/PlatformUIBundle/zipball/73fd60cb9c9462f92e952b08d3ccb791f56d6e48",
-                "reference": "73fd60cb9c9462f92e952b08d3ccb791f56d6e48",
+                "url": "https://api.github.com/repos/ezsystems/PlatformUIBundle/zipball/20daf71e0fd897b142208d6f18b6298d75cf7bd3",
+                "reference": "20daf71e0fd897b142208d6f18b6298d75cf7bd3",
                 "shasum": ""
             },
             "require": {
@@ -1137,7 +1137,7 @@
                 "GPL-2.0"
             ],
             "description": "eZ Platform UI Bundle",
-            "time": "2015-10-05 22:22:28"
+            "time": "2015-10-06 19:17:08"
         },
         {
             "name": "ezsystems/privacy-cookie-bundle",
