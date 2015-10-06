@@ -20,7 +20,7 @@ default:
 
         jarnaiz\JUnitFormatter\JUnitFormatterExtension:
             filename: report.xml
-            outputDir: %paths.base%/build/tests
+            outputDir: %paths.base%/ezpublish/logs/junit
 
     # default profile: no suites
     suites: ~
@@ -43,6 +43,11 @@ core:
         console:
             paths: [ vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishCoreBundle/Features/Console]
             contexts: [ eZ\Bundle\EzPublishCoreBundle\Features\Context\ConsoleContext ]
+        # Web features (controllers, default templates, rendering features...)
+        web:
+            paths: [ vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishCoreBundle/Features/Content]
+            contexts: [ eZ\Bundle\EzPublishCoreBundle\Features\Context\ContentPreviewContext ]
+
 
 rest:
     suites:
