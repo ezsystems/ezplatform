@@ -1063,16 +1063,16 @@
         },
         {
             "name": "ezsystems/platform-ui-assets-bundle",
-            "version": "v1.0.0-beta1",
+            "version": "v1.0.0-beta2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/PlatformUIAssetsBundle.git",
-                "reference": "900644ba8894f1065a5f44ac51f602d4da8f6ad5"
+                "reference": "692dee21f73e30747855ee6562e065ca81edbed1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/PlatformUIAssetsBundle/zipball/900644ba8894f1065a5f44ac51f602d4da8f6ad5",
-                "reference": "900644ba8894f1065a5f44ac51f602d4da8f6ad5",
+                "url": "https://api.github.com/repos/ezsystems/PlatformUIAssetsBundle/zipball/692dee21f73e30747855ee6562e065ca81edbed1",
+                "reference": "692dee21f73e30747855ee6562e065ca81edbed1",
                 "shasum": ""
             },
             "require": {
@@ -1095,7 +1095,7 @@
                 }
             ],
             "description": "External assets dependencies for PlatformUIBundle",
-            "time": "2015-09-30 07:07:18"
+            "time": "2015-10-06 07:45:31"
         },
         {
             "name": "ezsystems/platform-ui-bundle",
