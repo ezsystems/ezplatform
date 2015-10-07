@@ -6,6 +6,9 @@ requirements and best practices remain the same.
 The best way to kickstart is to read the [Symfony2 documentation](http://symfony.com/doc/current/book/page_creation.html)
 in order to get the basics.
 
+Note: Section below is out-of-date but represent some hints on how to be learn more about contributing to eZ Platform.
+      For introduction to *using* eZ Platform, please check our [online doc](doc.ez.no).
+
 ## Demo bundle
 > "Bundle" is the name used for an extension in Symfony.
 

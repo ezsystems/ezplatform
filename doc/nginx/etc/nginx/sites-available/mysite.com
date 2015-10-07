@@ -9,19 +9,13 @@ server {
 
     root %BASEDIR%/web;
 
-    # Legacy example
-    # root %BASEDIR%/ezpublish_legacy;
-
     # Additional Assetic rules for eZ Publish 5.1 / 2013.4 and higher.
     ## Don't forget to run php ezpublish/console assetic:dump --env=prod
     ## and make sure to comment these out in DEV environment.
     include ez_params.d/ez_prod_rewrite_params;
 
-    # ezlegacy cluster rewrite rules, uncomment if vhost uses DFS clustering
-    # For 5.4+:
-    #include ez_params.d/ez_cluster_rewrite_params;
-    # For 5.3:
-    #include ez_params.d/5.3_cluster/ez_cluster_rewrite_params;
+    # Cluster/streamed files rewrite rules. Enable on cluster with DFS as a binary data handler
+    #rewrite "^/var/([^/]+/)?storage/images(-versioned)?/(.*)" "/index.php" break;
 
     # ez rewrite rules
     include ez_params.d/ez_rewrite_params;
@@ -30,7 +24,7 @@ server {
     client_max_body_size 2m;
 
     location / {
-        location ~ ^/(index|index_(rest|cluster|treemenu_tags))\.php(/|$) {
+        location ~ ^/index\.php(/|$) {
             include ez_params.d/ez_fastcgi_params;
 
             # FPM socket
