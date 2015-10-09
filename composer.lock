@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "865c5e440623fb48ba4cfc695aefabb5",
+    "hash": "2b0d34ba23b3eeb6d0d92148705a9fb0",
     "packages": [
         {
             "name": "components/bootstrap",
@@ -929,16 +929,16 @@
         },
         {
             "name": "ezsystems/ezplatform-solr-search-engine",
-            "version": "v1.0.0-beta4",
+            "version": "v1.0.0-beta5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezplatform-solr-search-engine.git",
-                "reference": "fa7e2b31d7955e8b985afe0f23603a583b6678ba"
+                "reference": "4f53da4dfc7398efcf52727000e5e34745005211"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezplatform-solr-search-engine/zipball/fa7e2b31d7955e8b985afe0f23603a583b6678ba",
-                "reference": "fa7e2b31d7955e8b985afe0f23603a583b6678ba",
+                "url": "https://api.github.com/repos/ezsystems/ezplatform-solr-search-engine/zipball/4f53da4dfc7398efcf52727000e5e34745005211",
+                "reference": "4f53da4dfc7398efcf52727000e5e34745005211",
                 "shasum": ""
             },
             "require": {
@@ -976,27 +976,26 @@
                 }
             ],
             "description": "Solr search engine implementation for eZ Platform",
-            "time": "2015-09-07 21:32:10"
+            "time": "2015-10-06 09:08:54"
         },
         {
             "name": "ezsystems/ezpublish-kernel",
-            "version": "v6.0.0-beta2",
+            "version": "v6.0.0-beta3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-kernel.git",
-                "reference": "267b663e2af6bf72d0dbfb75f66b7a2d1c95ac19"
+                "reference": "3714528cc48e654c56d4ca0c3d4ef0b5b048df50"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/267b663e2af6bf72d0dbfb75f66b7a2d1c95ac19",
-                "reference": "267b663e2af6bf72d0dbfb75f66b7a2d1c95ac19",
+                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/3714528cc48e654c56d4ca0c3d4ef0b5b048df50",
+                "reference": "3714528cc48e654c56d4ca0c3d4ef0b5b048df50",
                 "shasum": ""
             },
             "require": {
                 "doctrine/doctrine-bundle": "~1.3",
                 "ext-ctype": "*",
                 "ext-fileinfo": "*",
-                "ext-gd": "*",
                 "ext-intl": "*",
                 "ext-json": "*",
                 "ext-mbstring": "*",
@@ -1059,7 +1058,7 @@
             ],
             "description": "eZ Publish API and kernel. This is the heart of eZ Publish 5.",
             "homepage": "http://share.ez.no",
-            "time": "2015-10-06 17:21:50"
+            "time": "2015-10-08 08:03:07"
         },
         {
             "name": "ezsystems/platform-ui-assets-bundle",
@@ -1099,16 +1098,16 @@
         },
         {
             "name": "ezsystems/platform-ui-bundle",
-            "version": "v1.0.0-beta3",
+            "version": "v1.0.0-beta4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/PlatformUIBundle.git",
-                "reference": "20daf71e0fd897b142208d6f18b6298d75cf7bd3"
+                "reference": "8e779d44e34c2b257422801a1ff604749c9ac223"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/PlatformUIBundle/zipball/20daf71e0fd897b142208d6f18b6298d75cf7bd3",
-                "reference": "20daf71e0fd897b142208d6f18b6298d75cf7bd3",
+                "url": "https://api.github.com/repos/ezsystems/PlatformUIBundle/zipball/8e779d44e34c2b257422801a1ff604749c9ac223",
+                "reference": "8e779d44e34c2b257422801a1ff604749c9ac223",
                 "shasum": ""
             },
             "require": {
@@ -1137,7 +1136,7 @@
                 "GPL-2.0"
             ],
             "description": "eZ Platform UI Bundle",
-            "time": "2015-10-06 19:17:08"
+            "time": "2015-10-09 08:14:58"
         },
         {
             "name": "ezsystems/privacy-cookie-bundle",
@@ -3465,20 +3464,20 @@
         },
         {
             "name": "zendframework/zend-code",
-            "version": "2.5.2",
+            "version": "2.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-code.git",
-                "reference": "a97ef49f82496fabc3b7379b37f6bbff925b58b8"
+                "reference": "5d998f261ec2a55171c71da57a11622745680153"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-code/zipball/a97ef49f82496fabc3b7379b37f6bbff925b58b8",
-                "reference": "a97ef49f82496fabc3b7379b37f6bbff925b58b8",
+                "url": "https://api.github.com/repos/zendframework/zend-code/zipball/5d998f261ec2a55171c71da57a11622745680153",
+                "reference": "5d998f261ec2a55171c71da57a11622745680153",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5",
+                "php": ">=5.3.23",
                 "zendframework/zend-eventmanager": "~2.5"
             },
             "require-dev": {
@@ -3514,24 +3513,24 @@
                 "code",
                 "zf2"
             ],
-            "time": "2015-07-21 22:40:59"
+            "time": "2015-06-03 15:31:59"
         },
         {
             "name": "zendframework/zend-eventmanager",
-            "version": "2.5.2",
+            "version": "2.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-eventmanager.git",
-                "reference": "135af03d07fd048c322259aab6611d2be290475c"
+                "reference": "d94a16039144936f107f906896349900fd634443"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-eventmanager/zipball/135af03d07fd048c322259aab6611d2be290475c",
-                "reference": "135af03d07fd048c322259aab6611d2be290475c",
+                "url": "https://api.github.com/repos/zendframework/zend-eventmanager/zipball/d94a16039144936f107f906896349900fd634443",
+                "reference": "d94a16039144936f107f906896349900fd634443",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5",
+                "php": ">=5.3.23",
                 "zendframework/zend-stdlib": "~2.5"
             },
             "require-dev": {
@@ -3559,84 +3558,26 @@
                 "eventmanager",
                 "zf2"
             ],
-            "time": "2015-07-16 19:00:49"
-        },
-        {
-            "name": "zendframework/zend-hydrator",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/zendframework/zend-hydrator.git",
-                "reference": "f3ed8b833355140350bbed98d8a7b8b66875903f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-hydrator/zipball/f3ed8b833355140350bbed98d8a7b8b66875903f",
-                "reference": "f3ed8b833355140350bbed98d8a7b8b66875903f",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5",
-                "zendframework/zend-stdlib": "^2.5.1"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.0",
-                "squizlabs/php_codesniffer": "^2.0@dev",
-                "zendframework/zend-eventmanager": "^2.5.1",
-                "zendframework/zend-filter": "^2.5.1",
-                "zendframework/zend-inputfilter": "^2.5.1",
-                "zendframework/zend-serializer": "^2.5.1",
-                "zendframework/zend-servicemanager": "^2.5.1"
-            },
-            "suggest": {
-                "zendframework/zend-eventmanager": "^2.5.1, to support aggregate hydrator usage",
-                "zendframework/zend-filter": "^2.5.1, to support naming strategy hydrator usage",
-                "zendframework/zend-serializer": "^2.5.1, to use the SerializableStrategy",
-                "zendframework/zend-servicemanager": "^2.5.1, to support hydrator plugin manager usage"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev",
-                    "dev-develop": "1.1-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Zend\\Hydrator\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "homepage": "https://github.com/zendframework/zend-hydrator",
-            "keywords": [
-                "hydrator",
-                "zf2"
-            ],
-            "time": "2015-09-17 14:06:43"
+            "time": "2015-06-03 15:32:01"
         },
         {
             "name": "zendframework/zend-stdlib",
-            "version": "2.7.3",
+            "version": "2.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-stdlib.git",
-                "reference": "8ac0c77ff567fcf49b58689ee3bfa7595be102bc"
+                "reference": "cc8e90a60dd5d44b9730b77d07b97550091da1ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-stdlib/zipball/8ac0c77ff567fcf49b58689ee3bfa7595be102bc",
-                "reference": "8ac0c77ff567fcf49b58689ee3bfa7595be102bc",
+                "url": "https://api.github.com/repos/zendframework/zend-stdlib/zipball/cc8e90a60dd5d44b9730b77d07b97550091da1ae",
+                "reference": "cc8e90a60dd5d44b9730b77d07b97550091da1ae",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5",
-                "zendframework/zend-hydrator": "~1.0"
+                "php": ">=5.3.23"
             },
             "require-dev": {
-                "athletic/athletic": "~0.1",
                 "fabpot/php-cs-fixer": "1.7.*",
                 "phpunit/phpunit": "~4.0",
                 "zendframework/zend-config": "~2.5",
@@ -3655,8 +3596,8 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.7-dev",
-                    "dev-develop": "2.8-dev"
+                    "dev-master": "2.5-dev",
+                    "dev-develop": "2.6-dev"
                 }
             },
             "autoload": {
@@ -3673,7 +3614,7 @@
                 "stdlib",
                 "zf2"
             ],
-            "time": "2015-09-25 04:06:33"
+            "time": "2015-06-03 15:32:03"
         },
         {
             "name": "zetacomponents/base",
@@ -3966,5 +3907,8 @@
     "platform": {
         "php": ">=5.4.4"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "platform-overrides": {
+        "php": "5.4.4"
+    }
 }
