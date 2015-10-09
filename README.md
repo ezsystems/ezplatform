@@ -58,11 +58,14 @@ Submitting bugs, improvements and stories is possible on https://jira.ez.no/brow
 If you discover a security issue, please see how to responsibly report such issues on https://doc.ez.no/Security.
 
 ## Backwards compatibility
-eZ Platform is **100% data compatible** with eZ Publish 5.x, 4.x and 3.x *(introduced in 2002)*, meaning that content in those versions of the CMS can be upgraded using
- [online documentation](http://doc.ez.no/eZ-Publish/Upgrading) to eZ Platform.
+eZ Platform aiming to be **100% content compatible** with eZ Publish 5.x, 4.x and 3.x *(introduced in 2002)*, meaning
+that content in those versions of the CMS can be upgraded using
+[online documentation](http://doc.ez.no/eZ-Publish/Upgrading) to eZ Platform.
 
-Unlike eZ Publish Platform 5, eZ Platform doesn't ship with eZ Publish Legacy (4.x). *Legacy* can however still be installed using Composer,
-as explained at https://doc.ez.no/display/EZP/Installing+eZ+Publish+Legacy+on+top+of+eZ+Platform.
+Unlike eZ Publish Platform 5.x, eZ Platform does not ship with eZ Publish Legacy (4.x). For Platform kernel use combined
+with legacy, eZ Publish Platform 5.4 is the most stable choice, offering support and maintenance updates until 2021.
+Alternative is releases of eZ Publish Community, latest as of Oct 2015 is v2014.11 found at
+[ezpublish-community](https://github.com/ezsystems/ezpublish-community).
 
 ## COPYRIGHT
 Copyright (C) 1999-2015 eZ Systems AS. All rights reserved.
