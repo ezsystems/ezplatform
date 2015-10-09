@@ -14,7 +14,7 @@
 #  - ./bin/.travis/setup_from_external_repo.sh $BRANCH_BUILD_DIR "ezsystems/demobundle:dev-tmp_travis_branch"
 
 REPO_DIR=$1
-COMPOSER_REQUIRE=$2
+COMPOSER_REQUIRE=${@:2}
 
 ./bin/.travis/prepare_system.sh
 ./bin/.travis/prepare_selenium2.sh
@@ -22,6 +22,8 @@ COMPOSER_REQUIRE=$2
 echo "> Modify composer.json to point to local checkout"
 sed -i '$d' composer.json
 echo ',    "repositories": [{"type":"git","url":"'$REPO_DIR'"}]}' >> composer.json
+
+echo "> Updating packages ($COMPOSER_REQUIRE)"
 composer require --no-update "$COMPOSER_REQUIRE"
 cat composer.json
 
