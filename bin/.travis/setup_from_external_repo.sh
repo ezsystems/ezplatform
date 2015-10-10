@@ -25,7 +25,7 @@ echo ',    "repositories": [{"type":"git","url":"'$REPO_DIR'"}]}' >> composer.js
 
 if [ -n "$COMPOSER_REQUIRE" ]; then
   echo "> Updating packages ($COMPOSER_REQUIRE)"
-  composer require --no-update $COMPOSER_REQUIRE
+  composer require --no-update "$COMPOSER_REQUIRE"
 fi
 
 cat composer.json
