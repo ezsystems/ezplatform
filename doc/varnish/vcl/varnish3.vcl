@@ -138,8 +138,14 @@ sub ez_user_hash {
     }
 
     if (req.restarts == 0 && (req.request == "GET" || req.request == "HEAD")) {
-        // Anonymous user => Set a hardcoded anonymous hash
+        // Get User (Context) hash, for varying cache by what user has access to.
+        // https://doc.ez.no/display/EZP/Context+aware+HTTP+cache
+
+        // Anonymous user w/o session => Use hardcoded anonymous hash to avoid backend lookup for hash
         if (req.http.Cookie !~ "eZSESSID" && !req.http.authorization) {
+            // You may update this hash with the actual one for anonymous user
+            // to get a better cache hit ratio across anonymous users.
+            // Note: You should then update it every time anonymous user rights change.
             set req.http.X-User-Hash = "38015b703d82206ebc01d17a39c727e5";
         }
         // Pre-authenticate request to get shared cache, even when authenticated
