@@ -1,25 +1,25 @@
 #!/bin/sh
 
 # vhost & fastcgi setup
-sudo php bin/.travis/generatevhost.php \
+php bin/.travis/generatevhost.php \
          --basedir=$TRAVIS_BUILD_DIR \
          --env=behat \
          --use-debugging=1 \
          doc/apache2/vhost.template \
          /etc/apache2/sites-available/behat
-sudo cp bin/.travis/apache2/php5-fcgi /etc/apache2/conf.d/php5-fcgi
+cp bin/.travis/apache2/php5-fcgi /etc/apache2/conf.d/php5-fcgi
 
 # modules enabling
-sudo a2enmod rewrite actions fastcgi alias
+a2enmod rewrite actions fastcgi alias
 
 # sites disabling & enabling
-sudo a2dissite default
-sudo a2ensite behat
+a2dissite default
+a2ensite behat
 
 # FPM
 USER=$(whoami)
 
-sudo echo "
+echo "
 [global]
 
 [www]
@@ -32,11 +32,11 @@ pm.max_children = 2
 php_admin_value[memory_limit] = 256M
 " > ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
 
-sudo echo 'date.timezone = "Europe/Oslo"' >> ~/.phpenv/versions/$TRAVIS_PHP_VERSION/etc/conf.d/travis.ini
-sudo echo "cgi.fix_pathinfo = 1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+echo 'date.timezone = "Europe/Oslo"' >> ~/.phpenv/versions/$TRAVIS_PHP_VERSION/etc/conf.d/travis.ini
+echo "cgi.fix_pathinfo = 1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
 
 # restart
 echo "> restart FPM"
-sudo ~/.phpenv/versions/$(phpenv version-name)/sbin/php-fpm
+~/.phpenv/versions/$(phpenv version-name)/sbin/php-fpm
 echo "> restart apache2"
-sudo service apache2 restart
+service apache2 restart

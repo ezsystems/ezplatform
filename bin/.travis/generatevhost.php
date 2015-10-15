@@ -163,7 +163,7 @@ Format:
     output_file         : The output file, usually vhost for apache2 or nginx
 
 Example use:
-  \$ sudo php bin/.travis/generate_vhost.php --basedir=/var/www --env=dev doc/apache2/vhost.template /etc/apache2/sites-available/my.com
+  \$ php bin/.travis/generate_vhost.php --basedir=/var/www --env=dev doc/apache2/vhost.template /etc/apache2/sites-available/my.com
 
   Note: In the Apache example above you would need to enable the site before you can use it.
 

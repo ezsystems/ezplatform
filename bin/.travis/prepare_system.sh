@@ -14,11 +14,6 @@ if [[ "$USE_DEBUGGING" == "" && "$TRAVIS_PHP_VERSION" != "" && "$TRAVIS_PHP_VERS
     phpenv config-rm xdebug.ini ;
 fi
 
-# Install needed packages
-echo "> Installing needed packages";
-sudo apt-get update
-sudo apt-get install -q -y --force-yes apache2 libapache2-mod-fastcgi
-
 # Http Server
 echo "> Configure apache server"
 ./bin/.travis/configure_apache2.sh
