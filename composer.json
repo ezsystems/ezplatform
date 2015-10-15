@@ -15,6 +15,11 @@
     "autoload": {
         "psr-0": { "": "src/" }
     },
+    "repositories": [
+    {
+        "type": "vcs",
+        "url": "https://github.com/miguelcleverti/PlatformUIBundle"
+    }],
     "require": {
         "php": ">=5.4.4",
         "symfony/symfony": "~2.7",
