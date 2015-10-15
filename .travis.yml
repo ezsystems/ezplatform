@@ -1,7 +1,13 @@
 language: php
 
-# We do Behat testing here, lots of sudo going on
-sudo: required
+sudo: false
+
+# For behat testing we use apache and mod-fastcgi
+addons:
+  apt:
+    packages:
+    - apache2
+    - libapache2-mod-fastcgi
 
 # run tests on php 5.5 only and let unit / integration tests deal with php differences
 php:
