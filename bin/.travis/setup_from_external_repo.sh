@@ -23,8 +23,10 @@ echo "> Modify composer.json to point to local checkout"
 sed -i '$d' composer.json
 echo ',    "repositories": [{"type":"git","url":"'$REPO_DIR'"}]}' >> composer.json
 
-echo "> Updating packages ($COMPOSER_REQUIRE)"
-composer require --no-update "$COMPOSER_REQUIRE"
-cat composer.json
+if [ -n "$COMPOSER_REQUIRE" ]; then
+  echo "> Updating packages ($COMPOSER_REQUIRE)"
+  composer require --no-update "$COMPOSER_REQUIRE"
+fi
 
+cat composer.json
 ./bin/.travis/prepare_ezpublish.sh

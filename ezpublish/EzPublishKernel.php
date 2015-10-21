@@ -49,7 +49,7 @@ class EzPublishKernel extends Kernel
             new Oneup\FlysystemBundle\OneupFlysystemBundle(),
             new EzSystems\PlatformInstallerBundle\EzSystemsPlatformInstallerBundle(),
             new EzSystems\RepositoryFormsBundle\EzSystemsRepositoryFormsBundle(),
-            new eZ\Bundle\EzPublishSolrSearchEngineBundle\EzPublishSolrSearchEngineBundle(),
+            new EzSystems\EzPlatformSolrSearchEngineBundle\EzSystemsEzPlatformSolrSearchEngineBundle(),
         );
 
         switch ($this->getEnvironment()) {
