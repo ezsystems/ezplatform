@@ -50,6 +50,7 @@ class EzPublishKernel extends Kernel
             new EzSystems\PrivacyCookieBundle\EzSystemsPrivacyCookieBundle(),
             new EzSystems\RepositoryFormsBundle\EzSystemsRepositoryFormsBundle(),
             new EzSystems\EzPlatformSolrSearchEngineBundle\EzSystemsEzPlatformSolrSearchEngineBundle(),
+            new EzSystems\EzPlatformXmlTextFieldTypeBundle\EzSystemsEzPlatformXmlTextFieldTypeBundle(),
         );
 
         switch ($this->getEnvironment()) {
