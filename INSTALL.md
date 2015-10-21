@@ -52,7 +52,8 @@
        ```
 
      Options:
-       - `<version>`: Optional, *if omitted you'll get latest*, examples for specifying:
+       - `<version>`: Optional, *if omitted you'll get latest stable*, examples for specifying:
+        - `1.0.0@beta`: To get latests beta
         - `dev-master` to get current development version (pre release) `master` branch
         - `v0.9.0` to pick a specific release/tag
         - `~0.9.0` to pick latests v0.9.x release
