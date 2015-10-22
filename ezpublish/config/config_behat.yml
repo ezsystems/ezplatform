@@ -1,3 +1,7 @@
+framework:
+    router:
+        resource: "%kernel.root_dir%/config/routing_behat.yml"
+
 imports:
     - { resource: config_dev.yml }
 
