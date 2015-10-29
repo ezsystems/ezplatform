@@ -125,7 +125,7 @@
     You may now complete the eZ Platform installation with ezplatform:install command, example of use:
 
     ```bash
-    $ php -d memory_limit=-1 ezpublish/console ezplatform:install --env prod demo
+    $ php -d memory_limit=-1 ezpublish/console ezplatform:install --env prod clean
     ```
 
     **Note**: Password for the generated `admin` user is `publish`, this name and password is needed when you would like to login to backend Platform UI. Future versions will prompt you for a unique password during installation.

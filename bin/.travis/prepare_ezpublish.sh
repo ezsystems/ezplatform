@@ -21,13 +21,8 @@ if [ "$SYMFONY_VERSION" != "" ] ; then composer require --no-update symfony/symf
 echo "> Install dependencies through composer"
 composer install --no-progress --no-interaction
 
-if [ "$INSTALL" = "demoContentNonUniqueDB" ] ; then
-  echo "> Install ezplatform demo-content"
-  php ezpublish/console ezplatform:install --env=behat --no-debug demo
-else
-  echo "> Install ezplatform demo-clean"
-  php ezpublish/console ezplatform:install --env=behat --no-debug demo-clean
-fi
-
 echo "> Run assetic dump for behat env"
 php ezpublish/console --env=behat --no-debug assetic:dump
+
+echo "> Installing ezplatform clean"
+php ezpublish/console --env=behat ezplatform:install clean
