@@ -1,0 +1,29 @@
+v: 0
+ 
+#meta:
+#  repo: "https://github.com/ezsystems/ezplatform.git"
+
+#require: "ezsystems/demobundle:dev-master as 6.0.x-dev"
+
+integrate:
+  matrix:
+   -
+    install: "demo-clean"
+    arguments: "--profile platformui --suite standard"
+#   -
+#    install: "demo"
+#    arguments: "--profile platformui --suite CopyMoveDelete"
+   -
+    install: "demo"
+    arguments: "--profile demo --suite clean"
+#    meta_repo: "git@github.com:ezsystems/ezstudio.git"
+#    require:
+#     - "ezsystems/demobundle-data:dev-master as 1.0-dev"
+#     - "ezsystems/privacy-cookie-bundle:dev-master as 1.0-dev"
+#    meta_repo: "https://github.com/ezsystems/ezstudio.git"
+#   -
+##     install: "demo-clean" # not mandatory
+#    arguments: "--profile rest --suite fullJson"
+#   -
+##     install: "demo-clean" # not mandatory
+#    arguments: "--profile rest --suite fullXml"
