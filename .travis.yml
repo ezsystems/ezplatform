@@ -13,13 +13,16 @@ addons:
 
 # list of paths/bundle to execute
 env:
-  - INSTALL="demoContentNonUniqueDB" PROFILE="demo" TEST="content"
+#  - INSTALL="demoContentNonUniqueDB" PROFILE="demo" TEST="content"
 ## Disabled as 'clean' doesn't work with the demobundle
 #  - PROFILE="demo" TEST="clean"
-  - PROFILE="rest" TEST="fullJson"
-  - PROFILE="rest" TEST="fullXml"
-  - PROFILE="core"
+#  - PROFILE="rest" TEST="fullJson"
+#  - PROFILE="rest" TEST="fullXml"
+#  - PROFILE="core"
   - PROFILE="platformui" TEST="standard"
+  - PROFILE="platformui" TEST="contentactions"
+  - PROFILE="platformui" TEST="role"
+  - PROFILE="platformui" TEST="fieldtype_integer"
 
 # test only master (+ Pull requests)
 branches:
@@ -38,7 +41,7 @@ before_script:
 
 # execute behat as the script command
 script:
-  - if [ "$TEST" != "" ] ; then php bin/behat -vc behat.yml.dist --profile $PROFILE --suite $TEST ; else php bin/behat -vc behat.yml.dist --profile $PROFILE; fi
+  - if [ "$TEST" != "" ] ; then php bin/behat -vvv -c behat.yml.dist --profile $PROFILE --suite $TEST ; else php bin/behat -vc behat.yml.dist --profile $PROFILE; fi
 
 # disable mail notifications
 notifications:
