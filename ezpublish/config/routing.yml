@@ -29,3 +29,6 @@ _landingPageBundleRoutes:
 
 _ezpublishStudioUIRoutes:
     resource: "@eZStudioUIBundle/Resources/config/routing.yml"
+
+_ezpublishStudioDemoRoutes:
+    resource: "@eZStudioDemoBundle/Resources/config/routing.yml"
