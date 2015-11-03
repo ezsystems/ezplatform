@@ -1,0 +1,46 @@
+# If you don't have access to use virtualhost config this simplified
+# .htaccess file can be used to secure your installation.
+
+DirectoryIndex index.php
+
+# Disabling MultiViews prevents unwanted negotiation, e.g. "/index" should not resolve
+# to the front controller "/index.php" but be rewritten to "/index.php/index".
+<IfModule mod_negotiation.c>
+    Options -MultiViews
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Sets the HTTP_AUTHORIZATION header removed by apache
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Makes it possible to placed your favicon at the root of your web folder
+    RewriteRule ^favicon\.ico - [L]
+
+    # Give direct access to robots.txt for use by crawlers (Google, Bing, Spammers..)
+    RewriteRule ^robots\.txt - [L]
+
+    # To display assets from eZ Platform / Symfony bundles
+    RewriteRule ^bundles/ - [L]
+
+    # Access to images in single server setup (see vhost example for cluster rewrite rule)
+    RewriteRule ^var/([^/]+/)?storage/images(-versioned)?/.* - [L]
+
+    # Additional Assetic rules for prod environments, comment out for dev use
+    # remember to run php ezpublish/console assetic:dump --env=prod
+    RewriteRule ^(css|js|font)/.*\.(css|js|otf|eot|ttf|svg|woff) - [L]
+
+    # Rewrite all other queries to the front controller.
+    RewriteRule .* index.php
+</IfModule>
+
+<IfModule !mod_rewrite.c>
+    <IfModule mod_alias.c>
+        # When mod_rewrite is not available, we instruct a temporary redirect of
+        # the start page to the front controller explicitly so that the website
+        # and the generated links can still be used.
+        RedirectMatch 302 ^/$ /index.php/
+    </IfModule>
+</IfModule>

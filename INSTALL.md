@@ -114,10 +114,23 @@
        $ sudo chmod g+s {ezpublish/{cache,logs,config,sessions},web}
        ```
 
-3. **Configure a VirtualHost**:
+3. **Configure a Webserver**:
 
-    A virtual host setup is the recommended, most secure setup of eZ Publish.
-    General virtual host setup template for Apache and Nginx can be found in [doc/ folder](doc/).
+    eZ Platform can theoretically run with any web server cable of running PHP, but for most secure operation
+    we provide ready made configuration templates for the following servers:
+
+    A. **Apache**
+
+    Recommended setup for prod setup is using a virtual host setup, see [doc/apache2 folder](doc/apache2/) for details.
+
+    Tip: For just testing eZ Platform you may copy provided .htaccess file into web folder:
+    ```bash
+    $ cp doc/apache2/.htaccess web/
+    ```
+
+    B. **Nginx**
+
+    Recommended setup for prod setup is using a virtual host setup, see [doc/nginx folder](doc/nginx/) for details.
 
 
 4. **Run installation command**:
