@@ -23,6 +23,7 @@ env:
   - PROFILE="platformui" TEST="contentactions"
   - PROFILE="platformui" TEST="role"
   - PROFILE="platformui" TEST="fieldtype_integer"
+  - PROFILE="platformui" TEST="user"
 
 # test only master (+ Pull requests)
 branches:
