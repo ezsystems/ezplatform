@@ -7,7 +7,7 @@ For information on which version of Apache is supported with your version of eZ 
 Prerequisites
 -------------
 - Apache 2.x must be installed in prefork mode
-- Modules enabled: `mode_php`, `mod_rewrite`, `mod_setenvif` and optionally `mod_expires` for improved performance in production.
+- Modules enabled: `mod_php`, `mod_rewrite`, `mod_setenvif` and optionally `mod_expires` for improved performance in production.
 
 
 Configuration
