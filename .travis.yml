@@ -30,7 +30,7 @@ before_script:
 
 # execute behat as the script command
 script:
-  - php bin/behat -vc behat.yml.dist $ARGS'
+  - php bin/behat -vc behat.yml.dist $ARGS --tags='~@broken'
 
 # disable mail notifications
 notifications:
