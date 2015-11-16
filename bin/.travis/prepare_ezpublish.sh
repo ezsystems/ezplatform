@@ -15,6 +15,9 @@ sudo find {ezpublish/{cache,logs,config,sessions},web} -type f | sudo xargs chmo
 echo "> Copy behat specific parameters.yml settings"
 cp bin/.travis/parameters.yml ezpublish/config/
 
+# Switch to another Symfony version if asked for
+if [ "$SYMFONY_VERSION" != "" ] ; then composer require --no-update symfony/symfony="$SYMFONY_VERSION" ; fi;
+
 echo "> Install dependencies through composer"
 composer install --no-progress --no-interaction
 
