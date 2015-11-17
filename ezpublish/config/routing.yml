@@ -32,3 +32,6 @@ _ezpublishStudioUIRoutes:
 
 _ezpublishStudioDemoRoutes:
     resource: "@eZStudioDemoBundle/Resources/config/routing.yml"
+
+_ezpublishFlexWorkflowRoutes:
+    resource: "@FlexWorkflowBundle/Resources/config/routing.yml"
