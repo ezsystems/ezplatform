@@ -23,11 +23,11 @@ composer install --no-progress --no-interaction
 
 if [ "$INSTALL" = "demoContentNonUniqueDB" ] ; then
   echo "> Install ezplatform demo-content"
-  php ezpublish/console ezplatform:install --env=behat --no-debug demo
+  php ezpublish/console ezplatform:install --env=behat demo
 else
   echo "> Install ezplatform demo-clean"
-  php ezpublish/console ezplatform:install --env=behat --no-debug demo-clean
+  php ezpublish/console ezplatform:install --env=behat demo-clean
 fi
 
 echo "> Run assetic dump for behat env"
-php ezpublish/console --env=behat --no-debug assetic:dump
+php ezpublish/console --env=behat assetic:dump
