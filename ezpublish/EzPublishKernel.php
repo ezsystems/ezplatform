@@ -42,6 +42,7 @@ class EzPublishKernel extends Kernel
             new EzSystems\StudioUIBundle\EzSystemsStudioUIBundle(),
             new EzSystems\StudioDemoBundle\EzSystemsStudioDemoBundle(),
             new EzSystems\ShareButtonsBundle\EzSystemsShareButtonsBundle(),
+            new EzSystems\FlexWorkflowBundle\EzSystemsFlexWorkflowBundle(),
             new EzSystems\PlatformUIAssetsBundle\EzSystemsPlatformUIAssetsBundle(),
             new EzSystems\PlatformUIBundle\EzSystemsPlatformUIBundle(),
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
