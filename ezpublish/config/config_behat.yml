@@ -4,6 +4,7 @@ framework:
 
 imports:
     - { resource: config_dev.yml }
+    - { resource: ezplatform_behat.yml }
 
 framework:
     profiler:
