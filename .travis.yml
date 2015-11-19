@@ -9,12 +9,9 @@ php:
 
 # list of paths/bundle to execute
 env:
-  - INSTALL="demoContentNonUniqueDB" PROFILE="demo" TEST="content"
-## Disabled as 'clean' doesn't work with the demobundle
-#  - PROFILE="demo" TEST="clean"
-  - PROFILE="rest" TEST="fullJson"
-  - PROFILE="rest" TEST="fullXml"
-  - PROFILE="core"
+  - ARGS="--profile=rest --suite=fullJson"
+  - ARGS="--profile=rest --suite=fullXml"
+  - ARGS="--profile=core"
 
 # test only master (+ Pull requests)
 branches:
@@ -33,7 +30,7 @@ before_script:
 
 # execute behat as the script command
 script:
-  - if [ "$TEST" != "" ] ; then php bin/behat -vc behat.yml.dist --profile $PROFILE --suite $TEST ; else php bin/behat -vc behat.yml.dist --profile $PROFILE; fi
+  - php bin/behat -vc behat.yml.dist $ARGS --tags='~@broken'
 
 # disable mail notifications
 notifications:

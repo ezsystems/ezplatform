@@ -28,4 +28,3 @@ imports:
     - vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishCoreBundle/behat.yml
     - vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishRestBundle/behat.yml
     - vendor/ezsystems/platform-ui-bundle/behat.yml
-    - vendor/ezsystems/demobundle/EzSystems/DemoBundle/behat.yml

@@ -1,0 +1,17 @@
+ezpublish:
+    repositories:
+        default:
+            engine: legacy
+
+    # Siteaccess configuration, with one siteaccess per default
+    siteaccess:
+        list: [site]
+        groups:
+            site_group: [site]
+        default_siteaccess: site
+        match:
+            URIElement: 1
+
+    system:
+        site_group:
+            languages: [eng-GB]

@@ -23,6 +23,3 @@ _liip_imagine:
 
 _ezpublishPlatformUIRoutes:
     resource: "@eZPlatformUIBundle/Resources/config/routing.yml"
-
-_ezpublishDemoRoutes:
-    resource: "@eZDemoBundle/Resources/config/routing.yml"
