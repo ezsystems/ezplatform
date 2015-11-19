@@ -12,6 +12,7 @@ doctrine:
 
 # Stash is used for persistence cache
 stash:
+    tracking: false # disables query logging
     caches:
         default:
             drivers:
