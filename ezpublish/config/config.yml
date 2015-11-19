@@ -45,6 +45,8 @@ stash:
             # you need to change the keyHashFunction used to generate cache directories to "crc32"
             # FileSystem:
             #    keyHashFunction: crc32
+    # Disable tracking of cache values to avoid large disk use when using web profiler
+    tracking_values: false
 
 framework:
     esi:             ~
