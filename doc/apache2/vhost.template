@@ -75,7 +75,8 @@
     <IfModule mod_rewrite.c>
         RewriteEngine On
 
-        # For FastCGI mode or when using PHP-FPM, to get basic auth working.
+        # Sets the HTTP_AUTHORIZATION header removed by apache
+        RewriteCond %{HTTP:Authorization} .
         RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
         # Needed for ci testing, you can optionally remove this.
