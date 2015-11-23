@@ -7,9 +7,9 @@ v: 0
 
 integrate:
   matrix:
-   -
-    install: "demo-clean"
-    arguments: "--profile platformui --suite standard"
+#   -
+#    install: "demo-clean"
+#    arguments: "--profile platformui --suite standard"
 #   -
 #    install: "demo"
 #    arguments: "--profile platformui --suite CopyMoveDelete"
