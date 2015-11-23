@@ -33,7 +33,6 @@ The [eZ Publish 5](https://github.com/ezsystems/ezpublish-community) repository,
  - Allows to rapidly set up *Contextual override* of content display twig templates as well as controller based on Content type, section, and much more.
  - Helpers, services, events and signals allowing you to efficiently create everything from simple web sites to complex applications
 - **PlatformUIBundle**: A modern, extensible "Backend" UI for managing content & administering the site
-- **DemoBundle**: Demo web site showcasing how a website can be built with the CMS *(more examples planned)*
 
 ### Further information:
 eZ Platform is 100% open source and is released as companion to a commercial *eZ Studio* software which adds advanced

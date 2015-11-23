@@ -1,0 +1,11 @@
+imports:
+    - { resource: ezplatform.yml }
+
+ezpublish:
+    siteaccess:
+        list: ["site", "other_site"]
+        groups:
+            site_group: ["site", "other_site"]
+        default_siteaccess: "site"
+        match:
+            URIElement: 1
