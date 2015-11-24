@@ -3,11 +3,10 @@ v: 0
 # ci
 integrate:
   # Two common arguments for all matrix values
-  install: "demo-clean"
+  install: "clean"
   command: "bin/behat"
   matrix:
    - {arguments: "-v --profile platformui --tags common"}
-   - {arguments: "-v --profile demo --suite content", install: "demo"}
    - {arguments: "-v --profile rest --suite fullJson"}
    - {arguments: "-v --profile rest --suite fullXml"}
    - {arguments: "-v --profile core"}
