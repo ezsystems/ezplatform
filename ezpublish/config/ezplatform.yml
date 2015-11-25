@@ -1,7 +1,19 @@
 ezpublish:
     repositories:
+        # "default" repository, with default values for storage
+        # Same as:
+        # default:
+        #     storage:
+        #         engine: legacy
+        #         connection: default
+        #     search:
+        #         engine: %search_engine%
+        #         connection: default
         default:
-            engine: legacy
+            storage: ~
+            search:
+                engine: %search_engine%
+                connection: default
 
     # Siteaccess configuration, with one siteaccess per default
     siteaccess:
