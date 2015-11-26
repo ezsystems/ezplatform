@@ -10,7 +10,7 @@
         }
     ],
     "repositories": [
-        { "type": "composer", "url": "https://updates.ez.no/studio" }
+        { "type": "composer", "url": "https://updates.ez.no/ttl" }
     ],
     "replace": {
         "ezsystems/ezpublish-community": "*"
