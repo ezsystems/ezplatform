@@ -18,7 +18,7 @@
 
 ## Install
 
-1. **Install/Extract eZ Platform**:
+1. **Install/Extract eZ Platform**<a name="install-1-extract"></a>:
 
     There are two ways to install eZ Platform described below, what is common is that you should make sure
     relevant settings are generated into `ezpublish/config/parameters.yml` as a result of this step.
@@ -59,7 +59,7 @@
        - For core development: Add '--prefer-source' to get full git clones, and remove '--no-dev' to get things like phpunit and behat installed.
        - Further reading: https://getcomposer.org/doc/03-cli.md#create-project
 
-2. *Only for *NIX users* **Setup folder rights**:
+2. *Only for *NIX users* **Setup folder rights**<a name="install-2-folder-rights"></a>:
 
        One common issue is that the `ezpublish/cache`, `ezpublish/logs` and `ezpublish/config` directories **must be writable both by the web server and the command line user**.
        If your web server user is different from your command line user, you can run the following commands just once in your project to ensure that permissions will be set up properly.
@@ -114,13 +114,13 @@
        $ sudo chmod g+s {ezpublish/{cache,logs,config,sessions},web}
        ```
 
-3. **Configure a VirtualHost**:
+3. **Configure a VirtualHost**<a name="install-3-vhost"></a>:
 
     A virtual host setup is the recommended, most secure setup of eZ Publish.
     General virtual host setup template for Apache and Nginx can be found in [doc/ folder](doc/).
 
 
-4. **Run installation command**:
+4. **Run installation command**<a name="install-4-db-setup"></a>:
 
     You may now complete the eZ Platform installation with ezplatform:install command, example of use:
 
