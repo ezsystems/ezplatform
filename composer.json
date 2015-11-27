@@ -2,7 +2,7 @@
     "name": "ezsystems/ezstudio",
     "description": "eZ Studio distribution",
     "homepage": "https://github.com/ezsystems/ezstudio",
-    "license": "BUL-2.1",
+    "license": "TTL-2.0",
     "authors": [
         {
             "name": "eZ dev-team & eZ Community",

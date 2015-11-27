@@ -2,225 +2,305 @@ Copyright (C) 1999-2015 eZ Systems AS. All rights reserved.
 This source code is provided under the following license:
 
 
-eZ Business Use License Agreement eZ BUL Version 2.1
+eZ Trial and Test License Agreement ("eZ TTL") Version 2.0
 
 
-IMPORTANT: Please read the following eZ Business Use License Agreement
-carefully.
+IMPORTANT: Please read the following license agreement carefully.
 
-This eZ Business License Agreement (“eZ BUL”) is between eZ systems AS
-(Norwegian business registration no. 981601564), a Norwegian company
-("Licensor", “eZ” or “we”), and the customer ("Licensee" or "you"). By
-installing all or any portion of the Licensed Software (or authorizing
-any other person to do so), you accept the terms and conditions of this
-eZ BUL. If you acquired the Licensed Software without an opportunity to
-review this eZ BUL and do not accept the eZ BUL, you must: (a) not use
-the Licensed Software and (b) return or delete the Licensed Software,
-with your certification of deletion, within thirty (30) days of the
-purchase date.
+This license agreement is between eZ systems AS (Norwegian business
+registration no. 981 601 564), a Norwegian company ("Licensor" or "eZ"),
+and a test or trial user ("Licensee" or "you"). By installing all or any
+portion of the software (or authorizing any other person to do so), you
+accept the terms and conditions of this license. If you acquired the
+software without an opportunity to review this license and do not accept
+the license, you must: (a) not use the software and (b) return or delete
+the software, with your certification of deletion, within thirty (30)
+days of the acquire date.
 
-The parties hereby agree to the following terms and conditions:
+This license agreement is entered into in connection with Licensee's
+participation in testing a new version of Licensor software and is valid
+for 6 months from the date the software was acquired (downloaded).
+
+The parties hereby agree to the following software license terms:
+
 
 1. Definitions
+
 "Licensed Software" means the eZ Publish Enterprise Edition content
 management system or other software product downloaded, ordered or
-otherwise legally acquired (licensed) by you from eZ (or other party
-authorized by eZ).
+otherwise legally acquired (licensed) by Licensee from Licensor (or
+other party authorized by the Licensor) under these terms.
 
 "Licensed Copy" means one sample of the Licensed Software.
+
+"Website" means up to three defined site access configurations (unique
+URLs) that may for instance consist of one site for public use, one site
+for internal use (such as an intranet) and one site for site
+administrator use, communicated an unlimited number of channels
+(such as traditional web, mobile).
 
 2. License grant
 
 2.1 You may
-If you have entered into an eZ Publish Enterprise Subscription
-Agreement, you have paid the correct fees and you comply with the terms
-of this eZ BUL, we grant you a limited, non-exclusive and
+Licensor grants you a limited, non-exclusive, time limited and
 non-transferable right to:
+(a) install and run the Licensed Copy on the agreed number of Websites
+for internal testing purposes;
+(b) make enhancements, patches, workarounds, bug fixes or other
+modifications (collectively "Licensee Modifications") to the Licensed
+Copy, solely for your internal testing of the Licensed Software, and
+(c) perform presentations based on the Licensed Software, including
+building and presenting sample solutions to your clients or potential
+clients.
 
-(a) install and run the Licensed Copy on the agreed number of websites
-or with the agreed number of database content objects; and
-
-(b) modify or make improvements, patches, workarounds and bug fixes
-(collectively "Licensee Modifications") to the Licensed Copy, or permit
-a third party to do so on Licensee's behalf, solely for use by the
-Licensee and its subsidiaries or affiliates.
+Since the license is free of charge, you are obliged to submit Licensee
+Modifications to eZ on a continuous basis to contribution@ez.no as
+contributions, see section 7.1. Such contribution must include a short
+note explaining the Licensee Modification.
 
 Licensee may make a reasonable number of copies of the Licensed Copy as
 required for backup and archival purposes only.
 
 2.2 You may not
 Licensee may use the Licensed Software only as expressly granted in
-section 2. Without limiting the foregoing, you may not: (a) give, lease,
-license, sell, make available, or distribute any part of the Licensed
-Software or Licensee Modifications to any third party, except as
-otherwise expressly permitted herein; (b) use the Licensed Software to
-operate as a time-sharing, outsourcing, service bureau, application
-service provider, managed service provider environment or similar
-service directed towards and performed on behalf or for the benefit of a
-third party; (c) copy the Licensed Software onto any public or
-distributed network; or (d) change any right notices which appear in the
-Licensed Software.
-
-3. Your responsibility
-Except as expressly described in this eZ BUL or in a separate written
-agreement, you alone are solely responsible for the installation of the
-Licensed Software, its operation, supervision, maintenance, management
-and related training and support. The same shall apply to any related
-installation, maintenance and configuration of computer hardware used by
+section 2.1. Without limiting the foregoing, Licensee may not: (a) use
+or operate the Licensed Software for regular business use; (b) give,
+lease, license, sell, make available, or distribute any part of the
+Licensed Software or Licensee Modifications to any third party, except
+as otherwise expressly permitted herein; (c) use the Licensed Software
+to operate in or as a time-sharing, outsourcing, service bureau,
+application service provider, managed service provider environment or
+similar service directed towards and performed on behalf or for the
+benefit of a third party; (d) copy the Licensed Software onto any public
+or distributed network; or (e) change any rights notices which appear in
 the Licensed Software.
 
-4. Price and payment
-You may use the Licensed Software free of charge if you are a current
-and paying eZ Publish Enterprise Subscription Agreement customer, with a
-subscription agreement covering the Licensed Software. If not, you may
-not use the Licensed Software.
+3. Your responsibility
+Except as expressly set forth herein or in a separate written agreement,
+Licensee is the sole responsible for the installation of the Licensed
+Software, its operation, supervision, maintenance, management and
+related training and support. You are also the sole responsible for any
+related installation, maintenance and configuration of computer hardware
+used by the Licensed Software.
 
-Please see the eZ Publish Enterprise Subscription Agreement for the
-prices and terms of payment, that apply.
-
-Within six months of the termination or expiration of any such eZ
-Publish Enterprise Subscription Agreement, all use of the Licensed
-Software has to stop, unless the eZ Publish Enterprise Subscription
-Agreement is renewed within such six month period. During this six 
-month period, eZ is not liable for any loss or damage (of any kind) with
-you.
+4. Price
+You may use the Software free of charge.
 
 5. Audit rights
-To make sure everyone is contributing their part to enable us to
-continue making great software, we need a right at all times to audit
-our Licensors. During the term of this eZ BUL and for a three year
-period following its termination, we therefor may conduct periodic
-reviews of your records relating to the Licensed Software for the
-purpose of verifying Licensee's compliance with this eZ BUL, eZ Publish
-Enterprise Subscription Agreement and related agreements. During this
-three year period, you are obliged to maintain complete and accurate
-books and other records related to software licensing and related
-payments. We must exercise its right of audit upon no fewer than 15
-days' prior notice. You will then provide us with reasonable access and
-assistance for the audit, including reasonable use of personnel,
-available office equipment and space. In return, we must give you a copy
-of the results of the audit, if you ask us for it.
+During the term of this license and for a three (3) year period
+following its termination, Licensor may conduct periodic reviews of
+Licensee's records relating to its Licensed Software for the purpose of
+verifying Licensee's compliance with this license and any related
+agreements. During this three (3) year period, you are obliged to
+maintain complete and accurate books and other records related to
+software licensing and related payments. Licensor must exercise its
+right of audit upon no fewer than 15 days' prior notice. Licensee will
+provide Licensor with reasonable access and assistance for the audit,
+including reasonable use of available office equipment and space.
+Licensor shall upon request deliver to Licensee a copy of the results of
+any such audit.
 
 6. Termination
-eZ may terminate this eZ BUL immediately if you are in breach any of its
-provisions and such breach remains uncured 30 days after you receive
-notice of the breach. In the event that you (a) fail to pay eZ any
-outstanding amounts, including subscription fees or license fees for
-other software, on time, or (b) are or become liquidated, dissolved,
+Licensor may terminate this license immediately if you are in breach any
+of its provisions and such breach remains uncured 30 days after receipt
+of notice. In the event that you are or becomes liquidated, dissolved,
 bankrupt or insolvent, whether voluntarily or involuntarily, or is to
-take any action to be declared so, we may terminate this eZ BUL
-immediately. Upon cancellation or other termination of this eZ BUL, for
+take any action to be so declared, Licensor may terminate this license
+immediately. Upon cancellation or other termination of this license, for
 any reason, you must immediately destroy all copies of the Licensed
-Software, and confirm the destruction within 7 (seven) days.
+Software, and confirm the destruction within  7 (seven) days. Sections 5
+through 11 shall survive the termination of this license for any reason.
 
 7. Intellectual property rights
-You agree that no copyright, other intellectual property or proprietary
-rights in the Licensed Software and related documentation are
-transferred to you. No trademarks of eZ may be used by you without eZ’
-express written permission. If permission is granted, use must always
-take place in accordance with our guidelines as they may be updated from
-time to time. For Licensee Modifications, you must, in the modified
-files and in a separate text file, clearly indicate that the Licensed
-Software contains modifications and state their dates and location.
 
-8. Limited warranties
-We warrant that the Licensed Software will remain in substantial
-conformance with the current documentation of the Licensed Software. We
-disclaim, and you waive, all warranties, whether express or implied,
-including warranties of merchantability, fitness for a particular
-purpose, non-infringement, system integration, non-interference and
-accuracy of informational content. We do not warrant that the Licensed
-Software will meet your requirements or that the operation of it will be
-uninterrupted or error-free, or that errors will be corrected. The
-entire risk of the Licensed Software's quality and performance is
-therefore with you
+7.1 General
+Licensee agrees that the copyright and all other intellectual property
+and proprietary rights of whatever nature in the Licensed Software and
+related documentation are not by this license transferred to you. No
+trademarks of eZ may be used by you without Licensor's express written
+permission. If permission is grated, use must always take place in
+accordance with the applicable Licensor guidelines as they may be
+updated from time to time. For Licensee Modifications, you must, in the
+modified files and in a separate text file, clearly indicate that the
+Licensed Software contains modifications and state their dates.
 
-9. Limitation of liability
-To the extent permitted by law, we do not have liability with respect to
-obligations described in this eZ BUL or otherwise for direct,
-consequential, exemplary, special, indirect, incidental or punitive
-damages, including any lost profits or lost savings (whether resulting
-from impaired or lost data, software or computer failure or any other
-cause), even if we have been advised of the possibility of such damages.
+7.2 Contribution of Licensee Modifications
+To the extent that any contributed Licensee Modifications incorporates
+any element which is subject to any intellectual property right owned by
+Licensee, Licensee hereby grants to eZ an unrestricted, non-exclusive,
+perpetual, royalty-free, world-wide, irrevocable and fully transferable
+license to make, use, sell, offer for sale, reproduce, create
+derivatives of, publish, display, sublicense or otherwise practice such
+intellectual property right.
+
+Regarding any copyrights in Licensee Modifications:
+- You hereby assign to us joint ownership, and to the extent that such
+  assignment is or becomes invalid, ineffective or unenforceable, you
+  hereby grant to us a perpetual, irrevocable, non-exclusive, worldwide,
+  no-charge unrestricted license to exercise all rights under those
+  copyrights. This includes, at our option, the right to sublicense
+  these same rights to third parties through multiple levels of
+  sub-licensees or other licensing arrangements;
+
+- You agree that each of us can do all things in relation to Licensee
+  Modifications as if each of us were sole and independent copyright
+  holders. If one of us makes a derivative work the Licensee
+  Modifications, the one who makes the derivative work (or has it made)
+  will be the sole owner of that derivative work, hereunder make, have
+  made, use, license, offer to license, import, and otherwise transfer
+  your contribution in whole or in part, whether at a charge or at
+  no-charge;
+
+- You agree that neither of us have any duty to consult with, obtain the
+  consent of, pay or render accounts to the other for any use or
+  distribution of the material.
+
+With respect to the Licensee Modifications, you represent that:
+- it is an original work by you and that you can legally grant the
+  rights set out in these terms;
+- it does not to the best of your knowledge violate any third party's
+  copyrights, trademarks, patents or other intellectual property rights.
+
+8. Disclaimer of warranties
+The Licensed Software is licensed "as is," without any warranties
+whatsoever. Licensor expressly disclaims, and licensee expressly waives,
+all warranties, whether express or implied, including warranties of
+merchantability, fitness for a particular purpose, non-infringement,
+system integration, non-interference and accuracy of informational
+content. Licensor does not warrant that the licensed software will meet
+licensee's requirements or that the operation of the licensed software
+will be uninterrupted or error-free, or that errors will be corrected.
+The entire risk of the licensed software's quality and performance is
+with licensee.
+
+9. Indemnification
+Licensee agrees to indemnify and hold Licensor harmless against any
+damage or loss (including reasonable attorneys' fees) related to any
+claim based upon: (a) use of the Licensed Software in a manner
+prohibited under this license or in a manner for which the Licensed
+Software was not designed; (b) Licensee Modifications or changes made by
+Licensee to the Licensed Software (where use of unmodified Licensed
+Software would not infringe); or (c) changes made, or actions taken, by
+Licensor upon Licensee's direct instructions.
+
+10. Limitation of liability
+To the extent permitted by applicable law, licensor shall have no
+liability with respect to its obligations under this license or
+otherwise for direct, consequential, exemplary, special, indirect,
+incidental or punitive damages, including any lost profits or lost
+savings (whether resulting from impaired or lost data, software or
+computer failure or any other cause), even if it has been advised of the
+possibility of such damages.
 
 This limitation of liability applies to any default, including breach of
 contract, breach of warranty, negligence, misrepresentations and other
-injury. We both agree that the remedies and limitations herein allocate
-the risks between us as authorized by law. The license fee (none) is set
-in reliance upon this allocation of risk and the exclusion of damages as
-set forth in this eZ BUL.
+torts. The parties agree that the remedies and limitations herein
+allocate the risks between the parties as authorized by applicable laws.
+The license fee (non) is set in reliance upon this allocation of risk
+and the exclusion of certain damages as set forth in this license.
 
-10. Miscellaneous
+11. Miscellaneous
 
-10.1 Termination for patent action
-This eZ BUL shall terminate automatically and you may no longer exercise
-any of the rights granted to you by this eZ BUL as of the date you
-commence an action, including a cross-claim or counterclaim, against eZ,
-any third party supplier eZ is distributing software for, or other
-licensee, alleging that the Licensed Software infringes a patent.
+11.1 Interpretation
+Failure by Licensor to exercise any right or remedy does not signify
+acceptance of the event giving rise to such right or remedy, or loss of
+such right. No claim arising out of this License may be brought by you
+more than one year after the cause of the claim arose.
 
-10.2 Transfer
-Without eZ’ written permission, you may not sublicense or otherwise
-transfer your rights and obligations under this eZ BUL to any other
-person or party. Any attempt by you to do so, will terminate this eZ BUL
-without further notice. eZ may assign its rights hereunder at any time
-without consent.
+If any part of this license is held by a court of competent jurisdiction
+to be illegal or unenforceable, the validity or enforceability of the
+remainder of this License shall not be affected and such provision shall
+be deemed modified to the minimum extent necessary to make such
+provision consistent with applicable law. In its modified form, such
+provision shall be enforceable and enforced.
 
-10.3 Governing law
-This eZ BUL is to be governed by the laws of Norway, without regard to
-any conflict of law provisions.
+11.2 Termination for patent action
+This license shall terminate automatically and you may no longer
+exercise any of the rights granted to you by this license as of the date
+you commence an action, including a cross-claim or counterclaim, against
+eZ, an eZ partner or other licensee of eZ software alleging that the
+Software infringes a patent.
 
-10.4 Disputes and legal venue
-If we disagree, you and eZ will first attempt to resolve the
-disagreement through discussions and negotiations.
+11.3 Assignment
+Without the prior written consent of Licensor, you may not assign,
+sublicense or otherwise transfer this license or its rights or
+obligations under this license to any person or party, whether by
+operation of law or otherwise. Any attempt by you to assign this license
+without Licensor's prior written consent is void and will terminate the
+license without further notice.
 
-If you and eZ cannot agree, the dispute can be referred to Oslo City
-Court as mandatory legal venue by either one of us. However, if you are
-located in a country that does not have a bilateral or multilateral
-ruling enforcement treaty with Norway, the dispute must be referred to
-and finally determined by arbitration administered by the World
-Intellectual Property Organization (WIPO) Arbitration and Mediation
-Centre in accordance with the WIPO Arbitration Rules.
+11.4 Governing law
+This License shall be deemed to have been executed in Norway and shall
+be governed by the laws of Norway, without regard to any conflict of law
+provisions.
 
-The place of arbitration is to be Oslo, Norway. The arbitrator (only
-one) will decide based on this eZ BUL and Norwegian law. We both agree
-that the arbitrator will have the power to decide all matters, and to
-award any remedies. All proceedings and documents shall remain strictly
-confidential.
+11.5 Disputes and legal venue
+The parties shall first attempt to resolve any disputes, controversies
+or claims (collectively "Dispute") arising out of or relating to this
+license through amicable discussions and negotiations.
+
+If a Dispute cannot be resolved amicably between the parties, such
+Dispute shall be referred to Oslo City Court as mandatory legal venue.
+However, if you are located in a country that does not have a bilateral
+or multilateral ruling enforcement treaty with Norway, the Dispute shall
+be referred to and finally determined by arbitration administered by the
+World Intellectual Property Organization (WIPO) Arbitration and
+Mediation Centre in accordance with the WIPO Arbitration Rules.
+
+The place of arbitration shall be in Oslo, Norway. The arbitrator - of
+which there shall be only one - shall be bound by the provisions of this
+license and base the award on Norwegian substantive law and judicial
+precedent. The parties agree that the arbitrator shall have the power to
+decide all matters, including arbitrability, and to award any remedies,
+including attorneys' fees, costs and equitable relief, available under
+applicable law. Either party may enforce any judgment rendered by the
+arbitrator in any court of competent jurisdiction. The parties further
+agree and acknowledge that arbitration shall be the sole and final
+remedy for any dispute between the parties. All proceedings and
+documents shall remain strictly confidential.
 
 In no event shall the United Nations Convention on Contracts for the
-International Sale of Goods apply to, or govern, this eZ BUL.
+International Sale of Goods apply to, or govern, this License.
 
-10.5 Notices
-Any notices we need to send each other, must be delivered and addressed
-to you at the address you provided to eZ (or our representative) at the
-time of the order, and to eZ at
+11.6 Notices
+Any notice under this license shall be delivered and addressed to
+Licensee at the address provided to Licensor (or authorized
+representative) at the time of order, and to Licensor at
 
-Attn: Software Licensing Dept.,
-
+Attn: Software Licensing Dept/CLA,
 eZ Systems AS,
-
 Klostergata 30,
-
 N-3732 Skien,
-
 Norway
+
+Notices are deemed received by any party: (a) on the day given, if
+personally delivered or if sent by confirmed facsimile transmission,
+receipt verified; (b) on the third day after deposit, if mailed by
+certified, first class, postage prepaid, return receipt requested mail,
+or by reputable, expedited overnight courier; or (c) on the fifth day
+after deposit, if sent by reputable, expedited international courier.
 
 Either party may change its address for notice purposes upon notice in
 accordance with this section.
 
-10.6 Export law assurances
-You are responsible for complying with any applicable local laws,
-including export and import regulations.
+11.7 Export law assurances
+Licensee is responsible for complying with any applicable local laws,
+including but not limited to export and import regulations.
 
-10.7 Entire agreement
-This eZ BUL comprises the entire agreement, and replaces all earlier
-proposals, understandings and agreements, oral and written, between us.
+11.8 Entire agreement
+This license comprises the entire agreement, and supersedes and merges
+all prior proposals, understandings and agreements, oral and written,
+between the parties relating to the subject matter of this license.
+Licensor's acceptance of any document shall not be construed as an
+acceptance of provisions which are in any way in conflict or
+inconsistent with, or in addition to, this license, unless such terms
+are separately and specifically accepted in writing by an authorized
+officer of Licensor.
 
-10.8 Update of terms
-In order to be able to manage all those licensing software from us, we
-may from time to time in our discretion issue new versions of this
-license. Unless you within 30 days from when you were first made aware
-or should have become aware of the new license have not objected in
-writing to us, the new version of the eZ BUL is to be deemed as accepted
-by you.
+11.9 Update of terms
+The Licensor may from time to time issue new versions of this license.
+Unless you within 30 days from when you were first made aware or should
+have become aware of the new license has not made reservations directed
+at Licensor in writing, such new version of the license shall be deemed
+as accepted by you.
+
