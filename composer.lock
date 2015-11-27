@@ -435,24 +435,23 @@
         },
         {
             "name": "doctrine/doctrine-cache-bundle",
-            "version": "1.2.1",
+            "version": "1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineCacheBundle.git",
-                "reference": "3233bc78e222d528ca89a6a47d48d6f37888e95e"
+                "reference": "030ff41ef1db66370b36467086bfb817a661fe6a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineCacheBundle/zipball/3233bc78e222d528ca89a6a47d48d6f37888e95e",
-                "reference": "3233bc78e222d528ca89a6a47d48d6f37888e95e",
+                "url": "https://api.github.com/repos/doctrine/DoctrineCacheBundle/zipball/030ff41ef1db66370b36467086bfb817a661fe6a",
+                "reference": "030ff41ef1db66370b36467086bfb817a661fe6a",
                 "shasum": ""
             },
             "require": {
                 "doctrine/cache": "^1.4.2",
                 "doctrine/inflector": "~1.0",
                 "php": ">=5.3.2",
-                "symfony/doctrine-bridge": "~2.2|~3.0",
-                "symfony/security-acl": "~2.3|~3.0"
+                "symfony/doctrine-bridge": "~2.2|~3.0"
             },
             "require-dev": {
                 "instaclick/coding-standard": "~1.1",
@@ -465,13 +464,17 @@
                 "symfony/finder": "~2.2|~3.0",
                 "symfony/framework-bundle": "~2.2|~3.0",
                 "symfony/phpunit-bridge": "~2.7|~3.0",
+                "symfony/security-acl": "~2.3|~3.0",
                 "symfony/validator": "~2.2|~3.0",
                 "symfony/yaml": "~2.2|~3.0"
+            },
+            "suggest": {
+                "symfony/security-acl": "For using this bundle to cache ACLs"
             },
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "1.2.x-dev"
                 }
             },
             "autoload": {
@@ -515,7 +518,7 @@
                 "cache",
                 "caching"
             ],
-            "time": "2015-11-05 13:48:27"
+            "time": "2015-11-27 04:59:07"
         },
         {
             "name": "doctrine/inflector",
@@ -684,20 +687,20 @@
         },
         {
             "name": "ezsystems/ezplatform-solr-search-engine",
-            "version": "v1.0.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezplatform-solr-search-engine.git",
-                "reference": "c9af864d1fe9856cfafa28e56ef07af12beea644"
+                "reference": "0e3a10ba1230bd0c929a78068b13b1d46299c7d4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezplatform-solr-search-engine/zipball/c9af864d1fe9856cfafa28e56ef07af12beea644",
-                "reference": "c9af864d1fe9856cfafa28e56ef07af12beea644",
+                "url": "https://api.github.com/repos/ezsystems/ezplatform-solr-search-engine/zipball/0e3a10ba1230bd0c929a78068b13b1d46299c7d4",
+                "reference": "0e3a10ba1230bd0c929a78068b13b1d46299c7d4",
                 "shasum": ""
             },
             "require": {
-                "ezsystems/ezpublish-kernel": "~5.4.5@dev | ~6.0@dev"
+                "ezsystems/ezpublish-kernel": "~5.4.5 | ~6.0.0@dev"
             },
             "require-dev": {
                 "matthiasnoback/symfony-dependency-injection-test": "0.*",
@@ -729,7 +732,7 @@
                 }
             ],
             "description": "Solr search engine implementation for eZ Platform",
-            "time": "2015-11-09 12:04:18"
+            "time": "2015-11-25 09:06:58"
         },
         {
             "name": "ezsystems/ezplatform-xmltext-fieldtype",
@@ -785,16 +788,16 @@
         },
         {
             "name": "ezsystems/ezpublish-kernel",
-            "version": "v6.0.0-beta7",
+            "version": "v6.0.0-beta8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-kernel.git",
-                "reference": "37775b1ad7f6ed42eb2a63e124be25e4c69acffc"
+                "reference": "f055dedd77feef3ce07b98f2e93bd7c20edb09a2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/37775b1ad7f6ed42eb2a63e124be25e4c69acffc",
-                "reference": "37775b1ad7f6ed42eb2a63e124be25e4c69acffc",
+                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/f055dedd77feef3ce07b98f2e93bd7c20edb09a2",
+                "reference": "f055dedd77feef3ce07b98f2e93bd7c20edb09a2",
                 "shasum": ""
             },
             "require": {
@@ -863,20 +866,20 @@
             ],
             "description": "eZ Publish API and kernel. This is the heart of eZ Publish 5.",
             "homepage": "http://share.ez.no",
-            "time": "2015-11-19 22:23:25"
+            "time": "2015-11-27 11:12:21"
         },
         {
             "name": "ezsystems/platform-ui-assets-bundle",
-            "version": "v1.0.0-beta4",
+            "version": "v1.0.0-beta5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/PlatformUIAssetsBundle.git",
-                "reference": "1ebb95e136f9b5c5d03f71301ca69ff0a00eeb97"
+                "reference": "2b890764b0879cf7e4981369abbb0cb71f9171df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/PlatformUIAssetsBundle/zipball/1ebb95e136f9b5c5d03f71301ca69ff0a00eeb97",
-                "reference": "1ebb95e136f9b5c5d03f71301ca69ff0a00eeb97",
+                "url": "https://api.github.com/repos/ezsystems/PlatformUIAssetsBundle/zipball/2b890764b0879cf7e4981369abbb0cb71f9171df",
+                "reference": "2b890764b0879cf7e4981369abbb0cb71f9171df",
                 "shasum": ""
             },
             "require": {
@@ -899,20 +902,20 @@
                 }
             ],
             "description": "External assets dependencies for PlatformUIBundle",
-            "time": "2015-11-17 08:47:07"
+            "time": "2015-11-27 15:02:26"
         },
         {
             "name": "ezsystems/platform-ui-bundle",
-            "version": "v1.0.0-beta8",
+            "version": "v1.0.0-beta9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/PlatformUIBundle.git",
-                "reference": "1704e5aebbb913245f7c215192a02d94a0e80a9f"
+                "reference": "46959a8bd499011b3a2c2fe0ce54275ec50f497a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/PlatformUIBundle/zipball/1704e5aebbb913245f7c215192a02d94a0e80a9f",
-                "reference": "1704e5aebbb913245f7c215192a02d94a0e80a9f",
+                "url": "https://api.github.com/repos/ezsystems/PlatformUIBundle/zipball/46959a8bd499011b3a2c2fe0ce54275ec50f497a",
+                "reference": "46959a8bd499011b3a2c2fe0ce54275ec50f497a",
                 "shasum": ""
             },
             "require": {
@@ -941,20 +944,20 @@
                 "GPL-2.0"
             ],
             "description": "eZ Platform UI Bundle",
-            "time": "2015-11-19 23:04:25"
+            "time": "2015-11-27 15:00:29"
         },
         {
             "name": "ezsystems/repository-forms",
-            "version": "v1.0.0-beta6",
+            "version": "v1.0.0-beta7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/repository-forms.git",
-                "reference": "b04378041539c7477e2ddf7fe9394f90d9923a75"
+                "reference": "e83fe62336fa3ffd8a0cd1d9b9148a0420f57279"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/repository-forms/zipball/b04378041539c7477e2ddf7fe9394f90d9923a75",
-                "reference": "b04378041539c7477e2ddf7fe9394f90d9923a75",
+                "url": "https://api.github.com/repos/ezsystems/repository-forms/zipball/e83fe62336fa3ffd8a0cd1d9b9148a0420f57279",
+                "reference": "e83fe62336fa3ffd8a0cd1d9b9148a0420f57279",
                 "shasum": ""
             },
             "require": {
@@ -990,7 +993,7 @@
                 }
             ],
             "description": "Use Symfony forms with eZ Platform repository objects",
-            "time": "2015-11-19 23:09:16"
+            "time": "2015-11-27 14:23:19"
         },
         {
             "name": "friendsofsymfony/http-cache",
@@ -2166,17 +2169,17 @@
         },
         {
             "name": "sensio/distribution-bundle",
-            "version": "v3.0.33",
+            "version": "v3.0.34",
             "target-dir": "Sensio/Bundle/DistributionBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
-                "reference": "63245e12c948bf50278383e70fd5d6841af17e17"
+                "reference": "587f3cd08bf8856cfc888b255f34f18b85930657"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/63245e12c948bf50278383e70fd5d6841af17e17",
-                "reference": "63245e12c948bf50278383e70fd5d6841af17e17",
+                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/587f3cd08bf8856cfc888b255f34f18b85930657",
+                "reference": "587f3cd08bf8856cfc888b255f34f18b85930657",
                 "shasum": ""
             },
             "require": {
@@ -2222,7 +2225,7 @@
                 "configuration",
                 "distribution"
             ],
-            "time": "2015-10-27 18:46:42"
+            "time": "2015-11-26 18:10:17"
         },
         {
             "name": "sensio/framework-extra-bundle",
@@ -2669,23 +2672,23 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.7.6",
+            "version": "v2.7.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "66b2e9662c44d478b69e48278aa54079a006eb42"
+                "reference": "cc69dbd24b4b2e6de60b2414ef95da2794f459a2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/66b2e9662c44d478b69e48278aa54079a006eb42",
-                "reference": "66b2e9662c44d478b69e48278aa54079a006eb42",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/cc69dbd24b4b2e6de60b2414ef95da2794f459a2",
+                "reference": "cc69dbd24b4b2e6de60b2414ef95da2794f459a2",
                 "shasum": ""
             },
             "require": {
                 "doctrine/common": "~2.4",
                 "php": ">=5.3.9",
                 "psr/log": "~1.0",
-                "twig/twig": "~1.20|~2.0"
+                "twig/twig": "~1.23|~2.0"
             },
             "replace": {
                 "symfony/asset": "self.version",
@@ -2765,6 +2768,9 @@
                 ],
                 "files": [
                     "src/Symfony/Component/Intl/Resources/stubs/functions.php"
+                ],
+                "exclude-from-classmap": [
+                    "**/Tests/"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -2786,7 +2792,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2015-10-27 19:07:24"
+            "time": "2015-11-23 11:58:08"
         },
         {
             "name": "tedivm/stash",
@@ -3070,7 +3076,7 @@
         },
         {
             "name": "zendframework/zend-code",
-            "version": "2.4.8",
+            "version": "2.4.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-code.git",
@@ -3123,7 +3129,7 @@
         },
         {
             "name": "zendframework/zend-eventmanager",
-            "version": "2.4.8",
+            "version": "2.4.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-eventmanager.git",
@@ -3169,7 +3175,7 @@
         },
         {
             "name": "zendframework/zend-stdlib",
-            "version": "2.4.8",
+            "version": "2.4.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-stdlib.git",
