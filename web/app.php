@@ -19,18 +19,18 @@ if (($useDebugging = getenv('USE_DEBUGGING')) === false) {
 if (($loaderFile = getenv('CUSTOM_CLASSLOADER_FILE')) !== false) {
     require_once $loaderFile;
 } elseif ($useDebugging) {
-    require_once __DIR__ . '/../ezpublish/autoload.php';
+    require_once __DIR__ . '/../app/autoload.php';
 } else {
-    require_once __DIR__ . '/../ezpublish/bootstrap.php.cache';
+    require_once __DIR__ . '/../app/bootstrap.php.cache';
 }
 
-require_once __DIR__ . '/../ezpublish/EzPublishKernel.php';
+require_once __DIR__ . '/../app/AppKernel.php';
 
 if ($useDebugging) {
     Debug::enable();
 }
 
-$kernel = new EzPublishKernel($environment, $useDebugging);
+$kernel = new AppKernel($environment, $useDebugging);
 
 // we don't want to use the classes cache if we are in a debug session
 if (!$useDebugging) {
@@ -50,8 +50,8 @@ if ($useHttpCache) {
     if (($httpCacheClass = getenv('HTTP_CACHE_CLASS')) !== false) {
         $kernel = new $httpCacheClass($kernel);
     } else {
-        require_once __DIR__ . '/../ezpublish/EzPublishCache.php';
-        $kernel = new EzPublishCache($kernel);
+        require_once __DIR__ . '/../app/AppCache.php';
+        $kernel = new AppCache($kernel);
     }
 }
 
