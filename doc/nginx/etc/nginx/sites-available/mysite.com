@@ -10,7 +10,7 @@ server {
     root %BASEDIR%/web;
 
     # Additional Assetic rules for eZ Publish 5.1 / 2013.4 and higher.
-    ## Don't forget to run php ezpublish/console assetic:dump --env=prod
+    ## Don't forget to run php app/console assetic:dump --env=prod
     ## and make sure to comment these out in DEV environment.
     include ez_params.d/ez_prod_rewrite_params;
 
@@ -43,20 +43,7 @@ server {
             # Whether to use custom ClassLoader (autoloader) file
             # Needs to be a valid path relative to root web/ directory
             # Defaults to bootstrap.php.cache, or autoload.php in debug, supported on 2015.01 and higher
-            #fastcgi_param CUSTOM_CLASSLOADER_FILE "../ezpublish/autoload.php";
-
-            # Whether to use Symfony's ApcClassLoader.
-            # Possible values: 0 or 1
-            # Defaults to 0 if omitted, supported on 5.2 and higher
-            #! Not supported as of 2015.01, use CUSTOM_CLASSLOADER_FILE instead for this.
-            #fastcgi_param USE_APC_CLASSLOADER 0;
-
-            # Prefix used when USE_APC_CLASSLOADER is set to 1.
-            # Use a unique prefix in order to prevent cache key conflicts
-            # with other applications also using APC.
-            # Defaults to "ezpublish" if omitted, supported on 5.2 and higher
-            #! Not supported as of 2015.01, use CUSTOM_CLASSLOADER_FILE instead for this.
-            #fastcgi_param APC_CLASSLOADER_PREFIX "ezpublish";
+            #fastcgi_param CUSTOM_CLASSLOADER_FILE "../app/autoload.php";
 
             # Whether to use debugging.
             # Possible values: 0 or 1
@@ -83,8 +70,8 @@ server {
     }
 
     # Custom logs
-    # access_log %BASEDIR%/ezpublish/logs/httpd-access.log;
-    # error_log  %BASEDIR%/ezpublish/logs/httpd-error.log notice;
+    # access_log %BASEDIR%/app/logs/httpd-access.log;
+    # error_log  %BASEDIR%/app/logs/httpd-error.log notice;
 
     include ez_params.d/ez_server_params;
 }

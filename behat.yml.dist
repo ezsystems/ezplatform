@@ -11,15 +11,15 @@ default:
 
         Behat\Symfony2Extension:
             kernel:
-                bootstrap: ezpublish/autoload.php
-                path: ezpublish/EzPublishKernel.php
-                class: EzPublishKernel
+                bootstrap: app/autoload.php
+                path: app/AppKernel.php
+                class: AppKernel
                 env: behat
                 debug: false
 
         jarnaiz\JUnitFormatter\JUnitFormatterExtension:
             filename: report.xml
-            outputDir: %paths.base%/ezpublish/logs/junit
+            outputDir: %paths.base%/app/logs/junit
 
     # default profile: no suites
     suites: ~

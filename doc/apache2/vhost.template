@@ -34,42 +34,29 @@
 
     # Whether to use custom ClassLoader (autoloader) file
     # Needs to be a valid path relative to root web/ directory
-    # Defaults to bootstrap.php.cache, or autoload.php in debug; supported on 2015.01 and higher
-    #SetEnv CUSTOM_CLASSLOADER_FILE "../ezpublish/autoload.php"
-
-    # Whether to use Symfony's ApcClassLoader.
-    # Possible values: 0 or 1
-    # Defaults to 0 if omitted, supported on 5.2 and higher
-    #! Not supported as of 2015.01, use CUSTOM_CLASSLOADER_FILE instead for this.
-    #SetEnv USE_APC_CLASSLOADER 0
-
-    # Prefix used when USE_APC_CLASSLOADER is set to 1.
-    # Use a unique prefix in order to prevent cache key conflicts
-    # with other applications also using APC.
-    # Defaults to "ezpublish" if omitted, supported on 5.2 and higher
-    #! Not supported as of 2015.01, use CUSTOM_CLASSLOADER_FILE instead for this.
-    #SetEnv APC_CLASSLOADER_PREFIX "ezpublish"
+    # Defaults to bootstrap.php.cache, or autoload.php in debug
+    #SetEnv CUSTOM_CLASSLOADER_FILE "../app/autoload.php"
 
     # Whether to use debugging.
     # Possible values: 0 or 1
-    # Defaults to 0 if omitted, unless ENVIRONMENT is set to: "dev"; supported on 5.2 and higher
+    # Defaults to 0 if omitted, unless ENVIRONMENT is set to: "dev"
     SetEnv USE_DEBUGGING %USE-DEBUGGING%
 
     # Whether to use Symfony's HTTP Caching.
     # Disable it if you are using an external reverse proxy (e.g. Varnish)
     # Possible values: 0 or 1
-    # Defaults to 1 if omitted, unless ENVIRONMENT is set to: "dev"; supported on 5.2 and higher
+    # Defaults to 1 if omitted, unless ENVIRONMENT is set to: "dev"
     #SetEnv USE_HTTP_CACHE 1
 
     # Whether to use custom HTTP Cache class if USE_HTTP_CACHE is enabled
     # Value must be a autoloadable cache class
-    # Defaults to to use "EzPublishCache"; supported on 2015.01 and higher
+    # Defaults to to use "EzPublishCache"
     #SetEnv HTTP_CACHE_CLASS "\Vendor\Project\MyCache"
 
     # Defines the proxies to trust.
     # Separate entries by a comma
     # Example: "proxy1.example.com,proxy2.example.org"
-    # By default, no trusted proxies are set; supported on 5.2 and higher
+    # By default, no trusted proxies are set
     #SetEnv TRUSTED_PROXIES "%PROXY%"
 
     <IfModule mod_rewrite.c>
@@ -107,7 +94,7 @@
         RewriteRule ^/bundles/ - [L]
 
         # Additional Assetic rules for environments different from dev,
-        # remember to run php ezpublish/console assetic:dump --env=prod
+        # remember to run php app/console assetic:dump --env=prod
         RewriteCond %{ENV:ENVIRONMENT} !^(dev)
         RewriteRule ^/(css|js|font)/.*\.(css|js|otf|eot|ttf|svg|woff) - [L]
 
