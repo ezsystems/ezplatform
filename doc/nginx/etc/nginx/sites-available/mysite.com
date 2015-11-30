@@ -48,7 +48,7 @@ server {
             # Whether to use debugging.
             # Possible values: 0 or 1
             # Defaults to 0 if omitted, unless SYMFONY_ENV is set to: "dev", supported on 5.2 and higher
-            #fastcgi_param USE_DEBUGGING 0;
+            #fastcgi_param SYMFONY_DEBUG 0;
 
             # Whether to use Symfony's HTTP Caching.
             # Disable it if you are using an external reverse proxy (e.g. Varnish)

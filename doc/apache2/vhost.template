@@ -40,7 +40,7 @@
     # Whether to use debugging.
     # Possible values: 0 or 1
     # Defaults to 0 if omitted, unless SYMFONY_ENV is set to: "dev"
-    SetEnv USE_DEBUGGING %USE-DEBUGGING%
+    SetEnv SYMFONY_DEBUG %USE-DEBUGGING%
 
     # Whether to use Symfony's HTTP Caching.
     # Disable it if you are using an external reverse proxy (e.g. Varnish)
