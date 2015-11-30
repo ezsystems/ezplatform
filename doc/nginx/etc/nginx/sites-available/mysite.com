@@ -38,7 +38,7 @@ server {
             # Possible values: "prod" and "dev" out-of-the-box, other values possible with proper configuration
             # Make sure to comment the "ez_params.d/ez_prod_rewrite_params" include above in dev.
             # Defaults to "prod" if omitted
-            #fastcgi_param ENVIRONMENT dev;
+            #fastcgi_param SYMFONY_ENV dev;
 
             # Whether to use custom ClassLoader (autoloader) file
             # Needs to be a valid path relative to root web/ directory
@@ -47,13 +47,13 @@ server {
 
             # Whether to use debugging.
             # Possible values: 0 or 1
-            # Defaults to 0 if omitted, unless ENVIRONMENT is set to: "dev", supported on 5.2 and higher
+            # Defaults to 0 if omitted, unless SYMFONY_ENV is set to: "dev", supported on 5.2 and higher
             #fastcgi_param USE_DEBUGGING 0;
 
             # Whether to use Symfony's HTTP Caching.
             # Disable it if you are using an external reverse proxy (e.g. Varnish)
             # Possible values: 0 or 1
-            # Defaults to 1 if omitted, unless ENVIRONMENT is set to: "dev", supported on 5.2 and higher
+            # Defaults to 1 if omitted, unless SYMFONY_ENV is set to: "dev", supported on 5.2 and higher
             #fastcgi_param USE_HTTP_CACHE 1;
 
             # Whether to use custom HTTP Cache class if USE_HTTP_CACHE is enabled
