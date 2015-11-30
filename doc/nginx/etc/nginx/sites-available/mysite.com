@@ -43,7 +43,7 @@ server {
             # Whether to use custom ClassLoader (autoloader) file
             # Needs to be a valid path relative to root web/ directory
             # Defaults to bootstrap.php.cache, or autoload.php in debug
-            #fastcgi_param CUSTOM_CLASSLOADER_FILE "../app/autoload.php";
+            #fastcgi_param SYMFONY_CLASSLOADER_FILE "../app/autoload.php";
 
             # Whether to use debugging.
             # Possible values: 0 or 1
@@ -54,18 +54,18 @@ server {
             # Disable it if you are using an external reverse proxy (e.g. Varnish)
             # Possible values: 0 or 1
             # Defaults to 1 if omitted, unless SYMFONY_ENV is set to: "dev"
-            #fastcgi_param USE_HTTP_CACHE 1;
+            #fastcgi_param SYMFONY_HTTP_CACHE 1;
 
-            # Whether to use custom HTTP Cache class if USE_HTTP_CACHE is enabled
+            # Whether to use custom HTTP Cache class if SYMFONY_HTTP_CACHE is enabled
             # Value must be na autoloadable cache class
             # Defaults to "AppCache"
-            #fastcgi_param HTTP_CACHE_CLASS "\Vendor\Project\MyCache";
+            #fastcgi_param SYMFONY_HTTP_CACHE_CLASS "\Vendor\Project\MyCache";
 
             # Defines the proxies to trust.
             # Separate entries by a comma
             # Example: "proxy1.example.com,proxy2.example.org"
             # By default, no trusted proxies are set
-            #fastcgi_param TRUSTED_PROXIES "%PROXY%";
+            #fastcgi_param SYMFONY_TRUSTED_PROXIES "%PROXY%";
         }
     }
 

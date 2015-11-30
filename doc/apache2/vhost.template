@@ -35,7 +35,7 @@
     # Whether to use custom ClassLoader (autoloader) file
     # Needs to be a valid path relative to root web/ directory
     # Defaults to bootstrap.php.cache, or autoload.php in debug
-    #SetEnv CUSTOM_CLASSLOADER_FILE "../app/autoload.php"
+    #SetEnv SYMFONY_CLASSLOADER_FILE "../app/autoload.php"
 
     # Whether to use debugging.
     # Possible values: 0 or 1
@@ -46,18 +46,18 @@
     # Disable it if you are using an external reverse proxy (e.g. Varnish)
     # Possible values: 0 or 1
     # Defaults to 1 if omitted, unless SYMFONY_ENV is set to: "dev"
-    #SetEnv USE_HTTP_CACHE 1
+    #SetEnv SYMFONY_HTTP_CACHE 1
 
-    # Whether to use custom HTTP Cache class if USE_HTTP_CACHE is enabled
+    # Whether to use custom HTTP Cache class if SYMFONY_HTTP_CACHE is enabled
     # Value must be a autoloadable cache class
     # Defaults to to use "AppCache"
-    #SetEnv HTTP_CACHE_CLASS "\Vendor\Project\MyCache"
+    #SetEnv SYMFONY_HTTP_CACHE_CLASS "\Vendor\Project\MyCache"
 
     # Defines the proxies to trust.
     # Separate entries by a comma
     # Example: "proxy1.example.com,proxy2.example.org"
     # By default, no trusted proxies are set
-    #SetEnv TRUSTED_PROXIES "%PROXY%"
+    #SetEnv SYMFONY_TRUSTED_PROXIES "%PROXY%"
 
     <IfModule mod_rewrite.c>
         RewriteEngine On
