@@ -50,7 +50,7 @@
 
     # Whether to use custom HTTP Cache class if USE_HTTP_CACHE is enabled
     # Value must be a autoloadable cache class
-    # Defaults to to use "EzPublishCache"
+    # Defaults to to use "AppCache"
     #SetEnv HTTP_CACHE_CLASS "\Vendor\Project\MyCache"
 
     # Defines the proxies to trust.
