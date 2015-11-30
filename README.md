@@ -1,16 +1,13 @@
-# eZ Platform
+# eZ Studio
 
-## What is eZ Platform ?
-*eZ Platform* is a 100% open source professional CMS (Content Management System) developed by eZ Systems AS and the eZ Community.
+## What is eZ Studio ?
+*eZ Studio* is a commercial CMS (Content Management System) software developed by eZ Systems AS and the eZ Community.
 
-*eZ Platform* is the 6th generation of *eZ Publish*, it is built on top of the Symfony framework (Full Stack).
-It has been in development since 2011, and integral part of the *eZ Publish Platform 5.x* as "Platform stack" since 2012.
+*eZ Studio* is a standalone product which is based on *eZ Platform*, it is independent, as a set of bundles. eZ Studio, like Platform is built on top of the Symfony framework (Full Stack). It has been in development since 2014.
 
-## eZ Publish vs. eZ Platform
-This repository contains *eZ Platform* (formerly known also as *eZ Publish 6*) the next generation cms which uses the same Symfony kernel as *eZ Publish 5*, but does not include the legacy kernel, nor its library dependencies.
-eZ Platform is where the new features are added.
-
-The [eZ Publish 5](https://github.com/ezsystems/ezpublish-community) repository, mostly maintained for backwards compatibility, integrates eZ Publish Legacy.
+## eZ Studio vs. eZ Platform
+This repository contains *eZ Studio* the next generation CMS which uses the same Symfony kernel as *eZ Platform* (formerly known also as *eZ Publish 6*), but does not include the legacy kernel, nor its library dependencies.
+eZ Studio is where the new features are added.
 
 ### Abstract:
 - **Very extensible** *You can extend the application and the content model in many ways*
@@ -18,7 +15,7 @@ The [eZ Publish 5](https://github.com/ezsystems/ezpublish-community) repository,
 - **Multi channel by design** *Strong focus on separation between <sup>semantic</sup> content & design*
 - **Scalable** *Easily scale across multiple servers out of the box*
 - **Future proof** *Architecture designed to allow even more content scalability and performance in the future*
-- **Stable** *Built on experience building CMS since early 2000, and in production since 2012*
+- **Stable** *Built on experience building CMS since early 2000, and in production since 2014*
 - **Integration friendly** *Numerous events and signals to hook into for advanced workflow needs*
 
 ### Main packages:
@@ -35,33 +32,30 @@ The [eZ Publish 5](https://github.com/ezsystems/ezpublish-community) repository,
 - **PlatformUIBundle**: A modern, extensible "Backend" UI for managing content & administering the site
 
 ### Further information:
-eZ Platform is 100% open source and is released as companion to a commercial *eZ Studio* software which adds advanced
-features for editorial teams and media companies, 100% built on top of *eZ Platform* APIs.
+*eZ Studio* is a commercial software which adds advanced features for editorial teams and media companies, 100% built on top of *eZ Platform* APIs.
 
-- [eZ Publish 5.x Architecture, including "Platform Stack"](https://doc.ez.no/pages/viewpage.action?pageId=11403666)
+- [eZ Studio Architecture, including "Platform Stack"](https://doc.ez.no/pages/viewpage.action?pageId=11403666)
 - [eZ Studio and eZ Platform RoadMap](http://ez.no/Blog/What-to-Expect-from-eZ-Studio-and-eZ-Platform)
-- [eZ Platform 2015 release plan](http://ez.no/Blog/What-Releases-to-Expect-from-eZ-in-2015)
+- [eZ Platform and Studio 2015 release plan](http://ez.no/Blog/What-Releases-to-Expect-from-eZ-in-2015)
+- [eZ Platform and Studio beta versions](http://ez.no/Blog/Introducing-the-beta-of-eZ-s-next-generation-software)
 - eZ Systems AS *(commercial products and services)*: [ez.no](http://ez.no/)
 - eZ Community: [share.ez.no](http://ez.no/)
 
+http://ez.no/Blog/What-to-Expect-from-eZ-Studio-and-eZ-Platform
+
 ## Install and Upgrade
-For installation & upgrade instructions, see [INSTALL.md](https://github.com/ezsystems/ezplatform/blob/master/INSTALL.md).
+For installation & upgrade instructions, see [INSTALL.md](https://github.com/ezsystems/ezstudio/blob/master/INSTALL.md).
 
 ## Requirements
-**eZ Platform** currently has the same requirements as *eZ Publish Platform 5.4*, further details on the [5.4 requirements](https://doc.ez.no/display/EZP/Requirements+5.4) page.
+**eZ Studio** currently has the same requirements as *eZ Platform*, further details on the [5.4 requirements](https://doc.ez.no/display/EZP/Requirements+5.4) page.
 
 *TL;DR: minimum PHP 5.4.4 and higher, using mod_php or php-fpm.*
 
 ## Issue tracker
-Submitting bugs, improvements and stories is possible on https://jira.ez.no/browse/EZP.
+Submitting bugs, improvements and stories is possible on https://jira.ez.no/browse/EZS.
 If you discover a security issue, please see how to responsibly report such issues on https://doc.ez.no/Security.
 
-## Backwards compatibility
-eZ Platform aiming to be **100% content compatible** with eZ Publish 5.x, 4.x and 3.x *(introduced in 2002)*, meaning
-that content in those versions of the CMS can be upgraded using
-[online documentation](http://doc.ez.no/eZ-Publish/Upgrading) to eZ Platform.
-
-Unlike eZ Publish Platform 5.x, eZ Platform does not ship with eZ Publish Legacy (4.x). For Platform kernel use combined
+Unlike eZ Publish Platform 5.x, eZ Studio does not ship with eZ Publish Legacy (4.x). For Platform kernel use combined
 with legacy, eZ Publish Platform 5.4 is the most stable choice, offering support and maintenance updates until 2021.
 Alternative is releases of eZ Publish Community, latest as of Oct 2015 is v2014.11 found at
 [ezpublish-community](https://github.com/ezsystems/ezpublish-community).
