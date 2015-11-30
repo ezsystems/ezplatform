@@ -8,7 +8,7 @@
     ServerName %HOST%
     ServerAlias %HOST_ALIAS%
     DocumentRoot %BASEDIR%/web
-    DirectoryIndex index.php
+    DirectoryIndex app.php
 
     # Enabled for Dev environment
     # LogLevel debug
@@ -25,7 +25,7 @@
         #Require all granted
     </Directory>
 
-    ## eZ Platform ENVIRONMENT variables, used for customizing index.php execution (not used by console commands)
+    ## eZ Platform ENVIRONMENT variables, used for customizing app.php execution (not used by console commands)
 
     # Environment.
     # Possible values: "prod" and "dev" out-of-the-box, other values possible with proper configuration
@@ -71,7 +71,7 @@
         RewriteRule . - [L]
 
         # Cluster/streamed files rewrite rules. Enable on cluster with DFS as a binary data handler
-        #RewriteRule ^/var/([^/]+/)?storage/images(-versioned)?/.* /index.php [L]
+        #RewriteRule ^/var/([^/]+/)?storage/images(-versioned)?/.* /app.php [L]
 
         RewriteRule ^/var/([^/]+/)?storage/images(-versioned)?/.* - [L]
 
@@ -98,7 +98,7 @@
         RewriteCond %{ENV:SYMFONY_ENV} !^(dev)
         RewriteRule ^/(css|js|font)/.*\.(css|js|otf|eot|ttf|svg|woff) - [L]
 
-        RewriteRule .* /index.php
+        RewriteRule .* /app.php
     </IfModule>
 
     # Everything below is optional to improve performance by forcing

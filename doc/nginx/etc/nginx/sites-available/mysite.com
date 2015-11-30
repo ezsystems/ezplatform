@@ -15,7 +15,7 @@ server {
     include ez_params.d/ez_prod_rewrite_params;
 
     # Cluster/streamed files rewrite rules. Enable on cluster with DFS as a binary data handler
-    #rewrite "^/var/([^/]+/)?storage/images(-versioned)?/(.*)" "/index.php" break;
+    #rewrite "^/var/([^/]+/)?storage/images(-versioned)?/(.*)" "/app.php" break;
 
     # ez rewrite rules
     include ez_params.d/ez_rewrite_params;
@@ -32,7 +32,7 @@ server {
             # FPM network
             #fastcgi_pass 127.0.0.1:9000;
 
-            ## eZ Platform ENVIRONMENT variables, used for customizing index.php execution (not used by console commands)
+            ## eZ Platform ENVIRONMENT variables, used for customizing app.php execution (not used by console commands)
 
             # Environment.
             # Possible values: "prod" and "dev" out-of-the-box, other values possible with proper configuration

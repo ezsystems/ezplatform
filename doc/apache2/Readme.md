@@ -17,7 +17,7 @@ Configuration
 - Edit it and adapt the configuration to suit your needs
 -- Make sure to replace all `%VARIABLES%`, further description below
 -- For cluster setup, enable custom rewrite rules for it found inline in the vhost.template
--- In 5.2 and higher you can optionally configure the eZ Platform front controller (`index.php`) using environment variables documented inline in the vhost template.
+-- In 5.2 and higher you can optionally configure the eZ Platform front controller (`app.php`) using environment variables documented inline in the vhost template.
 -- Adapt the ´<Directory>´ section for your Apache version
 - Create a symlink of /etc/apache2/sites-available/yoursite.com into /etc/apache2/sites-enabled/yoursite.com
 - restart Apache
