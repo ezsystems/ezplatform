@@ -8,8 +8,6 @@
 /app/logs/
 /ezpublish_legacy
 /app/config/parameters.yml
-/app/config/ezplatform_prod.yml
-/app/config/ezplatform_dev.yml
 /app/sessions
 /app/bootstrap.php.cache
 /web/index_treemenu.php
