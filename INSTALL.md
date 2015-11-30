@@ -62,21 +62,20 @@
 2. *Only for *NIX users* **Setup folder rights**<a name="install-2-folder-rights"></a>:
 
        Like most things, [Symfony documentation](http://symfony.com/doc/current/book/installation.html#checking-symfony-application-configuration-and-setup)
-       applies here, difference being that in eZ Platform directories that needs to be writable by cli and web server
-       user are `app/{cache,logs,sessions}`. Furthermore, future files and directories created by these two users
-       will need to inherit those access rights. *For security reasons, there is no need for web server to have access
-       to write to other directories.*
+       applies here, meaning `app/cache` and `app/logs` need to be writable by cli and web server user. Furthermore, future
+       files and directories created by these two users will need to inherit those access rights. *For security reasons,
+       there is no need for web server to have access to write to other directories.*
 
        Change `www-data` to your web server user:
 
        A. **Using ACL on a *Linux/BSD* system that supports chmod +a**
 
        ```bash
-       $ rm -rf app/cache/* app/logs/* apph/sessions/*
+       $ rm -rf app/cache/* app/logs/*
        $ sudo chmod +a "www-data allow delete,write,append,file_inherit,directory_inherit" \
-         app/{cache,logs,sessions} web
+         app/cache app/logs web
        $ sudo chmod +a "`whoami` allow delete,write,append,file_inherit,directory_inherit" \
-         app/{cache,logs,sessions} web
+         app/cache app/logs web
        ```
 
        B. **Using ACL on a *Linux/BSD* system that does not support chmod +a**
@@ -85,9 +84,9 @@
 
        ```bash
        $ sudo setfacl -R -m u:www-data:rwx -m u:`whoami`:rwx \
-         app/{cache,logs,sessions} web
+         app/cache app/logs web
        $ sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx \
-         app/{cache,logs,sessions} web
+         app/cache app/logs web
        ```
 
        C. **Using chown on *Linux/BSD/OS X* systems that don't support ACL**
@@ -95,9 +94,9 @@
        Some systems don't support ACL at all. You will need to set your web server's user as the owner of the required directories.
 
        ```bash
-       $ sudo chown -R www-data:www-data app/{cache,logs,sessions} web
-       $ sudo find {app/{cache,logs,sessions},web} -type d | xargs sudo chmod -R 775
-       $ sudo find {app/{cache,logs,sessions},web} -type f | xargs sudo chmod -R 664
+       $ sudo chown -R www-data:www-data app/cache app/logs web
+       $ sudo find {app/{cache,logs},web} -type d | xargs sudo chmod -R 775
+       $ sudo find {app/{cache,logs},web} -type f | xargs sudo chmod -R 664
        ```
 
        D. **Using chmod on a *Linux/BSD/OS X* system where you can't change owner**
@@ -105,8 +104,8 @@
        If you can't use ACL and aren't allowed to change owner, you can use chmod, making the files writable by everybody. Note that this method really isn't recommended as it allows any user to do anything.
 
        ```bash
-       $ sudo find {app/{cache,logs,sessions},web} -type d | xargs sudo chmod -R 777
-       $ sudo find {app/{cache,logs,sessions},web} -type f | xargs sudo chmod -R 666
+       $ sudo find {app/{cache,logs},web} -type d | xargs sudo chmod -R 777
+       $ sudo find {app/{cache,logs},web} -type f | xargs sudo chmod -R 666
        ```
 
        When using chmod, note that newly created files (such as cache) owned by the web server's user may have different/restrictive permissions.
@@ -114,7 +113,7 @@
 
        It may also possible to add the group ownership inheritance flag so new files inherit the current group, and use `775`/`664` in the command lines above instead of world-writable:
        ```bash
-       $ sudo chmod g+s {app/{cache,logs,sessions},web}
+       $ sudo chmod g+s {app/{cache,logs},web}
        ```
 
        E. **Setup folder rights on Windows**
@@ -123,7 +122,6 @@
        write access to the following directories:
        - app/cache
        - app/logs
-       - app/sessions
 
 
 3. **Configure a VirtualHost**<a name="install-3-vhost"></a>:

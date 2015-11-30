@@ -8,7 +8,6 @@
 /app/logs/
 /ezpublish_legacy
 /app/config/parameters.yml
-/app/sessions
 /app/bootstrap.php.cache
 /web/index_treemenu.php
 /web/index_rest.php
