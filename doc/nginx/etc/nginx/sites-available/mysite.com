@@ -10,12 +10,12 @@ server {
     root %BASEDIR%/web;
 
     # Additional Assetic rules for eZ Publish 5.1 / 2013.4 and higher.
-    ## Don't forget to run php ezpublish/console assetic:dump --env=prod
+    ## Don't forget to run php app/console assetic:dump --env=prod
     ## and make sure to comment these out in DEV environment.
     include ez_params.d/ez_prod_rewrite_params;
 
     # Cluster/streamed files rewrite rules. Enable on cluster with DFS as a binary data handler
-    #rewrite "^/var/([^/]+/)?storage/images(-versioned)?/(.*)" "/index.php" break;
+    #rewrite "^/var/([^/]+/)?storage/images(-versioned)?/(.*)" "/app.php" break;
 
     # ez rewrite rules
     include ez_params.d/ez_rewrite_params;
@@ -32,59 +32,46 @@ server {
             # FPM network
             #fastcgi_pass 127.0.0.1:9000;
 
-            ## eZ Platform ENVIRONMENT variables, used for customizing index.php execution (not used by console commands)
+            ## eZ Platform ENVIRONMENT variables, used for customizing app.php execution (not used by console commands)
 
             # Environment.
             # Possible values: "prod" and "dev" out-of-the-box, other values possible with proper configuration
             # Make sure to comment the "ez_params.d/ez_prod_rewrite_params" include above in dev.
             # Defaults to "prod" if omitted
-            #fastcgi_param ENVIRONMENT dev;
+            #fastcgi_param SYMFONY_ENV dev;
 
             # Whether to use custom ClassLoader (autoloader) file
             # Needs to be a valid path relative to root web/ directory
-            # Defaults to bootstrap.php.cache, or autoload.php in debug, supported on 2015.01 and higher
-            #fastcgi_param CUSTOM_CLASSLOADER_FILE "../ezpublish/autoload.php";
-
-            # Whether to use Symfony's ApcClassLoader.
-            # Possible values: 0 or 1
-            # Defaults to 0 if omitted, supported on 5.2 and higher
-            #! Not supported as of 2015.01, use CUSTOM_CLASSLOADER_FILE instead for this.
-            #fastcgi_param USE_APC_CLASSLOADER 0;
-
-            # Prefix used when USE_APC_CLASSLOADER is set to 1.
-            # Use a unique prefix in order to prevent cache key conflicts
-            # with other applications also using APC.
-            # Defaults to "ezpublish" if omitted, supported on 5.2 and higher
-            #! Not supported as of 2015.01, use CUSTOM_CLASSLOADER_FILE instead for this.
-            #fastcgi_param APC_CLASSLOADER_PREFIX "ezpublish";
+            # Defaults to bootstrap.php.cache, or autoload.php in debug
+            #fastcgi_param SYMFONY_CLASSLOADER_FILE "../app/autoload.php";
 
             # Whether to use debugging.
             # Possible values: 0 or 1
-            # Defaults to 0 if omitted, unless ENVIRONMENT is set to: "dev", supported on 5.2 and higher
-            #fastcgi_param USE_DEBUGGING 0;
+            # Defaults to 0 if omitted, unless SYMFONY_ENV is set to: "dev"
+            #fastcgi_param SYMFONY_DEBUG 0;
 
             # Whether to use Symfony's HTTP Caching.
             # Disable it if you are using an external reverse proxy (e.g. Varnish)
             # Possible values: 0 or 1
-            # Defaults to 1 if omitted, unless ENVIRONMENT is set to: "dev", supported on 5.2 and higher
-            #fastcgi_param USE_HTTP_CACHE 1;
+            # Defaults to 1 if omitted, unless SYMFONY_ENV is set to: "dev"
+            #fastcgi_param SYMFONY_HTTP_CACHE 1;
 
-            # Whether to use custom HTTP Cache class if USE_HTTP_CACHE is enabled
+            # Whether to use custom HTTP Cache class if SYMFONY_HTTP_CACHE is enabled
             # Value must be na autoloadable cache class
-            # Defaults to "EzPublishCache", supported on 2015.01 and higher
-            #fastcgi_param HTTP_CACHE_CLASS "\Vendor\Project\MyCache";
+            # Defaults to "AppCache"
+            #fastcgi_param SYMFONY_HTTP_CACHE_CLASS "\Vendor\Project\MyCache";
 
             # Defines the proxies to trust.
             # Separate entries by a comma
             # Example: "proxy1.example.com,proxy2.example.org"
-            # By default, no trusted proxies are set, supported on 5.2 and higher
-            #fastcgi_param TRUSTED_PROXIES "%PROXY%";
+            # By default, no trusted proxies are set
+            #fastcgi_param SYMFONY_TRUSTED_PROXIES "%PROXY%";
         }
     }
 
     # Custom logs
-    # access_log %BASEDIR%/ezpublish/logs/httpd-access.log;
-    # error_log  %BASEDIR%/ezpublish/logs/httpd-error.log notice;
+    # access_log %BASEDIR%/app/logs/httpd-access.log;
+    # error_log  %BASEDIR%/app/logs/httpd-error.log notice;
 
     include ez_params.d/ez_server_params;
 }

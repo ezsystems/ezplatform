@@ -35,7 +35,7 @@ eZ Platform comes with [SensioGeneratorBundle](http://symfony.com/doc/current/bu
 This bundle provides useful commands, including one to easily generate a new bundle from command line:
 
 ```bash
-php ezpublish/console generate:bundle
+php app/console generate:bundle
 ```
 
 Please note that `yml` is the preferred format for configuration.

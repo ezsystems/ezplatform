@@ -20,7 +20,7 @@ Usage
 From your command line, type :
  
     $ cd /path/to/ezpublish5/folder
-    $ php ezpublish/console server:run -r ../bin/ezrouter.php localhost:8000
+    $ php app/console server:run -r ../bin/ezrouter.php localhost:8000
  
 This will start PHP webserver for localhost on port 8000.
 You can of course replace localhost by another host. Port is also customizable.

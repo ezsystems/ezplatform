@@ -5,5 +5,5 @@
  * @version //autogentag//
  */
 
-putenv( "ENVIRONMENT=behat" );
+putenv( "SYMFONY_ENV=behat" );
 require __DIR__ . "/../ezrouter.php";

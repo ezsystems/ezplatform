@@ -77,15 +77,14 @@
         "bin-dir": "bin"
     },
     "extra": {
-        "symfony-app-dir": "ezpublish",
+        "symfony-app-dir": "app",
         "symfony-web-dir": "web",
-        "ezpublish-legacy-dir": "ezpublish_legacy",
         "___ezpublish-asset-dump-env": "To set environment used by dumpAssets script, like 'prod', or 'none' to skip",
         "ezpublish-asset-dump-env": "",
         "___symfony-assets-install": "One of 'symlink', 'relative' (symlinks) or 'hard'",
         "symfony-assets-install": "relative",
         "incenteev-parameters": {
-            "file": "ezpublish/config/parameters.yml"
+            "file": "app/config/parameters.yml"
         }
     }
 }

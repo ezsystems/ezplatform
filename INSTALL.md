@@ -21,7 +21,7 @@
 1. **Install/Extract eZ Platform**<a name="install-1-extract"></a>:
 
     There are two ways to install eZ Platform described below, what is common is that you should make sure
-    relevant settings are generated into `ezpublish/config/parameters.yml` as a result of this step.
+    relevant settings are generated into `app/config/parameters.yml` as a result of this step.
 
     `parameters.yml` contains settings for your database, mail system, and optionally [Solr](http://lucene.apache.org/solr/)
     if `search_engine` is configured as `solr`, as opposed to default `legacy` *(a limited database powered search engine)*.
@@ -61,49 +61,51 @@
 
 2. *Only for *NIX users* **Setup folder rights**<a name="install-2-folder-rights"></a>:
 
-       One common issue is that the `ezpublish/cache`, `ezpublish/logs` and `ezpublish/config` directories **must be writable both by the web server and the command line user**.
-       If your web server user is different from your command line user, you can run the following commands just once in your project to ensure that permissions will be set up properly.
+       Like most things, [Symfony documentation](http://symfony.com/doc/current/book/installation.html#checking-symfony-application-configuration-and-setup)
+       applies here, meaning `app/cache` and `app/logs` need to be writable by cli and web server user. Furthermore, future
+       files and directories created by these two users will need to inherit those access rights. *For security reasons,
+       there is no need for web server to have access to write to other directories.*
 
        Change `www-data` to your web server user:
 
-       A. **Using ACL on a system that supports chmod +a**
+       A. **Using ACL on a *Linux/BSD* system that supports chmod +a**
 
        ```bash
-       $ rm -rf ezpublish/cache/* ezpublish/logs/* ezpublish/sessions/*
+       $ rm -rf app/cache/* app/logs/*
        $ sudo chmod +a "www-data allow delete,write,append,file_inherit,directory_inherit" \
-         ezpublish/{cache,logs,config,sessions} web
+         app/cache app/logs web
        $ sudo chmod +a "`whoami` allow delete,write,append,file_inherit,directory_inherit" \
-         ezpublish/{cache,logs,config,sessions} web
+         app/cache app/logs web
        ```
 
-       B. **Using ACL on a system that does not support chmod +a**
+       B. **Using ACL on a *Linux/BSD* system that does not support chmod +a**
 
        Some systems don't support chmod +a, but do support another utility called setfacl. You may need to enable ACL support on your partition and install setfacl before using it (as is the case with Ubuntu), like so:
 
        ```bash
-       $ sudo setfacl -R -m u:www-data:rwx -m u:www-data:rwx \
-         ezpublish/{cache,logs,config,sessions} web
+       $ sudo setfacl -R -m u:www-data:rwx -m u:`whoami`:rwx \
+         app/cache app/logs web
        $ sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx \
-         ezpublish/{cache,logs,config,sessions} web
+         app/cache app/logs web
        ```
 
-       C. **Using chown on systems that don't support ACL**
+       C. **Using chown on *Linux/BSD/OS X* systems that don't support ACL**
 
        Some systems don't support ACL at all. You will need to set your web server's user as the owner of the required directories.
 
        ```bash
-       $ sudo chown -R www-data:www-data ezpublish/{cache,logs,config,sessions} web
-       $ sudo find {ezpublish/{cache,logs,config,sessions},web} -type d | xargs sudo chmod -R 775
-       $ sudo find {ezpublish/{cache,logs,config},web} -type f | xargs sudo chmod -R 664
+       $ sudo chown -R www-data:www-data app/cache app/logs web
+       $ sudo find {app/{cache,logs},web} -type d | xargs sudo chmod -R 775
+       $ sudo find {app/{cache,logs},web} -type f | xargs sudo chmod -R 664
        ```
 
-       D. **Using chmod**
+       D. **Using chmod on a *Linux/BSD/OS X* system where you can't change owner**
 
        If you can't use ACL and aren't allowed to change owner, you can use chmod, making the files writable by everybody. Note that this method really isn't recommended as it allows any user to do anything.
 
        ```bash
-       $ sudo find {ezpublish/{cache,logs,config,sessions},web} -type d | xargs sudo chmod -R 777
-       $ sudo find {ezpublish/{cache,logs,config,sessions},web} -type f | xargs sudo chmod -R 666
+       $ sudo find {app/{cache,logs},web} -type d | xargs sudo chmod -R 777
+       $ sudo find {app/{cache,logs},web} -type f | xargs sudo chmod -R 666
        ```
 
        When using chmod, note that newly created files (such as cache) owned by the web server's user may have different/restrictive permissions.
@@ -111,8 +113,16 @@
 
        It may also possible to add the group ownership inheritance flag so new files inherit the current group, and use `775`/`664` in the command lines above instead of world-writable:
        ```bash
-       $ sudo chmod g+s {ezpublish/{cache,logs,config,sessions},web}
+       $ sudo chmod g+s {app/{cache,logs},web}
        ```
+
+       E. **Setup folder rights on Windows**
+
+       For your choice of web server you'll need to make sure web server user has read access to `<root-dir>`, and
+       write access to the following directories:
+       - app/cache
+       - app/logs
+
 
 3. **Configure a VirtualHost**<a name="install-3-vhost"></a>:
 
@@ -125,7 +135,7 @@
     You may now complete the eZ Platform installation with ezplatform:install command, example of use:
 
     ```bash
-    $ php -d memory_limit=-1 ezpublish/console ezplatform:install --env prod clean
+    $ php -d memory_limit=-1 app/console ezplatform:install --env prod clean
     ```
 
     **Note**: Password for the generated `admin` user is `publish`, this name and password is needed when you would like to login to backend Platform UI. Future versions will prompt you for a unique password during installation.
