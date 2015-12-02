@@ -27,7 +27,7 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "tedivm/stash-bundle": "~0.4.3",
         "ezsystems/ezpublish-kernel": "6.0.0-rc1 as 6.0.0",
-        "ezsystems/repository-forms": "1.0.0-rc1 as 6.0.0",
+        "ezsystems/repository-forms": "1.0.0-rc1 as 1.0.0",
         "ezsystems/ezplatform-solr-search-engine": "^1.0",
         "ezsystems/platform-ui-bundle": "1.0.0-rc1 as 1.0.0",
         "ezsystems/platform-ui-assets-bundle": "1.0.0-rc1 as 1.0.0",
