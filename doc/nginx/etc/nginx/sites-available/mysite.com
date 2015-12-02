@@ -24,7 +24,7 @@ server {
     client_max_body_size 2m;
 
     location / {
-        location ~ ^/index\.php(/|$) {
+        location ~ ^/app\.php(/|$) {
             include ez_params.d/ez_fastcgi_params;
 
             # FPM socket
