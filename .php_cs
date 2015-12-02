@@ -22,7 +22,7 @@ return Symfony\CS\Config\Config::create()
                 'bin/.ci',
                 'bin/.travis',
                 'doc',
-                'ezpublish/cache',
+                'app/cache',
                 'ezpublish_legacy',
             ])
     )

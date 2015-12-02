@@ -9,7 +9,7 @@
 use eZ\Bundle\EzPublishCoreBundle\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
 
-class EzPublishKernel extends Kernel
+class AppKernel extends Kernel
 {
     /**
      * Returns an array of bundles to registers.

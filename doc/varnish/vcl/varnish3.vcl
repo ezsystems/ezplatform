@@ -3,7 +3,7 @@
 
 // Our Backend - Assuming that web server is listening on port 80
 // Replace the host to fit your setup
-backend ezpublish {
+backend ezplatform {
     .host = "127.0.0.1";
     .port = "80";
 }
@@ -24,7 +24,7 @@ acl debuggers {
 sub vcl_recv {
 
     // Set the backend
-    set req.backend = ezpublish;
+    set req.backend = ezplatform;
 
     // Advertise Symfony for ESI support
     set req.http.Surrogate-Capability = "abc=ESI/1.0";
