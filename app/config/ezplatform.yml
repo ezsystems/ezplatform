@@ -16,7 +16,7 @@ ezpublish:
         match:
             URIElement: 1
 
-   # System settings, grouped by siteaccess and/or siteaccess group
+    # System settings, grouped by siteaccess and/or siteaccess group
     system:
         site_group:
             languages: [eng-GB]
