@@ -3,7 +3,7 @@
 ## Terms for future reference:
   * `/<root-dir>/`: The filesystem path where eZ Platform is installed in.
     Examples: `/home/myuser/www/` or `/var/sites/<project-name>/`
-  * cli: command line interface. For *Linux/BSD/OS X* specif commands, use of `bash` or similar is assumed.
+  * cli: command line interface. For *Linux/BSD/OS X* specific commands, use of `bash` or similar is assumed.
 
 ## Prerequisite
 
@@ -13,8 +13,8 @@
   **Before you start**:
   - Create Database: Installation will ask you for credentials/details for which database to use
     *Note: Right now installer only supports MySQL, Postgres support should be (re)added in one of the upcoming releases.*
-  - set php.ini memory_limit=256M before running commands below
-  - *Optional:* You can also setup Solr to be used by eZ Platform and take note of url it is accessible on
+  - Set php.ini memory_limit=256M before running commands below
+  - *Optional:* You can also setup Solr to be used by eZ Platform and take note of the url it is accessible on
 
 ## Install
 
