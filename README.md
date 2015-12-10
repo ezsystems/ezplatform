@@ -3,11 +3,11 @@
 ## What is eZ Studio ?
 *eZ Studio* is a commercial CMS (Content Management System) software developed by eZ Systems AS and the eZ Community.
 
-*eZ Studio* is a standalone product which is based on *eZ Platform*, it is independent, as a set of bundles. eZ Studio, like Platform is built on top of the Symfony framework (Full Stack). It has been in development since 2014.
+*eZ Studio* derives from *eZ Platform*. It is composed of a set of bundles. eZ Studio, like Platform is built on top of the Symfony framework (Full Stack). It has been in development since 2014.
 
 ## eZ Studio vs. eZ Platform
-This repository contains *eZ Studio* the next generation CMS which uses the same Symfony kernel as *eZ Platform* (formerly known also as *eZ Publish 6*), but does not include the legacy kernel, nor its library dependencies.
-eZ Studio is where the new features are added.
+This repository contains *eZ Studio*, the next generation CMS which uses the same Symfony kernel as *eZ Platform* (formerly known also as *eZ Publish 6*), but does not include the legacy kernel, nor its library dependencies.
+eZ Studio comes with new features that extend Platform functionality.
 
 ### Abstract:
 - **Very extensible** *You can extend the application and the content model in many ways*
@@ -15,7 +15,7 @@ eZ Studio is where the new features are added.
 - **Multi channel by design** *Strong focus on separation between <sup>semantic</sup> content & design*
 - **Scalable** *Easily scale across multiple servers out of the box*
 - **Future proof** *Architecture designed to allow even more content scalability and performance in the future*
-- **Stable** *Built on experience building CMS since early 2000, and in production since 2014*
+- **Stable** *Built on experience in customizing and extending the highly flexible CMS solutions since early 2000, and in production since 2014*
 - **Integration friendly** *Numerous events and signals to hook into for advanced workflow needs*
 
 ### Main packages:
@@ -29,7 +29,7 @@ eZ Studio is where the new features are added.
  - Introduces concept of "web sites" allowing you to manage several within one installation
  - Allows to rapidly set up *Contextual override* of content display twig templates as well as controller based on Content type, section, and much more.
  - Helpers, services, events and signals allowing you to efficiently create everything from simple web sites to complex applications
-- **PlatformUIBundle**: A modern, extensible "Backend" UI for managing content & administering the site
+- **PlatformUIBundle**: A modern, extensible "backend" UI for managing content & administering the site
 
 ### Further information:
 *eZ Studio* is a commercial software which adds advanced features for editorial teams and media companies, 100% built on top of *eZ Platform* APIs.
