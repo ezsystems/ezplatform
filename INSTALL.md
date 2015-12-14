@@ -8,7 +8,7 @@
 ## Prerequisite
 
   These instructions assume you have technical knowledge and have already installed PHP, web server &
-  *a database server* needed for this software. For further information on requirements [see online doc](https://doc.ez.no/display/EZP/Requirements)
+  *a database server* needed for this software. For further information on requirements [see online doc](https://doc.ez.no/display/TECHDOC/Requirements)
 
   **Before you start**:
   - Create Database: Installation will ask you for credentials/details for which database to use

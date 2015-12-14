@@ -48,7 +48,7 @@ features for editorial teams and media companies, 100% built on top of *eZ Platf
 For installation & upgrade instructions, see [INSTALL.md](https://github.com/ezsystems/ezplatform/blob/master/INSTALL.md).
 
 ## Requirements
-**eZ Platform** currently has the same requirements as *eZ Publish Platform 5.4*, further details on the [5.4 requirements](https://doc.ez.no/display/EZP/Requirements+5.4) page.
+Full requirements can be found on the [Requirements](https://doc.ez.no/display/TECHDOC/Requirements) page.
 
 *TL;DR: minimum PHP 5.4.4 and higher, using mod_php or php-fpm.*
 
