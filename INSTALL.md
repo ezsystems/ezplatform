@@ -26,7 +26,7 @@
     `parameters.yml` contains settings for your database, mail system, and optionally [Solr](http://lucene.apache.org/solr/)
     if `search_engine` is configured as `solr`, as opposed to default `legacy` *(a limited database powered search engine)*.
 
-    A. **Extract archive** (tar/zip) *from http://share.ez.no/downloads/downloads*  
+    A. **Extract archive** (tar/zip) *from https://support.ez.no/Downloads*  
 
        Extract the eZ Studio archive to a directory, then execute post install scripts:
 
@@ -135,7 +135,7 @@
     You may now complete the eZ Studio installation with ezplatform:install command, example of use:
 
     ```bash
-    $ php -d memory_limit=-1 app/console ezplatform:install --env prod clean
+    $ php -d memory_limit=-1 app/console ezplatform:install --env prod demo
     ```
 
     **Note**: Password for the generated `admin` user is `publish`, this name and password is needed when you would like to login to backend Studio UI. Future versions will prompt you for a unique password during installation.
