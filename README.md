@@ -47,7 +47,7 @@ http://ez.no/Blog/What-to-Expect-from-eZ-Studio-and-eZ-Platform
 For installation & upgrade instructions, see [INSTALL.md](https://github.com/ezsystems/ezstudio/blob/master/INSTALL.md).
 
 ## Requirements
-**eZ Studio** currently has the same requirements as *eZ Platform*, further details on the [Requirements](https://doc.ez.no/display/TECHDOC/Requirements) page.
+Full requirements can be found on the [Requirements](https://doc.ez.no/display/TECHDOC/Requirements) page.
 
 *TL;DR: minimum PHP 5.4.4 and higher, using mod_php or php-fpm.*
 
