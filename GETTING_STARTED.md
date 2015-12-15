@@ -1,4 +1,4 @@
-# Hacking on eZ Platform
+# Getting started on eZ Platform
 
 eZ Platform is built on top of **Symfony2 full stack framework** (version **2.x**), and as such all guidelines,
 requirements and best practices remain the same.
@@ -8,26 +8,6 @@ in order to get the basics.
 
 Note: Section below is out-of-date but represent some hints on how to be learn more about contributing to eZ Platform.
       For introduction to *using* eZ Platform, please check our [online doc](doc.ez.no).
-
-## Demo bundle
-> "Bundle" is the name used for an extension in Symfony.
-
-A demo bundle, [EzDemoBundle](https://github.com/ezsystems/ezpublish-community/tree/master/src/EzSystems/DemoBundle), is provided
-in the *src/* directory under the *EzSystems* namespace and, among others, provides implementation for the demo design.
-This demo bundle already exposes [some routes](https://github.com/ezsystems/ezpublish-community/blob/master/src/EzSystems/DemoBundle/Resources/config/routing.yml)
-allowing to make some tests and hacking.
-
-The most interesting routes for a start are :
-
-- **eZTest**: Loads a content via the Public API and displays it. This content is expected to be a very simple folder with
-  *name* and *description* Field Definitions (formerly *content class attributes*).
-- **eZTestWithLegacy**: Includes a legacy template in a new one.
-
-> Warning: Public API still supports a limited number of Field Types (formerly *datatypes*), and as such you will probably get exceptions
-> regarding that.
->
-> To be able to show some content, please create a simple Content Type (formerly *content class*) via the admin interface
-> (you can access it from your eZ Platform installation like you already did before).
 
 ## Guidelines and features available
 ### Generating a bundle
@@ -104,41 +84,3 @@ From a Twig template, it is possible to render a content with a sub-request:
 ```jinja
 {% render "ez_content:viewLocation" with {"locationId": 123, "viewMode": "full"} %}
 ```
-
-### Legacy templates inclusion
-It is possible to include old templates (**.tpl*) into new ones:
-
-```jinja
-{# Twig template #}
-{# Following code will include my/old_template.tpl, exposing $someVar variable in it #}
-{% include "design:my/old_template.tpl" with {"someVar": "someValue"} %}
-```
-
-> **Note**
->
-> Content/Location objects from the Public API are converted into eZContentObject/eZContentObjectTreeNode objects (re-fetched)
-
-### Run legacy PHP code
-The new kernel still relies on eZ Publish legacy kernel and runs it when needed inside an isolated PHP closure, making it sandboxed.
-
-It is however still possible to run some PHP code inside that sandbox through the `runCallback()` method.
-
-```php
-<?php
-// Declare use statements for the classes you may need
-use eZINI;
-
-// Inside a controller/action
-$settingName = 'MySetting';
-$test = array( 'oneValue', 'anotherValue' );
-$myLegacySetting = $this->getLegacyKernel()->runCallback(
-    function () use ( $settingName, $test )
-    {
-        // Here you can reuse $settingName and $test variables inside the legacy context
-        $ini = eZINI::instance( 'someconfig.ini' );
-        return $ini->variable( 'SomeSection', $settingName );
-    }
-);
-```
-> `runCallback()` can also take a 2nd argument. Setting to `true` avoids to re-initialize the legacy kernel environment after your call.
-

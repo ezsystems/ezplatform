@@ -8,7 +8,7 @@
 ## Prerequisite
 
   These instructions assume you have technical knowledge and have already installed PHP, web server &
-  *a database server* needed for this software. For further information on requirements [see online doc](https://doc.ez.no/display/EZP/Requirements)
+  *a database server* needed for this software. For further information on requirements [see online doc](https://doc.ez.no/display/TECHDOC/Requirements)
 
   **Before you start**:
   - Create Database: Installation will ask you for credentials/details for which database to use
@@ -53,8 +53,8 @@
 
      Options:
        - `<version>`: Optional, *if omitted you'll get latest stable*, examples for specifying:
-        - `1.0.0@beta`: Example of getting latests 1.0.0 beta
-        - `v1.0.0-beta5`: example of picking a specific release/tag
+        - `~1.0.0`: Example of getting latests 1.0.x release, recommended
+        - `v1.0.0-beta5`: example of picking a specific tag
         - `dev-master`: to get current development version (pre release) `master` branch
        - For core development: Add '--prefer-source' to get full git clones, and remove '--no-dev' to get things like phpunit and behat installed.
        - Further reading: https://getcomposer.org/doc/03-cli.md#create-project

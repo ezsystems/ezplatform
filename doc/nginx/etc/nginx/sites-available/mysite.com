@@ -21,7 +21,7 @@ server {
     include ez_params.d/ez_rewrite_params;
 
     # upload max size
-    client_max_body_size 2m;
+    client_max_body_size 20m;
 
     location / {
         location ~ ^/app\.php(/|$) {
