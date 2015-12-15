@@ -26,7 +26,7 @@
     `parameters.yml` contains settings for your database, mail system, and optionally [Solr](http://lucene.apache.org/solr/)
     if `search_engine` is configured as `solr`, as opposed to default `legacy` *(a limited database powered search engine)*.
 
-    A. **Extract archive** (tar/zip) *from https://support.ez.no/Downloads*  
+    A. **Extract archive** (tar/zip) *from https://support.ez.no/Downloads/eZ-Studio-15.12*
 
        Extract the eZ Studio archive to a directory, then execute post install scripts:
 
