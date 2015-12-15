@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "edd617090551c14133d29278ade65f24",
-    "content-hash": "3c5ecd446191ad4d785501c38908b75e",
+    "hash": "692f3c01473a48666d938c76b9d97a36",
+    "content-hash": "b9069621e027a8538ce47abfb4f60938",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -736,16 +736,16 @@
         },
         {
             "name": "ezsystems/ezpublish-kernel",
-            "version": "v6.0.0",
+            "version": "v6.0.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-kernel.git",
-                "reference": "8e9532655327d4f7a36ca52e42b04087b03aaf63"
+                "reference": "514dca065b089ad1bb7ca98625c7c34ea5a51f09"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/8e9532655327d4f7a36ca52e42b04087b03aaf63",
-                "reference": "8e9532655327d4f7a36ca52e42b04087b03aaf63",
+                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/514dca065b089ad1bb7ca98625c7c34ea5a51f09",
+                "reference": "514dca065b089ad1bb7ca98625c7c34ea5a51f09",
                 "shasum": ""
             },
             "require": {
@@ -793,12 +793,6 @@
                 "php-64bit": "For support of more than 30 languages, a 64bit php installation on all involved prod/dev machines is required"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "6.0.x-dev"
-                },
-                "ezpublish-legacy-dir": "vendor/ezsystems/ezpublish-legacy"
-            },
             "autoload": {
                 "psr-4": {
                     "EzSystems\\PlatformInstallerBundle\\": "eZ/Bundle/PlatformInstallerBundle/src",
@@ -812,9 +806,9 @@
             "license": [
                 "GPL-2.0"
             ],
-            "description": "eZ Publish API and kernel. This is the heart of eZ Publish 5.",
+            "description": "Kernel used by ezsystems/ezplatform and derivatives. Provides the Content Repository, its APIs, and the application's Symfony framework integration.",
             "homepage": "http://share.ez.no",
-            "time": "2015-12-09 11:07:14"
+            "time": "2015-12-15 10:45:03"
         },
         {
             "name": "ezsystems/platform-ui-assets-bundle",
@@ -854,16 +848,16 @@
         },
         {
             "name": "ezsystems/platform-ui-bundle",
-            "version": "v1.0.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/PlatformUIBundle.git",
-                "reference": "d3e81a9a6740a335ab6eccf7712e008b208e4757"
+                "reference": "d2b40146f9b9513d4e08717695b799f0f914ce0d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/PlatformUIBundle/zipball/d3e81a9a6740a335ab6eccf7712e008b208e4757",
-                "reference": "d3e81a9a6740a335ab6eccf7712e008b208e4757",
+                "url": "https://api.github.com/repos/ezsystems/PlatformUIBundle/zipball/d2b40146f9b9513d4e08717695b799f0f914ce0d",
+                "reference": "d2b40146f9b9513d4e08717695b799f0f914ce0d",
                 "shasum": ""
             },
             "require": {
@@ -887,7 +881,7 @@
                 "GPL-2.0"
             ],
             "description": "eZ Platform UI Bundle",
-            "time": "2015-12-09 14:00:53"
+            "time": "2015-12-15 11:24:20"
         },
         {
             "name": "ezsystems/repository-forms",
