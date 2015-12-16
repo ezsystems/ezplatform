@@ -3,6 +3,7 @@
     "description": "eZ Platform distribution",
     "homepage": "https://github.com/ezsystems/ezplatform",
     "license": "GPL-2.0",
+    "type": "project",
     "authors": [
         {
             "name": "eZ dev-team & eZ Community",
