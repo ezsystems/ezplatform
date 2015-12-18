@@ -47,6 +47,9 @@ features for editorial teams and media companies, 100% built on top of *eZ Platf
 ## Install and Upgrade
 For installation & upgrade instructions, see [INSTALL.md](https://github.com/ezsystems/ezplatform/blob/master/INSTALL.md).
 
+### eZ Platform Demo
+This repository lets you create a clean, empty installation of eZ Platform. This type of installation is used for developing from scratch. You can also choose a version of eZ Platform including a demo, that is an example website. It is available in the following repository: https://github.com/ezsystems/ezplatform-demo
+
 ## Requirements
 Full requirements can be found on the [Requirements](https://doc.ez.no/display/TECHDOC/Requirements) page.
 
