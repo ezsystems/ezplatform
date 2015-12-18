@@ -4,6 +4,8 @@
 /.idea/
 /bin/behat
 /bin/phpunit
+/app/check.php
+/app/SymfonyRequirements.php
 /app/cache/
 /app/logs/
 /ezpublish_legacy
@@ -13,6 +15,8 @@
 /web/index_rest.php
 /web/index_cluster.php
 /web/bundles/
+/web/css/
+/web/js/
 /web/design
 /web/extension
 /web/share
