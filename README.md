@@ -59,6 +59,9 @@ Full requirements can be found on the [Requirements](https://doc.ez.no/display/T
 Submitting bugs, improvements and stories is possible on https://jira.ez.no/browse/EZP.
 If you discover a security issue, please see how to responsibly report such issues on https://doc.ez.no/Security.
 
+## Running BDD
+For instruction on how to run the functional tests, see [RUNNING_BEHAT.md](https://github.com/ezsystems/ezplatform/blob/master/RUNNING_BEHAT.md).
+
 ## Backwards compatibility
 eZ Platform aiming to be **100% content compatible** with eZ Publish 5.x, 4.x and 3.x *(introduced in 2002)*, meaning
 that content in those versions of the CMS can be upgraded using
