@@ -36,10 +36,13 @@ See http://docs.behat.org/en/v3.0/guides/6.profiles.html#environment-variable-be
 ./bin/behat
 ```
 
+### Tags
 Features tagged with `common` are executed on every pull request. Other, such as `edge`, are only executed on occasions.
 
+Add ` --tags='common'` to the behat command line to restrict execution to features tagged as "common".
+
 ### Running all of the PlatformUI features
-`./bin/behat --profile=platformui` --tags='common'
+`./bin/behat --profile=platformui`
 
 ### Running a specific feature
-`./bin/behat --profile=platformui ~/ezplatform/vendor/ezsystems/platform-ui-bundle/Features/Users/users.feature`  --tags='common'
+`./bin/behat --profile=platformui ~/ezplatform/vendor/ezsystems/platform-ui-bundle/Features/Users/users.feature`
