@@ -1,4 +1,4 @@
-# Running eZ Platform's test
+# Running the behat features
 
 ## Install selenium server
 Download the last version of the selenium server on the [download page](http://www.seleniumhq.org/download/).
@@ -13,17 +13,33 @@ Create a dedicated virtual host on your web server and set the environment to `b
 
 Once this is done, make sur this virtual hosts works in your browser.
 
-## Create configuration file
-At the root of ezplatform, copy the configuration file.
+## Customize the configuration
+Behat needs to run HTTP calls on the project. By default, it uses http://localhost.
+
+You can either create a configuration file, or use environment variables:
+
 ```
 cp behat.yml.dist behat.yml
 ```
-
 Edit the file and update the `base_url` and selenium's `wd_host` (if needed)
 
-## Run the test
-### Running all of the PlatformUI tests
-`./bin/behat --profile=platformui`
+Or customize the settings using the BEHAT_PARAMS environment variable:
+```
+export BEHAT_PARAMS='{"extensions" : {"Behat\\MinkExtension" : {"base_url" : "https://www.example.com/"}}}'
+```
 
-### Running a dedicated test
-`./bin/behat --profile=platformui ~/ezplatform/vendor/ezsystems/platform-ui-bundle/Features/Users/users.feature`
+See http://docs.behat.org/en/v3.0/guides/6.profiles.html#environment-variable-behat-params.
+
+## Run the features
+
+```
+./bin/behat
+```
+
+Features tagged with `common` are executed on every pull request. Other, such as `edge`, are only executed on occasions.
+
+### Running all of the PlatformUI features
+`./bin/behat --profile=platformui` --tags='common'
+
+### Running a specific feature
+`./bin/behat --profile=platformui ~/ezplatform/vendor/ezsystems/platform-ui-bundle/Features/Users/users.feature`  --tags='common'
