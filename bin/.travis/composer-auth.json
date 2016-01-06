@@ -1,0 +1,8 @@
+{
+    "github-oauth": {
+        "github.com": "PLEASE DO NOT USE THIS TOKEN IN YOUR OWN PROJECTS/FORKS",
+        "github.com": "This token is reserved for testing with ezsystems repositories",
+        "github.com": "NB: You create your own token without(!) any scope to use same approach",
+        "github.com": "d0285ed5c8644f30547572ead2ed897431c1fc09"
+    }
+}
