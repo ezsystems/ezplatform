@@ -10,13 +10,13 @@ if ($environment === false) {
 }
 
 // Depending on the SYMFONY_DEBUG environment variable, tells whether Symfony should be loaded with debugging.
-// If not set it is activated if in "dev" environment.
-if (($useDebugging = getenv('SYMFONY_DEBUG')) === false) {
+// If not set, or "" it is activated if in "dev" environment.
+if (($useDebugging = getenv('SYMFONY_DEBUG')) === false || $useDebugging === '') {
     $useDebugging = $environment === 'dev';
 }
 
 // Depending on SYMFONY_CLASSLOADER_FILE use custom class loader, otherwise use bootstrap cache, or autoload in debug
-if (($loaderFile = getenv('SYMFONY_CLASSLOADER_FILE')) !== false) {
+if (($loaderFile = getenv('SYMFONY_CLASSLOADER_FILE'))) {
     require_once $loaderFile;
 } elseif ($useDebugging) {
     require_once __DIR__ . '/../app/autoload.php';
@@ -38,16 +38,17 @@ if (!$useDebugging) {
 }
 
 // Depending on the SYMFONY_HTTP_CACHE environment variable, tells whether the internal HTTP Cache mechanism is to be used.
-// If not set it is activated if not in "dev" environment.
-if (($useHttpCache = getenv('SYMFONY_HTTP_CACHE')) === false) {
+// If not set, or "" it is activated if not in "dev" environment.
+if (($useHttpCache = getenv('SYMFONY_HTTP_CACHE')) === false || $useHttpCache === '') {
     $useHttpCache = $environment !== 'dev';
 }
 
-// Load HTTP Cache ...
-if ($useHttpCache) {
+// Enable Symfony HPPT Proxy Cache if enabled and no truest proxies are configured (implying external proxy)
+$trustedProxies = getenv('SYMFONY_TRUSTED_PROXIES');
+if ($useHttpCache && !$trustedProxies) {
     // The standard HttpCache implementation can be overridden by setting the SYMFONY_HTTP_CACHE_CLASS environment variable.
     // Make sure to setup composer config so it is *autoloadable*, or fallback to use "SYMFONY_CLASSLOADER_FILE"
-    if (($httpCacheClass = getenv('SYMFONY_HTTP_CACHE_CLASS')) !== false) {
+    if (($httpCacheClass = getenv('SYMFONY_HTTP_CACHE_CLASS'))) {
         $kernel = new $httpCacheClass($kernel);
     } else {
         require_once __DIR__ . '/../app/AppCache.php';
@@ -59,7 +60,7 @@ $request = Request::createFromGlobals();
 
 // If you are behind one or more trusted reverse proxies, you might want to set them in SYMFONY_TRUSTED_PROXIES environment
 // variable in order to get correct client IP
-if (($trustedProxies = getenv('SYMFONY_TRUSTED_PROXIES')) !== false) {
+if ($trustedProxies) {
     Request::setTrustedProxies(explode(',', $trustedProxies));
 }
 
