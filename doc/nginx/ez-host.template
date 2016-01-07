@@ -1,18 +1,19 @@
 server {
     # Port to listen to, example:
     # listen       80;
-    listen       %PORT%;
+    listen       ${WEB_PORT};
     # Host and alias to respond to, example:
     # server_name  ez.no www.ez.no;
     # Further documentation: http://nginx.org/en/docs/http/server_names.html
-    server_name  %HOST% %HOST_ALIAS%;
+    server_name  ${WEB_HOST} ${WEB_HOST_ALIAS};
 
-    root %BASEDIR%/web;
+    root ${WEB_BASEDIR}/web;
 
     # Additional Assetic rules for eZ Publish 5.1 / 2013.4 and higher.
     ## Don't forget to run php app/console assetic:dump --env=prod
-    ## and make sure to comment these out in DEV environment.
-    include ez_params.d/ez_prod_rewrite_params;
+    ## Valid value if DEV environment :
+    ## Valid valud if not DEV environment : include ez_params.d/ez_prod_rewrite_params;
+    ${NGINX_EZ_PROD_REWRITE_PARAMS}
 
     # Cluster/streamed files rewrite rules. Enable on cluster with DFS as a binary data handler
     #rewrite "^/var/([^/]+/)?storage/images(-versioned)?/(.*)" "/app.php" break;
@@ -21,24 +22,29 @@ server {
     include ez_params.d/ez_rewrite_params;
 
     # upload max size
-    client_max_body_size 20m;
+    # Example : 20m
+    client_max_body_size ${NGINX_CLIENT_MAX_BODY_SIZE};
+
+    # FPM fastcgi_read_timeout
+    # Default value : 60s
+    fastcgi_read_timeout ${NGINX_FASTCGI_READ_TIMEOUT};
+
 
     location / {
         location ~ ^/app\.php(/|$) {
             include ez_params.d/ez_fastcgi_params;
 
-            # FPM socket
-            fastcgi_pass unix:/var/run/php5-fpm.sock;
-            # FPM network
-            #fastcgi_pass 127.0.0.1:9000;
+            # FPM fastcgi pass.
+            # Possible values: unix:/var/run/php5-fpm.sock or 127.0.0.1:9000
+            fastcgi_pass ${NGINX_FASTCGI_PASS};
 
             ## eZ Platform ENVIRONMENT variables, used for customizing app.php execution (not used by console commands)
 
             # Environment.
-            # Possible values: "prod" and "dev" out-of-the-box, other values possible with proper configuration
-            # Make sure to comment the "ez_params.d/ez_prod_rewrite_params" include above in dev.
-            # Defaults to "prod" if omitted
-            #fastcgi_param SYMFONY_ENV dev;
+            # Possible values: prod and dev out-of-the-box, other values possible with proper configuration
+            # Make sure NGINX_EZ_PROD_REWRITE_PARAMS above is set to be empty if using dev.
+            # Defaults to prod if omitted
+            fastcgi_param SYMFONY_ENV ${SYMFONY_ENV};
 
             # Whether to use custom ClassLoader (autoloader) file
             # Needs to be a valid path relative to root web/ directory
@@ -48,16 +54,16 @@ server {
             # Whether to use debugging.
             # Possible values: 0 or 1
             # Defaults to 0 if omitted, unless SYMFONY_ENV is set to: "dev"
-            #fastcgi_param SYMFONY_DEBUG 0;
+            fastcgi_param SYMFONY_DEBUG ${SYMFONY_DEBUG};
 
             # Whether to use Symfony's HTTP Caching.
             # Disable it if you are using an external reverse proxy (e.g. Varnish)
             # Possible values: 0 or 1
             # Defaults to 1 if omitted, unless SYMFONY_ENV is set to: "dev"
-            #fastcgi_param SYMFONY_HTTP_CACHE 1;
+            fastcgi_param SYMFONY_HTTP_CACHE ${SYMFONY_HTTP_CACHE};
 
             # Whether to use custom HTTP Cache class if SYMFONY_HTTP_CACHE is enabled
-            # Value must be na autoloadable cache class
+            # Value must be an autoloadable cache class
             # Defaults to "AppCache"
             #fastcgi_param SYMFONY_HTTP_CACHE_CLASS "\Vendor\Project\MyCache";
 
@@ -65,13 +71,13 @@ server {
             # Separate entries by a comma
             # Example: "proxy1.example.com,proxy2.example.org"
             # By default, no trusted proxies are set
-            #fastcgi_param SYMFONY_TRUSTED_PROXIES "%PROXY%";
+            fastcgi_param SYMFONY_TRUSTED_PROXIES "${SYMFONY_TRUSTED_PROXIES}";
         }
     }
 
     # Custom logs
-    # access_log %BASEDIR%/app/logs/httpd-access.log;
-    # error_log  %BASEDIR%/app/logs/httpd-error.log notice;
+    # access_log ${WEB_BASEDIR}/app/logs/httpd-access.log;
+    # error_log  ${WEB_BASEDIR}/app/logs/httpd-error.log notice;
 
     include ez_params.d/ez_server_params;
 }
