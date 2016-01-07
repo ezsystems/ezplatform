@@ -74,4 +74,3 @@ server {
 
     include ez_params.d/ez_server_params;
 }
-
