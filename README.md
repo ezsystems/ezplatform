@@ -55,6 +55,14 @@ Full requirements can be found on the [Requirements](https://doc.ez.no/display/T
 Submitting bugs, improvements and stories is possible on https://jira.ez.no/browse/EZS.
 If you discover a security issue, please see how to responsibly report such issues on https://doc.ez.no/Security.
 
+## Running BDD
+For instruction on how to run the functional tests, see [RUNNING_BEHAT.md](https://github.com/ezsystems/ezplatform/blob/master/RUNNING_BEHAT.md).
+
+## Backwards compatibility
+eZ Platform aiming to be **100% content compatible** with eZ Publish 5.x, 4.x and 3.x *(introduced in 2002)*, meaning
+that content in those versions of the CMS can be upgraded using
+[online documentation](http://doc.ez.no/eZ-Publish/Upgrading) to eZ Platform.
+
 Unlike eZ Publish Platform 5.x, eZ Studio does not ship with eZ Publish Legacy (4.x). For Platform kernel use combined
 with legacy, eZ Publish Platform 5.4 is the most stable choice, offering support and maintenance updates until 2021.
 Alternative is releases of eZ Publish Community, latest as of Oct 2015 is v2014.11 found at
