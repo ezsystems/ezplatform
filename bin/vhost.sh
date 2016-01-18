@@ -42,7 +42,9 @@ declare -a option_values=(
     "localhost *.localhost"
 )
 
-function show_help {
+function show_help
+{
+    local env_list
     # Errors
     if [[ "$1" != "" ]] ;
     then
@@ -53,6 +55,9 @@ function show_help {
         fi
         echo ""
     fi
+
+    env_list="${template_vars[@]//\%/}"
+    env_list="${env_list// /, }"
 
     # General help text
     cat << EOF
@@ -66,6 +71,7 @@ Usage:
   --template-file=doc/apache2/vhost.template \\
   > /etc/apache/site-enabled/my-site
 
+Defaults values will be fetched from the environment variables $env_list, but might be overriden using the arguments listed below.
 
 Arguments:
   --basedir=<path>                      : Root path to where the eZ installation is placed, used for <path>/web
@@ -87,6 +93,30 @@ Arguments:
 
 EOF
 }
+
+# This function checks if there variables like BASEDIR, CLASSLOADER_FILE etc exists ( checks all variables defined in template_vars )
+# If environment variable exists, it's value is used as default when parsing template
+function inject_environment_variables
+{
+    local current_env_variable
+    local option_value
+    local template_var
+    local i
+
+    i=0;
+    for template_var in "${template_vars[@]}"; do
+        # Remove "%" from from template_vars....
+        current_env_variable=${template_var//%/}
+        # Get value of variable referenced to by $current_env_variable. If env variable do not exists, value is set to "SomeDefault"
+        option_value=${!current_env_variable:-SomeDefault}
+        if [ "$option_value" != "SomeDefault" ]; then
+            option_values[$i]="$option_value";
+        fi
+        let i=$i+1;
+    done
+}
+
+inject_environment_variables
 
 ## Parse arguments
 for i in "$@"
