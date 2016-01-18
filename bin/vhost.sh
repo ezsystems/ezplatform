@@ -20,6 +20,7 @@ declare -a template_vars=(
     %BODY_SIZE_LIMIT_M%
     %TIMEOUT_S%
     %HOST_LIST%
+    %FASTCGI_PASS%
 )
 
 # Default options
@@ -40,6 +41,7 @@ declare -a option_values=(
     "48m"
     "60s"
     "localhost *.localhost"
+    "unix:/var/run/php5-fpm.sock"
 )
 
 function show_help
