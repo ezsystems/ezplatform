@@ -2,8 +2,8 @@
 # Script to generate virtual host config based on template containing variables among the once define below.
 # For help text, execute: ./bin/vhost.sh -h
 
-# Available template variables
-declare -a template_vars=(
+# Available option variables, configurable by user
+declare -a option_vars=(
     %BASEDIR%
     %CLASSLOADER_FILE%
     %DEBUG%
@@ -17,13 +17,20 @@ declare -a template_vars=(
     %REVERSE_PROXIES%
     %BODY_SIZE_LIMIT%
     %TIMEOUT%
-    %BODY_SIZE_LIMIT_M%
-    %TIMEOUT_S%
-    %HOST_LIST%
+    %FASTCGI_PASS%
 )
 
+# Available template variables
+declare -a template_vars
+# copy option_vars
+template_vars=(${option_vars[*]})
+# The additinal vars are calculated by script
+template_vars+=("%BODY_SIZE_LIMIT_M%")
+template_vars+=("%TIMEOUT_S%")
+template_vars+=("%HOST_LIST%")
+
 # Default options
-declare -a option_values=(
+declare -a template_values=(
     ""
     ""
     ""
@@ -37,13 +44,15 @@ declare -a option_values=(
     ""
     "49152"
     "60"
+    "unix:/var/run/php5-fpm.sock"
     "48m"
     "60s"
     "localhost *.localhost"
-    ""
 )
 
-function show_help {
+function show_help
+{
+    local env_list
     # Errors
     if [[ "$1" != "" ]] ;
     then
@@ -55,6 +64,9 @@ function show_help {
         echo ""
     fi
 
+    env_list="${option_vars[@]//\%/}"
+    env_list="${env_list// /, }"
+
     # General help text
     cat << EOF
 Script for generating httpd config based on simplified templates
@@ -64,9 +76,10 @@ Help (this text):
 
 Usage:
 ./bin/vhost.sh --basedir=/var/www/ezplatform \\
-  --template-file=doc/apache/vhost.template \\
+  --template-file=doc/apache2/vhost.template \\
   > /etc/apache/site-enabled/my-site
 
+Defaults values will be fetched from the environment variables $env_list, but might be overriden using the arguments listed below.
 
 Arguments:
   --basedir=<path>                      : Root path to where the eZ installation is placed, used for <path>/web
@@ -89,53 +102,85 @@ Arguments:
 EOF
 }
 
+# This function checks if there variables like BASEDIR, CLASSLOADER_FILE etc exists ( checks all variables defined in option_vars )
+# If environment variable exists, it's value is used as default when parsing template
+function inject_environment_variables
+{
+    local current_env_variable
+    local option_value
+    local template_var
+    local i
+
+    i=0;
+    for template_var in "${option_vars[@]}"; do
+        # Remove "%" from from template_vars....
+        current_env_variable=${template_var//%/}
+        # Get value of variable referenced to by $current_env_variable. If env variable do not exists, value is set to ""
+        option_value=${!current_env_variable:-SomeDefault}
+        if [ "$option_value" != "SomeDefault" ]; then
+            template_values[$i]="$option_value";
+            if [ "$current_env_variable" == "BODY_SIZE_LIMIT" ]; then
+                template_values[11]="$option_value"*1024
+                template_values[14]="${option_value}m"
+            fi
+            if [ "$current_env_variable" == "TIMEOUT" ]; then
+                template_values[12]="$option_value"
+                template_values[15]="${option_value}s"
+            fi
+        fi
+        let i=$i+1;
+    done
+}
+
+inject_environment_variables
+
 ## Parse arguments
 for i in "$@"
 do
 case $i in
     -b=*|--basedir=*)
-        option_values[0]="${i#*=}"
+        template_values[0]="${i#*=}"
         ;;
     --classloader-file=*)
-        option_values[1]="${i#*=}"
+        template_values[1]="${i#*=}"
         ;;
     -d=*|--debug=*)
-        option_values[2]="${i#*=}"
+        template_values[2]="${i#*=}"
         ;;
     -e=*|--env=*)
-        option_values[3]="${i#*=}"
+        template_values[3]="${i#*=}"
         ;;
     --host-alias=*)
-        option_values[4]="${i#*=}"
+        template_values[4]="${i#*=}"
         ;;
     --sf-proxy=*)
-        option_values[5]="${i#*=}"
+        template_values[5]="${i#*=}"
         ;;
     --sf-proxy-class=*)
-        option_values[6]="${i#*=}"
+        template_values[6]="${i#*=}"
         ;;
     --host-name=*)
-        option_values[7]="${i#*=}"
+        template_values[7]="${i#*=}"
         ;;
     --ip=*)
-        option_values[8]="${i#*=}"
+        template_values[8]="${i#*=}"
         ;;
     -p=*|--port=*)
-        option_values[9]="${i#*=}"
+        template_values[9]="${i#*=}"
         ;;
     --reverse-proxies=*)
-        option_values[10]="${i#*=}"
+        template_values[10]="${i#*=}"
         ;;
     --body-size-limit=*)
-        option_values[11]="${i#*=}"*1024
-        option_values[13]="${i#*=}m"
+        template_values[11]="${i#*=}"*1024
+        template_values[14]="${i#*=}m"
         ;;
     --request-timeout=*)
-        option_values[12]="${i#*=}"
-        option_values[14]="${i#*=}s"
+        template_values[12]="${i#*=}"
+        template_values[15]="${i#*=}s"
         ;;
     -t=*|--template-file=*)
-        option_values[16]="${i#*=}"
+        template_file="${i#*=}"
         ;;
     -h|--help)
         show_help
@@ -150,18 +195,18 @@ done
 
 
 ## Validation
-if [[ "${option_values[16]}" == "" ]] ; then
-    show_help "--template-file=${option_values[16]}"
+if [ "$template_file}" == "" ] ; then
+    show_help "--template-file=$template_file"
     exit 1
 fi
 
 
-if [ ! -f ${option_values[16]} ] ; then
-    show_help "--template-file=${option_values[16]}"
+if [ ! -f "$template_file" ] ; then
+    show_help "--template-file=$template_file"
     exit 1
 fi
 
-if [[ "${option_values[0]}" == "" ]] ; then
+if [[ "${template_values[0]}" == "" ]] ; then
     show_help "--basedir=<path>" true
     exit 1
 fi
@@ -169,19 +214,19 @@ fi
 ## Option specific logic
 
 # For httpd server having just one host config we provide HOST_LIST
-option_values[15]="${option_values[7]}"
-if [[ "${option_values[4]}" != "" ]] ; then
-     tmp="${option_values[15]} ${option_values[4]}"
-     option_values[15]=$tmp
+template_values[16]="${template_values[7]}"
+if [[ "${template_values[4]}" != "" ]] ; then
+     tmp="${template_values[16]} ${template_values[4]}"
+     template_values[16]=$tmp
 fi
 
 
 ## Generate template result and output
 
-template=$(<${option_values[16]})
+template=$(<$template_file)
 COUNTER=0
 while [  "${template_vars[$COUNTER]}" != "" ]; do
-    tmp=${template//${template_vars[$COUNTER]}/${option_values[$COUNTER]}}
+    tmp=${template//${template_vars[$COUNTER]}/${template_values[$COUNTER]}}
     template=$tmp
     let COUNTER=COUNTER+1
 done
