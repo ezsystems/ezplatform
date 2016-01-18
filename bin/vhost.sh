@@ -40,7 +40,6 @@ declare -a option_values=(
     "48m"
     "60s"
     "localhost *.localhost"
-    ""
 )
 
 function show_help {
@@ -64,7 +63,7 @@ Help (this text):
 
 Usage:
 ./bin/vhost.sh --basedir=/var/www/ezplatform \\
-  --template-file=doc/apache/vhost.template \\
+  --template-file=doc/apache2/vhost.template \\
   > /etc/apache/site-enabled/my-site
 
 
@@ -135,7 +134,7 @@ case $i in
         option_values[14]="${i#*=}s"
         ;;
     -t=*|--template-file=*)
-        option_values[16]="${i#*=}"
+        template_file="${i#*=}"
         ;;
     -h|--help)
         show_help
@@ -150,14 +149,14 @@ done
 
 
 ## Validation
-if [[ "${option_values[16]}" == "" ]] ; then
-    show_help "--template-file=${option_values[16]}"
+if [ "$template_file}" == "" ] ; then
+    show_help "--template-file=$template_file"
     exit 1
 fi
 
 
-if [ ! -f ${option_values[16]} ] ; then
-    show_help "--template-file=${option_values[16]}"
+if [ ! -f "$template_file" ] ; then
+    show_help "--template-file=$template_file"
     exit 1
 fi
 
@@ -178,7 +177,7 @@ fi
 
 ## Generate template result and output
 
-template=$(<${option_values[16]})
+template=$(<$template_file)
 COUNTER=0
 while [  "${template_vars[$COUNTER]}" != "" ]; do
     tmp=${template//${template_vars[$COUNTER]}/${option_values[$COUNTER]}}
