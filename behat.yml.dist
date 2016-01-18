@@ -27,4 +27,5 @@ default:
 imports:
     - vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishCoreBundle/behat.yml
     - vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishRestBundle/behat.yml
+    - vendor/ezsystems/behatbundle/EzSystems/BehatBundle/behat.yml
     - vendor/ezsystems/platform-ui-bundle/behat.yml
