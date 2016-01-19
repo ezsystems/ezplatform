@@ -5,15 +5,15 @@
 # Available option variables, configurable by user
 declare -a option_vars=(
     %BASEDIR%
-    %SYMFONY_CLASSLOADER_FILE%
-    %SYMFONY_DEBUG%
-    %SYMFONY_ENV%
-    %HOST_ALIAS%
-    %SYMFONY_HTTP_CACHE%
-    %SYMFONY_HTTP_CACHE_CLASS%
-    %HOST_NAME%
     %IP_ADDRESS%
     %PORT%
+    %HOST_NAME%
+    %HOST_ALIAS%
+    %SYMFONY_ENV%
+    %SYMFONY_CLASSLOADER_FILE%
+    %SYMFONY_DEBUG%
+    %SYMFONY_HTTP_CACHE%
+    %SYMFONY_HTTP_CACHE_CLASS%
     %SYMFONY_TRUSTED_PROXIES%
     %BODY_SIZE_LIMIT%
     %TIMEOUT%
@@ -32,15 +32,15 @@ template_vars+=("%HOST_LIST%")
 # Default options
 declare -a template_values=(
     ""
-    ""
-    ""
-    "prod"
-    "*.localhost"
-    ""
-    ""
-    "localhost"
     '*'
     "80"
+    "localhost"
+    "*.localhost"
+    "prod"
+    ""
+    ""
+    ""
+    ""
     ""
     "49152"
     "60"
@@ -141,31 +141,31 @@ case $i in
     -b=*|--basedir=*)
         template_values[0]="${i#*=}"
         ;;
-    --sf-classloader-file=*)
+    --ip=*)
         template_values[1]="${i#*=}"
         ;;
-    -d=*|--sf-debug=*)
+    -p=*|--port=*)
         template_values[2]="${i#*=}"
         ;;
-    -e=*|--sf-env=*)
+    --host-name=*)
         template_values[3]="${i#*=}"
         ;;
     --host-alias=*)
         template_values[4]="${i#*=}"
         ;;
-    --sf-http-cache=*)
+    -e=*|--sf-env=*)
         template_values[5]="${i#*=}"
         ;;
-    --sf-http-cache-class=*)
+    --sf-classloader-file=*)
         template_values[6]="${i#*=}"
         ;;
-    --host-name=*)
+    -d=*|--sf-debug=*)
         template_values[7]="${i#*=}"
         ;;
-    --ip=*)
+    --sf-http-cache=*)
         template_values[8]="${i#*=}"
         ;;
-    -p=*|--port=*)
+    --sf-http-cache-class=*)
         template_values[9]="${i#*=}"
         ;;
     --sf-trusted-proxies=*)
