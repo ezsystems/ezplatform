@@ -5,16 +5,16 @@
 # Available option variables, configurable by user
 declare -a option_vars=(
     %BASEDIR%
-    %CLASSLOADER_FILE%
-    %DEBUG%
-    %ENV%
-    %HOST_ALIAS%
-    %HTTP_CACHE%
-    %HTTP_CACHE_CLASS%
-    %HOST_NAME%
     %IP_ADDRESS%
     %PORT%
-    %REVERSE_PROXIES%
+    %HOST_NAME%
+    %HOST_ALIAS%
+    %SYMFONY_ENV%
+    %SYMFONY_CLASSLOADER_FILE%
+    %SYMFONY_DEBUG%
+    %SYMFONY_HTTP_CACHE%
+    %SYMFONY_HTTP_CACHE_CLASS%
+    %SYMFONY_TRUSTED_PROXIES%
     %BODY_SIZE_LIMIT%
     %TIMEOUT%
     %FASTCGI_PASS%
@@ -32,15 +32,15 @@ template_vars+=("%HOST_LIST%")
 # Default options
 declare -a template_values=(
     ""
-    ""
-    ""
-    "prod"
-    "*.localhost"
-    ""
-    ""
-    "localhost"
     '*'
     "80"
+    "localhost"
+    "*.localhost"
+    "prod"
+    ""
+    ""
+    ""
+    ""
     ""
     "49152"
     "60"
@@ -82,22 +82,22 @@ Usage:
 Defaults values will be fetched from the environment variables $env_list, but might be overriden using the arguments listed below.
 
 Arguments:
-  --basedir=<path>                      : Root path to where the eZ installation is placed, used for <path>/web
-  --template-file=<file.template>       : The file to use as template for the generated ouput file
-  [--env=prod|dev|..]                   : Symfony environment used for the virtual host, default is "prod"
-  [--host-name=localhost]               : Primary host name, default "localhost"
-  [--host-alias=*.localhost]            : Space separated list of host aliases, default "*.localhost"
-  [--ip=*|127.0.0.1]                    : IP address web server should accept traffic on.
-  [--port=80]                           : Port number web server should listen to.
-  [--debug=0|1]                         : Set if Symfony debug should be on, by default on if env is "dev"
-  [--reverse-proxies=127.0.0.1,....]    : Comma separated proxies (e.g. Varnish), will disable symfony proxy if set
-  [--sf-proxy=0|1]                      : To disable Symfony HTTP cache Proxy for using a different reverse proxy
-                                          By default disabled when evn is "dev", enabled otherwise.
-  [--sf-proxy-class=<class-file.php>]   : To specify a different class then default to use as the Symfony proxy
-  [--classloader-file=<class-file.php>] : To specify a different class then default to use for php auto loading
-  [--body-size-limit=<int>]             : Limit in megabytes for max size of request body, 0 value disables limit.
-  [--request-timeout=<int>]             : Limit in seconds before timeout of request, 0 value disables timeout limit.
-  [-h|--help]                           : Help text, this one more or less
+  --basedir=<path>                         : Root path to where the eZ installation is placed, used for <path>/web
+  --template-file=<file.template>          : The file to use as template for the generated ouput file
+  [--host-name=localhost]                  : Primary host name, default "localhost"
+  [--host-alias=*.localhost]               : Space separated list of host aliases, default "*.localhost"
+  [--ip=*|127.0.0.1]                       : IP address web server should accept traffic on.
+  [--port=80]                              : Port number web server should listen to.
+  [--sf-env=prod|dev|..]                   : Symfony environment used for the virtual host, default is "prod"
+  [--sf-debug=0|1]                         : Set if Symfony debug should be on, by default on if env is "dev"
+  [--sf-trusted-proxies=127.0.0.1,....]    : Comma separated proxies (e.g. Varnish), will disable symfony proxy if set
+  [--sf-http-cache=0|1]                    : To disable Symfony HTTP cache Proxy for using a different reverse proxy
+                                             By default disabled when evn is "dev", enabled otherwise.
+  [--sf-http-cache-class=<class-file.php>] : To specify a different class then default to use as the Symfony proxy
+  [--sf-classloader-file=<class-file.php>] : To specify a different class then default to use for php auto loading
+  [--body-size-limit=<int>]                : Limit in megabytes for max size of request body, 0 value disables limit.
+  [--request-timeout=<int>]                : Limit in seconds before timeout of request, 0 value disables timeout limit.
+  [-h|--help]                              : Help text, this one more or less
 
 EOF
 }
@@ -120,7 +120,7 @@ function inject_environment_variables
         if [ "$option_value" != "SomeDefault" ]; then
             template_values[$i]="$option_value";
             if [ "$current_env_variable" == "BODY_SIZE_LIMIT" ]; then
-                template_values[11]="$option_value"*1024
+                let template_values[11]="$option_value"*1024
                 template_values[14]="${option_value}m"
             fi
             if [ "$current_env_variable" == "TIMEOUT" ]; then
@@ -141,38 +141,38 @@ case $i in
     -b=*|--basedir=*)
         template_values[0]="${i#*=}"
         ;;
-    --classloader-file=*)
+    --ip=*)
         template_values[1]="${i#*=}"
         ;;
-    -d=*|--debug=*)
+    -p=*|--port=*)
         template_values[2]="${i#*=}"
         ;;
-    -e=*|--env=*)
+    --host-name=*)
         template_values[3]="${i#*=}"
         ;;
     --host-alias=*)
         template_values[4]="${i#*=}"
         ;;
-    --sf-proxy=*)
+    -e=*|--sf-env=*)
         template_values[5]="${i#*=}"
         ;;
-    --sf-proxy-class=*)
+    --sf-classloader-file=*)
         template_values[6]="${i#*=}"
         ;;
-    --host-name=*)
+    -d=*|--sf-debug=*)
         template_values[7]="${i#*=}"
         ;;
-    --ip=*)
+    --sf-http-cache=*)
         template_values[8]="${i#*=}"
         ;;
-    -p=*|--port=*)
+    --sf-http-cache-class=*)
         template_values[9]="${i#*=}"
         ;;
-    --reverse-proxies=*)
+    --sf-trusted-proxies=*)
         template_values[10]="${i#*=}"
         ;;
     --body-size-limit=*)
-        template_values[11]="${i#*=}"*1024
+        let template_values[11]="${i#*=}"*1024
         template_values[14]="${i#*=}m"
         ;;
     --request-timeout=*)
