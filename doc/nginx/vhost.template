@@ -2,7 +2,7 @@
 server {
     listen       %PORT%;
     # Further documentation: http://nginx.org/en/docs/http/server_names.html
-    server_name  %HOST_NAME% %HOST_ALIAS%;
+    server_name  %HOST_LIST%;
 
     root %BASEDIR%/web;
 
