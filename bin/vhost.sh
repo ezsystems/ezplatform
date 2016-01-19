@@ -172,7 +172,7 @@ case $i in
         template_values[10]="${i#*=}"
         ;;
     --body-size-limit=*)
-        template_values[11]="${i#*=}"*1024
+        let template_values[11]="${i#*=}"*1024
         template_values[14]="${i#*=}m"
         ;;
     --request-timeout=*)
