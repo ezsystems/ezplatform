@@ -25,6 +25,7 @@ default:
     suites: ~
 
 imports:
-    - vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishCoreBundle/behat.yml
-    - vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishRestBundle/behat.yml
-    - vendor/ezsystems/platform-ui-bundle/behat.yml
+    - vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishCoreBundle/behat_suites.yml
+    - vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishRestBundle/behat_suites.yml
+    - vendor/ezsystems/behatbundle/EzSystems/BehatBundle/behat_suites.yml
+    - vendor/ezsystems/platform-ui-bundle/behat_suites.yml
