@@ -3,8 +3,8 @@
 # vhost & fastcgi setup
 ./bin/vhost.sh \
         --basedir=$TRAVIS_BUILD_DIR \
-        --env=behat \
-        --debug=1 \
+        --sf-env=behat \
+        --sf-debug=1 \
         --template-file=doc/apache2/vhost.template \
     | sudo tee /etc/apache2/sites-available/behat > /dev/null
 
