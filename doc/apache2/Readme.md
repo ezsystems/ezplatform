@@ -125,7 +125,7 @@ Full template
 This folder contains `vhost.template` containing more features you can enable in your virtual host configuration. You may
 also use this for .httaccess config, however you will need to adjust rewrite rules to remove `/` like example above.
 
-Script exists to be able to generate the configuration, for help text execute:
+*NIX script exists to be able to generate the configuration. For help text, execute following from eZ install root:
 ```bash
 ./bin/vhost.sh -h
 ```
