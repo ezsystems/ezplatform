@@ -13,7 +13,7 @@ Prerequisites
 
 Configure
 ---------
-These examples are simplified to get you up and running, see "Full template" for more options and details on best practice.
+These examples are simplified to get you up and running, see "Virtual host template" for more options and details on best practice.
 
 #### Virtual Host
 
@@ -120,12 +120,13 @@ get up and running. *This will not work if Apache is configured with `AllowOverr
     RewriteRule .* app.php
 
 
-Full template
--------------
+Virtual host template
+---------------------
 This folder contains `vhost.template` containing more features you can enable in your virtual host configuration. You may
 also use this for .httaccess config, however you will need to adjust rewrite rules to remove `/` like example above.
 
-*NIX script exists to be able to generate the configuration. For help text, execute following from eZ install root:
+Bash script *(Unix/Linux/OS X)* exists to be able to generate the configuration.For help text, execute following from
+eZ install root:
 ```bash
 ./bin/vhost.sh -h
 ```

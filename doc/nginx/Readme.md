@@ -12,7 +12,7 @@ Prerequisites
 
 Configure
 ---------
-This example is simplified to get you up and running, see "Full template" for more options and details on best practice.
+This example is simplified to get you up and running, see "Virtual host template" for more options and details on best practice.
 
 #### Virtual Host
 
@@ -72,11 +72,12 @@ Example config:
     }
 
 
-Full template
--------------
+Virtual host template
+---------------------
 This folder contains `vhost.template` containing more features you can enable in your virtual host configuration.
 
-*NIX script exists to be able to generate the configuration. For help text, execute following from eZ install root:
+Bash script *(Unix/Linux/OS X)* exists to be able to generate the configuration.For help text, execute following from
+eZ install root:
 ```bash
 ./bin/vhost.sh -h
 ```
