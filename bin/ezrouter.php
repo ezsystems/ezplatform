@@ -42,12 +42,6 @@ if (is_file($_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . $_SERVER['SCRIPT_N
     return false;
 }
 
-// REST API v1, you might want to adapt this pattern if you use custom legacy REST API.
-// @deprecated To be removed as legacy is no longer bundled
-if (strpos($_SERVER['REQUEST_URI'], '/api/ezp/v1') === 0) {
-    $script = 'index_rest.php';
-}
-
 // Setup some missing $_SERVER vars that are needed by legacy kernel.
 if (!isset($_SERVER['SERVER_ADDR'])) {
     $_SERVER['SERVER_ADDR'] = gethostbyname($_SERVER['SERVER_NAME']);
