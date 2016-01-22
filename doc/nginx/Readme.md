@@ -17,16 +17,16 @@ This example is simplified to get you up and running, see "Full template" for mo
 #### Virtual Host
 
 1. Place virtualhost config *(example below)* in suitable nginx config folder, typically:
-   - Debian / Ubuntu: `/etc/nginx/sites-enabled/<yoursite>.conf`
-   - RHEL / CentOS / Amazon Linux: `/etc/nginx/conf.d/<yoursite>.conf`
+   - Debian/Ubuntu: `/etc/nginx/sites-enabled/<yoursite>.conf`
+   - RHEL/CentOS/Amazon-Linux: `/etc/nginx/conf.d/<yoursite>.conf`
 2. Adjust the basics to your setup:
    - [listen](http://nginx.org/en/docs/http/ngx_http_core_module.html#listen): IP and port number to listen to.
    - [server_name](http://nginx.org/en/docs/http/ngx_http_core_module.html#server_name): Host list, example `ez.no www.ez.no`.
    - [root](http://nginx.org/en/docs/http/ngx_http_core_module.html#root): Point this to "web" directory of eZ installation.
    - [fastcgi_pass](http://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_pass): Socket or tcp address of `php-fpm`.
 2. Copy `ez_params.d` directory to folder you placed virtualhost config in above, examples:
-   - Debian / Ubuntu: `sudo cp -R doc/nginx/ez_params.d /etc/nginx/sites-enabled/`
-   - RHEL / CentOS / Amazon Linux: `sudo cp -R doc/nginx/ez_params.d /etc/nginx/conf.d/`
+   - Debian/Ubuntu: `sudo cp -R doc/nginx/ez_params.d /etc/nginx/sites-enabled/`
+   - RHEL/CentOS/Amazon-Linux: `sudo cp -R doc/nginx/ez_params.d /etc/nginx/conf.d/`
 3. Restart Nginx, normally: `sudo service nginx restart`
 
 Example config:

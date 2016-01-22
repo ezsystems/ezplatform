@@ -18,16 +18,16 @@ These examples are simplified to get you up and running, see "Full template" for
 #### Virtual Host
 
 1. Place virtualhost config *(example below)* in a suitable apache config folder, typically:
-   - Debian / Ubuntu: `/etc/apache2/sites-enabled/<yoursite>.conf`
-   - RHEL / CentOS / Amazon Linux: `/etc/httpd/conf.d/<yoursite>.conf`
+   - Debian/Ubuntu: `/etc/apache2/sites-enabled/<yoursite>.conf`
+   - RHEL/CentOS/Amazon-Linux: `/etc/httpd/conf.d/<yoursite>.conf`
 2. Adjust the basics to your setup:
    - [VirtualHost](https://httpd.apache.org/docs/2.4/en/mod/core.html#virtualhost): IP and port number to listen to.
    - [ServerName](https://httpd.apache.org/docs/2.4/en/mod/core.html#servername): Your host name, example `ez.no`.
    - [ServerAlias](https://httpd.apache.org/docs/2.4/en/mod/core.html#serveralias): Optional host alias list, example `www.ez.no login.ez.no`.
    - [DocumentRoot](https://httpd.apache.org/docs/2.4/en/mod/core.html#documentroot): Point this and *Directory* to "web" directory of eZ installation.
 3. Restart Apache, normally:
-   - Debian / Ubuntu: `sudo service apache2 restart`
-   - RHEL / CentOS / Amazon Linux: `sudo service httpd restart`
+   - Debian/Ubuntu: `sudo service apache2 restart`
+   - RHEL/CentOS/Amazon-Linux: `sudo service httpd restart`
 
 Example config for Apache 2.4 in prefork mode:
 
