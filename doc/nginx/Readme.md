@@ -25,8 +25,8 @@ This example is simplified to get you up and running, see "Virtual host template
    - [root](http://nginx.org/en/docs/http/ngx_http_core_module.html#root): Point this to "web" directory of eZ installation.
    - [fastcgi_pass](http://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_pass): Socket or tcp address of `php-fpm`.
 2. Copy `ez_params.d` directory to folder you placed virtualhost config in above, examples:
-   - Debian/Ubuntu: `sudo cp -R doc/nginx/ez_params.d /etc/nginx/sites-enabled/`
-   - RHEL/CentOS/Amazon-Linux: `sudo cp -R doc/nginx/ez_params.d /etc/nginx/conf.d/`
+   - Debian/Ubuntu: `sudo cp -R doc/nginx/ez_params.d /etc/nginx/`
+   - RHEL/CentOS/Amazon-Linux: `sudo cp -R doc/nginx/ez_params.d /etc/nginx/`
 3. Restart Nginx, normally: `sudo service nginx restart`
 
 Example config:
@@ -47,7 +47,7 @@ Example config:
         include ez_params.d/ez_rewrite_params;
 
         # upload max size
-        client_max_body_size 40m;
+        client_max_body_size 48m;
 
         location / {
             location ~ ^/app\.php(/|$) {

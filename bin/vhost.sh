@@ -43,10 +43,10 @@ declare -a template_values=(
     ""
     ""
     "49152"
-    "60"
+    "90"
     "unix:/var/run/php5-fpm.sock"
     "48m"
-    "60s"
+    "90s"
     "localhost *.localhost"
 )
 

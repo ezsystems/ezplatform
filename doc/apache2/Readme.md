@@ -37,10 +37,14 @@ Example config for Apache 2.4 in prefork mode:
         DocumentRoot /var/www/ezplatform/web
         DirectoryIndex app.php
 
+        # Set default timeout to 90s, and max upload to 48mb
+        TimeOut 90
+        LimitRequestBody 49152
+
         <Directory /var/www/ezplatform/web>
             Options FollowSymLinks
             AllowOverride None
-            # Depending on your global Apache settings, you may uncomment this:
+            # Depending on your global Apache settings, you may need to comment this:
             Require all granted
         </Directory>
 
@@ -82,6 +86,10 @@ If you don't have access to use virtualhost config this simplified `.htaccess` f
 get up and running. *This will not work if Apache is configured with `AllowOverride None` for this directory.*
 
     DirectoryIndex app.php
+
+    # Set default timeout to 90s, and max upload to 48mb
+    TimeOut 90
+    LimitRequestBody 49152
 
     # Disabling MultiViews prevents unwanted negotiation, e.g. "/app" should not resolve
     # to the front controller "/app.php" but be rewritten to "/app.php/app".
