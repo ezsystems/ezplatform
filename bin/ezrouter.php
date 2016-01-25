@@ -20,7 +20,7 @@ Usage
 From your command line, type :
  
     $ cd /path/to/ezpublish5/folder
-    $ php app/console server:run -r ../bin/ezrouter.php localhost:8000
+    $ php app/console server:run -r bin/ezrouter.php localhost:8000
  
 This will start PHP webserver for localhost on port 8000.
 You can of course replace localhost by another host. Port is also customizable.
@@ -31,21 +31,15 @@ EOT;
     exit;
 }
 
-$script = 'index.php';
+$script = 'app.php';
 
 // To stick with regular Apache HTTPD behaviour, SCRIPT_NAME should equal to PHP_SELF.
 // Fix SCRIPT_NAME and PHP_SELF since we deal with virtual folders, so PHP server would append /index.php to it.
-$_SERVER['SCRIPT_NAME'] = $_SERVER['PHP_SELF'] = str_replace('/index.php', '', $_SERVER['SCRIPT_NAME']);
+$_SERVER['SCRIPT_NAME'] = $_SERVER['PHP_SELF'] = str_replace('/app.php', '', $_SERVER['SCRIPT_NAME']);
 
 // If requested resource exists, we serve it directly.
 if (is_file($_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . $_SERVER['SCRIPT_NAME'])) {
     return false;
-}
-
-// REST API v1, you might want to adapt this pattern if you use custom legacy REST API.
-// @deprecated To be removed as legacy is no longer bundled
-if (strpos($_SERVER['REQUEST_URI'], '/api/ezp/v1') === 0) {
-    $script = 'index_rest.php';
 }
 
 // Setup some missing $_SERVER vars that are needed by legacy kernel.
