@@ -19,4 +19,8 @@ ezpublish:
     # System settings, grouped by siteaccess and/or siteaccess group
     system:
         site_group:
+            # These reflect the current installers, complete installation before you change them. For changing var_dir
+            # it is recommended to install clean, then change setting before you start adding binary content, otherwise you'll
+            # need to manually modify your database data to reflect this to avoid exceptions.
+            var_dir: var/site
             languages: [eng-GB]
