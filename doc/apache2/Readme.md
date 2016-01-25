@@ -123,7 +123,7 @@ Virtual host template
 ---------------------
 This folder contains `vhost.template` file which provides more features you can enable in your virtual host configuration. You may also use this file as a `.htaccess` config. However, you will need to adjust rewrite rules to remove `/` like in the example above.
 
-Bash script *(Unix/Linux/OS X)* exists to be able to generate the configuration. To display help text, execute the following from the eZ Platform install root:
+Bash script *(Unix/Linux/OS X)* exists to be able to generate the configuration. To display help text, execute the following from the eZ install root:
 ```bash
 ./bin/vhost.sh -h
 ```
