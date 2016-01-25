@@ -1,18 +1,20 @@
 NGINX configuration
 ===================
 
-For recommended versions of [NGINX](http://nginx.org/), see [online requirements](https://doc.ez.no/display/TECHDOC/Requirements).
+For recommended versions of [NGINX](http://nginx.org/), see [online eZ requirements](https://doc.ez.no/display/TECHDOC/Requirements).
 
 
 Prerequisites
 -------------
-- Some general knowledge of how to install and configure NGINX
-- A working PHP FPM setup which NGINX can be configured to use as fastcgi server *(either using tcp or unix socket)*.
-- nginx must be installed.
+- Some general knowledge of how to install and configure NGINX.
+- A working [PHP FPM](http://php.net/manual/en/install.fpm.php) setup.
+- NGINX must be installed, and configured\* to use PHP FPM as fastcgi server.
+
+\* *Covered by config provided below, but for general info [see online NGINX wiki](https://www.nginx.com/resources/wiki/start/topics/examples/phpfcgi/)*.
 
 Configure
 ---------
-This example is simplified to get you up and running, see "Virtual host template" for more options and details on best practice.
+This example is simplified to get you up and running, see [Virtual host template](#virtual-host-template) for more options and details on best practice.
 
 #### Virtual Host
 
@@ -21,10 +23,11 @@ This example is simplified to get you up and running, see "Virtual host template
    - RHEL/CentOS/Amazon-Linux: `/etc/nginx/conf.d/<yoursite>.conf`
 2. Adjust the basics to your setup:
    - [listen](http://nginx.org/en/docs/http/ngx_http_core_module.html#listen): IP and port number to listen to.
-   - [server_name](http://nginx.org/en/docs/http/ngx_http_core_module.html#server_name): Host list, example `ez.no www.ez.no`.
-   - [root](http://nginx.org/en/docs/http/ngx_http_core_module.html#root): Point this to "web" directory of eZ installation.
-   - [fastcgi_pass](http://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_pass): Socket or tcp address of `php-fpm`.
-2. Copy `ez_params.d` directory to folder you placed virtualhost config in above, examples:
+   - [server_name](http://nginx.org/en/docs/http/ngx_http_core_module.html#server_name): Host list, example `ez.no *.ez.no`
+    - Or for local dev for instance `ezinstall.localhost`, with corresponding entry in your [hosts file](https://en.wikipedia.org/wiki/Hosts_file).
+   - [root](http://nginx.org/en/docs/http/ngx_http_core_module.html#root): Point this to `web` directory of your eZ installation.
+   - [fastcgi_pass](http://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_pass): Socket or TCP address of `php-fpm`.
+2. Copy `ez_params.d` directory to folder to you nginx config folder, for examples:
    - Debian/Ubuntu: `sudo cp -R doc/nginx/ez_params.d /etc/nginx/`
    - RHEL/CentOS/Amazon-Linux: `sudo cp -R doc/nginx/ez_params.d /etc/nginx/`
 3. Restart Nginx, normally: `sudo service nginx restart`
@@ -36,7 +39,7 @@ Example config:
         # Further documentation: http://nginx.org/en/docs/http/server_names.html
         server_name  localhost;
 
-        root /var/www/ezplatform/web;
+        root /var/www/ezinstall/web;
 
         # Additional Assetic rules for environments different from dev,
         # remember to run php app/console assetic:dump --env=prod
@@ -74,10 +77,9 @@ Example config:
 
 Virtual host template
 ---------------------
-This folder contains `vhost.template` containing more features you can enable in your virtual host configuration.
+This folder contains `vhost.template` file which provides more features you can enable in your virtual host configuration.
 
-Bash script *(Unix/Linux/OS X)* exists to be able to generate the configuration.For help text, execute following from
-eZ install root:
+Bash script *(Unix/Linux/OS X)* exists to generate the configuration. To display the help text, execute the following command from your eZ installation root:
 ```bash
 ./bin/vhost.sh -h
 ```

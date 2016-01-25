@@ -1,34 +1,35 @@
 Apache 2.2 / 2.4  configuration
 ===============================
 
-For recommended versions of [Apache](https://httpd.apache.org/), see [online requirements](https://doc.ez.no/display/TECHDOC/Requirements).
+For recommended versions of [Apache](https://httpd.apache.org/), see [online eZ requirements](https://doc.ez.no/display/TECHDOC/Requirements).
 
 
 Prerequisites
 -------------
 - Some general knowledge of how to install and configure Apache
-- Apache 2.x must be installed in prefork mode
-- Apache modules
+- Apache 2.x must be installed using [Apache MPM prefork](https://httpd.apache.org/docs/2.4/mod/prefork.html), *aka in "prefork mode"*.
+- Apache modules installed and enabled:
  - required: `mod_php`, `mod_rewrite`, `mod_env`
  - recommended: `mod_setenvif`, `mod_expires`
 
 
 Configure
 ---------
-These examples are simplified to get you up and running, see "Virtual host template" for more options and details on best practice.
+These examples are simplified to get you up and running, see [Virtual host template](#virtual-host-template) for more options and details on best practice.
 
 #### Virtual Host
 
-1. Place virtualhost config *(example below)* in a suitable apache config folder, typically:
+1. Place virtualhost config *(example below)* in a suitable Apache config folder, typically:
    - Debian/Ubuntu: `/etc/apache2/sites-enabled/<yoursite>.conf`
    - RHEL/CentOS/Amazon-Linux: `/etc/httpd/conf.d/<yoursite>.conf`
 2. Adjust the basics to your setup:
    - [VirtualHost](https://httpd.apache.org/docs/2.4/en/mod/core.html#virtualhost): IP and port number to listen to.
    - [ServerName](https://httpd.apache.org/docs/2.4/en/mod/core.html#servername): Your host name, example `ez.no`.
+    - Or for local dev for instance `ezinstall.localhost`, with corresponding entry in your [hosts file](https://en.wikipedia.org/wiki/Hosts_file).
    - [ServerAlias](https://httpd.apache.org/docs/2.4/en/mod/core.html#serveralias): Optional host alias list, example `www.ez.no login.ez.no`, or `*.ez.no`.
-   - [DocumentRoot](https://httpd.apache.org/docs/2.4/en/mod/core.html#documentroot): Point this and *Directory* to "web" directory of eZ installation.
+   - [DocumentRoot](https://httpd.apache.org/docs/2.4/en/mod/core.html#documentroot): Point this and *Directory* to `web` directory of eZ installation.
    - If you can't install `mod_setenvif`, adjust the "Environment" section like described inline.
-3. Restart Apache, normally:
+3. Restart Apache, as follows:
    - Debian/Ubuntu: `sudo service apache2 restart`
    - RHEL/CentOS/Amazon-Linux: `sudo service httpd restart`
 
@@ -37,14 +38,14 @@ Example config for Apache 2.4 in prefork mode:
     <VirtualHost *:80>
         ServerName localhost
         #ServerAlias *.localhost
-        DocumentRoot /var/www/ezplatform/web
+        DocumentRoot /var/www/ezinstall/web
         DirectoryIndex app.php
 
         # Set default timeout to 90s, and max upload to 48mb
         TimeOut 90
         LimitRequestBody 49152
 
-        <Directory /var/www/ezplatform/web>
+        <Directory /var/www/ezinstall/web>
             Options FollowSymLinks
             AllowOverride None
             # Depending on your global Apache settings, you may need to comment this:
@@ -66,12 +67,12 @@ Example config for Apache 2.4 in prefork mode:
         # Access to repository images in single server setup
         RewriteRule ^/var/([^/]+/)?storage/images(-versioned)?/.* - [L]
 
-        # Makes it possible to place your favicon at the root of your eZ Platform instance.
+        # Makes it possible to place your favicon at the root `web` directory in your eZ instance.
         # It will then be served directly.
         RewriteRule ^/favicon\.ico - [L]
         RewriteRule ^/robots\.txt - [L]
 
-        # The following rule is needed to correctly display assets from eZ Platform / Symfony bundles
+        # The following rule is needed to correctly display assets from eZ / Symfony bundles
         RewriteRule ^/bundles/ - [L]
 
         # Additional Assetic rules for environments different from dev,
@@ -83,10 +84,9 @@ Example config for Apache 2.4 in prefork mode:
     </VirtualHost>
 
 
-#### .httaccess
+#### .htaccess
 
-If you don't have access to use virtualhost config this simplified `.htaccess` file can be placed in `web/` folder to
-get up and running. *This will not work if Apache is configured with `AllowOverride None` for this directory.*
+If you do not have an access to use virtualhost config, use the `.htaccess` file in a simplified form. It must be placed in the  `web/` folder to make it running. *This will not work if Apache is configured with the `AllowOverride None` for this directory.*
 
     DirectoryIndex app.php
 
@@ -116,7 +116,7 @@ get up and running. *This will not work if Apache is configured with `AllowOverr
     RewriteRule ^favicon\.ico - [L]
     RewriteRule ^robots\.txt - [L]
 
-    # To display assets from eZ Platform / Symfony bundles
+    # To display assets from eZ / Symfony bundles
     RewriteRule ^bundles/ - [L]
 
     # Access to repository images in single server setup
@@ -133,13 +133,11 @@ get up and running. *This will not work if Apache is configured with `AllowOverr
 
 Virtual host template
 ---------------------
-This folder contains `vhost.template` containing more features you can enable in your virtual host configuration. You may
-also use this for .httaccess config, however you will need to adjust rewrite rules to remove `/` like example above.
+This folder contains `vhost.template` file which provides more features you can enable in your virtual host configuration. You may also use this file as a `.htaccess` config. However, you will need to adjust rewrite rules to remove `/` like in the example above.
 
 *Note: vhost.template uses `mod_setenvif`, adapt it as indicated inline if you can't install it.*
 
-Bash script *(Unix/Linux/OS X)* exists to be able to generate the configuration.For help text, execute following from
-eZ install root:
+Bash script *(Unix/Linux/OS X)* exists to be able to generate the configuration. To display help text, execute the following from the eZ installation root:
 ```bash
 ./bin/vhost.sh -h
 ```
@@ -148,7 +146,6 @@ eZ install root:
 
 ##### NameVirtualHost conflicts
 
-The "NameVirtualHost" setting might already exist in the default configuration. Defining a new one will result in a
-conflict. If Apache reports errors such as "NameVirtualHost [IP_ADDRESS] has no VirtualHosts" or "Mixing * ports and
-non-* ports with a NameVirtualHost address is not supported", try removing the NameVirtualHost line. See
-[more info about the NameVirtualHost directive](http://httpd.apache.org/docs/2.4/mod/core.html#namevirtualhost)
+The `NameVirtualHost` setting might already exist in the default configuration. Defining a new one will result in a
+conflict. If Apache reports errors such as `NameVirtualHost [IP_ADDRESS] has no VirtualHosts` or `Mixing * ports and
+non-* ports with a NameVirtualHost address is not supported`, try removing the `NameVirtualHost` line. For more details, see [NameVirtualHost directive](http://httpd.apache.org/docs/2.4/mod/core.html#namevirtualhost) section on the Apache documentation.
