@@ -7,7 +7,7 @@ For recommended versions of [NGINX](http://nginx.org/), see [online requirements
 Prerequisites
 -------------
 - Some general knowledge of how to install and configure NGINX
-- A working [PHP FPM](https://wiki.apache.org/httpd/PHP-FPM) setup which NGINX can be configured to use as fastcgi server *(either using tcp or unix socket)*.
+- A working [PHP FPM](http://php.net/manual/en/install.fpm.php) setup which [NGINX](https://www.nginx.com/resources/wiki/start/topics/examples/phpfcgi/) can be configured to use as fastcgi server *(either using tcp or unix socket)*.
 - nginx must be installed.
 
 Configure
@@ -76,7 +76,7 @@ Virtual host template
 ---------------------
 This folder contains `vhost.template` file which provides more features you can enable in your virtual host configuration.
 
-Bash script *(Unix/Linux/OS X)* exists to generate the configuration. To display the help text, execute the following command from the eZ Platform install root:
+Bash script *(Unix/Linux/OS X)* exists to generate the configuration. To display the help text, execute the following command from the eZ install root:
 ```bash
 ./bin/vhost.sh -h
 ```
