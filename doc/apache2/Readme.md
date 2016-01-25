@@ -7,29 +7,29 @@ For recommended versions of [Apache](https://httpd.apache.org/), see [online req
 Prerequisites
 -------------
 - Some general knowledge of how to install and configure Apache
-- Apache 2.x must be installed in prefork mode
-- Apache modules: `mod_php`, `mod_rewrite`, `mod_env`, `mod_setenvif`, and optionally `mod_expires`
+- Apache 2.x must be installed in the [MPM](https://httpd.apache.org/docs/2.2/mpm.html) (Multi-Processing Module) [prefork mode](https://httpd.apache.org/docs/2.2/mod/prefork.html)
+- Apache modules installed and enabled: `mod_php`, `mod_rewrite`, `mod_env`, `mod_setenvif`, and optionally `mod_expires`
 
 
 Configure
 ---------
-These examples are simplified to get you up and running, see "Virtual host template" for more options and details on best practice.
+These examples are simplified to get you up and running, see [Virtual host template](#virtual-host-template) for more options and details on best practice.
 
 #### Virtual Host
 
-1. Place virtualhost config *(example below)* in a suitable apache config folder, typically:
+1. Place virtualhost config *(example below)* in a suitable Apache config folder, typically:
    - Debian/Ubuntu: `/etc/apache2/sites-enabled/<yoursite>.conf`
    - RHEL/CentOS/Amazon-Linux: `/etc/httpd/conf.d/<yoursite>.conf`
 2. Adjust the basics to your setup:
    - [VirtualHost](https://httpd.apache.org/docs/2.4/en/mod/core.html#virtualhost): IP and port number to listen to.
-   - [ServerName](https://httpd.apache.org/docs/2.4/en/mod/core.html#servername): Your host name, example `ez.no`.
-   - [ServerAlias](https://httpd.apache.org/docs/2.4/en/mod/core.html#serveralias): Optional host alias list, example `www.ez.no login.ez.no`.
+   - [ServerName](https://httpd.apache.org/docs/2.4/en/mod/core.html#servername): Your host name, example `ezplatform.localhost`.
+   - [ServerAlias](https://httpd.apache.org/docs/2.4/en/mod/core.html#serveralias): Optional host alias list, for example `www.ezplatform.localhost`.
    - [DocumentRoot](https://httpd.apache.org/docs/2.4/en/mod/core.html#documentroot): Point this and *Directory* to "web" directory of eZ installation.
-3. Restart Apache, normally:
+3. Restart Apache, as follows:
    - Debian/Ubuntu: `sudo service apache2 restart`
    - RHEL/CentOS/Amazon-Linux: `sudo service httpd restart`
 
-Example config for Apache 2.4 in prefork mode:
+Example config for Apache 2.4 in the prefork mode:
 
     <VirtualHost *:80>
         ServerName localhost
@@ -76,10 +76,9 @@ Example config for Apache 2.4 in prefork mode:
     </VirtualHost>
 
 
-#### .httaccess
+#### .htaccess
 
-If you don't have access to use virtualhost config this simplified `.htaccess` file can be placed in `web/` folder to
-get up and running. *This will not work if Apache is configured with `AllowOverride None` for this directory.*
+If you do not have an access to use virtualhost config, use the `.htaccess` file in a simplified form. It must be placed in the  `web/` folder to make it running. *This will not work if Apache is configured with the `AllowOverride None` for this directory.*
 
     DirectoryIndex app.php
 
@@ -122,11 +121,9 @@ get up and running. *This will not work if Apache is configured with `AllowOverr
 
 Virtual host template
 ---------------------
-This folder contains `vhost.template` containing more features you can enable in your virtual host configuration. You may
-also use this for .httaccess config, however you will need to adjust rewrite rules to remove `/` like example above.
+This folder contains `vhost.template` file which provides more features you can enable in your virtual host configuration. You may also use this file as a `.htaccess` config. However, you will need to adjust rewrite rules to remove `/` like in the example above.
 
-Bash script *(Unix/Linux/OS X)* exists to be able to generate the configuration.For help text, execute following from
-eZ install root:
+Bash script *(Unix/Linux/OS X)* exists to be able to generate the configuration. To display help text, execute the following from the eZ Platform install root:
 ```bash
 ./bin/vhost.sh -h
 ```
@@ -135,7 +132,6 @@ eZ install root:
 
 ##### NameVirtualHost conflicts
 
-The "NameVirtualHost" setting might already exist in the default configuration. Defining a new one will result in a
-conflict. If Apache reports errors such as "NameVirtualHost [IP_ADDRESS] has no VirtualHosts" or "Mixing * ports and
-non-* ports with a NameVirtualHost address is not supported", try removing the NameVirtualHost line. See
-[more info about the NameVirtualHost directive](http://httpd.apache.org/docs/2.4/mod/core.html#namevirtualhost)
+The `NameVirtualHost` setting might already exist in the default configuration. Defining a new one will result in a
+conflict. If Apache reports errors such as `NameVirtualHost [IP_ADDRESS] has no VirtualHosts` or `Mixing * ports and
+non-* ports with a NameVirtualHost address is not supported`, try removing the `NameVirtualHost` line. For more details, see [NameVirtualHost directive](http://httpd.apache.org/docs/2.4/mod/core.html#namevirtualhost) section on the Apache documentation.
