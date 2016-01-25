@@ -30,3 +30,4 @@ imports:
     - vendor/ezsystems/behatbundle/EzSystems/BehatBundle/behat_suites.yml
     - vendor/ezsystems/platform-ui-bundle/behat_suites.yml
     - vendor/ezsystems/studio-ui-bundle/behat_suites.yml
+    - vendor/ezsystems/flex-workflow/behat_suites.yml
