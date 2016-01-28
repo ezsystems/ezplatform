@@ -59,49 +59,60 @@
        - For core development: Add '--prefer-source' to get full git clones, and remove '--no-dev' to get things like phpunit and behat installed.
        - Further reading: https://getcomposer.org/doc/03-cli.md#create-project
 
-2. *Only for *NIX users* **Setup folder rights**<a name="install-2-folder-rights"></a>:
+2. **Setup folder rights**<a name="install-2-folder-rights"></a>:
 
        Like most things, [Symfony documentation](http://symfony.com/doc/current/book/installation.html#checking-symfony-application-configuration-and-setup)
-       applies here, meaning `app/cache` and `app/logs` need to be writable by cli and web server user. Furthermore, future
-       files and directories created by these two users will need to inherit those access rights. *For security reasons,
-       there is no need for web server to have access to write to other directories.*
+       applies here, in this case meaning `app/cache`, `app/logs` and `web` need to be writable by cli and web server user.
+       Furthermore, future files and directories created by these two users will need to inherit those access rights. *For
+       security reasons, in production there is no need for web server to have access to write to other directories.*
 
-       Change `www-data` to your web server user:
+       For development setup you may change your web server config to use same user as owner of folder, what follows
+       below are mainly for production setup, and like Symfony we first and foremost recommend using an approach using ACL.
 
        A. **Using ACL on a *Linux/BSD* system that supports chmod +a**
 
+       Some systems, primarily Mac OS X, supports setting ACL using a `+a` flag on `chmod`. Example uses a command to
+       try to determine your web server user and set it as ``HTTPDUSER``, alternatively change to your actual web server
+       user if non standard:
+
        ```bash
        $ rm -rf app/cache/* app/logs/*
-       $ sudo chmod +a "www-data allow delete,write,append,file_inherit,directory_inherit" \
-         app/cache app/logs web
-       $ sudo chmod +a "`whoami` allow delete,write,append,file_inherit,directory_inherit" \
-         app/cache app/logs web
+       $ HTTPDUSER=`ps axo user,comm | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1`
+       $ sudo chmod +a "$HTTPDUSER allow delete,write,append,file_inherit,directory_inherit" app/cache app/logs  web
+       $ sudo chmod +a "`whoami` allow delete,write,append,file_inherit,directory_inherit" app/cache app/logs web
        ```
 
        B. **Using ACL on a *Linux/BSD* system that does not support chmod +a**
 
-       Some systems don't support chmod +a, but do support another utility called setfacl. You may need to enable ACL support on your partition and install setfacl before using it (as is the case with Ubuntu), like so:
+       Some systems don't support chmod +a, but do support another utility called setfacl. You may need to
+       [enable ACL support](https://help.ubuntu.com/community/FilePermissionsACLs) on your partition and install setfacl
+       before using it *(as is the case with Ubuntu)*. With it installed example below uses a command to try to determine
+       your web server user and set it as ``HTTPDUSER``, alternatively change to your actual web user if non standard:
 
        ```bash
-       $ sudo setfacl -R -m u:www-data:rwx -m u:`whoami`:rwx \
-         app/cache app/logs web
-       $ sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx \
-         app/cache app/logs web
+        $ HTTPDUSER=`ps axo user,comm | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1`
+        $ sudo setfacl -R -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX app/cache app/logs web
+        $ sudo setfacl -dR -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX app/cache app/logs web
        ```
 
        C. **Using chown on *Linux/BSD/OS X* systems that don't support ACL**
 
-       Some systems don't support ACL at all. You will need to set your web server's user as the owner of the required directories.
+       Some systems don't support ACL at all. You will need to set your web server's user as the owner of the required
+       directories, in this setup further symfony console commands against installation should use the web server user
+       as well to avoid new files being created using another user.  Example uses a command to try to determine your
+       web server user and set it as ``HTTPDUSER``, alternatively change to your actual web server user if non standard:
 
        ```bash
-       $ sudo chown -R www-data:www-data app/cache app/logs web
+       $ HTTPDUSER=`ps axo user,comm | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1`
+       $ sudo chown -R "$HTTPDUSER":"$HTTPDUSER" app/cache app/logs web
        $ sudo find {app/{cache,logs},web} -type d | xargs sudo chmod -R 775
        $ sudo find {app/{cache,logs},web} -type f | xargs sudo chmod -R 664
        ```
 
        D. **Using chmod on a *Linux/BSD/OS X* system where you can't change owner**
 
-       If you can't use ACL and aren't allowed to change owner, you can use chmod, making the files writable by everybody. Note that this method really isn't recommended as it allows any user to do anything.
+       If you can't use ACL and aren't allowed to change owner, you can use chmod, making the files writable by everybody.
+       Note that this method really isn't recommended as it allows any user to do anything.
 
        ```bash
        $ sudo find {app/{cache,logs},web} -type d | xargs sudo chmod -R 777
@@ -122,6 +133,7 @@
        write access to the following directories:
        - app/cache
        - app/logs
+       - web
 
 
 3. **Configure a VirtualHost**<a name="install-3-vhost"></a>:
