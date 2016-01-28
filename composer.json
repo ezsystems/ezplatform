@@ -27,10 +27,10 @@
         "sensio/generator-bundle": "~2.3",
         "incenteev/composer-parameter-handler": "~2.0",
         "tedivm/stash-bundle": "~0.4.3",
-        "ezsystems/ezpublish-kernel": "^6.1",
-        "ezsystems/repository-forms": "^1.0",
+        "ezsystems/ezpublish-kernel": "6.1.0-rc1 as v6.1.0",
+        "ezsystems/repository-forms": "1.0.1-rc1 as v1.0.1",
         "ezsystems/ezplatform-solr-search-engine": "^1.0",
-        "ezsystems/platform-ui-bundle": "~1.1",
+        "ezsystems/platform-ui-bundle": "1.1.0-rc1 as v1.1.0",
         "ezsystems/platform-ui-assets-bundle": "^1.0",
         "egulias/listeners-debug-command-bundle": "~1.9",
         "white-october/pagerfanta-bundle": "1.0.*",
@@ -46,7 +46,7 @@
         "behat/mink-goutte-driver": "*",
         "behat/mink-selenium2-driver": "*",
         "jarnaiz/behat-junit-formatter": "^1.3",
-        "ezsystems/behatbundle": "^6.1"
+        "ezsystems/behatbundle": "6.1.0-rc1 as v6.1.0"
     },
     "suggest": {
         "ezsystems/legacy-bridge": "Provides the full legacy backoffice and legacy features"
