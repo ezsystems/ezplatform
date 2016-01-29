@@ -30,7 +30,7 @@
         "ezsystems/ezpublish-kernel": "~6.1.0@dev",
         "ezsystems/repository-forms": "~1.0.0@dev",
         "ezsystems/ezplatform-solr-search-engine": "~1.0.0@dev",
-        "ezsystems/platform-ui-bundle": "~1.1.0@dev",
+        "ezsystems/platform-ui-bundle": "~1.2.0@dev",
         "ezsystems/platform-ui-assets-bundle": "~1.0.0@dev",
         "egulias/listeners-debug-command-bundle": "~1.9",
         "white-october/pagerfanta-bundle": "1.0.*",
