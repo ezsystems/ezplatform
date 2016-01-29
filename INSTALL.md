@@ -62,7 +62,7 @@
 2. **Setup folder rights**<a name="install-2-folder-rights"></a>:
 
        Like most things, [Symfony documentation](http://symfony.com/doc/current/book/installation.html#checking-symfony-application-configuration-and-setup)
-       applies here, in this case meaning `app/cache`, `app/logs` and `web` need to be writable by cli and web server user.
+       applies here, in this case meaning `app/cache`, `app/logs` and `web/var` need to be writable by cli and web server user.
        Furthermore, future files and directories created by these two users will need to inherit those access rights. *For
        security reasons, in production there is no need for web server to have access to write to other directories.*
 
@@ -78,8 +78,8 @@
        ```bash
        $ rm -rf app/cache/* app/logs/*
        $ HTTPDUSER=`ps axo user,comm | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1`
-       $ sudo chmod +a "$HTTPDUSER allow delete,write,append,file_inherit,directory_inherit" app/cache app/logs  web
-       $ sudo chmod +a "`whoami` allow delete,write,append,file_inherit,directory_inherit" app/cache app/logs web
+       $ sudo chmod +a "$HTTPDUSER allow delete,write,append,file_inherit,directory_inherit" app/cache app/logs  web/var
+       $ sudo chmod +a "`whoami` allow delete,write,append,file_inherit,directory_inherit" app/cache app/logs web/var
        ```
 
        B. **Using ACL on a *Linux/BSD* system that does not support chmod +a**
@@ -91,8 +91,8 @@
 
        ```bash
         $ HTTPDUSER=`ps axo user,comm | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1`
-        $ sudo setfacl -R -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX app/cache app/logs web
-        $ sudo setfacl -dR -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX app/cache app/logs web
+        $ sudo setfacl -R -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX app/cache app/logs web/var
+        $ sudo setfacl -dR -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX app/cache app/logs web/var
        ```
 
        C. **Using chown on *Linux/BSD/OS X* systems that don't support ACL**
@@ -104,9 +104,9 @@
 
        ```bash
        $ HTTPDUSER=`ps axo user,comm | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1`
-       $ sudo chown -R "$HTTPDUSER":"$HTTPDUSER" app/cache app/logs web
-       $ sudo find {app/{cache,logs},web} -type d | xargs sudo chmod -R 775
-       $ sudo find {app/{cache,logs},web} -type f | xargs sudo chmod -R 664
+       $ sudo chown -R "$HTTPDUSER":"$HTTPDUSER" app/cache app/logs web/var
+       $ sudo find {app/{cache,logs},web/var} -type d | xargs sudo chmod -R 775
+       $ sudo find {app/{cache,logs},web/var} -type f | xargs sudo chmod -R 664
        ```
 
        D. **Using chmod on a *Linux/BSD/OS X* system where you can't change owner**
@@ -115,8 +115,8 @@
        Note that this method really isn't recommended as it allows any user to do anything.
 
        ```bash
-       $ sudo find {app/{cache,logs},web} -type d | xargs sudo chmod -R 777
-       $ sudo find {app/{cache,logs},web} -type f | xargs sudo chmod -R 666
+       $ sudo find {app/{cache,logs},web/var} -type d | xargs sudo chmod -R 777
+       $ sudo find {app/{cache,logs},web/var} -type f | xargs sudo chmod -R 666
        ```
 
        When using chmod, note that newly created files (such as cache) owned by the web server's user may have different/restrictive permissions.
@@ -124,7 +124,7 @@
 
        It may also possible to add the group ownership inheritance flag so new files inherit the current group, and use `775`/`664` in the command lines above instead of world-writable:
        ```bash
-       $ sudo chmod g+s {app/{cache,logs},web}
+       $ sudo chmod g+s {app/{cache,logs},web/var}
        ```
 
        E. **Setup folder rights on Windows**
@@ -133,7 +133,7 @@
        write access to the following directories:
        - app/cache
        - app/logs
-       - web
+       - web/var
 
 
 3. **Configure a VirtualHost**<a name="install-3-vhost"></a>:
