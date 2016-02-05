@@ -17,7 +17,7 @@
         "psr-0": { "": "src/" }
     },
     "require": {
-        "php": ">=5.4.4",
+        "php": "~5.5|~7.0",
         "symfony/symfony": "~2.7.0",
         "twig/extensions": "~1.0",
         "symfony/assetic-bundle": "~2.3",
