@@ -3,10 +3,6 @@ rewrite "^/var/([^/]+/)?storage/images(-versioned)?/(.*)" "/var/$1storage/images
 # Makes it possible to place your favicon at the root of your
 # eZ Platform instance. It will then be served directly.
 rewrite "^/favicon\.ico" "/favicon.ico" break;
-# Uncomment the line below if you want you favicon be served
-# from own location. You can customize the path to favicon.ico
-# by changing the example path /bundles/my-bundle/images/favicon.ico
-#rewrite "^/favicon\.ico" "/bundles/my-bundle/images/favicon.ico" break;
 
 # Give direct access to robots.txt for use by crawlers (Google,
 # Bing, Spammers..)

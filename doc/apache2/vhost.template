@@ -86,10 +86,6 @@
         # It will then be served directly.
         RewriteRule ^/favicon\.ico - [L]
 
-        # Uncomment the line below if you want your favicon be served from the standard design.
-        # You can customize the path to favicon.ico by bundle name and/or path.
-        #RewriteRule ^/favicon\.ico /bundles/my-bundle/images/favicon.ico [L]
-
         # Give direct access to robots.txt for use by crawlers (Google, Bing, Spammers...)
         RewriteRule ^/robots\.txt - [L]
 
