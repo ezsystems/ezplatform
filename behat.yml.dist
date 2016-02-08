@@ -29,5 +29,6 @@ imports:
     - vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishRestBundle/behat_suites.yml
     - vendor/ezsystems/behatbundle/EzSystems/BehatBundle/behat_suites.yml
     - vendor/ezsystems/platform-ui-bundle/behat_suites.yml
+    - vendor/ezsystems/repository-forms/behat_suites.yml
     - vendor/ezsystems/studio-ui-bundle/behat_suites.yml
     - vendor/ezsystems/flex-workflow/behat_suites.yml

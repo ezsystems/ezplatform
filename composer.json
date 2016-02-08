@@ -20,7 +20,7 @@
         "psr-0": { "": "src/" }
     },
     "require": {
-        "php": ">=5.4.4",
+        "php": "~5.5|~7.0",
         "symfony/symfony": "~2.7.0",
         "twig/extensions": "~1.0",
         "symfony/assetic-bundle": "~2.3",
@@ -31,7 +31,7 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "tedivm/stash-bundle": "~0.4.3",
         "ezsystems/ezpublish-kernel": "~6.1.0@dev",
-        "ezsystems/repository-forms": "~1.0.0@dev",
+        "ezsystems/repository-forms": "~1.1.0@dev",
         "ezsystems/ezplatform-solr-search-engine": "~1.0.0@dev",
         "ezsystems/platform-ui-bundle": "~1.2.0@dev",
         "ezsystems/platform-ui-assets-bundle": "~2.0.0@alpha",
