@@ -53,7 +53,7 @@ This repository lets you create a clean, empty installation of eZ Platform. This
 ## Requirements
 Full requirements can be found on the [Requirements](https://doc.ez.no/display/TECHDOC/Requirements) page.
 
-*TL;DR: minimum PHP 5.4.4 and higher, using mod_php or php-fpm.*
+*TL;DR: supported PHP versions are 5.5, 5.6 and 7.0 (for dev use), using mod_php or php-fpm.*
 
 ## Issue tracker
 Submitting bugs, improvements and stories is possible on https://jira.ez.no/browse/EZP.
