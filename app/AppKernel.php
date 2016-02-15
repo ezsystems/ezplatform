@@ -46,6 +46,7 @@ class AppKernel extends Kernel
             new EzSystems\FlexWorkflowBundle\EzSystemsFlexWorkflowBundle(),
             new EzSystems\PlatformUIAssetsBundle\EzSystemsPlatformUIAssetsBundle(),
             new EzSystems\PlatformUIBundle\EzSystemsPlatformUIBundle(),
+            new EzSystems\NotificationBundle\EzSystemsNotificationBundle(),
             new Nelmio\CorsBundle\NelmioCorsBundle(),
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
             new Oneup\FlysystemBundle\OneupFlysystemBundle(),

@@ -38,3 +38,6 @@ _ezpublishStudioDemoRoutes:
 
 _ezpublishFlexWorkflowRoutes:
     resource: "@FlexWorkflowBundle/Resources/config/routing.yml"
+
+_ezpublishNotificationRoutes:
+    resource: "@NotificationBundle/Resources/config/routing.yml"
