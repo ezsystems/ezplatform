@@ -28,6 +28,7 @@ template_vars=(${option_vars[*]})
 template_vars+=("%BODY_SIZE_LIMIT_M%")
 template_vars+=("%TIMEOUT_S%")
 template_vars+=("%HOST_LIST%")
+template_vars+=("%INCLUDE_PROD_REWRITE_RULES%")
 
 # Default options
 declare -a template_values=(
@@ -220,6 +221,12 @@ if [[ "${template_values[4]}" != "" ]] ; then
      template_values[16]=$tmp
 fi
 
+# Decide whatwever to include prod rewrite rules based on template_values[5] (SYMFONY_ENV)
+if [ "${template_values[5]}" == "dev" ]; then
+    template_values[17]="#include ez_params.d/ez_prod_rewrite_params;"
+else
+    template_values[17]="include ez_params.d/ez_prod_rewrite_params;"
+fi
 
 ## Generate template result and output
 
