@@ -20,6 +20,12 @@ acl debuggers {
     "192.168.0.0"/16;
 }
 
+// ACL for the proxies in front of Varnish (e.g. Nginx terminating https)
+acl proxies {
+    "127.0.0.1";
+    "192.168.0.0"/16;
+}
+
 // Called at the beginning of a request, after the complete request has been received
 sub vcl_recv {
 
@@ -32,10 +38,18 @@ sub vcl_recv {
     // Add a unique header containing the client address (only for master request)
     // Please note that /_fragment URI can change in Symfony configuration
     if (!req.url ~ "^/_fragment") {
-        if (req.http.x-forwarded-for) {
-            set req.http.X-Forwarded-For = req.http.X-Forwarded-For + ", " + client.ip;
+         // only accept the x-forwarded-for header if the remote-proxy is trusted
+        // also we add our ip to the list of forwarders, as it is logged by apache by default
+        if (req.http.x-forwarded-for && client.ip ~ proxies) {
+            // funnily enough, it seems that this bit is executed twice, so we do a bit of dirty coding
+            if (req.http.X-Added-Forwarded-For) {
+                unset req.http.X-Added-Forwarded-For;
+            } else {
+                set req.http.X-Forwarded-For = req.http.X-Forwarded-For + ", " + server.ip;
+                set req.http.X-Added-Forwarded-For = "1";
+            }
         } else {
-            set req.http.X-Forwarded-For = client.ip;
+            set req.http.X-Forwarded-For = "" + client.ip + ", " + server.ip;
         }
     }
 
