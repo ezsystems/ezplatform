@@ -5,9 +5,17 @@
 
 *eZ Studio* derives from *eZ Platform*. It is composed of a set of bundles. eZ Studio, like Platform is built on top of the Symfony framework (Full Stack). It has been in development since 2014.
 
+### How to get access to eZ Studio?
+
+While this meta repository, `ezstudio`, is public to ease installation and upgrades, full access can be obtained in one of three ways:
+- Request an online demo on [ezstudio.com](http://ezstudio.com/)
+- As a partner, download trial version from [Partner Portal](http://ez.no/Partner-Portal)
+- As a customer with a eZ Enterprise subscription, full version from [Service Portal](https://support.ez.no/Downloads).
+  Or by setting up [Composer Authentication Tokens](https://doc.ez.no/display/TECHDOC/Using+Composer) for use in combination with this repository.
+
 ## eZ Studio vs. eZ Platform
-This repository contains *eZ Studio*, the next generation CMS which uses the same Symfony kernel as *eZ Platform* (formerly known also as *eZ Publish 6*), but does not include the legacy kernel, nor its library dependencies.
-eZ Studio comes with new features that extend Platform functionality.
+[eZ Studio](http://ezstudio.com/) is a distribution flavour of [eZ Platform](http://ezplatform.com/), the next generation CMS which uses the same Symfony based kernel as *eZ Platform* (formerly known also as *eZ Publish 6*).
+In short eZ Studio comes with new features and services that extend eZ Platform functionality for media industry, and team collaboration.
 
 ### Abstract:
 - **Very extensible** *You can extend the application and the content model in many ways*
