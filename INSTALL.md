@@ -136,13 +136,7 @@
        - web
 
 
-3. **Configure a VirtualHost**<a name="install-3-vhost"></a>:
-
-    A virtual host setup is the recommended, most secure setup of eZ Publish.
-    General virtual host setup template for Apache and Nginx can be found in [doc/ folder](doc/).
-
-
-4. **Run installation command**<a name="install-4-db-setup"></a>:
+3. **Run installation command**<a name="install-4-db-setup"></a>:
 
     You may now complete the eZ Platform installation with ezplatform:install command, example of use:
 
@@ -151,5 +145,22 @@
     ```
 
     **Note**: Password for the generated `admin` user is `publish`, this name and password is needed when you would like to login to backend Platform UI. Future versions will prompt you for a unique password during installation.
+
+
+4. **Configure a VirtualHost**<a name="install-3-vhost"></a>:
+
+    #### Recommended use
+    A virtual host setup is the recommended, most performant, and most secure setup of eZ Platform.
+    For how to configure Apache and Nginx see [doc/ folder](doc/).
+
+    #### Testing use
+    For just local testing without installing a full web-server, while slow you can also run PHP's built-in
+    web server using the following command:
+    ```bash
+    $ php app/console server:run
+    ```
+
+    *Note: While far from meant for production use, you can run the command above with `--env=prod` to disable debug.*
+
 
 You can now point your browser to the installation and browse the site. To access the Platform UI backend, use the `/ez` URL.
