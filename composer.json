@@ -37,6 +37,7 @@
         "ezsystems/platform-ui-assets-bundle": "~2.0.0@alpha",
         "ezsystems/comments-bundle": "~6.0.0@dev",
         "ezsystems/studio-ui-bundle": "~1.2.0@dev",
+        "ezsystems/ezstudio-notifications": "~1.0.0@dev",
         "ezsystems/landing-page-fieldtype-bundle": "~1.2.0@dev",
         "ezsystems/ezstudio-demo-bundle": "~1.2.0@dev",
         "ezsystems/ezstudio-demo-bundle-data": "~1.2.0@dev",
