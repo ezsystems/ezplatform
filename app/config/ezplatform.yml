@@ -9,9 +9,17 @@ ezpublish:
 
     # Siteaccess configuration, with one siteaccess per default
     siteaccess:
-        list: [site]
+        list:
+          - site
+          - fr
+          - de
+          - no
         groups:
-            site_group: [site]
+            site_group:
+                - site
+                - fr
+                - de
+                - no
         default_siteaccess: site
         match:
             URIElement: 1
@@ -23,4 +31,21 @@ ezpublish:
             # it is recommended to install clean, then change setting before you start adding binary content, otherwise you'll
             # need to manually modify your database data to reflect this to avoid exceptions.
             var_dir: var/site
-            languages: [eng-GB]
+        site:
+            languages:
+                - eng-GB
+                - fre-FR
+                - ger-DE
+                - nor-NO
+        fr:
+            languages:
+                - fre-FR
+                - eng-GB
+        de:
+            languages:
+                - ger-DE
+                - eng-GB
+        no:
+            languages:
+                - nor-NO
+                - eng-GB
