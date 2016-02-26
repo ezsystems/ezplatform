@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "bf9b25402b6aee1f0cb5d0deee463255",
-    "content-hash": "fbf66935d64fb1586f5e5564bd0fb981",
+    "hash": "3289e8c477f4d016a15f2b8e784f748d",
+    "content-hash": "688313eebc1522be22d0ff2bf002c4f3",
     "packages": [
         {
             "name": "components/bootstrap",
@@ -1230,16 +1230,16 @@
         },
         {
             "name": "ezsystems/platform-ui-bundle",
-            "version": "v1.2.0-rc1",
+            "version": "v1.2.0-rc2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/PlatformUIBundle.git",
-                "reference": "419d1843295c9ed64494befee89862b65b2fe560"
+                "reference": "7aee80838daedeb6e01387e030753fba8ba03115"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/PlatformUIBundle/zipball/419d1843295c9ed64494befee89862b65b2fe560",
-                "reference": "419d1843295c9ed64494befee89862b65b2fe560",
+                "url": "https://api.github.com/repos/ezsystems/PlatformUIBundle/zipball/7aee80838daedeb6e01387e030753fba8ba03115",
+                "reference": "7aee80838daedeb6e01387e030753fba8ba03115",
                 "shasum": ""
             },
             "require": {
@@ -1268,7 +1268,7 @@
                 "GPL-2.0"
             ],
             "description": "eZ Platform UI Bundle",
-            "time": "2016-02-25 16:10:21"
+            "time": "2016-02-26 10:32:38"
         },
         {
             "name": "ezsystems/repository-forms",
@@ -5900,7 +5900,7 @@
         {
             "alias": "1.2.0",
             "alias_normalized": "1.2.0.0",
-            "version": "1.2.0.0-RC1",
+            "version": "1.2.0.0-RC2",
             "package": "ezsystems/platform-ui-bundle"
         },
         {

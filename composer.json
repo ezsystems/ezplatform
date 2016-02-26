@@ -33,7 +33,7 @@
         "ezsystems/ezpublish-kernel": "6.2.0-rc2 as 6.2.0",
         "ezsystems/repository-forms": "1.1.0-rc1 as 1.1.0",
         "ezsystems/ezplatform-solr-search-engine": "^1.0",
-        "ezsystems/platform-ui-bundle": "1.2.0-rc1 as 1.2.0",
+        "ezsystems/platform-ui-bundle": "1.2.0-rc2 as 1.2.0",
         "ezsystems/comments-bundle": "~6.0.0",
         "ezsystems/studio-ui-bundle": "1.2.0-rc1 as 1.2.0",
         "ezsystems/ezstudio-notifications": "1.0.0-rc1 as 1.0.0",
