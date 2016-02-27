@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3289e8c477f4d016a15f2b8e784f748d",
-    "content-hash": "688313eebc1522be22d0ff2bf002c4f3",
+    "hash": "33de36dd24b2de4cc887988471984a64",
+    "content-hash": "0171c5c61c4ca8d986b690513017bac2",
     "packages": [
         {
             "name": "components/bootstrap",
@@ -982,17 +982,17 @@
         },
         {
             "name": "ezsystems/ezstudio-demo-bundle",
-            "version": "v1.2.0-rc1",
+            "version": "v1.2.0-rc2",
             "source": {
                 "type": "git",
                 "url": "git@github.com:ezsystems/ezstudio-demo-bundle.git",
-                "reference": "158141f5056a779983f750dad3b2b399a099131a"
+                "reference": "2d617eca875a98983eb89ea45a6238f10f1765bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://updates.ez.no/ttl/dist/ezsystems-ezstudio-demo-bundle-158141f5056a779983f750dad3b2b399a099131a-zip-50bd70.zip",
-                "reference": "158141f5056a779983f750dad3b2b399a099131a",
-                "shasum": "03791ebceb15cd8965272ab06672c97d3de3a12c"
+                "url": "https://updates.ez.no/ttl/dist/ezsystems-ezstudio-demo-bundle-2d617eca875a98983eb89ea45a6238f10f1765bf-zip-423c1d.zip",
+                "reference": "2d617eca875a98983eb89ea45a6238f10f1765bf",
+                "shasum": "4ddbbee37edbedd4a293686b03fc3c2b807bc55b"
             },
             "require": {
                 "components/bootstrap": "3.3.5",
@@ -1020,10 +1020,10 @@
             ],
             "description": "Demo bundle for eZ Studio",
             "support": {
-                "source": "https://github.com/ezsystems/ezstudio-demo-bundle/tree/v1.2.0-rc1",
+                "source": "https://github.com/ezsystems/ezstudio-demo-bundle/tree/v1.2.0-rc2",
                 "issues": "https://github.com/ezsystems/ezstudio-demo-bundle/issues"
             },
-            "time": "2016-02-26 09:46:54"
+            "time": "2016-02-26 13:47:07"
         },
         {
             "name": "ezsystems/ezstudio-demo-bundle-data",
@@ -1101,17 +1101,17 @@
         },
         {
             "name": "ezsystems/flex-workflow",
-            "version": "v1.2.0-rc1",
+            "version": "v1.2.0-rc2",
             "source": {
                 "type": "git",
                 "url": "git@github.com:ezsystems/flex-workflow.git",
-                "reference": "ad2dd12bdec2d8be76b51dce06d93e13775bf600"
+                "reference": "5f6d44a32bf839dc81d33dfda1976e8e7fec492d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://updates.ez.no/ttl/dist/ezsystems-flex-workflow-ad2dd12bdec2d8be76b51dce06d93e13775bf600-zip-86f792.zip",
-                "reference": "ad2dd12bdec2d8be76b51dce06d93e13775bf600",
-                "shasum": "35eaa43271c2ed3d23e59988203cfc0f3f6f08de"
+                "url": "https://updates.ez.no/ttl/dist/ezsystems-flex-workflow-5f6d44a32bf839dc81d33dfda1976e8e7fec492d-zip-37e03b.zip",
+                "reference": "5f6d44a32bf839dc81d33dfda1976e8e7fec492d",
+                "shasum": "196ecf1c0d281c72a2d1b0fad9664d1756b0993e"
             },
             "require": {
                 "ezsystems/ezpublish-kernel": "^6.2",
@@ -1144,10 +1144,10 @@
             ],
             "description": "Flex Workflow extension for eZ Studio",
             "support": {
-                "source": "https://github.com/ezsystems/flex-workflow/tree/v1.2.0-rc1",
+                "source": "https://github.com/ezsystems/flex-workflow/tree/v1.2.0-rc2",
                 "issues": "https://github.com/ezsystems/flex-workflow/issues"
             },
-            "time": "2016-02-26 09:40:19"
+            "time": "2016-02-26 15:01:11"
         },
         {
             "name": "ezsystems/landing-page-fieldtype-bundle",
@@ -1230,16 +1230,16 @@
         },
         {
             "name": "ezsystems/platform-ui-bundle",
-            "version": "v1.2.0-rc2",
+            "version": "v1.2.0-rc3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/PlatformUIBundle.git",
-                "reference": "7aee80838daedeb6e01387e030753fba8ba03115"
+                "reference": "7a14581effda4d68549983592446753a811e728e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/PlatformUIBundle/zipball/7aee80838daedeb6e01387e030753fba8ba03115",
-                "reference": "7aee80838daedeb6e01387e030753fba8ba03115",
+                "url": "https://api.github.com/repos/ezsystems/PlatformUIBundle/zipball/7a14581effda4d68549983592446753a811e728e",
+                "reference": "7a14581effda4d68549983592446753a811e728e",
                 "shasum": ""
             },
             "require": {
@@ -1268,7 +1268,7 @@
                 "GPL-2.0"
             ],
             "description": "eZ Platform UI Bundle",
-            "time": "2016-02-26 10:32:38"
+            "time": "2016-02-26 16:14:51"
         },
         {
             "name": "ezsystems/repository-forms",
@@ -5630,16 +5630,16 @@
         },
         {
             "name": "sebastian/environment",
-            "version": "1.3.3",
+            "version": "1.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/environment.git",
-                "reference": "6e7133793a8e5a5714a551a8324337374be209df"
+                "reference": "dc7a29032cf72b54f36dac15a1ca5b3a1b6029bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/6e7133793a8e5a5714a551a8324337374be209df",
-                "reference": "6e7133793a8e5a5714a551a8324337374be209df",
+                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/dc7a29032cf72b54f36dac15a1ca5b3a1b6029bf",
+                "reference": "dc7a29032cf72b54f36dac15a1ca5b3a1b6029bf",
                 "shasum": ""
             },
             "require": {
@@ -5676,7 +5676,7 @@
                 "environment",
                 "hhvm"
             ],
-            "time": "2015-12-02 08:37:27"
+            "time": "2016-02-26 18:40:46"
         },
         {
             "name": "sebastian/exporter",
@@ -5900,7 +5900,7 @@
         {
             "alias": "1.2.0",
             "alias_normalized": "1.2.0.0",
-            "version": "1.2.0.0-RC2",
+            "version": "1.2.0.0-RC3",
             "package": "ezsystems/platform-ui-bundle"
         },
         {
@@ -5924,7 +5924,7 @@
         {
             "alias": "1.2.0",
             "alias_normalized": "1.2.0.0",
-            "version": "1.2.0.0-RC1",
+            "version": "1.2.0.0-RC2",
             "package": "ezsystems/ezstudio-demo-bundle"
         },
         {
@@ -5936,7 +5936,7 @@
         {
             "alias": "1.2.0",
             "alias_normalized": "1.2.0.0",
-            "version": "1.2.0.0-RC1",
+            "version": "1.2.0.0-RC2",
             "package": "ezsystems/flex-workflow"
         },
         {
