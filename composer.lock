@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "33de36dd24b2de4cc887988471984a64",
-    "content-hash": "0171c5c61c4ca8d986b690513017bac2",
+    "hash": "c657c19bce11a8eacb05873cf639c09b",
+    "content-hash": "23e2017c4017777e480557ba8566b869",
     "packages": [
         {
             "name": "components/bootstrap",
@@ -902,16 +902,16 @@
         },
         {
             "name": "ezsystems/ezpublish-kernel",
-            "version": "v6.2.0-rc2",
+            "version": "v6.2.0-rc3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-kernel.git",
-                "reference": "f980653ff3e1f7e9abc822c90e1ed209802d6b07"
+                "reference": "ec897baa77c63b745749acf201e85b92bd614723"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/f980653ff3e1f7e9abc822c90e1ed209802d6b07",
-                "reference": "f980653ff3e1f7e9abc822c90e1ed209802d6b07",
+                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/ec897baa77c63b745749acf201e85b92bd614723",
+                "reference": "ec897baa77c63b745749acf201e85b92bd614723",
                 "shasum": ""
             },
             "require": {
@@ -978,21 +978,21 @@
             ],
             "description": "Kernel used by ezsystems/ezplatform and derivatives. Provides the Content Repository, its APIs, and the application's Symfony framework integration.",
             "homepage": "http://share.ez.no",
-            "time": "2016-02-25 21:40:09"
+            "time": "2016-02-28 14:30:53"
         },
         {
             "name": "ezsystems/ezstudio-demo-bundle",
-            "version": "v1.2.0-rc2",
+            "version": "v1.2.0-rc3",
             "source": {
                 "type": "git",
                 "url": "git@github.com:ezsystems/ezstudio-demo-bundle.git",
-                "reference": "2d617eca875a98983eb89ea45a6238f10f1765bf"
+                "reference": "1b5ef06f50c99f2affc9760b8a152accc98ef63b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://updates.ez.no/ttl/dist/ezsystems-ezstudio-demo-bundle-2d617eca875a98983eb89ea45a6238f10f1765bf-zip-423c1d.zip",
-                "reference": "2d617eca875a98983eb89ea45a6238f10f1765bf",
-                "shasum": "4ddbbee37edbedd4a293686b03fc3c2b807bc55b"
+                "url": "https://updates.ez.no/ttl/dist/ezsystems-ezstudio-demo-bundle-1b5ef06f50c99f2affc9760b8a152accc98ef63b-zip-491a32.zip",
+                "reference": "1b5ef06f50c99f2affc9760b8a152accc98ef63b",
+                "shasum": "e26f04c323748ce173686a47aa3dd1fb7d7b0dd8"
             },
             "require": {
                 "components/bootstrap": "3.3.5",
@@ -1020,10 +1020,10 @@
             ],
             "description": "Demo bundle for eZ Studio",
             "support": {
-                "source": "https://github.com/ezsystems/ezstudio-demo-bundle/tree/v1.2.0-rc2",
+                "source": "https://github.com/ezsystems/ezstudio-demo-bundle/tree/v1.2.0-rc3",
                 "issues": "https://github.com/ezsystems/ezstudio-demo-bundle/issues"
             },
-            "time": "2016-02-26 13:47:07"
+            "time": "2016-03-01 14:50:14"
         },
         {
             "name": "ezsystems/ezstudio-demo-bundle-data",
@@ -1058,17 +1058,17 @@
         },
         {
             "name": "ezsystems/ezstudio-notifications",
-            "version": "v1.0.0-rc1",
+            "version": "v1.0.0-rc2",
             "source": {
                 "type": "git",
                 "url": "git@github.com:ezsystems/ezstudio-notifications.git",
-                "reference": "524d7bef13cefc43ec2d5ef15ac6f5eef3462c32"
+                "reference": "f875591d98b13036a41cd7a3c95618e87de9d061"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://updates.ez.no/ttl/dist/ezsystems-ezstudio-notifications-524d7bef13cefc43ec2d5ef15ac6f5eef3462c32-zip-a81d76.zip",
-                "reference": "524d7bef13cefc43ec2d5ef15ac6f5eef3462c32",
-                "shasum": "a7c237a2f484cd03623034a31dd71a653e013ea8"
+                "url": "https://updates.ez.no/ttl/dist/ezsystems-ezstudio-notifications-f875591d98b13036a41cd7a3c95618e87de9d061-zip-2b32ca.zip",
+                "reference": "f875591d98b13036a41cd7a3c95618e87de9d061",
+                "shasum": "efb0cc8a09eb703716f3a6e54bd75c5a5e08092c"
             },
             "require": {
                 "ezsystems/ezpublish-kernel": "^6.2"
@@ -1094,24 +1094,24 @@
             ],
             "description": "Notification extension for eZ Studio",
             "support": {
-                "source": "https://github.com/ezsystems/ezstudio-notifications/tree/v1.0.0-rc1",
+                "source": "https://github.com/ezsystems/ezstudio-notifications/tree/v1.0.0-rc2",
                 "issues": "https://github.com/ezsystems/ezstudio-notifications/issues"
             },
-            "time": "2016-02-26 09:23:12"
+            "time": "2016-03-01 13:25:39"
         },
         {
             "name": "ezsystems/flex-workflow",
-            "version": "v1.2.0-rc2",
+            "version": "v1.2.0-rc3",
             "source": {
                 "type": "git",
                 "url": "git@github.com:ezsystems/flex-workflow.git",
-                "reference": "5f6d44a32bf839dc81d33dfda1976e8e7fec492d"
+                "reference": "5d17ecbb820cf2075f90bb9562dd37e47dc3b813"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://updates.ez.no/ttl/dist/ezsystems-flex-workflow-5f6d44a32bf839dc81d33dfda1976e8e7fec492d-zip-37e03b.zip",
-                "reference": "5f6d44a32bf839dc81d33dfda1976e8e7fec492d",
-                "shasum": "196ecf1c0d281c72a2d1b0fad9664d1756b0993e"
+                "url": "https://updates.ez.no/ttl/dist/ezsystems-flex-workflow-5d17ecbb820cf2075f90bb9562dd37e47dc3b813-zip-81ee72.zip",
+                "reference": "5d17ecbb820cf2075f90bb9562dd37e47dc3b813",
+                "shasum": "b958ed7adf6190fa7adb7cf308c387df0e3d9682"
             },
             "require": {
                 "ezsystems/ezpublish-kernel": "^6.2",
@@ -1144,10 +1144,10 @@
             ],
             "description": "Flex Workflow extension for eZ Studio",
             "support": {
-                "source": "https://github.com/ezsystems/flex-workflow/tree/v1.2.0-rc2",
+                "source": "https://github.com/ezsystems/flex-workflow/tree/v1.2.0-rc3",
                 "issues": "https://github.com/ezsystems/flex-workflow/issues"
             },
-            "time": "2016-02-26 15:01:11"
+            "time": "2016-03-01 14:42:48"
         },
         {
             "name": "ezsystems/landing-page-fieldtype-bundle",
@@ -1230,16 +1230,16 @@
         },
         {
             "name": "ezsystems/platform-ui-bundle",
-            "version": "v1.2.0-rc3",
+            "version": "v1.2.0-rc4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/PlatformUIBundle.git",
-                "reference": "7a14581effda4d68549983592446753a811e728e"
+                "reference": "5e765e22db8b19931ca73764b89123a2c23b984d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/PlatformUIBundle/zipball/7a14581effda4d68549983592446753a811e728e",
-                "reference": "7a14581effda4d68549983592446753a811e728e",
+                "url": "https://api.github.com/repos/ezsystems/PlatformUIBundle/zipball/5e765e22db8b19931ca73764b89123a2c23b984d",
+                "reference": "5e765e22db8b19931ca73764b89123a2c23b984d",
                 "shasum": ""
             },
             "require": {
@@ -1268,7 +1268,7 @@
                 "GPL-2.0"
             ],
             "description": "eZ Platform UI Bundle",
-            "time": "2016-02-26 16:14:51"
+            "time": "2016-03-01 12:35:09"
         },
         {
             "name": "ezsystems/repository-forms",
@@ -1374,17 +1374,17 @@
         },
         {
             "name": "ezsystems/studio-ui-bundle",
-            "version": "v1.2.0-rc1",
+            "version": "v1.2.0-rc2",
             "source": {
                 "type": "git",
                 "url": "git@github.com:ezsystems/StudioUIBundle.git",
-                "reference": "7a398e6f34e2db16c4f63faf2244f2ce87f639ac"
+                "reference": "f86177b77da8dec6db31eecc109b0150a6aab27a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://updates.ez.no/ttl/dist/ezsystems-studio-ui-bundle-7a398e6f34e2db16c4f63faf2244f2ce87f639ac-zip-3f4d1e.zip",
-                "reference": "7a398e6f34e2db16c4f63faf2244f2ce87f639ac",
-                "shasum": "4aaaeb35836104f33302647fbf1d64a975a71ebc"
+                "url": "https://updates.ez.no/ttl/dist/ezsystems-studio-ui-bundle-f86177b77da8dec6db31eecc109b0150a6aab27a-zip-7c12a4.zip",
+                "reference": "f86177b77da8dec6db31eecc109b0150a6aab27a",
+                "shasum": "d27fc19be3f5a95ccb38ea511b79c9afabee0d1a"
             },
             "require": {
                 "ezsystems/ezpublish-kernel": "^6.2",
@@ -1406,10 +1406,10 @@
             ],
             "description": "eZ Studio UI Bundle",
             "support": {
-                "source": "https://github.com/ezsystems/StudioUIBundle/tree/v1.2.0-rc1",
+                "source": "https://github.com/ezsystems/StudioUIBundle/tree/v1.2.0-rc2",
                 "issues": "https://github.com/ezsystems/StudioUIBundle/issues"
             },
-            "time": "2016-02-26 09:29:12"
+            "time": "2016-03-01 13:58:32"
         },
         {
             "name": "friendsofsymfony/http-cache",
@@ -2640,16 +2640,16 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v1.2.0",
+            "version": "v1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "b0e69d10852716b2ccbdff69c75c477637220790"
+                "reference": "f078eba3bcf140fd69b5fcc3ea5ac809abf729dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/b0e69d10852716b2ccbdff69c75c477637220790",
-                "reference": "b0e69d10852716b2ccbdff69c75c477637220790",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/f078eba3bcf140fd69b5fcc3ea5ac809abf729dc",
+                "reference": "f078eba3bcf140fd69b5fcc3ea5ac809abf729dc",
                 "shasum": ""
             },
             "require": {
@@ -2684,7 +2684,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2016-02-06 03:52:05"
+            "time": "2016-02-29 17:25:04"
         },
         {
             "name": "psr/log",
@@ -2810,16 +2810,16 @@
         },
         {
             "name": "sensio/framework-extra-bundle",
-            "version": "v3.0.13",
+            "version": "v3.0.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioFrameworkExtraBundle.git",
-                "reference": "bf6be511f4f66d368baeb2cab617203d73cccf4e"
+                "reference": "cccf975c565ccd835bddc30a8fea5cdfe3357bf1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioFrameworkExtraBundle/zipball/bf6be511f4f66d368baeb2cab617203d73cccf4e",
-                "reference": "bf6be511f4f66d368baeb2cab617203d73cccf4e",
+                "url": "https://api.github.com/repos/sensiolabs/SensioFrameworkExtraBundle/zipball/cccf975c565ccd835bddc30a8fea5cdfe3357bf1",
+                "reference": "cccf975c565ccd835bddc30a8fea5cdfe3357bf1",
                 "shasum": ""
             },
             "require": {
@@ -2868,7 +2868,7 @@
                 "annotations",
                 "controllers"
             ],
-            "time": "2016-02-12 08:17:23"
+            "time": "2016-03-01 10:50:07"
         },
         {
             "name": "sensio/generator-bundle",
@@ -3060,7 +3060,7 @@
             ],
             "authors": [
                 {
-                    "name": "Symfony CMF community",
+                    "name": "Symfony CMF Community",
                     "homepage": "https://github.com/symfony-cmf/Routing/contributors"
                 }
             ],
@@ -3202,6 +3202,62 @@
             "time": "2015-11-17 10:02:29"
         },
         {
+            "name": "symfony/polyfill-apcu",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-apcu.git",
+                "reference": "d1911e6caeb4b6a4c8e2d5c46b978a66b3745e4c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-apcu/zipball/d1911e6caeb4b6a4c8e2d5c46b978a66b3745e4c",
+                "reference": "d1911e6caeb4b6a4c8e2d5c46b978a66b3745e4c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ],
+                "classmap": [
+                    "Resources/stubs"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill backporting apcu_* functions to lower PHP versions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "apcu",
+                "compatibility",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "time": "2016-01-20 09:13:37"
+        },
+        {
             "name": "symfony/swiftmailer-bundle",
             "version": "v2.3.11",
             "source": {
@@ -3260,16 +3316,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.7.9",
+            "version": "v2.7.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "d3646cc6875c214d211001e0673ec9e91b5f2da7"
+                "reference": "9a3b6bf6ebee49370aaf15abc1bdeb4b1986a67d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/d3646cc6875c214d211001e0673ec9e91b5f2da7",
-                "reference": "d3646cc6875c214d211001e0673ec9e91b5f2da7",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/9a3b6bf6ebee49370aaf15abc1bdeb4b1986a67d",
+                "reference": "9a3b6bf6ebee49370aaf15abc1bdeb4b1986a67d",
                 "shasum": ""
             },
             "require": {
@@ -3277,6 +3333,7 @@
                 "paragonie/random_compat": "~1.0",
                 "php": ">=5.3.9",
                 "psr/log": "~1.0",
+                "symfony/polyfill-apcu": "~1.1",
                 "twig/twig": "~1.23|~2.0"
             },
             "replace": {
@@ -3333,7 +3390,7 @@
                 "egulias/email-validator": "~1.2",
                 "ircmaxell/password-compat": "~1.0",
                 "monolog/monolog": "~1.11",
-                "ocramius/proxy-manager": "~0.4|~1.0"
+                "ocramius/proxy-manager": "~0.4|~1.0|~2.0"
             },
             "type": "library",
             "extra": {
@@ -3381,7 +3438,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2016-01-14 10:41:56"
+            "time": "2016-02-28 20:37:19"
         },
         {
             "name": "tedivm/stash",
@@ -5888,7 +5945,7 @@
         {
             "alias": "6.2.0",
             "alias_normalized": "6.2.0.0",
-            "version": "6.2.0.0-RC2",
+            "version": "6.2.0.0-RC3",
             "package": "ezsystems/ezpublish-kernel"
         },
         {
@@ -5900,19 +5957,19 @@
         {
             "alias": "1.2.0",
             "alias_normalized": "1.2.0.0",
-            "version": "1.2.0.0-RC3",
+            "version": "1.2.0.0-RC4",
             "package": "ezsystems/platform-ui-bundle"
         },
         {
             "alias": "1.2.0",
             "alias_normalized": "1.2.0.0",
-            "version": "1.2.0.0-RC1",
+            "version": "1.2.0.0-RC2",
             "package": "ezsystems/studio-ui-bundle"
         },
         {
             "alias": "1.0.0",
             "alias_normalized": "1.0.0.0",
-            "version": "1.0.0.0-RC1",
+            "version": "1.0.0.0-RC2",
             "package": "ezsystems/ezstudio-notifications"
         },
         {
@@ -5924,7 +5981,7 @@
         {
             "alias": "1.2.0",
             "alias_normalized": "1.2.0.0",
-            "version": "1.2.0.0-RC2",
+            "version": "1.2.0.0-RC3",
             "package": "ezsystems/ezstudio-demo-bundle"
         },
         {
@@ -5936,7 +5993,7 @@
         {
             "alias": "1.2.0",
             "alias_normalized": "1.2.0.0",
-            "version": "1.2.0.0-RC2",
+            "version": "1.2.0.0-RC3",
             "package": "ezsystems/flex-workflow"
         },
         {
