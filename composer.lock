@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c4b9642c60374114d3b791cdb8a25fec",
-    "content-hash": "a7cc89ebcbc7842da5b26d26dacb4da7",
+    "hash": "93849edfa3908894ec47cbbec79a26f2",
+    "content-hash": "a239380ca200fd96bdb0a7b12fa7bf55",
     "packages": [
         {
             "name": "components/bootstrap",
@@ -982,17 +982,17 @@
         },
         {
             "name": "ezsystems/ezstudio-demo-bundle",
-            "version": "v1.2.0-rc4",
+            "version": "v1.2.0-rc5",
             "source": {
                 "type": "git",
                 "url": "git@github.com:ezsystems/ezstudio-demo-bundle.git",
-                "reference": "096124b0fd05b4292db8ca2f53d00366496c4926"
+                "reference": "e932241a56dbcbc8356317c90ae36668eaa714ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://updates.ez.no/ttl/dist/ezsystems-ezstudio-demo-bundle-096124b0fd05b4292db8ca2f53d00366496c4926-zip-5cac1a.zip",
-                "reference": "096124b0fd05b4292db8ca2f53d00366496c4926",
-                "shasum": "2df28f057dd91391a363d38238fd4a143bfeead6"
+                "url": "https://updates.ez.no/ttl/dist/ezsystems-ezstudio-demo-bundle-e932241a56dbcbc8356317c90ae36668eaa714ca-zip-cea7be.zip",
+                "reference": "e932241a56dbcbc8356317c90ae36668eaa714ca",
+                "shasum": "3ee59497022dba2dbdde294b09985c139695cd33"
             },
             "require": {
                 "components/bootstrap": "3.3.5",
@@ -1020,10 +1020,10 @@
             ],
             "description": "Demo bundle for eZ Studio",
             "support": {
-                "source": "https://github.com/ezsystems/ezstudio-demo-bundle/tree/v1.2.0-rc4",
+                "source": "https://github.com/ezsystems/ezstudio-demo-bundle/tree/v1.2.0-rc5",
                 "issues": "https://github.com/ezsystems/ezstudio-demo-bundle/issues"
             },
-            "time": "2016-03-03 08:24:15"
+            "time": "2016-03-03 11:51:02"
         },
         {
             "name": "ezsystems/ezstudio-demo-bundle-data",
@@ -5982,7 +5982,7 @@
         {
             "alias": "1.2.0",
             "alias_normalized": "1.2.0.0",
-            "version": "1.2.0.0-RC4",
+            "version": "1.2.0.0-RC5",
             "package": "ezsystems/ezstudio-demo-bundle"
         },
         {

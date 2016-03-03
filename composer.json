@@ -38,7 +38,7 @@
         "ezsystems/studio-ui-bundle": "1.2.0-rc2 as 1.2.0",
         "ezsystems/ezstudio-notifications": "1.0.0-rc2 as 1.0.0",
         "ezsystems/landing-page-fieldtype-bundle": "1.2.0-rc1 as 1.2.0",
-        "ezsystems/ezstudio-demo-bundle": "1.2.0-rc4 as 1.2.0",
+        "ezsystems/ezstudio-demo-bundle": "1.2.0-rc5 as 1.2.0",
         "ezsystems/ezstudio-demo-bundle-data": "1.2.0-rc1 as 1.2.0",
         "ezsystems/share-buttons-bundle": "~1.0.0",
         "ezsystems/flex-workflow": "1.2.0-rc4 as 1.2.0",
