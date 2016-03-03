@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "93849edfa3908894ec47cbbec79a26f2",
-    "content-hash": "a239380ca200fd96bdb0a7b12fa7bf55",
+    "hash": "662ffce22c3e79b949c0b40003d3265b",
+    "content-hash": "5bc7c9717bfe344a41b8ba735cdedd0c",
     "packages": [
         {
             "name": "components/bootstrap",
@@ -902,7 +902,7 @@
         },
         {
             "name": "ezsystems/ezpublish-kernel",
-            "version": "v6.2.0-rc5",
+            "version": "v6.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-kernel.git",
@@ -982,7 +982,7 @@
         },
         {
             "name": "ezsystems/ezstudio-demo-bundle",
-            "version": "v1.2.0-rc5",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "git@github.com:ezsystems/ezstudio-demo-bundle.git",
@@ -1027,7 +1027,7 @@
         },
         {
             "name": "ezsystems/ezstudio-demo-bundle-data",
-            "version": "v1.2.0-rc1",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "git@github.com:ezsystems/ezstudio-demo-bundle-data.git",
@@ -1058,7 +1058,7 @@
         },
         {
             "name": "ezsystems/ezstudio-notifications",
-            "version": "v1.0.0-rc2",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "git@github.com:ezsystems/ezstudio-notifications.git",
@@ -1101,7 +1101,7 @@
         },
         {
             "name": "ezsystems/flex-workflow",
-            "version": "v1.2.0-rc4",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "git@github.com:ezsystems/flex-workflow.git",
@@ -1151,7 +1151,7 @@
         },
         {
             "name": "ezsystems/landing-page-fieldtype-bundle",
-            "version": "v1.2.0-rc1",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "git@github.com:ezsystems/EzLandingPageFieldTypeBundle.git",
@@ -1230,7 +1230,7 @@
         },
         {
             "name": "ezsystems/platform-ui-bundle",
-            "version": "v1.2.0-rc5",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/PlatformUIBundle.git",
@@ -1272,7 +1272,7 @@
         },
         {
             "name": "ezsystems/repository-forms",
-            "version": "v1.1.0-rc1",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/repository-forms.git",
@@ -1374,7 +1374,7 @@
         },
         {
             "name": "ezsystems/studio-ui-bundle",
-            "version": "v1.2.0-rc2",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "git@github.com:ezsystems/StudioUIBundle.git",
@@ -4683,7 +4683,7 @@
         },
         {
             "name": "ezsystems/behatbundle",
-            "version": "v6.2.0-rc1",
+            "version": "v6.2.0",
             "target-dir": "EzSystems/BehatBundle",
             "source": {
                 "type": "git",
@@ -5942,81 +5942,9 @@
             "time": "2015-06-21 13:59:46"
         }
     ],
-    "aliases": [
-        {
-            "alias": "6.2.0",
-            "alias_normalized": "6.2.0.0",
-            "version": "6.2.0.0-RC5",
-            "package": "ezsystems/ezpublish-kernel"
-        },
-        {
-            "alias": "1.1.0",
-            "alias_normalized": "1.1.0.0",
-            "version": "1.1.0.0-RC1",
-            "package": "ezsystems/repository-forms"
-        },
-        {
-            "alias": "1.2.0",
-            "alias_normalized": "1.2.0.0",
-            "version": "1.2.0.0-RC5",
-            "package": "ezsystems/platform-ui-bundle"
-        },
-        {
-            "alias": "1.2.0",
-            "alias_normalized": "1.2.0.0",
-            "version": "1.2.0.0-RC2",
-            "package": "ezsystems/studio-ui-bundle"
-        },
-        {
-            "alias": "1.0.0",
-            "alias_normalized": "1.0.0.0",
-            "version": "1.0.0.0-RC2",
-            "package": "ezsystems/ezstudio-notifications"
-        },
-        {
-            "alias": "1.2.0",
-            "alias_normalized": "1.2.0.0",
-            "version": "1.2.0.0-RC1",
-            "package": "ezsystems/landing-page-fieldtype-bundle"
-        },
-        {
-            "alias": "1.2.0",
-            "alias_normalized": "1.2.0.0",
-            "version": "1.2.0.0-RC5",
-            "package": "ezsystems/ezstudio-demo-bundle"
-        },
-        {
-            "alias": "1.2.0",
-            "alias_normalized": "1.2.0.0",
-            "version": "1.2.0.0-RC1",
-            "package": "ezsystems/ezstudio-demo-bundle-data"
-        },
-        {
-            "alias": "1.2.0",
-            "alias_normalized": "1.2.0.0",
-            "version": "1.2.0.0-RC4",
-            "package": "ezsystems/flex-workflow"
-        },
-        {
-            "alias": "6.2.0",
-            "alias_normalized": "6.2.0.0",
-            "version": "6.2.0.0-RC1",
-            "package": "ezsystems/behatbundle"
-        }
-    ],
+    "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "ezsystems/ezpublish-kernel": 5,
-        "ezsystems/repository-forms": 5,
-        "ezsystems/platform-ui-bundle": 5,
-        "ezsystems/studio-ui-bundle": 5,
-        "ezsystems/ezstudio-notifications": 5,
-        "ezsystems/landing-page-fieldtype-bundle": 5,
-        "ezsystems/ezstudio-demo-bundle": 5,
-        "ezsystems/ezstudio-demo-bundle-data": 5,
-        "ezsystems/flex-workflow": 5,
-        "ezsystems/behatbundle": 5
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
