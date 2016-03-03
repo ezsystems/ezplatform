@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4c3651470bb566b2750e8d69e0afce72",
-    "content-hash": "d095b1aef0a8cf105fbab2f807be90d7",
+    "hash": "8855aba1da816dcd4c1effc472630e85",
+    "content-hash": "95aef07acb2d4e432bbe83bc77b3993a",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -738,16 +738,16 @@
         },
         {
             "name": "ezsystems/ezpublish-kernel",
-            "version": "v6.2.0-rc3",
+            "version": "v6.2.0-rc4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-kernel.git",
-                "reference": "ec897baa77c63b745749acf201e85b92bd614723"
+                "reference": "e3e264f05f63874e6ed8c555519b9641a3a4c994"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/ec897baa77c63b745749acf201e85b92bd614723",
-                "reference": "ec897baa77c63b745749acf201e85b92bd614723",
+                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/e3e264f05f63874e6ed8c555519b9641a3a4c994",
+                "reference": "e3e264f05f63874e6ed8c555519b9641a3a4c994",
                 "shasum": ""
             },
             "require": {
@@ -814,7 +814,7 @@
             ],
             "description": "Kernel used by ezsystems/ezplatform and derivatives. Provides the Content Repository, its APIs, and the application's Symfony framework integration.",
             "homepage": "http://share.ez.no",
-            "time": "2016-02-28 14:30:53"
+            "time": "2016-03-02 15:54:48"
         },
         {
             "name": "ezsystems/platform-ui-assets-bundle",
@@ -854,16 +854,16 @@
         },
         {
             "name": "ezsystems/platform-ui-bundle",
-            "version": "v1.2.0-rc4",
+            "version": "v1.2.0-rc5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/PlatformUIBundle.git",
-                "reference": "5e765e22db8b19931ca73764b89123a2c23b984d"
+                "reference": "03247e718fd3418130a5ba252fd1fcda29f03df8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/PlatformUIBundle/zipball/5e765e22db8b19931ca73764b89123a2c23b984d",
-                "reference": "5e765e22db8b19931ca73764b89123a2c23b984d",
+                "url": "https://api.github.com/repos/ezsystems/PlatformUIBundle/zipball/03247e718fd3418130a5ba252fd1fcda29f03df8",
+                "reference": "03247e718fd3418130a5ba252fd1fcda29f03df8",
                 "shasum": ""
             },
             "require": {
@@ -892,7 +892,7 @@
                 "GPL-2.0"
             ],
             "description": "eZ Platform UI Bundle",
-            "time": "2016-03-01 12:35:09"
+            "time": "2016-03-02 12:59:39"
         },
         {
             "name": "ezsystems/repository-forms",
@@ -1747,16 +1747,16 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "1.17.2",
+            "version": "1.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "bee7f0dc9c3e0b69a6039697533dca1e845c8c24"
+                "reference": "e19b764b5c855580e8ffa7e615f72c10fd2f99cc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/bee7f0dc9c3e0b69a6039697533dca1e845c8c24",
-                "reference": "bee7f0dc9c3e0b69a6039697533dca1e845c8c24",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/e19b764b5c855580e8ffa7e615f72c10fd2f99cc",
+                "reference": "e19b764b5c855580e8ffa7e615f72c10fd2f99cc",
                 "shasum": ""
             },
             "require": {
@@ -1785,6 +1785,7 @@
                 "ext-amqp": "Allow sending log messages to an AMQP server (1.0+ required)",
                 "ext-mongo": "Allow sending log messages to a MongoDB server",
                 "graylog2/gelf-php": "Allow sending log messages to a GrayLog2 server",
+                "mongodb/mongodb": "Allow sending log messages to a MongoDB server via PHP Driver",
                 "php-console/php-console": "Allow sending log messages to Google Chrome",
                 "raven/raven": "Allow sending log messages to a Sentry server",
                 "rollbar/rollbar": "Allow sending log messages to Rollbar",
@@ -1794,7 +1795,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.16.x-dev"
+                    "dev-master": "2.0.x-dev"
                 }
             },
             "autoload": {
@@ -1820,7 +1821,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2015-10-14 12:51:02"
+            "time": "2016-03-01 18:00:40"
         },
         {
             "name": "nelmio/cors-bundle",
@@ -2114,12 +2115,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "fe0936ee26643249e916849d48e3a51d5f5e278b"
+                "reference": "1.0.0"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/php-fig/log/zipball/fe0936ee26643249e916849d48e3a51d5f5e278b",
-                "reference": "fe0936ee26643249e916849d48e3a51d5f5e278b",
+                "reference": "1.0.0",
                 "shasum": ""
             },
             "type": "library",
@@ -2566,20 +2567,20 @@
         },
         {
             "name": "symfony/monolog-bundle",
-            "version": "v2.8.2",
+            "version": "v2.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/monolog-bundle.git",
-                "reference": "84785c4d44801c4dd82829fa2e1820cacfe2c46f"
+                "reference": "27c2e3eaec7a0ba3462f99ea92678cbfc7b146e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/monolog-bundle/zipball/84785c4d44801c4dd82829fa2e1820cacfe2c46f",
-                "reference": "84785c4d44801c4dd82829fa2e1820cacfe2c46f",
+                "url": "https://api.github.com/repos/symfony/monolog-bundle/zipball/27c2e3eaec7a0ba3462f99ea92678cbfc7b146e4",
+                "reference": "27c2e3eaec7a0ba3462f99ea92678cbfc7b146e4",
                 "shasum": ""
             },
             "require": {
-                "monolog/monolog": "~1.8",
+                "monolog/monolog": "~1.12",
                 "php": ">=5.3.2",
                 "symfony/config": "~2.3|~3.0",
                 "symfony/dependency-injection": "~2.3|~3.0",
@@ -2593,7 +2594,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.8.x-dev"
+                    "dev-master": "2.9.x-dev"
                 }
             },
             "autoload": {
@@ -2621,7 +2622,7 @@
                 "log",
                 "logging"
             ],
-            "time": "2015-11-17 10:02:29"
+            "time": "2016-03-01 17:53:42"
         },
         {
             "name": "symfony/polyfill-apcu",
@@ -5301,7 +5302,7 @@
         {
             "alias": "6.2.0",
             "alias_normalized": "6.2.0.0",
-            "version": "6.2.0.0-RC3",
+            "version": "6.2.0.0-RC4",
             "package": "ezsystems/ezpublish-kernel"
         },
         {
@@ -5313,7 +5314,7 @@
         {
             "alias": "1.2.0",
             "alias_normalized": "1.2.0.0",
-            "version": "1.2.0.0-RC4",
+            "version": "1.2.0.0-RC5",
             "package": "ezsystems/platform-ui-bundle"
         },
         {
