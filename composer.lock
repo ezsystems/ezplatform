@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8855aba1da816dcd4c1effc472630e85",
-    "content-hash": "95aef07acb2d4e432bbe83bc77b3993a",
+    "hash": "f7d34e84314989df9b25da2487187785",
+    "content-hash": "3f7921e14a936503fce3b660a0ab7900",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -738,16 +738,16 @@
         },
         {
             "name": "ezsystems/ezpublish-kernel",
-            "version": "v6.2.0-rc4",
+            "version": "v6.2.0-rc5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-kernel.git",
-                "reference": "e3e264f05f63874e6ed8c555519b9641a3a4c994"
+                "reference": "1fe9337ea364b127135691dd49d62b79325fd659"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/e3e264f05f63874e6ed8c555519b9641a3a4c994",
-                "reference": "e3e264f05f63874e6ed8c555519b9641a3a4c994",
+                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/1fe9337ea364b127135691dd49d62b79325fd659",
+                "reference": "1fe9337ea364b127135691dd49d62b79325fd659",
                 "shasum": ""
             },
             "require": {
@@ -814,7 +814,7 @@
             ],
             "description": "Kernel used by ezsystems/ezplatform and derivatives. Provides the Content Repository, its APIs, and the application's Symfony framework integration.",
             "homepage": "http://share.ez.no",
-            "time": "2016-03-02 15:54:48"
+            "time": "2016-03-03 08:23:56"
         },
         {
             "name": "ezsystems/platform-ui-assets-bundle",
@@ -5302,7 +5302,7 @@
         {
             "alias": "6.2.0",
             "alias_normalized": "6.2.0.0",
-            "version": "6.2.0.0-RC4",
+            "version": "6.2.0.0-RC5",
             "package": "ezsystems/ezpublish-kernel"
         },
         {
