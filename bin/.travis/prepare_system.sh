@@ -10,8 +10,7 @@
 
 # Disable xdebug to speed things up
 if [[ "$SYMFONY_DEBUG" == "" && "$TRAVIS_PHP_VERSION" != "" && "$TRAVIS_PHP_VERSION" != "hhvm" ]]; then
-    echo "> Disable xdebug";
-    phpenv config-rm xdebug.ini ;
+    ./bin/.travis/disable_xdebug.sh
 fi
 
 # Install needed packages
@@ -23,6 +22,4 @@ sudo apt-get install -q -y --force-yes apache2 libapache2-mod-fastcgi
 echo "> Configure apache server"
 ./bin/.travis/configure_apache2.sh
 
-# Create database
-echo "> Create database and grant premissions to user 'ezp'"
-mysql -uroot -e "CREATE DATABASE IF NOT EXISTS behattestdb; GRANT ALL ON behattestdb.* TO ezp@localhost IDENTIFIED BY 'ezp';"
+./bin/.travis/configure_mysql.sh

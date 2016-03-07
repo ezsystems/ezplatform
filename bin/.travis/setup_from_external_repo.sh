@@ -30,3 +30,6 @@ fi
 
 cat composer.json
 ./bin/.travis/prepare_ezpublish.sh
+
+echo "> Warm up cache, using curl to make sure everything is warmed up, incl class, http & spi cache"
+curl -sSLI "http://localhost"

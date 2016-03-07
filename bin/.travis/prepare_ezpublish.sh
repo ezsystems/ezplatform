@@ -30,6 +30,3 @@ php app/console --env=behat --no-debug assetic:dump
 
 echo "> Installing ezplatform clean"
 php app/console --env=behat ezplatform:install clean
-
-echo "> Warm up cache, using curl to make sure everything is warmed up, incl class, http & spi cache"
-curl -sSLI "http://localhost"
