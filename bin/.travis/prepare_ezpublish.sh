@@ -9,8 +9,7 @@ echo "> Setup github auth key to not reach api limit"
 cp bin/.travis/composer-auth.json ~/.composer/auth.json
 
 echo "> Set folder permissions"
-sudo find {app/{cache,logs},web} -type d | xargs sudo chmod -R 777
-sudo find {app/{cache,logs},web} -type f | xargs sudo chmod -R 666
+chmod -R a+rwX app/cache app/logs web
 
 echo "> Copy behat specific parameters.yml settings"
 cp bin/.travis/parameters.yml app/config/
