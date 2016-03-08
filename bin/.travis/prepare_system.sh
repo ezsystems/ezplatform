@@ -8,10 +8,7 @@
 ##       https://github.com/facebook/hiphop-php/commit/4add8586c5d9e4eee20fe15ccd78db9e9c6b56aa
 ##       https://github.com/facebook/hiphop-php/commit/0b2dfdf4492eb06a125b068e939d092ec0588e5c
 
-# Disable xdebug to speed things up
-if [[ "$SYMFONY_DEBUG" == "" && "$TRAVIS_PHP_VERSION" != "" && "$TRAVIS_PHP_VERSION" != "hhvm" ]]; then
-    ./bin/.travis/disable_xdebug.sh
-fi
+./bin/.travis/disable_xdebug.sh
 
 # Install needed packages
 echo "> Installing needed packages";
