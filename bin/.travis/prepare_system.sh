@@ -8,11 +8,7 @@
 ##       https://github.com/facebook/hiphop-php/commit/4add8586c5d9e4eee20fe15ccd78db9e9c6b56aa
 ##       https://github.com/facebook/hiphop-php/commit/0b2dfdf4492eb06a125b068e939d092ec0588e5c
 
-# Disable xdebug to speed things up
-if [[ "$SYMFONY_DEBUG" == "" && "$TRAVIS_PHP_VERSION" != "" && "$TRAVIS_PHP_VERSION" != "hhvm" ]]; then
-    echo "> Disable xdebug";
-    phpenv config-rm xdebug.ini ;
-fi
+./bin/.travis/disable_xdebug.sh
 
 # Install needed packages
 echo "> Installing needed packages";
@@ -23,6 +19,4 @@ sudo apt-get install -q -y --force-yes apache2 libapache2-mod-fastcgi
 echo "> Configure apache server"
 ./bin/.travis/configure_apache2.sh
 
-# Create database
-echo "> Create database and grant premissions to user 'ezp'"
-mysql -uroot -e "CREATE DATABASE IF NOT EXISTS behattestdb; GRANT ALL ON behattestdb.* TO ezp@localhost IDENTIFIED BY 'ezp';"
+./bin/.travis/configure_mysql.sh
