@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # vhost & fastcgi setup
 ./bin/vhost.sh \
@@ -6,16 +6,19 @@
         --sf-env=behat \
         --sf-debug=1 \
         --template-file=doc/apache2/vhost.template \
-    | sudo tee /etc/apache2/sites-available/behat > /dev/null
+    | sudo tee /etc/apache2/sites-enabled/behat.conf > /dev/null
 
-sudo cp bin/.travis/apache2/php5-fcgi /etc/apache2/conf.d/php5-fcgi
+CODENAME=$(lsb_release -c)
+if [ "$CODENAME" == "Codename:	trusty" ] ; then
+    sudo cp bin/.travis/apache2/php5-fcgi_apache24 /etc/apache2/conf-enabled/php5-fcgi.conf
+    sudo a2dissite 000-default
+else
+    sudo cp bin/.travis/apache2/php5-fcgi /etc/apache2/conf.d/php5-fcgi.conf
+    sudo a2dissite default
+fi
 
 # modules enabling
 sudo a2enmod rewrite actions fastcgi alias
-
-# sites disabling & enabling
-sudo a2dissite default
-sudo a2ensite behat
 
 # FPM
 USER=$(whoami)

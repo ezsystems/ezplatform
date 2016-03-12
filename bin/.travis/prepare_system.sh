@@ -12,6 +12,11 @@
 
 # Install needed packages
 echo "> Installing needed packages";
+CODENAME=$(lsb_release -c)
+if [ "$CODENAME" == "Codename:	trusty" ] ; then
+    sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu/ trusty multiverse"
+    sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu/ trusty-updates multiverse"
+fi
 sudo apt-get update
 sudo apt-get install -q -y --force-yes apache2 libapache2-mod-fastcgi
 
