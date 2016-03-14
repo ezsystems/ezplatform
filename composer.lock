@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "662ffce22c3e79b949c0b40003d3265b",
-    "content-hash": "5bc7c9717bfe344a41b8ba735cdedd0c",
+    "hash": "184f7cc8b87650360e696b3694d0cbd8",
+    "content-hash": "d1fcfcd23037ccc98158dc89f28935e8",
     "packages": [
         {
             "name": "components/bootstrap",
@@ -853,20 +853,20 @@
         },
         {
             "name": "ezsystems/ezplatform-solr-search-engine",
-            "version": "v1.0.2",
+            "version": "v1.0.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezplatform-solr-search-engine.git",
-                "reference": "7697cb5978772d8ae7527c2493153dba43c5ac87"
+                "reference": "93a5dc96c4df788e8d23b9cb8bf67bb392d96fa7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezplatform-solr-search-engine/zipball/7697cb5978772d8ae7527c2493153dba43c5ac87",
-                "reference": "7697cb5978772d8ae7527c2493153dba43c5ac87",
+                "url": "https://api.github.com/repos/ezsystems/ezplatform-solr-search-engine/zipball/93a5dc96c4df788e8d23b9cb8bf67bb392d96fa7",
+                "reference": "93a5dc96c4df788e8d23b9cb8bf67bb392d96fa7",
                 "shasum": ""
             },
             "require": {
-                "ezsystems/ezpublish-kernel": "~5.4.5 | ~6.0@dev"
+                "ezsystems/ezpublish-kernel": "~5.4.5@dev | ~6.0@dev"
             },
             "require-dev": {
                 "matthiasnoback/symfony-dependency-injection-test": "0.*",
@@ -898,20 +898,20 @@
                 }
             ],
             "description": "Solr search engine implementation for eZ Platform",
-            "time": "2015-12-19 14:27:34"
+            "time": "2016-03-12 11:59:56"
         },
         {
             "name": "ezsystems/ezpublish-kernel",
-            "version": "v6.2.0",
+            "version": "v6.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-kernel.git",
-                "reference": "1fe9337ea364b127135691dd49d62b79325fd659"
+                "reference": "f4edcd3d697c92161ab63c489acda445183b4339"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/1fe9337ea364b127135691dd49d62b79325fd659",
-                "reference": "1fe9337ea364b127135691dd49d62b79325fd659",
+                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/f4edcd3d697c92161ab63c489acda445183b4339",
+                "reference": "f4edcd3d697c92161ab63c489acda445183b4339",
                 "shasum": ""
             },
             "require": {
@@ -924,7 +924,7 @@
                 "ext-pdo": "*",
                 "ext-spl": "*",
                 "ext-xsl": "*",
-                "friendsofsymfony/http-cache-bundle": "~1.2",
+                "friendsofsymfony/http-cache-bundle": ">=1.2, <=1.3.6",
                 "hautelook/templated-uri-bundle": "~1.0 | ~2.0",
                 "kriswallsmith/buzz": ">=0.9",
                 "liip/imagine-bundle": "~1.0",
@@ -978,7 +978,7 @@
             ],
             "description": "Kernel used by ezsystems/ezplatform and derivatives. Provides the Content Repository, its APIs, and the application's Symfony framework integration.",
             "homepage": "http://share.ez.no",
-            "time": "2016-03-03 08:23:56"
+            "time": "2016-03-14 13:08:14"
         },
         {
             "name": "ezsystems/ezstudio-demo-bundle",
@@ -1374,17 +1374,17 @@
         },
         {
             "name": "ezsystems/studio-ui-bundle",
-            "version": "v1.2.0",
+            "version": "v1.2.1",
             "source": {
                 "type": "git",
                 "url": "git@github.com:ezsystems/StudioUIBundle.git",
-                "reference": "f86177b77da8dec6db31eecc109b0150a6aab27a"
+                "reference": "ae6f28ac0a711eac70789fd037ffabc59a609305"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://updates.ez.no/ttl/dist/ezsystems-studio-ui-bundle-f86177b77da8dec6db31eecc109b0150a6aab27a-zip-7c12a4.zip",
-                "reference": "f86177b77da8dec6db31eecc109b0150a6aab27a",
-                "shasum": "d27fc19be3f5a95ccb38ea511b79c9afabee0d1a"
+                "url": "https://updates.ez.no/ttl/dist/ezsystems-studio-ui-bundle-ae6f28ac0a711eac70789fd037ffabc59a609305-zip-05412e.zip",
+                "reference": "ae6f28ac0a711eac70789fd037ffabc59a609305",
+                "shasum": "e051701044a6b9fecf5dcb606e2150aaee4199cb"
             },
             "require": {
                 "ezsystems/ezpublish-kernel": "^6.2",
@@ -1406,10 +1406,10 @@
             ],
             "description": "eZ Studio UI Bundle",
             "support": {
-                "source": "https://github.com/ezsystems/StudioUIBundle/tree/v1.2.0-rc2",
+                "source": "https://github.com/ezsystems/StudioUIBundle/tree/1.2",
                 "issues": "https://github.com/ezsystems/StudioUIBundle/issues"
             },
-            "time": "2016-03-01 13:58:32"
+            "time": "2016-03-14 10:22:20"
         },
         {
             "name": "friendsofsymfony/http-cache",
@@ -1485,16 +1485,16 @@
         },
         {
             "name": "friendsofsymfony/http-cache-bundle",
-            "version": "1.3.7",
+            "version": "1.3.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSHttpCacheBundle.git",
-                "reference": "f12b74b422e46c65daae8b3363bcf555f6957eea"
+                "reference": "49e9fa198cdcb0d80e9da7b2c2eb1e43537bc622"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSHttpCacheBundle/zipball/f12b74b422e46c65daae8b3363bcf555f6957eea",
-                "reference": "f12b74b422e46c65daae8b3363bcf555f6957eea",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSHttpCacheBundle/zipball/49e9fa198cdcb0d80e9da7b2c2eb1e43537bc622",
+                "reference": "49e9fa198cdcb0d80e9da7b2c2eb1e43537bc622",
                 "shasum": ""
             },
             "require": {
@@ -1561,7 +1561,7 @@
                 "purge",
                 "varnish"
             ],
-            "time": "2016-02-24 21:36:18"
+            "time": "2015-12-11 17:44:26"
         },
         {
             "name": "guzzle/guzzle",
@@ -1971,7 +1971,7 @@
                     "email": "stof@notk.org"
                 },
                 {
-                    "name": "KnpLabs",
+                    "name": "Knplabs",
                     "homepage": "http://knplabs.com"
                 },
                 {
