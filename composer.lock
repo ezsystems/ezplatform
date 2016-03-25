@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "184f7cc8b87650360e696b3694d0cbd8",
-    "content-hash": "d1fcfcd23037ccc98158dc89f28935e8",
+    "hash": "b0d4d28eb1721dba377e19c7971ff8c3",
+    "content-hash": "3a4fe76efdcbf6cc0bdacd00c6d5a078",
     "packages": [
         {
             "name": "components/bootstrap",
@@ -1151,17 +1151,17 @@
         },
         {
             "name": "ezsystems/landing-page-fieldtype-bundle",
-            "version": "v1.2.0",
+            "version": "v1.2.1",
             "source": {
                 "type": "git",
                 "url": "git@github.com:ezsystems/EzLandingPageFieldTypeBundle.git",
-                "reference": "c8f83776aae1eb70405aafc7bbb688c8607c82ac"
+                "reference": "c8759d134879b8ea9b25bf3f9e901ba105c1b70a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://updates.ez.no/ttl/dist/ezsystems-landing-page-fieldtype-bundle-c8f83776aae1eb70405aafc7bbb688c8607c82ac-zip-429bb9.zip",
-                "reference": "c8f83776aae1eb70405aafc7bbb688c8607c82ac",
-                "shasum": "f1aebccee6c6528c5e797f4c7c969cd2a96ab3d3"
+                "url": "https://updates.ez.no/ttl/dist/ezsystems-landing-page-fieldtype-bundle-c8759d134879b8ea9b25bf3f9e901ba105c1b70a-zip-d4065b.zip",
+                "reference": "c8759d134879b8ea9b25bf3f9e901ba105c1b70a",
+                "shasum": "4900bb487dee4a11958b7181f32f47df0cd21b6c"
             },
             "require": {
                 "ezsystems/ezpublish-kernel": "^6.2",
@@ -1187,10 +1187,10 @@
             ],
             "description": "eZ Platform Landing Page FieldType",
             "support": {
-                "source": "https://github.com/ezsystems/EzLandingPageFieldTypeBundle/tree/v1.2.0-rc1",
+                "source": "https://github.com/ezsystems/EzLandingPageFieldTypeBundle/tree/1.2",
                 "issues": "https://github.com/ezsystems/EzLandingPageFieldTypeBundle/issues"
             },
-            "time": "2016-02-26 09:33:52"
+            "time": "2016-03-22 12:31:28"
         },
         {
             "name": "ezsystems/platform-ui-assets-bundle",
@@ -1230,16 +1230,16 @@
         },
         {
             "name": "ezsystems/platform-ui-bundle",
-            "version": "v1.2.0",
+            "version": "v1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/PlatformUIBundle.git",
-                "reference": "03247e718fd3418130a5ba252fd1fcda29f03df8"
+                "reference": "c819047076068ac51a588acc3b7ec9c15baed667"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/PlatformUIBundle/zipball/03247e718fd3418130a5ba252fd1fcda29f03df8",
-                "reference": "03247e718fd3418130a5ba252fd1fcda29f03df8",
+                "url": "https://api.github.com/repos/ezsystems/PlatformUIBundle/zipball/c819047076068ac51a588acc3b7ec9c15baed667",
+                "reference": "c819047076068ac51a588acc3b7ec9c15baed667",
                 "shasum": ""
             },
             "require": {
@@ -1268,7 +1268,7 @@
                 "GPL-2.0"
             ],
             "description": "eZ Platform UI Bundle",
-            "time": "2016-03-02 12:59:39"
+            "time": "2016-03-17 13:52:59"
         },
         {
             "name": "ezsystems/repository-forms",
@@ -1374,17 +1374,17 @@
         },
         {
             "name": "ezsystems/studio-ui-bundle",
-            "version": "v1.2.1",
+            "version": "v1.2.2",
             "source": {
                 "type": "git",
                 "url": "git@github.com:ezsystems/StudioUIBundle.git",
-                "reference": "ae6f28ac0a711eac70789fd037ffabc59a609305"
+                "reference": "6cacf3ac015a130e87ff2e2984a39fdd53ddd9ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://updates.ez.no/ttl/dist/ezsystems-studio-ui-bundle-ae6f28ac0a711eac70789fd037ffabc59a609305-zip-05412e.zip",
-                "reference": "ae6f28ac0a711eac70789fd037ffabc59a609305",
-                "shasum": "e051701044a6b9fecf5dcb606e2150aaee4199cb"
+                "url": "https://updates.ez.no/ttl/dist/ezsystems-studio-ui-bundle-6cacf3ac015a130e87ff2e2984a39fdd53ddd9ff-zip-c5be55.zip",
+                "reference": "6cacf3ac015a130e87ff2e2984a39fdd53ddd9ff",
+                "shasum": "0a12871b907a81292a3468cb8fb1adb840387e6a"
             },
             "require": {
                 "ezsystems/ezpublish-kernel": "^6.2",
@@ -1409,7 +1409,7 @@
                 "source": "https://github.com/ezsystems/StudioUIBundle/tree/1.2",
                 "issues": "https://github.com/ezsystems/StudioUIBundle/issues"
             },
-            "time": "2016-03-14 10:22:20"
+            "time": "2016-03-25 08:23:04"
         },
         {
             "name": "friendsofsymfony/http-cache",
