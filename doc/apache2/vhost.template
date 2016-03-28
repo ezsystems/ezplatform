@@ -69,6 +69,38 @@
     <IfModule mod_rewrite.c>
         RewriteEngine On
 
+            # Everything in this block is optional to improve performance by forcing
+            # clients to cache image and design files; do change the max-age time
+            # to suit project needs.
+            # Note: the slightly convoluted syntax adopted has the advantage of
+            # not requiring usage of the LocationMatch directive.
+            # This makes it ideal for .htaccess based configurations, beside vhost ones.
+            <IfModule mod_headers.c>
+                RewriteCond %{REQUEST_URI} ^/var/[^/]+/storage/images/.*
+                RewriteRule .* - [E=EXPIRYHEADERS_STORAGEIMAGES:1,L]
+
+                RewriteCond %{ENV:SYMFONY_ENV} !^(dev)
+                RewriteCond %{REQUEST_URI} ^/(css|js|font)/.*
+                RewriteRule .* - [E=EXPIRYHEADERS_ASSETIC:1,L]
+
+                RewriteCond %{REQUEST_URI} ^/(bundles)/.*
+                RewriteRule .* - [E=EXPIRYHEADERS_BUNDLES:1,L]
+
+                # eZ Publish appends the version number to image URL (ezimage
+                # datatype) so when an image is updated, its URL changes too
+                # 10 years
+                Header set Cache-Control "max-age=315576000" env=EXPIRYHEADERS_STORAGEIMAGES
+
+                # Assetic stuff - we can intruct it to generate new urls on deploy,
+                # by config param assetic.workers.cache_busting
+                # 90 days
+                Header set Cache-Control "max-age=7776000" env=EXPIRYHEADERS_ASSETIC
+
+                # Bundle stuff - this might be increasef if you version elements by hand
+                # 1 day
+                Header set Cache-Control "max-age=86400" env=EXPIRYHEADERS_BUNDLES
+            </IfModule>
+
         # For FastCGI mode or when using PHP-FPM, to get basic auth working.
         RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
@@ -102,17 +134,7 @@
         RewriteRule ^/(css|js|font)/.*\.(css|js|otf|eot|ttf|svg|woff) - [L]
 
         RewriteRule .* /app.php
+
     </IfModule>
 
-    # Everything below is optional to improve performance by forcing
-    # clients to cache image and design files, change the expires time
-    # to suite project needs.
-    <IfModule mod_expires.c>
-        <LocationMatch "^/var/[^/]+/storage/images/.*">
-            # eZ Platform appends the version number to image URL (ezimage
-            # datatype) so when an image is updated, its URL changes too
-            ExpiresActive on
-            ExpiresDefault "now plus 10 years"
-        </LocationMatch>
-    </IfModule>
 </VirtualHost>
