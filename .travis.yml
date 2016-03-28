@@ -1,16 +1,27 @@
+# Use trusty for better performance (and avoiding mysql/postgres/solr gone issues on precise and container infra)
+dist: trusty
+sudo: required
+
 language: php
 
-# We do Behat testing here, lots of sudo going on
-sudo: required
+services:
+  - mysql
+
+addons:
+  apt:
+    packages:
+    - mysql-server-5.6
+    - mysql-client-core-5.6
+    - mysql-client-5.6
 
 # run tests on php 5.5 only and let unit / integration tests deal with php differences
 php:
-  - 5.5
+  - 7.0
 
 # list of paths/bundle to execute
 env:
   - ARGS="--profile=rest --suite=fullJson"
-  - ARGS="--profile=rest --suite=fullXml"
+#  - ARGS="--profile=rest --suite=fullXml"
   - ARGS="--profile=core"
 
 # test only master (+ Pull requests)
@@ -27,6 +38,8 @@ before_install:
 before_script:
   # Prepare eZ Publish (composer, permissions, assets, cache warmup)
   - ./bin/.travis/prepare_ezpublish.sh
+  # Warm up cache/debug
+  - curl -L "http://localhost"
 
 # execute behat as the script command
 script:

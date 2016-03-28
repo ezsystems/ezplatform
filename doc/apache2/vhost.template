@@ -31,6 +31,13 @@
         #Require all granted
     </Directory>
 
+    # For Apache 2.4.9 or higher (also works with updated packages on RHEL/CentOS 7 & Ubuntu 14.04+)
+    # Using SetHandler avoids issues with using ProxyPassMatch in combination
+    # with mod_rewrite or mod_autoindex
+    <FilesMatch \.php$>
+        SetHandler proxy:fcgi://127.0.0.1:9000
+    </FilesMatch>
+
     ## eZ Platform/Symfony ENVIRONMENT variables, used for customizing app.php execution (not used by console commands)
 
     # Environment.
