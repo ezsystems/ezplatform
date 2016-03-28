@@ -10,15 +10,17 @@
 
 CODENAME=$(lsb_release -c)
 if [ "$CODENAME" == "Codename:	trusty" ] ; then
-    sudo cp bin/.travis/apache2/php5-fcgi_apache24 /etc/apache2/conf-enabled/php5-fcgi.conf
+    cat /etc/apache2/sites-enabled/000-default.conf
     sudo a2dissite 000-default
+    sudo sed -i 's/#Require all granted/Require all granted/' /etc/apache2/sites-enabled/behat.conf
+    cat /etc/apache2/sites-enabled/behat.conf
+    sudo a2enmod rewrite actions proxy alias proxy_fcgi
 else
     sudo cp bin/.travis/apache2/php5-fcgi /etc/apache2/conf.d/php5-fcgi.conf
     sudo a2dissite default
+    sudo a2enmod rewrite actions fastcgi alias
 fi
 
-# modules enabling
-sudo a2enmod rewrite actions fastcgi alias
 
 # FPM
 USER=$(whoami)
