@@ -1,0 +1,25 @@
+version: '2'
+# Dev config, mounts from host directory.
+
+services:
+  app:
+    build: {}
+    # If you'd like xdebug and other debug tools, and don't mind the slow down, swap to the following image:
+    #image: ezsystems/php:${PHP_VERSION}-v0-dev
+    image: ezsystems/php:${PHP_VERSION}-v0
+    volumes:
+     - ../../:/var/www
+     - $COMPOSER_HOME:/home/ez/.composer
+    depends_on:
+     - db
+    environment:
+     - SYMFONY_ENV
+     - SYMFONY_DEBUG
+     - DATABASE_USER
+     - DATABASE_PASSWORD
+     - DATABASE_NAME
+     - DATABASE_HOST=db
+     # As write performance on shared folders and nfs is slow, put cache and log in shm for better perf on mac/win
+     # However not optimal as for instance PhpStorm Symfony extensions relies on parsing cache files for auto completion
+     - KERNEL_CACHE_DIR=/dev/shm/app/cache
+     - KERNEL_LOGS_DIR=/dev/shm/app/logs

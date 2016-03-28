@@ -1,5 +1,8 @@
 # Installation instructions
 
+NOTE: *For simplified install using provided docker containers see `README.md`, by using those instructions you
+won't have to setup mysql, php, and nginx yourself, and almost all steps below are done for you.*
+
 ## Terms for future reference:
   * `/<root-dir>/`: The filesystem path where eZ Platform is installed in.
     Examples: `/home/myuser/www/` or `/var/sites/<project-name>/`
