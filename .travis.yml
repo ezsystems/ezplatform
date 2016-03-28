@@ -1,36 +1,52 @@
+sudo: required
+dist: trusty
 language: php
 
-# We do Behat testing here, lots of sudo going on
-sudo: required
+# Temp, can switch to generic as soon as docker build step with composer install is added
+php: 7.0
 
-# run tests on php 5.5 only and let unit / integration tests deal with php differences
-php:
-  - 5.5
+services:
+  - docker
 
-# list of paths/bundle to execute
 env:
-  - ARGS="--profile=rest --suite=fullJson"
-  - ARGS="--profile=rest --suite=fullXml"
-  - ARGS="--profile=core"
+  global:
+    - SYMFONY_ENV=behat
+    - SYMFONY__DATABASE_USER=ezp
+    - SYMFONY__DATABASE_PASSWORD=ezp
+    - SYMFONY__DATABASE_NAME=behattestdb
+    - SYMFONY__DATABASE_HOST=db
+  # list of paths/bundle to execute
+  matrix:
+    - ARGS="--profile=rest --suite=fullJson"
+    - ARGS="--profile=rest --suite=fullXml"
+    - ARGS="--profile=core"
 
 # test only master (+ Pull requests)
 branches:
   only:
     - master
 
-# install packages
+# Update Docker Composee to 1.5.2 (for variable substituation, while still supporting Docker 1.8.2 as used by travis)
 before_install:
-  - ./bin/.travis/prepare_system.sh
-  - ./bin/.travis/prepare_selenium2.sh
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/1.5.2/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
 
-# setup requirements for running tests
+# Setup system, start docker-compose and execute clean install
 before_script:
-  # Prepare eZ Publish (composer, permissions, assets, cache warmup)
-  - ./bin/.travis/prepare_ezpublish.sh
+  - chmod -R a+rwX app/cache app/logs web
+  - phpenv config-rm xdebug.ini
+  - cp bin/.travis/composer-auth.json ~/.composer/auth.json
+  - composer install --no-progress --no-interaction --prefer-dist
+  - cp bin/.docker/docker-compose.yml .
+  - docker-compose up -d --no-recreate
+  - docker-compose run -u ez --rm phpfpm1 /bin/bash -c "php app/console ezplatform:install clean; php app/console cache:clear; php app/console assetic:dump"
 
 # execute behat as the script command
+# using behat.yml which is a copy of behat.yml.dist with hostnames update by docker-compose.yml
 script:
-  - php bin/behat -vc behat.yml.dist $ARGS --tags='~@broken'
+  - docker-compose run -u ez --rm behatphpcli bin/behat -vv $ARGS --tags='~@broken'
 
 # disable mail notifications
 notifications:
