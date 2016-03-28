@@ -1,10 +1,7 @@
-# TMP not in use yet
-FROM ezsystems/php:7.0
+FROM busybox
 
+# Copy in project files
 COPY . /var/www
 
-RUN composer install --no-progress --no-interaction --prefer-dist
-
-CMD /run.sh
-
-EXPOSE 9000
+# Declare as volume so it an can be shared with other containers
+VOLUME /var/www

@@ -83,14 +83,7 @@
         "___symfony-assets-install": "One of 'symlink', 'relative' (symlinks) or 'hard'",
         "symfony-assets-install": "relative",
         "incenteev-parameters": {
-            "file": "app/config/parameters.yml",
-            "env-map": {
-                "database_driver": "SYMFONY__DATABASE_DRIVER",
-                "database_host": "SYMFONY__DATABASE_HOST",
-                "database_name": "SYMFONY__DATABASE_NAME",
-                "database_user": "SYMFONY__DATABASE_USER",
-                "database_password": "SYMFONY__DATABASE_PASSWORD"
-            }
+            "file": "app/config/parameters.yml"
         },
         "branch-alias": {
             "dev-master": "1.2.x-dev"
