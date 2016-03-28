@@ -41,8 +41,9 @@ sub vcl_recv {
     // Please note that /_fragment URI can change in Symfony configuration
     // Take care of requests getting 'restarted' because of the user-hash lookup
     if (req.url !~ "^/_fragment" && req.restarts == 0) {
-        // only accept the x-forwarded-for header if the remote-proxy is trusted
-        // also we add our ip to the list of forwarders, as it is logged by apache by default
+        // Only accept the x-forwarded-for header if the remote-proxy is trusted
+        // Also we add our ip to the list of forwarders, as it is logged by Apache by default, e.g.
+        // ip-client, ip-nginx, ip-varnish - - [17/Feb/2016:10:55:08 +0000] "GET /setup/info/php HTTP/1.1" 200 ...
         if (req.http.x-forwarded-for && client.ip ~ proxies) {
             set req.http.X-Forwarded-For = req.http.X-Forwarded-For + ", " + server.ip;
         } else {

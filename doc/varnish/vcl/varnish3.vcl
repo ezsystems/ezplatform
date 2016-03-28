@@ -37,17 +37,13 @@ sub vcl_recv {
 
     // Add a unique header containing the client address (only for master request)
     // Please note that /_fragment URI can change in Symfony configuration
-    if (!req.url ~ "^/_fragment") {
-         // only accept the x-forwarded-for header if the remote-proxy is trusted
-        // also we add our ip to the list of forwarders, as it is logged by apache by default
+    // Take care of requests getting 'restarted' because of the user-hash lookup
+    if (req.url !~ "^/_fragment" && req.restarts == 0) {
+        // Only accept the x-forwarded-for header if the remote-proxy is trusted
+        // Also we add our ip to the list of forwarders, as it is logged by Apache by default, e.g.
+        // ip-client, ip-nginx, ip-varnish - - [17/Feb/2016:10:55:08 +0000] "GET /setup/info/php HTTP/1.1" 200 ...
         if (req.http.x-forwarded-for && client.ip ~ proxies) {
-            // funnily enough, it seems that this bit is executed twice, so we do a bit of dirty coding
-            if (req.http.X-Added-Forwarded-For) {
-                unset req.http.X-Added-Forwarded-For;
-            } else {
-                set req.http.X-Forwarded-For = req.http.X-Forwarded-For + ", " + server.ip;
-                set req.http.X-Added-Forwarded-For = "1";
-            }
+            set req.http.X-Forwarded-For = req.http.X-Forwarded-For + ", " + server.ip;
         } else {
             set req.http.X-Forwarded-For = "" + client.ip + ", " + server.ip;
         }
@@ -227,7 +223,7 @@ sub vcl_deliver {
     // Sanity check to prevent ever exposing the hash to a client.
     unset resp.http.x-user-hash;
 
-    if (client.ip ~ debuggers) {
+    if ((client.ip ~ debuggers) || (client.ip ~ proxies && std.ip(regsub(req.http.X-Forwarded-For, "^(([0-9]{1,3}\.){3}[0-9]{1,3}),(.*)$", "\1"), "0.0.0.0") ~ debuggers)) {
         if (obj.hits > 0) {
             set resp.http.X-Cache = "HIT";
             set resp.http.X-Cache-Hits = obj.hits;
