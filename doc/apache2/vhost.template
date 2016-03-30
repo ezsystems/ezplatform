@@ -93,7 +93,7 @@
         # More info here : http://en.wikipedia.org/wiki/P3p
         RewriteRule ^/w3c/p3p\.xml - [L]
 
-        # The following rule is needed to correctly display assets from bundles, and project assets
+        # The following rule is needed to correctly display bundle and project assets
         RewriteRule ^/bundles/ - [L]
         RewriteRule ^/assets/ - [L]
 
