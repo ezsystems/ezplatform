@@ -1,36 +1,58 @@
-language: php
-
-# We do Behat testing here, lots of sudo going on
 sudo: required
+dist: trusty
+language: generic
 
-# run tests on php 5.5 only and let unit / integration tests deal with php differences
-php:
-  - 5.5
+services:
+  - docker
 
-# list of paths/bundle to execute
 env:
-  - ARGS="--profile=rest --suite=fullJson"
-  - ARGS="--profile=rest --suite=fullXml"
-  - ARGS="--profile=core"
+  global:
+    # TODO: For deployment we would need to build & test against prod env, need to balance that against debug ci needs
+    - SYMFONY_ENV=behat
+    - SYMFONY_DEBUG=true
+    - SYMFONY__DATABASE_USER=ezp
+    - SYMFONY__DATABASE_PASSWORD=ezp
+    - SYMFONY__DATABASE_NAME=behattestdb
+    - SYMFONY__DATABASE_HOST=db
+  # list of behat arguments to test
+  matrix:
+    - ARGS="--profile=rest --suite=fullJson"
+    - ARGS="--profile=rest --suite=fullXml"
+    - ARGS="--profile=core"
 
 # test only master (+ Pull requests)
 branches:
   only:
     - master
 
-# install packages
+# Update Docker Composee to 1.5.2 (basic variable substituation, while still supporting Docker 1.8.2 as used by travis)
 before_install:
-  - ./bin/.travis/prepare_system.sh
-  - ./bin/.travis/prepare_selenium2.sh
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/1.5.2/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
 
-# setup requirements for running tests
 before_script:
-  # Prepare eZ Publish (composer, permissions, assets, cache warmup)
-  - ./bin/.travis/prepare_ezpublish.sh
+  # Build (first generate what we want in php image, then build it in a plain volume image)
+  - docker run -v `pwd`:/var/www -w /var/www -e SYMFONY_ENV ezsystems/php:7.0 /bin/sh -c "
+      cp bin/.travis/composer-auth.json $COMPOSER_HOME/auth.json;
+      composer install --no-progress --no-interaction --prefer-dist;
+      rm -Rf app/cache/*/*;
+      rm -Rf app/logs/*;
+      HTTPDUSER=`ps axo user,comm | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1`;
+      setfacl -R -m u:$HTTPDUSER:rwX -m u:ez:rwX app/cache app/logs web;
+      setfacl -dR -m u:$HTTPDUSER:rwX -m u:ez:rwX app/cache app/logs web"
+  - docker build -f bin/.docker/Dockerfile -t ezsystems/ezplatform_volume:latest .
+  # Run (start contianers, execute install command and dump assets)
+  - export COMPOSE_FILE="bin/.docker/docker-compose.yml"
+  - docker-compose up -d --no-recreate
+  - docker-compose run -u ez --rm phpfpm1 /bin/bash -c "php app/console ezplatform:install clean; php app/console assetic:dump"
+
 
 # execute behat as the script command
+# using behat.yml which is a copy of behat.yml.dist with hostnames update by docker-compose.yml
 script:
-  - php bin/behat -vc behat.yml.dist $ARGS --tags='~@broken'
+  - docker-compose run -u ez --rm behatphpcli bin/behat -vv $ARGS --tags=~@broken
 
 # disable mail notifications
 notifications:

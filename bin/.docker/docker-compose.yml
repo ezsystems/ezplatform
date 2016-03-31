@@ -1,0 +1,80 @@
+# Simple single server setup
+
+ezpublishvol:
+  image: ezsystems/ezplatform_volume:latest
+
+db1:
+  image: mariadb:10.0
+  volumes:
+   - ./bin/.docker/database_character_set.sh:/docker-entrypoint-initdb.d/database_character_set.sh
+  environment:
+   - MYSQL_ROOT_PASSWORD=mysecretrootpassword
+   - MYSQL_USER=$SYMFONY__DATABASE_USER
+   - MYSQL_PASSWORD=$SYMFONY__DATABASE_PASSWORD
+   - MYSQL_DATABASE=$SYMFONY__DATABASE_NAME
+   - TERM=dumb
+
+phpfpm1:
+  image: ezsystems/php:7.0
+  links:
+   - db1:db
+  volumes_from:
+   - ezpublishvol
+  environment:
+   - SYMFONY_ENV
+   - SYMFONY__DATABASE_USER
+   - SYMFONY__DATABASE_PASSWORD
+   - SYMFONY__DATABASE_NAME
+   - SYMFONY__DATABASE_HOST
+   # Temp, until ezsystems/php docker image is updated with standard env variable names
+   - EZ_ENVIRONMENT=$SYMFONY_ENV
+   - MYSQL_USER=$SYMFONY__DATABASE_USER
+   - MYSQL_PASSWORD=$SYMFONY__DATABASE_PASSWORD
+   - MYSQL_DATABASE=$SYMFONY__DATABASE_NAME
+   - MYSQL_HOST=$SYMFONY__DATABASE_HOST
+
+web1:
+  image: nginx
+  links:
+   - phpfpm1:php_fpm
+  volumes_from:
+   - ezpublishvol
+  ports:
+   - "8080:80"
+  environment:
+   - SYMFONY_ENV
+   - BASEDIR=/var/www
+   - MAX_BODY_SIZE=20
+   - FASTCGI_PASS=php_fpm:9000
+   - TIMEOUT=190
+   - DOCKER0NET
+  command: /bin/bash -c "cd /var/www && cp -a doc/nginx/ez_params.d /etc/nginx && bin/vhost.sh --template-file=doc/nginx/vhost.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+
+# Todo: Move out and use extends feature for these
+selenium:
+  image: selenium/standalone-firefox
+  links:
+   - web1:web
+  ports:
+   - "9999:9999"
+   - "4444:4444"
+  environment:
+   - SCREEN_WIDTH=1920
+   - SCREEN_HEIGHT=1080
+   - SCREEN_DEPTH=24
+
+behatphpcli:
+  image: ezsystems/php:7.0
+  links:
+   - db1:db
+   - web1:web
+   - selenium:selenium
+  volumes_from:
+   - ezpublishvol
+  environment:
+   - SYMFONY_ENV
+   - SYMFONY__DATABASE_USER
+   - SYMFONY__DATABASE_PASSWORD
+   - SYMFONY__DATABASE_NAME
+   - SYMFONY__DATABASE_HOST
+  command: /bin/bash -c "cp -f behat.yml.dist behat.yml; sed -i 's@localhost:4444@selenium:4444@' behat.yml; sed -i 's@localhost@web@' behat.yml"
