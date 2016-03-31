@@ -9,6 +9,7 @@ env:
   global:
     # TODO: For deployment we would need to build & test against prod env, need to balance that against debug ci needs
     - SYMFONY_ENV=behat
+    - SYMFONY_DEBUG=true
     - SYMFONY__DATABASE_USER=ezp
     - SYMFONY__DATABASE_PASSWORD=ezp
     - SYMFONY__DATABASE_NAME=behattestdb
