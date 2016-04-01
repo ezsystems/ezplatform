@@ -22,6 +22,7 @@ phpfpm1:
    - ezpublishvol
   environment:
    - SYMFONY_ENV
+   - SYMFONY_DEBUG
    - SYMFONY__DATABASE_USER
    - SYMFONY__DATABASE_PASSWORD
    - SYMFONY__DATABASE_NAME
@@ -43,7 +44,6 @@ web1:
    - "8080:80"
   environment:
    - SYMFONY_ENV
-   - BASEDIR=/var/www
    - MAX_BODY_SIZE=20
    - FASTCGI_PASS=php_fpm:9000
    - TIMEOUT=190
@@ -73,6 +73,7 @@ behatphpcli:
    - ezpublishvol
   environment:
    - SYMFONY_ENV
+   - SYMFONY_DEBUG
    - SYMFONY__DATABASE_USER
    - SYMFONY__DATABASE_PASSWORD
    - SYMFONY__DATABASE_NAME
