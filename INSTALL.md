@@ -48,7 +48,7 @@
 
        ```bash
        $ curl -sS https://getcomposer.org/installer | php
-       $ php -d memory_limit=-1 composer.phar create-project --no-dev--repository-url=https://updates.ez.no/bul ezsystems/ezstudio
+       $ php -d memory_limit=-1 composer.phar create-project --no-dev --repository-url=https://updates.ez.no/bul ezsystems/ezstudio
        $ cd /ezstudio/
        ```
 
