@@ -230,7 +230,33 @@ fi
 template=$(<$template_file)
 COUNTER=0
 while [  "${template_vars[$COUNTER]}" != "" ]; do
-    tmp=${template//${template_vars[$COUNTER]}/${template_values[$COUNTER]}}
+    current_var=${template_vars[$COUNTER]}
+    current_value=${template_values[$COUNTER]}
+
+    # Replace %VAR% with the actual value
+    tmp=${template//${current_var}/${current_value}}
+
+    # If variable has a value then do further replacment logic
+    if [ "$current_value" != "" ] ; then
+        # Remove "%" from VAR for further use
+        current_var=${current_var//%/}
+
+        # Remove "#if[VAR] " comments to conditionally uncomment lines
+        tmp=${tmp//"#if[${current_var}] "/""}
+
+        # Remove "#if[VAR=value] " comments to conditionally uncomment lines
+        tmp=${tmp//"#if[${current_var}=${current_value}] "/""}
+
+        # Remove "#if[VAR!=some-other-value] " comments to conditionally uncomment lines (only supports one occurrence)
+        regex="if\[${current_var}!=([^]]*)\] "
+        if [[ $tmp =~ $regex ]] ; then
+            if [ "${BASH_REMATCH[1]}" != $current_value ] ; then
+                tmp=${tmp//"#if[${current_var}!=${BASH_REMATCH[1]}] "/""}
+            fi
+        fi
+    fi
+
+    # Set result on template var
     template=$tmp
     let COUNTER=COUNTER+1
 done
