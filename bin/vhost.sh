@@ -82,8 +82,8 @@ Usage:
 Defaults values will be fetched from the environment variables $env_list, but might be overriden using the arguments listed below.
 
 Arguments:
-  --basedir=<path>                         : Root path to where the eZ installation is placed, used for <path>/web
   --template-file=<file.template>          : The file to use as template for the generated ouput file
+  [--basedir=<path>]                       : Root path to eZ installation, auto detected if command is run from root
   [--host-name=localhost]                  : Primary host name, default "localhost"
   [--host-alias=*.localhost]               : Space separated list of host aliases, default "*.localhost"
   [--ip=*|127.0.0.1]                       : IP address web server should accept traffic on.
@@ -207,8 +207,12 @@ if [ ! -f "$template_file" ] ; then
 fi
 
 if [[ "${template_values[0]}" == "" ]] ; then
-    show_help "--basedir=<path>" true
-    exit 1
+    if [ -d web/ ] ; then
+        template_values[0]=`pwd`
+    else
+        show_help "--basedir=<path>" true
+        exit 1
+    fi
 fi
 
 ## Option specific logic
