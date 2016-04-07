@@ -108,13 +108,13 @@ function inject_environment_variables
 {
     local current_env_variable
     local option_value
-    local template_var
+    local env_var
     local i
 
     i=0;
-    for template_var in "${option_vars[@]}"; do
-        # Remove "%" from from template_vars....
-        current_env_variable=${template_var//%/}
+    for env_var in "${option_vars[@]}"; do
+        # Remove "%" from from env_var....
+        current_env_variable=${env_var//%/}
         # Get value of variable referenced to by $current_env_variable. If env variable do not exists, value is set to ""
         option_value=${!current_env_variable:-SomeDefault}
         if [ "$option_value" != "SomeDefault" ]; then
