@@ -8,8 +8,10 @@ server {
 
     # Additional Assetic rules for eZ Publish 5.1 / 2013.4 and higher.
     ## Don't forget to run php app/console assetic:dump --env=prod
-    ## and make sure to comment these out in DEV environment.
-    include ez_params.d/ez_prod_rewrite_params;
+    ## You need the following rewrite rule enabled in PROD environment, but disabled in DEV environment.
+    #include ez_params.d/ez_prod_rewrite_params;
+    # With the line below we let bin/vhost.sh controll if the rewrite rule should be enabled or not
+    %INCLUDE_PROD_REWRITE_RULES%
 
     # Cluster/streamed files rewrite rules. Enable on cluster with DFS as a binary data handler
     #rewrite "^/var/([^/]+/)?storage/images(-versioned)?/(.*)" "/app.php" break;
