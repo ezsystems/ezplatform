@@ -46,7 +46,7 @@ before_script:
   # Run (start contianers, execute install command and dump assets)
   - export COMPOSE_FILE="bin/.docker/docker-compose.yml"
   - docker-compose up -d --no-recreate
-  - docker-compose run -u ez --rm phpfpm1 /bin/bash -c "php app/console ezplatform:install clean; php app/console assetic:dump"
+  - docker-compose run -u ez --rm phpfpm1 /bin/bash -c "/wait_for_db.sh; php app/console ezplatform:install clean; php app/console assetic:dump"
 
 
 # execute behat as the script command
