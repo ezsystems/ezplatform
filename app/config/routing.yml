@@ -33,9 +33,6 @@ _landingPageBundleRoutes:
 _ezpublishStudioUIRoutes:
     resource: "@eZStudioUIBundle/Resources/config/routing.yml"
 
-_ezpublishStudioDemoRoutes:
-    resource: "@eZStudioDemoBundle/Resources/config/routing.yml"
-
 _ezpublishFlexWorkflowRoutes:
     resource: "@FlexWorkflowBundle/Resources/config/routing.yml"
 
