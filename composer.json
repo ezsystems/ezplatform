@@ -64,8 +64,8 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "eZ\\Bundle\\EzPublishCoreBundle\\Composer\\ScriptHandler::dumpAssetsHelpText"
+            "eZ\\Bundle\\EzPublishCoreBundle\\Composer\\ScriptHandler::dumpAssets",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
         ],
         "post-create-project-cmd": [
             "eZ\\Bundle\\EzPublishCoreBundle\\Composer\\ScriptHandler::installWelcomeText"
@@ -78,8 +78,6 @@
     "extra": {
         "symfony-app-dir": "app",
         "symfony-web-dir": "web",
-        "___ezpublish-asset-dump-env": "To set environment used by dumpAssets script, like 'prod', or 'none' to skip",
-        "ezpublish-asset-dump-env": "",
         "___symfony-assets-install": "One of 'symlink', 'relative' (symlinks) or 'hard'",
         "symfony-assets-install": "relative",
         "incenteev-parameters": {
