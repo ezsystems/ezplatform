@@ -131,6 +131,10 @@
        ```bash
        $ sudo chmod g+s {app/{cache,logs},web}
        ```
+       Note: due to a limitation in the Flysystem version required by eZ
+       Platform, image variations directories and files are created with a
+       hardcoded permission that prevents group users and users other than the
+       owner from writing or removing those files/directories.
 
        E. **Setup folder rights on Windows**
 
