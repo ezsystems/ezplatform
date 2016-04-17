@@ -36,35 +36,35 @@
     # Environment.
     # Possible values: "prod" and "dev" out-of-the-box, other values possible with proper configuration
     # Defaults to "prod" if omitted (uses SetEnvIf so value can be used in rewrite rules)
-    SetEnvIf Request_URI ".*" SYMFONY_ENV=%SYMFONY_ENV%
+    #if[SYMFONY_ENV] SetEnvIf Request_URI ".*" SYMFONY_ENV=%SYMFONY_ENV%
 
     # Optional: Whether to use custom ClassLoader (autoloader) file
     # Needs to be a valid path relative to root web/ directory
     # Defaults to bootstrap.php.cache, or autoload.php in debug if env value is omitted or empty
-    SetEnv SYMFONY_CLASSLOADER_FILE "%SYMFONY_CLASSLOADER_FILE%"
+    #if[SYMFONY_CLASSLOADER_FILE] SetEnv SYMFONY_CLASSLOADER_FILE "%SYMFONY_CLASSLOADER_FILE%"
 
     # Optional: Whether to use debugging.
     # Possible values: 0, 1 or ""
     # Defaults to enabled if SYMFONY_ENV is set to "dev" if env value is omitted or empty
-    SetEnv SYMFONY_DEBUG "%SYMFONY_DEBUG%"
+    #if[SYMFONY_DEBUG] SetEnv SYMFONY_DEBUG "%SYMFONY_DEBUG%"
 
     # Optional: Whether to use Symfony's HTTP Caching.
     # Disable it if you are using an external reverse proxy (e.g. Varnish)
     # Possible values: 0, 1 or ""
     # Defaults to disabled if SYMFONY_ENV is set to "dev" or SYMFONY_TRUSTED_PROXIES is set,
     # and if this env value is omitted or empty
-    SetEnv SYMFONY_HTTP_CACHE "%SYMFONY_HTTP_CACHE%"
+    #if[SYMFONY_HTTP_CACHE] SetEnv SYMFONY_HTTP_CACHE "%SYMFONY_HTTP_CACHE%"
 
     # Optional: Whether to use custom HTTP Cache class if SYMFONY_HTTP_CACHE is enabled
     # Value must be a autoloadable cache class
     # Defaults to to use provided "AppCache" if env value is omitted or empty
-    SetEnv SYMFONY_HTTP_CACHE_CLASS "%SYMFONY_HTTP_CACHE_CLASS%"
+    #if[SYMFONY_HTTP_CACHE_CLASS] SetEnv SYMFONY_HTTP_CACHE_CLASS "%SYMFONY_HTTP_CACHE_CLASS%"
 
     # Optional: Defines the proxies to trust
     # Needed when using Varnish as proxy, if so disable SYMFONY_HTTP_CACHE.
     # Separate entries by a comma, example: "proxy1.example.com,proxy2.example.org"
     # Defaults to not be set if env value is omitted or empty
-    SetEnv SYMFONY_TRUSTED_PROXIES "%SYMFONY_TRUSTED_PROXIES%"
+    #if[SYMFONY_TRUSTED_PROXIES] SetEnv SYMFONY_TRUSTED_PROXIES "%SYMFONY_TRUSTED_PROXIES%"
 
     <IfModule mod_rewrite.c>
         RewriteEngine On
