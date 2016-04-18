@@ -39,13 +39,13 @@ class AppKernel extends Kernel
             new eZ\Bundle\EzPublishRestBundle\EzPublishRestBundle(),
             new EzSystems\PlatformUIAssetsBundle\EzSystemsPlatformUIAssetsBundle(),
             new EzSystems\PlatformUIBundle\EzSystemsPlatformUIBundle(),
+            new EzSystems\EzSupportToolsBundle\EzSystemsEzSupportToolsBundle(),
             new Nelmio\CorsBundle\NelmioCorsBundle(),
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
             new Oneup\FlysystemBundle\OneupFlysystemBundle(),
             new EzSystems\PlatformInstallerBundle\EzSystemsPlatformInstallerBundle(),
             new EzSystems\RepositoryFormsBundle\EzSystemsRepositoryFormsBundle(),
             new EzSystems\EzPlatformSolrSearchEngineBundle\EzSystemsEzPlatformSolrSearchEngineBundle(),
-            new EzSystems\EzSupportToolsBundle\EzSystemsEzSupportToolsBundle(),
             new AppBundle\AppBundle(),
         );
 
