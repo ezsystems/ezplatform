@@ -13,8 +13,9 @@ rewrite "^/robots\.txt" "/robots.txt" break;
 # More info here : http://en.wikipedia.org/wiki/P3p
 rewrite "^/w3c/p3p\.xml" "/w3c/p3p.xml" break;
 
-# Following rule is needed to correctly display assets from eZ Platform / Symfony bundles
+# Following rule is needed to correctly display bundle and project assets
 rewrite "^/bundles/(.*)" "/bundles/$1" break;
+rewrite "^/assets/(.*)" "/assets/$1" break;
 
 rewrite "^(.*)$" "/app.php$1" last;
 

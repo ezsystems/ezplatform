@@ -34,6 +34,7 @@
         "ezsystems/repository-forms": "~1.1@dev",
         "ezsystems/ezplatform-solr-search-engine": "~1.0@dev",
         "ezsystems/platform-ui-bundle": "~1.2@dev",
+        "ezsystems/ez-support-tools": "~0.1.0@dev",
         "ezsystems/studio-ui-bundle": "~1.3@dev",
         "ezsystems/ezstudio-notifications": "~1.0@dev",
         "ezsystems/landing-page-fieldtype-bundle": "~1.2@dev",
@@ -71,8 +72,8 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "eZ\\Bundle\\EzPublishCoreBundle\\Composer\\ScriptHandler::dumpAssetsHelpText"
+            "eZ\\Bundle\\EzPublishCoreBundle\\Composer\\ScriptHandler::dumpAssets",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
         ],
         "post-create-project-cmd": [
             "eZ\\Bundle\\EzPublishCoreBundle\\Composer\\ScriptHandler::installWelcomeText"
@@ -85,8 +86,6 @@
     "extra": {
         "symfony-app-dir": "app",
         "symfony-web-dir": "web",
-        "___ezpublish-asset-dump-env": "To set environment used by dumpAssets script, like 'prod', or 'none' to skip",
-        "ezpublish-asset-dump-env": "",
         "___symfony-assets-install": "One of 'symlink', 'relative' (symlinks) or 'hard'",
         "symfony-assets-install": "relative",
         "incenteev-parameters": {

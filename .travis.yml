@@ -3,15 +3,14 @@ language: php
 # We do Behat testing here, lots of sudo going on
 sudo: required
 
-# run tests on php 5.5 only and let unit / integration tests deal with php differences
-php:
-  - 5.5
-
-# list of paths/bundle to execute
-env:
-  - ARGS="--profile=rest --suite=fullJson"
-  - ARGS="--profile=rest --suite=fullXml"
-  - ARGS="--profile=core"
+matrix:
+  include:
+    - php: 5.6
+      env: ARGS="--profile=core"
+    - php: 5.5
+      env: ARGS="--profile=rest --suite=fullJson"
+    - php: 7.0
+      env: ARGS="--profile=rest --suite=fullXml"
 
 # test only master (+ Pull requests)
 branches:
@@ -30,7 +29,7 @@ before_script:
 
 # execute behat as the script command
 script:
-  - php bin/behat -vc behat.yml.dist $ARGS --tags='~@broken'
+  - php bin/behat -c behat.yml.dist $ARGS --tags='~@broken'
 
 # disable mail notifications
 notifications:

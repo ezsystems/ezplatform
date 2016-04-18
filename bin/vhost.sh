@@ -82,8 +82,8 @@ Usage:
 Defaults values will be fetched from the environment variables $env_list, but might be overriden using the arguments listed below.
 
 Arguments:
-  --basedir=<path>                         : Root path to where the eZ installation is placed, used for <path>/web
   --template-file=<file.template>          : The file to use as template for the generated ouput file
+  [--basedir=<path>]                       : Root path to eZ installation, auto detected if command is run from root
   [--host-name=localhost]                  : Primary host name, default "localhost"
   [--host-alias=*.localhost]               : Space separated list of host aliases, default "*.localhost"
   [--ip=*|127.0.0.1]                       : IP address web server should accept traffic on.
@@ -108,13 +108,13 @@ function inject_environment_variables
 {
     local current_env_variable
     local option_value
-    local template_var
+    local env_var
     local i
 
     i=0;
-    for template_var in "${option_vars[@]}"; do
-        # Remove "%" from from template_vars....
-        current_env_variable=${template_var//%/}
+    for env_var in "${option_vars[@]}"; do
+        # Remove "%" from from env_var....
+        current_env_variable=${env_var//%/}
         # Get value of variable referenced to by $current_env_variable. If env variable do not exists, value is set to ""
         option_value=${!current_env_variable:-SomeDefault}
         if [ "$option_value" != "SomeDefault" ]; then
@@ -207,8 +207,12 @@ if [ ! -f "$template_file" ] ; then
 fi
 
 if [[ "${template_values[0]}" == "" ]] ; then
-    show_help "--basedir=<path>" true
-    exit 1
+    if [ -d web/ ] ; then
+        template_values[0]=`pwd`
+    else
+        show_help "--basedir=<path>" true
+        exit 1
+    fi
 fi
 
 ## Option specific logic
@@ -226,7 +230,50 @@ fi
 template=$(<$template_file)
 COUNTER=0
 while [  "${template_vars[$COUNTER]}" != "" ]; do
-    tmp=${template//${template_vars[$COUNTER]}/${template_values[$COUNTER]}}
+    current_var=${template_vars[$COUNTER]}
+    current_value=${template_values[$COUNTER]}
+
+    # Replace %VAR% with the actual value
+    tmp=${template//${current_var}/${current_value}}
+
+    # Remove "%" from VAR for further use
+    current_var=${current_var//%/}
+
+    # If variable has a value then do further replacment logic
+    if [ "$current_value" != "" ] ; then
+
+        # Change "#if[VAR] " comments conditionally to uncommented lines
+        tmp=${tmp//"#if[${current_var}] "/""}
+
+        # Change #if[VAR=current_value] comments conditionally to uncommented lines
+        tmp=${tmp//"#if[${current_var}=${current_value}] "/""}
+
+        # Change remainging #if[VARIABLE=wrong_value] comments to conventional comment lines
+        regex="if\[${current_var}=([^]]*)\] "
+        while [[ $tmp =~ $regex ]] ; do
+            tmp=${tmp//"#if[${current_var}=${BASH_REMATCH[1]}] "/"#"}
+        done
+
+        # Search for "#if[VARIABLE!=correct_value]" and enable line if found ( or tranform to conventional comment lines )
+        regex="if\[${current_var}!=([^]]*)\] "
+        while [[ $tmp =~ $regex ]] ; do
+            if [ "${BASH_REMATCH[1]}" != $current_value ] ; then
+                # Change "#if[VARIABLE!=wrong_value]" comment to uncommented line
+                tmp=${tmp//"#if[${current_var}!=${BASH_REMATCH[1]}] "/""}
+            else
+                # Change "#if[VARIABLE!=wrong_value]" comment to conventional comment line
+                tmp=${tmp//"#if[${current_var}!=${BASH_REMATCH[1]}] "/"#"}
+            fi
+        done
+    else
+        # Change #if[VARIABLE[...]] comments to conventional comment lines
+        regex="if\[${current_var}([^]]*)\] "
+        while [[ $tmp =~ $regex ]] ; do
+            tmp=${tmp//"#if[${current_var}${BASH_REMATCH[1]}] "/"#"}
+        done
+    fi
+
+    # Set result on template var
     template=$tmp
     let COUNTER=COUNTER+1
 done
