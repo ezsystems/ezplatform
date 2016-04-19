@@ -28,9 +28,3 @@ ezpublish:
         site:
             languages:
                 - eng-GB
-ezstudioui:
-    # Settings for eZ Studio UI by siteaccess
-    system:
-        default:
-            # Default template for extending in Studio UI
-            studio_template: %ezpublish.content_view.viewbase_layout%
