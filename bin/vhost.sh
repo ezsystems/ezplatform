@@ -42,7 +42,7 @@ declare -a template_values=(
     ""
     ""
     ""
-    "49152"
+    "50331648"
     "90"
     "unix:/var/run/php5-fpm.sock"
     "48m"
@@ -172,7 +172,7 @@ case $i in
         template_values[10]="${i#*=}"
         ;;
     --body-size-limit=*)
-        let template_values[11]="${i#*=}"*1024
+        let template_values[11]="${i#*=}"*1024*1024
         template_values[14]="${i#*=}m"
         ;;
     --request-timeout=*)
