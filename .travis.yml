@@ -35,8 +35,10 @@ before_script:
       composer install --no-progress --no-interaction --prefer-dist"
   - ./bin/.docker/build_volume.sh ezsystems/ezplatform_volume:latest
   # Run (start contianers, execute install command and dump assets)
-  - docker-compose --verbose up -d --no-recreate
-  - docker-compose --verbose run -u ez --rm phpfpm1 /bin/sh -c "ls -al; php /scripts/wait_for_db.php; php app/console ezplatform:install clean; php app/console assetic:dump"
+  - docker-compose up -d --no-recreate
+  - docker-compose run -u ez --rm phpfpm1 /bin/sh -c "php /scripts/wait_for_db.php; php app/console ezplatform:install clean; php app/console assetic:dump"
+  # Output running contianers for debug
+  - docker ps
 
 
 # execute behat as the script command
