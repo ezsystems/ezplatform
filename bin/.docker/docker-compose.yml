@@ -29,7 +29,7 @@ phpfpm1:
    - DATABASE_HOST=db
 
 web1:
-  image: nginx
+  image: nginx:stable
   links:
    - phpfpm1:php_fpm
   volumes_from:
