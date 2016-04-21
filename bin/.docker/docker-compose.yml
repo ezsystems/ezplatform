@@ -46,7 +46,7 @@ web1:
 
 # Todo: Move out and use extends feature for these
 selenium:
-  image: selenium/standalone-firefox
+  image: selenium/standalone-firefox:2.52.0
   links:
    - web1:web
   ports:
