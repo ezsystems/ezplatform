@@ -38,7 +38,7 @@ before_script:
   - docker run -v `pwd`:/var/www -w /var/www -e SYMFONY_ENV ezsystems/php:7.0-v0.4 /bin/sh -c "
       composer config -g github-oauth.github.com "d0285ed5c8644f30547572ead2ed897431c1fc09";
       composer install --no-progress --no-interaction --prefer-dist"
-  - docker build -f bin/.docker/Dockerfile -t ezsystems/ezplatform_volume:latest .
+  - ./bin/.docker/build_volume.sh
   # Run (start contianers, execute install command and dump assets)
   - export COMPOSE_FILE="bin/.docker/docker-compose.yml"
   - docker-compose --verbose up -d --no-recreate

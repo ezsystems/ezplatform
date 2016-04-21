@@ -12,7 +12,7 @@ COPY . /var/www
 WORKDIR /var/www
 
 # Make sure cache is wiped, owner is set to ez and that www-data has access.
-RUN rm -Rf app/logs/* app/cache/*/* \
+RUN rm -Rf app/logs/* app/cache/*/* .git/ \
  && chown ez:ez -R /var/www \
  && find app/cache app/logs web -type d | xargs --no-run-if-empty chmod -R 2775 \
  && find app/cache app/logs web -type f | xargs --no-run-if-empty chmod -R 664 \
