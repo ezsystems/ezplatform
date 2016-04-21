@@ -33,7 +33,7 @@ if [ ! -f composer.lock ] ; then
 fi
 
 # Need to specify volume name
-if [ "$1" == "" ] ; then
+if [ "$1" = "" ] ; then
     echo ABORT: Missing argument VOLUME_NAME, run as: ./bin/.docker/build.sh ezsystems/ezplatform_volume:latest
     exit 1
 fi
