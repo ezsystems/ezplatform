@@ -6,14 +6,6 @@ services:
   - docker
 
 env:
-  global:
-    # TODO: For deployment we would need to build & test against prod env, need to balance that against debug ci needs
-    - SYMFONY_ENV=behat
-    - SYMFONY_DEBUG=1
-    - DATABASE_USER=ezp
-    - DATABASE_PASSWORD=ezp
-    - DATABASE_NAME=behattestdb
-    - DATABASE_HOST=db
   # list of behat arguments to test
   matrix:
     - ARGS="--profile=rest --suite=fullJson"
@@ -34,13 +26,15 @@ before_install:
   - sudo mv docker-compose /usr/local/bin
 
 before_script:
+  # TODO: For deployment we would need to build & test against prod env for builds, need to balance that against debug ci needs
+  - export $(cat bin/.docker/behat.env | xargs)
+  - export COMPOSE_FILE="bin/.docker/docker-compose.yml"
   # Build (first generate what we want in php image to check requriments, then build it in a plain volume image)
   - docker run -v `pwd`:/var/www -w /var/www -e SYMFONY_ENV ezsystems/php:7.0-v0.4 /bin/sh -c "
       composer config -g github-oauth.github.com "d0285ed5c8644f30547572ead2ed897431c1fc09";
       composer install --no-progress --no-interaction --prefer-dist"
   - ./bin/.docker/build_volume.sh
   # Run (start contianers, execute install command and dump assets)
-  - export COMPOSE_FILE="bin/.docker/docker-compose.yml"
   - docker-compose --verbose up -d --no-recreate
   - docker-compose --verbose run -u ez --rm phpfpm1 /bin/sh -c "ls -al; php /scripts/wait_for_db.php; php app/console ezplatform:install clean; php app/console assetic:dump"
 

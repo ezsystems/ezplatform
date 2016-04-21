@@ -26,7 +26,7 @@ phpfpm1:
    - DATABASE_USER
    - DATABASE_PASSWORD
    - DATABASE_NAME
-   - DATABASE_HOST
+   - DATABASE_HOST=db
 
 web1:
   image: nginx
@@ -72,5 +72,5 @@ behatphpcli:
    - DATABASE_USER
    - DATABASE_PASSWORD
    - DATABASE_NAME
-   - DATABASE_HOST
+   - DATABASE_HOST=db
   command: /bin/sh -c "cp -f behat.yml.dist behat.yml; sed -i 's@localhost:4444@selenium:4444@' behat.yml; sed -i 's@localhost@web@' behat.yml"
