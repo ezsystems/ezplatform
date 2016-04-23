@@ -46,7 +46,7 @@ web1:
 
 # Todo: Move out and use extends feature for these
 selenium:
-  image: selenium/standalone-firefox:2.52.0
+  image: selenium/standalone-firefox
   links:
    - web1:web
   ports:
@@ -59,7 +59,6 @@ selenium:
 
 behatphpcli:
   image: ezsystems/php:7.0-v0.4
-  user: ez
   links:
    - db1:db
    - web1:web

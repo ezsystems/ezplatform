@@ -36,15 +36,16 @@ before_script:
   - ./bin/.docker/build_volume.sh ezsystems/ezplatform_volume:latest
   # Run (start contianers, execute install command and dump assets)
   - docker-compose up -d --no-recreate
-  - docker-compose run -u ez --rm phpfpm1 /bin/sh -c "php /scripts/wait_for_db.php; php app/console ezplatform:install clean; php app/console assetic:dump"
+  # Install using www-data user, otherwise cache folders will be created with ez users
+  - travis_retry docker-compose run -u www-data --rm phpfpm1 /bin/sh -c "php /scripts/wait_for_db.php; php app/console ezplatform:install clean"
   # Output running contianers for debug
   - docker ps
-
 
 # execute behat as the script command
 # using behat.yml which is a copy of behat.yml.dist with hostnames update by docker-compose.yml
 script:
-  - docker-compose run -u ez --rm behatphpcli bin/behat -vv $ARGS --tags=~@broken
+  # Need to run as www-data as cache/log files are owned by it TODO: Fix dual user permissions
+  - docker-compose run -u www-data --rm behatphpcli bin/behat -vv $ARGS --tags=~@broken
 
 # disable mail notifications
 notifications:

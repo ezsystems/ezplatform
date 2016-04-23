@@ -12,14 +12,15 @@ COPY . /var/www
 WORKDIR /var/www
 
 # Make sure cache is wiped, owner is set to ez and that www-data has access.
-RUN rm -Rf app/logs/* app/cache/*/* .git/ \
+RUN rm -Rf app/logs/* app/cache/*/* .git/ web/var \
+ && mkdir web/var \
  && chown ez:ez -R /var/www \
  && find app/cache app/logs web -type d | xargs --no-run-if-empty chmod -R 2775 \
  && find app/cache app/logs web -type f | xargs --no-run-if-empty chmod -R 664 \
- && chown :xfs -R app/cache app/logs web
+ && chown :xfs -R app/cache app/logs web/var
 
 # Declare volumes so it an can be shared with other containers
-VOLUME [ "/var/www" ]
-VOLUME [ "/var/www/web/var" ]
+VOLUME /var/www /var/www/web/var
 
-CMD ["/bin/chmod", "g+s", "/var/www/web/var"]
+# Don't seem to work but here for ref, see .travis.yml on permissions
+CMD ["/bin/chmod", "g+s", "/var/www/web/var /var/www/app/cache /var/www/app/log"]
