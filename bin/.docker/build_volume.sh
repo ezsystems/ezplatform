@@ -5,11 +5,6 @@ if [ ! -d app ] ; then
     exit 1
 fi
 
-if [ ! -d vendor ] ; then
-    echo ABORT: You need to install composer packages before you can build the result, run: composer install
-    exit 1
-fi
-
 if [ -d .git ] ; then
     FOLDER_SIZE=`du -ms .git | cut -f1`
     if [ "$FOLDER_SIZE" -gt "30" ]; then
@@ -39,5 +34,26 @@ if [ "$1" = "" ] ; then
 fi
 
 VOLUME_NAME=$1
+
+if [ ! -d vendor ] ; then
+    echo "No vendor directory found, using php image to install vendors."
+    if [ "$COMPOSER_HOME" = "" ]; then
+        COMPOSER_HOME=~/.composer
+    fi
+
+    if [ ! -d $COMPOSER_HOME ] ; then
+        echo ABORT: Could not find a composer directory on host for auth and cache reuse, tried using ${COMPOSER_HOME}
+        exit 1
+    fi
+
+    # Set SYMFONY_ENV to prod in php image to dump right assets, also make sure to reuse composer setitngs/cache
+    docker run --rm \
+        -v `pwd`:/var/www \
+        -v  $COMPOSER_HOME:/home/ez/.composer \
+        -w /var/www \
+        -e SYMFONY_ENV=prod \
+        ezsystems/php:7.0-v0.4 \
+        /bin/sh -c "composer install --no-progress --no-interaction --prefer-dist"
+fi
 
 docker build -f bin/.docker/Dockerfile -t $VOLUME_NAME .

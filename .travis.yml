@@ -26,13 +26,11 @@ before_install:
   - sudo mv docker-compose /usr/local/bin
 
 before_script:
-  # TODO: For deployment we would need to build & test against prod env for builds, need to balance that against debug ci needs
   - export $(cat bin/.docker/behat.env | xargs)
   - export COMPOSE_FILE="bin/.docker/docker-compose.yml"
-  # Build (first generate what we want in php image to check requriments, then build it in a plain volume image)
-  - docker run -v `pwd`:/var/www -w /var/www -e SYMFONY_ENV ezsystems/php:7.0-v0.4 /bin/sh -c "
-      composer config -g github-oauth.github.com "d0285ed5c8644f30547572ead2ed897431c1fc09";
-      composer install --no-progress --no-interaction --prefer-dist"
+  # Internal auth token dedicated to testing with travis+composer on ezsystems repos, not for reuse.
+  - echo "{\"github-oauth\":{\"github.com\":\"d0285ed5c8644f30547572ead2ed897431c1fc09\"}}" > ~/.composer/auth.json
+  # Build
   - ./bin/.docker/build_volume.sh ezsystems/ezplatform_volume:latest
   # Run (start contianers, execute install command and dump assets)
   - docker-compose up -d --no-recreate
