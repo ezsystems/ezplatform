@@ -23,6 +23,8 @@ default:
             filename: report.xml
             outputDir: %paths.base%/app/logs/junit
 
+        EzSystems\PlatformBehatBundle\ServiceContainer\EzBehatExtension: ~
+
     # default profile: no suites
     suites: ~
 
