@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "614b5f0e49c08893ff4c0ea28f48cd40",
-    "content-hash": "88869b012112570790afd48b59933671",
+    "hash": "a2addaa994bcbe7582122deebbab8f82",
+    "content-hash": "5ac0d957b3a17ec359950e78843ffcca",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -785,16 +785,16 @@
         },
         {
             "name": "ezsystems/ezpublish-kernel",
-            "version": "v6.3.0-rc1",
+            "version": "v6.3.0-rc3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-kernel.git",
-                "reference": "1f93582bf08494bff2f8b85b2851d0ecb980551e"
+                "reference": "0d5a1559981a8df0ac22674e178dcd353ec77a66"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/1f93582bf08494bff2f8b85b2851d0ecb980551e",
-                "reference": "1f93582bf08494bff2f8b85b2851d0ecb980551e",
+                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/0d5a1559981a8df0ac22674e178dcd353ec77a66",
+                "reference": "0d5a1559981a8df0ac22674e178dcd353ec77a66",
                 "shasum": ""
             },
             "require": {
@@ -863,7 +863,7 @@
             ],
             "description": "Kernel used by ezsystems/ezplatform and derivatives. Provides the Content Repository, its APIs, and the application's Symfony framework integration.",
             "homepage": "http://share.ez.no",
-            "time": "2016-04-18 09:10:12"
+            "time": "2016-04-26 12:18:07"
         },
         {
             "name": "ezsystems/platform-ui-assets-bundle",
@@ -903,23 +903,23 @@
         },
         {
             "name": "ezsystems/platform-ui-bundle",
-            "version": "v1.3.0-rc1",
+            "version": "v1.3.0-rc2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/PlatformUIBundle.git",
-                "reference": "ac8b698370a84233d33768e245a459d46705502a"
+                "reference": "dfdd6d5b721cc94ffa710ff3dfd252966543267d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/PlatformUIBundle/zipball/ac8b698370a84233d33768e245a459d46705502a",
-                "reference": "ac8b698370a84233d33768e245a459d46705502a",
+                "url": "https://api.github.com/repos/ezsystems/PlatformUIBundle/zipball/dfdd6d5b721cc94ffa710ff3dfd252966543267d",
+                "reference": "dfdd6d5b721cc94ffa710ff3dfd252966543267d",
                 "shasum": ""
             },
             "require": {
-                "ezsystems/ez-support-tools": "~0.1.0@rc",
-                "ezsystems/ezpublish-kernel": "^6.3@rc",
+                "ezsystems/ez-support-tools": "~0.1.0",
+                "ezsystems/ezpublish-kernel": "^6.3",
                 "ezsystems/platform-ui-assets-bundle": "^2.0.0",
-                "ezsystems/repository-forms": "^1.2@rc",
+                "ezsystems/repository-forms": "^1.2",
                 "zetacomponents/system-information": "^1.1"
             },
             "require-dev": {
@@ -942,20 +942,20 @@
                 "GPL-2.0"
             ],
             "description": "eZ Platform UI Bundle",
-            "time": "2016-04-21 10:44:02"
+            "time": "2016-04-26 11:49:57"
         },
         {
             "name": "ezsystems/repository-forms",
-            "version": "v1.2.0-rc1",
+            "version": "v1.2.0-rc2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/repository-forms.git",
-                "reference": "5bee739ff2dff45da0f1aa94a162c3269e7622ae"
+                "reference": "bbaaa863a12080339440ea5439277384183820f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/repository-forms/zipball/5bee739ff2dff45da0f1aa94a162c3269e7622ae",
-                "reference": "5bee739ff2dff45da0f1aa94a162c3269e7622ae",
+                "url": "https://api.github.com/repos/ezsystems/repository-forms/zipball/bbaaa863a12080339440ea5439277384183820f5",
+                "reference": "bbaaa863a12080339440ea5439277384183820f5",
                 "shasum": ""
             },
             "require": {
@@ -997,7 +997,7 @@
                 }
             ],
             "description": "Use Symfony forms with eZ Platform repository objects",
-            "time": "2016-04-21 00:55:39"
+            "time": "2016-04-25 22:09:43"
         },
         {
             "name": "friendsofsymfony/http-cache",
@@ -2226,17 +2226,17 @@
         },
         {
             "name": "sensio/distribution-bundle",
-            "version": "v3.0.35",
+            "version": "v3.0.36",
             "target-dir": "Sensio/Bundle/DistributionBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
-                "reference": "abc5b0ce28f72f838922aa0e0a107ba270dbabb5"
+                "reference": "964a56e855acac38d4a81920b3a86543f7e8492f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/abc5b0ce28f72f838922aa0e0a107ba270dbabb5",
-                "reference": "abc5b0ce28f72f838922aa0e0a107ba270dbabb5",
+                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/964a56e855acac38d4a81920b3a86543f7e8492f",
+                "reference": "964a56e855acac38d4a81920b3a86543f7e8492f",
                 "shasum": ""
             },
             "require": {
@@ -2282,7 +2282,7 @@
                 "configuration",
                 "distribution"
             ],
-            "time": "2015-12-08 17:53:19"
+            "time": "2016-04-25 20:46:43"
         },
         {
             "name": "sensio/framework-extra-bundle",
@@ -4091,17 +4091,17 @@
         },
         {
             "name": "ezsystems/behatbundle",
-            "version": "v6.3.0-rc1",
+            "version": "v6.3.0-rc2",
             "target-dir": "EzSystems/BehatBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/BehatBundle.git",
-                "reference": "8f601465249dcda1057a1e30a653e440c64b4121"
+                "reference": "22d3e9e3498a500629848464e5cda0d1255c116d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/BehatBundle/zipball/8f601465249dcda1057a1e30a653e440c64b4121",
-                "reference": "8f601465249dcda1057a1e30a653e440c64b4121",
+                "url": "https://api.github.com/repos/ezsystems/BehatBundle/zipball/22d3e9e3498a500629848464e5cda0d1255c116d",
+                "reference": "22d3e9e3498a500629848464e5cda0d1255c116d",
                 "shasum": ""
             },
             "require": {
@@ -4131,7 +4131,7 @@
                 }
             ],
             "description": "Behat bundle for help testing eZ Bundles and projects",
-            "time": "2016-04-05 12:59:13"
+            "time": "2016-04-26 07:54:33"
         },
         {
             "name": "fabpot/goutte",
@@ -5350,7 +5350,38 @@
             "time": "2015-06-21 13:59:46"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "alias": "6.3.0",
+            "alias_normalized": "6.3.0.0",
+            "version": "6.3.0.0-RC3",
+            "package": "ezsystems/ezpublish-kernel"
+        },
+        {
+            "alias": "1.2.0",
+            "alias_normalized": "1.2.0.0",
+            "version": "1.2.0.0-RC2",
+            "package": "ezsystems/repository-forms"
+        },
+        {
+            "alias": "1.3.0",
+            "alias_normalized": "1.3.0.0",
+            "version": "1.3.0.0-RC2",
+            "package": "ezsystems/platform-ui-bundle"
+        },
+        {
+            "alias": "0.1.0",
+            "alias_normalized": "0.1.0.0",
+            "version": "0.1.0.0-RC1",
+            "package": "ezsystems/ez-support-tools"
+        },
+        {
+            "alias": "6.3.0",
+            "alias_normalized": "6.3.0.0",
+            "version": "6.3.0.0-RC2",
+            "package": "ezsystems/behatbundle"
+        }
+    ],
     "minimum-stability": "stable",
     "stability-flags": {
         "ezsystems/ezpublish-kernel": 5,
