@@ -9,7 +9,8 @@ RUN adduser -u 10000 -h /home/ez -D -s /sbin/nologin ez ez
 COPY . /var/www
 WORKDIR /var/www
 
-# Make sure cache is wiped, owner is set to ez and that www-data has access.
+# Make sure cache is wiped, and owner is set to ez
+# Note: php image will need to set acl so www-data gets access, as this makes it simpler for dev env
 RUN rm -Rf app/logs/* app/cache/*/* .git/ web/var \
  && mkdir web/var \
  && chown ez:ez -R /var/www

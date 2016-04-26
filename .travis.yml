@@ -18,33 +18,26 @@ branches:
     - master
     - "1.3"
 
-# Update Docker Composee to 1.5.2 (basic variable substituation, while still supporting Docker 1.8.2 as used by travis)
-before_install:
-  - sudo rm /usr/local/bin/docker-compose
-  - curl -L https://github.com/docker/compose/releases/download/1.5.2/docker-compose-`uname -s`-`uname -m` > docker-compose
-  - chmod +x docker-compose
-  - sudo mv docker-compose /usr/local/bin
+# Update Docker and Docker Compose
+before_install: ./bin/.docker/trusty_update_docker.sh
 
 before_script:
-  - export $(cat bin/.docker/behat.env | xargs)
-  - export COMPOSE_FILE="bin/.docker/docker-compose.yml"
   # Internal auth token dedicated to testing with travis+composer on ezsystems repos, not for reuse.
   - echo "{\"github-oauth\":{\"github.com\":\"d0285ed5c8644f30547572ead2ed897431c1fc09\"}}" > ~/.composer/auth.json
   # Build
   - ./bin/.docker/build_volume.sh ezsystems/ezplatform_volume:latest
+  # docker-compose only reads .env file from folder it is executed from, so we change folder
+  - cd ./bin/.docker/
+  - export COMPOSE_FILE="docker-compose.yml:docker-compose.behat.yml"
   # Run (start contianers, execute install command and dump assets)
   - docker-compose up -d --no-recreate
-  # Install using www-data user, otherwise cache folders will be created with ez users
-  - travis_retry docker-compose run -u ez --rm phpfpm1 /bin/sh -c "php /scripts/wait_for_db.php; php app/console ezplatform:install clean"
-  - docker-compose run --rm phpfpm1 /bin/sh -c "/scripts/set_permissions.sh"
+  - travis_retry docker-compose run -u ez --rm phpfpm /bin/sh -c "php /scripts/wait_for_db.php; php app/console ezplatform:install clean"
   # Output running contianers for debug
   - docker ps
 
 # execute behat as the script command
 # using behat.yml which is a copy of behat.yml.dist with hostnames update by docker-compose.yml
-script:
-  # Need to run as www-data as cache/log files are owned by it TODO: Fix dual user permissions
-  - docker-compose run -u www-data --rm behatphpcli bin/behat -vv $ARGS --tags=~@broken
+script: docker-compose run -u ez --rm behatphpcli bin/behat -vv $ARGS --tags=~@broken
 
 # disable mail notifications
 notifications:
