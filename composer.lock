@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a2addaa994bcbe7582122deebbab8f82",
-    "content-hash": "5ac0d957b3a17ec359950e78843ffcca",
+    "hash": "f18108a5e7bfd2e7dd1a336baa5b227e",
+    "content-hash": "9d09566bdc5649fd9cb6aa41812f76f8",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -689,7 +689,7 @@
         },
         {
             "name": "ezsystems/ez-support-tools",
-            "version": "v0.1.0-rc1",
+            "version": "v0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ez-support-tools.git",
@@ -785,7 +785,7 @@
         },
         {
             "name": "ezsystems/ezpublish-kernel",
-            "version": "v6.3.0-rc3",
+            "version": "v6.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-kernel.git",
@@ -903,7 +903,7 @@
         },
         {
             "name": "ezsystems/platform-ui-bundle",
-            "version": "v1.3.0-rc2",
+            "version": "v1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/PlatformUIBundle.git",
@@ -946,20 +946,20 @@
         },
         {
             "name": "ezsystems/repository-forms",
-            "version": "v1.2.0-rc2",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/repository-forms.git",
-                "reference": "bbaaa863a12080339440ea5439277384183820f5"
+                "reference": "7accb0d75ef1b2385f3f35f9421c7e6ddbfb5d09"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/repository-forms/zipball/bbaaa863a12080339440ea5439277384183820f5",
-                "reference": "bbaaa863a12080339440ea5439277384183820f5",
+                "url": "https://api.github.com/repos/ezsystems/repository-forms/zipball/7accb0d75ef1b2385f3f35f9421c7e6ddbfb5d09",
+                "reference": "7accb0d75ef1b2385f3f35f9421c7e6ddbfb5d09",
                 "shasum": ""
             },
             "require": {
-                "ezsystems/ezpublish-kernel": "~6.3@rc",
+                "ezsystems/ezpublish-kernel": "~6.3",
                 "symfony/form": "~2.7",
                 "symfony/validator": "~2.7"
             },
@@ -997,7 +997,7 @@
                 }
             ],
             "description": "Use Symfony forms with eZ Platform repository objects",
-            "time": "2016-04-25 22:09:43"
+            "time": "2016-04-26 09:57:54"
         },
         {
             "name": "friendsofsymfony/http-cache",
@@ -4091,7 +4091,7 @@
         },
         {
             "name": "ezsystems/behatbundle",
-            "version": "v6.3.0-rc2",
+            "version": "v6.3.0",
             "target-dir": "EzSystems/BehatBundle",
             "source": {
                 "type": "git",
@@ -5350,46 +5350,9 @@
             "time": "2015-06-21 13:59:46"
         }
     ],
-    "aliases": [
-        {
-            "alias": "6.3.0",
-            "alias_normalized": "6.3.0.0",
-            "version": "6.3.0.0-RC3",
-            "package": "ezsystems/ezpublish-kernel"
-        },
-        {
-            "alias": "1.2.0",
-            "alias_normalized": "1.2.0.0",
-            "version": "1.2.0.0-RC2",
-            "package": "ezsystems/repository-forms"
-        },
-        {
-            "alias": "1.3.0",
-            "alias_normalized": "1.3.0.0",
-            "version": "1.3.0.0-RC2",
-            "package": "ezsystems/platform-ui-bundle"
-        },
-        {
-            "alias": "0.1.0",
-            "alias_normalized": "0.1.0.0",
-            "version": "0.1.0.0-RC1",
-            "package": "ezsystems/ez-support-tools"
-        },
-        {
-            "alias": "6.3.0",
-            "alias_normalized": "6.3.0.0",
-            "version": "6.3.0.0-RC2",
-            "package": "ezsystems/behatbundle"
-        }
-    ],
+    "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "ezsystems/ezpublish-kernel": 5,
-        "ezsystems/repository-forms": 5,
-        "ezsystems/platform-ui-bundle": 5,
-        "ezsystems/ez-support-tools": 5,
-        "ezsystems/behatbundle": 5
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
