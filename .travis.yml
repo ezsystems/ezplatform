@@ -35,7 +35,8 @@ before_script:
   # Run (start contianers, execute install command and dump assets)
   - docker-compose up -d --no-recreate
   # Install using www-data user, otherwise cache folders will be created with ez users
-  - travis_retry docker-compose run -u www-data --rm phpfpm1 /bin/sh -c "php /scripts/wait_for_db.php; php app/console ezplatform:install clean"
+  - travis_retry docker-compose run -u ez --rm phpfpm1 /bin/sh -c "php /scripts/wait_for_db.php; php app/console ezplatform:install clean"
+  - docker-compose run --rm phpfpm1 /bin/sh -c "/scripts/set_permissions.sh"
   # Output running contianers for debug
   - docker ps
 
