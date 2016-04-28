@@ -6,7 +6,7 @@ ezpublishvol:
 db1:
   image: mariadb:10.0
   volumes:
-   - ./bin/.docker/database_character_set.sh:/docker-entrypoint-initdb.d/database_character_set.sh
+   - ./database_character_set.sh:/docker-entrypoint-initdb.d/database_character_set.sh
   environment:
    - MYSQL_ROOT_PASSWORD=mysecretrootpassword
    - MYSQL_USER=$DATABASE_USER
