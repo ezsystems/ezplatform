@@ -56,4 +56,4 @@ if [ ! -d vendor ] ; then
         /bin/sh -c "composer install --no-progress --no-interaction --prefer-dist"
 fi
 
-docker build -f bin/.docker/Dockerfile -t $VOLUME_NAME .
+docker build --no-cache -f bin/.docker/Dockerfile -t $VOLUME_NAME .
