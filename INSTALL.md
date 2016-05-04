@@ -149,7 +149,7 @@
     You may now complete the eZ Studio installation with ezplatform:install command, example of use:
 
     ```bash
-    $ php -d memory_limit=-1 app/console ezplatform:install --env=prod clean
+    $ php -d memory_limit=-1 app/console ezplatform:install --env=prod studio-clean
     ```
 
     **Note**: Password for the generated `admin` user is `publish`, this name and password is needed when you would like to login to backend UI. Future versions will prompt you for a unique password during installation.
