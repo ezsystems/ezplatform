@@ -28,7 +28,7 @@ before_script:
 
 # execute behat as the script command
 # --no-deps: don't re run stopped datacontainer
-script: BEHAT="true" ./compose run --no-deps --rm behatphpcli bin/behat -vv $ARGS --tags=~@broken
+script: BEHAT="true" ./compose run --no-deps --rm behat bin/behat -vv $ARGS --tags=~@broken
 
 # disable mail notifications
 notifications:
@@ -37,3 +37,7 @@ notifications:
 # reduce depth (history) of git checkout
 git:
   depth: 30
+
+cache:
+  directories:
+    - /tmp/.composer
