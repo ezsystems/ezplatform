@@ -4,6 +4,7 @@
 
 PORT_PREFIX=${PORT_PREFIX:="13"}
 ROOT_PATH=${ROOT_PATH:="../../"}
+BEHAT=${BEHAT:=""}
 
 ###---
 
@@ -28,7 +29,12 @@ f_compose ()
         fi
     fi
     cd bin/.docker/
-    COMPOSER_HOME=$COMPOSER_HOME ROOT_PATH=$ROOT_PATH PORT_PREFIX=$PORT_PREFIX docker-compose -p ezplatform -f docker-compose.yml $@
+
+    COMPOSE_BEHAT_ARGS=""
+    if [ $BEHAT != "" ]; then
+        COMPOSE_BEHAT_ARGS="-f docker-compose.behat.yml"
+    fi
+    COMPOSER_HOME=$COMPOSER_HOME ROOT_PATH=$ROOT_PATH PORT_PREFIX=$PORT_PREFIX docker-compose -p ezplatform -f docker-compose.yml $COMPOSE_BEHAT_ARGS $@
 }
 
 
