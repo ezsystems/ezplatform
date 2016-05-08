@@ -15,9 +15,6 @@ f_compose ()
     if [ "$DOCKER_MACHINE_HOST" != "" ]; then
         docker-machine env $DOCKER_MACHINE_HOST
         eval "$(docker-machine env $DOCKER_MACHINE_HOST)"
-        COMPOSER_HOME=/data/DOCKER_SOURCES/.composer
-        # we have to trust the folder here.
-        # @todo: Improve that
     else
         # On the host
         if [ "$COMPOSER_HOME" = "" ]; then
@@ -31,10 +28,10 @@ f_compose ()
     cd bin/.docker/
 
     COMPOSE_BEHAT_ARGS=""
-    if [ $BEHAT != "" ]; then
+    if [ "$BEHAT" != "" ]; then
         COMPOSE_BEHAT_ARGS="-f docker-compose.behat.yml"
     fi
-    COMPOSER_HOME=$COMPOSER_HOME ROOT_PATH=$ROOT_PATH PORT_PREFIX=$PORT_PREFIX docker-compose -p ezplatform -f docker-compose.yml $COMPOSE_BEHAT_ARGS $@
+    BEHAT_MODE=$BEHAT COMPOSER_HOME=$COMPOSER_HOME ROOT_PATH=$ROOT_PATH PORT_PREFIX=$PORT_PREFIX docker-compose -p ezplatform -f docker-compose.yml $COMPOSE_BEHAT_ARGS $@
 }
 
 

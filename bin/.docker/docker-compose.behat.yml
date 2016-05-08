@@ -10,20 +10,26 @@ services:
             - SCREEN_HEIGHT=1080
             - SCREEN_DEPTH=24
 
-    behatphpcli:
+    behat:
         # @todo: Should be a clean eZ PHP image
         image: plopix/docker-php-ez-engine
         depends_on:
              - db
              - web
              - selenium
+             - appvol
+             - memcache
         volumes_from:
             - appvol
         environment:
-             - "SYMFONY_ENV=behat"
-             - "SYMFONY_DEBUG=1"
-             - DATABASE_USER
-             - DATABASE_PASSWORD
-             - DATABASE_NAME
-             - DATABASE_HOST=db
-        command: /bin/sh -c "cp -f behat.yml.dist behat.yml; sed -i 's@localhost:4444@selenium:4444@' behat.yml; sed -i 's@localhost@web@' behat.yml"
+            - CONTAINER_PROJECT_DIR
+            - "SYMFONY_ENV=behat"
+            - "SYMFONY_DEBUG=1"
+            - DATABASE_USER
+            - DATABASE_PASSWORD
+            - DATABASE_NAME
+            - DATABASE_HOST=db
+        volumes:
+            - "${ROOT_PATH}/bin/.docker/behat/entrypoint.bash:/entrypoint.bash:ro"
+        entrypoint: /entrypoint.bash
+        command: echo 'Behat container ready.'

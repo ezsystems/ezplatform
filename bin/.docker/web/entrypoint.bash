@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
 
-while [ ! -e ${CONTAINER_PROJECT_DIR}/.installok ]
+while [ -e ${CONTAINER_PROJECT_DIR}/.installinprogress ]
 do
     echo "Waiting the end of the install."
     sleep 1
 done
-rm ${CONTAINER_PROJECT_DIR}/.installok
 
 # Install the Vhost
 cd ${CONTAINER_PROJECT_DIR}

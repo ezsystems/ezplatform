@@ -1,6 +1,7 @@
 #!/usr/bin/env ash
 
 if [ ! -d vendor ]; then
+    echo "ez" > ${CONTAINER_PROJECT_DIR}/.installinprogress
     curl -sS https://getcomposer.org/installer | php
     php -d memory_limit=-1 composer.phar install --no-progress --no-interaction --prefer-dist
     php -d memory_limit=-1 app/console ezplatform:install --env prod clean
@@ -22,7 +23,7 @@ stash:
                         port: 11211
 
 " >> ${CONTAINER_PROJECT_DIR}/app/config/ezplatform.yml
+    rm ${CONTAINER_PROJECT_DIR}/.installinprogress
 fi
 
-echo "ez" > ${CONTAINER_PROJECT_DIR}/.installok
 exec "$@"
