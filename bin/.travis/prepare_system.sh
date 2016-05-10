@@ -10,6 +10,9 @@
 
 ./bin/.travis/disable_xdebug.sh
 
+# Remove php memory limit
+echo 'memory_limit = -1' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
+
 # Install needed packages
 echo "> Installing needed packages";
 sudo apt-get update
