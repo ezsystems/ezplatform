@@ -13,13 +13,13 @@ services:
      - SCREEN_DEPTH=24
 
   behatphpcli:
-    image: ezsystems/php:7.0-v0.4
+    image: ezsystems/php:7.0-v0
     depends_on:
      - db
      - web
      - selenium
     volumes_from:
-     - appvol
+     - app
     environment:
      - SYMFONY_ENV
      - SYMFONY_DEBUG

@@ -2,19 +2,16 @@ version: '2'
 # Simple single server setup
 
 services:
-  appvol:
-    image: ezsystems/ezplatform_volume:latest
-
   web:
     image: nginx:stable
     volumes_from:
-     - appvol
+     - app
     ports:
      - "8080:80"
     environment:
      - SYMFONY_ENV
      - MAX_BODY_SIZE=20
-     - FASTCGI_PASS=phpfpm:9000
+     - FASTCGI_PASS=app:9000
      - TIMEOUT=190
      - DOCKER0NET
     command: /bin/bash -c "cd /var/www && cp -a doc/nginx/ez_params.d /etc/nginx && bin/vhost.sh --template-file=doc/nginx/vhost.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
@@ -30,12 +27,11 @@ services:
      - MYSQL_DATABASE=$DATABASE_NAME
      - TERM=dumb
 
-  phpfpm:
-    image: ezsystems/php:7.0-v0.4
+  app:
+    build: ../../
+    image: ezsystems/ezplatform
     depends_on:
      - db
-    volumes_from:
-     - appvol
     environment:
      - SYMFONY_ENV
      - SYMFONY_DEBUG
@@ -43,5 +39,3 @@ services:
      - DATABASE_PASSWORD
      - DATABASE_NAME
      - DATABASE_HOST=db
-    # Override to set --dev-mode to make sure assets are generated and other things
-    command: /scripts/run.sh --dev-mode
