@@ -30,8 +30,8 @@ before_script:
   - if [ "$RUN_INSTALL" = "1" ]; then docker-compose -f bin/.docker/install.yml up install; fi
   # Run (start containers and execute install command)
   - docker-compose up -d --no-recreate
-  - docker ps
-  - docker-compose logs app
+  #- docker ps
+  #- docker-compose logs app
   - travis_retry docker-compose run -u ez --rm app /bin/sh -c "php /scripts/wait_for_db.php; php app/console ezplatform:install clean"
 
 # execute behat as the script command
