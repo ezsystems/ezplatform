@@ -16,6 +16,7 @@ matrix:
 branches:
   only:
     - master
+    - "1.3"
 
 # install packages
 before_install:
