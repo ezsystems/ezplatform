@@ -74,7 +74,7 @@ export COMPOSE_FILE=bin/.docker/docker-compose.yml:bin/.docker/docker-compose.de
 # Next step will do a composer install, for this to work smoothly create auth.json file with your readonly GitHub token
 # and if you use eZ Enterprise software also for updates.ez.no (https://doc.ez.no/display/TECHDOC/Using+Composer)
 docker-compose -f bin/.docker/install.yml up install
-docker-compose up -d --no-recreate
+docker-compose up -d --force-recreate --no-build
 docker-compose run -u ez --rm app /bin/sh -c "php /scripts/wait_for_db.php; php app/console ezplatform:install clean"
 ```
 
