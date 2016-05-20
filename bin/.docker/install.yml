@@ -3,7 +3,7 @@ version: '2'
 
 services:
   install:
-    image: ezsystems/php:7.0-v0
+    image: ezsystems/php:${PHP_VERSION}-v0
     volumes:
      - ../../:/var/www
      - $COMPOSER_HOME:/home/ez/.composer

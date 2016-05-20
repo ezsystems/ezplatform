@@ -13,7 +13,7 @@ services:
      - SCREEN_DEPTH=24
 
   behatphpcli:
-    image: ezsystems/php:7.0-v0
+    image: ezsystems/php:${PHP_VERSION}-v0
     depends_on:
      - db
      - web

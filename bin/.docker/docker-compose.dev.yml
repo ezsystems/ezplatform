@@ -5,8 +5,8 @@ services:
   app:
     build: {}
     # If you'd like xdebug and other debug tools, and don't mind the slow down, swap to the following image:
-    #image: ezsystems/php:7.0-v0-dev
-    image: ezsystems/php:7.0-v0
+    #image: ezsystems/php:${PHP_VERSION}-v0-dev
+    image: ezsystems/php:${PHP_VERSION}-v0
     volumes:
      - ../../:/var/www
      - $COMPOSER_HOME:/home/ez/.composer
