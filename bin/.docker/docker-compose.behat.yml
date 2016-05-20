@@ -1,0 +1,35 @@
+version: '2'
+services:
+    selenium:
+        image: selenium/standalone-firefox
+        ports:
+            - "9999:9999"
+            - "4444:4444"
+        environment:
+            - SCREEN_WIDTH=1920
+            - SCREEN_HEIGHT=1080
+            - SCREEN_DEPTH=24
+
+    behat:
+        # @todo: Should be a clean eZ PHP image
+        image: plopix/docker-php-ez-engine
+        depends_on:
+             - db
+             - web
+             - selenium
+             - appvol
+             - memcache
+        volumes_from:
+            - appvol
+        environment:
+            - CONTAINER_PROJECT_DIR
+            - "SYMFONY_ENV=behat"
+            - "SYMFONY_DEBUG=1"
+            - DATABASE_USER
+            - DATABASE_PASSWORD
+            - DATABASE_NAME
+            - DATABASE_HOST=db
+        volumes:
+            - "${ROOT_PATH}/bin/.docker/behat/entrypoint.bash:/entrypoint.bash:ro"
+        entrypoint: /entrypoint.bash
+        command: echo 'Behat container ready.'

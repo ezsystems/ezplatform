@@ -1,36 +1,34 @@
-language: php
-
-# We do Behat testing here, lots of sudo going on
 sudo: required
+dist: trusty
+language: generic
 
-matrix:
-  include:
-    - php: 5.6
-      env: ARGS="--profile=core"
-    - php: 5.5
-      env: ARGS="--profile=rest --suite=fullJson"
-    - php: 7.0
-      env: ARGS="--profile=rest --suite=fullXml"
+services:
+  - docker
+
+env:
+  # list of behat arguments to test
+  matrix:
+    - ARGS=" "
+    - ARGS="--profile=rest --suite=fullXml"
+    - ARGS="--profile=core"
 
 # test only master (+ Pull requests)
 branches:
   only:
     - master
-    - "1.3"
+    - docker
 
-# install packages
-before_install:
-  - ./bin/.travis/prepare_system.sh
-  - ./bin/.travis/prepare_selenium2.sh
+# Update Docker and Docker Compose
+before_install: ./bin/.docker/.travis/trusty_update_docker.sh
 
-# setup requirements for running tests
 before_script:
-  # Prepare eZ Publish (composer, permissions, assets, cache warmup)
-  - ./bin/.travis/prepare_ezpublish.sh
+  - BEHAT="true" ./compose up -d --no-recreate
+  # Output running contianers for debug
+  - docker ps
 
 # execute behat as the script command
-script:
-  - php bin/behat -c behat.yml.dist $ARGS --tags='~@broken'
+# --no-deps: don't re run stopped datacontainer
+script: BEHAT="true" ./compose run --no-deps --rm behat bin/behat -vv $ARGS --tags=~@broken
 
 # disable mail notifications
 notifications:
@@ -39,3 +37,7 @@ notifications:
 # reduce depth (history) of git checkout
 git:
   depth: 30
+
+cache:
+  directories:
+    - /tmp/.composer

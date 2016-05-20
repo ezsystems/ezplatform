@@ -1,0 +1,54 @@
+@startuml
+
+title "eZ Platform Containers Architecture"
+
+cloud "Exposed Ports" {
+    () 13080 as DevPort
+    () 13081 as ProdPort
+    () 13082 as ProdVarnishPort
+    () 13083 -> memcacheadmin
+    () 13306 --> db
+    () 13180 --> mailcatcher
+}
+
+node "web" {
+    [PROD]
+    [DEV]
+    }
+
+node "engine" {
+    [PHP-FPM] as PhpFPM
+    [PHP-CLI] as PhpCli
+}
+
+node "db" {
+    database "ezplatform" as StandardDB
+}
+
+node "memcache" {
+}
+
+node "varnish" {
+}
+
+node "memcacheadmin" {
+}
+
+node "mailcatcher" {
+}
+
+DevPort --> DEV
+ProdPort --> PROD
+ProdVarnishPort --> varnish
+varnish --> PROD
+
+DEV --> PhpFPM
+PROD --> PhpFPM
+
+engine -up--> db
+engine --> memcache
+engine --> mailcatcher
+
+memcacheadmin --> memcache
+
+@enduml

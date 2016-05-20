@@ -1,0 +1,111 @@
+version: '2'
+services:
+    # DB Container
+    db:
+        image: mariadb:10.0
+        ports:
+            - "${PORT_PREFIX}306:3306"
+        environment:
+            - "MYSQL_ROOT_PASSWORD=mysecretrootpassword"
+            - "MYSQL_USER=${DATABASE_USER}"
+            - "MYSQL_PASSWORD=${DATABASE_PASSWORD}"
+            - "MYSQL_DATABASE=${DATABASE_NAME}"
+            - "TERM=dumb"
+
+    # Kind of first container that will start the composer install and the db install from the source
+    # it needs php cli, right now we are taking the php.ini of the "engine" container.
+    appvol:
+        # @todo: Should be a clean eZ PHP image
+        image: plopix/docker-php-ez-engine
+        volumes:
+            - "${ROOT_PATH}/bin/.docker/engine/php.ini:/usr/local/etc/php/php.ini:ro"
+            - "${ROOT_PATH}:/${CONTAINER_PROJECT_DIR}:rw"
+            - "${ROOT_PATH}/bin/.docker/appvol/entrypoint.bash:/entrypoint.bash:ro"
+            - "${COMPOSER_HOME}:/tmp/.composer:rw"
+        depends_on:
+            - db
+        environment:
+            - COMPOSER_AUTH
+            - "COMPOSER_HOME=/tmp/.composer"
+            - "DATABASE_HOST=db"
+            - DATABASE_USER
+            - DATABASE_PASSWORD
+            - DATABASE_NAME
+            - CONTAINER_PROJECT_DIR
+            - BEHAT_MODE
+        entrypoint: /entrypoint.bash
+        command: echo 'First installation done.'
+
+    engine:
+        # @todo: Should be a clean eZ PHP image
+        image: plopix/docker-php-ez-engine
+        volumes_from:
+            - appvol
+        depends_on:
+            - appvol
+            - db
+            - memcache
+            - mailcatcher
+        environment:
+            - CONTAINER_PROJECT_DIR
+            - "DATABASE_HOST=db"
+            - DATABASE_USER
+            - DATABASE_PASSWORD
+            - DATABASE_NAME
+            - "TERM=dumb"
+
+    web:
+        # @todo: can not use Alphine.. vhost.sh needs bash
+        image: nginx:stable
+        ports:
+            - "${PORT_PREFIX}080:80"
+            - "${PORT_PREFIX}081:81"
+        volumes:
+            - "${ROOT_PATH}/doc/nginx/ez_params.d:/etc/nginx/ez_params.d:ro"
+            - "${ROOT_PATH}/bin/.docker/web/entrypoint.bash:/entrypoint.bash:ro"
+        volumes_from:
+            - appvol
+        depends_on:
+            - engine
+        environment:
+            - CONTAINER_PROJECT_DIR
+            - "FASTCGI_PASS=engine:9000"
+            - "SYMFONY_TRUSTED_PROXIES=127.0.0.1,localhost,172.0.0.0/8"
+            - "BASEDIR=${CONTAINER_PROJECT_DIR}"
+            - "TIMEOUT_S=90"
+        entrypoint: /entrypoint.bash
+        command: ["nginx", "-g", "daemon off;"]
+
+    memcache:
+        image: ilari/alpine-memcached
+
+    mailcatcher:
+        image: schickling/mailcatcher
+        ports:
+            - "${PORT_PREFIX}180:1080"
+
+    memcachedadmin:
+        image: plopix/docker-memcacheadmin
+        ports:
+            - "${PORT_PREFIX}083:9083"
+        environment:
+            - "MEMCACHE_HOST=memcache"
+        depends_on:
+            - memcache
+
+    varnish:
+        image: million12/varnish
+        ports:
+            - "${PORT_PREFIX}082:80"
+        volumes:
+            # @todo: A script like for the vhost
+            - "${ROOT_PATH}/bin/.docker/varnish/varnish.vcl:/etc/varnish/default.vcl:ro"
+            - "${ROOT_PATH}/bin/.docker/varnish/entrypoint.bash:/entrypoint.bash:ro"
+        environment:
+            - "VCL_CONFIG=/etc/varnish/default.vcl"
+            - "VARNISHD_PARAMS=-p default_ttl=3600"
+            - "CACHE_SIZE=256M"
+        depends_on:
+            - web
+        entrypoint: /entrypoint.bash
+        command: ["/start.sh"]
