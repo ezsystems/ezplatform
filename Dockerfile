@@ -12,7 +12,7 @@ ENV SYMFONY_ENV=prod
 COPY . /var/www
 
 # Do composer install, remove cache, fix owner, and remove auth.json if REMOVE_AUTH=1
-RUN composer install --no-progress --no-interaction --prefer-dist \
+RUN composer install --optimize-autoloader --no-progress --no-interaction --prefer-dist \
  && rm -Rf app/logs/* app/cache/*/* .git/ web/var \
  && mkdir web/var \
  && chown ez:ez -R /var/www \
