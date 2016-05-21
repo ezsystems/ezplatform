@@ -57,7 +57,7 @@ Assuming you have downloaded this distribution to a local folder, and you have a
 # Next step will do a composer install, for this to work smoothly create auth.json file with your readonly GitHub token
 # and if you use eZ Enterprise software also for updates.ez.no (https://doc.ez.no/display/TECHDOC/Using+Composer)
 docker-compose up -d --force-recreate --build
-docker-compose run -u ez --rm app /bin/sh -c "php /scripts/wait_for_db.php; php app/console ezplatform:install clean"
+docker-compose exec --user ez app /bin/sh -c "php /scripts/wait_for_db.php; php app/console ezplatform:install clean"
 ```
 
 At this point you should be able to browse the site on `localhost:8080` and the backend UI on `localhost:8080/ez`.
@@ -75,7 +75,7 @@ export COMPOSE_FILE=bin/.docker/docker-compose.yml:bin/.docker/docker-compose.de
 # and if you use eZ Enterprise software also for updates.ez.no (https://doc.ez.no/display/TECHDOC/Using+Composer)
 docker-compose -f bin/.docker/install.yml up install
 docker-compose up -d --force-recreate --no-build
-docker-compose run -u ez --rm app /bin/sh -c "php /scripts/wait_for_db.php; php app/console ezplatform:install clean"
+docker-compose exec --user ez app /bin/sh -c "php /scripts/wait_for_db.php; php app/console ezplatform:install clean"
 ```
 
 At this point you should be able to browse the site on `localhost:8080` and the backend UI on `localhost:8080/ez`.
