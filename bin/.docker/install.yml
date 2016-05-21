@@ -5,7 +5,7 @@ services:
   install:
     image: ezsystems/php:${PHP_VERSION}-v0
     volumes:
-     - ../../:/var/www
+     - ${COMPOSE_DIR}/../..:/var/www
      - $COMPOSER_HOME:/home/ez/.composer
     environment:
      - SYMFONY_ENV
