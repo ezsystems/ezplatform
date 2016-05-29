@@ -79,4 +79,36 @@ class AppKernel extends Kernel
     {
         $loader->load($this->getRootDir() . '/config/config_' . $this->getEnvironment() . '.yml');
     }
+
+    /**
+     * Customized to be able to set via evn variable
+     *
+     * Can't use SYMFONY__ style env variable as it would be set on parameters but not taken into account for code using
+     * this public method directly.
+     *
+     * {@inheritdoc}
+     */
+    public function getCacheDir()
+    {
+        if (!empty($_SERVER['KERNEL_CACHE_DIR'])) {
+            return $_SERVER['KERNEL_CACHE_DIR'];
+        }
+        return parent::getCacheDir();
+    }
+
+    /**
+     * Customized to be able to set via evn variable
+     *
+     * Can't use SYMFONY__ style env variable as it would be set on parameters but not taken into account for code using
+     * this public method directly.
+     *
+     * {@inheritdoc}
+     */
+    public function getLogDir()
+    {
+        if (!empty($_SERVER['KERNEL_LOGS_DIR'])) {
+            return $_SERVER['KERNEL_LOGS_DIR'];
+        }
+        return parent::getLogDir();
+    }
 }

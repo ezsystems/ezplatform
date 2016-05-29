@@ -19,3 +19,7 @@ services:
      - DATABASE_PASSWORD
      - DATABASE_NAME
      - DATABASE_HOST=db
+     # As write performance on shared folders and nfs is slow, put cache and log in shm for better perf on mac/win
+     # However not optimal as for instance PhpStorm Symfony extensions relies on parsing cache files for auto completion
+     - KERNEL_CACHE_DIR=/dev/shm/app/cache
+     - KERNEL_LOGS_DIR=/dev/shm/app/logs
