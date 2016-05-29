@@ -58,7 +58,7 @@
         - `ezsystems/ezstudio`: Commercial flavour that adds additional capabilities, see [ezstudio.com](http://ezstudio.com/).
        - `<directory>`: Folder to extract to, if omitted same as package name so in example: `ezplatform`.
        - `<version>`: Optional, *when omitted you'll get latest stable*. Examples:
-        - `~1.2.0`: To pick latests 1.2 release, to pick latests 1.x release use `~1.2`.
+        - `~1.3.0`: To pick latests 1.3 release, to pick latests 1.x release use `~1.3`.
         - `v1.1.0` : To pick a specific tag, could also have been `v1.0.0-rc1`
         - `dev-master` : Picks a development version from a branch, here `master`.
 
