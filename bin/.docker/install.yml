@@ -10,4 +10,5 @@ services:
     environment:
      - SYMFONY_ENV
      - SYMFONY_DEBUG
-    command: /bin/sh -c "composer install --no-progress --no-interaction --prefer-dist"
+    # Dumping autoload using --optimize-autoloader to keep performenace on a usable level, not needed on linux host.
+    command: /bin/sh -c "composer install --no-progress --no-interaction --prefer-dist --optimize-autoloader"
