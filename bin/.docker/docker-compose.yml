@@ -21,7 +21,7 @@ services:
   db:
     image: mariadb:10.0
     volumes:
-     - ./database_character_set.sh:/docker-entrypoint-initdb.d/database_character_set.sh
+     - $COMPOSE_DIR/database_character_set.sh:/docker-entrypoint-initdb.d/database_character_set.sh
     environment:
      - MYSQL_ROOT_PASSWORD=mysecretrootpassword
      - MYSQL_USER=$DATABASE_USER

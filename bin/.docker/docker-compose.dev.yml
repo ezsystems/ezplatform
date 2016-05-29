@@ -8,7 +8,7 @@ services:
     #image: ezsystems/php:${PHP_VERSION}-v0-dev
     image: ezsystems/php:${PHP_VERSION}-v0
     volumes:
-     - ../../:/var/www
+     - $COMPOSE_DIR/../../:/var/www
      - $COMPOSER_HOME:/home/ez/.composer
     depends_on:
      - db

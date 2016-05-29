@@ -78,6 +78,23 @@ docker-compose up -d --force-recreate --no-build
 docker-compose exec --user ez app /bin/sh -c "php /scripts/wait_for_db.php; php app/console ezplatform:install clean"
 ```
 
+##### With Docker Machine
+
+If you have a Docker Machine(boot2docker) it means you have a Linux virtual machine which contains the Docker daemon.
+In this configuration this Docker Machine is probably a Virtualbox or a VMWare that mounts a folder on your computer.
+
+To do the mapping between your computer(e.g: you Mac) and the Docker Machine, you need to export two variables
+```sh
+export COMPOSE_DIR=/data/SOURCES/MYPROJECTS/ezplatform/bin/.docker COMPOSER_HOME=/tmp
+```
+In this example _/data/SOURCES/MYPROJECTS_ is a mount(or a sharefolder) of you computer on the Docker Machine
+Don't forget as you probably know to load the env vars for your Docker machine
+```sh
+eval $(docker-machine env osxdock)
+```
+> Assuming that *osxdock* is your Docker Machine name.
+
+
 At this point you should be able to browse the site on `localhost:8080` and the backend UI on `localhost:8080/ez`.
 
 ### eZ Platform Demo
