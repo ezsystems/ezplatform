@@ -71,12 +71,15 @@ Assuming you have downloaded this distribution to a local folder, and you have d
 machine, then execute the following:
 ```sh
 export COMPOSE_FILE=bin/.docker/docker-compose.yml:bin/.docker/docker-compose.dev.yml SYMFONY_ENV=dev SYMFONY_DEBUG=1
+# If you use Docker Machine with NFS, you'll need to specify where project is, & give composer a valid dir to use.
+#export COMPOSE_DIR=/data/SOURCES/MYPROJECTS/ezplatform/bin/.docker COMPOSER_HOME=/tmp
 # Next step will do a composer install, for this to work smoothly create auth.json file with your readonly GitHub token
 # and if you use eZ Enterprise software also for updates.ez.no (https://doc.ez.no/display/TECHDOC/Using+Composer)
 docker-compose -f bin/.docker/install.yml up install
 docker-compose up -d --force-recreate --no-build
 docker-compose exec --user ez app /bin/sh -c "php /scripts/wait_for_db.php; php app/console ezplatform:install clean"
 ```
+
 
 At this point you should be able to browse the site on `localhost:8080` and the backend UI on `localhost:8080/ez`.
 
