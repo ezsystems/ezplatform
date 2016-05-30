@@ -11,11 +11,16 @@ ENV SYMFONY_ENV=prod
 # Copy in project files into work dir
 COPY . /var/www
 
-# Do composer install, remove cache, fix owner, and remove auth.json if REMOVE_AUTH=1
-RUN composer install --optimize-autoloader --no-progress --no-interaction --prefer-dist \
- && rm -Rf app/logs/* app/cache/*/* .git/ web/var \
- && mkdir web/var \
- && chown ez:ez -R /var/www \
+# Remove cache folders to avoid layer issues, ref: https://github.com/symfony/symfony/issues/12533#issuecomment-76406216
+RUN rm -Rf app/logs/* app/cache/* .git/ \
+ && mkdir -p web/var \
+ && composer install --optimize-autoloader --no-progress --no-interaction --prefer-dist \
+# Clear cache again so env variables are taken into account on startup
+ && rm -Rf app/logs/* app/cache/*/* \
+# Fix permissions for www-data
+ && chown -R www-data:www-data app/cache app/logs web/var \
+ && find app/cache app/logs web/var -type d | xargs chmod -R 775 \
+ && find app/cache app/logs web/var -type f | xargs chmod -R 664 \
  && [ "$REMOVE_AUTH" = "1" ] && rm -f auth.json
 
 # Declare volumes so it an can be shared with other containers

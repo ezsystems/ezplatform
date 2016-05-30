@@ -17,7 +17,7 @@ default:
                 path: app/AppKernel.php
                 class: AppKernel
                 env: behat
-                debug: true
+                debug: false
 
         jarnaiz\JUnitFormatter\JUnitFormatterExtension:
             filename: report.xml
