@@ -7,10 +7,10 @@ services:
 
 env:
   global:
-    - COMPOSE_FILE="bin/.docker/docker-compose.yml:bin/.docker/docker-compose.dev.yml:bin/.docker/docker-compose.behat.yml"
+    - COMPOSE_FILE="doc/docker-compose/prod.yml:doc/docker-compose/dev.yml:doc/docker-compose/selenium.yml"
   # list of behat arguments to test
   matrix:
-    - ARGS="--profile=rest --suite=fullJson" COMPOSE_FILE="bin/.docker/docker-compose.yml:bin/.docker/docker-compose.behat.yml"
+    - ARGS="--profile=rest --suite=fullJson" COMPOSE_FILE="doc/docker-compose/prod.yml:doc/docker-compose/selenium.yml"
     - ARGS="--profile=rest --suite=fullXml" SYMFONY_ENV=behat SYMFONY_DEBUG=1 RUN_INSTALL=1
     - ARGS="--profile=core" SYMFONY_ENV=behat SYMFONY_DEBUG=1 RUN_INSTALL=1
 
@@ -27,16 +27,16 @@ before_script:
   # Internal auth token dedicated to testing with travis+composer on ezsystems repos, not for reuse!
   - echo "{\"github-oauth\":{\"github.com\":\"d0285ed5c8644f30547572ead2ed897431c1fc09\"}}" > auth.json
   # In case of dev mode we'll need to install composer packages first
-  - if [ "$RUN_INSTALL" = "1" ]; then docker-compose -f bin/.docker/install.yml up install; fi
+  - if [ "$RUN_INSTALL" = "1" ]; then docker-compose -f doc/docker-compose/install.yml up install; fi
   # Run (start containers and execute install command)
   - docker-compose up -d
   #- docker ps
   #- docker-compose logs app
-  - travis_retry docker-compose run -u ez --rm app /bin/sh -c "php /scripts/wait_for_db.php; php app/console ezplatform:install clean"
+  - travis_retry docker-compose exec --user www-data app /bin/sh -c "php /scripts/wait_for_db.php; php app/console ezplatform:install clean"
 
 # execute behat as the script command
 # using behat.yml which is a copy of behat.yml.dist with hostnames update by docker-compose.behat.yml
-script: docker-compose run -u ez --rm behatphpcli bin/behat -vv $ARGS --tags=~@broken
+script: docker-compose run -u www-data --rm behatphpcli bin/behat -vv $ARGS --tags=~@broken
 
 # disable mail notifications
 notifications:

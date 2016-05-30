@@ -1,0 +1,12 @@
+version: '2'
+# Blackfire agent config, depends on at least prod.yml, but can also be combined with others as it is standalone service
+# You'll need to export the two blackfire server variables before you can use this.
+
+services:
+  # See: https://blackfire.io/docs/integrations/docker
+  blackfire:
+    image: blackfire/blackfire
+    environment:
+        # Reads the host BLACKFIRE_SERVER_ID and BLACKFIRE_SERVER_TOKEN environment variables.
+        - BLACKFIRE_SERVER_ID
+        - BLACKFIRE_SERVER_TOKEN

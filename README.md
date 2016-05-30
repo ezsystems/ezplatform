@@ -46,42 +46,8 @@ features for editorial teams and media companies, 100% built on top of *eZ Platf
 
 ## Install
 For manual installation instructions, see [INSTALL.md](https://github.com/ezsystems/ezplatform/blob/master/INSTALL.md).
+For simplified installation using Docker, see [doc/docker-compose/README.md](https://github.com/ezsystems/ezplatform/blob/master/doc/docker-compose/README.md).
 
-### Installation using Docker
-
-#### Production / Demo use
-
-Assuming you have downloaded this distribution to a local folder, and you have a recent version of
- [Docker & Docker-Compose](https://www.docker.com/) installed on your machine, then execute the following:
-```sh
-# Next step will do a composer install, for this to work smoothly create auth.json file with your readonly GitHub token
-# and if you use eZ Enterprise software also for updates.ez.no (https://doc.ez.no/display/TECHDOC/Using+Composer)
-docker-compose up -d --force-recreate --build
-docker-compose exec --user ez app /bin/sh -c "php /scripts/wait_for_db.php; php app/console ezplatform:install clean"
-```
-
-At this point you should be able to browse the site on `localhost:8080` and the backend UI on `localhost:8080/ez`.
-
-#### Development use
-
-NOTE: *Be aware Docker for Mac as of v1.11.1-beta12 has IO performance issues which is 50-100x worse then those shard
-folder with Virtualbox ever had. Use Docker Machine or other solutions for now to avoid this.*
-
-Assuming you have downloaded this distribution to a local folder, and you have docker & docker-compose installed on your
-machine, then execute the following:
-```sh
-export COMPOSE_FILE=bin/.docker/docker-compose.yml:bin/.docker/docker-compose.dev.yml SYMFONY_ENV=dev SYMFONY_DEBUG=1
-# If you use Docker Machine with NFS, you'll need to specify where project is, & give composer a valid dir to use.
-#export COMPOSE_DIR=/data/SOURCES/MYPROJECTS/ezplatform/bin/.docker COMPOSER_HOME=/tmp
-# Next step will do a composer install, for this to work smoothly create auth.json file with your readonly GitHub token
-# and if you use eZ Enterprise software also for updates.ez.no (https://doc.ez.no/display/TECHDOC/Using+Composer)
-docker-compose -f bin/.docker/install.yml up install
-docker-compose up -d --force-recreate --no-build
-docker-compose exec --user ez app /bin/sh -c "php /scripts/wait_for_db.php; php app/console ezplatform:install clean"
-```
-
-
-At this point you should be able to browse the site on `localhost:8080` and the backend UI on `localhost:8080/ez`.
 
 ### eZ Platform Demo
 This repository lets you create a clean, empty installation of eZ Platform. This type of installation is used for developing from scratch. You can also choose a version of eZ Platform including a demo, that is an example website. It is available in the following repository: https://github.com/ezsystems/ezplatform-demo

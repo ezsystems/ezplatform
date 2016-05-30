@@ -9,7 +9,7 @@ server {
     # Additional Assetic rules for eZ Publish 5.1 / 2013.4 and higher.
     ## Don't forget to run php app/console assetic:dump --env=prod
     ## and make sure to comment these out in DEV environment.
-    #if[SYMFONY_ASSET_REWRITE] include ez_params.d/ez_prod_rewrite_params;
+    #if[SYMFONY_ENV!=dev] include ez_params.d/ez_prod_rewrite_params;
 
     # Cluster/streamed files rewrite rules. Enable on cluster with DFS as a binary data handler
     #rewrite "^/var/([^/]+/)?storage/images(-versioned)?/(.*)" "/app.php" break;

@@ -1,9 +1,9 @@
 version: '2'
-# Appends config in docker-compose.yml
+# Appends services to prod.yml
 
 services:
   selenium:
-    image: selenium/standalone-firefox
+    image: ${SELENIUM_IMAGE}
     ports:
      - "9999:9999"
      - "4444:4444"
@@ -13,7 +13,7 @@ services:
      - SCREEN_DEPTH=24
 
   behatphpcli:
-    image: ezsystems/php:${PHP_VERSION}-v0
+    image: ${PHP_IMAGE}
     depends_on:
      - db
      - web
