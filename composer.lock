@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0812db00cd0ae39533f03a828a8958fd",
-    "content-hash": "4c85323daf58586f71a0c15814cc741a",
+    "hash": "acfd3b6b4f7d9f14656475926220019e",
+    "content-hash": "4f7e9727885ce9479c546db8e0bc1237",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -785,7 +785,7 @@
         },
         {
             "name": "ezsystems/ezpublish-kernel",
-            "version": "v6.3.1-rc1",
+            "version": "v6.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-kernel.git",
@@ -903,7 +903,7 @@
         },
         {
             "name": "ezsystems/platform-ui-bundle",
-            "version": "v1.3.1-rc1",
+            "version": "v1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/PlatformUIBundle.git",
@@ -946,7 +946,7 @@
         },
         {
             "name": "ezsystems/repository-forms",
-            "version": "v1.2.1-rc1",
+            "version": "v1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/repository-forms.git",
@@ -5415,13 +5415,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "ezsystems/ezpublish-kernel": 5,
-        "ezsystems/repository-forms": 5,
-        "ezsystems/ezplatform-solr-search-engine": 5,
-        "ezsystems/platform-ui-bundle": 5,
-        "ezsystems/ez-support-tools": 5
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
