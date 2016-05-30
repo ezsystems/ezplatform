@@ -18,7 +18,7 @@
     },
     "require": {
         "php": "~5.5|~7.0",
-        "symfony/symfony": "~2.7.0",
+        "symfony/symfony": "~2.8.0",
         "twig/extensions": "~1.0",
         "symfony/assetic-bundle": "~2.3",
         "symfony/swiftmailer-bundle": "~2.3",
