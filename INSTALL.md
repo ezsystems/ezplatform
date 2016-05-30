@@ -162,9 +162,9 @@
     Configure virtual host by either taking examples from [Nginx](doc/nginx) or [Apache2](doc/apache2) documentation,
     or by using provided script to generate from templates, for help see `./bin/vhost.sh -h`, example:
     ```bash
-    ./bin/vhost.sh --basedir=/var/www/ezplatform \\
-      --template-file=doc/apache2/vhost.template \\
-      --host-name=ezplatform \\
+    ./bin/vhost.sh --basedir=/var/www/ezplatform \
+      --template-file=doc/apache2/vhost.template \
+      --host-name=ezplatform \
       | sudo tee /etc/apache2/sites-enabled/ezplatform.conf > /dev/null
     ```
     Check and adapt the generated vhost config, and then restart Apache or Nginx.
