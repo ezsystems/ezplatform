@@ -78,7 +78,7 @@ Example config for Apache 2.4 in prefork mode:
         # Additional Assetic rules for environments different from dev,
         # remember to run php app/console assetic:dump --env=prod
         RewriteCond %{ENV:SYMFONY_ENV} !^(dev)
-        RewriteRule ^/(css|js|font)/.*\.(css|js|otf|eot|ttf|svg|woff) - [L]
+        RewriteRule ^/(css|js|fonts?)/.*\.(css|js|otf|eot|ttf|svg|woff) - [L]
 
         RewriteRule .* /app.php
     </VirtualHost>
@@ -125,7 +125,7 @@ If you do not have an access to use virtualhost config, use the `.htaccess` file
     # Additional Assetic rules for prod environments
     # ! Remember to run php ezpublish/console assetic:dump --env=prod on changes
     # ! Or if SYMFONY_ENV is set to "dev", comment this out!
-    RewriteRule ^(css|js|font)/.*\.(css|js|otf|eot|ttf|svg|woff) - [L]
+    RewriteRule ^(css|js|fonts?)/.*\.(css|js|otf|eot|ttf|svg|woff) - [L]
 
     # Rewrite all other queries to the front controller.
     RewriteRule .* app.php
