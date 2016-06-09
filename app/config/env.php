@@ -65,3 +65,8 @@ if ($value = getenv('LOG_TYPE')) {
 if ($value = getenv('LOG_PATH')) {
     $container->setParameter('log_path', $value);
 }
+
+# Symfony profiler storage setting
+if ($value = getenv('PROFILE_DSN')) {
+    $container->setParameter('profile_dsn', $value);
+}
