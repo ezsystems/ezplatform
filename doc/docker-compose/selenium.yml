@@ -1,0 +1,30 @@
+version: '2'
+# Appends services to prod.yml
+
+services:
+  selenium:
+    image: ${SELENIUM_IMAGE}
+    ports:
+     - "9999:9999"
+     - "4444:4444"
+    environment:
+     - SCREEN_WIDTH=1920
+     - SCREEN_HEIGHT=1080
+     - SCREEN_DEPTH=24
+
+  behatphpcli:
+    image: ${PHP_IMAGE}
+    depends_on:
+     - db
+     - web
+     - selenium
+    volumes_from:
+     - app
+    environment:
+     - SYMFONY_ENV
+     - SYMFONY_DEBUG
+     - DATABASE_USER
+     - DATABASE_PASSWORD
+     - DATABASE_NAME
+     - DATABASE_HOST=db
+    command: /bin/sh -c "cp -f behat.yml.dist behat.yml; sed -i 's@localhost:4444@selenium:4444@' behat.yml; sed -i 's@localhost@web@' behat.yml"

@@ -44,8 +44,10 @@ features for editorial teams and media companies, 100% built on top of *eZ Platf
 - eZ Systems AS *(commercial products and services)*: [ez.no](http://ez.no/)
 - eZ Community: [share.ez.no](http://ez.no/)
 
-## Install and Upgrade
-For installation & upgrade instructions, see [INSTALL.md](https://github.com/ezsystems/ezplatform/blob/master/INSTALL.md).
+## Install
+For manual installation instructions, see [INSTALL.md](https://github.com/ezsystems/ezplatform/blob/master/INSTALL.md).
+For simplified installation, see our Docker Tools Beta instructions in [doc/docker-compose/README.md](https://github.com/ezsystems/ezplatform/blob/master/doc/docker-compose/README.md).
+
 
 ### eZ Platform Demo
 This repository lets you create a clean, empty installation of eZ Platform. This type of installation is used for developing from scratch. You can also choose a version of eZ Platform including a demo, that is an example website. It is available in the following repository: https://github.com/ezsystems/ezplatform-demo

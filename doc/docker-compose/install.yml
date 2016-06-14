@@ -1,0 +1,19 @@
+version: '2'
+# compose file for installing composer packages using same php image as the others
+
+services:
+  install:
+    image: ${PHP_IMAGE}
+    volumes:
+     - ${COMPOSE_DIR}/../..:/var/www
+     - ${COMPOSER_HOME}:/root/.composer
+    environment:
+     - SYMFONY_ENV
+     - SYMFONY_DEBUG
+    # Dumping autoload using --optimize-autoloader to keep performenace on a usable level, not needed on linux host.
+    command: /bin/sh -c "
+      composer install --no-progress --no-interaction --prefer-dist --optimize-autoloader;
+      rm -Rf app/logs/* app/cache/*/*;
+      chown -R www-data:www-data app/cache app/logs web/var;
+      find app/cache app/logs web/var -type d | xargs chmod -R 775;
+      find app/cache app/logs web/var -type f | xargs chmod -R 664"
