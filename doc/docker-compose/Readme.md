@@ -1,19 +1,28 @@
-# Installation using Docker
+# Using Docker Tools for your project
 
-#### Intro
+> **Beta**: Instructions and Tools *(Docker images, Dockerfile, docker-compose files, scripts, ..)* described on this page
+ is currently in Beta for community testing & contribution, and might change without notice.
+ See [online Docker Tools documentation](https://doc.ez.no/display/DEVELOPER/Docker+Tools) for known issues and further information.
+
+
+**"Project"**: *This page describes usage for your custom project code, for just launching a stock eZ Platform demo see [online Docker Tools documentation](https://doc.ez.no/display/DEVELOPER/Docker+Tools)*.
+
+
+## Overview
 
 This setup requires Docker Compose 1.7 or higher, and Docker 1.10 or higher. Defaults are set in `.env`, and
-files to ignore are set in `.dockerignore`. By default a production image is built and setup for use.
+files to ignore are set in `.dockerignore`. By default `.env` specifies that production image is built and setup for use.
 
-#### Installing Docker
+#### Before you begin: Install Docker & Docker-Compose
 
-Before jumping into steps below for either production / demo or development use, make sure you have recent versions of
-[Docker & Docker-Compose](https://www.docker.com/) installed on your machine.
+Before jumping into steps below, make sure you have recent versions of [Docker & Docker-Compose](https://www.docker.com/)
+installed on your machine.
 
 *For Windows you'll also need to [install bash](https://msdn.microsoft.com/en-us/commandline/wsl/about), or adapt instructions below for Windows command line where needed.*
 
+## Project setup
 
-## Production / Demo use
+### Production / Demo "image" use
 
 From root of your projects clone of this distribution, [setup composer auth.json](#composer) and execute the following:
 ```sh
@@ -30,7 +39,8 @@ docker-compose exec --user www-data app /bin/sh -c "php /scripts/wait_for_db.php
 
 At this point you should be able to browse the site on `localhost:8080` and the backend UI on `localhost:8080/ez`.
 
-## Development use
+### Development "mount" use
+
 
 Warning: *Dev setup works a lot faster on Linux then on Windows/Mac where Docker uses virtual machines using shared folders
 by default under the hood, which leads to much slower IO performance.*
@@ -55,7 +65,11 @@ docker-compose exec --user www-data app /bin/sh -c "php /scripts/wait_for_db.php
 At this point, you should be able to browse the site on `localhost:8080` and the backend UI on `localhost:8080/ez`.
 
 
-## Behat use
+### Behat and Selenium use
+
+*Docker-Compose setup for Behat use is provided and used internally to test eZ Platform, this can be combined with most
+setups, here shown in combination with production setup which is what you1'll typically need to test before pushing your
+image to Docker Hub/Registry.*
 
 From root of your projects clone of this distribution, [setup composer auth.json](#composer) and execute the following:
 ```sh
@@ -77,7 +91,7 @@ docker-compose run -u www-data --rm behatphpcli bin/behat -vv --profile=rest --s
 *Tip: You can typically re run the install command to get back to a clean installation in between behat runs, without recreating the full docker setup.*
 
 
-## Other Tasks
+## Common Docker-Compose usage
 
 ### <a name="composer"></a>Configuring Composer
 
@@ -123,7 +137,7 @@ then defaults in `.env`.
 
 After this you can re run the production or dev steps to setup containers again with updated images.
 
-### Uninstalling
+### Cleanup
 
  Once you are done with your setup, you can stop it, and remove the involved containers.
  ```sh
