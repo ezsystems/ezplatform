@@ -5,7 +5,7 @@ services:
   web:
     image: ${NGINX_IMAGE}
     volumes_from:
-     - app
+     - app:ro
     ports:
      - "8080:80"
     environment:
@@ -19,9 +19,9 @@ services:
   db:
     image: ${MYSQL_IMAGE}
     volumes:
-     - ${COMPOSE_DIR}/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+     - ${COMPOSE_DIR}/entrypoint/mysql:/docker-entrypoint-initdb.d/:ro
     environment:
-     - MYSQL_ROOT_PASSWORD=mysecretrootpassword
+     - MYSQL_RANDOM_ROOT_PASSWORD=1
      - MYSQL_USER=$DATABASE_USER
      - MYSQL_PASSWORD=$DATABASE_PASSWORD
      - MYSQL_DATABASE=$DATABASE_NAME

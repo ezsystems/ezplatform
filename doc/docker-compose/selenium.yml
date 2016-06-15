@@ -27,4 +27,5 @@ services:
      - DATABASE_PASSWORD
      - DATABASE_NAME
      - DATABASE_HOST=db
+     - EZP_TEST_REST_HOST=web
     command: /bin/sh -c "cp -f behat.yml.dist behat.yml; sed -i 's@localhost:4444@selenium:4444@' behat.yml; sed -i 's@localhost@web@' behat.yml"
