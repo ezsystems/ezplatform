@@ -1,0 +1,19 @@
+version: '2'
+# Dev config, mounts from host directory, depends on prod.yml
+
+services:
+  app:
+    build: {}
+    image: ${PHP_IMAGE}
+    volumes:
+     - ${COMPOSE_DIR}/../../:/var/www
+     - ${COMPOSER_HOME}:/root/.composer
+    depends_on:
+     - db
+    environment:
+     - SYMFONY_ENV
+     - SYMFONY_DEBUG
+     - DATABASE_USER
+     - DATABASE_PASSWORD
+     - DATABASE_NAME
+     - DATABASE_HOST=db

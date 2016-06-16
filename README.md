@@ -51,8 +51,9 @@ In short eZ Studio comes with new features and services that extend eZ Platform 
 
 http://ez.no/Blog/What-to-Expect-from-eZ-Studio-and-eZ-Platform
 
-## Install and Upgrade
-For installation & upgrade instructions, see [INSTALL.md](https://github.com/ezsystems/ezstudio/blob/master/INSTALL.md).
+## Install
+For manual installation instructions, see [INSTALL.md](https://github.com/ezsystems/ezstudio/blob/master/INSTALL.md).
+For simplified installation, see our Docker Tools Beta instructions in [doc/docker-compose/README.md](https://github.com/ezsystems/ezstudio/blob/master/doc/docker-compose/README.md).
 
 ## Requirements
 Full requirements can be found on the [Requirements](https://doc.ez.no/display/TECHDOC/Requirements) page.

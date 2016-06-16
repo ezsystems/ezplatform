@@ -1,5 +1,8 @@
 # Installation instructions
 
+NOTE: *For simplified installation, see our Docker Tools Beta instructions in [doc/docker-compose/README.md](https://github.com/ezsystems/ezplatform/blob/master/doc/docker-compose/README.md).
+By using those instructions you won't have to setup mysql, php, and nginx yourself, and almost all steps below are done for you.*
+
 ## Terms for future reference:
   * `/<root-dir>/`: The filesystem path where eZ Studio is installed in.
     Examples: `/home/myuser/www/` or `/var/sites/<project-name>/`
@@ -161,9 +164,9 @@
     Configure virtual host by either taking examples from [Nginx](doc/nginx) or [Apache2](doc/apache2) documentation,
     or by using provided script to generate from templates, for help see `./bin/vhost.sh -h`, example:
     ```bash
-    ./bin/vhost.sh --basedir=/var/www/ezstudio \\
-      --template-file=doc/apache2/vhost.template \\
-      --host-name=ezstudio \\
+    ./bin/vhost.sh --basedir=/var/www/ezstudio \
+      --template-file=doc/apache2/vhost.template \
+      --host-name=ezstudio \
       | sudo tee /etc/apache2/sites-enabled/ezstudio.conf > /dev/null
     ```
     Check and adapt the generated vhost config, and then restart Apache or Nginx.
