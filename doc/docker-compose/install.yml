@@ -16,4 +16,6 @@ services:
       rm -Rf app/logs/* app/cache/*/*;
       chown -R www-data:www-data app/cache app/logs web/var;
       find app/cache app/logs web/var -type d | xargs chmod -R 775;
-      find app/cache app/logs web/var -type f | xargs chmod -R 664"
+      find app/cache app/logs web/var -type f | xargs chmod -R 664;
+      # For dev and behat tests we give a bit extra rights, never do this for prod.
+      chown -R www-data:www-data app/config src"
