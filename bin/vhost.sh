@@ -28,6 +28,7 @@ template_vars=(${option_vars[*]})
 template_vars+=("%BODY_SIZE_LIMIT_M%")
 template_vars+=("%TIMEOUT_S%")
 template_vars+=("%HOST_LIST%")
+template_vars+=("%SYMFONY_ASSET_REWRITE%")
 
 # Default options
 declare -a template_values=(
@@ -48,6 +49,7 @@ declare -a template_values=(
     "48m"
     "90s"
     "localhost *.localhost"
+    "1"
 )
 
 function show_help
@@ -222,6 +224,13 @@ template_values[16]="${template_values[7]}"
 if [[ "${template_values[4]}" != "" ]] ; then
      tmp="${template_values[16]} ${template_values[4]}"
      template_values[16]=$tmp
+fi
+
+# To be able to control if rewrite rules are enabled seperate from SYMFONY_ENV we add SYMFONY_ASSET_REWRITE
+if [ "${!SYMFONY_ASSET_REWRITE:-SomeDefault}" != "SomeDefault" ] ; then
+      template_values[17]=$SYMFONY_ASSET_REWRITE
+elif [ "${template_values[5]}" = "dev" ] ; then
+    template_values[17]=""
 fi
 
 
