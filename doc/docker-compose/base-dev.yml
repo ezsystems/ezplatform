@@ -1,7 +1,22 @@
 version: '2'
-# Simple single server setup
+# Single server setup for dev
 
 services:
+  app:
+    image: ${PHP_IMAGE}
+    volumes:
+     - ${COMPOSE_DIR}/../../:/var/www
+     - ${COMPOSER_HOME}:/root/.composer
+    depends_on:
+     - db
+    environment:
+     - SYMFONY_ENV
+     - SYMFONY_DEBUG
+     - DATABASE_USER
+     - DATABASE_PASSWORD
+     - DATABASE_NAME
+     - DATABASE_HOST=db
+
   web:
     image: ${NGINX_IMAGE}
     volumes_from:
@@ -26,16 +41,3 @@ services:
      - MYSQL_PASSWORD=$DATABASE_PASSWORD
      - MYSQL_DATABASE=$DATABASE_NAME
      - TERM=dumb
-
-  app:
-    build: ../../
-    image: ezsystems/ezplatform
-    depends_on:
-     - db
-    environment:
-     - SYMFONY_ENV
-     - SYMFONY_DEBUG
-     - DATABASE_USER
-     - DATABASE_PASSWORD
-     - DATABASE_NAME
-     - DATABASE_HOST=db

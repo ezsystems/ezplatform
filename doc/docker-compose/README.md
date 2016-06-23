@@ -27,7 +27,7 @@ installed on your machine.
 From root of your projects clone of this distribution, [setup composer auth.json](#composer) and execute the following:
 ```sh
 # Optional step if you'd like to use blackfire with the setup, change <id> and <token> with your own values
-#export COMPOSE_FILE=doc/docker-compose/prod.yml:doc/docker-compose/blackfire.yml BLACKFIRE_SERVER_ID=<id> BLACKFIRE_SERVER_TOKEN=<token>
+#export COMPOSE_FILE=doc/docker-compose/base-prod.yml:doc/docker-compose/blackfire.yml BLACKFIRE_SERVER_ID=<id> BLACKFIRE_SERVER_TOKEN=<token>
 
 docker-compose up -d --force-recreate --build
 ```
@@ -47,7 +47,7 @@ by default under the hood, which leads to much slower IO performance.*
 
 From root of your projects clone of this distribution, [setup composer auth.json](#composer) and execute the following:
 ```sh
-export COMPOSE_FILE=doc/docker-compose/prod.yml:doc/docker-compose/dev.yml SYMFONY_ENV=dev SYMFONY_DEBUG=1
+export COMPOSE_FILE=doc/docker-compose/base-dev.yml SYMFONY_ENV=dev SYMFONY_DEBUG=1
 
 # Optional: If you use Docker Machine with NFS, you'll need to specify where project is, & give composer a valid directory.
 #export COMPOSE_DIR=/data/SOURCES/MYPROJECTS/ezplatform/doc/docker-compose COMPOSER_HOME=/tmp
@@ -73,7 +73,7 @@ image to Docker Hub/Registry.*
 
 From root of your projects clone of this distribution, [setup composer auth.json](#composer) and execute the following:
 ```sh
-export COMPOSE_FILE=doc/docker-compose/prod.yml:doc/docker-compose/selenium.yml
+export COMPOSE_FILE=doc/docker-compose/base-prod.yml:doc/docker-compose/selenium.yml
 
 docker-compose up -d --force-recreate --build
 ```
