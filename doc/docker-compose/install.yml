@@ -1,22 +1,42 @@
 version: '2'
-# compose file for installing composer packages using same php image as the others
+# compose file for installing composer packages, perfrom install and dump database
 
 services:
-  install:
-    image: ${PHP_IMAGE}
+  install_db:
+    image: ${MYSQL_IMAGE}
+    volumes:
+     - ${COMPOSE_DIR}/entrypoint/mysql:/docker-entrypoint-initdb.d/:ro
+    environment:
+     - MYSQL_RANDOM_ROOT_PASSWORD=1
+     - MYSQL_USER=$DATABASE_USER
+     - MYSQL_PASSWORD=$DATABASE_PASSWORD
+     - MYSQL_DATABASE=$DATABASE_NAME
+
+  install_app:
+    image: ${INSTALL_PHP_IMAGE}
     volumes:
      - ${COMPOSE_DIR}/../..:/var/www
      - ${COMPOSER_HOME}:/root/.composer
+    depends_on:
+     - install_db
     environment:
      - SYMFONY_ENV
      - SYMFONY_DEBUG
+     - DATABASE_USER
+     - DATABASE_PASSWORD
+     - DATABASE_NAME
+     - DATABASE_HOST=install_db
     # Dumping autoload using --optimize-autoloader to keep performenace on a usable level, not needed on linux host.
     # Last line:  For dev and behat tests we give a bit extra rights, never do this for prod.
     command: /bin/sh -c "
-      composer install --no-progress --no-interaction --prefer-dist --optimize-autoloader;
+      composer install --no-progress --no-interaction --prefer-dist;
       rm -Rf app/logs/* app/cache/*/*;
       mkdir -p web/var;
       chown -R www-data:www-data app/cache app/logs web/var;
       find app/cache app/logs web/var -type d | xargs chmod -R 775;
       find app/cache app/logs web/var -type f | xargs chmod -R 664;
-      chown -R www-data:www-data app/config src"
+      chown -R www-data:www-data app/config src;
+      php /scripts/wait_for_db.php;
+      php app/console ezplatform:install ${INSTALL_EZ_INSTALL_TYPE};
+      echo 'Dumping database into doc/docker-compose/entrypoint/mysql/2_'${INSTALL_EZ_INSTALL_TYPE}'_dump.sql for use by mysql on startup.';
+      mysqldump -u $$DATABASE_USER --password=$$DATABASE_PASSWORD -h $$DATABASE_HOST --add-drop-table --extended-insert  --protocol=tcp $$DATABASE_NAME > doc/docker-compose/entrypoint/mysql/2_${INSTALL_EZ_INSTALL_TYPE}_dump.sql"
