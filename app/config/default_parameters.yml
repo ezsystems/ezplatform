@@ -6,3 +6,8 @@ parameters:
 
     # Log path, where to store the log files. php://stderr may be used in order to log to standard error
     log_path: "%kernel.logs_dir%/%kernel.environment%.log"
+
+    # Settings for Cache pool, to create your own pool see cache/ folder.
+    cache_pool: "default"
+
+    cache_host: 127.0.0.1

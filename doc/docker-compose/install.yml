@@ -11,9 +11,12 @@ services:
      - SYMFONY_ENV
      - SYMFONY_DEBUG
     # Dumping autoload using --optimize-autoloader to keep performenace on a usable level, not needed on linux host.
+    # Last line:  For dev and behat tests we give a bit extra rights, never do this for prod.
     command: /bin/sh -c "
       composer install --no-progress --no-interaction --prefer-dist --optimize-autoloader;
       rm -Rf app/logs/* app/cache/*/*;
+      mkdir -p web/var;
       chown -R www-data:www-data app/cache app/logs web/var;
       find app/cache app/logs web/var -type d | xargs chmod -R 775;
-      find app/cache app/logs web/var -type f | xargs chmod -R 664"
+      find app/cache app/logs web/var -type f | xargs chmod -R 664;
+      chown -R www-data:www-data app/config src"

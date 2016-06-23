@@ -31,12 +31,12 @@ before_script:
   # Run (start containers and execute install command)
   - docker-compose up -d
   #- docker ps
-  #- docker-compose logs app
+  - docker-compose logs
   - travis_retry docker-compose exec --user www-data app /bin/sh -c "php /scripts/wait_for_db.php; php app/console ezplatform:install clean"
 
-# execute behat as the script command
+# execute behat as the script command, need to use sh to get right exit code (docker/compose/issues/3379)
 # using behat.yml which is a copy of behat.yml.dist with hostnames update by docker-compose.behat.yml
-script: docker-compose run -u www-data --rm behatphpcli bin/behat -vv $ARGS --tags=~@broken
+script: docker-compose exec --user www-data app sh -c "bin/behat -vv $ARGS --tags=~@broken"
 
 # disable mail notifications
 notifications:

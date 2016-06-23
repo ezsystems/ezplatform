@@ -1,5 +1,5 @@
 version: '2'
-# Appends services to prod.yml
+# Appends services to prod.yml, prod+dev, prod+redis, ..., always latests
 
 services:
   selenium:
@@ -12,20 +12,10 @@ services:
      - SCREEN_HEIGHT=1080
      - SCREEN_DEPTH=24
 
-  behatphpcli:
-    image: ${PHP_IMAGE}
+  app:
     depends_on:
-     - db
-     - web
      - selenium
-    volumes_from:
-     - app
     environment:
-     - SYMFONY_ENV
-     - SYMFONY_DEBUG
-     - DATABASE_USER
-     - DATABASE_PASSWORD
-     - DATABASE_NAME
-     - DATABASE_HOST=db
      - EZP_TEST_REST_HOST=web
-    command: /bin/sh -c "cp -f behat.yml.dist behat.yml; sed -i 's@localhost:4444@selenium:4444@' behat.yml; sed -i 's@localhost@web@' behat.yml"
+    # TODO: move this logic to container or entrypoint script
+    command: /bin/sh -c "cp -f behat.yml.dist behat.yml; sed -i 's@localhost:4444@selenium:4444@' behat.yml; sed -i 's@localhost@web@' behat.yml; /scripts/run.sh"

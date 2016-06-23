@@ -2,6 +2,9 @@
 // On Symfony container compilation*, reads parameters from env variables if defined and overrides the yml parameters.
 // * For typical use cases like Docker, make sure to recompile Symfony container on run to refresh settings.
 
+use Symfony\Component\Config\FileLocator;
+use Symfony\Component\DependencyInjection\Loader;
+
 if ($value = getenv('SYMFONY_SECRET')) {
     $container->setParameter('secret', $value);
 }
@@ -64,4 +67,18 @@ if ($value = getenv('LOG_TYPE')) {
 
 if ($value = getenv('LOG_PATH')) {
     $container->setParameter('log_path', $value);
+}
+
+// Cache settings
+// Config validation by Stash prohbitis us from pre defining pools using drivers not supported by all systems
+// So we expose a env variable to load and use other pools when needed, additional pools can be added in cache_pool/ folder.
+if ($pool = getenv('CUSTOM_CACHE_POOL')) {
+    $container->setParameter('cache_pool', $pool);
+
+    if ($host = getenv('CACHE_HOST')) {
+        $container->setParameter('cache_host', $host);
+    }
+
+    $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/cache_pool'));
+    $loader->load($pool . '.yml');
 }
