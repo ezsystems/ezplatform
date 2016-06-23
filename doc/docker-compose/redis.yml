@@ -1,0 +1,13 @@
+version: '2'
+# Redis config, to be appended to prod, prod+dev, ..., but before selenium.yml
+
+services:
+  app:
+    depends_on:
+     - redis
+    environment:
+     - CUSTOM_CACHE_POOL=singleredis
+     - CACHE_HOST=redis
+
+  redis:
+    image: ${REDIS_IMAGE}
