@@ -218,7 +218,7 @@ fi
 ## Option specific logic
 
 # For httpd server having just one host config we provide HOST_LIST
-template_values[16]="${template_values[7]}"
+template_values[16]="${template_values[3]}"
 if [[ "${template_values[4]}" != "" ]] ; then
      tmp="${template_values[16]} ${template_values[4]}"
      template_values[16]=$tmp
