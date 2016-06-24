@@ -43,9 +43,6 @@ In short eZ Studio comes with new features and services that extend eZ Platform 
 *eZ Studio* is a commercial software which adds advanced features for editorial teams and media companies, 100% built on top of *eZ Platform* APIs.
 
 - [eZ Studio Architecture, including "Platform Stack"](https://doc.ez.no/pages/viewpage.action?pageId=11403666)
-- [eZ Studio and eZ Platform RoadMap](http://ez.no/Blog/What-to-Expect-from-eZ-Studio-and-eZ-Platform)
-- [eZ Platform and Studio 2015 release plan](http://ez.no/Blog/What-Releases-to-Expect-from-eZ-in-2015)
-- [eZ Platform and Studio beta versions](http://ez.no/Blog/Introducing-the-beta-of-eZ-s-next-generation-software)
 - eZ Systems AS *(commercial products and services)*: [ez.no](http://ez.no/)
 - eZ Community: [share.ez.no](http://ez.no/)
 
@@ -77,7 +74,7 @@ Alternative is releases of eZ Publish Community, latest as of Oct 2015 is v2014.
 [ezpublish-community](https://github.com/ezsystems/ezpublish-community).
 
 ## COPYRIGHT
-Copyright (C) 1999-2015 eZ Systems AS. All rights reserved.
+Copyright (C) 1999-2016 eZ Systems AS. All rights reserved.
 
 ## LICENSE
 http://ez.no/Products/About-our-Software/Licenses-and-agreements/eZ-Business-Use-License-Agreement-eZ-BUL-Version-2.1 eZ Business Use License Agreement eZ BUL Version 2.1
