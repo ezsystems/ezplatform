@@ -49,21 +49,21 @@ server {
             # Defaults to 0 if omitted, unless SYMFONY_ENV is set to: "dev"
             #if[SYMFONY_DEBUG] fastcgi_param SYMFONY_DEBUG "%SYMFONY_DEBUG%";
 
-            # Whether to use Symfony's HTTP Caching.
+            # Optional: Whether to use Symfony's builtin HTTP Caching Proxy.
             # Disable it if you are using an external reverse proxy (e.g. Varnish)
             # Possible values: 0 or 1
             # Defaults to 1 if omitted, unless SYMFONY_ENV is set to: "dev"
             #if[SYMFONY_HTTP_CACHE] fastcgi_param SYMFONY_HTTP_CACHE "%SYMFONY_HTTP_CACHE%";
 
-            # Whether to use custom HTTP Cache class if SYMFONY_HTTP_CACHE is enabled
+            # Optional: Whether to use custom HTTP Cache class if SYMFONY_HTTP_CACHE is enabled
             # Value must be na autoloadable cache class
             # Defaults to "AppCache"
             #if[SYMFONY_HTTP_CACHE_CLASS] fastcgi_param SYMFONY_HTTP_CACHE_CLASS "%SYMFONY_HTTP_CACHE_CLASS%";
 
-            # Defines the proxies to trust.
-            # Separate entries by a comma
-            # Example: "proxy1.example.com,proxy2.example.org"
-            # By default, no trusted proxies are set
+            # Optional: Defines the proxies to trust
+            # Needed when using Varnish as proxy, if so disable SYMFONY_HTTP_CACHE.
+            # Separate entries by a comma, example: "proxy1.example.com,proxy2.example.org"
+            # Defaults to not be set if env value is omitted or empty
             #if[SYMFONY_TRUSTED_PROXIES] fastcgi_param SYMFONY_TRUSTED_PROXIES "%SYMFONY_TRUSTED_PROXIES%";
         }
     }

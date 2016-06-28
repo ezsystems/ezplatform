@@ -48,7 +48,7 @@
     # Defaults to enabled if SYMFONY_ENV is set to "dev" if env value is omitted or empty
     #if[SYMFONY_DEBUG] SetEnv SYMFONY_DEBUG "%SYMFONY_DEBUG%"
 
-    # Optional: Whether to use Symfony's HTTP Caching.
+    # Optional: Whether to use Symfony's builtin HTTP Caching Proxy.
     # Disable it if you are using an external reverse proxy (e.g. Varnish)
     # Possible values: 0, 1 or ""
     # Defaults to disabled if SYMFONY_ENV is set to "dev" or SYMFONY_TRUSTED_PROXIES is set,

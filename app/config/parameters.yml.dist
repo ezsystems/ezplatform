@@ -2,13 +2,6 @@
 parameters:
     # A secret key that's used to generate certain security-related tokens
     secret: ThisTokenIsNotSoSecretChangeIt
-    locale_fallback: en
-
-    # Setting for mail system, used by SwiftMailer
-    mailer_transport:  smtp
-    mailer_host:       127.0.0.1
-    mailer_user:       ~
-    mailer_password:   ~
 
     # Settings for database backend used by Doctrine DBAL
     # In turn used for Content Repository Persistence, and default database powered search engine
@@ -18,9 +11,3 @@ parameters:
     database_name: ezstudio
     database_user: root
     database_password:
-
-    # One of `legacy` (default) or `solr`
-    search_engine: legacy
-
-    # Solr root endpoint, relevant if `solr` is set as search_engine
-    solr_dsn: http://localhost:8983/solr

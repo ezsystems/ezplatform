@@ -89,6 +89,7 @@
         "___symfony-assets-install": "One of 'symlink', 'relative' (symlinks) or 'hard'",
         "symfony-assets-install": "relative",
         "incenteev-parameters": {
+            "keep-outdated": true,
             "file": "app/config/parameters.yml"
         },
         "branch-alias": {
