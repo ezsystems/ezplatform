@@ -18,4 +18,4 @@ services:
     environment:
      - EZP_TEST_REST_HOST=web
     # TODO: move this logic to container or entrypoint script
-    command: /bin/sh -c "cp -f behat.yml.dist behat.yml; sed -i 's@localhost:4444@selenium:4444@' behat.yml; sed -i 's@localhost@web@' behat.yml; /scripts/run.sh"
+    command: /bin/sh -c "cp -f behat.yml.dist behat.yml; sed -i 's@localhost:4444@selenium:4444@' behat.yml; sed -i 's@localhost@web@' behat.yml; sed -i 's@ behat@ ${SYMFONY_ENV}@' behat.yml; /scripts/run.sh"
