@@ -27,16 +27,16 @@ services:
      - DATABASE_NAME
      - DATABASE_HOST=install_db
     # Dumping autoload using --optimize-autoloader to keep performenace on a usable level, not needed on linux host.
-    # Last line:  For dev and behat tests we give a bit extra rights, never do this for prod.
+    # Second chown line:  For dev and behat tests we give a bit extra rights, never do this for prod.
     command: /bin/sh -c "
       composer install --no-progress --no-interaction --prefer-dist;
-      rm -Rf app/logs/* app/cache/*/*;
       mkdir -p web/var;
+      php /scripts/wait_for_db.php;
+      php app/console ezplatform:install ${INSTALL_EZ_INSTALL_TYPE};
+      rm -Rf app/logs/* app/cache/*/*;
       chown -R www-data:www-data app/cache app/logs web/var;
       find app/cache app/logs web/var -type d | xargs chmod -R 775;
       find app/cache app/logs web/var -type f | xargs chmod -R 664;
       chown -R www-data:www-data app/config src;
-      php /scripts/wait_for_db.php;
-      php app/console ezplatform:install ${INSTALL_EZ_INSTALL_TYPE};
       echo 'Dumping database into doc/docker-compose/entrypoint/mysql/2_'${INSTALL_EZ_INSTALL_TYPE}'_dump.sql for use by mysql on startup.';
       mysqldump -u $$DATABASE_USER --password=$$DATABASE_PASSWORD -h $$DATABASE_HOST --add-drop-table --extended-insert  --protocol=tcp $$DATABASE_NAME > doc/docker-compose/entrypoint/mysql/2_${INSTALL_EZ_INSTALL_TYPE}_dump.sql"
