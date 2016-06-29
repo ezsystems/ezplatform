@@ -29,15 +29,14 @@ From root of your projects clone of this distribution, [setup composer auth.json
 # Optional step if you'd like to use blackfire with the setup, change <id> and <token> with your own values
 #export COMPOSE_FILE=doc/docker-compose/base-prod.yml:doc/docker-compose/blackfire.yml BLACKFIRE_SERVER_ID=<id> BLACKFIRE_SERVER_TOKEN=<token>
 
-docker-compose up -d --force-recreate --build
+# First time: Install setup, and generate database dump:
+docker-compose -f doc/docker-compose/install.yml up --abort-on-container-exit
+
+# Boot up full setup:
+docker-compose up -d --force-recreate
 ```
 
-*Last step is to execute the eZ Platform install.*
-```sh
-docker-compose exec --user www-data app /bin/sh -c "php /scripts/wait_for_db.php; php app/console ezplatform:install clean"
-```
-
-At this point you should be able to browse the site on `localhost:8080` and the backend UI on `localhost:8080/ez`.
+After some 5-10 seconds you should be able to browse the site on `localhost:8080` and the backend on `localhost:8080/ez`.
 
 ### Development "mount" use
 
@@ -52,17 +51,15 @@ export COMPOSE_FILE=doc/docker-compose/base-dev.yml SYMFONY_ENV=dev SYMFONY_DEBU
 # Optional: If you use Docker Machine with NFS, you'll need to specify where project is, & give composer a valid directory.
 #export COMPOSE_DIR=/data/SOURCES/MYPROJECTS/ezplatform/doc/docker-compose COMPOSER_HOME=/tmp
 
-docker-compose -f doc/docker-compose/install.yml up install
+# First time: Install setup, and generate database dump:
+docker-compose -f doc/docker-compose/install.yml up --abort-on-container-exit
+
+# Boot up full setup:
+docker-compose up -d --force-recreate
 ```
 
-*Lastly we execute docker-compose to get containers running, and then eZ Platform install script.*
-```sh
-docker-compose up -d --force-recreate --no-build
-docker-compose exec --user www-data app /bin/sh -c "php /scripts/wait_for_db.php; php app/console ezplatform:install clean"
-```
 
-
-At this point, you should be able to browse the site on `localhost:8080` and the backend UI on `localhost:8080/ez`.
+After some 5-10 seconds you should be able to browse the site on `localhost:8080` and the backend on `localhost:8080/ez`.
 
 
 ### Behat and Selenium use
@@ -75,23 +72,25 @@ From root of your projects clone of this distribution, [setup composer auth.json
 ```sh
 export COMPOSE_FILE=doc/docker-compose/base-prod.yml:doc/docker-compose/selenium.yml
 
-docker-compose up -d --force-recreate --build
-```
+# First time: Install setup, and generate database dump:
+docker-compose -f doc/docker-compose/install.yml up --abort-on-container-exit
 
-*Next step is to execute the eZ Platform install.*
-```sh
-docker-compose exec --user www-data app /bin/sh -c "php /scripts/wait_for_db.php; php app/console ezplatform:install clean"
+# Boot up full setup:
+docker-compose up -d --force-recreate
 ```
 
 *Last step is to execute behat scenarios using `behatphpcli` container which has access to web and selenium containers, example:*
 ```
-docker-compose run -u www-data --rm behatphpcli bin/behat -vv --profile=rest --suite=fullJson --tags=~@broken
+docker-compose exec --user www-data app sh -c "php /scripts/wait_for_db.php; php bin/behat -vv --profile=rest --suite=fullJson --tags=~@broken"
 ```
 
-*Tip: You can typically re run the install command to get back to a clean installation in between behat runs, without recreating the full docker setup.*
 
+*Tip: You can typically re run the install command to get back to a clean installation in between behat runs using:*
+```
+docker-compose exec --user www-data app app/console ezplatform:install clean
+```
 
-## Common Docker-Compose usage
+## Further info
 
 ### <a name="composer"></a>Configuring Composer
 
@@ -124,6 +123,13 @@ To display running services:
 ```sh
 docker-compose ps
 ```
+
+### Database dumps
+
+Database dump is placed in `doc/docker-compose/entrypoint/mysql/`, this folder is used my mysql/mariadb which will execute
+everything inside the folder. This means there should only be data represent one install in the folder at any given time.
+
+
 
 ### Updating service images
 
