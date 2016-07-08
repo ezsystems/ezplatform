@@ -54,17 +54,18 @@ if [ "$RUN_INSTALL" = "1" ] ; then
   fi
   echo "> Run composer install"
   composer install --no-progress --no-interaction --prefer-dist
-  # Do NOT use this for your prod setup, this is done like this becasue of todo's above
-  find app/cache app/logs web/var -type d | xargs chmod -R 777
-  find app/cache app/logs web/var -type f | xargs chmod -R 666
-  # behat needs to be able to generate config and files during tests, never do this in prod either
+  mkdir -p web/var
+  rm -Rf app/logs/* app/cache/*/*
+  sudo chown -R www-data:www-data app/cache app/logs web/var
+  find app/cache app/logs web/var -type d | xargs chmod -R 775
+  find app/cache app/logs web/var -type f | xargs chmod -R 664
+  # Do NOT use this for your prod setup, this is done like this for behat
   sudo chown -R www-data:www-data app/config src
-  #docker-compose -f doc/docker-compose/install.yml up install
+  #docker-compose -f doc/docker-compose/install.yml up --abort-on-container-exit
 fi
 
 echo "> Start containers and install data"
 docker-compose up -d
-docker-compose app
-docker-compose exec --user www-data app /bin/sh -c "php /scripts/wait_for_db.php; php app/console ezplatform:install clean"
+docker-compose exec --user www-data app sh -c "php /scripts/wait_for_db.php; php app/console ezplatform:install clean"
 
 echo "> Done, ready to run behatphpcli container"
