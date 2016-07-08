@@ -52,20 +52,11 @@ if [ "$RUN_INSTALL" = "1" ] ; then
     composer require --no-update "$COMPOSER_REQUIRE"
     cat composer.json
   fi
-  echo "> Run composer install"
-  composer install --no-progress --no-interaction --prefer-dist
-  mkdir -p web/var
-  rm -Rf app/logs/* app/cache/*/*
-  sudo chown -R www-data:www-data app/cache app/logs web/var
-  find app/cache app/logs web/var -type d | xargs chmod -R 775
-  find app/cache app/logs web/var -type f | xargs chmod -R 664
-  # Do NOT use this for your prod setup, this is done like this for behat
-  sudo chown -R www-data:www-data app/config src
-  #docker-compose -f doc/docker-compose/install.yml up --abort-on-container-exit
+  docker-compose -f doc/docker-compose/install.yml up --abort-on-container-exit
 fi
 
-echo "> Start containers and install data"
+echo "> Start containers and wait for database"
 docker-compose up -d
-docker-compose exec --user www-data app sh -c "php /scripts/wait_for_db.php; php app/console ezplatform:install clean"
+docker-compose exec --user www-data app sh -c "php /scripts/wait_for_db.php"
 
-echo "> Done, ready to run behatphpcli container"
+echo "> Done, ready to run behat on app container"
