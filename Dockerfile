@@ -11,8 +11,8 @@ ENV SYMFONY_ENV=prod
 # Copy in project files into work dir
 COPY . /var/www
 
-# Remove cache folders to avoid layer issues, ref: https://github.com/symfony/symfony/issues/12533#issuecomment-76406216
-RUN rm -Rf app/logs/* app/cache/* .git/ \
+# Remove cache folders to avoid layer issues, ref: https://github.com/docker/docker/issues/783
+RUN rm -Rf app/logs/* app/cache/* .git/* \
  && mkdir -p web/var \
  && composer install --optimize-autoloader --no-progress --no-interaction --prefer-dist \
 # Clear cache again so env variables are taken into account on startup
