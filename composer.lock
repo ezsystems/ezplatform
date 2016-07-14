@@ -782,16 +782,16 @@
         },
         {
             "name": "ezsystems/ezpublish-kernel",
-            "version": "v6.4.1-rc1",
+            "version": "v6.4.1-rc2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-kernel.git",
-                "reference": "b6c4c2e3e9935162c0b48615dfcf24f962debaff"
+                "reference": "96f15b1cb893da9dc2b84fac13389d2c8195732f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/b6c4c2e3e9935162c0b48615dfcf24f962debaff",
-                "reference": "b6c4c2e3e9935162c0b48615dfcf24f962debaff",
+                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/96f15b1cb893da9dc2b84fac13389d2c8195732f",
+                "reference": "96f15b1cb893da9dc2b84fac13389d2c8195732f",
                 "shasum": ""
             },
             "require": {
@@ -860,7 +860,7 @@
             ],
             "description": "Kernel used by ezsystems/ezplatform and derivatives. Provides the Content Repository, its APIs, and the application's Symfony framework integration.",
             "homepage": "http://share.ez.no",
-            "time": "2016-07-09 17:00:42"
+            "time": "2016-07-13 18:20:35"
         },
         {
             "name": "ezsystems/platform-ui-assets-bundle",
