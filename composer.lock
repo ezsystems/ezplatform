@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3f302ba7a063ff7252c97a5ab58ddf12",
-    "content-hash": "ce0ad002c948dc7488444fc712c97851",
+    "hash": "a96bcdd7ed20c12b763fcc917c885519",
+    "content-hash": "a0c11e249697f547758539e8f942542f",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -782,7 +782,7 @@
         },
         {
             "name": "ezsystems/ezpublish-kernel",
-            "version": "v6.4.1-rc2",
+            "version": "v6.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-kernel.git",
@@ -900,23 +900,23 @@
         },
         {
             "name": "ezsystems/platform-ui-bundle",
-            "version": "v1.4.1-rc1",
+            "version": "v1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/PlatformUIBundle.git",
-                "reference": "895c8a409b2de8667628b7c02a6f4d080c93ded8"
+                "reference": "5ebd6de53d7bd7ea3139ae3a38636f78f6f2347b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/PlatformUIBundle/zipball/895c8a409b2de8667628b7c02a6f4d080c93ded8",
-                "reference": "895c8a409b2de8667628b7c02a6f4d080c93ded8",
+                "url": "https://api.github.com/repos/ezsystems/PlatformUIBundle/zipball/5ebd6de53d7bd7ea3139ae3a38636f78f6f2347b",
+                "reference": "5ebd6de53d7bd7ea3139ae3a38636f78f6f2347b",
                 "shasum": ""
             },
             "require": {
-                "ezsystems/ez-support-tools": "~0.1.0@dev",
-                "ezsystems/ezpublish-kernel": "^6.4@dev",
+                "ezsystems/ez-support-tools": "~0.1.0",
+                "ezsystems/ezpublish-kernel": "^6.4",
                 "ezsystems/platform-ui-assets-bundle": "^2.0.0",
-                "ezsystems/repository-forms": "^1.2@dev",
+                "ezsystems/repository-forms": "^1.2",
                 "zetacomponents/system-information": "^1.1"
             },
             "require-dev": {
@@ -939,7 +939,7 @@
                 "GPL-2.0"
             ],
             "description": "eZ Platform UI Bundle",
-            "time": "2016-07-11 12:58:45"
+            "time": "2016-07-19 10:08:33"
         },
         {
             "name": "ezsystems/repository-forms",
@@ -1246,23 +1246,23 @@
         },
         {
             "name": "hautelook/templated-uri-bundle",
-            "version": "2.0.0",
+            "version": "2.0.1",
             "target-dir": "Hautelook/TemplatedUriBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hautelook/TemplatedUriBundle.git",
-                "reference": "d5d32ca1c9f13ca170023fd7cb4f1c969d3fd1ad"
+                "reference": "abf784feea984783eab0a822541c7aa3f58d445e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hautelook/TemplatedUriBundle/zipball/d5d32ca1c9f13ca170023fd7cb4f1c969d3fd1ad",
-                "reference": "d5d32ca1c9f13ca170023fd7cb4f1c969d3fd1ad",
+                "url": "https://api.github.com/repos/hautelook/TemplatedUriBundle/zipball/abf784feea984783eab0a822541c7aa3f58d445e",
+                "reference": "abf784feea984783eab0a822541c7aa3f58d445e",
                 "shasum": ""
             },
             "require": {
                 "hautelook/templated-uri-router": "~2.0",
                 "php": ">=5.3.0",
-                "symfony/framework-bundle": "~2.1"
+                "symfony/framework-bundle": "~2.1|~3.0"
             },
             "type": "symfony-bundle",
             "extra": {
@@ -1296,7 +1296,7 @@
                 "url",
                 "xml"
             ],
-            "time": "2014-07-28 21:56:22"
+            "time": "2016-04-28 22:18:53"
         },
         {
             "name": "hautelook/templated-uri-router",
@@ -4691,27 +4691,27 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "6.2.0",
+            "version": "6.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "d094e337976dff9d8e2424e8485872194e768662"
+                "reference": "3f808fba627f2c5b69e2501217bf31af349c1427"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/d094e337976dff9d8e2424e8485872194e768662",
-                "reference": "d094e337976dff9d8e2424e8485872194e768662",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/3f808fba627f2c5b69e2501217bf31af349c1427",
+                "reference": "3f808fba627f2c5b69e2501217bf31af349c1427",
                 "shasum": ""
             },
             "require": {
-                "guzzlehttp/promises": "~1.0",
-                "guzzlehttp/psr7": "~1.1",
-                "php": ">=5.5.0"
+                "guzzlehttp/promises": "^1.0",
+                "guzzlehttp/psr7": "^1.3.1",
+                "php": ">=5.5"
             },
             "require-dev": {
                 "ext-curl": "*",
-                "phpunit/phpunit": "~4.0",
-                "psr/log": "~1.0"
+                "phpunit/phpunit": "^4.0",
+                "psr/log": "^1.0"
             },
             "type": "library",
             "extra": {
@@ -4749,7 +4749,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2016-03-21 20:02:09"
+            "time": "2016-07-15 17:22:37"
         },
         {
             "name": "guzzlehttp/promises",
@@ -6009,10 +6009,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "ezsystems/ezpublish-kernel": 5,
-        "ezsystems/platform-ui-bundle": 5
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
