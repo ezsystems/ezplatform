@@ -8,17 +8,20 @@ services:
 env:
   global:
     - COMPOSE_FILE="doc/docker-compose/base-dev.yml:doc/docker-compose/selenium.yml"
+    - SYMFONY_ENV=behat
+    - SYMFONY_DEBUG=1
   # list of behat arguments to test
   matrix:
-    - ARGS="--profile=rest --suite=fullJson" COMPOSE_FILE="doc/docker-compose/base-prod.yml:doc/docker-compose/selenium.yml"
-    - ARGS="--profile=rest --suite=fullXml" SYMFONY_ENV=behat SYMFONY_DEBUG=1
-    - ARGS="--profile=core" SYMFONY_ENV=behat SYMFONY_DEBUG=1
+    - TEST_CMD="bin/behat -vv --profile=rest --suite=fullJson --tags=~@broken" COMPOSE_FILE="doc/docker-compose/base-prod.yml:doc/docker-compose/selenium.yml"
+    - TEST_CMD="bin/behat -vv --profile=rest --suite=fullXml --tags=~@broken"
+    - TEST_CMD="bin/behat -vv --profile=core --tags=~@broken"
+    - TEST_CMD="bin/phpunit -v vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishRestBundle/Tests/Functional" REST_BASIC_AUTH=1
 
 # test only master (+ Pull requests)
 branches:
   only:
     - master
-    - "1.3"
+    - /^\d.\d+$/
 
 # Update Docker and Docker Compose
 before_install: ./bin/.travis/trusty/update_docker.sh
@@ -26,6 +29,7 @@ before_install: ./bin/.travis/trusty/update_docker.sh
 before_script:
   # Internal auth token dedicated to testing with travis+composer on ezsystems repos, not for reuse!
   - echo "{\"github-oauth\":{\"github.com\":\"d0285ed5c8644f30547572ead2ed897431c1fc09\"}}" > auth.json
+  - if [ "$REST_BASIC_AUTH" != "" ] ; then sed -i 's/# / /' app/config/security.yml ; fi
   # In case of dev mode we'll need to install composer packages first
   - docker-compose -f doc/docker-compose/install.yml up --abort-on-container-exit
   # Run (start containers and execute install command)
@@ -33,9 +37,9 @@ before_script:
   #- docker ps
   #- docker-compose logs
 
-# execute behat as the script command, need to use sh to get right exit code (docker/compose/issues/3379)
-# using behat.yml which is a copy of behat.yml.dist with hostnames update by docker-compose.behat.yml
-script: docker-compose exec --user www-data app sh -c "php /scripts/wait_for_db.php; php bin/behat -vv $ARGS --tags=~@broken"
+# Execute test command, need to use sh to get right exit code (docker/compose/issues/3379)
+# Behat will use behat.yml which is a copy of behat.yml.dist with hostnames update by doc/docker-compose/selenium.yml
+script: docker-compose exec --user www-data app sh -c "php /scripts/wait_for_db.php; php $TEST_CMD"
 
 # disable mail notifications
 notifications:
