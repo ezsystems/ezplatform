@@ -10,7 +10,7 @@ env:
     - COMPOSE_FILE="doc/docker-compose/base-dev.yml:doc/docker-compose/selenium.yml"
   # list of behat arguments to test
   matrix:
-    - ARGS="--profile=rest --suite=fullJson" COMPOSE_FILE="doc/docker-compose/base-prod.yml:doc/docker-compose/selenium.yml"
+    - ARGS="--profile=rest --suite=fullJson" COMPOSE_FILE="doc/docker-compose/base-prod.yml:doc/docker-compose/redis.yml:doc/docker-compose/selenium.yml" SYMFONY_ENV=behat SYMFONY_DEBUG=1
     - ARGS="--profile=rest --suite=fullXml" SYMFONY_ENV=behat SYMFONY_DEBUG=1
     - ARGS="--profile=core" SYMFONY_ENV=behat SYMFONY_DEBUG=1
 
