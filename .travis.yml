@@ -5,6 +5,10 @@ language: generic
 services:
   - docker
 
+cache:
+  directories:
+    - $HOME/.composer/cache/files
+
 env:
   global:
     - COMPOSE_FILE="doc/docker-compose/base-dev.yml:doc/docker-compose/selenium.yml"
