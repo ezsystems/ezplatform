@@ -25,3 +25,6 @@ parameters:
     cache_pool: "default"
 
     cache_host: 127.0.0.1
+
+    cache_memcached_port: 11211
+    cache_redis_port: 6379

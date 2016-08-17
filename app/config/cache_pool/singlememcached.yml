@@ -4,4 +4,4 @@ stash:
         singlememcached:
             drivers: [Memcache]
             Memcache:
-                servers: [ {server: '%cache_host%', port: 11211} ]
+                servers: [ {server: '%cache_host%', port: '%cache_memcached_port%'} ]
