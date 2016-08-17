@@ -1,5 +1,5 @@
 version: '2'
-# Redis config, to be appended to prod, prod+dev, ..., but before selenium.yml
+# Redis config, to be appended after base-prod or base-dev, ..., but before selenium.yml
 
 services:
   app:

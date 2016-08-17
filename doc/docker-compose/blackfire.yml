@@ -1,5 +1,5 @@
 version: '2'
-# Blackfire agent config, depends on at least prod.yml, but can also be combined with others as it is standalone service
+# Blackfire agent config, to be appended after base-prod or base-dev config.
 # You'll need to export the two blackfire server variables before you can use this.
 
 services:
