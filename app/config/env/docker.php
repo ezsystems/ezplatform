@@ -91,6 +91,6 @@ if ($pool = getenv('CUSTOM_CACHE_POOL')) {
         $container->setParameter('cache_redis_port', $host);
     }
 
-    $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/cache_pool'));
+    $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../cache_pool'));
     $loader->load($pool . '.yml');
 }
