@@ -1,0 +1,23 @@
+version: '2'
+# Solr config, to be appended after base-prod or base-dev, ..., but before selenium.yml
+#
+# This service will migrate to use offical Solr image and use entrypoint once Solr bundle supports SOLR6+.
+#
+# NOTE: You'll need to manually reindex the solr index when booting this as we don't have entrypoint for solr yet.
+#       (Unless you use ezplatform:install command which indexes for you)
+
+services:
+  app:
+    depends_on:
+     - solr
+    environment:
+     - SEARCH_ENGINE=solr
+     - SOLR_DSN=http://solr:8983/solr
+
+  solr:
+    image: makuk66/docker-solr:4.10.4
+    volumes_from:
+     - app:ro
+    environment:
+     - EZ_SOLR_CONF="/var/www/vendor/ezsystems/ezplatform-solr-search-engine/lib/Resources/config/solr"
+    command: /bin/bash -c "cp -R $${EZ_SOLR_CONF}/* /opt/solr/example/solr/collection1/conf/ && /opt/solr/bin/solr start -f"

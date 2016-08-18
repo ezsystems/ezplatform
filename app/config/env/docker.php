@@ -5,6 +5,11 @@
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Loader;
 
+if (getenv('DATABASE_HOST') === false) {
+    // Return if not DATABASE_HOST is set as that is needed to get things running with docker (shouldn't be on localhost)
+    return;
+}
+
 if ($value = getenv('SYMFONY_SECRET')) {
     $container->setParameter('secret', $value);
 }
@@ -79,6 +84,13 @@ if ($pool = getenv('CUSTOM_CACHE_POOL')) {
         $container->setParameter('cache_host', $host);
     }
 
-    $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/cache_pool'));
+    // Optional port settings in case not default
+    if ($host = getenv('CACHE_MEMCACHED_PORT')) {
+        $container->setParameter('cache_memcached_port', $host);
+    } elseif ($host = getenv('CACHE_REDIS_PORT')) {
+        $container->setParameter('cache_redis_port', $host);
+    }
+
+    $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../cache_pool'));
     $loader->load($pool . '.yml');
 }

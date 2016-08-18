@@ -4,4 +4,4 @@ stash:
         singleredis:
             drivers: [Redis]
             Redis:
-                servers: [ {server: '%cache_host%', port: 6379} ]
+                servers: [ {server: '%cache_host%', port: '%cache_redis_port%'} ]

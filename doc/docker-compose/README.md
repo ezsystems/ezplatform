@@ -13,6 +13,26 @@
 This setup requires Docker Compose 1.7 or higher, and Docker 1.10 or higher. Defaults are set in `.env`, and
 files to ignore are set in `.dockerignore`. By default `.env` specifies that production image is built and setup for use.
 
+#### Concept: Docker Compose "Building blocks" for eZ Platform
+
+The current Docker Compose files are made to be mixed and matched togtehr as you'd like. Currently available:
+- base-prod.yml _(required, always needs to be first, contains: db, web and app container)_
+- base-dev.yml _(alternative to `base-prod.yml`, same applies here if used)_
+- redis.yml _(optional, adds redis service and appends config to app)_
+- solr.yml _(optional, work in progress config to add solr service and configure app for it, for testing only)_
+- blackfire.yml _(optional, adds blackfire service and lets you trigger profiling against the setup)_
+- selenium.yml _(optional, always needs to be last, adds selenium service and appends config to app)_
+
+
+These can be used with `-f` argument on docker-compose, like:
+```bash
+docker-compose -f doc/docker-compose/base-prod.yml -f doc/docker-compose/redis.yml up -d --force-recreate
+```
+
+However below environment variable `COMPOSE_FILE` is used instead since this is also what is used to have a default in
+`.env` file at root of the project.
+
+
 #### Before you begin: Install Docker & Docker-Compose
 
 Before jumping into steps below, make sure you have recent versions of [Docker & Docker-Compose](https://www.docker.com/)
@@ -145,15 +165,15 @@ After this you can re run the production or dev steps to setup containers again 
 
 ### Cleanup
 
- Once you are done with your setup, you can stop it, and remove the involved containers.
- ```sh
+Once you are done with your setup, you can stop it, and remove the involved containers.
+```sh
 docker-compose down -v
- ```
+```
 
- And if you have defined any environment variables you can unset them using:
- ```sh
+And if you have defined any environment variables you can unset them using:
+```sh
 unset COMPOSE_FILE SYMFONY_ENV SYMFONY_DEBUG COMPOSE_DIR COMPOSER_HOME
 
 # To unset blackfire variables
 unset BLACKFIRE_SERVER_ID BLACKFIRE_SERVER_TOKEN
- ```
+```
