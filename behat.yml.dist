@@ -1,7 +1,7 @@
 # This file contains the default configuration for behat testing using EzSystems/BehatBundle
 default:
     calls:
-        error_reporting: 14335 # E_ALL & ~E_USER_DEPRECATED
+        error_reporting: -1 # Report all PHP errors
     extensions:
         Behat\MinkExtension:
             base_url: 'http://localhost'
