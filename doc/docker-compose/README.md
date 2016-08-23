@@ -13,6 +13,14 @@
 This setup requires Docker Compose 1.7 or higher, and Docker 1.10 or higher. Defaults are set in `.env`, and
 files to ignore are set in `.dockerignore`. By default `.env` specifies that production image is built and setup for use.
 
+#### Before you begin: Install Docker & Docker-Compose
+
+Before jumping into steps below, make sure you have recent versions of [Docker & Docker-Compose](https://www.docker.com/)
+installed on your machine.
+
+*For Windows you'll also need to [install bash](https://msdn.microsoft.com/en-us/commandline/wsl/about), or adapt instructions below for Windows command line where needed.*
+
+
 #### Concept: Docker Compose "Building blocks" for eZ Platform
 
 The current Docker Compose files are made to be mixed and matched togtehr as you'd like. Currently available:
@@ -32,13 +40,6 @@ docker-compose -f doc/docker-compose/base-prod.yml -f doc/docker-compose/redis.y
 However below environment variable `COMPOSE_FILE` is used instead since this is also what is used to have a default in
 `.env` file at root of the project.
 
-
-#### Before you begin: Install Docker & Docker-Compose
-
-Before jumping into steps below, make sure you have recent versions of [Docker & Docker-Compose](https://www.docker.com/)
-installed on your machine.
-
-*For Windows you'll also need to [install bash](https://msdn.microsoft.com/en-us/commandline/wsl/about), or adapt instructions below for Windows command line where needed.*
 
 ## Project setup
 
@@ -99,7 +100,7 @@ docker-compose -f doc/docker-compose/install.yml up --abort-on-container-exit
 docker-compose up -d --force-recreate
 ```
 
-*Last step is to execute behat scenarios using `behatphpcli` container which has access to web and selenium containers, example:*
+*Last step is to execute behat scenarios using `app` container which now has access to web and selenium containers, example:*
 ```
 docker-compose exec --user www-data app sh -c "php /scripts/wait_for_db.php; php bin/behat -vv --profile=rest --suite=fullJson --tags=~@broken"
 ```
