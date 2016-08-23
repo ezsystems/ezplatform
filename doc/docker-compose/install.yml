@@ -13,7 +13,7 @@ services:
      - MYSQL_DATABASE=$DATABASE_NAME
 
   install_app:
-    image: ${INSTALL_PHP_IMAGE}
+    image: ${PHP_IMAGE_DEV}
     volumes:
      - ${COMPOSE_DIR}/../..:/var/www
      - ${COMPOSER_HOME}:/root/.composer
