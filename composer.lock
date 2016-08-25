@@ -788,16 +788,16 @@
         },
         {
             "name": "ezsystems/ezpublish-kernel",
-            "version": "v6.5.0-rc1",
+            "version": "v6.5.0-rc2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-kernel.git",
-                "reference": "84cc3d7d3f95820dfbbc0eca43f41020bc7af423"
+                "reference": "5c2260b76acc11ce92db0c37a511ce35b1cdfe43"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/84cc3d7d3f95820dfbbc0eca43f41020bc7af423",
-                "reference": "84cc3d7d3f95820dfbbc0eca43f41020bc7af423",
+                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/5c2260b76acc11ce92db0c37a511ce35b1cdfe43",
+                "reference": "5c2260b76acc11ce92db0c37a511ce35b1cdfe43",
                 "shasum": ""
             },
             "require": {
@@ -823,7 +823,7 @@
                 "sensio/distribution-bundle": "^3.0.36|^4.0.6|^5.0",
                 "sensio/framework-extra-bundle": "~3.0",
                 "symfony-cmf/routing": "~1.1",
-                "symfony/symfony": "~2.7",
+                "symfony/symfony": "^2.7 | ^3.1",
                 "tedivm/stash-bundle": "~0.6.1",
                 "zetacomponents/mail": "~1.8"
             },
@@ -866,7 +866,7 @@
             ],
             "description": "Kernel used by ezsystems/ezplatform and derivatives. Provides the Content Repository, its APIs, and the application's Symfony framework integration.",
             "homepage": "http://share.ez.no",
-            "time": "2016-08-25 08:46:31"
+            "time": "2016-08-25 10:41:58"
         },
         {
             "name": "ezsystems/platform-ui-assets-bundle",
