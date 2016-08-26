@@ -1199,17 +1199,17 @@
         },
         {
             "name": "ezsystems/studio-ui-bundle",
-            "version": "v1.5.0-rc1",
+            "version": "v1.5.0-rc2",
             "source": {
                 "type": "git",
                 "url": "git@github.com:ezsystems/StudioUIBundle.git",
-                "reference": "760c9951094b4ec0064e53e1fe400978b6c32ce4"
+                "reference": "811bce989e3856d626b22752acf2184d36acde87"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://updates.ez.no/ttl/dist/ezsystems-studio-ui-bundle-760c9951094b4ec0064e53e1fe400978b6c32ce4-zip-fa2f75.zip",
-                "reference": "760c9951094b4ec0064e53e1fe400978b6c32ce4",
-                "shasum": "ba5f7ff217f17bc4ad53a08897c84823a7d8d554"
+                "url": "https://updates.ez.no/ttl/dist/ezsystems-studio-ui-bundle-811bce989e3856d626b22752acf2184d36acde87-zip-334a5c.zip",
+                "reference": "811bce989e3856d626b22752acf2184d36acde87",
+                "shasum": "0f5a3170eb060533d0f97fa1d420e232fdce03b5"
             },
             "require": {
                 "ezsystems/ezpublish-kernel": "^6.5@rc",
@@ -1235,10 +1235,10 @@
             ],
             "description": "eZ Studio UI Bundle",
             "support": {
-                "source": "https://github.com/ezsystems/StudioUIBundle/tree/v1.5.0-rc1",
+                "source": "https://github.com/ezsystems/StudioUIBundle/tree/v1.5.0-rc2",
                 "issues": "https://github.com/ezsystems/StudioUIBundle/issues"
             },
-            "time": "2016-08-25 17:01:52"
+            "time": "2016-08-26 10:00:29"
         },
         {
             "name": "friendsofsymfony/http-cache",
