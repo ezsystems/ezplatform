@@ -738,16 +738,16 @@
         },
         {
             "name": "ezsystems/ezplatform-solr-search-engine",
-            "version": "v1.1.0-rc1",
+            "version": "v1.1.0-rc2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezplatform-solr-search-engine.git",
-                "reference": "ca7ff6329b4aa83b8ab1c517214519db44b6ef42"
+                "reference": "5261b1d7f44adb834f07baefe7b6f58e844fd59b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezplatform-solr-search-engine/zipball/ca7ff6329b4aa83b8ab1c517214519db44b6ef42",
-                "reference": "ca7ff6329b4aa83b8ab1c517214519db44b6ef42",
+                "url": "https://api.github.com/repos/ezsystems/ezplatform-solr-search-engine/zipball/5261b1d7f44adb834f07baefe7b6f58e844fd59b",
+                "reference": "5261b1d7f44adb834f07baefe7b6f58e844fd59b",
                 "shasum": ""
             },
             "require": {
@@ -784,20 +784,20 @@
             ],
             "description": "Solr search engine implementation for eZ Platform",
             "homepage": "https://github.com/ezsystems/ezplatform-solr-search-engine",
-            "time": "2016-08-23 12:00:33"
+            "time": "2016-08-30 15:09:32"
         },
         {
             "name": "ezsystems/ezpublish-kernel",
-            "version": "v6.5.0-rc2",
+            "version": "v6.5.0-rc3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-kernel.git",
-                "reference": "5c2260b76acc11ce92db0c37a511ce35b1cdfe43"
+                "reference": "da8bd4ebc2c86585fd151c7af63a3b2b99d7616e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/5c2260b76acc11ce92db0c37a511ce35b1cdfe43",
-                "reference": "5c2260b76acc11ce92db0c37a511ce35b1cdfe43",
+                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/da8bd4ebc2c86585fd151c7af63a3b2b99d7616e",
+                "reference": "da8bd4ebc2c86585fd151c7af63a3b2b99d7616e",
                 "shasum": ""
             },
             "require": {
@@ -866,7 +866,7 @@
             ],
             "description": "Kernel used by ezsystems/ezplatform and derivatives. Provides the Content Repository, its APIs, and the application's Symfony framework integration.",
             "homepage": "http://share.ez.no",
-            "time": "2016-08-25 10:41:58"
+            "time": "2016-08-30 14:03:47"
         },
         {
             "name": "ezsystems/platform-ui-assets-bundle",
