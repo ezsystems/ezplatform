@@ -28,7 +28,8 @@ services:
      - DATABASE_HOST=install_db
     # Dumping autoload using --optimize-autoloader to keep performenace on a usable level, not needed on linux host.
     # Second chown line:  For dev and behat tests we give a bit extra rights, never do this for prod.
-    command: /bin/sh -c "
+    command: >
+      /bin/sh -c "
       composer install --no-progress --no-interaction --prefer-dist;
       mkdir -p web/var;
       php /scripts/wait_for_db.php;
