@@ -2,8 +2,8 @@ security:
     providers:
         ezpublish:
             id: ezpublish.security.user_provider
-#        in_memory:
-#            memory: ~
+#!        in_memory:
+#!            memory: ~
 
     firewalls:
         dev:
