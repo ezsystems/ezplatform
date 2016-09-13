@@ -44,7 +44,7 @@
         "doctrine/doctrine-bundle": "~1.3",
         "symfony/expression-language": "~2.4",
         "sensio/framework-extra-bundle": "~3.0",
-        "ezsystems/ezstudio-installer": "^1.1"
+        "ezsystems/ezstudio-installer": "~1.1.0@rc"
     },
     "require-dev": {
         "behat/behat": "~3.0",

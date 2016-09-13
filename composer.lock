@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "cb5d44fca06234c20582e280b3a0a007",
-    "content-hash": "d253f78fbc750ed655d17ef487beb03d",
+    "hash": "4a971745643711774edf3dcba8f3f753",
+    "content-hash": "c77194d9c4c5d73751ae012f3d7ac916",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -865,16 +865,16 @@
         },
         {
             "name": "ezsystems/ezstudio-installer",
-            "version": "v1.1.0",
+            "version": "v1.1.1-rc1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezstudio-installer.git",
-                "reference": "2dd76488380bf466d922bd1deb85c6779dea65b4"
+                "reference": "4a07e8383785180e91776fa463e8a4a6428068d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezstudio-installer/zipball/2dd76488380bf466d922bd1deb85c6779dea65b4",
-                "reference": "2dd76488380bf466d922bd1deb85c6779dea65b4",
+                "url": "https://api.github.com/repos/ezsystems/ezstudio-installer/zipball/4a07e8383785180e91776fa463e8a4a6428068d1",
+                "reference": "4a07e8383785180e91776fa463e8a4a6428068d1",
                 "shasum": ""
             },
             "require": {
@@ -902,7 +902,7 @@
                 }
             ],
             "description": "Installer for eZ Studio",
-            "time": "2016-06-29 11:18:25"
+            "time": "2016-09-12 14:11:19"
         },
         {
             "name": "ezsystems/ezstudio-notifications",
@@ -6271,7 +6271,8 @@
         "ezsystems/platform-ui-bundle": 5,
         "ezsystems/studio-ui-bundle": 5,
         "ezsystems/landing-page-fieldtype-bundle": 5,
-        "ezsystems/flex-workflow": 5
+        "ezsystems/flex-workflow": 5,
+        "ezsystems/ezstudio-installer": 5
     },
     "prefer-stable": false,
     "prefer-lowest": false,
