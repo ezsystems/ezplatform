@@ -29,7 +29,7 @@
         "tedivm/stash-bundle": "~0.4",
         "ezsystems/ezpublish-kernel": "~6.4.0@rc",
         "ezsystems/repository-forms": "~1.3.0",
-        "ezsystems/ezplatform-solr-search-engine": "^1.0",
+        "ezsystems/ezplatform-solr-search-engine": "^1.0@rc",
         "ezsystems/platform-ui-bundle": "~1.4.0@rc",
         "ezsystems/ez-support-tools": "~0.1.0",
         "egulias/listeners-debug-command-bundle": "~1.9",
