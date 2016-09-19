@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "646bfe7b3d13489c431ff877e1f24d5e",
-    "content-hash": "b80c3ffee838bc67fda8ee152509d56f",
+    "hash": "0493cce71e46539bbfeb32836097f36e",
+    "content-hash": "998d736c4ccd63a69db5733c75d39fc4",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -738,16 +738,16 @@
         },
         {
             "name": "ezsystems/ezplatform-solr-search-engine",
-            "version": "v1.0.5-rc1",
+            "version": "v1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezplatform-solr-search-engine.git",
-                "reference": "566ffced49759c7d18edcc58a6159f6ad1ce613f"
+                "reference": "103359e8b638920d5c3a17b562f840b63415b769"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezplatform-solr-search-engine/zipball/566ffced49759c7d18edcc58a6159f6ad1ce613f",
-                "reference": "566ffced49759c7d18edcc58a6159f6ad1ce613f",
+                "url": "https://api.github.com/repos/ezsystems/ezplatform-solr-search-engine/zipball/103359e8b638920d5c3a17b562f840b63415b769",
+                "reference": "103359e8b638920d5c3a17b562f840b63415b769",
                 "shasum": ""
             },
             "require": {
@@ -779,11 +779,11 @@
             ],
             "description": "Solr search engine implementation for eZ Platform",
             "homepage": "https://github.com/ezsystems/ezplatform-solr-search-engine",
-            "time": "2016-09-13 12:05:40"
+            "time": "2016-09-14 14:57:05"
         },
         {
             "name": "ezsystems/ezpublish-kernel",
-            "version": "v6.3.3-rc1",
+            "version": "v6.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-kernel.git",
@@ -954,7 +954,7 @@
         },
         {
             "name": "ezsystems/flex-workflow",
-            "version": "v1.3.2-rc1",
+            "version": "v1.3.2",
             "source": {
                 "type": "git",
                 "url": "git@github.com:ezsystems/flex-workflow.git",
@@ -1009,7 +1009,7 @@
         },
         {
             "name": "ezsystems/landing-page-fieldtype-bundle",
-            "version": "v1.3.2-rc1",
+            "version": "v1.3.2",
             "source": {
                 "type": "git",
                 "url": "git@github.com:ezsystems/EzLandingPageFieldTypeBundle.git",
@@ -1093,7 +1093,7 @@
         },
         {
             "name": "ezsystems/platform-ui-bundle",
-            "version": "v1.3.3-rc1",
+            "version": "v1.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/PlatformUIBundle.git",
@@ -3899,16 +3899,16 @@
         },
         {
             "name": "behat/gherkin",
-            "version": "v4.4.2",
+            "version": "v4.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/Gherkin.git",
-                "reference": "d26757dc970e67b50ed0ee47b95273daeb84fea6"
+                "reference": "cf8cc94647101e02a33d690245896d83d880aea1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/Gherkin/zipball/d26757dc970e67b50ed0ee47b95273daeb84fea6",
-                "reference": "d26757dc970e67b50ed0ee47b95273daeb84fea6",
+                "url": "https://api.github.com/repos/Behat/Gherkin/zipball/cf8cc94647101e02a33d690245896d83d880aea1",
+                "reference": "cf8cc94647101e02a33d690245896d83d880aea1",
                 "shasum": ""
             },
             "require": {
@@ -3954,7 +3954,7 @@
                 "gherkin",
                 "parser"
             ],
-            "time": "2016-09-03 07:28:57"
+            "time": "2016-09-18 12:16:14"
         },
         {
             "name": "behat/mink",
@@ -5814,13 +5814,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "ezsystems/ezpublish-kernel": 5,
-        "ezsystems/ezplatform-solr-search-engine": 5,
-        "ezsystems/platform-ui-bundle": 5,
-        "ezsystems/landing-page-fieldtype-bundle": 5,
-        "ezsystems/flex-workflow": 5
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
