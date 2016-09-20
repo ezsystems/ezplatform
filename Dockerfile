@@ -13,15 +13,17 @@ COPY . /var/www
 
 # Remove cache folders to avoid layer issues, ref: https://github.com/docker/docker/issues/783
 RUN rm -Rf app/logs/* app/cache/* .git/* \
- && mkdir -p web/var \
- && composer install --optimize-autoloader --no-progress --no-interaction --prefer-dist \
+    && mkdir -p web/var \
+    && composer install --optimize-autoloader --no-progress --no-interaction --prefer-dist \
 # Clear cache again so env variables are taken into account on startup
- && rm -Rf app/logs/* app/cache/*/* \
+    && rm -Rf app/logs/* app/cache/*/* \
 # Fix permissions for www-data
- && chown -R www-data:www-data app/cache app/logs web/var \
- && find app/cache app/logs web/var -type d | xargs chmod -R 775 \
- && find app/cache app/logs web/var -type f | xargs chmod -R 664 \
- && [ "$REMOVE_AUTH" = "1" ] && rm -f auth.json
+    && chown -R www-data:www-data app/cache app/logs web/var \
+    && find app/cache app/logs web/var -type d | xargs chmod -R 775 \
+    && find app/cache app/logs web/var -type f | xargs chmod -R 664 \
+# Remove composer cache to avoid it taking space in image
+    && rm -rf ~/.composer/*/* \
+    && [ "$REMOVE_AUTH" = "1" ] && rm -f auth.json
 
 # Declare volumes so it an can be shared with other containers
 # Also since run.sh will use setfacl, and that does not work on aufs (but volumes does not use that)
