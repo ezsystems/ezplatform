@@ -11,9 +11,11 @@ ENV SYMFONY_ENV=prod
 # Copy in project files into work dir
 COPY . /var/www
 
-# Remove cache folders to avoid layer issues, ref: https://github.com/docker/docker/issues/783
-RUN rm -Rf app/logs/* app/cache/* .git/* \
-    && mkdir -p web/var \
+# Check for ignored folders to avoid layer issues, ref: https://github.com/docker/docker/issues/783
+RUN if [ -d .git ]; then echo "ERROR: .dockerignore folders detected, exiting" && exit 1; fi
+
+# Install and prepare install
+RUN mkdir -p web/var \
     && composer install --optimize-autoloader --no-progress --no-interaction --prefer-dist \
 # Clear cache again so env variables are taken into account on startup
     && rm -Rf app/logs/* app/cache/*/* \
