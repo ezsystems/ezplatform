@@ -1,6 +1,4 @@
-FROM ezsystems/php:7.0-v0
-
-MAINTAINER eZ Systems AS "engineering@ez.no"
+FROM ezsystems/php:7.0-v1
 
 # Build argument about keeping auth.json or not (by default on as prod images should'nt get updates via composer update)
 ARG REMOVE_AUTH=1
@@ -28,9 +26,4 @@ RUN mkdir -p web/var \
     && [ "$REMOVE_AUTH" = "1" ] && rm -f auth.json
 
 # Declare volumes so it an can be shared with other containers
-# Also since run.sh will use setfacl, and that does not work on aufs (but volumes does not use that)
 VOLUME /var/www /var/www/web/var
-
-EXPOSE 9000
-
-CMD /scripts/run.sh
