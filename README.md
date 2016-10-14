@@ -38,11 +38,9 @@ The [eZ Publish 5](https://github.com/ezsystems/ezpublish-community) repository,
 eZ Platform is 100% open source and is released as companion to a commercial *eZ Studio* software which adds advanced
 features for editorial teams and media companies, 100% built on top of *eZ Platform* APIs.
 
-- [eZ Publish 5.x Architecture, including "Platform Stack"](https://doc.ez.no/pages/viewpage.action?pageId=11403666)
-- [eZ Studio and eZ Platform RoadMap](http://ez.no/Blog/What-to-Expect-from-eZ-Studio-and-eZ-Platform)
-- [eZ Platform 2015 release plan](http://ez.no/Blog/What-Releases-to-Expect-from-eZ-in-2015)
-- eZ Systems AS *(commercial products and services)*: [ez.no](http://ez.no/)
-- eZ Community: [share.ez.no](http://ez.no/)
+- eZ Platform Developer Hub: [ezplatform.com](https://ezplatform.com/)
+- [eZ Studio and eZ Platform RoadMap](http://doc.ez.no/roadmap)
+- eZ Systems (commercial products and services): [ez.no](http://ez.no/)
 
 ## Install
 For manual installation instructions, see [INSTALL.md](https://github.com/ezsystems/ezplatform/blob/master/INSTALL.md).
