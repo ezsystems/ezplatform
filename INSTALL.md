@@ -1,7 +1,11 @@
 # Installation instructions
 
 NOTE: *For simplified installation, see our Docker Tools Beta instructions in [doc/docker-compose/README.md](https://github.com/ezsystems/ezplatform/blob/master/doc/docker-compose/README.md).
-By using those instructions you won't have to setup mysql, php, and nginx yourself, and almost all steps below are done for you.*
+By using those instructions you won't have to setup mysql, php, and nginx yourself, and almost all of the steps described below are done for you.*
+
+These installation instructions are kept current in the online docs here:
+https://doc.ez.no/display/DEVELOPER/Step+1%3A+Installation
+
 
 ## Terms for future reference:
   * `/<root-dir>/`: The filesystem path where eZ Platform is installed in.
@@ -14,9 +18,8 @@ By using those instructions you won't have to setup mysql, php, and nginx yourse
   *a database server* needed for this software. For further information on requirements [see online doc](https://doc.ez.no/display/TECHDOC/Requirements)
 
   **Before you start**:
-  - Create Database: Installation will ask you for credentials/details for which database to use, example with mysql: 
-    `CREATE DATABASE <database> CHARACTER SET utf8;` *Note: Right now installer only supports MySQL and MariaDB, Postgres
-    support will be (re)added in one of the upcoming releases.*
+  - Create Database: Installation will ask you for credentials/details for which database to use, example with mysql:
+    `CREATE DATABASE <database> CHARACTER SET utf8;` *Note: Right now installer only supports MySQL and MariaDB, Postgres support will be (re)added in one of the upcoming releases.*
   - Set php.ini memory_limit=256M before running commands below
   - *Optional:* You can also setup Solr to be used by eZ Platform and take note of the url it is accessible on
 
@@ -45,7 +48,7 @@ By using those instructions you won't have to setup mysql, php, and nginx yourse
 
     B. **Install via Composer**
 
-     You can get eZ Platform using composer with the following commands:
+     You can get eZ Platform using Composer with the following commands:
 
      *Note: composer will take its time to download all libraries and when done you will be asked to fill in some settings, including database settings.*
 
