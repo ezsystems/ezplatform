@@ -1,7 +1,7 @@
 # eZ Platform
 
 ## What is eZ Platform ?
-*eZ Platform* is a 100% open source professional CMS (Content Management System) developed by eZ Systems AS and the eZ Community.
+*eZ Platform* is a 100% open source professional CMS (Content Management System) developed by eZ Systems and the eZ Community.
 
 *eZ Platform* is the 6th generation of *eZ Publish*, it is built on top of the Symfony framework (Full Stack).
 It has been in development since 2011, and integral part of the *eZ Publish Platform 5.x* as "Platform stack" since 2012.
@@ -35,8 +35,7 @@ The [eZ Publish 5](https://github.com/ezsystems/ezpublish-community) repository,
 - **PlatformUIBundle**: A modern, extensible "Backend" UI for managing content & administering the site
 
 ### Further information:
-eZ Platform is 100% open source and is released as companion to a commercial *eZ Studio* software which adds advanced
-features for editorial teams and media companies, 100% built on top of *eZ Platform* APIs.
+eZ Platform is 100% open source and is the foundation for the commercial *eZ Enterprise* software which adds advanced features for editorial teams and media companies, 100% built on top of *eZ Platform* APIs.
 
 - eZ Platform Developer Hub: [ezplatform.com](https://ezplatform.com/)
 - [eZ Studio and eZ Platform RoadMap](http://doc.ez.no/roadmap)
@@ -63,17 +62,16 @@ If you discover a security issue, please see how to responsibly report such issu
 For instruction on how to run the functional tests, see [RUNNING_BEHAT.md](https://github.com/ezsystems/ezplatform/blob/master/RUNNING_BEHAT.md).
 
 ## Backwards compatibility
-eZ Platform aiming to be **100% content compatible** with eZ Publish 5.x, 4.x and 3.x *(introduced in 2002)*, meaning
-that content in those versions of the CMS can be upgraded using
+eZ Platform aims to be **100% content compatible** with eZ Publish 5.x, 4.x and 3.x *(introduced in 2002)*, meaning that content in those versions of the CMS can be upgraded using
 [online documentation](http://doc.ez.no/eZ-Publish/Upgrading) to eZ Platform.
 
-Unlike eZ Publish Platform 5.x, eZ Platform does not ship with eZ Publish Legacy (4.x). For Platform kernel use combined
-with legacy, eZ Publish Platform 5.4 is the most stable choice, offering support and maintenance updates until 2021.
-Alternative is releases of eZ Publish Community, latest as of Oct 2015 is v2014.11 found at
+Unlike eZ Publish Platform 5.x, eZ Platform does not ship with eZ Publish Legacy (4.x). For Platform kernel use combined with legacy, eZ Publish Platform 5.4 is the most stable choice, offering support and maintenance updates until 2021.
+
+An alternative is releases of eZ Publish Community; the latest as of Oct 2015 is v2014.11, found at
 [ezpublish-community](https://github.com/ezsystems/ezpublish-community).
 
 ## COPYRIGHT
-Copyright (C) 1999-2015 eZ Systems AS. All rights reserved.
+Copyright (C) 1999-2016 eZ Systems AS. All rights reserved.
 
 ## LICENSE
 http://www.gnu.org/licenses/gpl-2.0.txt GNU General Public License v2

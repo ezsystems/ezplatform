@@ -1,5 +1,7 @@
 # Getting started on eZ Platform
 
+https://doc.ez.no/display/DEVELOPER/Get+Started+with+eZ+Platform
+
 eZ Platform is built on top of **Symfony2 full stack framework** (version **2.x**), and as such all guidelines,
 requirements and best practices remain the same.
 
