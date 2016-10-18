@@ -1,7 +1,7 @@
 # eZ Studio
 
 ## What is eZ Studio ?
-*eZ Studio* is a commercial CMS (Content Management System) software developed by eZ Systems AS and the eZ Community.
+*eZ Studio* is a commercial CMS (Content Management System) software developed by eZ Systems.
 
 *eZ Studio* derives from *eZ Platform*. It is composed of a set of bundles. eZ Studio, like Platform is built on top of the Symfony framework (Full Stack). It has been in development since 2014.
 
@@ -42,9 +42,9 @@ In short eZ Studio comes with new features and services that extend eZ Platform 
 ### Further information:
 *eZ Studio* is a commercial software which adds advanced features for editorial teams and media companies, 100% built on top of *eZ Platform* APIs.
 
-- [eZ Studio Architecture, including "Platform Stack"](https://doc.ez.no/pages/viewpage.action?pageId=11403666)
-- eZ Systems AS *(commercial products and services)*: [ez.no](http://ez.no/)
-- eZ Community: [share.ez.no](http://ez.no/)
+- eZ Platform Developer Hub: [ezplatform.com](https://ezplatform.com/)
+- [eZ Studio and eZ Platform RoadMap](http://doc.ez.no/roadmap)
+- eZ Systems (commercial products and services): [ez.no](http://ez.no/)
 
 http://ez.no/Blog/What-to-Expect-from-eZ-Studio-and-eZ-Platform
 
@@ -65,8 +65,7 @@ If you discover a security issue, please see how to responsibly report such issu
 For instruction on how to run the functional tests, see [RUNNING_BEHAT.md](https://github.com/ezsystems/ezplatform/blob/master/RUNNING_BEHAT.md).
 
 ## Backwards compatibility
-eZ Platform aiming to be **100% content compatible** with eZ Publish 5.x, 4.x and 3.x *(introduced in 2002)*, meaning
-that content in those versions of the CMS can be upgraded using
+eZ Platform aims to be **100% content compatible** with eZ Publish 5.x, 4.x and 3.x *(introduced in 2002)*, meaning that content in those versions of the CMS can be upgraded using
 [online documentation](http://doc.ez.no/eZ-Publish/Upgrading) to eZ Platform.
 
 Unlike eZ Publish Platform 5.x, eZ Studio does not ship with eZ Publish Legacy (4.x). For Platform kernel use combined
