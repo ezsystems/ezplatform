@@ -1,21 +1,21 @@
 # eZ Studio
 
 ## What is eZ Studio ?
-*eZ Studio* is a commercial CMS (Content Management System) software developed by eZ Systems.
+*eZ Studio* is commercial CMS (Content Management System) software developed by eZ Systems.
 
-*eZ Studio* derives from *eZ Platform*. It is composed of a set of bundles. eZ Studio, like Platform is built on top of the Symfony framework (Full Stack). It has been in development since 2014.
+*eZ Studio* derives from *eZ Platform*. It is composed of a set of bundles. eZ Studio, like eZ Platform, is built on top of the Symfony framework (Full Stack). It has been in development since 2014.
 
 ### How to get access to eZ Studio?
 
 While this meta repository, `ezstudio`, is public to ease installation and upgrades, full access can be obtained in one of three ways:
 - Request an online demo on [ezstudio.com](http://ezstudio.com/)
 - As a partner, download trial version from [Partner Portal](http://ez.no/Partner-Portal)
-- As a customer with a eZ Enterprise subscription, full version from [Service Portal](https://support.ez.no/Downloads).
-  Or by setting up [Composer Authentication Tokens](https://doc.ez.no/display/TECHDOC/Using+Composer) for use in combination with this repository.
+- As a customer with an eZ Enterprise subscription, get full version from [Service Portal](https://support.ez.no/Downloads).
+  Or by setting up [Composer Authentication Tokens](https://doc.ez.no/display/DEVELOPER/Using+Composer) for use in combination with this repository.
 
 ## eZ Studio vs. eZ Platform
-[eZ Studio](http://ezstudio.com/) is a distribution flavour of [eZ Platform](http://ezplatform.com/), the next generation CMS which uses the same Symfony based kernel as *eZ Platform* (formerly known also as *eZ Publish 6*).
-In short eZ Studio comes with new features and services that extend eZ Platform functionality for media industry, and team collaboration.
+[eZ Studio](http://ezstudio.com/) is a distribution flavor of [eZ Platform](http://ezplatform.com/), the next generation CMS which uses the same Symfony-based kernel as *eZ Platform* (formerly known also as *eZ Publish 6*).
+In short, eZ Studio comes with new features and services that extend eZ Platform functionality for media industry and team collaboration.
 
 ### Abstract:
 - **Very extensible** *You can extend the application and the content model in many ways*
@@ -40,11 +40,13 @@ In short eZ Studio comes with new features and services that extend eZ Platform 
 - **PlatformUIBundle**: A modern, extensible "backend" UI for managing content & administering the site
 
 ### Further information:
-*eZ Studio* is a commercial software which adds advanced features for editorial teams and media companies, 100% built on top of *eZ Platform* APIs.
+*eZ Studio* is commercial software which adds advanced features for editorial teams and media companies, 100% built on top of *eZ Platform* APIs.
 
+- [eZ Studio Architecture, including "Platform Stack"](https://doc.ez.no/display/DEVELOPER/Architecture:+An+Open+Source+PHP+CMS+Built+On+Symfony2+Full+Stack)
+- eZ Systems *(commercial products and services)*: [ez.no](http://ez.no)
+- eZ Community: [share.ez.no](http://ez.no)
 - eZ Platform Developer Hub: [ezplatform.com](https://ezplatform.com/)
 - [eZ Studio and eZ Platform RoadMap](http://doc.ez.no/roadmap)
-- eZ Systems (commercial products and services): [ez.no](http://ez.no/)
 
 http://ez.no/Blog/What-to-Expect-from-eZ-Studio-and-eZ-Platform
 
@@ -53,7 +55,7 @@ For manual installation instructions, see [INSTALL.md](https://github.com/ezsyst
 For simplified installation, see our Docker Tools Beta instructions in [doc/docker-compose/README.md](https://github.com/ezsystems/ezstudio/blob/master/doc/docker-compose/README.md).
 
 ## Requirements
-Full requirements can be found on the [Requirements](https://doc.ez.no/display/TECHDOC/Requirements) page.
+Full requirements can be found on the [Requirements](https://doc.ez.no/pages/viewpage.action?pageId=31429536) page.
 
 *TL;DR: supported PHP versions are 5.5, 5.6 and 7.0 (for dev use), using mod_php or php-fpm, and either MySQL 5.5/5.6 or MariaDB 5.5/10.0.*
 
