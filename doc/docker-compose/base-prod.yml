@@ -3,7 +3,9 @@ version: '2'
 
 services:
   app:
-    build: ../../
+    build:
+      context: ../../
+      dockerfile: ${APP_DOCKER_FILE}
     image: ${APP_PROD_IMAGE}
     depends_on:
      - db
