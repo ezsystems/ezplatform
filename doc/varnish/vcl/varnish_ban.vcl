@@ -1,5 +1,11 @@
-// Varnish 3 style - eZ 5.4+ / 2014.09+
+// Varnish 4 style - eZ 5.4+ / 2014.09+
 // Complete VCL example
+//
+// DEPRECATED: This approach for invalidation is deprecated and default has changed to xkey.
+// See doc/varnish/README.md
+
+
+vcl 4.0;
 
 // Our Backend - Assuming that web server is listening on port 80
 // Replace the host to fit your setup
@@ -24,7 +30,7 @@ acl debuggers {
 sub vcl_recv {
 
     // Set the backend
-    set req.backend = ezplatform;
+    set req.backend_hint = ezplatform;
 
     // Advertise Symfony for ESI support
     set req.http.Surrogate-Capability = "abc=ESI/1.0";
@@ -43,7 +49,7 @@ sub vcl_recv {
     call ez_purge;
 
     // Don't cache requests other than GET and HEAD.
-    if (req.request != "GET" && req.request != "HEAD") {
+    if (req.method != "GET" && req.method != "HEAD") {
         return (pass);
     }
 
@@ -64,30 +70,29 @@ sub vcl_recv {
         if (client.ip ~ debuggers) {
             set req.http.X-Debug = "Not Cached according to configuration (Authorization)";
         }
-        return(pass);
+        return (hash);
     }
 
     // Do a standard lookup on assets
     // Note that file extension list below is not extensive, so consider completing it to fit your needs.
     if (req.url ~ "\.(css|js|gif|jpe?g|bmp|png|tiff?|ico|img|tga|wmf|svg|swf|ico|mp3|mp4|m4a|ogg|mov|avi|wmv|zip|gz|pdf|ttf|eot|wof)$") {
-        return (lookup);
+        return (hash);
     }
 
     // Retrieve client user hash and add it to the forwarded request.
     call ez_user_hash;
 
     // If it passes all these tests, do a lookup anyway.
-    return (lookup);
+    return (hash);
 }
 
 // Called when the requested object has been retrieved from the backend
-sub vcl_fetch {
+sub vcl_backend_response {
 
-    if (req.restarts == 0
-        && req.http.accept ~ "application/vnd.fos.user-context-hash"
+    if (bereq.http.accept ~ "application/vnd.fos.user-context-hash"
         && beresp.status >= 500
     ) {
-        error 503 "Hash error";
+        return (abandon);
     }
 
     // Optimize to only parse the Response contents from Symfony
@@ -96,13 +101,9 @@ sub vcl_fetch {
         set beresp.do_esi = true;
     }
 
-    // Respect the Cache-Control=private header from the backend
-    if (beresp.http.Cache-Control ~ "no-cache|no-store|private") {
-        set beresp.ttl = 120s;
-        return (hit_for_pass);
-    }
-
-    return (deliver);
+    // Allow stale content, in case the backend goes down or cache is not fresh any more
+    // make Varnish keep all objects for 1 hours beyond their TTL
+    set beresp.grace = 1h;
 }
 
 // Handle purge
@@ -110,17 +111,17 @@ sub vcl_fetch {
 // See http://foshttpcache.readthedocs.org/en/latest/varnish-configuration.html#id4
 sub ez_purge {
 
-    if (req.request == "BAN") {
+    if (req.method == "BAN") {
         if (!client.ip ~ invalidators) {
-            error 405 "Method not allowed";
+            return (synth(405, "Method not allowed"));
         }
 
         if (req.http.X-Location-Id) {
-            ban( "obj.http.X-Location-Id ~ " + req.http.X-Location-Id);
+            ban("obj.http.X-Location-Id ~ " + req.http.X-Location-Id);
             if (client.ip ~ debuggers) {
                 set req.http.X-Debug = "Ban done for content connected to LocationId " + req.http.X-Location-Id;
             }
-            error 200 "Banned";
+            return (synth(200, "Banned"));
         }
     }
 }
@@ -134,10 +135,10 @@ sub ez_user_hash {
             || req.http.x-user-hash
         )
     ) {
-        error 400;
+        return (synth(400));
     }
 
-    if (req.restarts == 0 && (req.request == "GET" || req.request == "HEAD")) {
+    if (req.restarts == 0 && (req.method == "GET" || req.method == "HEAD")) {
         // Get User (Context) hash, for varying cache by what user has access to.
         // https://doc.ez.no/display/EZP/Context+aware+HTTP+cache
 
@@ -165,7 +166,7 @@ sub ez_user_hash {
 
             // Force the lookup, the backend must tell how to cache/vary response containing the user hash
 
-            return (lookup);
+            return (hash);
         }
     }
 
@@ -184,7 +185,7 @@ sub ez_user_hash {
         // Force the lookup, the backend must tell not to cache or vary on the
         // user hash to properly separate cached data.
 
-        return (lookup);
+        return (hash);
     }
 }
 
@@ -193,7 +194,6 @@ sub vcl_deliver {
     // request and restart.
     if (req.restarts == 0
         && resp.http.content-type ~ "application/vnd.fos.user-context-hash"
-        && resp.status == 200
     ) {
         set req.http.x-user-hash = resp.http.x-user-hash;
 

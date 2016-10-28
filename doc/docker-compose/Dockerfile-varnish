@@ -1,0 +1,15 @@
+FROM debian:stretch
+# Stretch is used in order to install varnish-modules withouth having to compile from source
+# links:
+# - https://github.com/varnish/varnish-modules/blob/master/docs/vmod_xkey.rst
+# - https://wikitech.wikimedia.org/wiki/XKey
+
+ENV DEBIAN_FRONTEND noninteractive
+
+RUN \
+    apt-get update -q -y && \
+    apt-get install -q -y --force-yes --no-install-recommends ca-certificates varnish-modules varnish
+
+EXPOSE 80 6082
+
+CMD ["varnishd", "-F", "-a", ":80", "-T", ":6082", "-f", "/etc/varnish/default.vcl", "-s", "malloc,256M"]
