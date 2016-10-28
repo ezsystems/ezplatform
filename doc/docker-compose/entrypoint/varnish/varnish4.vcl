@@ -1,29 +1,26 @@
 // Varnish 4 style - eZ 5.4+ / 2014.09+
 // Complete VCL example
-//
-// DEPRECATED: This approach for invalidation is deprecated and default has changed to xkey.
-// See doc/varnish/README.md
-
 
 vcl 4.0;
 
 // Our Backend - Assuming that web server is listening on port 80
 // Replace the host to fit your setup
 backend ezplatform {
-    .host = "127.0.0.1";
+    .host = "web";
     .port = "80";
 }
 
 // ACL for invalidators IP
 acl invalidators {
     "127.0.0.1";
-    "192.168.0.0"/16;
+    "172.16.0.0"/20;
+    "app";
 }
 
 // ACL for debuggers IP
 acl debuggers {
     "127.0.0.1";
-    "192.168.0.0"/16;
+    "172.16.0.0"/20;
 }
 
 // Called at the beginning of a request, after the complete request has been received
@@ -113,7 +110,7 @@ sub ez_purge {
 
     if (req.method == "BAN") {
         if (!client.ip ~ invalidators) {
-            return (synth(405, "Method not allowed"));
+            return (synth(405, "Method Not Allowed"));
         }
 
         if (req.http.X-Location-Id) {
