@@ -6,7 +6,7 @@ services:
     environment:
      - SYMFONY_HTTP_CACHE=0
      - SYMFONY_TRUSTED_PROXIES=varnish
-# @todo Add env variable taken into account by eZ Platform for configuring varnish purging
+     - HTTPCACHE_PURGE_SERVER=http://varnish
 
   varnish:
     image: kardasz/varnish
