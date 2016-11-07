@@ -9,7 +9,11 @@ services:
      - HTTPCACHE_PURGE_SERVER=http://varnish
 
   varnish:
-    image: kardasz/varnish
+    build:
+      context: .
+      dockerfile: Dockerfile-varnish
+    image: my_varnish
+    mem_limit: 448M
     ports:
      - "8081:80"
     depends_on:

@@ -1,0 +1,26 @@
+#FROM debian:jessie
+FROM debian:stretch
+# Based on https://hub.docker.com/r/kardasz/varnish/~/dockerfile/
+# stretch is used in order to install varnish-modules withouth having to compile from source
+
+# links:
+# - https://github.com/varnish/varnish-modules/blob/master/docs/vmod_xkey.rst
+# - https://wikitech.wikimedia.org/wiki/XKey
+
+ENV DEBIAN_FRONTEND noninteractive
+
+RUN \
+    apt-get update -q -y && \
+#    apt-get install -q -y --force-yes --no-install-recommends apt-transport-https curl ca-certificates
+    apt-get install -q -y --force-yes --no-install-recommends ca-certificates varnish-modules varnish
+
+#RUN \
+#    curl https://repo.varnish-cache.org/GPG-key.txt | apt-key add - && \
+#    echo "deb https://repo.varnish-cache.org/debian/ jessie varnish-4.1" >> /etc/apt/sources.list.d/varnish-cache.list && \
+#    apt-get update -q -y && \
+#    apt-get install -q -y --force-yes --no-install-recommends varnish
+
+
+EXPOSE 80 6082
+
+CMD ["varnishd", "-F", "-a", ":80", "-T", ":6082", "-f", "/etc/varnish/default.vcl", "-s", "malloc,320M"]
