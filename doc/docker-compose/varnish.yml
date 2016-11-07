@@ -13,7 +13,8 @@ services:
       context: .
       dockerfile: Dockerfile-varnish
     image: my_varnish
-    mem_limit: 448M
+    mem_limit: 384M
+    memswap_limit: 512M
     ports:
      - "8081:80"
     depends_on:

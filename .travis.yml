@@ -46,8 +46,10 @@ before_script:
 script: docker-compose exec --user www-data app sh -c "php /scripts/wait_for_db.php; php $TEST_CMD"
 
 after_failure:
+  # Will show us the full log of container's main processes (not counting shell process above running php and behat)
   - docker-compose logs -t --tail="all"
-  - docker-compose ps
+  # Will show us what is up, and how long it's been up
+  - docker ps -s
 
 # disable mail notifications
 notifications:
