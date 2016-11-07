@@ -44,6 +44,8 @@ before_script:
 # Behat will use behat.yml which is a copy of behat.yml.dist with hostnames update by doc/docker-compose/selenium.yml
 script: docker-compose exec --user www-data app sh -c "php /scripts/wait_for_db.php; php $TEST_CMD"
 
+after_failure: docker-compose logs -t --tail="all"
+
 # disable mail notifications
 notifications:
   email: false
