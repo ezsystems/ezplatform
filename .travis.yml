@@ -43,7 +43,7 @@ before_script:
 
 # Execute test command, need to use sh to get right exit code (docker/compose/issues/3379)
 # Behat will use behat.yml which is a copy of behat.yml.dist with hostnames update by doc/docker-compose/selenium.yml
-script: docker-compose exec --user www-data app sh -c "php /scripts/wait_for_db.php; php $TEST_CMD"
+script: docker-compose exec --privileged --user www-data app sh -c "php /scripts/wait_for_db.php; phpdbg -rr $TEST_CMD"
 
 after_failure:
   # Will show us the full log of container's main processes (not counting shell process above running php and behat)
