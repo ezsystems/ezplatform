@@ -38,7 +38,7 @@
         "ezsystems/studio-ui-bundle": "~1.5.0",
         "ezsystems/ezstudio-notifications": "~1.2.0",
         "ezsystems/landing-page-fieldtype-bundle": "~1.5.0",
-        "ezsystems/flex-workflow": "^1.5@rc",
+        "ezsystems/flex-workflow": "~1.5.0",
         "egulias/listeners-debug-command-bundle": "~1.9",
         "hautelook/templated-uri-bundle": "~1.0 | ~2.0",
         "doctrine/doctrine-bundle": "~1.3",
