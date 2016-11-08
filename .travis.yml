@@ -19,11 +19,11 @@ env:
   matrix:
     # Disabled until failures on BDD tests with redis is solved / figured out
     #- TEST_CMD="bin/behat -vv --profile=rest --suite=fullJson --tags=~@broken" COMPOSE_FILE="doc/docker-compose/base-prod.yml:doc/docker-compose/redis.yml:doc/docker-compose/selenium.yml"
-    - TEST_CMD="bin/behat -vv --profile=rest --suite=fullJson --tags=~@broken" BEHAT_WEB_HOST="varnish" PHP_IMAGE=ezsystems/php:7.0-v1-dev COMPOSE_FILE="doc/docker-compose/base-prod.yml:doc/docker-compose/varnish.yml:doc/docker-compose/selenium.yml"
-    - TEST_CMD="bin/behat -vv --profile=rest --suite=fullXml --tags=~@broken"
-    - TEST_CMD="bin/behat -vv --profile=core --tags=~@broken"
-    - TEST_CMD="bin/phpunit -v vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishRestBundle/Tests/Functional"
-    - TEST_CMD="bin/behat -vv --profile=platformui --tags='@common'"
+    - TEST_CMD="bin/behat -vv --profile=rest --suite=fullJson --tags=~@broken" BEHAT_WEB_HOST="varnish" COMPOSE_FILE="doc/docker-compose/base-prod.yml:doc/docker-compose/varnish.yml:doc/docker-compose/selenium.yml"
+ #   - TEST_CMD="bin/behat -vv --profile=rest --suite=fullXml --tags=~@broken"
+ #   - TEST_CMD="bin/behat -vv --profile=core --tags=~@broken"
+ #   - TEST_CMD="bin/phpunit -v vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishRestBundle/Tests/Functional"
+ #   - TEST_CMD="bin/behat -vv --profile=platformui --tags='@common'"
 
 # test only master (+ Pull requests)
 branches:
@@ -43,7 +43,7 @@ before_script:
 
 # Execute test command, need to use sh to get right exit code (docker/compose/issues/3379)
 # Behat will use behat.yml which is a copy of behat.yml.dist with hostnames update by doc/docker-compose/selenium.yml
-script: docker-compose exec --privileged --user www-data app sh -c "php /scripts/wait_for_db.php; phpdbg -rr $TEST_CMD"
+script: docker-compose exec --privileged --user www-data app sh -c "php /scripts/wait_for_db.php; gdb --args php -e $TEST_CMD"
 
 after_failure:
   # Will show us the full log of container's main processes (not counting shell process above running php and behat)
