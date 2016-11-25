@@ -27,7 +27,7 @@
         "sensio/generator-bundle": "~2.3",
         "incenteev/composer-parameter-handler": "~2.0",
         "tedivm/stash-bundle": "~0.4",
-        "ezsystems/ezpublish-kernel": "~6.5@dev",
+        "ezsystems/ezpublish-kernel": "~6.7@dev",
         "ezsystems/repository-forms": "^1.4",
         "ezsystems/ezplatform-solr-search-engine": "^1.1@dev",
         "ezsystems/platform-ui-bundle": "~1.5@dev",
