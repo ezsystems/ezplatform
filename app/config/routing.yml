@@ -38,3 +38,6 @@ _ezpublishFlexWorkflowRoutes:
 
 _ezpublishNotificationRoutes:
     resource: "@NotificationBundle/Resources/config/routing.yml"
+
+_ezStudioFormBuilder:
+    resource: "@EzSystemsFormBuilderBundle/Resources/config/routing.yml"
