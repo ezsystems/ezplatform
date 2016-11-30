@@ -44,3 +44,4 @@ _ezStudioFormBuilder:
 
 _ezpublishDateBasedPublisher:
     resource: "@EzSystemsDateBasedPublisherBundle/Resources/config/routing.yml"
+    prefix: "%ez_systems_date_based_publisher_rest_prefix%"
