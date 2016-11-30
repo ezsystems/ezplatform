@@ -41,3 +41,6 @@ _ezpublishNotificationRoutes:
 
 _ezStudioFormBuilder:
     resource: "@EzSystemsFormBuilderBundle/Resources/config/routing.yml"
+
+_ezpublishDateBasedPublisher:
+    resource: "@EzSystemsDateBasedPublisherBundle/Resources/config/routing.yml"
