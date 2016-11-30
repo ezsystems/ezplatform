@@ -30,7 +30,7 @@
         "sensio/generator-bundle": "~2.3",
         "incenteev/composer-parameter-handler": "~2.0",
         "tedivm/stash-bundle": "~0.4",
-        "ezsystems/ezpublish-kernel": "^6.5@dev",
+        "ezsystems/ezpublish-kernel": "^6.7@dev",
         "ezsystems/repository-forms": "^1.4@dev",
         "ezsystems/ezplatform-solr-search-engine": "^1.1@dev",
         "ezsystems/platform-ui-bundle": "^1.5@dev",
@@ -50,7 +50,8 @@
         "willdurand/js-translation-bundle": "^2.6",
         "ramsey/uuid": "^3.5",
         "ezsystems/ezstudio-cron": "^1.0@dev",
-        "ezsystems/date-based-publisher": "^1.0@dev"
+        "ezsystems/date-based-publisher": "^1.0@dev",
+        "ezsystems/content-on-the-fly-prototype": "~0.1.7"
     },
     "require-dev": {
         "behat/behat": "~3.0",

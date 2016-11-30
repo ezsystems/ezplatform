@@ -14,7 +14,7 @@ RUN if [ -d .git ]; then echo "ERROR: .dockerignore folders detected, exiting" &
 
 # Install and prepare install
 RUN mkdir -p web/var \
-    && composer install --optimize-autoloader --no-progress --no-interaction --prefer-dist \
+    && composer install --optimize-autoloader --no-progress --no-interaction --no-suggest --prefer-dist \
 # Clear cache again so env variables are taken into account on startup
     && rm -Rf app/logs/* app/cache/*/* \
 # Fix permissions for www-data

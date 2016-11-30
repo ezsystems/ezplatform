@@ -16,7 +16,7 @@ env:
     - SYMFONY_DEBUG=1
   # list of behat arguments to test
   matrix:
-    # Disabled until failures on BD tests with redis is solved / figured out
+    # Disabled until failures on BDD tests with redis is solved / figured out
     #- TEST_CMD="bin/behat -vv --profile=rest --suite=fullJson --tags=~@broken" COMPOSE_FILE="doc/docker-compose/base-prod.yml:doc/docker-compose/redis.yml:doc/docker-compose/selenium.yml"
     - TEST_CMD="bin/behat -vv --profile=rest --suite=fullJson --tags=~@broken" COMPOSE_FILE="doc/docker-compose/base-prod.yml:doc/docker-compose/selenium.yml"
     - TEST_CMD="bin/behat -vv --profile=rest --suite=fullXml --tags=~@broken"
@@ -29,9 +29,6 @@ branches:
   only:
     - master
     - /^\d.\d+$/
-
-# Update Docker and Docker Compose
-before_install: ./bin/.travis/trusty/update_docker.sh
 
 before_script:
   # Internal auth token dedicated to testing with travis+composer on ezsystems repos, not for reuse!
@@ -46,6 +43,12 @@ before_script:
 # Execute test command, need to use sh to get right exit code (docker/compose/issues/3379)
 # Behat will use behat.yml which is a copy of behat.yml.dist with hostnames update by doc/docker-compose/selenium.yml
 script: docker-compose exec --user www-data app sh -c "php /scripts/wait_for_db.php; php $TEST_CMD"
+
+after_failure:
+  # Will show us the full log of container's main processes (not counting shell process above running php and behat)
+  - docker-compose logs -t --tail="all"
+  # Will show us what is up, and how long it's been up
+  - docker ps -s
 
 # disable mail notifications
 notifications:
