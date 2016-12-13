@@ -19,7 +19,7 @@ ezpublish:
     # System settings, grouped by siteaccess and/or siteaccess group
     system:
         site_group:
-            # Pool to use for cache, needs to be differant per repository (database).
+            # Pool to use for cache, needs to be different per repository (database).
             cache_pool_name: '%cache_pool%'
             # These reflect the current installers, complete installation before you change them. For changing var_dir
             # it is recommended to install clean, then change setting before you start adding binary content, otherwise you'll
