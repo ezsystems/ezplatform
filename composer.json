@@ -34,7 +34,7 @@
         "ezsystems/repository-forms": "^1.4@dev",
         "ezsystems/ezplatform-solr-search-engine": "^1.1@dev",
         "ezsystems/platform-ui-bundle": "^1.5@dev",
-        "ezsystems/ez-support-tools": "~0.2.0@dev",
+        "ezsystems/ez-support-tools": "~0.1.0@dev",
         "ezsystems/studio-ui-bundle": "^1.5@dev",
         "ezsystems/ezstudio-notifications": "^1.2@dev",
         "ezsystems/landing-page-fieldtype-bundle": "^1.5@dev",
