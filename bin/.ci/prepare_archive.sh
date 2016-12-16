@@ -6,8 +6,8 @@
 #     If auth.json is placed in COMPOSER_HOME, it needs to be for same user as the one executing script.
 
 
-# Install all composer deps non-interactivly
-composer install -n --prefer-dist --no-dev --no-scripts
+# Install all composer deps non-interactivly, skip scripts as they will be executed install
+composer install --no-interaction --prefer-dist --no-dev --no-scripts --optimize-autoloader
 
 # Rename .gitignore to make it optional as it is optimized for kernel development and not project development
 mv .gitignore .gitignore.dist

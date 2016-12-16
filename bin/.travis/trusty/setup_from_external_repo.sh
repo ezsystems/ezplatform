@@ -53,7 +53,7 @@ if [ "$RUN_INSTALL" = "1" ] ; then
     cat composer.json
   fi
   echo "> Run composer install"
-  composer install --no-progress --no-interaction --prefer-dist
+  composer install --no-progress --no-interaction --prefer-dist --optimize-autoloader
   mkdir -p web/var
   rm -Rf app/logs/* app/cache/*/*
   sudo chown -R www-data:www-data app/cache app/logs web/var
