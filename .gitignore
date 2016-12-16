@@ -1,7 +1,24 @@
+# All user specific files from now on should be kept in the global .gitignore file
+# located in the user's local environment. To do so you have to inform Git which
+# files should be excluded globally (for every Git repository).
+#
+# Here is a short instruction about how to exclude selected files globally:
+#
+# - create a new .gitignore file in your home folder:
+#   touch ~/.gitignore
+#
+# - add some exclusions, eg:
+#   /nbproject/
+#   /.idea/
+#
+# - inform Git where it should start looking for .gitignore file:
+#   git config --global core.excludesfile ~/.gitignore
+#
+# More details about excluding specific file on your local environment can be found
+# in the official GitHub article: https://help.github.com/articles/ignoring-files/
+
 /vendor/
 .php~
-/nbproject/
-/.idea/
 /bin/behat
 /bin/phpunit
 /app/check.php
