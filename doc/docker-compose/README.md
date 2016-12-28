@@ -28,14 +28,16 @@ The current Docker Compose files are made to be mixed and matched togtehr as you
 - base-prod.yml _(required, always needs to be first, contains: db, web and app container)_
 - base-dev.yml _(alternative to `base-prod.yml`, same applies here if used)_
 - redis.yml _(optional, adds redis service and appends config to app)_
-- solr.yml _(optional, work in progress config to add solr service and configure app for it, for testing only)_
 - blackfire.yml _(optional, adds blackfire service and lets you trigger profiling against the setup)_
 - selenium.yml _(optional, always needs to be last, adds selenium service and appends config to app)_
+
+In addition the following exists but are work in progress, thus not tested yet and are known to be broken:
+- solr.yml _(optional, add solr service and configure app for it)_
 
 
 These can be used with `-f` argument on docker-compose, like:
 ```bash
-docker-compose -f doc/docker-compose/base-prod.yml -f doc/docker-compose/redis.yml up -d --force-recreate
+docker-compose -f doc/docker-compose/base-prod.yml -f doc/docker-compose/blackfire.yml up -d --force-recreate
 ```
 
 However below environment variable `COMPOSE_FILE` is used instead since this is also what is used to have a default in

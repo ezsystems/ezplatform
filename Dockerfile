@@ -1,4 +1,4 @@
-FROM ezsystems/php:7.0-v1
+FROM ezsystems/php:7.1-v1
 
 # Build argument about keeping auth.json or not (by default on as prod images should'nt get updates via composer update)
 ARG REMOVE_AUTH=1
