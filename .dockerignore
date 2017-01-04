@@ -3,7 +3,8 @@
 
 ### GIT files
 .git
-vendor/*/*/.git
+# Skipped as it makes build very slow and since it is needed by composer when working on dev branches
+#vendor/*/*/.git
 
 ### Symfony template
 # Cache and logs (Symfony2)
