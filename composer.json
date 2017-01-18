@@ -70,7 +70,6 @@
             "@build"
         ],
         "post-create-project-cmd": [
-            "@composer dump-autoload --optimize",
             "eZ\\Bundle\\EzPublishCoreBundle\\Composer\\ScriptHandler::installWelcomeText"
         ]
     },
