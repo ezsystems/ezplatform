@@ -32,6 +32,7 @@
         "ezsystems/ezplatform-solr-search-engine": "^1.1@dev",
         "ezsystems/platform-ui-bundle": "~1.5@dev",
         "ezsystems/ez-support-tools": "~0.1.0",
+        "ezplatform-i18n/ezplatform-i18n-ach_ug": "^1.0@dev",
         "egulias/listeners-debug-command-bundle": "~1.9",
         "white-october/pagerfanta-bundle": "1.0.*",
         "hautelook/templated-uri-bundle": "~1.0 | ~2.0",
@@ -39,7 +40,7 @@
         "symfony/expression-language": "~2.4",
         "sensio/framework-extra-bundle": "~3.0",
         "ezsystems/content-on-the-fly-prototype": "~0.1.7",
-        "willdurand/js-translation-bundle": "^2.6"
+        "willdurand/js-translation-bundle": "^2.7@dev"
     },
     "require-dev": {
         "ezsystems/ezplatform-i18n": "^1.0@dev",
