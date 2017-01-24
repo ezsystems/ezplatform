@@ -28,8 +28,8 @@ Then click on the bookmarks from platform UI to enable/disable in-context.
 
 ## Using in-context translation
 The first time you enable in-context, if you're not logged into Crowdin, it will ask you
-to login or register an account. Once done, it will ask you which language you want to
-translate in, from the list of configured languages in crowdin.
+to log in or register an account. Once done, it will ask you which language you want to
+translate to, from the list of languages configured in crowdin.
 
 Choose your language, and you can start translating right away. Translatable strings in the
 interface will be outlined in red (untranslated), blue (translated) or green (approved).
@@ -39,7 +39,7 @@ Click on it, and edit the string in the window that shows up.
 ## Troubleshooting
 
 Make sure you clear your browser's cache in addition to eZ Platform's. Some of the translation resources
-use agressive HTTP cache.
+use aggressive HTTP cache.
 
 [crowdin.com]: https://crowdin.com
 [in-context]: https://support.crowdin.com/in-context-localization/
