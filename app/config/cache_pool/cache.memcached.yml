@@ -1,0 +1,10 @@
+# Reusable service for memcache cache for use in tests/docker/platform.sh
+services:
+    cache.memcached:
+        parent: cache.adapter.memcached
+        tags:
+            - name: cache.pool
+              clearer: cache.app_clearer
+              # Example from vendor/symfony/symfony/src/Symfony/Component/Cache/Traits/MemcachedTrait.php:
+              # memcached://user:pass@localhost?weight=33'
+              provider: 'memcached://%env(CACHE_DSN)%'
