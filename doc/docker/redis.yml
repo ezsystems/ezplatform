@@ -10,8 +10,8 @@ services:
     depends_on:
      - redis
     environment:
-     - CUSTOM_CACHE_POOL=singleredis
-     - CACHE_HOST=redis
+     - CACHE_POOL=cache.redis
+     - CACHE_DSN=redis:6379
 
   redis:
     image: ${REDIS_IMAGE}

@@ -8,7 +8,7 @@ ezpublish:
         default:
             storage: ~
             search:
-                engine: '%search_engine%'
+                engine: '%env(SEARCH_ENGINE)%'
                 connection: default
 
     # Siteaccess configuration, with one siteaccess per default
@@ -23,8 +23,8 @@ ezpublish:
     # System settings, grouped by siteaccess and/or siteaccess group
     system:
         site_group:
-            # Pool to use for cache, needs to be different per repository (database).
-            cache_pool_name: '%cache_pool%'
+            # Cache pool service, needs to be different per repository (database) on multi repository install.
+            cache_service_name: '%env(CACHE_POOL)%'
             # These reflect the current installers, complete installation before you change them. For changing var_dir
             # it is recommended to install clean, then change setting before you start adding binary content, otherwise you'll
             # need to manually modify your database data to reflect this to avoid exceptions.
@@ -36,7 +36,7 @@ ezpublish:
             content:
               # As we by default enable EzSystemsPlatformHttpCacheBundle which is designed to expire all affected cache
               # on changes, and as error / redirects now have separate ttl, we easier allow ttl to be greatly increased
-              default_ttl: '%httpcache_default_ttl%'
+              default_ttl: '%env(HTTPCACHE_TTL)%'
             # HttpCache purge server(s) setting, eg Varnish, for when ezpublish.http_cache.purge_type is set to 'http'.
             http_cache:
-                purge_servers: ['%purge_server%']
+                purge_servers: ['%env(PURGE_SERVERS)%']

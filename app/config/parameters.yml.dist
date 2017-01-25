@@ -1,13 +1,26 @@
 # This file is a "template" of what your parameters.yml file should look like
 parameters:
     # A secret key that's used to generate certain security-related tokens
-    secret: ThisEzPlatformTokenIsNotSoSecretChangeIt
+    env(SYMFONY_SECRET): ThisEzPlatformTokenIsNotSoSecretChangeIt
 
     # Settings for database backend used by Doctrine DBAL
-    # In turn used for Content Repository Persistence, and default database powered search engine
-    database_driver: pdo_mysql
-    database_host: localhost
-    database_port: ~
-    database_name: ezplatform
-    database_user: root
-    database_password:
+    # In turn used for default storage engine & default search engine (if legacy is configured as search engine)
+    env(DATABASE_DRIVER): pdo_mysql
+    env(DATABASE_HOST): localhost
+    env(DATABASE_PORT): ~
+    env(DATABASE_NAME): ezplatform
+    env(DATABASE_USER): root
+    env(DATABASE_PASSWORD):
+
+    # Compile time handlers
+    ## These are defined at compile time, and hence can't be set at runtime using env()
+    ## Compile time env variables mapping of these are set in composer.json
+
+    ## Log type is one of "stream", "error_log" or other types supported by monolog
+    log_type: stream
+
+    ## Mail transport used by SwiftMailer
+    mailer_transport:  smtp
+
+    # Purge type used by HttpCache system
+    purge_type: local
