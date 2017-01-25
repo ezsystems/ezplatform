@@ -16,11 +16,11 @@ RUN if [ -d .git ]; then echo "ERROR: .dockerignore folders detected, exiting" &
 RUN mkdir -p web/var \
     && composer install --optimize-autoloader --no-progress --no-interaction --no-suggest --prefer-dist \
 # Clear cache again so env variables are taken into account on startup
-    && rm -Rf app/logs/* app/cache/*/* \
+    && rm -Rf var/logs/* var/cache/*/* \
 # Fix permissions for www-data
-    && chown -R www-data:www-data app/cache app/logs web/var \
-    && find app/cache app/logs web/var -type d -print0 | xargs -0 chmod -R 775 \
-    && find app/cache app/logs web/var -type f -print0 | xargs -0 chmod -R 664 \
+    && chown -R www-data:www-data var web/var \
+    && find var web/var -type d -print0 | xargs -0 chmod -R 775 \
+    && find var web/var -type f -print0 | xargs -0 chmod -R 664 \
 # Remove composer cache to avoid it taking space in image
     && rm -rf ~/.composer/*/* \
     && [ "$REMOVE_AUTH" = "1" ] && rm -f auth.json

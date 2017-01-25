@@ -22,9 +22,4 @@ parameters:
     log_path: "%kernel.logs_dir%/%kernel.environment%.log"
 
     # Settings for Cache pool, to create your own pool see cache/ folder.
-    cache_pool: "default"
-
-    cache_host: 127.0.0.1
-
-    cache_memcached_port: 11211
-    cache_redis_port: 6379
+    cache_pool: "app.cache"

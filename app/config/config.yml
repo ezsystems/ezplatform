@@ -32,24 +32,6 @@ ez_search_engine_solr:
             mapping:
                 default: endpoint0
 
-# Stash is used for persistence cache in eZ Repository
-# Can have several caches used by different eZ Repositories in ezplatform.yml, must be one per database
-stash:
-    caches:
-        default:
-            drivers:
-                # When using multiple webservers, you must use Memcache or Redis to share the cache
-                # For single web server Apc, Memcached and Redis will give you better performance under editing load
-                - FileSystem
-            inMemory: true
-            registerDoctrineAdapter: false
-            # On Windows, using FileSystem, to avoid hitting filesystem limitations
-            # you need to change the keyHashFunction used to generate cache directories to "crc32"
-            # FileSystem:
-            #    keyHashFunction: crc32
-    # Disable tracking of cache values to avoid large disk use when using web profiler
-    tracking_values: false
-
 framework:
     esi:             ~
     translator:      { fallback: "%locale_fallback%" }
@@ -58,12 +40,7 @@ framework:
         resource: "%kernel.root_dir%/config/routing.yml"
         strict_requirements: ~
     csrf_protection: ~
-    form:
-        csrf_protection:
-            enabled: true
-            # Note: changing this will break legacy extensions that rely on the default name to alter AJAX requests
-            # See https://jira.ez.no/browse/EZP-20783
-            field_name: ezxform_token
+    form:            ~
     validation:      { enable_annotations: true }
     # Place "eztpl" engine first intentionnally.
     # This is to avoid template name parsing with Twig engine, refusing specific characters
@@ -72,13 +49,17 @@ framework:
     default_locale:  "%locale_fallback%"
     trusted_hosts:   ~
     session:
-        # handler_id set to null will use default session handler from php.ini
-        handler_id:  ~
+        # http://symfony.com/doc/current/reference/configuration/framework.html#handler-id
+        handler_id:  session.handler.native_file
+        save_path:   "%kernel.root_dir%/../var/sessions/%kernel.environment%"
         # Note: eZ Publish also allows session name and session cookie configuration to be per SiteAccess, by
         #       default session name will be set to "eZSESSID{siteaccess_hash}" (unique session name per siteaccess)
-        #       Further reading on sessions: https://doc.ez.no/display/EZP/Session
+        #       Further reading on sessions: https://doc.ez.no/display/DEVELOPER/Sessions
     fragments:       ~
     http_method_override: true
+    assets: true
+    php_errors:
+        log: true
 
 # Twig Configuration
 twig:
@@ -88,15 +69,9 @@ twig:
 # Assetic Configuration
 assetic:
     debug:          "%kernel.debug%"
-    use_controller: false
-    bundles:        []
-    #java: /usr/bin/java
+    use_controller: "%kernel.debug%"
     filters:
         cssrewrite: ~
-        #closure:
-        #    jar: "%kernel.root_dir%/Resources/java/compiler.jar"
-        #yui_css:
-        #    jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar"
 
 # Swiftmailer Configuration
 swiftmailer:

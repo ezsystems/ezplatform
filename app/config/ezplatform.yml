@@ -20,7 +20,7 @@ ezpublish:
     system:
         site_group:
             # Pool to use for cache, needs to be different per repository (database).
-            cache_pool_name: '%cache_pool%'
+            #cache_pool_service: '%cache_pool%'
             # These reflect the current installers, complete installation before you change them. For changing var_dir
             # it is recommended to install clean, then change setting before you start adding binary content, otherwise you'll
             # need to manually modify your database data to reflect this to avoid exceptions.

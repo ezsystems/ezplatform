@@ -33,11 +33,11 @@ services:
       composer install --no-progress --no-interaction --prefer-dist --no-suggest --optimize-autoloader;
       mkdir -p web/var;
       php /scripts/wait_for_db.php;
-      php app/console ezplatform:install ${INSTALL_EZ_INSTALL_TYPE};
-      rm -Rf app/logs/* app/cache/*/*;
-      chown -R www-data:www-data app/cache app/logs web/var;
-      find app/cache app/logs web/var -type d -print0 | xargs -0 chmod -R 775;
-      find app/cache app/logs web/var -type f -print0 | xargs -0 chmod -R 664;
+      php bin/console ezplatform:install ${INSTALL_EZ_INSTALL_TYPE};
+      rm -Rf var/logs/* var/cache/*/*;
+      chown -R www-data:www-data var/cache var/logs web/var;
+      find var/cache var/logs web/var -type d -print0 | xargs -0 chmod -R 775;
+      find var/cache var/logs web/var -type f -print0 | xargs -0 chmod -R 664;
       chown -R www-data:www-data app/config src;
       echo 'Dumping database into doc/docker-compose/entrypoint/mysql/2_dump.sql for use by mysql on startup.';
       mysqldump -u $$DATABASE_USER --password=$$DATABASE_PASSWORD -h $$DATABASE_HOST --add-drop-table --extended-insert  --protocol=tcp $$DATABASE_NAME > doc/docker-compose/entrypoint/mysql/2_dump.sql"

@@ -17,22 +17,26 @@
 # More details about excluding specific file on your local environment can be found
 # in the official GitHub article: https://help.github.com/articles/ignoring-files/
 
-/vendor/
-.php~
-/bin/behat
-/bin/phpunit
-/app/check.php
-/app/SymfonyRequirements.php
-/app/cache/
-/app/logs/
-/ezpublish_legacy
 /app/config/parameters.yml
-/app/bootstrap.php.cache
-/doc/docker-compose/entrypoint/*/*.sql
-/web/index_treemenu.php
-/web/index_rest.php
-/web/index_cluster.php
+/build/
+/phpunit.xml
+/var/*
+!/var/cache
+/var/cache/*
+!var/cache/.gitkeep
+!/var/logs
+/var/logs/*
+!var/logs/.gitkeep
+!/var/sessions
+/var/sessions/*
+!var/sessions/.gitkeep
+!var/SymfonyRequirements.php
+/vendor/
 /web/bundles/
+
+.php~
+/doc/docker-compose/entrypoint/*/*.sql
+
 /web/css/
 /web/js/
 /web/design
@@ -40,6 +44,7 @@
 /web/share
 /web/var
 /web/.htaccess
+
 composer.phar
 composer.lock
 .buildpath
