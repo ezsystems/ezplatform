@@ -1,7 +1,0 @@
-# This custom cache pool "singleredis" is loaded by env.php on demand
-stash:
-    caches:
-        singleredis:
-            drivers: [Redis]
-            Redis:
-                servers: [ {server: '%cache_host%', port: '%cache_redis_port%'} ]
