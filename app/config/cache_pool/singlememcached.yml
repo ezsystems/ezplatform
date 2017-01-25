@@ -1,7 +1,0 @@
-# This custom cache pool "singlememcached" is loaded by env.php on demand
-stash:
-    caches:
-        singlememcached:
-            drivers: [Memcache]
-            Memcache:
-                servers: [ {server: '%cache_host%', port: '%cache_memcached_port%'} ]
