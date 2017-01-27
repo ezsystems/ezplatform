@@ -15,8 +15,8 @@ web_profiler:
 monolog:
     handlers:
         main:
-            type:   %log_type%
-            path:   %log_path%
+            type:   "%log_type%"
+            path:   "%log_path%"
             level:  debug
         console:
             type:   console
