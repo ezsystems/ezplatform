@@ -9,12 +9,12 @@ doctrine:
     dbal:
         connections:
             default:
-                driver: %database_driver%
-                host: %database_host%
-                port: %database_port%
-                user: %database_user%
-                password: %database_password%
-                dbname: %database_name%
+                driver: "%database_driver%"
+                host: "%database_host%"
+                port: "%database_port%"
+                user: "%database_user%"
+                password: "%database_password%"
+                dbname: "%database_name%"
                 charset: UTF8
 
 # Base configuration for Solr, for more options see: https://doc.ez.no/display/EZP/Solr+Search+Engine+Bundle
@@ -22,7 +22,7 @@ doctrine:
 ez_search_engine_solr:
     endpoints:
         endpoint0:
-            dsn: %solr_dsn%
+            dsn: "%solr_dsn%"
             core: collection1
     connections:
         default:

@@ -20,8 +20,8 @@ monolog:
             action_level: critical
             handler:      nested
         nested:
-            type:  %log_type%
-            path:  %log_path%
+            type:  "%log_type%"
+            path:  "%log_path%"
             level: debug
         console:
             type:  console
