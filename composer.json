@@ -51,7 +51,8 @@
         "ramsey/uuid": "^3.5",
         "ezsystems/ezstudio-cron": "^1.0@dev",
         "ezsystems/date-based-publisher": "^1.0@dev",
-        "ezsystems/content-on-the-fly-prototype": "~0.1.7"
+        "ezsystems/content-on-the-fly-prototype": "~0.1.7",
+        "gregwar/captcha": "^1.1"
     },
     "require-dev": {
         "ezsystems/ezplatform-i18n": "^1.0@dev",
