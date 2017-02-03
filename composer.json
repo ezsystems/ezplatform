@@ -27,10 +27,10 @@
         "sensio/generator-bundle": "^2.3|^3.0",
         "incenteev/composer-parameter-handler": "~2.0",
         "tedivm/stash-bundle": "~0.4",
-        "ezsystems/ezpublish-kernel": "6.8.*@dev",
-        "ezsystems/repository-forms": "1.6.*@dev",
+        "ezsystems/ezpublish-kernel": "~6.7@dev",
+        "ezsystems/repository-forms": "^1.4",
         "ezsystems/ezplatform-solr-search-engine": "^1.1@dev",
-        "ezsystems/platform-ui-bundle": "1.8.*@dev",
+        "ezsystems/platform-ui-bundle": "~1.5@dev",
         "ezsystems/ez-support-tools": "~0.1.0",
         "ezplatform-i18n/ezplatform-i18n-ach_ug": "^1.0@dev",
         "egulias/listeners-debug-command-bundle": "~1.9",
@@ -88,7 +88,7 @@
             "file": "app/config/parameters.yml"
         },
         "branch-alias": {
-            "dev-master": "1.8.x-dev"
+            "dev-master": "1.9.x-dev"
         }
     }
 }
