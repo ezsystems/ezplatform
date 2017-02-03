@@ -15,7 +15,7 @@ https://doc.ez.no/display/DEVELOPER/Step+1%3A+Installation
 ## Prerequisite
 
   These instructions assume you have technical knowledge and have already installed PHP, web server &
-  *a database server* needed for this software. For further information on requirements [see online doc](https://doc.ez.no/display/TECHDOC/Requirements)
+  *a database server* needed for this software. For further information on requirements [see online doc](https://doc.ez.no/pages/viewpage.action?pageId=31429536)
 
   **Before you start**:
   - Create Database: Installation will ask you for credentials/details for which database to use, example with mysql:
