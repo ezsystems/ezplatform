@@ -4,75 +4,33 @@
 
 eZ Platform is translated in several languages with the help of [Crowdin][crowdin-ezplatform].
 
-To organize contribution and allow users to install only what they need, we set up a workflow
-based on three steps.
+This documentation presents you the overall concept from the contribution to the distribution with every actor of it.
 
-##  eZ Platform i18n: Main translation repository
+## Handle translation in your contribution
 
-To be able to provide a single translation project on our translator platform, we gathered all translation
-files in a single repository which is synchronized with Crowdin.
+This part is made for contributors to eZ Platform. It will explain you how to format your contribution
+to fit in the translation workflow.
 
-Translators can contribute on [Crowdin][crowdin-ezplatform] and every contribution is merged into [ezplatform-i18n repository][ezplatform-i18n].
+[Handle translation in your contribution](/doc/i18n/handle_translation_in_contribution.md)
 
-**Important**: This repository is not supposed to be used on a production project, every translation is
-split into a dedicated package.
+## Integrate new string to translate
 
-### Translation extraction
+Then you need to add this new strings in the translation process so they can be translated.
+This part is made for eZ System team to present the process to send new string for translation.
 
-To ease the extraction of translation strings, we implemented a script in each bundle which you can run with this command:
+[Integrate new string to translate](/doc/i18n/integrate_new_string_to_translate.md)
 
-    sh bin/extract-translations.sh
-    
-This script will update files in ezplatform-i18n repository.
+## Distribute translations
 
-**Important**: you'll notice that all files will be updated at least to change the date attribute. If this is the
-only change to a file, please don't commit it.
+When translators have worked, it's time to integrate their translations and distribute it.
 
-Then push your PR on github, you'll notice Crowdin will make a PR to update ach_UG file corresponding to your modification.
+This documentation is made for eZ System team.
 
-### Merge Crowdin contributions
+[Distribute translations](/doc/i18n/distribute_translations.md)
 
-When translators contribute to translate the strings you added, Crowdin will make a huge PR on the l10n_master branch
-(or l10n_xx where xx is the target branch).
+## Install a translation package
 
-You can squash and merge this PR directly on github with the following rules:
+This documentation is made for eZ Platform integrators which realize projects based on eZ Platform and will present you
+how to install a new package of translation on your project.
 
-- **Squash commits**: Crowdin does a lot of commits so this is mandatory
-- **Update commit message**: Add an understandable message with the locales translated...
-- **DO NOT remove the branch**: Crowdin synchronization is based on it, so if you remove it you break the Crowdin workflow.
-
-Then when contributions are merged on the target branch, you just need to synchronize the translation packages.
-
-### Translation synchronization
-
-To synchronize eZ Platform i18n with new translations, we implemented a script which extracts translation files from
-ezsystem bundles and formats them to the Crowdin source file format.
-
-You just have to run this command from eZ Platform project:
-
-    sh bin/synchronize-translations.sh
-    
-Then commit and push eZ Platform i18n.
-
-## Translation packages per language
-
-To allow users to install only what they need, we have split every language into a dedicated package.
-
-All translation packages are published on [ezplatform-i18n organisation on github][ezplatform-i18n-org]
-
-**Important**: these packages are read only, they must be updated with the [eZ Platform i18n git split command][ezplatform-i18n].
-
-## Install a new language on your project
-
-If you want to install a new language in your project, you just have to install the corresponding package.
-
-For example, if you want to translate your application into Portuguese (pt_PT: the only package supported by our QA team ;)),
-you just have to run:
-
-    composer require ezplatform-i18n/ezplatform-i18n-pt_pt
-    
-and then clean the cache.
-
-[crowdin-ezplatform]: https://crowdin.com/project/ezplatform
-[ezplatform-i18n-org]: https://github.com/ezplatform-i18n
-[ezplatform-i18n]: https://github.com/ezsystems/ezplatform-i18n
+[Install a translation package](/doc/i18n/install_translation_package.md)
