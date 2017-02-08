@@ -32,6 +32,7 @@
         "ezsystems/ezplatform-solr-search-engine": "^1.1@dev",
         "ezsystems/platform-ui-bundle": "1.8.*@dev",
         "ezsystems/ez-support-tools": "~0.1.0",
+        "ezsystems/ezplatform-http-cache": "^0.1@dev",
         "ezplatform-i18n/ezplatform-i18n-ach_ug": "^1.0@dev",
         "egulias/listeners-debug-command-bundle": "~1.9",
         "white-october/pagerfanta-bundle": "1.0.*",
