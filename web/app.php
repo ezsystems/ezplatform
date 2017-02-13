@@ -3,6 +3,9 @@
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Debug\Debug;
 
+// Ensure UTF-8 is used in string operations
+setlocale(LC_CTYPE, 'C.UTF-8');
+
 // Environment is taken from "SYMFONY_ENV" variable, if not set, defaults to "prod"
 $environment = getenv('SYMFONY_ENV');
 if ($environment === false) {
