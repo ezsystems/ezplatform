@@ -91,7 +91,11 @@
         "symfony-assets-install": "relative",
         "incenteev-parameters": {
             "keep-outdated": true,
-            "file": "app/config/parameters.yml"
+            "file": "app/config/parameters.yml",
+            "env-map": {
+                "log_type": "LOG_TYPE",
+                "mailer_transport": "MAILER_TRANSPORT"
+            }
         },
         "branch-alias": {
             "dev-master": "2.0.x-dev"

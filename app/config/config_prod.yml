@@ -17,7 +17,7 @@ monolog:
             handler:      nested
         nested:
             type:  "%log_type%"
-            path:  "%log_path%"
+            path:  '%env(LOG_PATH)%'
             level: debug
         console:
             type:  console
