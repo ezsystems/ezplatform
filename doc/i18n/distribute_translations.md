@@ -2,17 +2,17 @@
 
 ## Introduction
 
-This documentation is made for eZ System team to present the process to integrate new translation and distribute
-it as package.
+This documentation is for the eZ Systems team and presents the process of integrating new translations and distributing
+them as a package.
 
 ## Merge Crowdin contributions
 
 When translators contribute to translate the strings you added, [Crowdin][crowdin-ezplatform] will make a huge PR on the
 l10n_master branch (or l10n_xx where xx is the target branch).
 
-You can squash and merge this PR directly on github with the following rules:
+You can squash and merge this PR directly on GitHub with the following rules:
 
-- **Squash commits**: Crowdin does a lot of commits so this is mandatory
+- **Squash commits**: Crowdin does a lot of commits so this is mandatory.
 - **Update commit message**: Add an understandable message with the locales translated...
 - **DO NOT remove the branch**: Crowdin synchronization is based on it, so if you remove it you break the Crowdin workflow.
 
@@ -28,7 +28,7 @@ All translation packages are published on [ezplatform-i18n organisation on githu
 
 ## Next
 
-The last step to validate that translation have correctly been added is to [install the corresponding translation package][install-translation].
+The last step to validate that the translation has been correctly added is to [install the corresponding translation package][install-translation].
 
 [crowdin-ezplatform]: https://crowdin.com/project/ezplatform
 [ezplatform-i18n-org]: https://github.com/ezplatform-i18n

@@ -12,7 +12,6 @@ To start translating, you need to set a browser cookie. There are several ways t
 but we will highlight a couple here.
 
 ### Using the debugging console
-
 One way is to open the development console and run these lines:
 - enable: `document.cookie='ez_in_context_translation=1;path=/;'; location.reload();`
 - disable: `document.cookie='ez_in_context_translation=;expires=Mon, 05 Jul 2000 00:00:00 GMT;path=/;'; location.reload();`
@@ -20,20 +19,20 @@ One way is to open the development console and run these lines:
 ### Using bookmarks
 You can easily create two bookmarks to toggle in-context on/off.
 
-Right-click your browser's bookmark bar, and create a new one, with the following label and link: 
+Right-click your browser's bookmark bar and create a new one, with the following label and link:
 - Enable in-context: `javascript:(function() {document.cookie='ez_in_context_translation=1;path=/;'; location.reload();})()`
 - Disable in-context: `javascript:(function() {document.cookie='ez_in_context_translation=;expires=Mon, 05 Jul 2000 00:00:00 GMT;path=/;'; location.reload();})()`
 
-Then click on the bookmarks from platform UI to enable/disable in-context.
+Then click on the bookmarks from Platform UI to enable/disable in-context.
 
 ## Using in-context translation
-The first time you enable in-context, if you're not logged into Crowdin, it will ask you
+The first time you enable in-context, if you're not logged in to Crowdin, it will ask you
 to log in or register an account. Once done, it will ask you which language you want to
-translate to, from the list of languages configured in crowdin.
+translate to, from the list of languages configured in Crowdin.
 
-Choose your language, and you can start translating right away. Translatable strings in the
+Choose your language and you can start translating right away. Translatable strings in the
 interface will be outlined in red (untranslated), blue (translated) or green (approved).
-When moving over them, an edit button will show up on the top left corner of the outline.
+When moving over them, an edit button will show up in the top left corner of the outline.
 Click on it, and edit the string in the window that shows up.
 
 ## Troubleshooting
@@ -43,4 +42,3 @@ use aggressive HTTP cache.
 
 [crowdin.com]: https://crowdin.com
 [in-context]: https://support.crowdin.com/in-context-localization/
-
