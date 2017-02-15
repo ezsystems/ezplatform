@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "1c04fd6fb31884bcaa5bfd22ad2141da",
+    "content-hash": "2285df26bc863d13ff9ade61ab87cb74",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -691,7 +691,7 @@
         },
         {
             "name": "ezplatform-i18n/ezplatform-i18n-ach_ug",
-            "version": "v1.0.0-rc1",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezplatform-i18n/ezplatform-i18n-ach_UG.git",
@@ -811,16 +811,16 @@
         },
         {
             "name": "ezsystems/ezplatform-http-cache",
-            "version": "v0.1.0-rc1",
+            "version": "v0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezplatform-http-cache.git",
-                "reference": "34e43e78f6b5e93461dfe646885fce3302277a86"
+                "reference": "54c859ee47dd1adcd3bc7dcb60a2c81a7c9148fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezplatform-http-cache/zipball/34e43e78f6b5e93461dfe646885fce3302277a86",
-                "reference": "34e43e78f6b5e93461dfe646885fce3302277a86",
+                "url": "https://api.github.com/repos/ezsystems/ezplatform-http-cache/zipball/54c859ee47dd1adcd3bc7dcb60a2c81a7c9148fb",
+                "reference": "54c859ee47dd1adcd3bc7dcb60a2c81a7c9148fb",
                 "shasum": ""
             },
             "require": {
@@ -857,7 +857,7 @@
                 }
             ],
             "description": "HTTP cache handling for eZ Platform.",
-            "time": "2017-02-09T15:10:13+00:00"
+            "time": "2017-02-14T22:35:00+00:00"
         },
         {
             "name": "ezsystems/ezplatform-solr-search-engine",
@@ -911,7 +911,7 @@
         },
         {
             "name": "ezsystems/ezpublish-kernel",
-            "version": "v6.8.0-rc1",
+            "version": "v6.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-kernel.git",
@@ -1033,23 +1033,23 @@
         },
         {
             "name": "ezsystems/platform-ui-bundle",
-            "version": "v1.8.0-rc1",
+            "version": "v1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/PlatformUIBundle.git",
-                "reference": "1b3f730035243a7c17fb2afc7f26c45796551cbd"
+                "reference": "4ecb5b09d97d0ae336bca1c16e7bd82e91b64bd4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/PlatformUIBundle/zipball/1b3f730035243a7c17fb2afc7f26c45796551cbd",
-                "reference": "1b3f730035243a7c17fb2afc7f26c45796551cbd",
+                "url": "https://api.github.com/repos/ezsystems/PlatformUIBundle/zipball/4ecb5b09d97d0ae336bca1c16e7bd82e91b64bd4",
+                "reference": "4ecb5b09d97d0ae336bca1c16e7bd82e91b64bd4",
                 "shasum": ""
             },
             "require": {
                 "ezsystems/ez-support-tools": "^0.1",
-                "ezsystems/ezpublish-kernel": "^6.6@rc",
+                "ezsystems/ezpublish-kernel": "^6.6",
                 "ezsystems/platform-ui-assets-bundle": "^3.1.0",
-                "ezsystems/repository-forms": "^1.2@rc",
+                "ezsystems/repository-forms": "^1.2",
                 "jms/translation-bundle": "^1.3",
                 "willdurand/js-translation-bundle": "^2.5",
                 "zetacomponents/system-information": "^1.1"
@@ -1080,11 +1080,11 @@
                 "GPL-2.0"
             ],
             "description": "eZ Platform UI Bundle",
-            "time": "2017-02-09T15:55:01+00:00"
+            "time": "2017-02-09T13:25:22+00:00"
         },
         {
             "name": "ezsystems/repository-forms",
-            "version": "v1.6.0-rc1",
+            "version": "v1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/repository-forms.git",
@@ -5105,16 +5105,16 @@
         },
         {
             "name": "ezsystems/ezplatform-i18n",
-            "version": "v1.0.0-rc1",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezplatform-i18n.git",
-                "reference": "ac10e772183b7fa2f473708f92f17265c845ba28"
+                "reference": "6e10f1545c8674a3c9c370ed27bff6e256ae6fdb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezplatform-i18n/zipball/ac10e772183b7fa2f473708f92f17265c845ba28",
-                "reference": "ac10e772183b7fa2f473708f92f17265c845ba28",
+                "url": "https://api.github.com/repos/ezsystems/ezplatform-i18n/zipball/6e10f1545c8674a3c9c370ed27bff6e256ae6fdb",
+                "reference": "6e10f1545c8674a3c9c370ed27bff6e256ae6fdb",
                 "shasum": ""
             },
             "require": {
@@ -5131,7 +5131,7 @@
                 "GPL-2.0"
             ],
             "description": "Meta repository to store every eZ Platform translations. This should be used during development to ease synchronization with Crowdin. SHOULD NOT BE USED IN PRODUCTION",
-            "time": "2017-02-09T16:37:17+00:00"
+            "time": "2017-02-15T10:59:53+00:00"
         },
         {
             "name": "fabpot/goutte",
@@ -6506,14 +6506,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "ezsystems/ezpublish-kernel": 10,
-        "ezsystems/repository-forms": 10,
-        "ezsystems/ezplatform-solr-search-engine": 10,
-        "ezsystems/platform-ui-bundle": 10,
-        "ezsystems/ezplatform-http-cache": 5,
-        "ezplatform-i18n/ezplatform-i18n-ach_ug": 5,
-        "willdurand/js-translation-bundle": 20,
-        "ezsystems/ezplatform-i18n": 5
+        "willdurand/js-translation-bundle": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
