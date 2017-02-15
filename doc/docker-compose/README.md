@@ -27,11 +27,11 @@ installed on your machine.
 The current Docker Compose files are made to be mixed and matched togtehr as you'd like. Currently available:
 - base-prod.yml _(required, always needs to be first, contains: db, web and app container)_
 - base-dev.yml _(alternative to `base-prod.yml`, same applies here if used)_
-- redis.yml _(optional, adds redis service and appends config to app)_
 - blackfire.yml _(optional, adds blackfire service and lets you trigger profiling against the setup)_
 - selenium.yml _(optional, always needs to be last, adds selenium service and appends config to app)_
 
-In addition the following exists but are work in progress, thus not tested yet and are known to be broken:
+In addition the following exists but are work in progress, thus not tested yet and are known to be somewhat broken:
+- redis.yml _(optional, adds redis service and appends config to app)_
 - solr.yml _(optional, add solr service and configure app for it)_
 
 
