@@ -33,6 +33,10 @@ ezpublish:
             # so removing eng-GB from this list may lead to errors or content not being shown, unless you change
             # all eng-GB data to other locales first.
             languages: [eng-GB]
+            content:
+              # As we by default enable EzSystemsPlatformHttpCacheBundle with is designed to expire all affected
+              # content caches, we set the default ttl to 10hours for HTTP 200 results (TODO: Set it to much lover for 4xx and 5xx responses)
+              default_ttl: 36000
             # HttpCache purge server(s) setting, eg Varnish, for when ezpublish.http_cache.purge_type is set to 'http'.
             http_cache:
                 purge_servers: ['%purge_server%']
