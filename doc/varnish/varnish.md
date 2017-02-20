@@ -7,10 +7,9 @@ Prerequisites
 
 Recommended VCL base files
 --------------------------
-For Varnish to work properly with eZ, you'll need to use one of the provided files as a basis:
+For Varnish to work properly with eZ, you'll need to use the following VCL as starting point:
 
-* [eZ 5.4+ / 2014.09+ with Varnish 3](vcl/varnish3.vcl)
-* [eZ 5.4+ / 2014.09+ with Varnish 4](vcl/varnish4.vcl)
+* [eZ Platform 1.7+ with Varnish 4.x/5.x with xkey VMOD](vcl/varnish4.vcl)
 
 > **Note:** Http cache management is done with the help of [FOSHttpCacheBundle](http://foshttpcachebundle.readthedocs.org/).
   One may need to tweak their VCL further on according to [FOSHttpCache documentation](http://foshttpcache.readthedocs.org/en/latest/varnish-configuration.html)
