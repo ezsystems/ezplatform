@@ -35,7 +35,7 @@ https://doc.ez.no/display/DEVELOPER/Step+1%3A+Installation
 
     A. **Extract archive** (tar/zip)
 
-       Download archive from [support.ez.no/Downloads](https://support.ez.no/Downloads/eZ-Studio-15.12), __not from GitHub__ *(those are for composer)*.
+       Download archive from [support.ez.no/Downloads](https://support.ez.no/Downloads/), __not from GitHub__ *(those are for composer)*.
        Extract the eZ Studio archive to a directory, then execute post install scripts:
 
        *Note: The post install scripts will ask you to fill in some settings, including database settings.*
