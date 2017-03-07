@@ -27,6 +27,8 @@ This requires more manual steps, but may be more up to date with current develop
    `git push -u platform master`
    This starts the build process.
    Now, finish the Platform.sh setup wizard.
+   1. The build may fail due to mismatching SSH keys. If you are project administrator, verify that your Platform.sh project "Deploy key" (under "Configure project") is included among your GitHub SSH keys: https://github.com/settings/keys If not, copy the deploy key and add it on GitHub using the "New SSH key" button. Then push an empty commit to trigger a Platform.sh rebuild:
+      `git commit --allow-empty -m'rebuild' && git push`
 1. Optional: Install the Platform.sh CLI and set the env:symfony_env project variable
    1. Install the Platform.sh CLI according to https://docs.platform.sh/overview/cli.html
    1. Run `platform`
