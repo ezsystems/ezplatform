@@ -1,11 +1,11 @@
-version: '2'
+version: '3.2'
 # compose file for installing composer packages, perfrom install and dump database
 
 services:
   install_db:
     image: ${MYSQL_IMAGE}
     volumes:
-     - ${COMPOSE_DIR}/entrypoint/mysql:/docker-entrypoint-initdb.d/:ro
+     - ${COMPOSE_DIR}/entrypoint/mysql:/docker-entrypoint-initdb.d/:ro,cached
     environment:
      - MYSQL_RANDOM_ROOT_PASSWORD=1
      - MYSQL_USER=$DATABASE_USER
@@ -15,12 +15,12 @@ services:
   install_app:
     image: ${PHP_IMAGE_DEV}
     volumes:
-     - ${COMPOSE_DIR}/../..:/var/www
-     - ${COMPOSER_HOME}:/root/.composer
+     - ${COMPOSE_DIR}/../..:/var/www:cached
+     - ${COMPOSER_HOME}:/root/.composer:cached
     depends_on:
      - install_db
     environment:
-     - SYMFONY_ENV
+     - SYMFONY_ENV=${SYMFONY_ENV-prod}
      - SYMFONY_DEBUG
      - DATABASE_USER
      - DATABASE_PASSWORD
