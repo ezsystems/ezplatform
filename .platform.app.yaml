@@ -56,7 +56,7 @@ hooks:
             export SYMFONY_ENV=prod
         fi
         if [ ! -f web/var/.platform.installed ]; then
-            php -d memory_limit=-1 app/console ezplatform:install --env=$SYMFONY_ENV demo
+            php -d memory_limit=-1 app/console ezplatform:install --env=$SYMFONY_ENV clean
             touch web/var/.platform.installed
         fi
         app/console --env=$SYMFONY_ENV cache:clear
