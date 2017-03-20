@@ -3,6 +3,7 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: env/docker.php }
+    - { resource: env/platformsh.php }
 
 # Configuration for Database connection, can have several connections used by eZ Repositories in ezplatform.yml
 doctrine:
