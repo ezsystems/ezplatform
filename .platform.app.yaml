@@ -1,0 +1,77 @@
+# This file describes an application. You can have multiple applications
+# in the same project.
+
+# Please see doc/platformsh/README.md and doc/platformsh/INSTALL.md
+# NB: Clustered eZ Platform setups are not tested and are likely to have issues.
+
+# The name of this app. Must be unique within a project.
+name: app
+
+# The type of the application to build.
+type: php:7.0
+build:
+    # "none" means we're running composer manually, see build hook
+    flavor: "none"
+
+# The relationships of the application with services or other applications.
+# The left-hand side is the name of the relationship as it will be exposed
+# to the application in the PLATFORM_RELATIONSHIPS variable. The right-hand
+# side is in the form `<service name>:<endpoint name>`.
+relationships:
+    database: "mysqldb:mysql"
+
+# The configuration of app when it is exposed to the web.
+web:
+    locations:
+        "/":
+            # The public directory of the app, relative to its root.
+            root: "web"
+            # The front-controller script to send non-static requests to.
+            passthru: "/app.php"
+            # The number of seconds whitelisted (static) content should be cache
+            expires: 600
+
+# The size of the persistent disk of the application (in MB).
+disk: 2048
+
+# The mounts that will be performed when the package is deployed.
+mounts:
+    "/app/cache": "shared:files/cache"
+    "/app/logs": "shared:files/logs"
+    "/web/var": "shared:files/files"
+
+# The hooks that will be performed when the package is deployed.
+hooks:
+    build: |
+        set -e
+        composer install --no-dev --prefer-dist --no-progress --no-interaction --optimize-autoloader
+        rm web/app_dev.php
+        . ./.env
+        if [ -z "$SYMFONY_ENV" ]; then
+            export SYMFONY_ENV=prod
+        fi
+        app/console --env=$SYMFONY_ENV assetic:dump
+    deploy: |
+        set -e
+        . ./.env
+        if [ -z "$SYMFONY_ENV" ]; then
+            export SYMFONY_ENV=prod
+        fi
+        if [ ! -f web/var/.platform.installed ]; then
+            php -d memory_limit=-1 app/console ezplatform:install --env=$SYMFONY_ENV $INSTALL_EZ_INSTALL_TYPE
+            touch web/var/.platform.installed
+        fi
+        app/console --env=$SYMFONY_ENV cache:clear
+
+# The configuration of scheduled execution.
+# see http://symfony.com/doc/current/components/console/introduction.html
+#crons:
+#    symfony:
+#        spec: "*/20 * * * *"
+#        cmd: "php cron.php example:test"
+
+runtime:
+    extensions:
+        - xsl
+        - imagick
+        - readline

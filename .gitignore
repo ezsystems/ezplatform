@@ -47,3 +47,4 @@ composer.lock
 .settings/
 behat.yml
 .php_cs.cache
+auth.json
