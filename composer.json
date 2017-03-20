@@ -49,7 +49,7 @@
         "sensio/framework-extra-bundle": "~3.0",
         "ezsystems/ezstudio-installer": "^1.2@dev",
         "ramsey/uuid": "^3.5",
-        "gregwar/captcha": "^1.1"
+        "gregwar/captcha": "^1.1",
         "ezsystems/ezstudio-cron": "^1.0@dev",
         "ezsystems/date-based-publisher": "^1.0@dev",
         "ezsystems/content-on-the-fly-prototype": "~0.1.7",
