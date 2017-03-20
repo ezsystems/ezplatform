@@ -30,7 +30,7 @@ services:
     # Second chown line:  For dev and behat tests we give a bit extra rights, never do this for prod.
     command: >
       /bin/sh -c "
-      composer install --no-progress --no-interaction --prefer-dist --no-suggest;
+      composer install --no-progress --no-interaction --prefer-dist --no-suggest --optimize-autoloader;
       mkdir -p web/var;
       php /scripts/wait_for_db.php;
       php app/console ezplatform:install ${INSTALL_EZ_INSTALL_TYPE};

@@ -37,13 +37,14 @@ ls -al .
 ./bin/.travis/trusty/update_docker.sh
 
 echo "> Modify composer.json to point to local checkout"
-sed -i '$d' composer.json
-echo ',    "repositories": [{"type":"git","url":"'${HOME}'/build/ezplatform/tmp_travis_folder"}]}' >> composer.json
+composer config repositories.tmp_travis_folder git ${HOME}/build/ezplatform/tmp_travis_folder
 
 if [ "$RUN_INSTALL" = "1" ] ; then
   # TODO: avoid using composer on host so image don't need to be PHP image, needed atm as .
   # TODO: dockerignore or something strips info needed for composer to be able to find tmp_travis_branch
-  cp bin/.travis/composer-auth.json auth.json
+  if [ ! -f auth.json ]; then
+    cp bin/.travis/composer-auth.json auth.json
+  fi
   echo 'memory_limit = -1' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
   phpenv config-rm xdebug.ini
   if [ -n "$COMPOSER_REQUIRE" ] ; then
@@ -53,7 +54,7 @@ if [ "$RUN_INSTALL" = "1" ] ; then
     cat composer.json
   fi
   echo "> Run composer install"
-  composer install --no-progress --no-interaction --prefer-dist
+  composer install --no-progress --no-interaction --prefer-dist --optimize-autoloader
   mkdir -p web/var
   rm -Rf app/logs/* app/cache/*/*
   sudo chown -R www-data:www-data app/cache app/logs web/var
@@ -64,8 +65,10 @@ if [ "$RUN_INSTALL" = "1" ] ; then
   #docker-compose -f doc/docker-compose/install.yml up --abort-on-container-exit
 fi
 
+INSTALL_EZ_INSTALL_TYPE=${INSTALL_EZ_INSTALL_TYPE:-clean}
+
 echo "> Start containers and install data"
 docker-compose up -d
-docker-compose exec --user www-data app sh -c "php /scripts/wait_for_db.php; php app/console ezplatform:install clean"
+docker-compose exec --user www-data app sh -c "php /scripts/wait_for_db.php; php app/console ezplatform:install $INSTALL_EZ_INSTALL_TYPE"
 
 echo "> Done, ready to run behatphpcli container"

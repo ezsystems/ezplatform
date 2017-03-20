@@ -18,10 +18,10 @@ cp bin/.travis/parameters.yml app/config/
 if [ "$SYMFONY_VERSION" != "" ] ; then
     echo "> Install dependencies through Composer (with custom Symfony version: ${SYMFONY_VERSION})"
     composer require --no-update symfony/symfony="${SYMFONY_VERSION}"
-    composer update --no-progress --no-interaction --prefer-dist
+    composer update --no-progress --no-interaction --prefer-dist --optimize-autoloader
 else
     echo "> Install dependencies through Composer"
-    composer install --no-progress --no-interaction --prefer-dist
+    composer install --no-progress --no-interaction --prefer-dist --optimize-autoloader
 fi
 
 echo "> Run assetic dump for behat env"
