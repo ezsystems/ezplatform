@@ -14,7 +14,7 @@ class AppKernel extends Kernel
     /**
      * Returns an array of bundles to registers.
      *
-     * @return array An array of bundle instances.
+     * @return array an array of bundle instances
      *
      * @api
      */
