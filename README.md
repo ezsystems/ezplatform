@@ -1,21 +1,21 @@
-# eZ Studio
+# eZ Platform Enterprise Edition
 
-## What is eZ Studio ?
-*eZ Studio* is commercial CMS (Content Management System) software developed by eZ Systems.
+## What is eZ Platform Enterprise Edition?
+*eZ Platform Enterprise Edition* is commercial CMS (Content Management System) software developed by eZ Systems.
 
-*eZ Studio* derives from *eZ Platform*. It is composed of a set of bundles. eZ Studio, like eZ Platform, is built on top of the Symfony framework (Full Stack). It has been in development since 2014.
+*eZ Platform Enterprise Edition* derives from *eZ Platform*. It is composed of a set of bundles. eZ Platform Enterprise Edition, like eZ Platform, is built on top of the Symfony framework (Full Stack). It has been in development since 2014.
 
-### How to get access to eZ Studio?
+### How to get access to eZ Platform Enterprise Edition?
 
-While this meta repository, `ezstudio`, is public to ease installation and upgrades, full access can be obtained in one of three ways:
+While this meta repository, `ezplatform-ee`, is public to ease installation and upgrades, full access can be obtained in one of three ways:
 - Request an online demo on [ezstudio.com](http://ezstudio.com/)
 - As a partner, download trial version from [Partner Portal](http://ez.no/Partner-Portal)
 - As a customer with an eZ Enterprise subscription, get full version from [Service Portal](https://support.ez.no/Downloads).
   Or by setting up [Composer Authentication Tokens](https://doc.ez.no/display/DEVELOPER/Using+Composer) for use in combination with this repository.
 
-## eZ Studio vs. eZ Platform
-[eZ Studio](http://ezstudio.com/) is a distribution flavor of [eZ Platform](http://ezplatform.com/), the next generation CMS which uses the same Symfony-based kernel as *eZ Platform* (formerly known also as *eZ Publish 6*).
-In short, eZ Studio comes with new features and services that extend eZ Platform functionality for media industry and team collaboration.
+## eZ Platform Enterprise Edition vs. eZ Platform
+[eZ Platform Enterprise Edition](http://ezstudio.com/) is a distribution flavor of [eZ Platform](http://ezplatform.com/), the next generation CMS which uses the same Symfony-based kernel as *eZ Platform* (formerly known also as *eZ Publish 6*).
+In short, Enterprise comes with new features and services that extend eZ Platform functionality for media industry and team collaboration.
 
 ### Abstract:
 - **Very extensible** *You can extend the application and the content model in many ways*
@@ -40,19 +40,19 @@ In short, eZ Studio comes with new features and services that extend eZ Platform
 - **PlatformUIBundle**: A modern, extensible "backend" UI for managing content & administering the site
 
 ### Further information:
-*eZ Studio* is commercial software which adds advanced features for editorial teams and media companies, 100% built on top of *eZ Platform* APIs.
+*eZ Platform Enterprise Edition* is commercial software which adds advanced features for editorial teams and media companies, 100% built on top of *eZ Platform* APIs.
 
-- [eZ Studio Architecture, including "Platform Stack"](https://doc.ez.no/display/DEVELOPER/Architecture:+An+Open+Source+PHP+CMS+Built+On+Symfony2+Full+Stack)
+- [eZ Enterprise Architecture, including "Platform Stack"](https://doc.ez.no/display/DEVELOPER/Architecture:+An+Open+Source+PHP+CMS+Built+On+Symfony2+Full+Stack)
 - eZ Systems *(commercial products and services)*: [ez.no](http://ez.no)
 - eZ Community: [share.ez.no](http://ez.no)
 - eZ Platform Developer Hub: [ezplatform.com](https://ezplatform.com/)
-- [eZ Studio and eZ Platform RoadMap](http://doc.ez.no/roadmap)
+- [eZ Platform and Enterprise RoadMap](http://doc.ez.no/roadmap)
 
 http://ez.no/Blog/What-to-Expect-from-eZ-Studio-and-eZ-Platform
 
 ## Install
-For manual installation instructions, see [INSTALL.md](https://github.com/ezsystems/ezstudio/blob/master/INSTALL.md).
-For simplified installation, see our Docker Tools Beta instructions in [doc/docker-compose/README.md](https://github.com/ezsystems/ezstudio/blob/master/doc/docker-compose/README.md).
+For manual installation instructions, see [INSTALL.md](https://github.com/ezsystems/ezplatform-ee/blob/master/INSTALL.md).
+For simplified installation, see our Docker Tools Beta instructions in [doc/docker-compose/README.md](https://github.com/ezsystems/ezplatform-ee/blob/master/doc/docker-compose/README.md).
 
 ## Requirements
 Full requirements can be found on the [Requirements](https://doc.ez.no/pages/viewpage.action?pageId=31429536) page.
@@ -70,13 +70,13 @@ For instruction on how to run the functional tests, see [RUNNING_BEHAT.md](https
 eZ Platform aims to be **100% content compatible** with eZ Publish 5.x, 4.x and 3.x *(introduced in 2002)*, meaning that content in those versions of the CMS can be upgraded using
 [online documentation](http://doc.ez.no/eZ-Publish/Upgrading) to eZ Platform.
 
-Unlike eZ Publish Platform 5.x, eZ Studio does not ship with eZ Publish Legacy (4.x). For Platform kernel use combined
+Unlike eZ Publish Platform 5.x, eZ Platform Enterprise Edition does not ship with eZ Publish Legacy (4.x). For Platform kernel use combined
 with legacy, eZ Publish Platform 5.4 is the most stable choice, offering support and maintenance updates until 2021.
 Alternative is releases of eZ Publish Community, latest as of Oct 2015 is v2014.11 found at
 [ezpublish-community](https://github.com/ezsystems/ezpublish-community).
 
 ## COPYRIGHT
-Copyright (C) 1999-2016 eZ Systems AS. All rights reserved.
+Copyright (C) 1999-2017 eZ Systems AS. All rights reserved.
 
 ## LICENSE
 http://ez.no/Products/About-our-Software/Licenses-and-agreements/eZ-Business-Use-License-Agreement-eZ-BUL-Version-2.1 eZ Business Use License Agreement eZ BUL Version 2.1
