@@ -8,13 +8,13 @@
 ### How to get access to eZ Platform Enterprise Edition?
 
 While this meta repository, `ezplatform-ee`, is public to ease installation and upgrades, full access can be obtained in one of three ways:
-- Request an online demo on [ezstudio.com](http://ezstudio.com/)
+- Request an online demo on [ez.no](https://ez.no/Products/eZ-Platform-Enterprise-Edition)
 - As a partner, download trial version from [Partner Portal](http://ez.no/Partner-Portal)
 - As a customer with an eZ Enterprise subscription, get full version from [Service Portal](https://support.ez.no/Downloads).
   Or by setting up [Composer Authentication Tokens](https://doc.ez.no/display/DEVELOPER/Using+Composer) for use in combination with this repository.
 
 ## eZ Platform Enterprise Edition vs. eZ Platform
-[eZ Platform Enterprise Edition](http://ezstudio.com/) is a distribution flavor of [eZ Platform](http://ezplatform.com/), the next generation CMS which uses the same Symfony-based kernel as *eZ Platform* (formerly known also as *eZ Publish 6*).
+[eZ Platform Enterprise Edition](https://ez.no/Products/eZ-Platform-Enterprise-Edition) is a distribution flavor of [eZ Platform](http://ezplatform.com/), the next generation CMS which uses the same Symfony-based kernel as *eZ Platform* (formerly known also as *eZ Publish 6*).
 In short, Enterprise comes with new features and services that extend eZ Platform functionality for media industry and team collaboration.
 
 ### Abstract:
