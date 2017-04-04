@@ -34,3 +34,4 @@ _contentOnTheFly:
 _multiFileUpload:
     resource: "@EzSystemsMultiFileUploadBundle/Resources/config/routing.yml"
     prefix:   "%ezpublish_rest.path_prefix%"
+
