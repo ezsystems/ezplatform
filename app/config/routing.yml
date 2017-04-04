@@ -30,3 +30,8 @@ _ezplatformRepositoryFormsRoutes:
 _contentOnTheFly:
     resource: "@ContentOnTheFlyBundle/Resources/config/routing.yml"
     prefix:   "%ezpublish_rest.path_prefix%"
+
+_multiFileUpload:
+    resource: "@EzSystemsMultiFileUploadBundle/Resources/config/routing.yml"
+    prefix:   "%ezpublish_rest.path_prefix%"
+
