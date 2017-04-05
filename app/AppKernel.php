@@ -57,6 +57,7 @@ class AppKernel extends Kernel
             new EzSystems\CronBundle\EzSystemsCronBundle(),
             new EzSystems\DateBasedPublisherBundle\EzSystemsDateBasedPublisherBundle(),
             new EzSystems\EzContentOnTheFlyBundle\EzSystemsEzContentOnTheFlyBundle(),
+            new EzSystems\MultiFileUploadBundle\EzSystemsMultiFileUploadBundle(),
             new AppBundle\AppBundle(),
         );
 
