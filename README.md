@@ -60,7 +60,7 @@ Full requirements can be found on the [Requirements](https://doc.ez.no/pages/vie
 *TL;DR: supported PHP versions are 5.5, 5.6 and 7.0 (for dev use), using mod_php or php-fpm, and either MySQL 5.5/5.6 or MariaDB 5.5/10.0.*
 
 ## Issue tracker
-Submitting bugs, improvements and stories is possible on https://jira.ez.no/browse/EZS.
+Submitting bugs, improvements and stories is possible on https://jira.ez.no/browse/EZEE.
 If you discover a security issue, please see how to responsibly report such issues on https://doc.ez.no/Security.
 
 ## Running BDD
