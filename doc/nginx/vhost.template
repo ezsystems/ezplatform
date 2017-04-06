@@ -6,10 +6,27 @@ server {
 
     root %BASEDIR%/web;
 
+    # Environment.
+    ## Possible values: "prod" and "dev" out-of-the-box, other values possible with proper configuration
+    ## Defaults to "prod" if omitted, and forces prod for backend by default as it slows down backend a lot
+    set $fc_symfony_env "%SYMFONY_ENV%";
+    if ( $uri ~ "^/app\.php/(api/ezp/v2|ez$)" ) {
+        set $fc_symfony_env "prod";
+    }
+
     # Additional Assetic rules for eZ Publish 5.1 / 2013.4 and higher.
     ## Don't forget to run php app/console assetic:dump --env=prod
-    ## and make sure to comment these out in DEV environment.
-    #if[SYMFONY_ENV!=dev] include ez_params.d/ez_prod_rewrite_params;
+    ## TODO: See if we can somehow still use include, otherwise get rid of ez_prod_rewrite_rules file
+    if ( $fc_symfony_env != "dev" ) {
+        #include ez_params.d/ez_prod_rewrite_params;
+        rewrite "^/css/(.*)\.css" "/css/$1.css" break;
+        rewrite "^/js/(.*)\.js" "/js/$1.js" break;
+        rewrite "^/font(s?)/(.*)\.ttf" "/font$1/$2.ttf" break;
+        rewrite "^/font(s?)/(.*)\.woff" "/font$1/$2.woff" break;
+        rewrite "^/font(s?)/(.*)\.otf" "/font$1/$2.otf" break;
+        rewrite "^/font(s?)/(.*)\.eot" "/font$1/$2.eot" break;
+        rewrite "^/font(s?)/(.*)\.svg" "/font$1/$2.svg" break;
+    }
 
     # Cluster/streamed files rewrite rules. Enable on cluster with DFS as a binary data handler
     #rewrite "^/var/([^/]+/)?storage/images(-versioned)?/(.*)" "/app.php" break;
@@ -32,12 +49,12 @@ server {
             fastcgi_pass %FASTCGI_PASS%;
 
             ## eZ Platform ENVIRONMENT variables, used for customizing app.php execution (not used by console commands)
-
-            # Environment.
-            # Possible values: "prod" and "dev" out-of-the-box, other values possible with proper configuration
-            # Make sure to comment the "ez_params.d/ez_prod_rewrite_params" include above in dev.
-            # Defaults to "prod" if omitted
-            #if[SYMFONY_ENV] fastcgi_param SYMFONY_ENV %SYMFONY_ENV%;
+            # TODO: If possible find way to use variable from root scope to avoid the duplication.
+            set $fc_symfony_env "%SYMFONY_ENV%";
+            if ( $uri ~ "^/app\.php/(api/ezp/v2|ez$)" ) {
+                set $fc_symfony_env "prod";
+            }
+            fastcgi_param SYMFONY_ENV $fc_symfony_env;
 
             # Whether to use custom ClassLoader (autoloader) file
             # Needs to be a valid path relative to root web/ directory
