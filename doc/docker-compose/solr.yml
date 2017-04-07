@@ -1,4 +1,4 @@
-version: '2'
+version: '2.1'
 # Solr config, to be appended after base-prod or base-dev, ..., but before selenium.yml
 #
 # This service will migrate to use offical Solr image and use entrypoint once Solr bundle supports SOLR6+.
