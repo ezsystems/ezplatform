@@ -10,6 +10,9 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
+        ## WARNING
+        ## Until https://jira.ez.no/browse/EZP-22192 is implemented,
+        ## enabling basic auth in REST will prevent PlatformUI from working
 #        ezpublish_rest:
 #            pattern: ^/api/ezp/v2
 #            stateless: true
