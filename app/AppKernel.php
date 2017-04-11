@@ -36,6 +36,7 @@ class AppKernel extends Kernel
             new eZ\Bundle\EzPublishCoreBundle\EzPublishCoreBundle(),
             new eZ\Bundle\EzPublishLegacySearchEngineBundle\EzPublishLegacySearchEngineBundle(),
             new eZ\Bundle\EzPublishIOBundle\EzPublishIOBundle(),
+            new EzSystems\MultiFileUploadBundle\EzSystemsMultiFileUploadBundle(),
             new eZ\Bundle\EzPublishRestBundle\EzPublishRestBundle(),
             new EzSystems\PlatformUIAssetsBundle\EzSystemsPlatformUIAssetsBundle(),
             new EzSystems\PlatformUIBundle\EzSystemsPlatformUIBundle(),
@@ -49,7 +50,6 @@ class AppKernel extends Kernel
             new EzSystems\EzContentOnTheFlyBundle\EzSystemsEzContentOnTheFlyBundle(),
             new Bazinga\Bundle\JsTranslationBundle\BazingaJsTranslationBundle(),
             new JMS\TranslationBundle\JMSTranslationBundle(),
-            new EzSystems\MultiFileUploadBundle\EzSystemsMultiFileUploadBundle(),
             new AppBundle\AppBundle(),
         );
 
