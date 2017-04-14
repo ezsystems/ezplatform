@@ -54,7 +54,7 @@ https://doc.ez.no/display/DEVELOPER/Step+1%3A+Installation
 
        ```bash
        $ curl -sS https://getcomposer.org/installer | php
-       $ php -d memory_limit=-1 composer.phar create-project --no-dev --repository-url=https://updates.ez.no/bul ezsystems/ezstudio
+       $ php -d memory_limit=-1 composer.phar create-project --no-dev ezsystems/ezplatform-ee
        $ cd /ezstudio/
        ```
 
