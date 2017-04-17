@@ -1,0 +1,12 @@
+v: 0
+
+# ci
+integrate:
+  # Two common arguments for all matrix values
+  install: "clean"
+  command: "bin/behat"
+  matrix:
+   - {arguments: "-v --profile platformui --tags common"}
+   - {arguments: "-v --profile rest --suite fullJson"}
+   - {arguments: "-v --profile rest --suite fullXml"}
+   - {arguments: "-v --profile core"}
