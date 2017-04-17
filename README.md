@@ -1,5 +1,7 @@
 # eZ Platform
 
+[![Join the chat at https://gitter.im/ezsystems/ezplatform](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ezsystems/ezplatform?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ## What is eZ Platform ?
 *eZ Platform* is a 100% open source professional CMS (Content Management System) developed by eZ Systems and the eZ Community.
 
