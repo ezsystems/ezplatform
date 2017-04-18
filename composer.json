@@ -35,7 +35,7 @@
         "ezsystems/ezpublish-kernel": "7.0.x-dev as 6.99.x-dev",
         "ezsystems/repository-forms": "^1.7@dev",
         "ezsystems/ezplatform-solr-search-engine": "^1.3@dev",
-        "ezsystems/platform-ui-bundle": "^1.9@dev",
+        "ezsystems/platform-ui-bundle": "2.0.x-dev",
         "ezsystems/ez-support-tools": "~0.1.0",
         "ezsystems/ezplatform-http-cache": "^0.1@dev",
         "ezplatform-i18n/ezplatform-i18n-ach_ug": "^1.1@dev",
@@ -47,6 +47,9 @@
         "sensio/framework-extra-bundle": "^3.0.2",
         "ezsystems/content-on-the-fly-prototype": "^0.1.7",
         "willdurand/js-translation-bundle": "^2.6.4"
+        "composer/installers": "dev-ezplatform_assets as 1.3.x-dev",
+        "ezsystems/hybrid-platform-ui": "dev-master as 1.0.x-dev",
+        "ezsystems/hybrid-platform-ui-core-components": "^0.1@dev"
     },
     "require-dev": {
         "ezsystems/ezplatform-i18n": "^1.0@dev",
@@ -100,5 +103,11 @@
         "branch-alias": {
             "dev-master": "2.0.x-dev"
         }
-    }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/dpobel/installers.git"
+        }
+    ]
 }
