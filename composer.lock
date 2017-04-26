@@ -682,23 +682,26 @@
         },
         {
             "name": "ezsystems/content-on-the-fly-prototype",
-            "version": "v0.1.8",
+            "version": "v0.1.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/content-on-the-fly-prototype-bundle.git",
-                "reference": "4d958a234ad8b1bc0e1ed2668b35985aecb3c691"
+                "reference": "2a5bd93325d7a6fbd589291fcba77dd362c7ebbb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/content-on-the-fly-prototype-bundle/zipball/4d958a234ad8b1bc0e1ed2668b35985aecb3c691",
-                "reference": "4d958a234ad8b1bc0e1ed2668b35985aecb3c691",
+                "url": "https://api.github.com/repos/ezsystems/content-on-the-fly-prototype-bundle/zipball/2a5bd93325d7a6fbd589291fcba77dd362c7ebbb",
+                "reference": "2a5bd93325d7a6fbd589291fcba77dd362c7ebbb",
                 "shasum": ""
             },
             "require": {
                 "ezsystems/ezpublish-kernel": "^6.3",
                 "ezsystems/platform-ui-bundle": "^1.4"
             },
-            "type": "library",
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.1"
+            },
+            "type": "ezplatform-bundle",
             "extra": {
                 "branch-alias": {
                     "dev-master": "0.1.x-dev"
@@ -721,7 +724,7 @@
                 }
             ],
             "description": "Platform UI Content on the Fly feature",
-            "time": "2017-02-28T10:37:54+00:00"
+            "time": "2017-04-18T09:59:11+00:00"
         },
         {
             "name": "ezsystems/ez-support-tools",
