@@ -57,6 +57,7 @@ framework:
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
         strict_requirements: ~
+    csrf_protection: ~
     form:
         csrf_protection:
             enabled: true
