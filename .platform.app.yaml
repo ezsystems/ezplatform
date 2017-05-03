@@ -44,6 +44,15 @@ mounts:
 hooks:
     build: |
         set -e
+        if [ -z "$COMPOSER_KEY" ]; then
+            echo "The 'composer_key' project variable must be set."
+            exit 1
+        elif [ -z "$COMPOSER_PASSWORD" ]; then
+            echo "The 'composer_password' project variable must be set."
+            exit 1
+        fi
+
+        composer config http-basic.updates.ez.no $COMPOSER_KEY $COMPOSER_PASSWORD
         composer install --no-dev --prefer-dist --no-progress --no-interaction --optimize-autoloader
         rm web/app_dev.php
         . ./.env
