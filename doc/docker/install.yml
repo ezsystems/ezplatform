@@ -28,12 +28,15 @@ services:
      - DATABASE_HOST=install_db
     # Dumping autoload using --optimize-autoloader to keep performenace on a usable level, not needed on linux host.
     # Second chown line:  For dev and behat tests we give a bit extra rights, never do this for prod.
+    # assetic:dump and assets:install is run with using hard copy instead of symlinks. Needed by prod images
     command: >
       /bin/sh -c "
       composer install --no-progress --no-interaction --prefer-dist --no-suggest --optimize-autoloader;
       mkdir -p web/var;
       php /scripts/wait_for_db.php;
       php app/console ezplatform:install ${INSTALL_EZ_INSTALL_TYPE};
+      php app/console assetic:dump --env=prod;
+      php app/console assets:install --env=prod;
       rm -Rf app/logs/* app/cache/*/*;
       chown -R www-data:www-data app/cache app/logs web/var;
       find app/cache app/logs web/var -type d -print0 | xargs -0 chmod -R 775;

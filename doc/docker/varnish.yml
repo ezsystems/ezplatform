@@ -16,7 +16,6 @@ services:
     build:
       context: ../../
       dockerfile: doc/docker/Dockerfile-varnish
-    image: my_varnish
     ports:
      - "8081:80"
     environment:
