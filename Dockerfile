@@ -20,6 +20,8 @@ RUN mkdir -p web/var \
     && chown -R www-data:www-data app/cache app/logs web/var \
     && find app/cache app/logs web/var -type d -print0 | xargs -0 chmod -R 775 \
     && find app/cache app/logs web/var -type f -print0 | xargs -0 chmod -R 664 \
+# Remove var dir from image ( future : use multi-stage-builds to avoid var/ from ever reaching a layer and dereby use disk space )
+    && rm -rf var \
 # Remove composer cache to avoid it taking space in image
     && rm -rf ~/.composer/*/*
 
