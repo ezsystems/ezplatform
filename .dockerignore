@@ -1,6 +1,9 @@
 ### IDE files
 .idea/
 
+### Composer files
+auth.json
+
 ### GIT files
 .git
 vendor/*/*/.git
