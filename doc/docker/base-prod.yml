@@ -26,6 +26,7 @@ services:
     build:
       context: ../../
       dockerfile: doc/docker/Dockerfile-nginx
+    image: ${NGINX_PROD_IMAGE}
     depends_on:
      - app
     ports:
@@ -44,7 +45,7 @@ services:
     image: ${MYSQL_IMAGE}
     # TODO: Get rid of by having some sort of migration command executed by app container at startup for inserting/updating data (if needed) instead of db dump, as for charset find another way of setting that.
     volumes:
-     - ${COMPOSE_DIR}/entrypoint/mysql:/docker-entrypoint-initdb.d/:ro,cached
+      - dbdump:/docker-entrypoint-initdb.d/:ro
     environment:
      - MYSQL_RANDOM_ROOT_PASSWORD=1
      - MYSQL_USER=$DATABASE_USER
@@ -53,6 +54,10 @@ services:
      - TERM=dumb
     networks:
      - backend
+
+volumes:
+  vardir:
+  dbdump:
 
 networks:
   frontend:
