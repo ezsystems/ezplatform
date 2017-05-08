@@ -1,4 +1,7 @@
+# To get started with security, check out the documentation:
+# https://symfony.com/doc/current/security.html
 security:
+    # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
         ezpublish:
             id: ezpublish.security.user_provider
@@ -6,6 +9,7 @@ security:
 #!            memory: ~
 
     firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
@@ -27,5 +31,12 @@ security:
                 require_previous_session: false
             logout: ~
 
-        default:
+        main:
             anonymous: ~
+            # activate different ways to authenticate
+
+            # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
+            #http_basic: ~
+
+            # https://symfony.com/doc/current/security/form_login_setup.html
+            #form_login: ~

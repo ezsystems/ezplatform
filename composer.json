@@ -20,16 +20,17 @@
         "classmap": [ "app/AppKernel.php", "app/AppCache.php" ]
     },
     "autoload-dev": {
-        "psr-4": { "Tests\\": "tests/" }
+        "psr-4": { "Tests\\": "tests/" },
+        "files": [ "vendor/symfony/symfony/src/Symfony/Component/VarDumper/Resources/functions/dump.php" ]
     },
     "require": {
         "php": "~5.6|~7.0",
-        "symfony/symfony": "^3.2.4",
+        "symfony/symfony": "^3.3.0",
         "twig/extensions": "~1.4",
         "symfony/assetic-bundle": "~2.8",
         "symfony/swiftmailer-bundle": "~2.5",
-        "symfony/monolog-bundle": "~3.0",
-        "sensio/distribution-bundle": "~5.0",
+        "symfony/monolog-bundle": "^3.1.0",
+        "sensio/distribution-bundle": "^5.0.19",
         "incenteev/composer-parameter-handler": "~2.1",
         "ezsystems/ezpublish-kernel": "7.0.x-dev as 6.99.x-dev",
         "ezsystems/repository-forms": "^1.7@dev",
@@ -42,9 +43,9 @@
         "egulias/listeners-debug-command-bundle": "~1.9",
         "white-october/pagerfanta-bundle": "~1.0",
         "hautelook/templated-uri-bundle": "~2.0",
-        "doctrine/doctrine-bundle": "~1.5",
-        "sensio/framework-extra-bundle": "~3.0",
-        "ezsystems/content-on-the-fly-prototype": "~0.1.7",
+        "doctrine/doctrine-bundle": "^1.6",
+        "sensio/framework-extra-bundle": "^3.0.2",
+        "ezsystems/content-on-the-fly-prototype": "^0.1.7",
         "willdurand/js-translation-bundle": "^2.6.4"
     },
     "require-dev": {
@@ -59,7 +60,7 @@
         "symfony/phpunit-bridge": "~3.2"
     },
     "scripts": {
-        "build": [
+        "symfony-scripts": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "eZ\\Bundle\\EzPublishCoreBundle\\Composer\\ScriptHandler::clearCache",
@@ -68,18 +69,18 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
         ],
         "post-install-cmd": [
-            "@build"
+            "@symfony-scripts"
         ],
         "post-update-cmd": [
-            "@build"
+            "@symfony-scripts"
         ],
         "post-create-project-cmd": [
             "eZ\\Bundle\\EzPublishCoreBundle\\Composer\\ScriptHandler::installWelcomeText"
         ]
     },
     "config": {
-        "process-timeout": 3000,
-        "bin-dir": "bin"
+        "bin-dir": "bin",
+        "sort-packages": true
     },
     "extra": {
         "symfony-app-dir": "app",

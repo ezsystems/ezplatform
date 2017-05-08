@@ -17,6 +17,7 @@
 # More details about excluding specific file on your local environment can be found
 # in the official GitHub article: https://help.github.com/articles/ignoring-files/
 
+/.web-server-pid
 /app/config/parameters.yml
 /build/
 /phpunit.xml
