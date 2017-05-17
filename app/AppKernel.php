@@ -40,6 +40,7 @@ class AppKernel extends Kernel
             new eZ\Bundle\EzPublishRestBundle\EzPublishRestBundle(),
             new EzSystems\LandingPageFieldTypeBundle\EzSystemsLandingPageFieldTypeBundle(),
             new EzSystems\FormBuilderBundle\EzSystemsFormBuilderBundle(),
+            new EzSystems\PlatformEEAssetsBundle\EzSystemsPlatformEEAssetsBundle(),
             new EzSystems\StudioUIBundle\EzSystemsStudioUIBundle(),
             new EzSystems\FlexWorkflowBundle\EzSystemsFlexWorkflowBundle(),
             new EzSystems\PlatformUIAssetsBundle\EzSystemsPlatformUIAssetsBundle(),
