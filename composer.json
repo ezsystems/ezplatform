@@ -103,7 +103,7 @@
             "file": "app/config/parameters.yml"
         },
         "branch-alias": {
-            "dev-master": "1.9.x-dev"
+            "dev-master": "1.10.x-dev"
         }
     },
     "bin": [
