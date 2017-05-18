@@ -54,8 +54,7 @@
         "ezsystems/date-based-publisher": "^1.0@dev",
         "ezsystems/content-on-the-fly-prototype": "~0.1.7",
         "ezsystems/ezplatform-multi-file-upload": "^0.1.0@dev",
-        "willdurand/js-translation-bundle": "^2.6.4",
-        "ezsystems/ezplatform-ee-assets": "^1.0"
+        "willdurand/js-translation-bundle": "^2.6.4"
     },
     "require-dev": {
         "ezsystems/ezplatform-i18n": "^1.0@dev",
