@@ -1,4 +1,4 @@
-version: '2'
+version: '2.1'
 # Single server setup for dev
 
 services:
@@ -10,7 +10,7 @@ services:
     depends_on:
      - db
     environment:
-     - SYMFONY_ENV
+     - SYMFONY_ENV=${SYMFONY_ENV-dev}
      - SYMFONY_DEBUG
      - SYMFONY_HTTP_CACHE
      - SYMFONY_HTTP_CACHE_CLASS
@@ -27,7 +27,7 @@ services:
     ports:
      - "8080:80"
     environment:
-     - SYMFONY_ENV
+     - SYMFONY_ENV=${SYMFONY_ENV-dev}
      - MAX_BODY_SIZE=20
      - FASTCGI_PASS=app:9000
      - TIMEOUT=190
