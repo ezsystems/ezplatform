@@ -1,0 +1,14 @@
+v: 0
+
+# This is a bundle, so we need to specify info for meta repo
+meta:
+  repo: "git@github.com:ezsystems/ezplatform-ee.git"
+  branch: "master"
+  self_alias: "1.10.x-dev"
+
+# ci
+integrate:
+  command: "bin/behat"
+  matrix:
+  # Run 'common' tagged behat scenarios on ezplatform-ee install
+    - {arguments: "-v --profile cleanMeta --tags common --strict", install: "studio-clean"}
