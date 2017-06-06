@@ -22,8 +22,8 @@
 /bin/*
 !/bin/.ci/
 !/bin/.travis/
-!/bin/synchronize-translations/
-!/bin/vhost.sh/
+!/bin/synchronize-translations
+!/bin/vhost.sh
 /app/check.php
 /app/SymfonyRequirements.php
 /app/cache/
