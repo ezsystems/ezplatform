@@ -1,0 +1,9 @@
+cleanMeta:
+      suites:
+          StudioUI:
+              paths: [ vendor/ezsystems/studio-ui-bundle/Features ]
+              filters:
+                  tags: "@clean"
+              contexts:
+                  - EzSystems\StudioUIBundle\Features\Context\StudioUI:
+                      uri: /ez

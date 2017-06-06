@@ -37,3 +37,4 @@ imports:
     - vendor/ezsystems/date-based-publisher/behat_suites.yml
     - vendor/ezsystems/ezstudio-form-builder/behat_suites.yml
     - vendor/ezsystems/landing-page-fieldtype-bundle/behat_suites.yml
+    - behat_suites.yml
