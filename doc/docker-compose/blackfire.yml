@@ -1,4 +1,4 @@
-version: '2'
+version: '2.1'
 # Blackfire agent config, to be appended after base-prod or base-dev config.
 # You'll need to export the two blackfire server variables before you can use this.
 
