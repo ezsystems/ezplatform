@@ -102,6 +102,10 @@
         RewriteCond %{ENV:SYMFONY_ENV} !^(dev)
         RewriteRule ^/(css|js|fonts?)/.*\.(css|js|otf|eot|ttf|svg|woff) - [L]
 
+        # Prevent access to website with direct usage of app.php in URL
+        # More info here: https://jira.ez.no/browse/EZP-27285
+        RewriteRule ^/(.+/)?app\.php - [R=404,L]
+
         RewriteRule .* /app.php
     </IfModule>
 
