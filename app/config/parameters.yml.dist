@@ -8,6 +8,6 @@ parameters:
     database_driver: pdo_mysql
     database_host: localhost
     database_port: ~
-    database_name: ezstudio
+    database_name: ezplatform_ee
     database_user: root
     database_password:
