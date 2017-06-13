@@ -18,7 +18,6 @@ rewrite "^/bundles/(.*)" "/bundles/$1" break;
 rewrite "^/assets/(.*)" "/assets/$1" break;
 
 # Prevent access to website with direct usage of app.php in URL
-# More info here: https://jira.ez.no/browse/EZP-27285
 if ($request_uri ~ "^/(.+/)?app\.php") {
     return 404;
 }
