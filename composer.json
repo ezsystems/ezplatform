@@ -36,6 +36,7 @@
         "ezplatform-i18n/ezplatform-i18n-ach_ug": "^1.1@beta",
         "ezsystems/ezplatform-multi-file-upload": "^0.1",
         "ezsystems/ezplatform-design-engine": "^1.0@beta",
+        "ezsystems/ezplatform-multi-file-upload": "^0.1@beta",
         "egulias/listeners-debug-command-bundle": "~1.9",
         "white-october/pagerfanta-bundle": "1.0.*",
         "hautelook/templated-uri-bundle": "~1.0 | ~2.0",
