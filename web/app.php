@@ -5,6 +5,7 @@ use Symfony\Component\Debug\Debug;
 
 // Ensure UTF-8 is used in string operations
 setlocale(LC_CTYPE, 'C.UTF-8');
+echo("This line has CS errors");
 
 // Environment is taken from "SYMFONY_ENV" variable, if not set, defaults to "prod"
 $environment = getenv('SYMFONY_ENV');
