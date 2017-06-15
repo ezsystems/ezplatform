@@ -34,7 +34,6 @@
         "ezsystems/ez-support-tools": "~0.1.0",
         "ezsystems/ezplatform-http-cache": "^0.1",
         "ezplatform-i18n/ezplatform-i18n-ach_ug": "^1.1@beta",
-        "ezsystems/ezplatform-multi-file-upload": "^0.1",
         "ezsystems/ezplatform-design-engine": "^1.0@beta",
         "ezsystems/ezplatform-multi-file-upload": "^0.1@beta",
         "egulias/listeners-debug-command-bundle": "~1.9",

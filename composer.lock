@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "07e3edc85829945df429c8bacd7be6df",
+    "content-hash": "89d95f6e04d6e79266d1fb2d863297a9",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -872,6 +872,58 @@
             "time": "2016-11-23T13:30:00+00:00"
         },
         {
+            "name": "ezsystems/ezplatform-design-engine",
+            "version": "v1.0-rc1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ezsystems/ezplatform-design-engine.git",
+                "reference": "74fa7c537cf235065bcb0a4ed107ff4f2fb16b88"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ezsystems/ezplatform-design-engine/zipball/74fa7c537cf235065bcb0a4ed107ff4f2fb16b88",
+                "reference": "74fa7c537cf235065bcb0a4ed107ff4f2fb16b88",
+                "shasum": ""
+            },
+            "require": {
+                "ezsystems/ezpublish-kernel": "^6.0.0",
+                "symfony/symfony": "^2.8.13|^3.1.6",
+                "twig/twig": "^1.27|^2.0"
+            },
+            "conflict": {
+                "lolautruche/ez-core-extra-bundle": "<2.0"
+            },
+            "require-dev": {
+                "mikey179/vfsstream": "^1.6.3",
+                "phpunit/phpunit": "^5.4"
+            },
+            "type": "ezplatform-bundle",
+            "autoload": {
+                "psr-4": {
+                    "EzSystems\\EzPlatformDesignEngine\\": "lib",
+                    "EzSystems\\EzPlatformDesignEngine\\Tests\\": "tests/lib",
+                    "EzSystems\\EzPlatformDesignEngineBundle\\": "bundle",
+                    "EzSystems\\EzPlatformDesignEngineBundle\\Tests\\": "tests/bundle"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "eZ Systems dev team",
+                    "email": "dev-team@ez.no"
+                },
+                {
+                    "name": "Jerome Vieilledent",
+                    "email": "jerome@vieilledent.fr"
+                }
+            ],
+            "description": "Design fallback mechanism for eZ Platform",
+            "time": "2017-06-13T12:53:08+00:00"
+        },
+        {
             "name": "ezsystems/ezplatform-http-cache",
             "version": "v0.1.1",
             "source": {
@@ -1023,16 +1075,16 @@
         },
         {
             "name": "ezsystems/ezpublish-kernel",
-            "version": "v6.10.0-beta1",
+            "version": "v6.10.0-beta2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-kernel.git",
-                "reference": "d82004a03b7a1d6e2dbb8ba509328b28e6e48786"
+                "reference": "466306d65163f3d3a136ad9af5d4b83577f7fe4f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/d82004a03b7a1d6e2dbb8ba509328b28e6e48786",
-                "reference": "d82004a03b7a1d6e2dbb8ba509328b28e6e48786",
+                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/466306d65163f3d3a136ad9af5d4b83577f7fe4f",
+                "reference": "466306d65163f3d3a136ad9af5d4b83577f7fe4f",
                 "shasum": ""
             },
             "require": {
@@ -1105,7 +1157,7 @@
             ],
             "description": "Kernel used by ezsystems/ezplatform and derivatives. Provides the Content Repository, its APIs, and the application's Symfony framework integration.",
             "homepage": "http://share.ez.no",
-            "time": "2017-06-13T16:01:13+00:00"
+            "time": "2017-06-15T10:01:52+00:00"
         },
         {
             "name": "ezsystems/platform-ui-assets-bundle",
@@ -6725,6 +6777,7 @@
         "ezsystems/ezplatform-solr-search-engine": 10,
         "ezsystems/platform-ui-bundle": 10,
         "ezplatform-i18n/ezplatform-i18n-ach_ug": 10,
+        "ezsystems/ezplatform-design-engine": 10,
         "ezsystems/ezplatform-multi-file-upload": 10,
         "ezsystems/ezplatform-i18n": 10
     },
