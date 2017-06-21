@@ -87,3 +87,4 @@ variables:
         DATABASE_NAME: main
         DATABASE_USER: user
         DATABASE_PASSWORD: ''
+
