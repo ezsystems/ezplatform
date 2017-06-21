@@ -61,7 +61,6 @@ hooks:
             php -d memory_limit=-1 bin/console ezplatform:install --env=$SYMFONY_ENV $INSTALL_EZ_INSTALL_TYPE
             touch web/var/.platform.installed
         fi
-        composer update --no-dev --prefer-dist
         bin/console --env=$SYMFONY_ENV cache:clear
 
 # The configuration of scheduled execution.
@@ -87,4 +86,3 @@ variables:
         DATABASE_NAME: main
         DATABASE_USER: user
         DATABASE_PASSWORD: ''
-
