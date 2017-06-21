@@ -9,3 +9,7 @@ ezpublish:
         default_siteaccess: "site"
         match:
             URIElement: 1
+
+ezdesign:
+    phpstorm:
+        enabled: false
