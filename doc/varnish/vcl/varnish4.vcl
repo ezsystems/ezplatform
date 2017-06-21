@@ -1,9 +1,5 @@
 // Varnish 4 style - eZ 5.4+ / 2014.09+
 // Complete VCL example
-//
-// DEPRECATED: This approach for invalidation is deprecated and default has changed to xkey.
-// See doc/varnish/README.md
-
 
 vcl 4.0;
 
