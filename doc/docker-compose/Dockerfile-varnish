@@ -1,12 +1,14 @@
-FROM debian:stretch
+FROM debian:jessie
 
 ENV DEBIAN_FRONTEND noninteractive
 
-# Use packages from Varnish to get Varnsih 5.1 which is a bit more stable then Varnsih 5.0.0 in stretch
-RUN apt-get install -q -y --force-yes --no-install-recommends ca-certificates curl \
-    curl -s https://packagecloud.io/install/repositories/varnishcache/varnish5/script.deb.sh | bash
+# Use packages from Varnish to get Varnsih 5.1, currently does not work on debian:stretch
+RUN apt-get update -q -y && \
+    apt-get install -q -y --force-yes --no-install-recommends ca-certificates curl && \
+    curl -s https://packagecloud.io/install/repositories/varnishcache/varnish5/script.deb.sh | bash && \
+    apt-get install -q -y --force-yes --no-install-recommends varnish
 
-# If we need varnish modules this is one way, or we need to find a way to install on the package above.
+# This will need debian:stretch, just here for referance, had segmentation faults so rather using varnsih 5.1 above
 #RUN \
 #    apt-get update -q -y && \
 #    apt-get install -q -y --force-yes --no-install-recommends ca-certificates varnish-modules varnish
