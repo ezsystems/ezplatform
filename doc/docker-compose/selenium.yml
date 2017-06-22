@@ -16,6 +16,6 @@ services:
     depends_on:
      - selenium
     environment:
-     - EZP_TEST_REST_HOST
-     - BEHAT_SELENIUM_HOST
-     - BEHAT_WEB_HOST
+     - EZP_TEST_REST_HOST=$WEB_HOST
+     - BEHAT_SELENIUM_HOST=$SELENIUM_HOST
+     - BEHAT_WEB_HOST=$WEB_HOST
