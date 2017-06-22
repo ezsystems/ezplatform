@@ -22,7 +22,8 @@ env:
     - TEST_CMD="bin/behat -vv --profile=rest --suite=fullXml --tags=~@broken"
     - TEST_CMD="bin/behat -vv --profile=core --tags=~@broken"
     - TEST_CMD="bin/phpunit -v vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishRestBundle/Tests/Functional"
-    - TEST_CMD="bin/behat -vv --profile=platformui --tags='@common'"
+    - TEST_CMD="bin/behat -v --profile=repository-forms --tags=~@broken"
+    - TEST_CMD="bin/behat -v --profile=behat --tags=~@broken"
 
 # test only master (+ Pull requests)
 branches:
