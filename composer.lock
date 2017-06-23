@@ -873,20 +873,20 @@
         },
         {
             "name": "ezsystems/ezplatform-design-engine",
-            "version": "v1.0-rc1",
+            "version": "v1.0-rc2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezplatform-design-engine.git",
-                "reference": "74fa7c537cf235065bcb0a4ed107ff4f2fb16b88"
+                "reference": "91a64e15747ef7f9f9634247e0b4fc5c7e90557d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezplatform-design-engine/zipball/74fa7c537cf235065bcb0a4ed107ff4f2fb16b88",
-                "reference": "74fa7c537cf235065bcb0a4ed107ff4f2fb16b88",
+                "url": "https://api.github.com/repos/ezsystems/ezplatform-design-engine/zipball/91a64e15747ef7f9f9634247e0b4fc5c7e90557d",
+                "reference": "91a64e15747ef7f9f9634247e0b4fc5c7e90557d",
                 "shasum": ""
             },
             "require": {
-                "ezsystems/ezpublish-kernel": "^6.0.0",
+                "ezsystems/ezpublish-kernel": "^6.0.0|^7.0",
                 "symfony/symfony": "^2.8.13|^3.1.6",
                 "twig/twig": "^1.27|^2.0"
             },
@@ -921,7 +921,7 @@
                 }
             ],
             "description": "Design fallback mechanism for eZ Platform",
-            "time": "2017-06-13T12:53:08+00:00"
+            "time": "2017-06-23T09:38:35+00:00"
         },
         {
             "name": "ezsystems/ezplatform-http-cache",
@@ -1075,16 +1075,16 @@
         },
         {
             "name": "ezsystems/ezpublish-kernel",
-            "version": "v6.10.0-rc1",
+            "version": "v6.10.0-rc3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-kernel.git",
-                "reference": "dc1f3872ac67983e35496488926ef50166529b2c"
+                "reference": "00e1fb4d14bc79861f2da9a503da4553550b48ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/dc1f3872ac67983e35496488926ef50166529b2c",
-                "reference": "dc1f3872ac67983e35496488926ef50166529b2c",
+                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/00e1fb4d14bc79861f2da9a503da4553550b48ba",
+                "reference": "00e1fb4d14bc79861f2da9a503da4553550b48ba",
                 "shasum": ""
             },
             "require": {
@@ -1157,7 +1157,7 @@
             ],
             "description": "Kernel used by ezsystems/ezplatform and derivatives. Provides the Content Repository, its APIs, and the application's Symfony framework integration.",
             "homepage": "http://share.ez.no",
-            "time": "2017-06-19T21:06:00+00:00"
+            "time": "2017-06-23T15:26:06+00:00"
         },
         {
             "name": "ezsystems/platform-ui-assets-bundle",
