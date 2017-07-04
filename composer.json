@@ -27,11 +27,11 @@
         "sensio/generator-bundle": "~2.3",
         "incenteev/composer-parameter-handler": "~2.0",
         "tedivm/stash-bundle": "~0.4",
-        "ezsystems/ezpublish-kernel": "~6.7.0@dev",
-        "ezsystems/repository-forms": "~1.5.0@dev",
-        "ezsystems/ezplatform-solr-search-engine": "^1.1@dev",
-        "ezsystems/platform-ui-bundle": "~1.7.0@dev",
-        "ezsystems/ez-support-tools": "~0.1.0@dev",
+        "ezsystems/ezpublish-kernel": "~6.7.0@rc",
+        "ezsystems/repository-forms": "~1.5.0@rc",
+        "ezsystems/ezplatform-solr-search-engine": "^1.1",
+        "ezsystems/platform-ui-bundle": "~1.7.0@rc",
+        "ezsystems/ez-support-tools": "~0.1.0@rc",
         "egulias/listeners-debug-command-bundle": "~1.9",
         "white-october/pagerfanta-bundle": "1.0.*",
         "hautelook/templated-uri-bundle": "~1.0 | ~2.0",
@@ -88,7 +88,7 @@
             "file": "app/config/parameters.yml"
         },
         "branch-alias": {
-            "dev-master": "1.7.x-dev"
+            "rc-master": "1.7.x-dev"
         }
     }
 }
