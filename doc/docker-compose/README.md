@@ -10,7 +10,7 @@
 
 ## Overview
 
-This setup requires Docker Compose 1.7 or higher, and Docker 1.10 or higher. Defaults are set in `.env`, and
+This setup requires Docker Compose 1.9 or higher, and Docker 1.12 or higher. Defaults are set in `.env`, and
 files to ignore are set in `.dockerignore`. By default `.env` specifies that production image is built and setup for use.
 _**NB:** For this and other reasons all docker-compose commands **must** be executed from root of your project directory._
 
@@ -70,7 +70,7 @@ by default under the hood, which leads to much slower IO performance.*
 
 From root of your projects clone of this distribution, [setup composer auth.json](#composer) and execute the following:
 ```sh
-export COMPOSE_FILE=doc/docker-compose/base-dev.yml SYMFONY_ENV=dev
+export COMPOSE_FILE=doc/docker-compose/base-dev.yml
 
 # Optional: If you use Docker Machine with NFS, you'll need to specify where project is, & give composer a valid directory.
 #export COMPOSE_DIR=/data/SOURCES/MYPROJECTS/ezplatform/doc/docker-compose COMPOSER_HOME=/tmp
@@ -176,7 +176,7 @@ docker-compose down -v
 
 And if you have defined any environment variables you can unset them using:
 ```sh
-unset COMPOSE_FILE SYMFONY_ENV COMPOSE_DIR COMPOSER_HOME
+unset COMPOSE_FILE COMPOSE_DIR COMPOSER_HOME
 
 # To unset blackfire variables
 unset BLACKFIRE_SERVER_ID BLACKFIRE_SERVER_TOKEN
