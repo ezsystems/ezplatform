@@ -24,7 +24,8 @@ services:
     depends_on:
      - web
     volumes:
-     - ${COMPOSE_DIR}/entrypoint/varnish/varnish4.vcl:/etc/varnish/default.vcl:ro
+     - ${COMPOSE_DIR}/../varnish/vcl/varnish4.vcl:/etc/varnish/default.vcl:ro
+     - ${COMPOSE_DIR}/entrypoint/varnish/parameters.vcl:/etc/varnish/parameters.vcl:ro
 
 
 ## DEBUG??
