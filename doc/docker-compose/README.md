@@ -32,6 +32,7 @@ The current Docker Compose files are made to be mixed and matched togtehr as you
 
 In addition the following exists but are work in progress, thus not tested yet and are known to be somewhat broken:
 - redis.yml _(optional, adds redis service and appends config to app)_
+- varnish.yml _(optional, adds varnish service and appends config to app)_
 - solr.yml _(optional, add solr service and configure app for it)_
 
 

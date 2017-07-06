@@ -1,24 +1,8 @@
 // Varnish 3 style - eZ 5.4+ / 2014.09+
 // Complete VCL example
 
-// Our Backend - Assuming that web server is listening on port 80
-// Replace the host to fit your setup
-backend ezplatform {
-    .host = "127.0.0.1";
-    .port = "80";
-}
-
-// ACL for invalidators IP
-acl invalidators {
-    "127.0.0.1";
-    "192.168.0.0"/16;
-}
-
-// ACL for debuggers IP
-acl debuggers {
-    "127.0.0.1";
-    "192.168.0.0"/16;
-}
+// For customizing your backend and acl rules see parameters.yml
+include "parameters.vcl";
 
 // Called at the beginning of a request, after the complete request has been received
 sub vcl_recv {
