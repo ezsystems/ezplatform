@@ -28,3 +28,7 @@ parameters:
 
     cache_memcached_port: 11211
     cache_redis_port: 6379
+
+    # Settings for HttpCache
+    purge_type: "local"
+    purge_server: "http://my.varnish.server:80"
