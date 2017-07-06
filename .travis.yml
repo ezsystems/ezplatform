@@ -16,13 +16,11 @@ env:
     - SYMFONY_DEBUG=1
   # list of behat arguments to test
   matrix:
-    # Disabled until failures on BDD tests with redis is solved / figured out
-    #- TEST_CMD="bin/behat -vv --profile=rest --suite=fullJson --tags=~@broken" COMPOSE_FILE="doc/docker-compose/base-prod.yml:doc/docker-compose/redis.yml:doc/docker-compose/selenium.yml"
-    - TEST_CMD="bin/behat -vv --profile=rest --suite=fullJson --tags=~@broken" COMPOSE_FILE="doc/docker-compose/base-prod.yml:doc/docker-compose/selenium.yml"
+    - TEST_CMD="bin/behat -vv --profile=rest --suite=fullJson --tags=~@broken" COMPOSE_FILE="doc/docker-compose/base-prod.yml:doc/docker-compose/varnish.yml:doc/docker-compose/selenium.yml" WEB_HOST="varnish"
     - TEST_CMD="bin/behat -vv --profile=rest --suite=fullXml --tags=~@broken"
     - TEST_CMD="bin/behat -vv --profile=core --tags=~@broken"
     - TEST_CMD="bin/phpunit -v vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishRestBundle/Tests/Functional"
-    - TEST_CMD="bin/behat -vv --profile=platformui --tags='@common'"
+    - TEST_CMD="bin/behat -vv --profile=platformui --tags='@common'" COMPOSE_FILE="doc/docker-compose/base-dev.yml:doc/docker-compose/redis.yml:doc/docker-compose/selenium.yml"
 
 # test only master (+ Pull requests)
 branches:

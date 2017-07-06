@@ -1,0 +1,40 @@
+version: '2.1'
+# Simple single server setup for prod
+
+## WARNING!
+# This service is currently work in progress, is not tested by CI, and thus not guaranteed to work.
+# You are however more then welcome to try it out and help make it stable.
+
+services:
+  app:
+    environment:
+     - SYMFONY_HTTP_CACHE=0
+     - SYMFONY_TRUSTED_PROXIES=varnish
+     - HTTPCACHE_PURGE_SERVER=http://varnish
+
+  varnish:
+    build:
+      context: .
+      dockerfile: Dockerfile-varnish
+    image: my_varnish
+    mem_limit: 384M
+    memswap_limit: 512M
+    ports:
+     - "8081:80"
+    depends_on:
+     - web
+    volumes:
+     - ${COMPOSE_DIR}/../varnish/vcl/varnish4.vcl:/etc/varnish/default.vcl:ro
+     - ${COMPOSE_DIR}/entrypoint/varnish/parameters.vcl:/etc/varnish/parameters.vcl:ro
+
+
+## DEBUG??
+# In need of debugging all request going to Varnish, use varnishlog, example:
+# docker-compose exec varnish varnishlog -c -i ReqURL,ReqMethod -I ReqHeader:X-Location-Id
+# Or more relevant only BAN's with all info:
+# docker-compose exec varnish varnishlog -g request -q "ReqMethod eq 'BAN'"
+#
+# But before doing that check that http and not local purge client is set:
+# docker-compose exec app app/console --env=dev debug:container ezpublish.http_cache.purge_client
+#
+# And if in prod make sure you have rebuilt app container on code changes ;)
