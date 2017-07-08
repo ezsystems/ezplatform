@@ -1,4 +1,4 @@
-version: '2.1'
+version: '3.3'
 # Appends services to prod.yml, prod+dev, prod+redis, ..., always latest
 
 services:
@@ -11,6 +11,8 @@ services:
      - SCREEN_WIDTH=1920
      - SCREEN_HEIGHT=1080
      - SCREEN_DEPTH=24
+    networks:
+     - backend
 
   app:
     depends_on:

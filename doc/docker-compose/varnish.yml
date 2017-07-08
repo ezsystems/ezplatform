@@ -1,4 +1,4 @@
-version: '2.1'
+version: '3.3'
 # Simple single server setup for prod
 
 ## WARNING!
@@ -17,8 +17,6 @@ services:
       context: .
       dockerfile: Dockerfile-varnish
     image: my_varnish
-    mem_limit: 384M
-    memswap_limit: 512M
     ports:
      - "8081:80"
     depends_on:

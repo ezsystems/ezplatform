@@ -1,4 +1,4 @@
-version: '2.1'
+version: '3.3'
 # Solr config, to be appended after base-prod or base-dev, ..., but before selenium.yml
 #
 # NOTE: You'll need to manually reindex the solr index when booting this as we don't have entrypoint for solr yet.
@@ -22,3 +22,6 @@ services:
       dockerfile: doc/docker-compose/Dockerfile-solr
     ports:
      - "8983:8983"
+    networks:
+     - frontend
+     - backend

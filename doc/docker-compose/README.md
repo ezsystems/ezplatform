@@ -14,7 +14,7 @@ Mac/Windows use of shared folders. This is a know issue and nothing we intend to
 
 ## Overview
 
-This setup requires Docker Compose 1.9 or higher, and Docker 1.12 or higher. Defaults are set in `.env`, and
+This setup requires Docker Compose 1.14 or higher, and Docker 17.06 or higher. Defaults are set in `.env`, and
 files to ignore are set in `.dockerignore`. By default `.env` specifies that production image is built and setup for use.
 _**NB:** For this and other reasons all docker-compose commands **must** be executed from root of your project directory._
 
