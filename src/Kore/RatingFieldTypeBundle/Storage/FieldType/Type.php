@@ -57,6 +57,9 @@ class Type extends FieldType
     {
         // @EXT: Default possible depending on value class, at least for
         // trivial values
+        //
+        // There is probably a connection with the edit template, which is
+        // missing in the tutoorial.
         if (is_string($inputValue)) {
             $inputValue = new Value(['rating' => $inputValue]);
         }
