@@ -1,0 +1,6 @@
+{% block kore-rating_field %}
+    {% set field_value %}
+        {{ field.value.rating }}
+    {% endset %}
+    {{ block( 'simple_block_field' ) }}
+{% endblock %}
