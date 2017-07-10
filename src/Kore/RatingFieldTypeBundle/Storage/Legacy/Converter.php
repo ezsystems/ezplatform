@@ -12,13 +12,13 @@ class Converter implements ConverterInterface
 {
     public function toStorageValue(FieldValue $value, StorageFieldValue $storageFieldValue)
     {
-        $storageFieldValue->dataText = $value->rating;
+        $storageFieldValue->dataText = json_encode($value->data);
         $storageFieldValue->sortKeyString = $value->sortKey;
     }
 
     public function toFieldValue(StorageFieldValue $value, FieldValue $fieldValue)
     {
-        $fieldValue->rating = $value->dataText;
+        $fieldValue->data = json_decode($value->dataText, true) ?: [];
         $fieldValue->sortKey = $value->sortKeyString;
     }
 
