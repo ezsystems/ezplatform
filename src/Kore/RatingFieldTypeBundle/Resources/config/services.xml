@@ -8,13 +8,13 @@
         <service id="kore_rating_field_type.field_type.rating"
             class="Kore\RatingFieldTypeBundle\Storage\FieldType\Type">
 
-            <tag name="ezpublish.fieldType" alias="kore-rating" />
+            <tag name="ezpublish.fieldType" alias="koreRating" />
         </service>
 
         <service id="kore_rating_field_type.legacy.converter"
             class="Kore\RatingFieldTypeBundle\Storage\Legacy\Converter">
 
-            <tag name="ezpublish.storageEngine.legacy.converter" alias="kore-rating" />
+            <tag name="ezpublish.storageEngine.legacy.converter" alias="koreRating" />
         </service>
     </services>
 </container>

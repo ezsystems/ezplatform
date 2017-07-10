@@ -12,7 +12,7 @@ class Type extends FieldType
 {
     public function getFieldTypeIdentifier()
     {
-        return 'kore-rating';
+        return 'koreRating';
     }
 
     protected function createValueFromInput($inputValue)
