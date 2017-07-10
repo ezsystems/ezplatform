@@ -34,6 +34,10 @@ class Converter implements ConverterInterface
 
     public function getIndexColumn()
     {
-        return 'sort_key_string';
+        // How to decide between sort_key_(int|string)
+        //
+        // How do we get access to the currently used value class to reason
+        // about this?
+        return 'sort_key_int';
     }
 }
