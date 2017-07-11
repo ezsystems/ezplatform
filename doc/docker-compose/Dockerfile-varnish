@@ -1,18 +1,15 @@
-FROM debian:jessie
+FROM debian:stretch-slim
 
 ENV DEBIAN_FRONTEND noninteractive
 
-# Use packages from Varnish to get Varnsih 5.1, currently does not work on debian:stretch
+# Use packages from Varnish to get Varnsih 5.1, 5.0 packages with debian:stretch gives segmentation faults
 RUN apt-get update -q -y && \
     apt-get install -q -y --force-yes --no-install-recommends ca-certificates curl && \
     curl -s https://packagecloud.io/install/repositories/varnishcache/varnish5/script.deb.sh | bash && \
     apt-get install -q -y --force-yes --no-install-recommends varnish
 
-# This will need debian:stretch, just here for referance, had segmentation faults so rather using varnsih 5.1 above
-#RUN \
-#    apt-get update -q -y && \
-#    apt-get install -q -y --force-yes --no-install-recommends ca-certificates varnish-modules varnish
-
+COPY doc/varnish/vcl/varnish4.vcl /etc/varnish/default.vcl
+COPY doc/docker-compose/entrypoint/varnish/parameters.vcl /etc/varnish/parameters.vcl
 
 EXPOSE 80 6082
 
