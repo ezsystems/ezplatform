@@ -7,6 +7,7 @@ use eZ\Publish\API\Repository\Values\ContentType\FieldDefinition;
 use eZ\Publish\SPI\FieldType\Value as SPIValue;
 use eZ\Publish\Core\FieldType\Value as CoreValue;
 use eZ\Publish\SPI\Persistence\Content\FieldValue;
+use eZ\Publish\Core\Base\Exceptions\InvalidArgumentException;
 
 class Type extends FieldType
 {
@@ -60,11 +61,15 @@ class Type extends FieldType
         //
         // There is probably a connection with the edit template, which is
         // missing in the tutoorial.
-        if (is_string($inputValue)) {
-            $inputValue = new Value(['rating' => $inputValue]);
+        if ($inputValue instanceof Value) {
+            return $inputValue;
         }
 
-        return $inputValue;
+        if (!is_numeric($inputValue)) {
+            return new Value(['rating' => false]);
+        }
+
+        return new Value(['rating' => (int) $inputValue]);
     }
 
     /**
@@ -95,10 +100,9 @@ class Type extends FieldType
     {
         // @EXT: Default possible depending on value
         if (!$value->rating) {
-            throw new eZ\Publish\Core\Base\Exceptions\InvalidArgumentType(
-               '$value->rating',
-               'number',
-               $value->rating
+            throw new InvalidArgumentException(
+                '$value->rating',
+               'Expected rating to be a number'
            );
         }
     }

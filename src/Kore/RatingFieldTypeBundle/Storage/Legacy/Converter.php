@@ -14,22 +14,21 @@ class Converter implements ConverterInterface
     {
         $storageFieldValue->dataText = json_encode($value->data);
         $storageFieldValue->sortKeyString = $value->sortKey;
+        $storageFieldValue->sortKeyInt = $value->sortKey;
     }
 
     public function toFieldValue(StorageFieldValue $value, FieldValue $fieldValue)
     {
         $fieldValue->data = json_decode($value->dataText, true) ?: [];
-        $fieldValue->sortKey = $value->sortKeyString;
+        $fieldValue->sortKey = $value->sortKeyInt ?? $value->sortKeyString;
     }
 
     public function toStorageFieldDefinition(FieldDefinition $fieldDef, StorageFieldDefinition $storageDef)
     {
-
     }
 
     public function toFieldDefinition(StorageFieldDefinition $storageDef, FieldDefinition $fieldDef)
     {
-
     }
 
     public function getIndexColumn()
