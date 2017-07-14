@@ -29,6 +29,58 @@
         #Allow from all
         #  for Apache 2.4:
         #Require all granted
+
+       <IfModule mod_rewrite.c>
+            RewriteEngine On
+
+            # For FastCGI mode or when using PHP-FPM, to get basic auth working.
+            RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+            # Needed for ci testing, you can optionally remove this.
+            RewriteCond %{ENV:SYMFONY_ENV} "behat"
+            RewriteCond %{REQUEST_URI} ^/php5-fcgi(.*)
+            RewriteRule . - [L]
+
+            # Cluster/streamed files rewrite rules. Enable on cluster with DFS as a binary data handler
+            #RewriteRule ^var/([^/]+/)?storage/images(-versioned)?/.* /app.php [L]
+            RewriteRule ^var/([^/]+/)?storage/images(-versioned)?/.* - [L]
+
+            # Makes it possible to place your favicon at the root of your eZ Platform instance.
+            # It will then be served directly.
+            RewriteRule ^favicon\.ico - [L]
+
+            # Give direct access to robots.txt for use by crawlers (Google, Bing, Spammers...)
+            RewriteRule ^robots\.txt - [L]
+
+            # Platform for Privacy Preferences Project ( P3P ) related files for Internet Explorer
+            # More info here : http://en.wikipedia.org/wiki/P3p
+            RewriteRule ^w3c/p3p\.xml - [L]
+
+            # The following rule is needed to correctly display bundle and project assets
+            RewriteRule ^bundles/ - [L]
+            RewriteRule ^assets/ - [L]
+
+            # Additional Assetic rules for environments different from dev,
+            # remember to run php app/console assetic:dump --env=prod
+            RewriteCond %{ENV:SYMFONY_ENV} !^(dev)
+            RewriteRule ^(css|js|fonts?)/.*\.(css|js|otf|eot|ttf|svg|woff) - [L]
+
+            # Redirect to URI without front controller to prevent duplicate content
+            # (with and without `/app.php`). Only do this redirect on the initial
+            # rewrite by Apache and not on subsequent cycles. Otherwise we would get an
+            # endless redirect loop (request -> rewrite to front controller ->
+            # redirect -> request -> ...).
+            # So in case you get a "too many redirects" error or you always get redirected
+            # to the start page because your Apache does not expose the REDIRECT_STATUS
+            # environment variable, you have 2 choices:
+            # - disable this feature by commenting the following 2 lines or
+            # - use Apache >= 2.3.9 and replace all L flags by END flags and remove the
+            #   following RewriteCond (best solution)
+            RewriteCond %{ENV:REDIRECT_STATUS} ^$
+            RewriteRule ^app\.php(/?(.*)|$) /$2 [R=301,L]
+
+            RewriteRule .* app.php [L]
+        </IfModule>
     </Directory>
 
     ## eZ Platform/Symfony ENVIRONMENT variables, used for customizing app.php execution (not used by console commands)
@@ -66,43 +118,10 @@
     # Defaults to not be set if env value is omitted or empty
     #if[SYMFONY_TRUSTED_PROXIES] SetEnv SYMFONY_TRUSTED_PROXIES "%SYMFONY_TRUSTED_PROXIES%"
 
-    <IfModule mod_rewrite.c>
-        RewriteEngine On
-
-        # For FastCGI mode or when using PHP-FPM, to get basic auth working.
-        RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-
-        # Needed for ci testing, you can optionally remove this.
-        RewriteCond %{ENV:SYMFONY_ENV} "behat"
-        RewriteCond %{REQUEST_URI} ^/php5-fcgi(.*)
-        RewriteRule . - [L]
-
-        # Cluster/streamed files rewrite rules. Enable on cluster with DFS as a binary data handler
-        #RewriteRule ^/var/([^/]+/)?storage/images(-versioned)?/.* /app.php [L]
-
-        RewriteRule ^/var/([^/]+/)?storage/images(-versioned)?/.* - [L]
-
-        # Makes it possible to place your favicon at the root of your eZ Platform instance.
-        # It will then be served directly.
-        RewriteRule ^/favicon\.ico - [L]
-
-        # Give direct access to robots.txt for use by crawlers (Google, Bing, Spammers...)
-        RewriteRule ^/robots\.txt - [L]
-
-        # Platform for Privacy Preferences Project ( P3P ) related files for Internet Explorer
-        # More info here : http://en.wikipedia.org/wiki/P3p
-        RewriteRule ^/w3c/p3p\.xml - [L]
-
-        # The following rule is needed to correctly display bundle and project assets
-        RewriteRule ^/bundles/ - [L]
-        RewriteRule ^/assets/ - [L]
-
-        # Additional Assetic rules for environments different from dev,
-        # remember to run php app/console assetic:dump --env=prod
-        RewriteCond %{ENV:SYMFONY_ENV} !^(dev)
-        RewriteRule ^/(css|js|fonts?)/.*\.(css|js|otf|eot|ttf|svg|woff) - [L]
-
-        RewriteRule .* /app.php
+    # Disabling MultiViews prevents unwanted negotiation, e.g. "/app" should not resolve
+    # to the front controller "/app.php" but be rewritten to "/app.php/app".
+    <IfModule mod_negotiation.c>
+        Options -MultiViews
     </IfModule>
 
     # Everything below is optional to improve performance by forcing
