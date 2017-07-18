@@ -1,5 +1,5 @@
 version: '2.1'
-# Appends services to prod.yml, prod+dev, prod+redis, ..., always latests
+# Appends services to prod.yml, prod+dev, prod+redis, ..., always latest
 
 services:
   selenium:
@@ -16,6 +16,6 @@ services:
     depends_on:
      - selenium
     environment:
-     - EZP_TEST_REST_HOST=web
-     - BEHAT_SELENIUM_HOST=selenium
-     - BEHAT_WEB_HOST=web
+     - EZP_TEST_REST_HOST=$WEB_HOST
+     - BEHAT_SELENIUM_HOST=$SELENIUM_HOST
+     - BEHAT_WEB_HOST=$WEB_HOST
