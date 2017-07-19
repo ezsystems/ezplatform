@@ -1,4 +1,8 @@
 ezpublish:
+    # HttpCache settings, By default 'local' (Symfony HttpCache Proxy), by setting it to 'http' you can point it to Varnish
+    http_cache:
+        purge_type: %purge_type%
+
     # Repositories configuration, setup default repository to support solr if enabled
     repositories:
         default:
@@ -9,11 +13,9 @@ ezpublish:
 
     # Siteaccess configuration, with one siteaccess per default
     siteaccess:
-        list:
-          - site
+        list: [site]
         groups:
-            site_group:
-                - site
+            site_group: [site]
         default_siteaccess: site
         match:
             URIElement: 1
@@ -27,6 +29,10 @@ ezpublish:
             # it is recommended to install clean, then change setting before you start adding binary content, otherwise you'll
             # need to manually modify your database data to reflect this to avoid exceptions.
             var_dir: var/site
-        site:
-            languages:
-                - eng-GB
+            # System languages. Note that by default, content, content types, and other data are in eng-GB locale,
+            # so removing eng-GB from this list may lead to errors or content not being shown, unless you change
+            # all eng-GB data to other locales first.
+            languages: [eng-GB]
+            # HttpCache purge server(s) setting, eg Varnish, for when ezpublish.http_cache.purge_type is set to 'http'.
+            http_cache:
+                purge_servers: ["%purge_server%"]
