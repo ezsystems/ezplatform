@@ -94,3 +94,9 @@ if ($pool = getenv('CUSTOM_CACHE_POOL')) {
     $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../cache_pool'));
     $loader->load($pool . '.yml');
 }
+
+// HttpCache setting (for configuring Varnish purging)
+if ($purgeServer = getenv('HTTPCACHE_PURGE_SERVER')) {
+    $container->setParameter('purge_type', 'http');
+    $container->setParameter('purge_server', $purgeServer);
+}
