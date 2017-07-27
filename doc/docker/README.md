@@ -53,6 +53,8 @@ However below environment variable `COMPOSE_FILE` is used instead since this is 
 
 From root of your projects clone of this distribution, [setup composer auth.json](#composer) and execute the following:
 ```sh
+export COMPOSE_FILE=doc/docker/base-prod.yml
+
 # Optional step if you'd like to use blackfire with the setup, change <id> and <token> with your own values
 #export COMPOSE_FILE=doc/docker/base-prod.yml:doc/docker/blackfire.yml BLACKFIRE_SERVER_ID=<id> BLACKFIRE_SERVER_TOKEN=<token>
 
@@ -73,8 +75,6 @@ by default under the hood, which leads to much slower IO performance.*
 
 From root of your projects clone of this distribution, [setup composer auth.json](#composer) and execute the following:
 ```sh
-export COMPOSE_FILE=doc/docker/base-dev.yml
-
 # Optional: If you use Docker Machine with NFS, you'll need to specify where project is, & give composer a valid directory.
 #export COMPOSE_DIR=/data/SOURCES/MYPROJECTS/ezplatform/doc/docker COMPOSER_HOME=/tmp
 
