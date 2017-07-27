@@ -11,16 +11,16 @@ cache:
 
 env:
   global:
-    - COMPOSE_FILE="doc/docker-compose/base-dev.yml:doc/docker-compose/selenium.yml"
+    - COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/selenium.yml"
     - SYMFONY_ENV=behat
     - SYMFONY_DEBUG=1
   # list of behat arguments to test
   matrix:
-    - TEST_CMD="bin/behat -vv --profile=rest --suite=fullJson --tags=~@broken" COMPOSE_FILE="doc/docker-compose/base-prod.yml:doc/docker-compose/varnish.yml:doc/docker-compose/selenium.yml" WEB_HOST="varnish"
+    - TEST_CMD="bin/behat -vv --profile=rest --suite=fullJson --tags=~@broken" COMPOSE_FILE="doc/docker/base-prod.yml:doc/docker/varnish.yml:doc/docker/selenium.yml" WEB_HOST="varnish"
     - TEST_CMD="bin/behat -vv --profile=rest --suite=fullXml --tags=~@broken"
     - TEST_CMD="bin/behat -vv --profile=core --tags=~@broken"
     - TEST_CMD="bin/phpunit -v vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishRestBundle/Tests/Functional"
-    - TEST_CMD="bin/behat -vv --profile=platformui --tags='@common'" COMPOSE_FILE="doc/docker-compose/base-dev.yml:doc/docker-compose/redis.yml:doc/docker-compose/selenium.yml"
+    - TEST_CMD="bin/behat -vv --profile=platformui --tags='@common'" COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/redis.yml:doc/docker/selenium.yml"
 
 # test only master (+ Pull requests)
 branches:
@@ -35,14 +35,14 @@ before_script:
   # Internal auth token dedicated to testing with travis+composer on ezsystems repos, not for reuse!
   - echo "{\"github-oauth\":{\"github.com\":\"d0285ed5c8644f30547572ead2ed897431c1fc09\"}}" > auth.json
   # In case of dev mode we'll need to install composer packages first
-  - docker-compose -f doc/docker-compose/install.yml up --abort-on-container-exit
+  - docker-compose -f doc/docker/install.yml up --abort-on-container-exit
   # Run (start containers and execute install command)
   - docker-compose up -d
   #- docker ps
   #- docker-compose logs
 
 # Execute test command, need to use sh to get right exit code (docker/compose/issues/3379)
-# Behat will use behat.yml which is a copy of behat.yml.dist with hostnames update by doc/docker-compose/selenium.yml
+# Behat will use behat.yml which is a copy of behat.yml.dist with hostnames update by doc/docker/selenium.yml
 script: docker-compose exec --user www-data app sh -c "php /scripts/wait_for_db.php; php $TEST_CMD"
 
 after_failure:

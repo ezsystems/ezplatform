@@ -19,7 +19,7 @@ services:
   solr:
     build:
       context: ../../
-      dockerfile: doc/docker-compose/Dockerfile-solr
+      dockerfile: doc/docker/Dockerfile-solr
     ports:
      - "8983:8983"
     networks:

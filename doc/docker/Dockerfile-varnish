@@ -9,7 +9,7 @@ RUN apt-get update -q -y && \
     apt-get install -q -y --force-yes --no-install-recommends varnish
 
 COPY doc/varnish/vcl/varnish4.vcl /etc/varnish/default.vcl
-COPY doc/docker-compose/entrypoint/varnish/parameters.vcl /etc/varnish/parameters.vcl
+COPY doc/docker/entrypoint/varnish/parameters.vcl /etc/varnish/parameters.vcl
 
 EXPOSE 80 6082
 
