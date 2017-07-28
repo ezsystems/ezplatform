@@ -1,4 +1,4 @@
-FROM solr:6-alpine
+FROM solr:6.5-alpine
 
 # Copy solr config from the version used by eZ Platform
 COPY vendor/ezsystems/ezplatform-solr-search-engine/lib/Resources/config/solr/ /opt/solr/server/tmp
