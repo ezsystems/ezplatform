@@ -36,7 +36,6 @@ services:
      - MAX_BODY_SIZE=20
      - FASTCGI_PASS=app:9000
      - TIMEOUT=190
-     - DOCKER0NET
     networks:
      - frontend
      - backend
