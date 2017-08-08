@@ -52,6 +52,9 @@ However below environment variable `COMPOSE_FILE` is used instead since this is 
 
 ### Production / Demo "image" use
 
+Using this approach, everything will run in containers and volumes. This means that if you for instance upload a image
+using the eZ Platform backend, that image will land in a volume, not somewhere below web/var/ in your project directory.
+
 From root of your projects clone of this distribution, [setup composer auth.json](#composer) and execute the following:
 ```sh
 export COMPOSE_FILE=doc/docker/base-prod.yml
@@ -70,6 +73,8 @@ After some 5-10 seconds you should be able to browse the site on `localhost:8080
 
 ### Development "mount" use
 
+Using this approach, your project directory will be bind mounted into the nginx and php containers. So if you change a
+php file in for instance src/, that change will kick in automatically.
 
 Warning: *Dev setup works a lot faster on Linux then on Windows/Mac where Docker uses virtual machines using shared folders
 by default under the hood, which leads to much slower IO performance.*
