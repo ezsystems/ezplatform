@@ -217,6 +217,35 @@ docker volume rm my-ez-full-app-stack_vardir
 docker volume rm stack-db_mysql
 ```
 
+### Production use, alternative 2
+
+In this alternative way of running eZ Platform, the eZ Platform code and PHP executables are separated in two different
+images. The upside of this is that it gets easier to upgrade PHP ( or any other distro applications ) independently
+of eZ Platform; simply just replace the PHP container with an updated one without having to rebuild the eZ Platform
+image. The downside of this approach is that all eZ Platform code is copied to a volume so that it can be shared with
+other containers. This means bigger disk space footprint and longer loading time of the containers.
+It is also more complicated to make this approach work with docker stack so only a docker-compose example is provided.
+
+Note that if you change the value of the APP_PROD_IMAGE variable in .env, you'll need to change the image name in
+doc/docker/Dockerfile-distribution accordingly.
+
+```sh
+export COMPOSE_FILE=doc/docker/base-prod.yml:doc/docker/create-dataset.yml:doc/docker/distribution.yml
+# If not already done, install setup, and generate database dump :
+docker-compose -f doc/docker/install.yml up --abort-on-container-exit
+
+# Build docker_app and docker_web images ( php and nginx )
+# The docker_app image (which contain both php and eZ Platform) will be used as base image when creating the image which
+# only contains the eZ Platform files.
+docker-compose -f doc/docker/base-prod.yml build --no-cache app
+
+# Optional, only build the images, do not create containers
+docker-compose build --no-cache distribution
+#export COMPOSE_FILE=doc/docker/base-prod.yml:doc/docker/create-dataset.yml:doc/docker/demo.yml
+
+# Build the "distribution" and dataset images, then start the containers
+docker-compose up -d
+```
 
 ## Further info
 
