@@ -194,38 +194,34 @@ docker volume rm my-ez-app-stack_vardir
 docker volume rm stack-db_mysql
 ```
 
-### Production use, example #2
+#### Example: Separating app and php
 
-In this example we'll use docker stack to deploy a fully clustered ezplatform installation.
-The deployment will contain 1 varnish container, 2 nginx containers , 5 php_fpm containers , one db container and one redis container.
+In this alternative way of running eZ Platform, the eZ Platform code and PHP executables are separated in two different
+images. The upside of this is that it gets easier to upgrade PHP ( or any other distro applications ) independently
+of eZ Platform; simply just replace the PHP container with an updated one without having to rebuild the eZ Platform
+image. The downside of this approach is that all eZ Platform code is copied to a volume so that it can be shared with
+other containers. This means bigger disk space footprint and longer loading time of the containers.
+It is also more complicated to make this approach work with docker stack so only a docker-compose example is provided.
 
-This example assumes you are already running the stacks described in the chapter "Production example".
+Note that if you change the value of the APP_PROD_IMAGE variable in .env, you'll need to change the image name in
+doc/docker/Dockerfile-distribution accordingly.
 
 ```sh
-# Remove the stack created in the previous example
-docker stack rm my-ez-app-stack
+export COMPOSE_FILE=doc/docker/base-prod.yml:doc/docker/create-dataset.yml:doc/docker/distribution.yml
+# If not already done, install setup, and generate database dump :
+docker-compose -f doc/docker/install.yml up --abort-on-container-exit
 
-# Build varnish image
-docker-compose -f doc/docker/base-prod.yml -f doc/docker/varnish.yml build --no-cache varnish
+# Build docker_app and docker_web images ( php and nginx )
+# The docker_app image (which contain both php and eZ Platform) will be used as base image when creating the image which
+# only contains the eZ Platform files.
+docker-compose -f doc/docker/base-prod.yml build --no-cache app
 
-# Tag the varnish image
-docker tag docker_varnish swarmmanager:5000/my-ez-app/varnish
+# Optional, only build the images, do not create containers
+docker-compose build --no-cache distribution
 
-# Upload the varnish image to the registry (only needed if your swarm cluster has more than one node)
-docker push swarmmanager:5000/my-ez-app/varnish
-
-docker stack deploy --compose-file doc/docker/my-ez-full-app-stack.yml my-ez-full-app-stack
-
-# Cleanup
-# If you want to remove the stacks again:
-docker stack rm my-ez-full-app-stack
-sleep 15
-docker stack rm stack-db
-sleep 15
-docker volume rm my-ez-full-app-stack_vardir
-docker volume rm stack-db_mysql
+# Build the "distribution" and dataset images, then start the containers
+docker-compose up -d
 ```
-
 
 ## Further info
 
