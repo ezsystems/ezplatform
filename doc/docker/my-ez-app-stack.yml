@@ -29,6 +29,9 @@ services:
      - DATABASE_PASSWORD=SetYourOwnPassword
      - DATABASE_NAME=ezp
      - DATABASE_HOST=db
+     - RECOMMENDATIONS_CUSTOMER_ID
+     - RECOMMENDATIONS_LICENSE_KEY
+     - PUBLIC_SERVER_URI
     volumes:
      - vardir:/var/www/web/var
     networks:
