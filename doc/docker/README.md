@@ -14,8 +14,9 @@ Mac/Windows use of shared folders. This is a know issue and nothing we intend to
 
 ## Overview
 
-This setup requires Docker Compose 1.14 or higher, and Docker 17.06 or higher. Defaults are set in `.env`, and
-files to ignore are set in `.dockerignore`. By default `.env` specifies that production image is built and setup for use.
+This setup currently requires Docker Compose 1.14 and Docker 17.06 or higher. Defaults are set in `.env`, and
+files to ignore are set in `.dockerignore`. By default `.env` specifies that dev setup is used.
+
 _**NB:** For this and other reasons all docker-compose commands **must** be executed from root of your project directory._
 
 #### Before you begin: Install Docker & Docker-Compose
@@ -155,7 +156,6 @@ docker-compose ps
 
 Database dump is placed in `doc/docker/entrypoint/mysql/`, this folder is used my mysql/mariadb which will execute
 everything inside the folder. This means there should only be data represent one install in the folder at any given time.
-
 
 
 ### Updating service images
