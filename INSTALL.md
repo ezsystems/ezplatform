@@ -1,7 +1,6 @@
 # Installation instructions
 
-NOTE: *For simplified installation, see our Docker Tools Beta instructions in [doc/docker-compose/README.md](https://github.com/ezsystems/ezplatform/blob/master/doc/docker-compose/README.md).
-By using those instructions you won't have to setup mysql, php, and nginx yourself, and almost all of the steps described below are done for you.*
+NOTE: *For simplified installation, consider using [eZ Launchpad](https://ezsystems.github.io/launchpad/) which takes care about the whole setup for you.*
 
 These installation instructions are kept current in the online docs here:
 https://doc.ez.no/display/DEVELOPER/Step+1%3A+Installation
