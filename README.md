@@ -48,7 +48,7 @@ eZ Platform is 100% open source and is the foundation for the commercial *eZ Ent
 
 ## Install
 For manual installation instructions, see [INSTALL.md](https://github.com/ezsystems/ezplatform/blob/master/INSTALL.md).
-For simplified installation, see our Docker Tools Beta instructions in [doc/docker-compose/README.md](https://github.com/ezsystems/ezplatform/blob/master/doc/docker-compose/README.md).
+For simplified installation, rather consider using [eZ Launchpad](https://ezsystems.github.io/launchpad/) which takes care about the whole setup for you.
 
 
 ### eZ Platform Demo
@@ -57,7 +57,7 @@ This repository lets you create a clean, empty installation of eZ Platform. This
 ## Requirements
 Full requirements can be found on the [Requirements](https://doc.ez.no/display/TECHDOC/Requirements) page.
 
-*TL;DR: supported PHP versions are 5.5, 5.6 and 7.0 (for dev use), using mod_php or php-fpm, and either MySQL 5.5/5.6 or MariaDB 5.5/10.0.*
+*TL;DR: supported PHP versions are 5.6, 7.0 and 7.1 (for dev use), using mod_php or php-fpm, and either MySQL 5.5/5.6 or MariaDB 10.0/10.1.*
 
 ## Issue tracker
 Submitting bugs, improvements and stories is possible on https://jira.ez.no/browse/EZP.
