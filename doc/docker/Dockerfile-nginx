@@ -16,7 +16,7 @@ RUN composer run-script post-install-cmd --no-interaction
 
 # Copy over just the files we want in second stage, so resulting stage only has assets
 # and vhost config in as few layers as possible
-FROM nginx:stable-alpine as web-multilayers
+FROM nginx:stable as web-multilayers
 
 COPY bin/vhost.sh /var/www/bin/vhost.sh
 COPY doc/nginx/vhost.template /var/www/doc/nginx/vhost.template
