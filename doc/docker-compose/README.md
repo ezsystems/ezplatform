@@ -57,13 +57,17 @@ From root of your projects clone of this distribution, [setup composer auth.json
 #export COMPOSE_FILE=doc/docker-compose/base-prod.yml:doc/docker-compose/blackfire.yml BLACKFIRE_SERVER_ID=<id> BLACKFIRE_SERVER_TOKEN=<token>
 
 # First time: Install setup, and generate database dump:
-docker-compose -f doc/docker-compose/install.yml up --abort-on-container-exit
+bin/docker-compose-setup.sh
+
+# Edit the .env file!
 
 # Boot up full setup:
 docker-compose up -d --force-recreate
 ```
 
 After some 5-10 seconds you should be able to browse the site on `localhost:8080` and the backend on `localhost:8080/ez`.
+
+> You can change the host and port in `.env` file. Edit the `HTTP_HOST` and the `HTTP_PORT` parameters.
 
 ### Development "mount" use
 
