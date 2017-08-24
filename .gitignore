@@ -28,13 +28,14 @@
 /ezpublish_legacy
 /app/config/parameters.yml
 /app/bootstrap.php.cache
-/doc/docker-compose/entrypoint/*/*.sql
+/doc/docker/entrypoint/*/*.sql
 /web/index_treemenu.php
 /web/index_rest.php
 /web/index_cluster.php
 /web/bundles/
 /web/css/
 /web/js/
+web/fonts/
 /web/design
 /web/extension
 /web/share

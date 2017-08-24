@@ -1,0 +1,59 @@
+version: '3.3'
+# Simple single server setup for prod
+
+services:
+  app:
+    build:
+      context: ../../
+      dockerfile: ${APP_DOCKER_FILE}
+    image: ${APP_PROD_IMAGE}
+    depends_on:
+     - db
+    environment:
+     - SYMFONY_ENV=${SYMFONY_ENV-prod}
+     - SYMFONY_DEBUG
+     - SYMFONY_HTTP_CACHE
+     - SYMFONY_HTTP_CACHE_CLASS
+     - SYMFONY_TRUSTED_PROXIES
+     - DATABASE_USER
+     - DATABASE_PASSWORD
+     - DATABASE_NAME
+     - DATABASE_HOST=db
+    networks:
+     - backend
+
+  web:
+    build:
+      context: ../../
+      dockerfile: doc/docker/Dockerfile-nginx
+    depends_on:
+     - app
+    ports:
+     - "8080:80"
+    environment:
+     - SYMFONY_ENV=${SYMFONY_ENV-prod}
+     - MAX_BODY_SIZE=20
+     - FASTCGI_PASS=app:9000
+     - TIMEOUT=190
+     - DOCKER0NET
+    networks:
+     - frontend
+     - backend
+
+  db:
+    image: ${MYSQL_IMAGE}
+    # TODO: Get rid of by having some sort of migration command executed by app container at startup for inserting/updating data (if needed) instead of db dump, as for charset find another way of setting that.
+    volumes:
+     - ${COMPOSE_DIR}/entrypoint/mysql:/docker-entrypoint-initdb.d/:ro,cached
+    environment:
+     - MYSQL_RANDOM_ROOT_PASSWORD=1
+     - MYSQL_USER=$DATABASE_USER
+     - MYSQL_PASSWORD=$DATABASE_PASSWORD
+     - MYSQL_DATABASE=$DATABASE_NAME
+     - TERM=dumb
+    networks:
+     - backend
+
+networks:
+  frontend:
+  backend:
