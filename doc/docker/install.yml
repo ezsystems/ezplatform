@@ -1,11 +1,11 @@
-version: '2'
+version: '3.3'
 # compose file for installing composer packages, perfrom install and dump database
 
 services:
   install_db:
     image: ${MYSQL_IMAGE}
     volumes:
-     - ${COMPOSE_DIR}/entrypoint/mysql:/docker-entrypoint-initdb.d/:ro
+     - ${COMPOSE_DIR}/entrypoint/mysql:/docker-entrypoint-initdb.d/:ro,cached
     environment:
      - MYSQL_RANDOM_ROOT_PASSWORD=1
      - MYSQL_USER=$DATABASE_USER
@@ -15,12 +15,12 @@ services:
   install_app:
     image: ${PHP_IMAGE_DEV}
     volumes:
-     - ${COMPOSE_DIR}/../..:/var/www
-     - ${COMPOSER_HOME}:/root/.composer
+     - ${COMPOSE_DIR}/../..:/var/www:cached
+     - ${COMPOSER_HOME}:/root/.composer:cached
     depends_on:
      - install_db
     environment:
-     - SYMFONY_ENV
+     - SYMFONY_ENV=${SYMFONY_ENV-prod}
      - SYMFONY_DEBUG
      - DATABASE_USER
      - DATABASE_PASSWORD
@@ -39,5 +39,5 @@ services:
       find app/cache app/logs web/var -type d -print0 | xargs -0 chmod -R 775;
       find app/cache app/logs web/var -type f -print0 | xargs -0 chmod -R 664;
       chown -R www-data:www-data app/config src;
-      echo 'Dumping database into doc/docker-compose/entrypoint/mysql/2_dump.sql for use by mysql on startup.';
-      mysqldump -u $$DATABASE_USER --password=$$DATABASE_PASSWORD -h $$DATABASE_HOST --add-drop-table --extended-insert  --protocol=tcp $$DATABASE_NAME > doc/docker-compose/entrypoint/mysql/2_dump.sql"
+      echo 'Dumping database into doc/docker/entrypoint/mysql/2_dump.sql for use by mysql on startup.';
+      mysqldump -u $$DATABASE_USER --password=$$DATABASE_PASSWORD -h $$DATABASE_HOST --add-drop-table --extended-insert  --protocol=tcp $$DATABASE_NAME > doc/docker/entrypoint/mysql/2_dump.sql"

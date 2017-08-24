@@ -1,7 +1,7 @@
 # Running the behat features
 
 *Note: If you want there is a way to run Behat using Docker setup, where you won't have to install any software other
-then Docker. See `doc/docker-compose/README.md` for further info.*
+then Docker. See `doc/docker/README.md` for further info.*
 
 ## Install selenium server
 Download the last version of the selenium server on the [download page](http://www.seleniumhq.org/download/).

@@ -9,7 +9,7 @@
 ## Example use:
 #
 # env:
-#  - COMPOSE_FILE="doc/docker-compose/prod.yml:doc/docker-compose/selenium.yml"
+#  - COMPOSE_FILE="doc/docker/prod.yml:doc/docker/selenium.yml"
 #
 # before_install:
 #  - git fetch --unshallow && git checkout -b tmp_travis_branch
@@ -39,6 +39,10 @@ ls -al .
 echo "> Modify composer.json to point to local checkout"
 composer config repositories.tmp_travis_folder git ${HOME}/build/ezplatform/tmp_travis_folder
 
+
+# Setup symlink for doc/docker-compose folder for compatibility with older package branches using this
+ln -s docker doc/docker-compose
+
 if [ "$RUN_INSTALL" = "1" ] ; then
   # TODO: avoid using composer on host so image don't need to be PHP image, needed atm as .
   # TODO: dockerignore or something strips info needed for composer to be able to find tmp_travis_branch
@@ -62,7 +66,7 @@ if [ "$RUN_INSTALL" = "1" ] ; then
   find app/cache app/logs web/var -type f | xargs chmod -R 664
   # Do NOT use this for your prod setup, this is done like this for behat
   sudo chown -R www-data:www-data app/config src
-  #docker-compose -f doc/docker-compose/install.yml up --abort-on-container-exit
+  #docker-compose -f doc/docker/install.yml up --abort-on-container-exit
 fi
 
 INSTALL_EZ_INSTALL_TYPE=${INSTALL_EZ_INSTALL_TYPE:-clean}
