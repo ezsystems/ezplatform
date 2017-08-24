@@ -1,4 +1,4 @@
-version: '2.1'
+version: '3.3'
 # Simple single server setup for prod
 
 ## WARNING!
@@ -14,19 +14,19 @@ services:
 
   varnish:
     build:
-      context: .
-      dockerfile: Dockerfile-varnish
+      context: ../../
+      dockerfile: doc/docker/Dockerfile-varnish
     image: my_varnish
-    mem_limit: 384M
-    memswap_limit: 512M
     ports:
      - "8081:80"
+    environment:
+     - VARNISH_MALLOC_SIZE=256m
     depends_on:
      - web
-    volumes:
-     - ${COMPOSE_DIR}/../varnish/vcl/varnish4.vcl:/etc/varnish/default.vcl:ro
-     - ${COMPOSE_DIR}/entrypoint/varnish/parameters.vcl:/etc/varnish/parameters.vcl:ro
-
+     - app
+    networks:
+     - frontend
+     - backend
 
 ## DEBUG??
 # In need of debugging all request going to Varnish, use varnishlog, example:
