@@ -1,12 +1,16 @@
-# Using Docker Tools for your project
+# Docker blueprints
 
-> **Beta**: Instructions and Tools *(Docker images, Dockerfile, docker-compose files, scripts, ..)* described on this page
- is currently in Beta for community testing & contribution, and might change without notice.
- See [online Docker Tools documentation](https://doc.ez.no/display/DEVELOPER/Docker+Tools) for known issues and further information.
+**NOTE**: If you are just looking to get easily up and running and developing with eZ Platform, rather look towards
+[eZ Launchpad](https://ezsystems.github.io/launchpad/) which is tailored for Project Development use cases. _If not be
+aware of the following limitations:_
 
+> **WARNING, made mainly for automation:** The tools within this directory are meant for use for test automation, QA,
+Support and demo use cases. And with time as a blueprint for how to best configure your own setup. You are free to use
+and adopt this for your needs, and we more the welcome contributions to improve it.
 
-**"Project"**: *This page describes usage for your custom project code, for just launching a stock eZ Platform demo see [online Docker Tools documentation](https://doc.ez.no/display/DEVELOPER/Docker+Tools)*.
-
+> **WARNING, low performance on MacOS and Windows:** For reasons mentioned above, unlike eZ Launchpad these tools are not
+optimized for use as development environment with Mac or Windows and hence are affected by known I/O performance issues caused by Docker for
+Mac/Windows use of shared folders. This is a know issue and nothing we intend to add complexity to workaround here.
 
 ## Overview
 
@@ -24,16 +28,14 @@ installed on your machine.
 
 #### Concept: Docker Compose "Building blocks" for eZ Platform
 
-The current Docker Compose files are made to be mixed and matched togtehr as you'd like. Currently available:
+The current Docker Compose files are made to be mixed and matched together for QA/Support use cases. Currently available:
 - base-prod.yml _(required, always needs to be first, contains: db, web and app container)_
 - base-dev.yml _(alternative to `base-prod.yml`, same applies here if used)_
 - blackfire.yml _(optional, adds blackfire service and lets you trigger profiling against the setup)_
-- selenium.yml _(optional, always needs to be last, adds selenium service and appends config to app)_
-
-In addition the following exists but are work in progress, thus not tested yet and are known to be somewhat broken:
 - redis.yml _(optional, adds redis service and appends config to app)_
 - varnish.yml _(optional, adds varnish service and appends config to app)_
 - solr.yml _(optional, add solr service and configure app for it)_
+- selenium.yml _(optional, always needs to be last, adds selenium service and appends config to app)_
 
 
 These can be used with `-f` argument on docker-compose, like:
