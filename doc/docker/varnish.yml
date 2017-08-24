@@ -19,13 +19,14 @@ services:
     image: my_varnish
     ports:
      - "8081:80"
+    environment:
+     - VARNISH_MALLOC_SIZE=256m
     depends_on:
      - web
      - app
     networks:
      - frontend
      - backend
-
 
 ## DEBUG??
 # In need of debugging all request going to Varnish, use varnishlog, example:

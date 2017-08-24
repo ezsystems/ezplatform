@@ -12,6 +12,9 @@ RUN apt-get update -q -y && \
 COPY doc/varnish/vcl/varnish4.vcl /etc/varnish/default.vcl
 COPY doc/docker/entrypoint/varnish/parameters.vcl /etc/varnish/parameters.vcl
 
+ENV VARNISH_MALLOC_SIZE="256M"
+
 EXPOSE 80 6082
 
-CMD ["varnishd", "-F", "-a", ":80", "-T", ":6082", "-f", "/etc/varnish/default.vcl", "-s", "malloc,256M"]
+# CMD in shell form to be able to use env variables here
+CMD varnishd -F -a :80 -T :6082 -f /etc/varnish/default.vcl -s malloc,${VARNISH_MALLOC_SIZE}
