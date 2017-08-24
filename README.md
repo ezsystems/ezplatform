@@ -48,15 +48,11 @@ In short, Enterprise comes with new features and services that extend eZ Platfor
 - eZ Platform Developer Hub: [ezplatform.com](https://ezplatform.com/)
 - [eZ Platform and Enterprise RoadMap](http://doc.ez.no/roadmap)
 
-## Install
-For manual installation instructions, see [INSTALL.md](https://github.com/ezsystems/ezplatform/blob/master/INSTALL.md).
-For simplified installation, rather consider using [eZ Launchpad](https://ezsystems.github.io/launchpad/) which takes care about the whole setup for you.
-
 http://ez.no/Blog/What-to-Expect-from-eZ-Studio-and-eZ-Platform
 
 ## Install
 For manual installation instructions, see [INSTALL.md](https://github.com/ezsystems/ezplatform-ee/blob/master/INSTALL.md).
-For simplified installation, see our Docker Tools Beta instructions in [doc/docker-compose/README.md](https://github.com/ezsystems/ezplatform-ee/blob/master/doc/docker-compose/README.md).
+For simplified installation, rather consider using [eZ Launchpad](https://ezsystems.github.io/launchpad/) which takes care about the whole setup for you.
 
 ## Requirements
 Full requirements can be found on the [Requirements](https://doc.ez.no/pages/viewpage.action?pageId=31429536) page.
