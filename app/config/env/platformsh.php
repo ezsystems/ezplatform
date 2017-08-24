@@ -33,6 +33,15 @@ if (isset($relationships['cache'])) {
         $container->setParameter('cache_host', $endpoint['host']);
         $container->setParameter('cache_memcached_port', $endpoint['port']);
     }
+} elseif (isset($relationships['redis'])) {
+    foreach ($relationships['redis'] as $endpoint) {
+        if ($endpoint['scheme'] !== 'redis') {
+            continue;
+        }
+
+        $container->setParameter('cache_host', $endpoint['host']);
+        $container->setParameter('cache_redis_port', $endpoint['port']);
+    }
 }
 
 // Disable PHPStormPass
