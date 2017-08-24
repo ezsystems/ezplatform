@@ -17,5 +17,10 @@ rewrite "^/w3c/p3p\.xml" "/w3c/p3p.xml" break;
 rewrite "^/bundles/(.*)" "/bundles/$1" break;
 rewrite "^/assets/(.*)" "/assets/$1" break;
 
+# Prevent access to website with direct usage of app.php in URL
+if ($request_uri ~ "^/(.+/)?app\.php") {
+    return 404;
+}
+
 rewrite "^(.*)$" "/app.php$1" last;
 
