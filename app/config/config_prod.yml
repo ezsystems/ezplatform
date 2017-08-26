@@ -15,13 +15,13 @@ imports:
 monolog:
     handlers:
         main:
-            type:         fingers_crossed
-            # eZ Publish sets this to critical instead of error to avoid too verbose logs in prod
+            type: fingers_crossed
+            # eZ Platform sets this to critical instead of error to avoid too verbose logs in prod
             action_level: critical
-            handler:      nested
+            handler: nested
         nested:
-            type:  "%log_type%"
-            path:  "%log_path%"
+            type: '%log_type%'
+            path: '%log_path%'
             level: debug
         console:
-            type:  console
+            type: console

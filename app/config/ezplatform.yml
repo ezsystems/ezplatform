@@ -1,14 +1,14 @@
 ezpublish:
     # HttpCache settings, By default 'local' (Symfony HttpCache Proxy), by setting it to 'http' you can point it to Varnish
     http_cache:
-        purge_type: %purge_type%
+        purge_type: '%purge_type%'
 
     # Repositories configuration, setup default repository to support solr if enabled
     repositories:
         default:
             storage: ~
             search:
-                engine: "%search_engine%"
+                engine: '%search_engine%'
                 connection: default
 
     # Siteaccess configuration, with one siteaccess per default
@@ -35,4 +35,4 @@ ezpublish:
             languages: [eng-GB]
             # HttpCache purge server(s) setting, eg Varnish, for when ezpublish.http_cache.purge_type is set to 'http'.
             http_cache:
-                purge_servers: ["%purge_server%"]
+                purge_servers: ['%purge_server%']
