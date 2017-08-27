@@ -24,6 +24,3 @@ RUN mkdir -p web/var \
 # Remove composer cache to avoid it taking space in image
     && rm -rf ~/.composer/*/* \
     && [ "$REMOVE_AUTH" = "1" ] && rm -f auth.json
-
-# Declare volumes so it an can be shared with other containers
-VOLUME /var/www /var/www/web/var

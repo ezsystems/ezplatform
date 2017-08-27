@@ -6,7 +6,10 @@ ENV SYMFONY_ENV=prod
 COPY . /var/www
 
 # Create asset directories that might not exists
+RUN if [ ! -d /var/www/web/bundles ]; then mkdir /var/www/web/bundles; fi
+RUN if [ ! -d /var/www/web/css ]; then mkdir /var/www/web/css; fi
 RUN if [ ! -d /var/www/web/fonts ]; then mkdir /var/www/web/fonts; fi
+RUN if [ ! -d /var/www/web/js ]; then mkdir /var/www/web/js; fi
 RUN if [ ! -d /var/www/web/assets ]; then mkdir /var/www/web/assets; fi
 
 # Generate assets using hard copy as we need to copy them over to resulting image
