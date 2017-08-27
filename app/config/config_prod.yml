@@ -2,10 +2,6 @@ imports:
     - { resource: config.yml }
     - { resource: ezplatform_prod.yml }
 
-#framework:
-#    validation:
-#        cache: apc
-
 #doctrine:
 #    orm:
 #        metadata_cache_driver: apc
@@ -21,7 +17,8 @@ monolog:
             handler: nested
         nested:
             type: '%log_type%'
-            path: '%log_path%'
+            path: '%env(LOG_PATH)%'
             level: debug
         console:
             type: console
+            process_psr_3_messages: false
