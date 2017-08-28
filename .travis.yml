@@ -46,8 +46,10 @@ before_script:
 script: docker-compose exec --user www-data app sh -c "php /scripts/wait_for_db.php; php $TEST_CMD"
 
 after_failure:
-  # Will show us the full log of container's main processes (not counting shell process above running php and behat)
-  - docker-compose logs -t --tail="all"
+  # Will show us the last bit of the log of container's main processes
+  # (not counting shell process above running php and behat)
+  # NOTE: errors during docker setup of travis build won't show up here (can't output all as it is too much in debug/verbose mode)
+  - docker-compose logs -t --tail=15
   # Will show us what is up, and how long it's been up
   - docker ps -s
 
