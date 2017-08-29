@@ -36,9 +36,11 @@ disk: 2048
 
 # The mounts that will be performed when the package is deployed.
 mounts:
-    "/app/cache": "shared:files/cache"
-    "/app/logs": "shared:files/logs"
+    "/var/cache": "shared:files/cache"
+    "/var/logs": "shared:files/logs"
     "/web/var": "shared:files/files"
+    # Might want to not mount this one, it will slow down sessions, if you need cluster use memcached/redis!
+    "/var/sessions": "shared:files/sessions"
 
 # The hooks that will be performed when the package is deployed.
 hooks:
@@ -61,10 +63,10 @@ hooks:
             export SYMFONY_ENV=prod
         fi
         if [ ! -f web/var/.platform.installed ]; then
-            php -d memory_limit=-1 app/console ezplatform:install --env=$SYMFONY_ENV $INSTALL_EZ_INSTALL_TYPE
+            php -d memory_limit=-1 bin/console ezplatform:install --env=$SYMFONY_ENV $INSTALL_EZ_INSTALL_TYPE
             touch web/var/.platform.installed
         fi
-        app/console --env=$SYMFONY_ENV cache:clear
+        bin/console --env=$SYMFONY_ENV cache:clear
 
 # The configuration of scheduled execution.
 # see http://symfony.com/doc/current/components/console/introduction.html
