@@ -682,16 +682,16 @@
         },
         {
             "name": "ezsystems/content-on-the-fly-prototype",
-            "version": "v0.1.10",
+            "version": "v0.1.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/content-on-the-fly-prototype-bundle.git",
-                "reference": "2d52dc5da386005198023ad7e0744d695d0217ed"
+                "reference": "14f95e0b7fd3b543a8ae67426282823d2ebe06f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/content-on-the-fly-prototype-bundle/zipball/2d52dc5da386005198023ad7e0744d695d0217ed",
-                "reference": "2d52dc5da386005198023ad7e0744d695d0217ed",
+                "url": "https://api.github.com/repos/ezsystems/content-on-the-fly-prototype-bundle/zipball/14f95e0b7fd3b543a8ae67426282823d2ebe06f1",
+                "reference": "14f95e0b7fd3b543a8ae67426282823d2ebe06f1",
                 "shasum": ""
             },
             "require": {
@@ -724,7 +724,7 @@
                 }
             ],
             "description": "Platform UI Content on the Fly feature",
-            "time": "2017-05-09T11:56:56+00:00"
+            "time": "2017-07-24T14:26:54+00:00"
         },
         {
             "name": "ezsystems/ez-support-tools",
@@ -775,16 +775,16 @@
         },
         {
             "name": "ezsystems/ezplatform-solr-search-engine",
-            "version": "v1.4.0",
+            "version": "v1.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezplatform-solr-search-engine.git",
-                "reference": "435d93b7980f2e382d0d63bd6099a665f763c14e"
+                "reference": "a46cba2f1a4f13953e7113920f3df3520041c1d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezplatform-solr-search-engine/zipball/435d93b7980f2e382d0d63bd6099a665f763c14e",
-                "reference": "435d93b7980f2e382d0d63bd6099a665f763c14e",
+                "url": "https://api.github.com/repos/ezsystems/ezplatform-solr-search-engine/zipball/a46cba2f1a4f13953e7113920f3df3520041c1d1",
+                "reference": "a46cba2f1a4f13953e7113920f3df3520041c1d1",
                 "shasum": ""
             },
             "require": {
@@ -821,7 +821,7 @@
             ],
             "description": "Solr search engine implementation for eZ Platform",
             "homepage": "https://github.com/ezsystems/ezplatform-solr-search-engine",
-            "time": "2017-05-22T12:18:21+00:00"
+            "time": "2017-08-16T15:18:05+00:00"
         },
         {
             "name": "ezsystems/ezpublish-kernel",
