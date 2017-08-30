@@ -13,6 +13,8 @@ services:
      - SCREEN_DEPTH=24
     networks:
      - backend
+    # Because of: https://github.com/elgalu/docker-selenium/issues/20
+    shm_size: 1g 
 
   app:
     depends_on:
