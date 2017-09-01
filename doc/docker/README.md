@@ -151,7 +151,7 @@ All the commands below should be executed on your `swarmmanager`
 # If not already done, install setup, and generate database dump :
 docker-compose -f doc/docker/install.yml up --abort-on-container-exit
 
-# Build my-ez-web and my-ez-web images ( nginx and php )
+# Build docker_app and docker_web images ( php and nginx )
 docker-compose -f doc/docker/base-prod.yml build --no-cache app web
 
 # Build varnish image
@@ -164,8 +164,8 @@ docker-compose -f doc/docker/create-dataset.yml build --no-cache
 # Tag the images
 docker tag docker_dataset-dbdump swarmmanager:5000/my-ez-app/dataset-dbdump
 docker tag docker_dataset-vardir swarmmanager:5000/my-ez-app/dataset-vardir
-docker tag my-ez-web swarmmanager:5000/my-ez-app/web
-docker tag my-ez-app swarmmanager:5000/my-ez-app/app
+docker tag docker_web swarmmanager:5000/my-ez-app/web
+docker tag docker_app swarmmanager:5000/my-ez-app/app
 docker tag docker_varnish swarmmanager:5000/my-ez-app/varnish
 
 # Upload the images to the registry ( only needed if your swarm cluster has more than one node)
@@ -205,7 +205,7 @@ image. The downside of this approach is that all eZ Platform code is copied to a
 other containers. This means bigger disk space footprint and longer loading time of the containers.
 It is also more complicated to make this approach work with docker stack so only a docker-compose example is provided.
 
-Note that if you change the value of the APP_PROD_IMAGE variable in .env, you'll need to change the image name in
+Note that if you set the environment variable COMPOSE_PROJECT_NAME to a non-default value, you'll need to change the image name in
 doc/docker/Dockerfile-distribution accordingly.
 
 ```sh
