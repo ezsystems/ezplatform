@@ -6,7 +6,6 @@ services:
     build:
       context: ../../
       dockerfile: ${APP_DOCKER_FILE}
-    image: ${APP_PROD_IMAGE}
     depends_on:
      - db
     environment:
@@ -29,7 +28,6 @@ services:
     build:
       context: ../../
       dockerfile: doc/docker/Dockerfile-nginx
-    image: ${NGINX_PROD_IMAGE}
     depends_on:
      - app
     ports:

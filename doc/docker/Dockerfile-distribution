@@ -1,5 +1,6 @@
-# Note : if you change APP_PROD_IMAGE in .env, you need to change image name here too
-FROM my-ez-app as builder
+# Note : if you set the environment variable COMPOSE_PROJECT_NAME to a non-default value, you'll need to change the
+# image name in here too
+FROM docker_app as builder
 
 RUN composer config extra.symfony-assets-install hard
 RUN composer run-script post-install-cmd --no-interaction
