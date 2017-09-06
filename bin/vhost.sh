@@ -82,7 +82,7 @@ Usage:
 Default values will be fetched from the environment variables $env_list, but may be overridden using the arguments listed below.
 
 Arguments:
-  --template-file=<file.template>          : The file to use as atemplate for the generated output file
+  --template-file=<file.template>          : The file to use as a template for the generated output file
   [--basedir=<path>]                       : Root path to eZ installation, auto detected if command is run from root
   [--host-name=localhost]                  : Primary host name, default "localhost"
   [--host-alias=*.localhost]               : Space separated list of host aliases, default "*.localhost"
