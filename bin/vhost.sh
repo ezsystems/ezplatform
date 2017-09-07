@@ -1,5 +1,5 @@
 #!/bin/bash
-# Script to generate virtual host config based on template containing variables among the once define below.
+# Script to generate virtual host config based on template containing variables among the ones defined below.
 # For help text, execute: ./bin/vhost.sh -h
 
 # Available option variables, configurable by user
@@ -24,7 +24,7 @@ declare -a option_vars=(
 declare -a template_vars
 # copy option_vars
 template_vars=(${option_vars[*]})
-# The additinal vars are calculated by script
+# The additional vars are calculated by script
 template_vars+=("%BODY_SIZE_LIMIT_M%")
 template_vars+=("%TIMEOUT_S%")
 template_vars+=("%HOST_LIST%")
@@ -79,10 +79,10 @@ Usage:
   --template-file=doc/apache2/vhost.template \\
   | sudo tee /etc/apache2/sites-enabled/my-site > /dev/null
 
-Defaults values will be fetched from the environment variables $env_list, but might be overriden using the arguments listed below.
+Default values will be fetched from the environment variables $env_list, but may be overridden using the arguments listed below.
 
 Arguments:
-  --template-file=<file.template>          : The file to use as template for the generated ouput file
+  --template-file=<file.template>          : The file to use as a template for the generated output file
   [--basedir=<path>]                       : Root path to eZ installation, auto detected if command is run from root
   [--host-name=localhost]                  : Primary host name, default "localhost"
   [--host-alias=*.localhost]               : Space separated list of host aliases, default "*.localhost"
@@ -94,7 +94,7 @@ Arguments:
   [--sf-http-cache=0|1]                    : To disable Symfony HTTP cache Proxy for using a different reverse proxy
                                              By default disabled when evn is "dev", enabled otherwise.
   [--sf-http-cache-class=<class-file.php>] : To specify a different class then default to use as the Symfony proxy
-  [--sf-classloader-file=<class-file.php>] : To specify a different class then default to use for php auto loading
+  [--sf-classloader-file=<class-file.php>] : To specify a different class then default to use for PHP auto loading
   [--body-size-limit=<int>]                : Limit in megabytes for max size of request body, 0 value disables limit.
   [--request-timeout=<int>]                : Limit in seconds before timeout of request, 0 value disables timeout limit.
   [-h|--help]                              : Help text, this one more or less
@@ -102,8 +102,8 @@ Arguments:
 EOF
 }
 
-# This function checks if there variables like BASEDIR, CLASSLOADER_FILE etc exists ( checks all variables defined in option_vars )
-# If environment variable exists, it's value is used as default when parsing template
+# This function checks if variables like BASEDIR, CLASSLOADER_FILE, etc. exist ( checks all variables defined in option_vars )
+# If environment variable exists, its value is used as default when parsing template
 function inject_environment_variables
 {
     local current_env_variable
@@ -115,7 +115,7 @@ function inject_environment_variables
     for env_var in "${option_vars[@]}"; do
         # Remove "%" from from env_var....
         current_env_variable=${env_var//%/}
-        # Get value of variable referenced to by $current_env_variable. If env variable do not exists, value is set to ""
+        # Get value of variable referenced to by $current_env_variable. If env variable does not exist, value is set to ""
         option_value=${!current_env_variable:-SomeDefault}
         if [ "$option_value" != "SomeDefault" ]; then
             template_values[$i]="$option_value";
@@ -217,7 +217,7 @@ fi
 
 ## Option specific logic
 
-# For httpd server having just one host config we provide HOST_LIST
+# For httpd servers having just one host config we provide HOST_LIST
 template_values[16]="${template_values[3]}"
 if [[ "${template_values[4]}" != "" ]] ; then
      tmp="${template_values[16]} ${template_values[4]}"
@@ -239,7 +239,7 @@ while [  "${template_vars[$COUNTER]}" != "" ]; do
     # Remove "%" from VAR for further use
     current_var=${current_var//%/}
 
-    # If variable has a value then do further replacment logic
+    # If variable has a value then do further replacement logic
     if [ "$current_value" != "" ] ; then
 
         # Change "#if[VAR] " comments conditionally to uncommented lines
@@ -248,13 +248,13 @@ while [  "${template_vars[$COUNTER]}" != "" ]; do
         # Change #if[VAR=current_value] comments conditionally to uncommented lines
         tmp=${tmp//"#if[${current_var}=${current_value}] "/""}
 
-        # Change remainging #if[VARIABLE=wrong_value] comments to conventional comment lines
+        # Change remaining #if[VARIABLE=wrong_value] comments to conventional comment lines
         regex="if\[${current_var}=([^]]*)\] "
         while [[ $tmp =~ $regex ]] ; do
             tmp=${tmp//"#if[${current_var}=${BASH_REMATCH[1]}] "/"#"}
         done
 
-        # Search for "#if[VARIABLE!=correct_value]" and enable line if found ( or tranform to conventional comment lines )
+        # Search for "#if[VARIABLE!=correct_value]" and enable line if found ( or transform to conventional comment lines )
         regex="if\[${current_var}!=([^]]*)\] "
         while [[ $tmp =~ $regex ]] ; do
             if [ "${BASH_REMATCH[1]}" != $current_value ] ; then
