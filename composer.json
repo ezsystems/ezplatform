@@ -49,7 +49,8 @@
         "doctrine/doctrine-bundle": "~1.5",
         "sensio/framework-extra-bundle": "~3.0",
         "ezsystems/content-on-the-fly-prototype": "~0.1.7",
-        "willdurand/js-translation-bundle": "^2.6.4"
+        "willdurand/js-translation-bundle": "^2.6.4",
+        "roave/security-advisories": "dev-master"
     },
     "require-dev": {
         "ezsystems/ezplatform-i18n": "^1.0@dev",
