@@ -1,0 +1,18 @@
+# Note : if you change APP_PROD_IMAGE in .env, you need to change image name here too
+FROM my-ez-app as builder
+
+RUN composer config extra.symfony-assets-install hard
+RUN composer run-script post-install-cmd --no-interaction
+
+FROM busybox
+
+COPY --from=builder /var/www /var/www
+
+WORKDIR /var/www
+
+# Fix permissions for www-data
+RUN chown -R www-data:www-data app/cache app/logs \
+    && find app/cache app/logs -type d -print0 | xargs -0 chmod -R 775 \
+    && find app/cache app/logs -type f -print0 | xargs -0 chmod -R 664
+
+VOLUME ["/var/www"]

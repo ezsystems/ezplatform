@@ -1,0 +1,54 @@
+version: '3.3'
+
+services:
+  web:
+    image: swarmmanager:5000/my-ez-app/web
+    ports:
+     - "8080:80"
+    environment:
+     - SYMFONY_ENV
+     - MAX_BODY_SIZE=20
+     - FASTCGI_PASS=app:9000
+     - TIMEOUT=190
+    volumes:
+     - vardir:/var/www/web/var
+    networks:
+     - my-ez-app
+    deploy:
+      replicas: 1
+
+  app:
+    image: swarmmanager:5000/my-ez-app/app
+    environment:
+     - SYMFONY_ENV=prod
+     - SYMFONY_DEBUG
+     - SYMFONY_HTTP_CACHE
+     - SYMFONY_HTTP_CACHE_CLASS
+     - SYMFONY_TRUSTED_PROXIES
+     - DATABASE_USER=ezp
+     - DATABASE_PASSWORD=SetYourOwnPassword
+     - DATABASE_NAME=ezp
+     - DATABASE_HOST=db
+     - RECOMMENDATIONS_CUSTOMER_ID
+     - RECOMMENDATIONS_LICENSE_KEY
+     - PUBLIC_SERVER_URI
+    volumes:
+     - vardir:/var/www/web/var
+    networks:
+     - stack-db_db
+     - my-ez-app
+    deploy:
+      replicas: 1
+
+networks:
+  stack-db_db:
+    external: true
+  my-ez-app:
+
+volumes:
+  vardir:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=swarmmanager,rw,vers=4.0
+      device: ":/vardirs/my-ez-app/var"
