@@ -6,10 +6,16 @@ default:
         Behat\MinkExtension:
             base_url: 'http://localhost'
             goutte: ~
-            selenium2:
-                wd_host: 'http://localhost:4444/wd/hub'
             javascript_session: selenium2
-            browser_name: firefox
+            selenium2:
+                browser: chrome
+                wd_host: 'http://localhost:4444/wd/hub'
+                capabilities:
+                    extra_capabilities:
+                        chromeOptions:
+                            args:
+                                - "--window-size=1440,1080"
+                                - "--no-sandbox"
 
         Behat\Symfony2Extension:
             kernel:

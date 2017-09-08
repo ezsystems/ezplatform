@@ -42,6 +42,7 @@ web/bundles/
 web/css/
 web/js/
 web/uploads/
+web/fonts/
 
 # Assets managed by Bower
 web/assets/vendor/

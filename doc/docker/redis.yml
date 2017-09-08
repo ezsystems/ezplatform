@@ -1,4 +1,4 @@
-version: '2.1'
+version: '3.3'
 # Redis config, to be appended after base-prod or base-dev, ..., but before selenium.yml
 
 ## WARNING:
@@ -15,3 +15,5 @@ services:
 
   redis:
     image: ${REDIS_IMAGE}
+    networks:
+     - backend
