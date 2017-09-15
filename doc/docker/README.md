@@ -32,6 +32,8 @@ installed on your machine.
 The current Docker Compose files are made to be mixed and matched together for QA/Support use cases. Currently available:
 - base-prod.yml _(required, always needs to be first, contains: db, web and app container)_
 - base-dev.yml _(alternative to `base-prod.yml`, same applies here if used)_
+- create-dataset.yml _(optional, to be used together with base-prod.yml in order to set up db and vardir)_
+- demo.yml _(optional, to be used together with base-prod.yml in order to set up db and vardir)_
 - blackfire.yml _(optional, adds blackfire service and lets you trigger profiling against the setup)_
 - redis.yml _(optional, adds redis service and appends config to app)_
 - varnish.yml _(optional, adds varnish service and appends config to app)_
@@ -41,7 +43,7 @@ The current Docker Compose files are made to be mixed and matched together for Q
 
 These can be used with `-f` argument on docker-compose, like:
 ```bash
-docker-compose -f doc/docker/base-prod.yml -f doc/docker/redis.yml up -d --force-recreate
+docker-compose -f doc/docker/base-prod.yml -f doc/docker/create-dataset.yml -f doc/docker/demo.yml -f doc/docker/redis.yml up -d --force-recreate
 ```
 
 However below environment variable `COMPOSE_FILE` is used instead since this is also what is used to have a default in
