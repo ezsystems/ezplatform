@@ -13,6 +13,7 @@ parameters:
 
     # Solr root endpoint, relevant if `solr` is set as search_engine
     solr_dsn: http://localhost:8983/solr
+    solr_core: collection1
 
     ## Logging settings
     # Log type is one of "stream", "error_log" or other types supported by monolog

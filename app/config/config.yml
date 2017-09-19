@@ -24,7 +24,7 @@ ez_search_engine_solr:
     endpoints:
         endpoint0:
             dsn: "%solr_dsn%"
-            core: collection1
+            core: "%solr_core%"
     connections:
         default:
             entry_endpoints:
