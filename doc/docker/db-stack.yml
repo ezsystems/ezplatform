@@ -1,0 +1,27 @@
+version: '3.3'
+# Config for running mariadb in a docker stack
+
+services:
+  db:
+    image: mariadb:10.1
+    volumes:
+     - ../../doc/docker/entrypoint/mysql/0_database_character_set.sh:/docker-entrypoint-initdb.d/0_database_character_set.sh:ro
+     - mysql:/var/lib/mysql
+    environment:
+     - MYSQL_RANDOM_ROOT_PASSWORD=1
+     - MYSQL_USER=ezp
+     - MYSQL_PASSWORD=SetYourOwnPassword
+     - MYSQL_DATABASE=ezp
+     - TERM=dumb
+    networks:
+     - db
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+
+volumes:
+  mysql:
+
+networks:
+  db:
+     attachable: true
