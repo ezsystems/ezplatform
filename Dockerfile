@@ -26,7 +26,7 @@ RUN rm -Rf app/logs/* app/cache/*/*
 RUN rm -rf web/css web/fonts web/js web/var
 
 
-FROM ezsystems/php:7.1-v1
+FROM ezsystems/php:7.0-v1
 
 # This is prod image (for dev use just mount your application as host volume into php image we extend here)
 ENV SYMFONY_ENV=prod
