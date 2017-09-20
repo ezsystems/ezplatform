@@ -100,7 +100,7 @@ sub ez_purge {
         }
 
         if (req.http.X-Location-Id) {
-            ban( "obj.http.X-Location-Id ~ " + req.http.X-Location-Id);
+            ban( "obj.http.X-Location-Id ~ \b" + req.http.X-Location-Id + "\b");
             if (client.ip ~ debuggers) {
                 set req.http.X-Debug = "Ban done for content connected to LocationId " + req.http.X-Location-Id;
             }
