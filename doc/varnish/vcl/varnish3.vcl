@@ -197,6 +197,11 @@ sub vcl_deliver {
     // Sanity check to prevent ever exposing the hash to a client.
     unset resp.http.x-user-hash;
 
+    // Remove cache-control headers on content pages, as we do not want downstream proxies/caches to cache these
+    if (req.url !~ "\.(css|js|gif|jpe?g|bmp|png|tiff?|ico|img|tga|wmf|svg|swf|ico|mp3|mp4|m4a|ogg|mov|avi|wmv|zip|gz|pdf|ttf|eot|wof)$") {
+        unset resp.http.cache-control;
+    }
+
     if (client.ip ~ debuggers) {
         if (obj.hits > 0) {
             set resp.http.X-Cache = "HIT";
@@ -204,5 +209,10 @@ sub vcl_deliver {
         } else {
             set resp.http.X-Cache = "MISS";
         }
+    } else {
+        unset resp.http.X-Location-Id;
+        unset resp.http.Via;
+        unset resp.http.X-Varnish;
+        unset resp.http.Server;
     }
 }
