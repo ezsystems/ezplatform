@@ -1,0 +1,12 @@
+version: '3.3'
+
+services:
+  dataset-dbdump:
+    build:
+      context: ../../
+      dockerfile: doc/docker/Dockerfile-dbdump
+
+  dataset-vardir:
+    build:
+      context: ../../
+      dockerfile: doc/docker/Dockerfile-vardir

@@ -1,0 +1,19 @@
+# Note : if you set the environment variable COMPOSE_PROJECT_NAME to a non-default value, you'll need to change the
+# image name in here too
+FROM docker_app as builder
+
+RUN composer config extra.symfony-assets-install hard
+RUN composer run-script post-install-cmd --no-interaction
+
+FROM busybox
+
+COPY --from=builder /var/www /var/www
+
+WORKDIR /var/www
+
+# Fix permissions for www-data
+RUN chown -R www-data:www-data app/cache app/logs \
+    && find app/cache app/logs -type d -print0 | xargs -0 chmod -R 775 \
+    && find app/cache app/logs -type f -print0 | xargs -0 chmod -R 664
+
+VOLUME ["/var/www"]
