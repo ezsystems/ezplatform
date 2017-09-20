@@ -1,6 +1,9 @@
 ### IDE files
 .idea/
 
+### Composer files
+auth.json
+
 ### GIT files
 .git
 vendor/*/*/.git
@@ -23,7 +26,7 @@ var/sessions/*
 !var/logs/.gitkeep
 !var/sessions/.gitkeep
 
-# Parameters (should be regenerated in contianer)
+# Parameters (should be regenerated in container)
 app/config/parameters.yml
 
 # Managed by Composer
