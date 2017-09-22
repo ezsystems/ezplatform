@@ -6,7 +6,7 @@ ENV VARNISH_MALLOC_SIZE="256M" \
 ARG PACKAGECLOUD_URL=https://packagecloud.io/install/repositories/varnishcache/varnish5/script.deb.sh
 ARG VARNISH_MODULES_VERSION=0.12.1
 
-# Use offical packages from Varnish and build with varnish-modules mainly for xkey
+# Use official packages from Varnish and build with varnish-modules mainly for xkey
 # see: https://github.com/varnish/varnish-modules/tree/master/docs
 RUN set -xe \
         && buildDeps=" \
@@ -25,9 +25,9 @@ RUN set -xe \
         " \
     # Update apt and get dependencies
         && apt-get update -q -y \
-        && apt-get install -q -y --no-install-recommends ca-certificates curl \
+        && apt-get install -q -y --no-install-recommends ca-certificates curl bc net-tools \
         \
-    # Get offical Varnish package
+    # Get official Varnish package
         && curl -s ${PACKAGECLOUD_URL} | bash \
         && apt-get install -q -y --allow-unauthenticated --no-install-recommends varnish $buildDeps \
         \
@@ -47,8 +47,8 @@ RUN set -xe \
 
 COPY doc/varnish/vcl/varnish4.vcl /etc/varnish/default.vcl
 COPY doc/docker/entrypoint/varnish/parameters.vcl /etc/varnish/parameters.vcl
+COPY doc/docker/entrypoint/varnish/entrypoint.sh /entrypoint.sh
 
 EXPOSE 80 6082
 
-# CMD in shell form to be able to use env variables here
-CMD varnishd -F -a :80 -T :6082 -f /etc/varnish/default.vcl -s malloc,${VARNISH_MALLOC_SIZE}
+ENTRYPOINT ["/entrypoint.sh"]

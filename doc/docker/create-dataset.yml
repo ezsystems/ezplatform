@@ -1,0 +1,13 @@
+version: '3.3'
+# Config for creating dataset images. To be appended before demo.yml and to be used for generating datasets for prod
+
+services:
+  dataset-dbdump:
+    build:
+      context: ../../
+      dockerfile: doc/docker/Dockerfile-dbdump
+
+  dataset-vardir:
+    build:
+      context: ../../
+      dockerfile: doc/docker/Dockerfile-vardir

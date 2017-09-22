@@ -1,0 +1,65 @@
+version: '3.3'
+# Config for importing dataset images into db and nfs server
+# Depends on separate stack for db; db-stack.yml
+
+services:
+  databasedump:
+    image: swarmmanager:5000/my-ez-app/dataset-dbdump
+    volumes:
+      - type: volume
+        source: dbdump
+        target: /dbdump
+        volume:
+          nocopy: false
+
+  import-db:
+    # Using dev for now, because we need mysql client
+    image: ${PHP_IMAGE_DEV}
+    environment:
+     - DATABASE_USER
+     - DATABASE_PASSWORD
+     - DATABASE_NAME
+     - TERM=dumb
+    networks:
+     - stack-db_db
+    volumes:
+      - type: volume
+        source: dbdump
+        target: /dbdump
+        volume:
+          nocopy: true
+    depends_on:
+     - databasedump
+    command: >
+      /bin/bash -c "
+      time mysql -u $${DATABASE_USER} -p$${DATABASE_PASSWORD} $${DATABASE_NAME} -h db< /dbdump/ezp.sql"
+
+  import-vardir:
+    image: swarmmanager:5000/my-ez-app/dataset-vardir
+    volumes:
+     - vardir:/nfs/vardirs
+    environment:
+     - DATASET_VARDIR
+    command: >
+      /bin/sh -c "
+      if [ ! -e /nfs/vardirs/$${DATASET_VARDIR} ]; then
+        echo Copying files from /var/www/web/var to /nfs/vardirs/$${DATASET_VARDIR};
+        mkdir /nfs/vardirs/$${DATASET_VARDIR} && \
+        time cp -a /var/www/web/var/ /nfs/vardirs/$${DATASET_VARDIR};
+      else
+        echo Aborted, /nfs/vardirs/$${DATASET_VARDIR} already exists;
+        exit 2;
+      fi"
+
+networks:
+  stack-db_db:
+    external: true
+
+volumes:
+  dbdump:
+  vardir:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=swarmmanager,rw,vers=4.0
+      device: ":/vardirs"
