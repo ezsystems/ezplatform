@@ -1,5 +1,5 @@
 version: '3.3'
-# compose file for installing composer packages, perfrom install and dump database
+# compose file for installing composer packages, perform install and dump database
 
 services:
   install_db:

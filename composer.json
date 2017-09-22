@@ -51,7 +51,8 @@
         "ramsey/uuid": "^3.5",
         "ezsystems/ezstudio-cron": "~1.0.0",
         "ezsystems/date-based-publisher": "~1.0.0",
-        "ezsystems/content-on-the-fly-prototype": "~0.1.7"
+        "ezsystems/content-on-the-fly-prototype": "~0.1.7",
+        "roave/security-advisories": "dev-master"
     },
     "require-dev": {
         "behat/behat": "~3.0",
