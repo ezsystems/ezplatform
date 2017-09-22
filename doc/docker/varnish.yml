@@ -16,7 +16,6 @@ services:
     build:
       context: ../../
       dockerfile: doc/docker/Dockerfile-varnish
-    image: my_varnish
     ports:
      - "8081:80"
     environment:
@@ -27,6 +26,7 @@ services:
     networks:
      - frontend
      - backend
+    command: ["--acl-add", "app"]
 
 ## DEBUG??
 # In need of debugging all request going to Varnish, use varnishlog, example:

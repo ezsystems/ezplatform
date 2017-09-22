@@ -1,0 +1,96 @@
+version: '3.3'
+# Single server setup for prod where we have php executables in one image and a distribution image which contains
+# the php code.
+# To be appended after base-prod.yml and create-dataset.yml
+
+services:
+  distribution:
+    build:
+      context: .
+      dockerfile: Dockerfile-distribution
+    volumes:
+     - distribution:/var/www
+    networks:
+     - backend
+
+  app:
+    image: ezsystems/php:7.1-v1
+    depends_on:
+     - db
+     - distribution
+     - dataset-vardir
+    environment:
+     - SYMFONY_ENV=${SYMFONY_ENV-prod}
+     - SYMFONY_DEBUG
+     - SYMFONY_HTTP_CACHE
+     - SYMFONY_HTTP_CACHE_CLASS
+     - SYMFONY_TRUSTED_PROXIES
+     - DATABASE_USER
+     - DATABASE_PASSWORD
+     - DATABASE_NAME
+     - DATABASE_HOST=db
+     - RECOMMENDATIONS_CUSTOMER_ID
+     - RECOMMENDATIONS_LICENSE_KEY
+     - PUBLIC_SERVER_URI
+    networks:
+     - backend
+    volumes:
+     - distribution:/var/www
+     - vardir:/var/www/web/var
+
+  web:
+    image: nginx:stable
+    depends_on:
+     - distribution
+     - app
+    ports:
+     - "8080:80"
+    environment:
+     - SYMFONY_ENV=${SYMFONY_ENV-prod}
+     - MAX_BODY_SIZE=20
+     - FASTCGI_PASS=app:9000
+     - TIMEOUT=190
+    volumes:
+     - distribution:/var/www:ro
+    networks:
+     - frontend
+     - backend
+    command: >
+      /bin/sh -c "
+      if [ -e /etc/nginx/ez_params.d ]; then rm /etc/nginx/ez_params.d; fi;
+      cp -a /var/www/doc/nginx/ez_params.d /etc/nginx/ez_params.d;
+      cd /var/www && bin/vhost.sh --template-file=doc/nginx/vhost.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+
+  dataset-vardir:
+    volumes:
+     - vardir:/var/www/web/var:ro
+    networks:
+     - backend
+
+  dataset-dbdump:
+    volumes:
+     - dbdump:/dbdump:ro
+    networks:
+     - backend
+
+  db:
+    image: ${MYSQL_IMAGE}
+    volumes:
+      - dbdump:/docker-entrypoint-initdb.d/:ro
+    environment:
+     - MYSQL_RANDOM_ROOT_PASSWORD=1
+     - MYSQL_USER=$DATABASE_USER
+     - MYSQL_PASSWORD=$DATABASE_PASSWORD
+     - MYSQL_DATABASE=$DATABASE_NAME
+     - TERM=dumb
+    networks:
+     - backend
+
+networks:
+  frontend:
+  backend:
+
+volumes:
+  vardir:
+  dbdump:
+  distribution:
