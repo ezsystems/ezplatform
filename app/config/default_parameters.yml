@@ -33,3 +33,7 @@ parameters:
     # Settings for HttpCache
     purge_type: "local"
     purge_server: "http://my.varnish.server:80"
+
+    ## By default cache ttl is set to 20h, when using Varnish you can set a much higher value. High values depends on
+    ## using EzSystemsPlatformHttpCacheBundle (default as of v1.12) which by design expires affected cache on changes
+    httpcache_default_ttl: 72000

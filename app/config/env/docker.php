@@ -100,3 +100,7 @@ if ($purgeServer = getenv('HTTPCACHE_PURGE_SERVER')) {
     $container->setParameter('purge_type', 'http');
     $container->setParameter('purge_server', $purgeServer);
 }
+
+if ($value = getenv('HTTPCACHE_DEFAULT_TTL')) {
+    $container->setParameter('httpcache_default_ttl', $value);
+}
