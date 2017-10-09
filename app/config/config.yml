@@ -4,6 +4,13 @@ imports:
     - { resource: security.yml }
     - { resource: env/docker.php }
     - { resource: env/platformsh.php }
+    - { resource: services.yml }
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    locale: en
+    ezpublish_rest.csrf_token_intention: authenticate
 
 # Configuration for Database connection, can have several connections used by eZ Repositories in ezplatform.yml
 doctrine:
@@ -17,6 +24,10 @@ doctrine:
                 user: '%env(DATABASE_USER)%'
                 password: '%env(DATABASE_PASSWORD)%'
                 charset: UTF8
+    orm:
+        auto_generate_proxy_classes: '%kernel.debug%'
+        naming_strategy: doctrine.orm.naming_strategy.underscore
+        auto_mapping: true
 
 # Base configuration for Solr, for more options see: https://doc.ez.no/display/EZP/Solr+Search+Engine+Bundle
 # Can have several connections used by each eZ Repositories in ezplatform.yml
@@ -68,12 +79,13 @@ framework:
 twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
+    form_themes:
+        - 'bootstrap_3_layout.html.twig'
 
-# Assetic Configuration
 assetic:
     debug: '%kernel.debug%'
     use_controller: '%kernel.debug%'
-    bundles: []
+    bundles: [ EzPlatformAdminUiBundle ]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
@@ -85,10 +97,6 @@ swiftmailer:
     username: '%env(MAILER_USER)%'
     password: '%env(MAILER_PASSWORD)%'
     spool: { type: memory }
-
-
-fos_js_routing:
-    routes_to_expose: [_ez_content_view]
 
 # FOSHttpCache Configuration
 fos_http_cache:
