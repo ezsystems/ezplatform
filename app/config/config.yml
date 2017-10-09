@@ -2,28 +2,37 @@ imports:
     - { resource: default_parameters.yml }
     - { resource: parameters.yml }
     - { resource: security.yml }
-    - { resource: env/docker.php }
-    - { resource: env/platformsh.php }
+    - { resource: services.yml }
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    locale: en
+    ezpublish_rest.csrf_token_intention: authenticate
 
 # Configuration for Database connection, can have several connections used by eZ Repositories in ezplatform.yml
 doctrine:
     dbal:
         connections:
             default:
-                driver: '%env(DATABASE_DRIVER)%'
-                host: '%env(DATABASE_HOST)%'
-                port: '%env(DATABASE_PORT)%'
-                dbname: '%env(DATABASE_NAME)%'
-                user: '%env(DATABASE_USER)%'
-                password: '%env(DATABASE_PASSWORD)%'
+                driver: "%env(DATABASE_DRIVER)%"
+                host: "%env(DATABASE_HOST)%"
+                port: "%env(DATABASE_PORT)%"
+                dbname: "%env(DATABASE_NAME)%"
+                user: "%env(DATABASE_USER)%"
+                password: "%env(DATABASE_PASSWORD)%"
                 charset: UTF8
+    orm:
+        auto_generate_proxy_classes: "%kernel.debug%"
+        naming_strategy: doctrine.orm.naming_strategy.underscore
+        auto_mapping: true
 
 # Base configuration for Solr, for more options see: https://doc.ez.no/display/EZP/Solr+Search+Engine+Bundle
 # Can have several connections used by each eZ Repositories in ezplatform.yml
 ez_search_engine_solr:
     endpoints:
         endpoint0:
-            dsn: '%env(SOLR_DSN)%'
+            dsn: "%env(SOLR_DSN)%"
             core: collection1
     connections:
         default:
@@ -34,10 +43,10 @@ ez_search_engine_solr:
 
 framework:
     esi: ~
-    translator: { fallback: '%locale_fallback%' }
-    secret: '%env(SYMFONY_SECRET)%'
+    translator: { fallback: "%locale_fallback%" }
+    secret: "%env(SYMFONY_SECRET)%"
     router:
-        resource: '%kernel.project_dir%/app/config/routing.yml'
+        resource: "%kernel.project_dir%/app/config/routing.yml"
         strict_requirements: ~
     csrf_protection: ~
     form: ~
@@ -47,14 +56,14 @@ framework:
     # This is to avoid template name parsing with Twig engine, refusing specific characters
     # which are valid with legacy tpl files.
     templating:
-        engines: ['twig']
+        engines: ["twig"]
         #assets_version: SomeVersionScheme
-    default_locale: '%locale_fallback%'
+    default_locale: "%locale_fallback%"
     trusted_hosts: ~
     session:
         # https://symfony.com/doc/current/reference/configuration/framework.html#handler-id
         handler_id: session.handler.native_file
-        save_path: '%kernel.project_dir%/var/sessions/%kernel.environment%'
+        save_path: "%kernel.project_dir%/var/sessions/%kernel.environment%"
         # Note: eZ Publish also allows session name and session cookie configuration to be per SiteAccess, by
         #       default session name will be set to "eZSESSID{siteaccess_hash}" (unique session name per siteaccess)
         #       Further reading on sessions: http://doc.ezplatform.com/en/master/guide/sessions/
@@ -66,25 +75,23 @@ framework:
 
 # Twig Configuration
 twig:
-    debug: '%kernel.debug%'
-    strict_variables: '%kernel.debug%'
+    debug: "%kernel.debug%"
+    strict_variables: "%kernel.debug%"
+    form_themes:
+        - "bootstrap_3_layout.html.twig"
 
-# Assetic Configuration
 assetic:
-    debug: '%kernel.debug%'
-    use_controller: '%kernel.debug%'
-    bundles: []
+    debug: "%kernel.debug%"
+    use_controller: "%kernel.debug%"
+    bundles: [ EzPlatformAdminUiBundle ]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
 
 # Swiftmailer Configuration
 swiftmailer:
-    transport: '%mailer_transport%'
-    host: '%env(MAILER_HOST)%'
-    username: '%env(MAILER_USER)%'
-    password: '%env(MAILER_PASSWORD)%'
+    transport: "%mailer_transport%"
+    host: "%env(MAILER_HOST)%"
+    username: "%env(MAILER_USER)%"
+    password: "%env(MAILER_PASSWORD)%"
     spool: { type: memory }
-
-fos_js_routing:
-    routes_to_expose: [_ez_content_view]
