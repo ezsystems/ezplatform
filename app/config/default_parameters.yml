@@ -13,6 +13,7 @@ parameters:
 
     # Solr root endpoint, relevant if `solr` is set as search_engine
     solr_dsn: http://localhost:8983/solr
+    solr_core: collection1
 
     ## Logging settings
     # Log type is one of "stream", "error_log" or other types supported by monolog
@@ -32,3 +33,7 @@ parameters:
     # Settings for HttpCache
     purge_type: "local"
     purge_server: "http://my.varnish.server:80"
+
+    ## By default cache ttl is set to 24h, when using Varnish you can set a much higher value. High values depends on
+    ## using EzSystemsPlatformHttpCacheBundle (default as of v1.12) which by design expires affected cache on changes
+    httpcache_default_ttl: 86400

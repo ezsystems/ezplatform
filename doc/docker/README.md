@@ -1,16 +1,16 @@
 # Docker blueprints
 
 **NOTE**: If you are just looking to get easily up and running and developing with eZ Platform, rather look towards
-[eZ Launchpad](https://ezsystems.github.io/launchpad/) which is tailored for Project Development use cases. _If not be
+[eZ Launchpad](https://ezsystems.github.io/launchpad/) which is tailored for Project Development use cases. _If not, be
 aware of the following limitations:_
 
 > **WARNING, made mainly for automation:** The tools within this directory are meant for use for test automation, QA,
 Support and demo use cases. And with time as a blueprint for how to best configure your own setup. You are free to use
-and adopt this for your needs, and we more the welcome contributions to improve it.
+and adopt this for your needs, and we more than welcome contributions to improve it.
 
 > **WARNING, low performance on MacOS and Windows:** For reasons mentioned above, unlike eZ Launchpad these tools are not
-optimized for use as development environment with Mac or Windows and hence are affected by known I/O performance issues caused by Docker for
-Mac/Windows use of shared folders. This is a know issue and nothing we intend to add complexity to workaround here.
+optimized for use as development environment with Mac or Windows, and are affected by known I/O performance issues caused
+by Docker for Mac/Windows use of shared folders. This is a know issue and nothing we intend to add complexity to workaround here.
 
 ## Overview
 
