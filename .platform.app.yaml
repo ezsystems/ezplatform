@@ -8,7 +8,7 @@
 name: app
 
 # The type of the application to build.
-type: php:7.0
+type: php:7.1
 build:
     # "none" means we're running composer manually, see build hook
     flavor: "none"
@@ -36,21 +36,22 @@ disk: 2048
 
 # The mounts that will be performed when the package is deployed.
 mounts:
-    "/app/cache": "shared:files/cache"
-    "/app/logs": "shared:files/logs"
+    "/var/cache": "shared:files/cache"
+    "/var/logs": "shared:files/logs"
+    "/var/sessions": "shared:files/sessions"
     "/web/var": "shared:files/files"
 
 # The hooks that will be performed when the package is deployed.
 hooks:
     build: |
         set -e
-        composer install --no-dev --prefer-dist --no-progress --no-interaction --optimize-autoloader
+        composer install --prefer-dist --no-progress --no-interaction --optimize-autoloader
         rm web/app_dev.php
         . ./.env
         if [ -z "$SYMFONY_ENV" ]; then
             export SYMFONY_ENV=prod
         fi
-        app/console --env=$SYMFONY_ENV assetic:dump
+        bin/console --env=$SYMFONY_ENV assetic:dump
     deploy: |
         set -e
         . ./.env
@@ -58,10 +59,11 @@ hooks:
             export SYMFONY_ENV=prod
         fi
         if [ ! -f web/var/.platform.installed ]; then
-            php -d memory_limit=-1 app/console ezplatform:install --env=$SYMFONY_ENV $INSTALL_EZ_INSTALL_TYPE
+            php -d memory_limit=-1 bin/console ezplatform:install --env=$SYMFONY_ENV $INSTALL_EZ_INSTALL_TYPE
             touch web/var/.platform.installed
         fi
-        app/console --env=$SYMFONY_ENV cache:clear
+        composer update --no-dev --prefer-dist
+        bin/console --env=$SYMFONY_ENV cache:clear
 
 # The configuration of scheduled execution.
 # see http://symfony.com/doc/current/components/console/introduction.html
@@ -75,3 +77,13 @@ runtime:
         - xsl
         - imagick
         - readline
+
+variables:
+    env:
+        SYMFONY_ENV: 'prod'
+        DATABASE_DRIVER: 'pdo_mysql'
+        DATABASE_HOST: 'database.internal'
+        DATABASE_PORT: 3306
+        DATABASE_NAME: main
+        DATABASE_USER: user
+        DATABASE_PASSWORD: ''
