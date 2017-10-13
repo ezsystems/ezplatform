@@ -8,7 +8,7 @@
 name: app
 
 # The type of the application to build.
-type: php:7.0
+type: php:7.1
 build:
     # "none" means we're running composer manually, see build hook
     flavor: "none"
