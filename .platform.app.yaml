@@ -54,7 +54,6 @@ hooks:
         else
             composer install --no-dev --prefer-dist --no-progress --no-interaction --optimize-autoloader
         fi
-        app/console --env=$SYMFONY_ENV assetic:dump
     deploy: |
         set -e
         . ./.env
