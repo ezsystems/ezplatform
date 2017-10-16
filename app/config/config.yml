@@ -121,7 +121,8 @@ fos_http_cache:
                 headers:
                     overwrite: true
                     cache_control:
-                        max_age: 10
+                        max_age: 5
+                        s_maxage: 20
             # Example of performance tuning, force TTL on 404 pages to avoid crawlers / ... taking to much load
             # Should not be set to high, as cached 404's can cause issues for future routes, url aliases, wildcards, ..
             -
@@ -131,4 +132,5 @@ fos_http_cache:
                     overwrite: true
                     cache_control:
                         public: true
-                        max_age: 30
+                        max_age: 0
+                        s_maxage: 20
