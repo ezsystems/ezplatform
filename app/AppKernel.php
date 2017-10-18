@@ -39,6 +39,7 @@ class AppKernel extends Kernel
             new EzSystems\EzPlatformSolrSearchEngineBundle\EzSystemsEzPlatformSolrSearchEngineBundle(),
             // new EzSystems\EzPlatformDesignEngineBundle\EzPlatformDesignEngineBundle(),
             new EzSystems\EzPlatformAdminUiBundle\EzPlatformAdminUiBundle(),
+            new EzSystems\EzPlatformAdminUiModulesBundle\EzPlatformAdminUiModulesBundle(),
             // Application
             new AppBundle\AppBundle(),
         ];
