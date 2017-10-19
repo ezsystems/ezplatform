@@ -45,7 +45,8 @@
         "ezsystems/ezplatform-admin-ui-modules": "^1.0@dev",
         "ezsystems/ezplatform-http-cache": "^0.1@dev",
         "knplabs/knp-menu-bundle": "^2.1",
-        "roave/security-advisories": "dev-master"
+        "roave/security-advisories": "dev-master",
+        "oneup/flysystem-bundle": "^2.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.1",
