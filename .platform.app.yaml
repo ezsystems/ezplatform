@@ -8,7 +8,7 @@
 name: app
 
 # The type of the application to build.
-type: php:7.0
+type: php:7.1
 build:
     # "none" means we're running composer manually, see build hook
     flavor: "none"
@@ -59,7 +59,11 @@ hooks:
         if [ -z "$SYMFONY_ENV" ]; then
             export SYMFONY_ENV=prod
         fi
-        app/console --env=$SYMFONY_ENV assetic:dump
+        if [ "$SYMFONY_ENV" = "dev" ] ; then
+            composer install --prefer-dist --no-progress --no-interaction --optimize-autoloader
+        else
+            composer install --no-dev --prefer-dist --no-progress --no-interaction --optimize-autoloader
+        fi
     deploy: |
         set -e
         . ./.env
