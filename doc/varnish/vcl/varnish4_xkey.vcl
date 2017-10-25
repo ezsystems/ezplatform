@@ -122,6 +122,22 @@ sub vcl_backend_response {
 // You may add FOSHttpCacheBundle tagging rules
 // See http://foshttpcache.readthedocs.org/en/latest/varnish-configuration.html#id4
 sub ez_purge {
+
+    # Support how purging was done in earlier versions, this is deprecated and here just for BC for code still using it
+    if (req.method == "BAN") {
+        if (!client.ip ~ invalidators) {
+            return (synth(405, "Method not allowed"));
+        }
+
+        if (req.http.X-Location-Id) {
+            ban("obj.http.X-Location-Id ~ " + req.http.X-Location-Id);
+            if (client.ip ~ debuggers) {
+                set req.http.X-Debug = "Ban done for content connected to LocationId " + req.http.X-Location-Id;
+            }
+            return (synth(200, "Banned"));
+        }
+    }
+
     if (req.method == "PURGE") {
         if (!client.ip ~ invalidators) {
             return (synth(405, "Method not allowed"));
