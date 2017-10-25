@@ -65,7 +65,7 @@ sub vcl_recv {
     if (req.url ~ "\.(css|js|gif|jpe?g|bmp|png|tiff?|ico|img|tga|wmf|svg|swf|ico|mp3|mp4|m4a|ogg|mov|avi|wmv|zip|gz|pdf|ttf|eot|wof)$") {
         return (hash);
     }
-    
+
     // Sort the query string for cache normalization.
     set req.url = std.querysort(req.url);
 
