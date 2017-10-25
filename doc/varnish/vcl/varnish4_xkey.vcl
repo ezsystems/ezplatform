@@ -222,7 +222,8 @@ sub vcl_deliver {
             // For browser cache with it revalidating against varnish, use for instance "private, no-cache" instead
             resp.http.cache-control = "private, no-cache, no-store, must-revalidate"
         } else if (resp.http.cache-control ~ "public") {
-            // For non logged in users we allow caching to happen on shared proxies for a short while, as we cant purge
+            // For non logged in users we allow caching on shared proxies (mobile network accelerators, planes, ...)
+            // But only for a short while, as there is no way to purge them
             resp.http.cache-control = "public, s-maxage=600, stale-while-revalidate=300, stale-if-error=300"
         }
     }
