@@ -220,11 +220,11 @@ sub vcl_deliver {
         if (req.http.cookie) {
             // When in session where we vary by user hash we by default avoid caching this in shared proxies & browsers
             // For browser cache with it revalidating against varnish, use for instance "private, no-cache" instead
-            resp.http.cache-control = "private, no-cache, no-store, must-revalidate"
+            set resp.http.cache-control = "private, no-cache, no-store, must-revalidate";
         } else if (resp.http.cache-control ~ "public") {
             // For non logged in users we allow caching on shared proxies (mobile network accelerators, planes, ...)
             // But only for a short while, as there is no way to purge them
-            resp.http.cache-control = "public, s-maxage=600, stale-while-revalidate=300, stale-if-error=300"
+            set resp.http.cache-control = "public, s-maxage=600, stale-while-revalidate=300, stale-if-error=300";
         }
     }
 
