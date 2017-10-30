@@ -27,6 +27,7 @@ sub vcl_recv {
     set req.http.Surrogate-Capability = "abc=ESI/1.0";
 
     // Varnish, in its default configuration, sends the X-Forwarded-For header but does not filter out Forwarded header
+    // To be removed in Symfony 3.3
     unset req.http.Forwarded;
 
     // Trigger cache purge if needed
@@ -244,9 +245,15 @@ sub vcl_deliver {
         }
     }
 
+
     if (client.ip ~ debuggers) {
-        if (resp.http.X-Varnish ~ " ") {
+        # In Varnish 4 the obj.hits counter behaviour has changed, so we use a
+        # different method: if X-Varnish contains only 1 id, we have a miss, if it
+        # contains more (and therefore a space), we have a hit.
+        if (resp.http.x-varnish ~ " ") {
             set resp.http.X-Cache = "HIT";
+            set resp.http.X-Cache-Hits = obj.hits;
+            set resp.http.X-Cache-TTL = obj.ttl;
         } else {
             set resp.http.X-Cache = "MISS";
         }
