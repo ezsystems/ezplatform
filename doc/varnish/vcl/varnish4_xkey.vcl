@@ -66,6 +66,9 @@ sub vcl_recv {
         return (hash);
     }
 
+    // Sort the query string for cache normalization.
+    set req.url = std.querysort(req.url);
+
     // Retrieve client user context hash and add it to the forwarded request.
     call ez_user_context_hash;
 
@@ -122,6 +125,22 @@ sub vcl_backend_response {
 // You may add FOSHttpCacheBundle tagging rules
 // See http://foshttpcache.readthedocs.org/en/latest/varnish-configuration.html#id4
 sub ez_purge {
+
+    # Support how purging was done in earlier versions, this is deprecated and here just for BC for code still using it
+    if (req.method == "BAN") {
+        if (!client.ip ~ invalidators) {
+            return (synth(405, "Method not allowed"));
+        }
+
+        if (req.http.X-Location-Id) {
+            ban("obj.http.X-Location-Id ~ " + req.http.X-Location-Id);
+            if (client.ip ~ debuggers) {
+                set req.http.X-Debug = "Ban done for content connected to LocationId " + req.http.X-Location-Id;
+            }
+            return (synth(200, "Banned"));
+        }
+    }
+
     if (req.method == "PURGE") {
         if (!client.ip ~ invalidators) {
             return (synth(405, "Method not allowed"));
@@ -205,14 +224,25 @@ sub vcl_deliver {
 
     // Remove the vary on user context hash, this is nothing public. Keep all
     // other vary headers.
-    set resp.http.Vary = regsub(resp.http.Vary, "(?i),? *X-User-Hash *", "");
-    set resp.http.Vary = regsub(resp.http.Vary, "^, *", "");
-    if (resp.http.Vary == "") {
-        unset resp.http.Vary;
-    }
+    if (resp.http.Vary ~ "X-User-Hash") {
+        set resp.http.Vary = regsub(resp.http.Vary, "(?i),? *X-User-Hash *", "");
+        set resp.http.Vary = regsub(resp.http.Vary, "^, *", "");
+        if (resp.http.Vary == "") {
+            unset resp.http.Vary;
+        }
 
-    // Sanity check to prevent ever exposing the hash to a client.
-    unset resp.http.x-user-hash;
+        // If we vary by user hash, we'll also adjust the cache control headers going out by default to avoid sending
+        // large ttl meant for Varnish to shared proxies and such. We assume only session cookie is left after vcl_recv.
+        if (req.http.cookie) {
+            // When in session where we vary by user hash we by default avoid caching this in shared proxies & browsers
+            // For browser cache with it revalidating against varnish, use for instance "private, no-cache" instead
+            set resp.http.cache-control = "private, no-cache, no-store, must-revalidate";
+        } else if (resp.http.cache-control ~ "public") {
+            // For non logged in users we allow caching on shared proxies (mobile network accelerators, planes, ...)
+            // But only for a short while, as there is no way to purge them
+            set resp.http.cache-control = "public, s-maxage=600, stale-while-revalidate=300, stale-if-error=300";
+        }
+    }
 
     if (client.ip ~ debuggers) {
         if (resp.http.X-Varnish ~ " ") {
@@ -223,5 +253,7 @@ sub vcl_deliver {
     } else {
         // Remove tag headers when delivering to non debug client
         unset resp.http.xkey;
+        // Sanity check to prevent ever exposing the hash to a non debug client.
+        unset resp.http.x-user-hash;
     }
 }
