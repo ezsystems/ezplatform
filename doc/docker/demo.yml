@@ -1,0 +1,28 @@
+version: '3.3'
+# Demo config, to be appended after base-prod.yml and create-dataset.yml
+
+services:
+  app:
+    volumes:
+     - vardir:/var/www/web/var
+    depends_on:
+     - dataset-vardir
+
+  web:
+    volumes:
+     - vardir:/var/www/web/var:ro
+
+  dataset-vardir:
+    volumes:
+     - vardir:/var/www/web/var:ro
+    networks:
+     - backend
+
+  dataset-dbdump:
+    volumes:
+     - dbdump:/dbdump:ro
+    networks:
+     - backend
+
+volumes:
+  vardir:

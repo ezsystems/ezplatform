@@ -1,0 +1,80 @@
+version: '3.3'
+# Config for running eZ Platform using docker stack
+# Depends on separate stack for db; db-stack.yml
+
+services:
+  web:
+    image: swarmmanager:5000/my-ez-app/web
+    ports:
+     - "8081:80"
+    environment:
+     - SYMFONY_ENV
+     - MAX_BODY_SIZE=20
+     - FASTCGI_PASS=app:9000
+     - TIMEOUT=190
+    volumes:
+     - vardir:/var/www/web/var
+    networks:
+     - my-ez-app
+    deploy:
+      replicas: 2
+
+  app:
+    image: swarmmanager:5000/my-ez-app/app
+    environment:
+     - SYMFONY_ENV=prod
+     - SYMFONY_DEBUG
+     - SYMFONY_HTTP_CACHE
+     - SYMFONY_HTTP_CACHE_CLASS
+     - SYMFONY_TRUSTED_PROXIES
+     - DATABASE_USER=ezp
+     - DATABASE_PASSWORD=SetYourOwnPassword
+     - DATABASE_NAME=ezp
+     - DATABASE_HOST=db
+     - CUSTOM_CACHE_POOL=singleredis
+     - CACHE_HOST=redis
+     - SYMFONY_HTTP_CACHE=0
+     - SYMFONY_TRUSTED_PROXIES=varnish
+     - HTTPCACHE_PURGE_SERVER=http://varnish
+     - PHP_INI_ENV_session.save_handler=redis
+     - PHP_INI_ENV_session.save_path="tcp://redis:6379?weight=1"
+     - RECOMMENDATIONS_CUSTOMER_ID
+     - RECOMMENDATIONS_LICENSE_KEY
+     - PUBLIC_SERVER_URI
+    volumes:
+     - vardir:/var/www/web/var
+    networks:
+     - stack-db_db
+     - my-ez-app
+    deploy:
+      replicas: 5
+
+  redis:
+    image: healthcheck/redis
+    networks:
+     - my-ez-app
+
+  varnish:
+    image: swarmmanager:5000/my-ez-app/varnish
+    ports:
+     - "8080:80"
+    depends_on:
+     - web
+    networks:
+     - my-ez-app
+    volumes:
+     - /var/www/vidarl-ezplatform-ee-demo/vscripts:/vscripts
+    command: --acl-all-networks
+
+networks:
+  stack-db_db:
+    external: true
+  my-ez-app:
+
+volumes:
+  vardir:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=swarmmanager,rw,vers=4.0
+      device: ":/vardirs/my-ez-app/var"
