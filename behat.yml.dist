@@ -21,7 +21,7 @@ default:
                 bootstrap: vendor/autoload.php
                 path: app/AppKernel.php
                 class: AppKernel
-                env: behat
+                env: !!str %env(SYMFONY_ENV)%
                 debug: false
 
     suites: ~
