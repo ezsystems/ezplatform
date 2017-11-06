@@ -60,7 +60,6 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget",
-            "rm -Rf web/assets; mkdir -p web/assets; ln -s ../bundles/ezplatformadminuiassets/vendors web/assets/vendor",
             "php bin/console assetic:dump"
         ],
         "post-install-cmd": [
