@@ -37,11 +37,23 @@ class AppKernel extends Kernel
             new EzSystems\PlatformInstallerBundle\EzSystemsPlatformInstallerBundle(),
             new EzSystems\RepositoryFormsBundle\EzSystemsRepositoryFormsBundle(),
             new EzSystems\EzPlatformSolrSearchEngineBundle\EzSystemsEzPlatformSolrSearchEngineBundle(),
-            // new EzSystems\EzPlatformDesignEngineBundle\EzPlatformDesignEngineBundle(),
             // Application
             new EzSystems\EzPlatformAdminUiBundle\EzPlatformAdminUiBundle(),
             new EzSystems\EzPlatformAdminUiModulesBundle\EzPlatformAdminUiModulesBundle(),
             new EzSystems\EzPlatformAdminUiAssetsBundle\EzPlatformAdminUiAssetsBundle(),
+            // eZ Studio
+            new EzSystems\PlatformUIBundle\EzSystemsPlatformUIBundle(),
+            new EzSystems\PlatformUIAssetsBundle\EzSystemsPlatformUIAssetsBundle(),
+            new EzSystems\StudioUIBundle\EzSystemsStudioUIBundle(),
+            new EzSystems\LandingPageFieldTypeBundle\EzSystemsLandingPageFieldTypeBundle(),
+            new EzSystems\FormBuilderBundle\EzSystemsFormBuilderBundle(),
+            new EzSystems\DateBasedPublisherBundle\EzSystemsDateBasedPublisherBundle(),
+            new EzSystems\FlexWorkflowBundle\EzSystemsFlexWorkflowBundle(),
+            new EzSystems\NotificationBundle\EzSystemsNotificationBundle(),
+            new EzSystems\PlatformEEAssetsBundle\EzSystemsPlatformEEAssetsBundle(),
+            new EzSystems\CronBundle\EzSystemsCronBundle(),
+            new EzSystems\StudioInstallerBundle\EzSystemsStudioInstallerBundle(),
+            // AppBundle
             new AppBundle\AppBundle(),
         ];
 
