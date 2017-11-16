@@ -23,3 +23,6 @@ ezplatform.admin_ui:
 
 _ezplatformRepositoryFormsRoutes:
     resource: '@EzSystemsRepositoryFormsBundle/Resources/config/routing.yml'
+
+fos.js_routing:
+    resource: '@FOSJsRoutingBundle/Resources/config/routing/routing.xml'
