@@ -123,3 +123,17 @@ fos_http_cache:
                         public: true
                         max_age: 0
                         s_maxage: 20
+
+jms_translation:
+    source_language: en
+    locales: [en]
+    dumper:
+        add_references: false
+        add_date: false
+    configs:
+        admin:
+            dirs:
+                - '%kernel.root_dir%/../vendor/ezsystems/ezplatform-admin-ui/src'
+            output_dir: '%kernel.root_dir%/../vendor/ezsystems/ezplatform-admin-ui/src/bundle/Resources/translations/'
+            excluded_dirs: [Behat, Tests]
+            output_format: "xliff"
