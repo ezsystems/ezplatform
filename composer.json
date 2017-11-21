@@ -59,7 +59,7 @@
         "ezsystems/flex-workflow": "^2.0@beta",
         "ezsystems/ezstudio-cron": "^1.0",
         "ezsystems/ezstudio-installer": "^2.0@beta",
-        "ezsystems/platform-ui-assets-bundle": "^4.0.0",
+        "ezsystems/platform-ui-assets-bundle": "^5.0.0",
         "knplabs/knp-menu-bundle": "^2.1",
         "roave/security-advisories": "dev-master",
         "oneup/flysystem-bundle": "^2.0",
