@@ -24,6 +24,8 @@ default:
                 env: behat
                 debug: false
 
+        EzSystems\PlatformBehatBundle\ServiceContainer\EzBehatExtension: ~
+
     suites: ~
 
 imports:
