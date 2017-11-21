@@ -40,7 +40,7 @@
         "ezsystems/ezpublish-kernel": "^7.0@dev",
         "ezsystems/repository-forms": "^2.0@dev",
         "ezsystems/ezplatform-solr-search-engine": "^1.5@dev",
-        "ezsystems/ez-support-tools": "^0.1@dev",
+        "ezsystems/ez-support-tools": "^0.2@dev",
         "ezsystems/ezplatform-admin-ui": "^1.0@dev",
         "ezsystems/ezplatform-admin-ui-modules": "^1.0@dev",
         "ezsystems/ezplatform-admin-ui-assets": "^0.2",
