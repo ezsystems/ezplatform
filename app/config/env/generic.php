@@ -5,11 +5,6 @@
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Loader;
 
-if (getenv('DATABASE_HOST') === false) {
-    // Return if not DATABASE_HOST is set as that is needed to get things running with docker (shouldn't be on localhost)
-    return;
-}
-
 if ($value = getenv('SYMFONY_SECRET')) {
     $container->setParameter('secret', $value);
 }
