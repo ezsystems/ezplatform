@@ -48,6 +48,7 @@
         "willdurand/js-translation-bundle": "^2.6.4",
         "oneup/flysystem-bundle": "^2.0",
         "friendsofsymfony/jsrouting-bundle": "^1.4",
+        "white-october/pagerfanta-bundle": "^1.1",
         "roave/security-advisories": "dev-master"
     },
     "require-dev": {
