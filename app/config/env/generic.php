@@ -106,3 +106,16 @@ if ($purgeServer = getenv('HTTPCACHE_PURGE_SERVER')) {
 if ($value = getenv('HTTPCACHE_DEFAULT_TTL')) {
     $container->setParameter('httpcache_default_ttl', $value);
 }
+
+// EzSystemsRecommendationsBundle settings
+if ($value = getenv('RECOMMENDATIONS_CUSTOMER_ID')) {
+    $container->setParameter('ez_recommendation.default.yoochoose.customer_id', $value);
+}
+
+if ($value = getenv('RECOMMENDATIONS_LICENSE_KEY')) {
+    $container->setParameter('ez_recommendation.default.yoochoose.license_key', $value);
+}
+
+if ($value = getenv('PUBLIC_SERVER_URI')) {
+    $container->setParameter('ez_recommendation.default.server_uri', $value);
+}
