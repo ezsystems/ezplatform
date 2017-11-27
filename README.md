@@ -40,11 +40,11 @@ The [eZ Publish 5](https://github.com/ezsystems/ezpublish-community) repository,
 - **PlatformUIBundle**: A modern, extensible "Backend" UI for managing content & administering the site
 
 ### Further information:
-eZ Platform is 100% open source and is the foundation for the commercial *eZ Enterprise* software which adds advanced features for editorial teams and media companies, 100% built on top of *eZ Platform* APIs.
+eZ Platform is 100% open source and is the foundation for the commercial *eZ Platform Enterprise Edition* software which adds advanced features for editorial teams, 100% built on top of *eZ Platform* APIs.
 
 - eZ Platform Developer Hub: [ezplatform.com](https://ezplatform.com/)
-- [eZ Studio and eZ Platform RoadMap](http://doc.ez.no/roadmap)
-- eZ Systems (commercial products and services): [ez.no](http://ez.no/)
+- [eZ Platform Open Source and Enterprise Edition roadmap](http://doc.ez.no/roadmap)
+- eZ Systems (commercial products and services): [ez.no](https://ez.no/)
 
 ## Install
 For manual installation instructions, see [INSTALL.md](https://github.com/ezsystems/ezplatform/blob/master/INSTALL.md).
@@ -74,6 +74,8 @@ Unlike eZ Publish Platform 5.x, eZ Platform does not ship with eZ Publish Legacy
 
 An alternative is releases of eZ Publish Community; the latest as of Oct 2015 is v2014.11, found at
 [ezpublish-community](https://github.com/ezsystems/ezpublish-community).
+
+You can also consider using eZ Platform [LegacyBridge](https://github.com/ezsystems/LegacyBridge/releases/) to allow eZ Platform and eZ Publish Legacy to run together.
 
 ## COPYRIGHT
 Copyright (C) 1999-2016 eZ Systems AS. All rights reserved.
