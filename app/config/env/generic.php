@@ -90,9 +90,16 @@ if ($pool = getenv('CUSTOM_CACHE_POOL')) {
     $loader->load($pool . '.yml');
 }
 
-// HttpCache setting (for configuring Varnish purging)
+// HttpCache setting (for configuring http cache purging)
+if ($purgeType = getenv('HTTPCACHE_PURGE_TYPE')) {
+    $container->setParameter('purge_type', $purgeType);
+}
+
 if ($purgeServer = getenv('HTTPCACHE_PURGE_SERVER')) {
-    $container->setParameter('purge_type', 'http');
+    // BC : In earlier versions, purge_type was set automatically if purge_server was set
+    if ($purgeType === false) {
+        $container->setParameter('purge_type', 'http');
+    }
     $container->setParameter('purge_server', $purgeServer);
 }
 

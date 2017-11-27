@@ -11,6 +11,7 @@ services:
      - SYMFONY_HTTP_CACHE=0
      - SYMFONY_TRUSTED_PROXIES=varnish
      - HTTPCACHE_PURGE_SERVER=http://varnish
+     - HTTPCACHE_PURGE_TYPE=http
 
   varnish:
     build:
