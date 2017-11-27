@@ -14,7 +14,7 @@ vcl 4.0;
 import std;
 import xkey;
 
-// For customizing your backend and acl rules see parameters.yml
+// For customizing your backend and acl rules see parameters.vcl
 include "parameters.vcl";
 
 // Called at the beginning of a request, after the complete request has been received
