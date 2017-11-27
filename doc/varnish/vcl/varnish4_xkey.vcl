@@ -79,18 +79,18 @@ sub vcl_recv {
 // Called when a cache lookup is successful. The object being hit may be stale: It can have a zero or negative ttl with only grace or keep time left.
 sub vcl_hit {
    if (obj.ttl >= 0s) {
-       // A pure unadultered hit, deliver it
+       // A pure unadulterated hit, deliver it
        return (deliver);
    }
 
    if (obj.ttl + obj.grace > 0s) {
        // Object is in grace, logic below in this block is what differs from default:
-       // https://varnish-cache.org/docs/5.0/users-guide/vcl-grace.html#grace-mode
+       // https://varnish-cache.org/docs/5.2/users-guide/vcl-grace.html#grace-mode
        if (!std.healthy(req.backend_hint)) {
            // Service is unhealthy, deliver from cache
            return (deliver);
-       } else if (req.url ~ "^/api/ezp/v2" && req.http.referer ~ "/ez$") {
-           // Request is for Platform UI for REST API, fetch it as 1.x UI does not handle stale data to well
+       } else if (req.http.cookie) {
+           // Request it by a user with session, refresh the cache to avoid issues for editors and forum users
            return (miss);
        }
 
