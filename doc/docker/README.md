@@ -77,7 +77,7 @@ docker-compose build dataset-vardir dataset-dbdump
 docker-compose up -d --force-recreate
 ```
 
-After some 5-10 seconds you should be able to browse the site on `localhost:8080` and the backend on `localhost:8080/ez`.
+After some 5-10 seconds you should be able to browse the site on `localhost:8080` and the backend on `localhost:8080/admin`.
 
 ### Development "mount" use
 
@@ -100,7 +100,7 @@ docker-compose up -d --force-recreate
 ```
 
 
-After some 5-10 seconds you should be able to browse the site on `localhost:8080` and the backend on `localhost:8080/ez`.
+After some 5-10 seconds you should be able to browse the site on `localhost:8080` and the backend on `localhost:8080/admin`.
 
 
 ### Behat and Selenium use
