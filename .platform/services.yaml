@@ -1,5 +1,5 @@
 mysqldb:
-    type: mysql:10.0
+    type: mysql:10.1
     disk: 2048
     configuration:
         schemas:
@@ -31,3 +31,15 @@ rediscache:
 #redissession:
 #    type: redis-persistent:3.2
 #    disk: 1024
+
+# Example for setting up Solr, place solr config in .platform/solr/config/solr (NB! remember to set autoSoftCommit)
+#solr:
+#    type: solr:6.6
+#    disk: 1024
+#    configuration:
+#        cores:
+#            core1:
+#                conf_dir: !archive "solr/config/solr"
+#        endpoints:
+#            endpoint0:
+#                core: core1

@@ -1,0 +1,19 @@
+# To make sure as little cache as possible is written to the shared mount we use apc and redis (for cache that needs to be shared)
+
+imports:
+    - { resource: ../cache_pool/singleredis.yml }
+
+framework:
+    validation:
+        cache: validator.mapping.cache.doctrine.apc
+    serializer:
+        cache: serializer.mapping.cache.apc
+
+doctrine:
+    orm:
+        metadata_cache_driver: apc
+        query_cache_driver: apc
+        result_cache_driver:
+            type: redis
+            host: '%cache_host%'
+            port: '%cache_redis_port%'

@@ -109,3 +109,7 @@ if (isset($relationships['redissession'])) {
 
 // Disable PHPStormPass
 $container->setParameter('ezdesign.phpstorm.enabled', false);
+
+// Load Platform.sh specific settings
+$loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__));
+$loader->load('platformsh.yml');
