@@ -17,12 +17,12 @@ doctrine:
     dbal:
         connections:
             default:
-                driver: '%env(DATABASE_DRIVER)%'
-                host: '%env(DATABASE_HOST)%'
-                port: '%env(DATABASE_PORT)%'
-                dbname: '%env(DATABASE_NAME)%'
-                user: '%env(DATABASE_USER)%'
-                password: '%env(DATABASE_PASSWORD)%'
+                driver: '%database_driver%'
+                host: '%database_host%'
+                port: '%database_port%'
+                dbname: '%database_name%'
+                user: '%database_user%'
+                password: '%database_password%'
                 charset: UTF8
     orm:
         auto_generate_proxy_classes: '%kernel.debug%'
@@ -34,8 +34,8 @@ doctrine:
 ez_search_engine_solr:
     endpoints:
         endpoint0:
-            dsn: '%env(SOLR_DSN)%'
-            core: '%env(SOLR_CORE)%'
+            dsn: '%solr_dsn%'
+            core: '%solr_core%'
     connections:
         default:
             entry_endpoints:
@@ -46,7 +46,7 @@ ez_search_engine_solr:
 framework:
     esi: ~
     translator: { fallback: '%locale_fallback%' }
-    secret: '%env(SYMFONY_SECRET)%'
+    secret: '%secret%'
     router:
         resource: '%kernel.project_dir%/app/config/routing.yml'
         strict_requirements: ~
@@ -94,9 +94,9 @@ assetic:
 # Swiftmailer Configuration
 swiftmailer:
     transport: '%mailer_transport%'
-    host: '%env(MAILER_HOST)%'
-    username: '%env(MAILER_USER)%'
-    password: '%env(MAILER_PASSWORD)%'
+    host: '%mailer_host%'
+    username: '%mailer_user%'
+    password: '%mailer_password%'
     spool: { type: memory }
 
 # FOSHttpCache Configuration

@@ -9,4 +9,4 @@ services:
               # redis://localhost:6379
               # redis://secret@example.com:1234/13
               # redis://secret@/var/run/redis.sock/13?persistent_id=4&class=Redis&timeout=3&retry_interval=3
-              provider: 'redis://%env(CACHE_DSN)%'
+              provider: 'redis://%cache_dsn%'
