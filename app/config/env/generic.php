@@ -5,11 +5,6 @@
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Loader;
 
-if (getenv('DATABASE_HOST') === false) {
-    // Return if not DATABASE_HOST is set as that is needed to get things running with docker (shouldn't be on localhost)
-    return;
-}
-
 if ($value = getenv('SYMFONY_SECRET')) {
     $container->setParameter('secret', $value);
 }
@@ -95,12 +90,32 @@ if ($pool = getenv('CUSTOM_CACHE_POOL')) {
     $loader->load($pool . '.yml');
 }
 
-// HttpCache setting (for configuring Varnish purging)
+// HttpCache setting (for configuring http cache purging)
+if ($purgeType = getenv('HTTPCACHE_PURGE_TYPE')) {
+    $container->setParameter('purge_type', $purgeType);
+}
+
 if ($purgeServer = getenv('HTTPCACHE_PURGE_SERVER')) {
-    $container->setParameter('purge_type', 'http');
+    // BC : In earlier versions, purge_type was set automatically if purge_server was set
+    if ($purgeType === false) {
+        $container->setParameter('purge_type', 'http');
+    }
     $container->setParameter('purge_server', $purgeServer);
 }
 
 if ($value = getenv('HTTPCACHE_DEFAULT_TTL')) {
     $container->setParameter('httpcache_default_ttl', $value);
+}
+
+// EzSystemsRecommendationsBundle settings
+if ($value = getenv('RECOMMENDATIONS_CUSTOMER_ID')) {
+    $container->setParameter('ez_recommendation.default.yoochoose.customer_id', $value);
+}
+
+if ($value = getenv('RECOMMENDATIONS_LICENSE_KEY')) {
+    $container->setParameter('ez_recommendation.default.yoochoose.license_key', $value);
+}
+
+if ($value = getenv('PUBLIC_SERVER_URI')) {
+    $container->setParameter('ez_recommendation.default.server_uri', $value);
 }
