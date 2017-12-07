@@ -49,7 +49,8 @@
         "oneup/flysystem-bundle": "^2.0",
         "friendsofsymfony/jsrouting-bundle": "^1.4",
         "white-october/pagerfanta-bundle": "^1.1",
-        "roave/security-advisories": "dev-master"
+        "roave/security-advisories": "dev-master",
+        "leafo/scssphp": "^0.7"
     },
     "require-dev": {
         "behat/behat": "~3.2",
