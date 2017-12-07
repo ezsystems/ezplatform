@@ -1073,16 +1073,16 @@
         },
         {
             "name": "ezsystems/ezpublish-kernel",
-            "version": "v6.12.1",
+            "version": "v6.12.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-kernel.git",
-                "reference": "5c4850049eb5380888a5e8fc25d50cb660fca3ed"
+                "reference": "5ac149bae1fec79905273b098adf4e35828e3ddc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/5c4850049eb5380888a5e8fc25d50cb660fca3ed",
-                "reference": "5c4850049eb5380888a5e8fc25d50cb660fca3ed",
+                "url": "https://api.github.com/repos/ezsystems/ezpublish-kernel/zipball/5ac149bae1fec79905273b098adf4e35828e3ddc",
+                "reference": "5ac149bae1fec79905273b098adf4e35828e3ddc",
                 "shasum": ""
             },
             "require": {
@@ -1157,7 +1157,7 @@
             ],
             "description": "Kernel used by ezsystems/ezplatform and derivatives. Provides the Content Repository, its APIs, and the application's Symfony framework integration.",
             "homepage": "https://ezplatform.com",
-            "time": "2017-11-28T08:04:35+00:00"
+            "time": "2017-12-01T10:20:42+00:00"
         },
         {
             "name": "ezsystems/platform-ui-assets-bundle",
@@ -5468,17 +5468,17 @@
         },
         {
             "name": "ezsystems/behatbundle",
-            "version": "v6.5.1",
+            "version": "v6.5.2",
             "target-dir": "EzSystems/BehatBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/BehatBundle.git",
-                "reference": "3825099fb4485ed3eb47a6a955da70a51c4b298a"
+                "reference": "78ed9f143351b1459eb60824139de546bc957a76"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/BehatBundle/zipball/3825099fb4485ed3eb47a6a955da70a51c4b298a",
-                "reference": "3825099fb4485ed3eb47a6a955da70a51c4b298a",
+                "url": "https://api.github.com/repos/ezsystems/BehatBundle/zipball/78ed9f143351b1459eb60824139de546bc957a76",
+                "reference": "78ed9f143351b1459eb60824139de546bc957a76",
                 "shasum": ""
             },
             "require": {
@@ -5489,7 +5489,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "6.4.x-dev"
+                    "dev-master": "6.5.x-dev"
                 }
             },
             "autoload": {
@@ -5508,7 +5508,7 @@
                 }
             ],
             "description": "Behat bundle for help testing eZ Bundles and projects",
-            "time": "2017-07-07T09:13:34+00:00"
+            "time": "2017-12-06T16:47:44+00:00"
         },
         {
             "name": "ezsystems/ezplatform-i18n",
