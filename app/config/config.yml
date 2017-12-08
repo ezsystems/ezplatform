@@ -89,6 +89,8 @@ assetic:
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
+        scssphp:
+            formatter: 'Leafo\ScssPhp\Formatter\Crunched'
 
 # Swiftmailer Configuration
 swiftmailer:
