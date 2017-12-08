@@ -62,6 +62,7 @@
         "ezsystems/date-based-publisher": "^1.4@dev",
         "ezsystems/content-on-the-fly-prototype": "~0.1.11@dev",
         "ezsystems/ezplatform-multi-file-upload": "^0.1@dev",
+        "ezsystems/ezplatform-http-cache-fastly": "^1.0@dev",
         "willdurand/js-translation-bundle": "^2.6.4",
         "roave/security-advisories": "dev-master"
     },
