@@ -72,11 +72,6 @@
         # For FastCGI mode or when using PHP-FPM, to get basic auth working.
         RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
-        # Needed for ci testing, you can optionally remove this.
-        RewriteCond %{ENV:SYMFONY_ENV} "behat"
-        RewriteCond %{REQUEST_URI} ^/php5-fcgi(.*)
-        RewriteRule . - [L]
-
         # Cluster/streamed files rewrite rules. Enable on cluster with DFS as a binary data handler
         #RewriteRule ^/var/([^/]+/)?storage/images(-versioned)?/.* /app.php [L]
 

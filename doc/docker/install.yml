@@ -22,6 +22,7 @@ services:
     environment:
      - SYMFONY_ENV=${SYMFONY_ENV-prod}
      - SYMFONY_DEBUG
+     - SYMFONY_CMD
      - DATABASE_USER
      - DATABASE_PASSWORD
      - DATABASE_NAME
@@ -34,6 +35,7 @@ services:
       mkdir -p web/var;
       php /scripts/wait_for_db.php;
       php bin/console ezplatform:install ${INSTALL_EZ_INSTALL_TYPE};
+      if [ \"$SYMFONY_CMD\" != '' ]; then echo '> Executing' \"$SYMFONY_CMD\"; php bin/console $SYMFONY_CMD; fi;
       rm -Rf var/logs/* var/cache/*/*;
       chown -R www-data:www-data var/cache var/logs web/var;
       find var/cache var/logs web/var -type d -print0 | xargs -0 chmod -R 775;

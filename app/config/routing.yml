@@ -1,13 +1,12 @@
 login:
-    path:   /login
-    defaults:
-        _controller: ezpublish.security.controller:loginAction
+    path: /login
+    defaults: { _controller: ezpublish.security.controller:loginAction }
 
 login_check:
-    path:   /login_check
+    path: /login_check
 
 logout:
-    path:   /logout
+    path: /logout
 
 kernel.internal:
     resource: '@EzPublishCoreBundle/Resources/config/routing/internal.yml'

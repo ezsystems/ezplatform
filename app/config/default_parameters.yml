@@ -2,31 +2,78 @@
 parameters:
     locale_fallback: en
 
+    # A secret key that's used to generate certain security-related tokens
+    secret: '%env(SYMFONY_SECRET)%'
+
+    # Settings for database backend used by Doctrine DBAL
+    # In turn used for default storage engine & default search engine (if legacy is configured as search engine)
+    database_driver: '%env(DATABASE_DRIVER)%'
+    database_host: '%env(DATABASE_HOST)%'
+    database_port: '%env(DATABASE_PORT)%'
+    database_name: '%env(DATABASE_NAME)%'
+    database_user: '%env(DATABASE_USER)%'
+    database_password: '%env(DATABASE_PASSWORD)%'
+
     # Setting for mail system, used by SwiftMailer
+    mailer_host: '%env(MAILER_HOST)%'
+    mailer_user: '%env(MAILER_USER)%'
+    mailer_password: '%env(MAILER_PASSWORD)%'
+
+    # One of `legacy` (default) or `solr`
+    search_engine: '%env(SEARCH_ENGINE)%'
+
+    # Solr root endpoint, relevant if `solr` is set as search_engine
+    solr_dsn: '%env(SOLR_DSN)%'
+    solr_core: '%env(SOLR_CORE)%'
+
+    # Log path, where to store the log files. php://stderr may be used in order to log to standard error
+    log_path: '%env(LOG_PATH)%'
+
+    # Settings for Cache pool, to change add own cache service and optionally inject own arguments
+    # predefined pools: see symfony config and the optional pools in app/config/cache_pool/
+    cache_pool: '%env(CACHE_POOL)%'
+
+    # Cache DSN, see app/config/services/cache.yml for examples:
+    cache_dsn: '%env(CACHE_DSN)%'
+
+    # Settings for HttpCache
+    purge_server: '%env(HTTPCACHE_PURGE_SERVER)%'
+
+    # By default cache ttl is set to 24h, when using Varnish you can set a much higher value. High values depends on
+    # using EzSystemsPlatformHttpCacheBundle (default as of v1.12) which by design expires affected cache on changes
+    httpcache_default_ttl: '%env(HTTPCACHE_DEFAULT_TTL)%'
+
+    # Fallback values for when environment variables do not exist
+
     env(MAILER_HOST):       127.0.0.1
     env(MAILER_USER):       ~
     env(MAILER_PASSWORD):   ~
 
-    # One of `legacy` (default) or `solr`
     env(SEARCH_ENGINE): legacy
 
-    # Solr root endpoint, relevant if `solr` is set as search_engine
     env(SOLR_DSN): http://localhost:8983/solr
     env(SOLR_CORE): collection1
 
-    # Log path, where to store the log files. php://stderr may be used in order to log to standard error
     env(LOG_PATH): "%kernel.logs_dir%/%kernel.environment%.log"
 
-    # Settings for Cache pool, to change add own cache service and optionally inject own arguments
-    # predefined pools: see symfony config and the optional pools in app/config/cache_pool/
     env(CACHE_POOL): "cache.app"
 
-    # Cache DSN, see app/config/services/cache.yml for examples:
     env(CACHE_DSN): localhost
 
-    # Settings for HttpCache
-    env(PURGE_SERVERS): "http://localhost:80"
+    env(HTTPCACHE_PURGE_SERVER): "http://localhost:80"
 
-    ## By default cache ttl is set to 24h, when using Varnish you can set a much higher value. High values depends on
-    ## using EzSystemsPlatformHttpCacheBundle (default as of v1.12) which by design expires affected cache on changes
-    env(HTTPCACHE_TTL): 86400
+    env(HTTPCACHE_DEFAULT_TTL): 86400
+
+
+    # Compile time handlers
+    ## These are defined at compile time, and hence can't be set at runtime using env()
+    ## app/config/env/generic.php takes care about letting you set them by env variables
+
+    ## Log type is one of "stream", "error_log" or other types supported by monolog
+    log_type: stream
+
+    ## Mail transport used by SwiftMailer
+    mailer_transport:  smtp
+
+    # Purge type used by HttpCache system ("local", "varnish"/"http", and on ee also "fastly")
+    purge_type: local

@@ -2,7 +2,7 @@ imports:
     - { resource: default_parameters.yml }
     - { resource: parameters.yml }
     - { resource: security.yml }
-    - { resource: env/docker.php }
+    - { resource: env/generic.php }
     - { resource: env/platformsh.php }
     - { resource: services.yml }
 
@@ -17,12 +17,12 @@ doctrine:
     dbal:
         connections:
             default:
-                driver: '%env(DATABASE_DRIVER)%'
-                host: '%env(DATABASE_HOST)%'
-                port: '%env(DATABASE_PORT)%'
-                dbname: '%env(DATABASE_NAME)%'
-                user: '%env(DATABASE_USER)%'
-                password: '%env(DATABASE_PASSWORD)%'
+                driver: '%database_driver%'
+                host: '%database_host%'
+                port: '%database_port%'
+                dbname: '%database_name%'
+                user: '%database_user%'
+                password: '%database_password%'
                 charset: UTF8
     orm:
         auto_generate_proxy_classes: '%kernel.debug%'
@@ -34,8 +34,8 @@ doctrine:
 ez_search_engine_solr:
     endpoints:
         endpoint0:
-            dsn: '%env(SOLR_DSN)%'
-            core: '%env(SOLR_CORE)%'
+            dsn: '%solr_dsn%'
+            core: '%solr_core%'
     connections:
         default:
             entry_endpoints:
@@ -46,7 +46,7 @@ ez_search_engine_solr:
 framework:
     esi: ~
     translator: { fallback: '%locale_fallback%' }
-    secret: '%env(SYMFONY_SECRET)%'
+    secret: '%secret%'
     router:
         resource: '%kernel.project_dir%/app/config/routing.yml'
         strict_requirements: ~
@@ -82,6 +82,7 @@ twig:
     form_themes:
         - 'bootstrap_3_layout.html.twig'
 
+# Assetic Configuration
 assetic:
     debug: '%kernel.debug%'
     use_controller: '%kernel.debug%'
@@ -95,9 +96,9 @@ assetic:
 # Swiftmailer Configuration
 swiftmailer:
     transport: '%mailer_transport%'
-    host: '%env(MAILER_HOST)%'
-    username: '%env(MAILER_USER)%'
-    password: '%env(MAILER_PASSWORD)%'
+    host: '%mailer_host%'
+    username: '%mailer_user%'
+    password: '%mailer_password%'
     spool: { type: memory }
 
 # FOSHttpCache Configuration
@@ -111,7 +112,8 @@ fos_http_cache:
                 headers:
                     overwrite: true
                     cache_control:
-                        max_age: 10
+                        max_age: 5
+                        s_maxage: 20
             # Example of performance tuning, force TTL on 404 pages to avoid crawlers / ... taking to much load
             # Should not be set to high, as cached 404's can cause issues for future routes, url aliases, wildcards, ..
             -
@@ -121,7 +123,8 @@ fos_http_cache:
                     overwrite: true
                     cache_control:
                         public: true
-                        max_age: 30
+                        max_age: 0
+                        s_maxage: 20
 
 jms_translation:
     source_language: en

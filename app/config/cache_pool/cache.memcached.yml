@@ -7,4 +7,4 @@ services:
               clearer: cache.app_clearer
               # Example from vendor/symfony/symfony/src/Symfony/Component/Cache/Traits/MemcachedTrait.php:
               # memcached://user:pass@localhost?weight=33'
-              provider: 'memcached://%env(CACHE_DSN)%'
+              provider: 'memcached://%cache_dsn%'

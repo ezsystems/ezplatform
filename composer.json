@@ -23,9 +23,7 @@
         "classmap": [ "app/AppKernel.php", "app/AppCache.php" ]
     },
     "autoload-dev": {
-        "psr-4": {
-            "Tests\\": "tests/"
-        },
+        "psr-4": { "Tests\\": "tests/" },
         "files": [ "vendor/symfony/symfony/src/Symfony/Component/VarDumper/Resources/functions/dump.php" ]
     },
     "require": {
@@ -33,7 +31,6 @@
         "symfony/symfony": "3.4.0",
         "twig/twig": "^1.0||^2.0",
         "twig/extensions": "^1.5.0",
-        "symfony/polyfill-apcu": "^1.0",
         "symfony/assetic-bundle": "~2.8",
         "symfony/swiftmailer-bundle": "~2.5",
         "symfony/monolog-bundle": "^3.1.0",
@@ -41,15 +38,14 @@
         "doctrine/orm": "^2.5",
         "sensio/distribution-bundle": "^5.0.19",
         "incenteev/composer-parameter-handler": "~2.1",
-        "sensio/framework-extra-bundle": "^3.0.2",
         "ezsystems/ezpublish-kernel": "^7.0@dev",
         "ezsystems/repository-forms": "^2.0@dev",
         "ezsystems/ezplatform-solr-search-engine": "^1.5@rc",
         "ezsystems/ez-support-tools": "^0.2",
+        "ezsystems/ezplatform-http-cache": "^0.3@rc",
         "ezsystems/ezplatform-admin-ui": "^1.0@dev",
         "ezsystems/ezplatform-admin-ui-modules": "^1.0@dev",
         "ezsystems/ezplatform-admin-ui-assets": "^0.4",
-        "ezsystems/ezplatform-http-cache": "^0.3@rc",
         "ezsystems/platform-ui-bundle": "^2.0@dev",
         "ezsystems/studio-ui-bundle": "^2.0@dev",
         "ezsystems/ezstudio-form-builder": "^2.0@dev",
@@ -61,21 +57,22 @@
         "ezsystems/ezstudio-installer": "^2.0@dev",
         "ezsystems/platform-ui-assets-bundle": "^5.0.0",
         "knplabs/knp-menu-bundle": "^2.1",
-        "roave/security-advisories": "dev-master",
+        "sensio/framework-extra-bundle": "^3.0.2",
+        "willdurand/js-translation-bundle": "^2.6.4",
         "oneup/flysystem-bundle": "^2.0",
         "friendsofsymfony/jsrouting-bundle": "^1.4",
         "white-october/pagerfanta-bundle": "^1.1",
-        "willdurand/js-translation-bundle": "^2.6",
+        "roave/security-advisories": "dev-master",
         "leafo/scssphp": "^0.7"
     },
     "require-dev": {
-        "sensio/generator-bundle": "~3.1",
-        "symfony/phpunit-bridge": "~3.2",
         "behat/behat": "~3.2",
+        "behat/symfony2-extension": "~2.0",
         "behat/mink-extension": "~2.0",
         "behat/mink-goutte-driver": "~1.0",
         "behat/mink-selenium2-driver": "~1.0",
-        "behat/symfony2-extension": "~2.0"
+        "sensio/generator-bundle": "~3.1",
+        "symfony/phpunit-bridge": "~3.2"
     },
     "scripts": {
         "symfony-scripts": [
@@ -83,8 +80,7 @@
             "eZ\\Bundle\\EzPublishCoreBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget",
-            "php bin/console assetic:dump"
+            "@php bin/console assetic:dump"
         ],
         "post-install-cmd": [
             "@symfony-scripts"
@@ -97,7 +93,8 @@
         ]
     },
     "config": {
-        "bin-dir": "bin"
+        "bin-dir": "bin",
+        "sort-packages": true
     },
     "extra": {
         "symfony-app-dir": "app",
@@ -107,12 +104,8 @@
         "symfony-tests-dir": "tests",
         "symfony-assets-install": "relative",
         "incenteev-parameters": {
-            "file": "app/config/parameters.yml",
-            "env-map": {
-                "log_type": "LOG_TYPE",
-                "mailer_transport": "MAILER_TRANSPORT",
-                "purge_type": "PURGE_TYPE"
-            }
+            "keep-outdated": true,
+            "file": "app/config/parameters.yml"
         },
         "branch-alias": {
             "dev-master": "2.0.x-dev"

@@ -46,9 +46,8 @@ In short, Enterprise comes with new features and services that extend eZ Platfor
 - eZ Systems *(commercial products and services)*: [ez.no](http://ez.no)
 - eZ Community: [share.ez.no](http://ez.no)
 - eZ Platform Developer Hub: [ezplatform.com](https://ezplatform.com/)
-- [eZ Platform and Enterprise RoadMap](http://doc.ez.no/roadmap)
-
-http://ez.no/Blog/What-to-Expect-from-eZ-Studio-and-eZ-Platform
+- [eZ Platform Open Source and Enterprise Edition roadmap](http://doc.ez.no/roadmap)
+- eZ Systems (commercial products and services): [ez.no](https://ez.no/)
 
 ## Install
 For manual installation instructions, see [INSTALL.md](https://github.com/ezsystems/ezplatform-ee/blob/master/INSTALL.md).
@@ -74,6 +73,8 @@ Unlike eZ Publish Platform 5.x, eZ Platform Enterprise Edition does not ship wit
 with legacy, eZ Publish Platform 5.4 is the most stable choice, offering support and maintenance updates until 2021.
 Alternative is releases of eZ Publish Community, latest as of Oct 2015 is v2014.11 found at
 [ezpublish-community](https://github.com/ezsystems/ezpublish-community).
+
+You can also consider using eZ Platform [LegacyBridge](https://github.com/ezsystems/LegacyBridge/releases/) to allow eZ Platform and eZ Publish Legacy to run together.
 
 ## COPYRIGHT
 Copyright (C) 1999-2017 eZ Systems AS. All rights reserved.
