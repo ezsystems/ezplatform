@@ -10,8 +10,8 @@ services:
     environment:
      - SYMFONY_HTTP_CACHE=0
      - SYMFONY_TRUSTED_PROXIES=varnish
-     - PURGE_TYPE=http
-     - PURGE_SERVERS=http://varnish
+     - HTTPCACHE_PURGE_SERVER=http://varnish
+     - HTTPCACHE_PURGE_TYPE=http
 
   varnish:
     build:

@@ -14,7 +14,7 @@ vcl 4.0;
 import std;
 import xkey;
 
-// For customizing your backend and acl rules see parameters.yml
+// For customizing your backend and acl rules see parameters.vcl
 include "parameters.vcl";
 
 // Called at the beginning of a request, after the complete request has been received
@@ -26,8 +26,12 @@ sub vcl_recv {
     // Advertise Symfony for ESI support
     set req.http.Surrogate-Capability = "abc=ESI/1.0";
 
-    // Varnish, in its default configuration, sends the X-Forwarded-For header but does not filter out Forwarded header
-    unset req.http.Forwarded;
+    // Ensure that the Symfony Router generates URLs correctly with Varnish
+    if (req.http.X-Forwarded-Proto == "https" ) {
+        set req.http.X-Forwarded-Port = "443";
+    } else {
+        set req.http.X-Forwarded-Port = "80";
+    }
 
     // Trigger cache purge if needed
     call ez_purge;
@@ -79,18 +83,18 @@ sub vcl_recv {
 // Called when a cache lookup is successful. The object being hit may be stale: It can have a zero or negative ttl with only grace or keep time left.
 sub vcl_hit {
    if (obj.ttl >= 0s) {
-       // A pure unadultered hit, deliver it
+       // A pure unadulterated hit, deliver it
        return (deliver);
    }
 
    if (obj.ttl + obj.grace > 0s) {
        // Object is in grace, logic below in this block is what differs from default:
-       // https://varnish-cache.org/docs/5.0/users-guide/vcl-grace.html#grace-mode
+       // https://varnish-cache.org/docs/5.2/users-guide/vcl-grace.html#grace-mode
        if (!std.healthy(req.backend_hint)) {
            // Service is unhealthy, deliver from cache
            return (deliver);
-       } else if (req.url ~ "^/api/ezp/v2" && req.http.referer ~ "/ez$") {
-           // Request is for Platform UI for REST API, fetch it as 1.x UI does not handle stale data to well
+       } else if (req.http.cookie) {
+           // Request it by a user with session, refresh the cache to avoid issues for editors and forum users
            return (miss);
        }
 
@@ -244,9 +248,15 @@ sub vcl_deliver {
         }
     }
 
+
     if (client.ip ~ debuggers) {
-        if (resp.http.X-Varnish ~ " ") {
+        # In Varnish 4 the obj.hits counter behaviour has changed, so we use a
+        # different method: if X-Varnish contains only 1 id, we have a miss, if it
+        # contains more (and therefore a space), we have a hit.
+        if (resp.http.x-varnish ~ " ") {
             set resp.http.X-Cache = "HIT";
+            set resp.http.X-Cache-Hits = obj.hits;
+            set resp.http.X-Cache-TTL = obj.ttl;
         } else {
             set resp.http.X-Cache = "MISS";
         }

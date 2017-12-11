@@ -37,11 +37,11 @@ parameters:
     cache_dsn: '%env(CACHE_DSN)%'
 
     # Settings for HttpCache
-    purge_servers: '%env(PURGE_SERVERS)%'
+    purge_server: '%env(HTTPCACHE_PURGE_SERVER)%'
 
     # By default cache ttl is set to 24h, when using Varnish you can set a much higher value. High values depends on
     # using EzSystemsPlatformHttpCacheBundle (default as of v1.12) which by design expires affected cache on changes
-    httpcache_ttl: '%env(HTTPCACHE_TTL)%'
+    httpcache_default_ttl: '%env(HTTPCACHE_DEFAULT_TTL)%'
 
     # Fallback values for when environment variables do not exist
 
@@ -60,6 +60,20 @@ parameters:
 
     env(CACHE_DSN): localhost
 
-    env(PURGE_SERVERS): "http://localhost:80"
+    env(HTTPCACHE_PURGE_SERVER): "http://localhost:80"
 
-    env(HTTPCACHE_TTL): 86400
+    env(HTTPCACHE_DEFAULT_TTL): 86400
+
+
+    # Compile time handlers
+    ## These are defined at compile time, and hence can't be set at runtime using env()
+    ## app/config/env/generic.php takes care about letting you set them by env variables
+
+    ## Log type is one of "stream", "error_log" or other types supported by monolog
+    log_type: stream
+
+    ## Mail transport used by SwiftMailer
+    mailer_transport:  smtp
+
+    # Purge type used by HttpCache system ("local", "varnish"/"http", and on ee also "fastly")
+    purge_type: local

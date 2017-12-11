@@ -2,7 +2,7 @@ imports:
     - { resource: default_parameters.yml }
     - { resource: parameters.yml }
     - { resource: security.yml }
-    - { resource: env/docker.php }
+    - { resource: env/generic.php }
     - { resource: env/platformsh.php }
     - { resource: services.yml }
 

@@ -11,16 +11,3 @@ parameters:
     env(DATABASE_NAME): ezplatform
     env(DATABASE_USER): root
     env(DATABASE_PASSWORD):
-
-    # Compile time handlers
-    ## These are defined at compile time, and hence can't be set at runtime using env()
-    ## Compile time env variables mapping of these are set in composer.json
-
-    ## Log type is one of "stream", "error_log" or other types supported by monolog
-    log_type: stream
-
-    ## Mail transport used by SwiftMailer
-    mailer_transport:  smtp
-
-    # Purge type used by HttpCache system
-    purge_type: local
