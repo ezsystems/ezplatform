@@ -77,3 +77,6 @@ parameters:
 
     # Purge type used by HttpCache system ("local", "varnish"/"http", and on ee also "fastly")
     purge_type: local
+
+    # Admin siteaccess group name
+    admin_group_name: admin_group

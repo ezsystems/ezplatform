@@ -18,7 +18,7 @@ kernel.rest:
 ezplatform.admin_ui:
     resource: '@EzPlatformAdminUiBundle/Resources/config/routing.yml'
     defaults:
-        siteaccess_group_whitelist: 'admin_group'
+        siteaccess_group_whitelist: '%admin_group_name%'
 
 _ezplatformRepositoryFormsRoutes:
     resource: '@EzSystemsRepositoryFormsBundle/Resources/config/routing.yml'
