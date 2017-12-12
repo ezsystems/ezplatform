@@ -1,2 +1,19 @@
 imports:
-    - { resource: config_prod.yml }
+    - { resource: config_dev.yml }
+    - { resource: ezplatform_behat.yml }
+
+framework:
+    router:
+        resource: "%kernel.root_dir%/config/routing_behat.yml"
+    profiler:
+        collect: false
+
+web_profiler:
+    toolbar: false
+    intercept_redirects: false
+
+swiftmailer:
+    disable_delivery: true
+
+assetic:
+    use_controller: false
