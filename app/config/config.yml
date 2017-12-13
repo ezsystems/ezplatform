@@ -92,6 +92,7 @@ assetic:
         cssrewrite: ~
         scssphp:
             formatter: 'Leafo\ScssPhp\Formatter\Crunched'
+            import_paths: ['%kernel.project_dir%/web/']
 
 # Swiftmailer Configuration
 swiftmailer:
