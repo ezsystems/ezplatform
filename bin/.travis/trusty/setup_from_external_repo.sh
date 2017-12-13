@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# @deprecated since 2.0, use ./bin/.travis/trusty/setup_ezplatform.sh
+#
 # This script is meant to be reused from other repos that needs to run behat tests.
 #
 # It assumes you have already checked pout ezplatform (to get access to this script) and
@@ -20,6 +22,8 @@
 #  - ./bin/.travis/trusty/setup_from_external_repo.sh $BRANCH_BUILD_DIR "ezsystems/demobundle:dev-tmp_travis_branch"
 #
 # script: docker-compose run -u www-data --rm behatphpcli bin/behat --profile=rest --suite=fullJson --tags=~@broken
+
+echo 'The script setup_from_external_repo is deprecated. Use ./bin/.travis/trusty/setup_ezplatform.sh instead.' >&2
 
 REPO_DIR=$1
 COMPOSER_REQUIRE=${@:2}

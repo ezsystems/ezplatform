@@ -24,6 +24,8 @@ default:
                 env: behat
                 debug: false
 
+        EzSystems\PlatformBehatBundle\ServiceContainer\EzBehatExtension: ~
+
     suites: ~
 
 imports:
@@ -31,3 +33,4 @@ imports:
     - vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishRestBundle/behat_suites.yml
     - vendor/ezsystems/repository-forms/behat_suites.yml
     - vendor/ezsystems/ezplatform-admin-ui/behat_suites.yml
+    - vendor/ezsystems/behatbundle/EzSystems/BehatBundle/behat_suites.yml

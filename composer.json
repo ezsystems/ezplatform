@@ -43,6 +43,7 @@
         "ezsystems/ezplatform-admin-ui": "^1.0@dev",
         "ezsystems/ezplatform-admin-ui-modules": "^1.0@dev",
         "ezsystems/ezplatform-admin-ui-assets": "^0.4",
+        "ezsystems/ezplatform-design-engine": "^1.1",
         "knplabs/knp-menu-bundle": "^2.1",
         "sensio/framework-extra-bundle": "^3.0.2",
         "willdurand/js-translation-bundle": "^2.6.4",
@@ -58,6 +59,8 @@
         "behat/mink-extension": "~2.0",
         "behat/mink-goutte-driver": "~1.0",
         "behat/mink-selenium2-driver": "~1.0",
+        "ezsystems/behatbundle": "^6.5",
+        "phpunit/phpunit": "^6.4",
         "sensio/generator-bundle": "~3.1",
         "symfony/phpunit-bridge": "~3.2"
     },
