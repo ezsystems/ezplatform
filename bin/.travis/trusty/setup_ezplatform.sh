@@ -37,7 +37,7 @@ if [[ -n "${DEPENDENCY_PACKAGE_DIR}" ]]; then
 
     if [[ -z "${DEPENDENCY_PACKAGE_NAME}" ]]; then
         echo 'Missing composer package name of tested dependency' >&2
-        exit 3
+        exit 2
     fi
 fi
 
@@ -63,11 +63,14 @@ if [[ -n "${DEPENDENCY_PACKAGE_NAME}" ]]; then
     # check if dependency exists for current meta-package version
     if [[ ! -d "./vendor/${DEPENDENCY_PACKAGE_NAME}" ]]; then
         echo "Testing dependency failed: package ${DEPENDENCY_PACKAGE_NAME} does not exist" >&2
-        exit 4
+        exit 3
     fi
 
     echo "> Overwrite ./vendor/${DEPENDENCY_PACKAGE_NAME} with ${DEPENDENCY_PACKAGE_DIR}"
-    rm -rf "./vendor/${DEPENDENCY_PACKAGE_NAME}" && mv ${DEPENDENCY_PACKAGE_DIR} "./vendor/${DEPENDENCY_PACKAGE_NAME}"
+    if ! (sudo rm -rf "./vendor/${DEPENDENCY_PACKAGE_NAME}" && sudo mv ${DEPENDENCY_PACKAGE_DIR} "./vendor/${DEPENDENCY_PACKAGE_NAME}"); then
+        echo 'Overwrite failed' >&2
+        exit 4
+    fi
 
     echo '> Clear Symfony cache inside docker app container'
     docker-compose exec --user www-data app sh -c 'php ./bin/console cache:clear --no-warmup && php ./bin/console cache:warmup'
