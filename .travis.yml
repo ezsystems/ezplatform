@@ -36,7 +36,7 @@ before_script:
   # Internal auth token dedicated to testing with travis+composer on ezsystems repos, not for reuse!
   - echo "{\"github-oauth\":{\"github.com\":\"d0285ed5c8644f30547572ead2ed897431c1fc09\"}}" > auth.json
   # Setup eZ Platform inside docker container
-  - /bin/bash ./bin/.travis/trusty/setup_ezplatform.sh "${COMPOSE_FILE}" "${INSTALL_EZ_INSTALL_TYPE}"
+  - /bin/bash ./bin/.travis/trusty/setup_ezplatform.sh "${COMPOSE_FILE}"
   # Execute Symfony command if injected into test matrix
   - if [ "${SYMFONY_CMD}" != "" ] ; then docker-compose exec --user www-data app sh -c "bin/console ${SYMFONY_CMD}" ; fi
   #- docker ps
