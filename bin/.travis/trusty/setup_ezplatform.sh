@@ -11,14 +11,13 @@
 # - ${INSTALL_TYPE}           optional, eZ Platform install type ("clean") will take from .env if not set
 # - ${DEPENDENCY_PACKAGE_DIR} optional, directory containing existing eZ Platform dependency package
 
-
-# Source .env first to make sure we don't override any variables
-. ../../../.env
-
-DEPENDENCY_PACKAGE_DIR=$3
-
 # Determine eZ Platform Build dir as relative to current script path
 EZPLATFORM_BUILD_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../../.." && pwd )"
+
+# Source .env first to make sure we don't override any variables
+. ${EZPLATFORM_BUILD_DIR}/.env
+
+DEPENDENCY_PACKAGE_DIR=$3
 
 if [[ -z "${1}" ]]; then
     COMPOSE_FILE=$COMPOSE_FILE
