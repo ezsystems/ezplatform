@@ -8,24 +8,27 @@
 #
 # Arguments:
 # - ${COMPOSE_FILE}           compose file(s) paths
-# - ${INSTALL_TYPE}           eZ Platform install type ("clean")
+# - ${INSTALL_TYPE}           optional, eZ Platform install type ("clean") will take from .env if not set
 # - ${DEPENDENCY_PACKAGE_DIR} optional, directory containing existing eZ Platform dependency package
-
-COMPOSE_FILE=$1
-INSTALL_TYPE=$2
-DEPENDENCY_PACKAGE_DIR=$3
 
 # Determine eZ Platform Build dir as relative to current script path
 EZPLATFORM_BUILD_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../../.." && pwd )"
 
-if [[ -z "${COMPOSE_FILE}" ]]; then
-    echo 'Argument 1 should contain path to compose file(s). None given.' >&2
-    exit 1
+# Source .env first to make sure we don't override any variables
+. ${EZPLATFORM_BUILD_DIR}/.env
+
+DEPENDENCY_PACKAGE_DIR=$3
+
+if [[ -z "${1}" ]]; then
+    COMPOSE_FILE=$COMPOSE_FILE
+else
+    COMPOSE_FILE=$1
 fi
 
-if [[ -z "${INSTALL_TYPE}" ]]; then
-    echo 'Argument 2 should contain eZ Platform install type. None given' >&2
-    exit 2
+if [[ -z "${2}" ]]; then
+    INSTALL_TYPE=$INSTALL_EZ_INSTALL_TYPE
+else
+    INSTALL_TYPE=$2
 fi
 
 if [[ -n "${DEPENDENCY_PACKAGE_DIR}" ]]; then
