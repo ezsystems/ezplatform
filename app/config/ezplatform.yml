@@ -13,9 +13,14 @@ ezpublish:
 
     # Siteaccess configuration, with one siteaccess per default
     siteaccess:
-        list: [site]
+        list: [site, admin]
         groups:
             site_group: [site]
+
+            # WARNING: Do not remove or rename this group.
+            # It's used to distinguish common siteaccesses from admin ones.
+            # In case of multisite with multiple admin panels, remember to add any additional admin siteaccess to this group.
+            admin_group: [admin]
         default_siteaccess: site
         match:
             URIElement: 1
@@ -41,5 +46,17 @@ ezpublish:
             http_cache:
                 purge_servers: ['%purge_server%']
             # Temporary hard coding session name during v2 development
+            session:
+                name: eZSESSID
+
+        # WARNING: Do not remove or rename this group.
+        admin_group:
+            cache_service_name: '%cache_pool%'
+            var_dir: var/site
+            languages: [eng-GB]
+            content:
+                default_ttl: '%httpcache_default_ttl%'
+            http_cache:
+                purge_servers: ['%purge_server%']
             session:
                 name: eZSESSID
