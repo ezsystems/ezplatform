@@ -57,6 +57,7 @@
         "ezsystems/ezstudio-cron": "^1.0",
         "ezsystems/ezstudio-installer": "^2.0@dev",
         "ezsystems/platform-ui-assets-bundle": "^5.0.0",
+        "ezsystems/ezplatform-http-cache-fastly": "^1.0@dev",
         "knplabs/knp-menu-bundle": "^2.1",
         "sensio/framework-extra-bundle": "^3.0.2",
         "willdurand/js-translation-bundle": "^2.6.4",
