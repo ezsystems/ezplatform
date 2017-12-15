@@ -37,6 +37,7 @@ ezplatform.ee.form_builder:
 
 ezplatform.ee.date_based_publisher:
     resource: '@EzSystemsDateBasedPublisherBundle/Resources/config/routing.yml'
+    prefix: '%ez_systems_date_based_publisher_rest_prefix%'
 
 ezplatform.ee.flex_workflow:
     resource: '@FlexWorkflowBundle/Resources/config/routing.yml'
