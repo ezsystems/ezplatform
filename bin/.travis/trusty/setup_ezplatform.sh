@@ -51,30 +51,48 @@ fi
 echo '> Remove XDebug PHP extension'
 phpenv config-rm xdebug.ini
 
+# Handle dependency if needed
+if [[ -n "${DEPENDENCY_PACKAGE_NAME}" ]]; then
+    # get dependency branch alias
+    BRANCH_ALIAS=`php -r "echo json_decode(file_get_contents('${DEPENDENCY_PACKAGE_DIR}/composer.json'))->extra->{'branch-alias'}->{'dev-master'};"`
+    if [[ $? -ne 0 || -z "${BRANCH_ALIAS}" ]]; then
+        echo 'Failed to determine branch alias. Add extra.branch-alias.dev-master config key to your tested dependency composer.json' >&2
+        exit 3
+    fi
+
+    # move dependency to directory available for docker volume
+    BASE_PACKAGE_NAME=`basename ${DEPENDENCY_PACKAGE_NAME}`
+    echo "> Move ${DEPENDENCY_PACKAGE_DIR} to ${EZPLATFORM_BUILD_DIR}/${BASE_PACKAGE_NAME}"
+    mv ${DEPENDENCY_PACKAGE_DIR} ${EZPLATFORM_BUILD_DIR}/${BASE_PACKAGE_NAME}
+
+    echo "> Create temporary branch in ${DEPENDENCY_PACKAGE_NAME}"
+    cd ${EZPLATFORM_BUILD_DIR}/${BASE_PACKAGE_NAME}
+    # reuse HEAD commit id for better knowledge about what got checked out
+    TMP_TRAVIS_BRANCH=tmp_`git rev-parse --short HEAD`
+    git checkout -b ${TMP_TRAVIS_BRANCH}
+
+    # go back to previous directory
+    cd -
+fi
+
 echo "> Start docker containers specified by ${COMPOSE_FILE}"
 docker-compose up -d
 docker-compose exec app sh -c 'chown -R www-data:www-data /var/www'
 
-echo '> Run composer install inside docker app container'
-docker-compose exec --user www-data app sh -c 'COMPOSER_HOME=$HOME/.composer composer install --no-suggest --no-progress --no-interaction --prefer-dist --optimize-autoloader'
-
-# Handle dependency if needed
 if [[ -n "${DEPENDENCY_PACKAGE_NAME}" ]]; then
-    # check if dependency exists for current meta-package version
-    if [[ ! -d "./vendor/${DEPENDENCY_PACKAGE_NAME}" ]]; then
-        echo "Testing dependency failed: package ${DEPENDENCY_PACKAGE_NAME} does not exist" >&2
+    # use local checkout path relative to docker volume
+    echo "> Make composer use tested dependency local checkout ${TMP_TRAVIS_BRANCH} of ${BASE_PACKAGE_NAME}"
+    docker-compose exec --user www-data app sh -c "COMPOSER_HOME=~/.composer composer config repositories.localDependency git ~/${BASE_PACKAGE_NAME}"
+
+    echo "> Require ${DEPENDENCY_PACKAGE_NAME}:dev-${TMP_TRAVIS_BRANCH} as ${BRANCH_ALIAS}"
+    if ! docker-compose exec --user www-data app sh -c "COMPOSER_HOME=~/.composer composer require --no-update '${DEPENDENCY_PACKAGE_NAME}:dev-${TMP_TRAVIS_BRANCH} as ${BRANCH_ALIAS}'"; then
+        echo 'Failed requiring dependency' >&2
         exit 3
     fi
-
-    echo "> Overwrite ./vendor/${DEPENDENCY_PACKAGE_NAME} with ${DEPENDENCY_PACKAGE_DIR}"
-    if ! (sudo rm -rf "./vendor/${DEPENDENCY_PACKAGE_NAME}" && sudo mv ${DEPENDENCY_PACKAGE_DIR} "./vendor/${DEPENDENCY_PACKAGE_NAME}"); then
-        echo 'Overwrite failed' >&2
-        exit 4
-    fi
-
-    echo '> Clear Symfony cache inside docker app container'
-    docker-compose exec --user www-data app sh -c 'php ./bin/console cache:clear --no-warmup && php ./bin/console cache:warmup'
 fi
+
+echo '> Run composer install inside docker app container'
+docker-compose exec --user www-data app sh -c 'COMPOSER_HOME=~/.composer composer install --no-suggest --no-progress --no-interaction --prefer-dist --optimize-autoloader'
 
 echo '> Install data'
 docker-compose exec --user www-data app sh -c "php /scripts/wait_for_db.php; php bin/console ezplatform:install ${INSTALL_TYPE}"
