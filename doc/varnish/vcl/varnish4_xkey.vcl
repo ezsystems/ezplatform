@@ -23,11 +23,19 @@ sub vcl_recv {
     // Set the backend
     set req.backend_hint = ezplatform;
 
-    // Advertise Symfony for ESI support
+    // Add a Surrogate-Capability header to announce ESI support.
     set req.http.Surrogate-Capability = "abc=ESI/1.0";
 
     // Varnish, in its default configuration, sends the X-Forwarded-For header but does not filter out Forwarded header
+    // To be removed in Symfony 3.3
     unset req.http.Forwarded;
+
+    // Ensure that the Symfony Router generates URLs correctly with Varnish
+    if (req.http.X-Forwarded-Proto == "https" ) {
+        set req.http.X-Forwarded-Port = "443";
+    } else {
+        set req.http.X-Forwarded-Port = "80";
+    }
 
     // Trigger cache purge if needed
     call ez_purge;
@@ -244,9 +252,15 @@ sub vcl_deliver {
         }
     }
 
+
     if (client.ip ~ debuggers) {
-        if (resp.http.X-Varnish ~ " ") {
+        # In Varnish 4 the obj.hits counter behaviour has changed, so we use a
+        # different method: if X-Varnish contains only 1 id, we have a miss, if it
+        # contains more (and therefore a space), we have a hit.
+        if (resp.http.x-varnish ~ " ") {
             set resp.http.X-Cache = "HIT";
+            set resp.http.X-Cache-Hits = obj.hits;
+            set resp.http.X-Cache-TTL = obj.ttl;
         } else {
             set resp.http.X-Cache = "MISS";
         }
