@@ -155,7 +155,7 @@ https://doc.ezplatform.com/en/latest/getting_started/install_using_composer/
     $ php -d memory_limit=-1 bin/console ezplatform:install --env prod clean
     ```
 
-    **Note**: Password for the generated `admin` user is `publish`, this name and password is needed when you would like to login to backend Platform UI. Future versions will prompt you for a unique password during installation.
+    **Note**: Password for the generated `admin` user is `publish`, this name and password is needed when you would like to login to backend Admin UI where you can and should change this.
 
 
 4. **Configure a VirtualHost**<a name="install-3-vhost"></a>:
@@ -178,7 +178,5 @@ https://doc.ezplatform.com/en/latest/getting_started/install_using_composer/
     $ php bin/console server:run
     ```
 
-    *Note: While far from meant for production use, you can run the command above with `--env=prod` to disable debug.*
 
-
-You can now point your browser to the installation and browse the site. To access the Platform UI backend, use the `/ez` URL.
+You can now point your browser to the installation and browse the site. To access the Admin UI backend, use the `/admin` URL.
