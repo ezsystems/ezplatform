@@ -62,5 +62,8 @@ ezpublish:
                 default_ttl: '%httpcache_default_ttl%'
             http_cache:
                 purge_servers: ['%purge_server%']
+                fastly:
+                    service_id: '%fastly_service_id%'
+                    key: '%fastly_key%'
             session:
                 name: eZSESSID
