@@ -1,5 +1,6 @@
 ezpublish:
     # HttpCache settings, By default 'local' (Symfony HttpCache Proxy), by setting it to 'http' you can point it to Varnish
+    # You may also set it to 'fastly' if you want to use the fastly CDN
     http_cache:
         purge_type: '%purge_type%'
 
@@ -44,8 +45,11 @@ ezpublish:
               default_ttl: '%httpcache_default_ttl%'
             # HttpCache purge server(s) setting, eg Varnish, for when ezpublish.http_cache.purge_type is set to 'http'.
             http_cache:
+                # If using fastly, 'purge_server' must be set to 'https://api.fastly.com'
                 purge_servers: ['%purge_server%']
-            # Temporary hard coding session name during v2 development
+                fastly:
+                    service_id: '%fastly_service_id%'
+                    key: '%fastly_key%'
             session:
                 name: eZSESSID
 

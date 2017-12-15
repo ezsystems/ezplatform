@@ -1,0 +1,8 @@
+v: 0
+
+# ci
+integrate:
+  command: "bin/behat"
+  matrix:
+  # Run 'common' tagged behat scenarios on ezplatform-ee install
+    - {arguments: "-v --profile cleanMeta --tags common --strict", install: "studio-clean"}

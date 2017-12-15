@@ -39,6 +39,9 @@ parameters:
     # Settings for HttpCache
     purge_server: '%env(HTTPCACHE_PURGE_SERVER)%'
 
+    fastly_service_id: default_service_id
+    fastly_key: default_fastly_key
+
     # By default cache ttl is set to 24h, when using Varnish you can set a much higher value. High values depends on
     # using EzSystemsPlatformHttpCacheBundle (default as of v1.12) which by design expires affected cache on changes
     httpcache_default_ttl: '%env(HTTPCACHE_DEFAULT_TTL)%'

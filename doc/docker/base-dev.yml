@@ -22,6 +22,8 @@ services:
      - RECOMMENDATIONS_CUSTOMER_ID
      - RECOMMENDATIONS_LICENSE_KEY
      - PUBLIC_SERVER_URI
+     - FASTLY_SERVICE_ID
+     - FASTLY_KEY
     networks:
      - backend
 
