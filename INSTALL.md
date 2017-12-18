@@ -54,15 +54,15 @@ https://doc.ezplatform.com/en/latest/getting_started/install_using_composer/
 
        ```bash
        $ curl -sS https://getcomposer.org/installer | php
-       $ php -d memory_limit=-1 composer.phar create-project --no-dev ezsystems/ezplatform ^2.0
-       $ cd /ezplatform/
+       $ php -d memory_limit=-1 composer.phar create-project ezsystems/ezplatform ezplatform2 ^2.0
+       $ cd /ezplatform2/
        ```
 
-     Arguments *(also see `php composer.phar create-project -h`)*:
+     Arguments *(also see `composer create-project -h`)*:
        - `<package>`: Distribution to install, `ezsystems/ezplatform` is a clean installs of eZ Platform, others:
         - `ezsystems/ezplatform-demo`: Adds a demo site as an example of eZ Platform web site.
         - `ezsystems/ezplatform-ee`: Commercial flavour that adds additional capabilities, see [ez.no](https://ez.no/Products/eZ-Platform-Enterprise-Edition).
-       - `<directory>`: Folder to extract to, if omitted same as package name so in example: `ezplatform`.
+       - `<directory>`: Folder to extract to, if omitted same as package name. In example specificed to `ezplatform2`.
        - `<version>`: Optional, *when omitted you'll get latest stable*. Examples:
         - `^2.0@beta`: To pick latests 2.x beta release, to pick latests 2.0.x release use `~2.0.0`.
         - `v2.0.1` : To pick a specific tag, could also have been `v2.0.0-beta4`
