@@ -65,9 +65,9 @@ if [ "$RUN_INSTALL" = "1" ] ; then
   composer install --no-progress --no-interaction --prefer-dist --optimize-autoloader
   mkdir -p web/var
   rm -Rf var/logs/* var/cache/*/*
-  sudo chown -R www-data:www-data var/cache var/logs web/var
-  find var/cache var/logs web/var -type d | xargs chmod -R 775
-  find var/cache var/logs web/var -type f | xargs chmod -R 664
+  sudo chown -R www-data:www-data var web/var
+  find var web/var -type d | xargs chmod -R 775
+  find var web/var -type f | xargs chmod -R 664
   # Do NOT use this for your prod setup, this is done like this for behat
   sudo chown -R www-data:www-data app/config src
   #docker-compose -f doc/docker/install.yml up --abort-on-container-exit
