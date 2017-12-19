@@ -77,22 +77,25 @@ fi
 
 echo "> Start docker containers specified by ${COMPOSE_FILE}"
 docker-compose up -d
-docker-compose exec app sh -c 'chown -R www-data:www-data /var/www'
 
 if [[ -n "${DEPENDENCY_PACKAGE_NAME}" ]]; then
     # use local checkout path relative to docker volume
     echo "> Make composer use tested dependency local checkout ${TMP_TRAVIS_BRANCH} of ${BASE_PACKAGE_NAME}"
-    docker-compose exec --user www-data app sh -c "COMPOSER_HOME=~/.composer composer config repositories.localDependency git ~/${BASE_PACKAGE_NAME}"
+    docker-compose exec app sh -c "composer config repositories.localDependency git /var/www/${BASE_PACKAGE_NAME}"
 
     echo "> Require ${DEPENDENCY_PACKAGE_NAME}:dev-${TMP_TRAVIS_BRANCH} as ${BRANCH_ALIAS}"
-    if ! docker-compose exec --user www-data app sh -c "COMPOSER_HOME=~/.composer composer require --no-update '${DEPENDENCY_PACKAGE_NAME}:dev-${TMP_TRAVIS_BRANCH} as ${BRANCH_ALIAS}'"; then
+    if ! docker-compose exec app sh -c "composer require --no-update '${DEPENDENCY_PACKAGE_NAME}:dev-${TMP_TRAVIS_BRANCH} as ${BRANCH_ALIAS}'"; then
         echo 'Failed requiring dependency' >&2
         exit 3
     fi
 fi
 
 echo '> Run composer install inside docker app container'
-docker-compose exec --user www-data app sh -c 'COMPOSER_HOME=~/.composer composer install --no-suggest --no-progress --no-interaction --prefer-dist --optimize-autoloader'
+docker-compose exec app sh -c 'composer install --no-suggest --no-progress --no-interaction --prefer-dist --optimize-autoloader'
+
+# for behat builds to work
+echo '> Change ownership of files inside docker container'
+docker-compose exec app sh -c 'chown -R www-data:www-data /var/www'
 
 echo '> Install data'
 docker-compose exec --user www-data app sh -c "php /scripts/wait_for_db.php; php bin/console ezplatform:install ${INSTALL_TYPE}"
