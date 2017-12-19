@@ -54,9 +54,9 @@ phpenv config-rm xdebug.ini
 # Handle dependency if needed
 if [[ -n "${DEPENDENCY_PACKAGE_NAME}" ]]; then
     # get dependency branch alias
-    BRANCH_ALIAS=`php -r "echo json_decode(file_get_contents('${DEPENDENCY_PACKAGE_DIR}/composer.json'))->extra->{'branch-alias'}->{'dev-master'};"`
+    BRANCH_ALIAS=`php -r "echo json_decode(file_get_contents('${DEPENDENCY_PACKAGE_DIR}/composer.json'))->extra->{'branch-alias'}->{'dev-tmp_ci_branch'};"`
     if [[ $? -ne 0 || -z "${BRANCH_ALIAS}" ]]; then
-        echo 'Failed to determine branch alias. Add extra.branch-alias.dev-master config key to your tested dependency composer.json' >&2
+        echo 'Failed to determine branch alias. Add extra.branch-alias.dev-tmp_ci_branch config key to your tested dependency composer.json' >&2
         exit 3
     fi
 
