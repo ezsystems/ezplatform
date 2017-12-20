@@ -57,8 +57,8 @@ if [ "$RUN_INSTALL" = "1" ] ; then
     composer require --no-update "$COMPOSER_REQUIRE"
     cat composer.json
   fi
-  echo "> Run composer install"
-  composer install --no-progress --no-interaction --prefer-dist --optimize-autoloader
+  echo "> Run composer install (try 3 times)"
+  for i in $(seq 1 3); do composer install --no-progress --no-interaction --prefer-dist --optimize-autoloader && s=0 && break || s=$? && sleep 1; done; (exit $s)
   mkdir -p web/var
   rm -Rf app/logs/* app/cache/*/*
   sudo chown -R www-data:www-data app/cache app/logs web/var
