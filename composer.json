@@ -44,7 +44,7 @@
         "ezsystems/ez-support-tools": "~0.2.1@dev",
         "ezsystems/ezplatform-http-cache": "^0.4@dev",
         "ezplatform-i18n/ezplatform-i18n-ach_ug": "^1.5@dev",
-        "ezsystems/studio-ui-bundle": "^1.12@dev",
+        "ezsystems/studio-ui-bundle": "^1.13@dev",
         "ezsystems/ezstudio-notifications": "^1.2@dev",
         "ezsystems/landing-page-fieldtype-bundle": "^1.12@dev",
         "ezsystems/flex-workflow": "^1.9@dev",
