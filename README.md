@@ -1,5 +1,9 @@
 # eZ Platform Enterprise Edition
 
+[![Build Status](https://img.shields.io/travis/ezsystems/ezplatform-ee.svg?style=flat-square)](https://travis-ci.org/ezsystems/ezplatform-ee)
+[![Latest release](https://img.shields.io/github/release/ezsystems/ezplatform-ee.svg?style=flat-square)](https://github.com/ezsystems/ezplatform-ee/releases)
+[![License](https://img.shields.io/packagist/l/ezsystems/ezplatform-ee.svg?style=flat-square)](LICENSE)
+
 ## What is eZ Platform Enterprise Edition?
 *eZ Platform Enterprise Edition* is commercial CMS (Content Management System) software developed by eZ Systems.
 
@@ -30,9 +34,6 @@ In short, Enterprise comes with new features and services that extend eZ Platfor
 ### Further information:
 *eZ Platform Enterprise Edition* is commercial software which adds advanced features for editorial teams and media companies, 100% built on top of *eZ Platform* APIs.
 
-- [eZ Enterprise Architecture, including "Platform Stack"](https://doc.ez.no/display/DEVELOPER/Architecture:+An+Open+Source+PHP+CMS+Built+On+Symfony2+Full+Stack)
-- eZ Systems *(commercial products and services)*: [ez.no](http://ez.no)
-- eZ Community: [share.ez.no](http://ez.no)
 - eZ Platform Developer Hub: [ezplatform.com](https://ezplatform.com/)
 - [eZ Platform Open Source and Enterprise Edition roadmap](http://doc.ez.no/roadmap)
 - eZ Systems (commercial products and services): [ez.no](https://ez.no/)
@@ -54,10 +55,11 @@ If you discover a security issue, please see how to responsibly report such issu
 eZ Platform aims to be **100% content compatible** with eZ Publish 5.x, 4.x and 3.x *(introduced in 2002)*, meaning that content in those versions of the CMS can be upgraded using
 [online documentation](http://doc.ez.no/eZ-Publish/Upgrading) to eZ Platform.
 
-You can also consider using eZ Platform [LegacyBridge](https://github.com/ezsystems/LegacyBridge/releases/) to allow eZ Platform and eZ Publish Legacy to run together.
+Unlike eZ Publish Platform 5.x, eZ Platform does not ship with eZ Publish Legacy (4.x). But this is available by optional installing [LegacyBridge](https://github.com/ezsystems/LegacyBridge/releases/) to allow eZ Platform and eZ Publish Legacy to run together, this is only recommended for migration use cases and not for new installations.
 
 ## COPYRIGHT
 Copyright (C) 1999-2018 eZ Systems AS. All rights reserved.
 
 ## LICENSE
-http://ez.no/Products/About-our-Software/Licenses-and-agreements/eZ-Business-Use-License-Agreement-eZ-BUL-Version-2.1 eZ Business Use License Agreement eZ BUL Version 2.1
+- http://ez.no/Products/About-our-Software/Licenses-and-agreements/eZ-Business-Use-License-Agreement-eZ-BUL-Version-2.1 eZ Business Use License Agreement eZ BUL Version 2.1
+- https://ez.no/About-our-Software/Licenses-and-agreements/eZ-Trial-and-Test-License-Agreement-eZ-TTL-v2.0 eZ Trial and Test License Agreement (eZ TTL) v2.0

@@ -2,7 +2,7 @@
     "name": "ezsystems/ezplatform-ee",
     "description": "eZ Platform Enterprise Edition distribution",
     "homepage": "https://github.com/ezsystems/ezplatform-ee",
-    "license": "GPL-2.0",
+    "license": "proprietary",
     "type": "project",
     "authors": [
         {
