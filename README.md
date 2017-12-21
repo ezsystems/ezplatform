@@ -1,6 +1,5 @@
 # eZ Platform Enterprise Edition
 
-[![Build Status](https://img.shields.io/travis/ezsystems/ezplatform-ee.svg?style=flat-square)](https://travis-ci.org/ezsystems/ezplatform-ee)
 [![Latest release](https://img.shields.io/github/release/ezsystems/ezplatform-ee.svg?style=flat-square)](https://github.com/ezsystems/ezplatform-ee/releases)
 [![License](https://img.shields.io/packagist/l/ezsystems/ezplatform-ee.svg?style=flat-square)](LICENSE)
 
