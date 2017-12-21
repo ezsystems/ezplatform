@@ -45,7 +45,7 @@
         "ezsystems/ezplatform-http-cache": "^0.4@dev",
         "ezsystems/ezplatform-admin-ui": "^1.0@dev",
         "ezsystems/ezplatform-admin-ui-modules": "^1.0@dev",
-        "ezsystems/ezplatform-admin-ui-assets": "^0.4",
+        "ezsystems/ezplatform-admin-ui-assets": "^0.5",
         "ezsystems/ezplatform-design-engine": "^1.1",
         "ezsystems/platform-ui-bundle": "^2.0@dev",
         "ezsystems/studio-ui-bundle": "^2.0@dev",

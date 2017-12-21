@@ -14,8 +14,9 @@ While this meta repository, `ezplatform-ee`, is public to ease installation and 
   Or by setting up [Composer Authentication Tokens](https://doc.ez.no/display/DEVELOPER/Using+Composer) for use in combination with this repository.
 
 ## eZ Platform Enterprise Edition vs. eZ Platform
-[eZ Platform Enterprise Edition](https://ez.no/Products/eZ-Platform-Enterprise-Edition) is a distribution flavor of [eZ Platform](http://ezplatform.com/), the next generation CMS which uses the same Symfony-based kernel as *eZ Platform* (formerly known also as *eZ Publish 6*).
+[eZ Platform Enterprise Edition](https://ez.no/Products/eZ-Platform-Enterprise-Edition) is a distribution flavor of [eZ Platform](http://ezplatform.com/), our Symfony-based enterprise level open source CMS.
 In short, Enterprise comes with new features and services that extend eZ Platform functionality for media industry and team collaboration.
+
 
 ### Abstract:
 - **Very extensible** *You can extend the application and the content model in many ways*
@@ -25,19 +26,6 @@ In short, Enterprise comes with new features and services that extend eZ Platfor
 - **Future proof** *Architecture designed to allow even more content scalability and performance in the future*
 - **Stable** *Built on experience in customizing and extending the highly flexible CMS solutions since early 2000, and in production since 2014*
 - **Integration friendly** *Numerous events and signals to hook into for advanced workflow needs*
-
-### Main packages:
-- **ezpublish-kernel** (building on top of **Symfony Framework**):
- - Content Repository with a highly flexible content model exposed via a Public API.<br>
-   Out of the box powered by SQL *Storage Engine* using [Doctrine DBAL](http://doctrine-dbal.readthedocs.org/en/latest/reference/configuration.html#driver),
-   data cache implementation using [Stash](http://www.stashphp.com/Drivers.html) and binary file system handled by [Flysystem](https://github.com/thephpleague/flysystem#adapters).
-   Improved *Storage Engine* planned, custom implementation for increased data scalability already possible.
- - Powerful (& extensible) Content Query engine, currently powered by SQL, soon Solr/ElasticSearch
- - Very high performance thanks to content & user aware HTTP <sup>"view"</sup> cache (now [using](https://github.com/FriendsOfSymfony/FOSHttpCacheBundle))
- - Introduces concept of "web sites" allowing you to manage several within one installation
- - Allows to rapidly set up *Contextual override* of content display twig templates as well as controller based on Content type, section, and much more.
- - Helpers, services, events and signals allowing you to efficiently create everything from simple web sites to complex applications
-- **PlatformUIBundle**: A modern, extensible "backend" UI for managing content & administering the site
 
 ### Further information:
 *eZ Platform Enterprise Edition* is commercial software which adds advanced features for editorial teams and media companies, 100% built on top of *eZ Platform* APIs.
@@ -56,28 +44,20 @@ For simplified installation, rather consider using [eZ Launchpad](https://ezsyst
 ## Requirements
 Full requirements can be found on the [Requirements](https://doc.ez.no/pages/viewpage.action?pageId=31429536) page.
 
-*TL;DR: supported PHP versions are 5.6, 7.0 and 7.1 (for dev use), using mod_php or php-fpm, and either MySQL 5.5/5.6 or MariaDB 10.0/10.1.*
+*TL;DR: supported PHP versions are 7.1 and up, using php-fpm or mod_php, and either MySQL 5.5/5.6 or MariaDB 10.0/10.1.*
 
 ## Issue tracker
 Submitting bugs, improvements and stories is possible on https://jira.ez.no/browse/EZEE.
 If you discover a security issue, please see how to responsibly report such issues on https://doc.ez.no/Security.
 
-## Running BDD
-For instruction on how to run the functional tests, see [RUNNING_BEHAT.md](https://github.com/ezsystems/ezplatform/blob/master/RUNNING_BEHAT.md).
-
 ## Backwards compatibility
 eZ Platform aims to be **100% content compatible** with eZ Publish 5.x, 4.x and 3.x *(introduced in 2002)*, meaning that content in those versions of the CMS can be upgraded using
 [online documentation](http://doc.ez.no/eZ-Publish/Upgrading) to eZ Platform.
 
-Unlike eZ Publish Platform 5.x, eZ Platform Enterprise Edition does not ship with eZ Publish Legacy (4.x). For Platform kernel use combined
-with legacy, eZ Publish Platform 5.4 is the most stable choice, offering support and maintenance updates until 2021.
-Alternative is releases of eZ Publish Community, latest as of Oct 2015 is v2014.11 found at
-[ezpublish-community](https://github.com/ezsystems/ezpublish-community).
-
 You can also consider using eZ Platform [LegacyBridge](https://github.com/ezsystems/LegacyBridge/releases/) to allow eZ Platform and eZ Publish Legacy to run together.
 
 ## COPYRIGHT
-Copyright (C) 1999-2017 eZ Systems AS. All rights reserved.
+Copyright (C) 1999-2018 eZ Systems AS. All rights reserved.
 
 ## LICENSE
 http://ez.no/Products/About-our-Software/Licenses-and-agreements/eZ-Business-Use-License-Agreement-eZ-BUL-Version-2.1 eZ Business Use License Agreement eZ BUL Version 2.1

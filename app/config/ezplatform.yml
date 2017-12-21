@@ -50,8 +50,6 @@ ezpublish:
                 fastly:
                     service_id: '%fastly_service_id%'
                     key: '%fastly_key%'
-            session:
-                name: eZSESSID
 
         # WARNING: Do not remove or rename this group.
         admin_group:
@@ -65,5 +63,3 @@ ezpublish:
                 fastly:
                     service_id: '%fastly_service_id%'
                     key: '%fastly_key%'
-            session:
-                name: eZSESSID
