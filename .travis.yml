@@ -28,6 +28,9 @@ branches:
     - master
     - /^\d.\d+$/
 
+# Update Docker and Docker Compose
+before_install: ./bin/.travis/trusty/update_docker.sh
+
 before_script:
   # Internal auth token dedicated to testing with travis+composer on ezsystems repos, not for reuse!
   - echo "{\"github-oauth\":{\"github.com\":\"d0285ed5c8644f30547572ead2ed897431c1fc09\"}}" > auth.json
