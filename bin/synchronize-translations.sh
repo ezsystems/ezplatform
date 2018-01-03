@@ -7,18 +7,15 @@ echo '# Clean corresponding ezplatform-i18n folder';
 rm ./vendor/ezsystems/ezplatform-i18n/platform-ui-bundle/*.xlf
 rm ./vendor/ezsystems/ezplatform-i18n/ezpublish-kernel/*.xlf
 rm ./vendor/ezsystems/ezplatform-i18n/repository-forms/*.xlf
-rm ./vendor/ezsystems/ezplatform-i18n/hybrid-platform-ui/*.xlf
 
 echo '# Mirror the translation files';
 cp ./vendor/ezsystems/platform-ui-bundle/Resources/translations/*.xlf ./vendor/ezsystems/ezplatform-i18n/platform-ui-bundle
 cp ./vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishCoreBundle/Resources/translations/*.xlf ./vendor/ezsystems/ezplatform-i18n/ezpublish-kernel
 cp ./vendor/ezsystems/repository-forms/bundle/Resources/translations/*.xlf ./vendor/ezsystems/ezplatform-i18n/repository-forms
-cp ./vendor/ezsystems/hybrid-platform-ui/src/bundle/Resources/translations/*.xlf ./vendor/ezsystems/ezplatform-i18n/hybrid-platform-ui
 
 echo '# Rename file to fit to crowdin format';
 rename 's/\.en\./\./g' ./vendor/ezsystems/ezplatform-i18n/platform-ui-bundle/*
 rename 's/\.en\./\./g' ./vendor/ezsystems/ezplatform-i18n/ezpublish-kernel/*
 rename 's/\.en\./\./g' ./vendor/ezsystems/ezplatform-i18n/repository-forms/*
-rename 's/\.en\./\./g' ./vendor/ezsystems/ezplatform-i18n/hybrid-platform-ui/*
 
 echo 'Translation synchronization done !';

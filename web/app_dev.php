@@ -1,12 +1,6 @@
 <?php
-
-use Symfony\Component\Debug\Debug;
-use Symfony\Component\HttpFoundation\Request;
-
-// If you don't want to setup permissions the proper way, just uncomment the following PHP line
-// read https://symfony.com/doc/current/setup.html#checking-symfony-application-configuration-and-setup
-// for more information
-//umask(0000);
+// This file is mainly here for use with symfony server commands.
+// Recommended rewrite rules for apache and nginx does not use this.
 
 // If you don't want to setup permissions the proper way (in dev), just uncomment the following PHP line
 // read https://symfony.com/doc/current/setup.html#checking-symfony-application-configuration-and-setup
@@ -23,12 +17,6 @@ if (isset($_SERVER['HTTP_CLIENT_IP'])
     exit('You are not allowed to access this file. Check ' . basename(__FILE__) . ' for more information.');
 }
 
-require __DIR__ . '/../vendor/autoload.php';
-Debug::enable();
+putenv('SYMFONY_ENV=dev');
 
-$kernel = new AppKernel('dev', true);
-
-$request = Request::createFromGlobals();
-$response = $kernel->handle($request);
-$response->send();
-$kernel->terminate($request, $response);
+require 'app.php';

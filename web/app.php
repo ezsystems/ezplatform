@@ -1,6 +1,7 @@
 <?php
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Debug\Debug;
 
 // Ensure UTF-8 is used in string operations
 setlocale(LC_CTYPE, 'C.UTF-8');
@@ -25,11 +26,12 @@ if ($useDebugging) {
 $kernel = new AppKernel($environment, $useDebugging);
 
 // Depending on the SYMFONY_HTTP_CACHE environment variable, tells whether the internal HTTP Cache mechanism is to be used.
-// If not set, or "", it is auto activated
+// If not set, or "", it is auto activated if _not_ in "dev" environment.
 if (($useHttpCache = getenv('SYMFONY_HTTP_CACHE')) === false || $useHttpCache === '') {
-    $useHttpCache = true;
+    $useHttpCache = $environment !== 'dev';
 }
 
+// Load HTTP Cache ...
 if ($useHttpCache) {
     $kernel = new AppCache($kernel);
 
