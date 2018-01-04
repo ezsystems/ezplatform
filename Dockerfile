@@ -35,6 +35,6 @@ ENV SYMFONY_ENV=prod
 COPY --from=builder /var/www /var/www
 
 # Fix permissions for www-data
-RUN chown -R www-data:www-data var web/var \
-    && find var web/var -type d -print0 | xargs -0 chmod -R 775 \
-    && find var web/var -type f -print0 | xargs -0 chmod -R 664
+RUN chown -R www-data:www-data var \
+    && find var -type d -print0 | xargs -0 chmod -R 775 \
+    && find var -type f -print0 | xargs -0 chmod -R 664

@@ -12,8 +12,8 @@ COPY --from=builder /var/www /var/www
 WORKDIR /var/www
 
 # Fix permissions for www-data
-RUN chown -R www-data:www-data app/cache app/logs \
-    && find app/cache app/logs -type d -print0 | xargs -0 chmod -R 775 \
-    && find app/cache app/logs -type f -print0 | xargs -0 chmod -R 664
+RUN chown -R www-data:www-data var/cache var/logs \
+    && find var/cache var/logs -type d -print0 | xargs -0 chmod -R 775 \
+    && find var/cache var/logs -type f -print0 | xargs -0 chmod -R 664
 
 VOLUME ["/var/www"]
