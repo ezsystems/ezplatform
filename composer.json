@@ -42,7 +42,7 @@
         "ezsystems/ezplatform-http-cache": "^0.4@dev",
         "ezsystems/ezplatform-admin-ui": "^1.0@dev",
         "ezsystems/ezplatform-admin-ui-modules": "^1.0@dev",
-        "ezsystems/ezplatform-admin-ui-assets": "^0.5",
+        "ezsystems/ezplatform-admin-ui-assets": "^1.0@dev",
         "ezsystems/ezplatform-design-engine": "^1.1",
         "knplabs/knp-menu-bundle": "^2.1",
         "sensio/framework-extra-bundle": "^3.0.2",
