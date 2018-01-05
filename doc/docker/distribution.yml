@@ -52,6 +52,7 @@ services:
      - TIMEOUT=190
     volumes:
      - distribution:/var/www:ro
+     - vardir:/var/www/web/var:ro
     networks:
      - frontend
      - backend
