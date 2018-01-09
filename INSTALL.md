@@ -87,7 +87,7 @@ https://doc.ezplatform.com/en/latest/getting_started/install_using_composer/
        user if non standard:
 
        ```bash
-       $ rm -rf var/cache/* var/logs/*
+       $ rm -rf var/cache/* var/logs/* var/sessions/*
        $ HTTPDUSER=$(ps axo user,comm | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1)
        $ sudo chmod +a "$HTTPDUSER allow delete,write,append,file_inherit,directory_inherit" var web/var
        $ sudo chmod +a "$(whoami) allow delete,write,append,file_inherit,directory_inherit" var web/var
