@@ -114,4 +114,11 @@
             ExpiresDefault "now plus 10 years"
         </LocationMatch>
     </IfModule>
+
+    # Enable gzip encoding
+    <IfModule mod_deflate.c>
+        AddOutputFilterByType DEFLATE text/css application/x-javascript application/javascript text/javascript text/plain text/xml application/xml
+        # Using gzip on HTML can be a security issue. See http://breachattack.com.
+        # AddOutputFilterByType DEFLATE text/html
+    </IfModule>
 </VirtualHost>
