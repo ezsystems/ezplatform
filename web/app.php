@@ -37,12 +37,12 @@ if ($useHttpCache) {
 
     // When using the HttpCache, you need to call the method in your front controller instead of relying on the configuration parameter
     Request::enableHttpMethodParameterOverride();
+}
 
-    // If you are behind one or more trusted reverse proxies, you might want to set them in SYMFONY_TRUSTED_PROXIES environment
-    // variable in order to get correct client IP. NOTE: As per Symfony doc you will need to customize these lines for your proxy!
-    if ($trustedProxies = getenv('SYMFONY_TRUSTED_PROXIES')) {
-        Request::setTrustedProxies(explode(',', $trustedProxies), Request::HEADER_X_FORWARDED_ALL);
-    }
+// If you are behind one or more trusted reverse proxies, you might want to set them in SYMFONY_TRUSTED_PROXIES environment
+// variable in order to get correct client IP. NOTE: As per Symfony doc you will need to customize these lines for your proxy!
+if ($trustedProxies = getenv('SYMFONY_TRUSTED_PROXIES')) {
+    Request::setTrustedProxies(explode(',', $trustedProxies), Request::HEADER_X_FORWARDED_ALL);
 }
 
 $request = Request::createFromGlobals();
