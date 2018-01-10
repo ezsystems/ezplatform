@@ -40,6 +40,8 @@ if ($useHttpCache) {
     Request::enableHttpMethodParameterOverride();
 }
 
+$request = Request::createFromGlobals();
+
 // If behind one or more trusted proxies, you can set them in SYMFONY_TRUSTED_PROXIES environment variable.
 // Proxies here refers to things like load balancers, TLS/Reverse proxies and so on, which symfony need to know about to
 // work correctly: To identify https, allow lookups to private routes like /__fos_user_context_hash for Varnish, ...
@@ -50,7 +52,6 @@ if ($trustedProxies = getenv('SYMFONY_TRUSTED_PROXIES')) {
     Request::setTrustedProxies(explode(',', $trustedProxies), Request::HEADER_X_FORWARDED_ALL);
 }
 
-$request = Request::createFromGlobals();
 $response = $kernel->handle($request);
 $response->send();
 $kernel->terminate($request, $response);
