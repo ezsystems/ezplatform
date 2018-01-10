@@ -26,26 +26,32 @@ if ($useDebugging) {
 $kernel = new AppKernel($environment, $useDebugging);
 
 // Depending on the SYMFONY_HTTP_CACHE environment variable, tells whether the internal HTTP Cache mechanism is to be used.
+// Recommendation is to use Varnish over this, for performance and being able to setup cluster if you need to.
 // If not set, or "", it is auto activated if _not_ in "dev" environment.
 if (($useHttpCache = getenv('SYMFONY_HTTP_CACHE')) === false || $useHttpCache === '') {
     $useHttpCache = $environment !== 'dev';
 }
 
-// Load HTTP Cache ...
+// Load internal HTTP Cache, aka Symfony Proxy, if enabled
 if ($useHttpCache) {
     $kernel = new AppCache($kernel);
 
-    // When using the HttpCache, you need to call the method in your front controller instead of relying on the configuration parameter
+    // Needed when using Synfony proxy, see: http://symfony.com/doc/3.4/reference/configuration/framework.html#http-method-override
     Request::enableHttpMethodParameterOverride();
-
-    // If you are behind one or more trusted reverse proxies, you might want to set them in SYMFONY_TRUSTED_PROXIES environment
-    // variable in order to get correct client IP. NOTE: As per Symfony doc you will need to customize these lines for your proxy!
-    if ($trustedProxies = getenv('SYMFONY_TRUSTED_PROXIES')) {
-        Request::setTrustedProxies(explode(',', $trustedProxies), Request::HEADER_X_FORWARDED_ALL);
-    }
 }
 
 $request = Request::createFromGlobals();
+
+// If behind one or more trusted proxies, you can set them in SYMFONY_TRUSTED_PROXIES environment variable.
+// !! Proxies here refers to load balancers, TLS/Reverse proxies and so on. Which Symfony need to know about to
+// work correctly: identify https, allow Varnish to lookup fragment & user hash routes, get correct client ip, ...
+//
+// NOTE: You'll potentially need to customize these lines for your proxy depending on which forward headers to use!
+// SEE: https://symfony.com/doc/3.4/deployment/proxies.html
+if ($trustedProxies = getenv('SYMFONY_TRUSTED_PROXIES')) {
+    Request::setTrustedProxies(explode(',', $trustedProxies), Request::HEADER_X_FORWARDED_ALL);
+}
+
 $response = $kernel->handle($request);
 $response->send();
 $kernel->terminate($request, $response);
