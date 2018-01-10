@@ -36,13 +36,16 @@ if (($useHttpCache = getenv('SYMFONY_HTTP_CACHE')) === false || $useHttpCache ==
 if ($useHttpCache) {
     $kernel = new AppCache($kernel);
 
-    // When using the Symfony Proxy, we'll need to call this method in this front controller instead of relying on the configuration parameter
+    // Needed when using Synfony proxy, see: http://symfony.com/doc/3.4/reference/configuration/framework.html#http-method-override
     Request::enableHttpMethodParameterOverride();
 }
 
-// If behind one or more trusted reverse proxies, you can set them in SYMFONY_TRUSTED_PROXIES environment variable.
-// NOTE: As per Symfony doc you will need to customize these lines for your proxy depending on forward headers to use!
-// See: https://symfony.com/doc/3.4/deployment/proxies.html
+// If behind one or more trusted proxies, you can set them in SYMFONY_TRUSTED_PROXIES environment variable.
+// Proxies here refers to things like load balancers, TLS/Reverse proxies and so on, which symfony need to know about to
+// work correctly: To identify https, allow lookups to private routes like /__fos_user_context_hash for Varnish, ...
+//
+// NOTE: You'll potentially need to customize these lines for your proxy depending on which forward headers to use!
+// SEE: https://symfony.com/doc/3.4/deployment/proxies.html
 if ($trustedProxies = getenv('SYMFONY_TRUSTED_PROXIES')) {
     Request::setTrustedProxies(explode(',', $trustedProxies), Request::HEADER_X_FORWARDED_ALL);
 }
