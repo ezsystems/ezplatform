@@ -43,8 +43,8 @@ if ($useHttpCache) {
 $request = Request::createFromGlobals();
 
 // If behind one or more trusted proxies, you can set them in SYMFONY_TRUSTED_PROXIES environment variable.
-// Proxies here refers to things like load balancers, TLS/Reverse proxies and so on, which symfony need to know about to
-// work correctly: To identify https, allow lookups to private routes like /__fos_user_context_hash for Varnish, ...
+// !! Proxies here refers to load balancers, TLS/Reverse proxies and so on. Which Symfony need to know about to
+// work correctly: identify https, allow Varnish to lookup fragment & user hash routes, get correct client ip, ...
 //
 // NOTE: You'll potentially need to customize these lines for your proxy depending on which forward headers to use!
 // SEE: https://symfony.com/doc/3.4/deployment/proxies.html
