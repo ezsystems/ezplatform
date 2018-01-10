@@ -87,7 +87,7 @@ https://doc.ezplatform.com/en/latest/getting_started/install_using_composer/
        user if non standard:
 
        ```bash
-       $ rm -rf var/cache/* var/logs/*
+       $ rm -rf var/cache/* var/logs/* var/sessions/*
        $ HTTPDUSER=$(ps axo user,comm | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1)
        $ sudo chmod +a "$HTTPDUSER allow delete,write,append,file_inherit,directory_inherit" var web/var
        $ sudo chmod +a "$(whoami) allow delete,write,append,file_inherit,directory_inherit" var web/var
@@ -117,8 +117,8 @@ https://doc.ezplatform.com/en/latest/getting_started/install_using_composer/
        ```bash
        $ HTTPDUSER=$(ps axo user,comm | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1)
        $ sudo chown -R "$HTTPDUSER":"$HTTPDUSER" var web/var
-       $ sudo find {web/{var},var} -type d | xargs sudo chmod -R 775
-       $ sudo find {web/{var},var} -type f | xargs sudo chmod -R 664
+       $ sudo find web/var var -type d | xargs sudo chmod -R 775
+       $ sudo find web/var var -type f | xargs sudo chmod -R 664
        ```
 
        D. **Using chmod on a *Linux/BSD/OS X* system where you can't change owner**
@@ -127,8 +127,8 @@ https://doc.ezplatform.com/en/latest/getting_started/install_using_composer/
        Note that this method really isn't recommended as it allows any user to do anything.
 
        ```bash
-       $ sudo find {web/{var},var} -type d | xargs sudo chmod -R 777
-       $ sudo find {web/{var},var} -type f | xargs sudo chmod -R 666
+       $ sudo find web/var var -type d | xargs sudo chmod -R 777
+       $ sudo find web/var var -type f | xargs sudo chmod -R 666
        ```
 
        When using chmod, note that newly created files (such as cache) owned by the web server's user may have different/restrictive permissions.
@@ -136,7 +136,7 @@ https://doc.ezplatform.com/en/latest/getting_started/install_using_composer/
 
        It may also possible to add the group ownership inheritance flag so new files inherit the current group, and use `775`/`664` in the command lines above instead of world-writable:
        ```bash
-       $ sudo chmod g+s {web/{var},var}
+       $ sudo chmod g+s web/var var
        ```
 
        E. **Setup folder rights on Windows**
