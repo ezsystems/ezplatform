@@ -47,5 +47,18 @@ if (isset($relationships['cache'])) {
 // Disable PHPStormPass
 $container->setParameter('ezdesign.phpstorm.enabled', false);
 
+// Use Redis-based sessions if possible.
+if (isset($relationships['redis'])) {
+    foreach ($relationships['redis'] as $endpoint) {
+        if ($endpoint['scheme'] !== 'redis') {
+            continue;
+        }
+
+        ini_set('session.save_handler', 'redis');
+        ini_set('session.save_path', sprintf("%s:%d", $endpoint['host'], $endpoint['port']));
+    }
+}
+else {
 // Store session into /tmp.
-ini_set('session.save_path', '/tmp/sessions');
+    ini_set('session.save_path', '/tmp/sessions');
+}
