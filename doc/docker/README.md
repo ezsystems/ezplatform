@@ -106,7 +106,7 @@ After some 5-10 seconds you should be able to browse the site on `localhost:8080
 ### Behat and Selenium use
 
 *Docker-Compose setup for Behat use is provided and used internally to test eZ Platform, this can be combined with most
-setups, here shown in combination with production setup which is what you1'll typically need to test before pushing your
+setups, here shown in combination with production setup which is what you'll typically need to test before pushing your
 image to Docker Hub/Registry.*
 
 From root of your projects clone of this distribution, [setup composer auth.json](#composer) and execute the following:
