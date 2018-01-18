@@ -48,7 +48,7 @@ if (isset($relationships['redissession'])) {
         ini_set('session.save_handler', 'redis');
         ini_set('session.save_path', sprintf("%s:%d", $endpoint['host'], $endpoint['port']));
     }
-} else if (isset($relationships['rediscache'])) {
+} elseif (isset($relationships['rediscache'])) {
     foreach ($relationships['redissession'] as $endpoint) {
         if ($endpoint['scheme'] !== 'redis') {
             continue;
@@ -59,7 +59,7 @@ if (isset($relationships['redissession'])) {
     }
 
 } else {
-// Store session into /tmp.
+    // Store session into /tmp.
     ini_set('session.save_path', '/tmp/sessions');
 }
 
