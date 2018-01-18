@@ -24,17 +24,9 @@ foreach ($relationships['database'] as $endpoint) {
     $container->setParameter('cluster_database_name', 'cluster');
 }
 
-if (isset($relationships['cache'])) {
-    foreach ($relationships['cache'] as $endpoint) {
-        if ($endpoint['scheme'] !== 'memcached') {
-            continue;
-        }
-
-        $container->setParameter('cache_host', $endpoint['host']);
-        $container->setParameter('cache_memcached_port', $endpoint['port']);
-    }
-} elseif (isset($relationships['redis'])) {
-    foreach ($relationships['redis'] as $endpoint) {
+// Use Redis-based caching if possible.
+if (isset($relationships['rediscache'])) {
+    foreach ($relationships['rediscache'] as $endpoint) {
         if ($endpoint['scheme'] !== 'redis') {
             continue;
         }
@@ -44,12 +36,11 @@ if (isset($relationships['cache'])) {
     }
 }
 
-// Disable PHPStormPass
-$container->setParameter('ezdesign.phpstorm.enabled', false);
-
-// Use Redis-based sessions if possible.
-if (isset($relationships['redis'])) {
-    foreach ($relationships['redis'] as $endpoint) {
+// Use Redis-based sessions if possible. If a separate Redis instance
+// is available, use that.  If not, share a Redis instance with the
+// Cache.  (That should be safe to do except on especially high-traffic sites.)
+if (isset($relationships['redissession'])) {
+    foreach ($relationships['redissession'] as $endpoint) {
         if ($endpoint['scheme'] !== 'redis') {
             continue;
         }
@@ -57,7 +48,20 @@ if (isset($relationships['redis'])) {
         ini_set('session.save_handler', 'redis');
         ini_set('session.save_path', sprintf("%s:%d", $endpoint['host'], $endpoint['port']));
     }
+} else if (isset($relationships['rediscache'])) {
+    foreach ($relationships['redissession'] as $endpoint) {
+        if ($endpoint['scheme'] !== 'redis') {
+            continue;
+        }
+
+        ini_set('session.save_handler', 'redis');
+        ini_set('session.save_path', sprintf("%s:%d", $endpoint['host'], $endpoint['port']));
+    }
+
 } else {
 // Store session into /tmp.
     ini_set('session.save_path', '/tmp/sessions');
 }
+
+// Disable PHPStormPass
+$container->setParameter('ezdesign.phpstorm.enabled', false);
