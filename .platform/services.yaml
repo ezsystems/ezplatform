@@ -1,3 +1,17 @@
 mysqldb:
     type: mysql:10.0
     disk: 2048
+
+rediscache:
+    type: 'redis:3.2'
+
+# If you wish to have a separate Redis instance for sessions, uncomment
+# this service and the corresponding relationship in .platform.app.yaml.
+#redissession:
+#    type: 'redis:3.2'
+#
+# Alternatively if you have a requirement that sessions are persisted across server/redis restarts,
+# have storage space to spare for this, and don't mind a bit slower instance type of redis
+#redissession:
+#    type: redis-persistent:3.2
+#    disk: 1024
