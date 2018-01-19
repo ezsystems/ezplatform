@@ -2,6 +2,7 @@ mysqldb:
     type: mysql:10.0
     disk: 2048
 
+# For use by Symfony Cache (used by eZ Platform SPI Persistence Cache)
 rediscache:
     type: 'redis:3.2'
 
