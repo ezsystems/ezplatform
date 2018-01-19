@@ -21,7 +21,7 @@ relationships:
     database: 'mysqldb:mysql'
     rediscache: 'rediscache:redis'
     # If you wish to have a separate Redis instance for sessions, uncomment
-    # this relationship and the corresponding service in .platform.app.yaml.
+    # this relationship and the corresponding service in .platform/services.yaml
     #redissession: 'redissession:redis'
 
 # The configuration of app when it is exposed to the web.
