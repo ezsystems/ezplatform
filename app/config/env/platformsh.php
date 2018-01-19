@@ -66,7 +66,6 @@ if (isset($relationships['redissession'])) {
         ini_set('session.save_handler', 'redis');
         ini_set('session.save_path', sprintf('%s:%d', $endpoint['host'], $endpoint['port']));
     }
-
 } else {
     // Store session into /tmp.
     ini_set('session.save_path', '/tmp/sessions');
