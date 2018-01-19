@@ -40,6 +40,7 @@ if (isset($relationships['rediscache'])) {
         if ($endpoint['scheme'] !== 'memcached') {
             continue;
         }
+
         $container->setParameter('cache_host', $endpoint['host']);
         $container->setParameter('cache_memcached_port', $endpoint['port']);
     }
