@@ -34,6 +34,15 @@ if (isset($relationships['rediscache'])) {
         $container->setParameter('cache_host', $endpoint['host']);
         $container->setParameter('cache_redis_port', $endpoint['port']);
     }
+} elseif (isset($relationships['cache'])) {
+    // Fallback to memcached if here (deprecated, we will only handle redis here in the future)
+    foreach ($relationships['cache'] as $endpoint) {
+        if ($endpoint['scheme'] !== 'memcached') {
+            continue;
+        }
+        $container->setParameter('cache_host', $endpoint['host']);
+        $container->setParameter('cache_memcached_port', $endpoint['port']);
+    }
 }
 
 // Use Redis-based sessions if possible. If a separate Redis instance
@@ -46,7 +55,7 @@ if (isset($relationships['redissession'])) {
         }
 
         ini_set('session.save_handler', 'redis');
-        ini_set('session.save_path', sprintf("%s:%d", $endpoint['host'], $endpoint['port']));
+        ini_set('session.save_path', sprintf('%s:%d', $endpoint['host'], $endpoint['port']));
     }
 } elseif (isset($relationships['rediscache'])) {
     foreach ($relationships['redissession'] as $endpoint) {
@@ -55,7 +64,7 @@ if (isset($relationships['redissession'])) {
         }
 
         ini_set('session.save_handler', 'redis');
-        ini_set('session.save_path', sprintf("%s:%d", $endpoint['host'], $endpoint['port']));
+        ini_set('session.save_path', sprintf('%s:%d', $endpoint['host'], $endpoint['port']));
     }
 
 } else {
