@@ -1,0 +1,17 @@
+FROM nginx:stable
+# Based on: https://github.com/clamorisse/nginx-ssl-container
+
+RUN mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak
+
+RUN apt-get update -q -y \
+ && apt-get install -q -y --no-install-recommends ca-certificates openssl \
+ && rm -rf /var/lib/apt/lists/*
+
+ADD entrypoint/ssl-proxy/nginx.conf /etc/nginx/
+
+COPY entrypoint/ssl-proxy/docker-ssl-entrypoint /usr/local/bin/
+
+EXPOSE 443
+
+ENTRYPOINT ["docker-ssl-entrypoint"]
+CMD ["nginx", "-g", "daemon off;"]

@@ -1,0 +1,28 @@
+#!/bin/sh -e
+# Based on among others: https://github.com/fsouza/docker-ssl-proxy
+
+DOMAIN=${DOMAIN:-localhost}
+
+CA_DIR=/etc/nginx/ca
+
+# If this change, then you'1ll also need ot change nginx.conf
+OUTPUT_DIR=/etc/nginx/certs
+
+mkdir -p $OUTPUT_DIR $CA_DIR
+
+# Generate the root CA if it doesn't exist
+if [ ! -f ${CA_DIR}/rootCA.crt ]; then
+	openssl genrsa -out ${CA_DIR}/rootCA.key 1024
+	openssl req -x509 -new -nodes -key ${CA_DIR}/rootCA.key -sha256 -days 1024 -subj "/C=US/ST=Denial/L=Springfield/O=DisRoot/CN=CompanyRoot" -out ${CA_DIR}/rootCA.crt
+fi
+
+# Generate the certificate, if it doesn't exist
+if [ ! -f ${OUTPUT_DIR}/key.pem ]; then
+    openssl genrsa -out ${OUTPUT_DIR}/key.pem 1024
+    openssl req -new -sha256 -key ${OUTPUT_DIR}/key.pem -nodes -subj "/C=US/ST=Denial/L=Springfield/O=Dis/CN=${DOMAIN}" -out ${OUTPUT_DIR}/csr.pem
+    openssl x509 -req -in ${OUTPUT_DIR}/csr.pem -CA ${CA_DIR}/rootCA.crt -CAkey ${CA_DIR}/rootCA.key -CAcreateserial -out ${OUTPUT_DIR}/cert.pem
+fi
+
+echo ">> exec CMD"
+echo "$@"
+exec "$@"

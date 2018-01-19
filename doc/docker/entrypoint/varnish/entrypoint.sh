@@ -71,4 +71,4 @@ while (( "$#" )); do
     shift
 done
 
-varnishd -F -a :80 -T :6082 -f /etc/varnish/default.vcl -s malloc,${VARNISH_MALLOC_SIZE}
+varnishd -F -a :80 -T :6082 -f /etc/varnish/default.vcl -s malloc,${VARNISH_MALLOC_SIZE} -p feature=+http2

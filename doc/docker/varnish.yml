@@ -9,7 +9,7 @@ services:
   app:
     environment:
      - SYMFONY_HTTP_CACHE=0
-     - SYMFONY_TRUSTED_PROXIES=varnish
+     - SYMFONY_TRUSTED_PROXIES=ssl,varnish
      - HTTPCACHE_PURGE_SERVER=http://varnish
      - HTTPCACHE_PURGE_TYPE=http
 
@@ -28,6 +28,18 @@ services:
      - frontend
      - backend
     command: ["--acl-add", "app"]
+
+  ssl:
+    build:
+      context: .
+      dockerfile: Dockerfile-nginx-ssl-proxy
+    ports:
+     - "8443:443"
+    depends_on:
+     - varnish
+    networks:
+     - frontend
+     - backend
 
 ## DEBUG??
 # In need of debugging all request going to Varnish, use varnishlog, example:
