@@ -60,9 +60,14 @@ if ($useHttpCache) {
 $request = Request::createFromGlobals();
 
 // If you are behind one or more trusted reverse proxies, you might want to set them in SYMFONY_TRUSTED_PROXIES environment
-// variable in order to get correct client IP
+// variable in order to get correct client IP, also by default supports passing in host name to lookup DNS A record (IPv4)
 if ($trustedProxies = getenv('SYMFONY_TRUSTED_PROXIES')) {
-    Request::setTrustedProxies(explode(',', $trustedProxies));
+    Request::setTrustedProxies(array_map(
+        function ($adr) {
+            return is_string($adr) ? gethostbyname($adr) : $adr;
+        },
+        explode(',', $trustedProxies)
+    ));
 }
 
 $response = $kernel->handle($request);
