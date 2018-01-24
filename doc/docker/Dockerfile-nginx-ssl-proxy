@@ -1,4 +1,4 @@
-FROM nginx:stable
+FROM nginx:stable-perl
 # Based on: https://github.com/clamorisse/nginx-ssl-container
 
 RUN mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak

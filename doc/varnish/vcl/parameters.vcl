@@ -19,3 +19,8 @@ acl debuggers {
     "127.0.0.1";
     "192.168.0.0"/16;
 }
+
+// ACL for trusted proxies IP
+acl proxies {
+    "127.0.0.1";
+}

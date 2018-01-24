@@ -30,11 +30,13 @@ sub vcl_recv {
     // To be removed in Symfony 3.3
     unset req.http.Forwarded;
 
-    // Ensure that the Symfony Router generates URLs correctly with Varnish
-    if (req.http.X-Forwarded-Proto == "https" ) {
-        set req.http.X-Forwarded-Port = "443";
-    } else {
-        set req.http.X-Forwarded-Port = "80";
+    // Ensure that the Symfony Router generates URLs correctly with Varnish, if port is not set by trusted proxy already
+    if (! req.http.X-Forwarded-Port || ! client.ip ~ proxies) {
+        if (req.http.X-Forwarded-Proto == "https" ) {
+            set req.http.X-Forwarded-Port = "443";
+        } else {
+            set req.http.X-Forwarded-Port = "80";
+        }
     }
 
     // Trigger cache purge if needed

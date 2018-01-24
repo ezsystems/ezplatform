@@ -35,6 +35,8 @@ services:
       dockerfile: Dockerfile-nginx-ssl-proxy
     ports:
      - "8443:443"
+    environment:
+     - X_FORWARD_PORT=8443
     depends_on:
      - varnish
     networks:
