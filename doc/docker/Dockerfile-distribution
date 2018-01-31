@@ -5,6 +5,8 @@ FROM docker_app as builder
 RUN composer config extra.symfony-assets-install hard
 RUN composer run-script post-install-cmd --no-interaction
 
+RUN rm -Rf /var/www/var/cache/*/*
+
 FROM busybox
 
 COPY --from=builder /var/www /var/www
