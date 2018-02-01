@@ -37,6 +37,7 @@ The current Docker Compose files are made to be mixed and matched together for Q
 - dfs.yml _(optional, adds DFS cluster handler. Note that you need to run the migrate script manually, see below)_
 - blackfire.yml _(optional, adds blackfire service and lets you trigger profiling against the setup)_
 - redis.yml _(optional, adds redis service and appends config to app)_
+- redis-session.yml _(optional, stores sessions in a separate redis instance)_
 - varnish.yml _(optional, adds varnish service and appends config to app)_
 - solr.yml _(optional, add solr service and configure app for it)_
 - selenium.yml _(optional, always needs to be last, adds selenium service and appends config to app)_
