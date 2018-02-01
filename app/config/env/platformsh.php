@@ -55,8 +55,8 @@ if (isset($relationships['redissession'])) {
             continue;
         }
 
-        ini_set('session.save_handler', 'redis');
-        ini_set('session.save_path', sprintf('%s:%d', $endpoint['host'], $endpoint['port']));
+        $container->setParameter('ezplatform.session.handler_id', 'ezplatform.core.session.handler.native_redis');
+        $container->setParameter('session.save_path', sprintf('%s:%d', $endpoint['host'], $endpoint['port']));
     }
 } elseif (isset($relationships['rediscache'])) {
     foreach ($relationships['redissession'] as $endpoint) {
@@ -64,12 +64,9 @@ if (isset($relationships['redissession'])) {
             continue;
         }
 
-        ini_set('session.save_handler', 'redis');
-        ini_set('session.save_path', sprintf('%s:%d', $endpoint['host'], $endpoint['port']));
+        $container->setParameter('ezplatform.session.handler_id', 'ezplatform.core.session.handler.native_redis');
+        $container->setParameter('session.save_path', sprintf('%s:%d', $endpoint['host'], $endpoint['port']));
     }
-} else {
-    // Store session into /tmp.
-    ini_set('session.save_path', '/tmp/sessions');
 }
 
 // Disable PHPStormPass
