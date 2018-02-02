@@ -1,4 +1,4 @@
-# This custom cache pool "singlememcached" is loaded by env.php on demand
+# This custom cache pool "singlememcached" is loaded by generic.php on demand
 stash:
     caches:
         singlememcached:

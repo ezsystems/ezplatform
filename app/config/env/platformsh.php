@@ -1,5 +1,8 @@
 <?php
 
+use Symfony\Component\Config\FileLocator;
+use Symfony\Component\DependencyInjection\Loader;
+
 $relationships = getenv('PLATFORM_RELATIONSHIPS');
 if (!$relationships) {
     return;
@@ -62,8 +65,12 @@ if (isset($relationships['rediscache'])) {
             continue;
         }
 
+        $container->setParameter('cache_pool', 'singleredis');
         $container->setParameter('cache_host', $endpoint['host']);
         $container->setParameter('cache_redis_port', $endpoint['port']);
+
+        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../cache_pool'));
+        $loader->load('singleredis.yml');
     }
 } elseif (isset($relationships['cache'])) {
     // Fallback to memcached if here (deprecated, we will only handle redis here in the future)
