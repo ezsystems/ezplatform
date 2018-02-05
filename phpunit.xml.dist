@@ -6,6 +6,7 @@
          backupGlobals="false"
          colors="true"
          bootstrap="vendor/autoload.php"
+         beStrictAboutTestsThatDoNotTestAnything="false"
 >
     <php>
         <ini name="error_reporting" value="-1" />
