@@ -1,0 +1,38 @@
+# new doctrine connection for the dfs legacy_dfs_cluster metadata handler.
+doctrine:
+    dbal:
+        connections:
+            dfs:
+                driver: "%dfs_database_driver%"
+                host: "%dfs_database_host%"
+                port: "%dfs_database_port%"
+                user: "%dfs_database_user%"
+                password: "%dfs_database_password%"
+                dbname: "%dfs_database_name%"
+                charset: UTF8
+
+# define the flysystem handler
+oneup_flysystem:
+    adapters:
+        nfs_adapter:
+            local:
+                directory: "/%dfs_nfs_path%/$var_dir$/$storage_dir$"
+
+# define the ez handlers
+ez_io:
+    binarydata_handlers:
+        nfs:
+            flysystem:
+                adapter: nfs_adapter
+    metadata_handlers:
+        dfs:
+            legacy_dfs_cluster:
+                connection: doctrine.dbal.dfs_connection
+
+# set the application handlers
+ezpublish:
+    system:
+        default:
+            io:
+                metadata_handler: dfs
+                binarydata_handler: nfs

@@ -29,6 +29,7 @@
 /app/config/parameters.yml
 /app/bootstrap.php.cache
 /doc/docker/entrypoint/*/*.sql
+/dfsdata
 /web/index_treemenu.php
 /web/index_rest.php
 /web/index_cluster.php
