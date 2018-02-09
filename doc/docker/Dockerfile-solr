@@ -13,7 +13,7 @@ RUN mkdir -p /opt/solr/server/ez/template \
  && cp /opt/solr/server/solr/configsets/basic_configs/conf/elevate.xml /opt/solr/server/ez/template \
  && cp /opt/solr/server/solr/solr.xml /opt/solr/server/ez \
  && sed -i.bak '/<updateRequestProcessorChain name="add-unknown-fields-to-the-schema">/,/<\/updateRequestProcessorChain>/d' /opt/solr/server/ez/template/solrconfig.xml \
- && sed -ie 's/${solr.autoSoftCommit.maxTime:-1}/${solr.autoSoftCommit.maxTime:100}/' /opt/solr/server/ez/template/solrconfig.xml
+ && sed -ie 's/${solr.autoSoftCommit.maxTime:-1}/${solr.autoSoftCommit.maxTime:20}/' /opt/solr/server/ez/template/solrconfig.xml
 
 # Set our core config as home
 ENV SOLR_HOME /opt/solr/server/ez
