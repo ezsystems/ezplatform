@@ -43,7 +43,7 @@ Example config for Apache 2.4 in prefork mode:
 
         # Set default timeout to 90s, and max upload to 48mb
         TimeOut 90
-        LimitRequestBody 49152
+        LimitRequestBody 50331648
 
         <Directory /var/www/ezinstall/web>
             Options FollowSymLinks
