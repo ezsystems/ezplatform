@@ -36,6 +36,7 @@ The current Docker Compose files are made to be mixed and matched together for Q
 - demo.yml _(optional, to be used together with base-prod.yml in order to set up db and vardir)_
 - blackfire.yml _(optional, adds blackfire service and lets you trigger profiling against the setup)_
 - redis.yml _(optional, adds redis service and appends config to app)_
+- redis-session.yml _(optional, stores sessions in a separate redis instance)_
 - varnish.yml _(optional, adds varnish service and appends config to app)_
 - solr.yml _(optional, add solr service and configure app for it)_
 - selenium.yml _(optional, always needs to be last, adds selenium service and appends config to app)_
