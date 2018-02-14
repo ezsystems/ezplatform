@@ -40,9 +40,9 @@ ezpublish:
             # all eng-GB data to other locales first.
             languages: [eng-GB]
             content:
-              # As we by default enable EzSystemsPlatformHttpCacheBundle which is designed to expire all affected cache
-              # on changes, and as error / redirects now have separate ttl, we easier allow ttl to be greatly increased
-              default_ttl: '%httpcache_default_ttl%'
+                # As we by default enable EzSystemsPlatformHttpCacheBundle which is designed to expire all affected cache
+                # on changes, and as error / redirects now have separate ttl, we easier allow ttl to be greatly increased
+                default_ttl: '%httpcache_default_ttl%'
             # HttpCache purge server(s) setting, eg Varnish, for when ezpublish.http_cache.purge_type is set to 'http'.
             http_cache:
                 # If using fastly, 'purge_server' must be set to 'https://api.fastly.com'
