@@ -1,6 +1,7 @@
 # This file contains defaults for optional parameters, which you can override in parameters.yml
 parameters:
     locale_fallback: en
+    ezplatform.session.handler_id: ~
 
     # Setting for mail system, used by SwiftMailer
     mailer_transport:  smtp
