@@ -77,7 +77,7 @@ framework:
     session:
         # https://symfony.com/doc/current/reference/configuration/framework.html#handler-id
         # handler_id set to null will use default session handler from php.ini
-        handler_id:  ~
+        handler_id: '%ezplatform.session.handler_id%'
         # Note: eZ Publish also allows session name and session cookie configuration to be per SiteAccess, by
         #       default session name will be set to "eZSESSID{siteaccess_hash}" (unique session name per siteaccess)
         #       Further reading on sessions: http://doc.ezplatform.com/en/master/guide/sessions/

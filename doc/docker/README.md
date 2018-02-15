@@ -34,8 +34,10 @@ The current Docker Compose files are made to be mixed and matched together for Q
 - base-dev.yml _(alternative to `base-prod.yml`, same applies here if used)_
 - create-dataset.yml _(optional, to be used together with base-prod.yml in order to set up db and vardir)_
 - demo.yml _(optional, to be used together with base-prod.yml in order to set up db and vardir)_
+- dfs.yml _(optional, adds DFS cluster handler. Note that you need to run the migrate script manually, see below)_
 - blackfire.yml _(optional, adds blackfire service and lets you trigger profiling against the setup)_
 - redis.yml _(optional, adds redis service and appends config to app)_
+- redis-session.yml _(optional, stores sessions in a separate redis instance)_
 - varnish.yml _(optional, adds varnish service and appends config to app)_
 - solr.yml _(optional, add solr service and configure app for it)_
 - selenium.yml _(optional, always needs to be last, adds selenium service and appends config to app)_
@@ -106,7 +108,7 @@ After some 5-10 seconds you should be able to browse the site on `localhost:8080
 ### Behat and Selenium use
 
 *Docker-Compose setup for Behat use is provided and used internally to test eZ Platform, this can be combined with most
-setups, here shown in combination with production setup which is what you1'll typically need to test before pushing your
+setups, here shown in combination with production setup which is what you'll typically need to test before pushing your
 image to Docker Hub/Registry.*
 
 From root of your projects clone of this distribution, [setup composer auth.json](#composer) and execute the following:
@@ -130,6 +132,26 @@ docker-compose exec --user www-data app sh -c "php /scripts/wait_for_db.php; php
 ```
 docker-compose exec --user www-data app app/console ezplatform:install clean
 ```
+
+### DFS
+
+If you want to use the DFS cluster handler, you'll need to run the migration script manually, after starting the
+containers ( run `docker-compose up -d --force-create` first).
+
+The migration script will copy the binary files in web/var to the nfs mount point ( ./dfsdata ) and add the files'
+metadata to the database. If your are going to run eZ Platform in a cluster you must then ensure ./dfsdata  is a mounted
+nfs share on every node/app container.
+
+```
+# Enter the app container
+docker-compose exec --user www-data app /bin/bash
+
+# Inside app container
+php app/console ezplatform:io:migrate-files --from=default,default --to=dfs,nfs --env=prod
+
+```
+
+Once this is done, you may delete web/var/* if you don't intendt to run the migration scripts ever again.
 
 ### Production use
 
