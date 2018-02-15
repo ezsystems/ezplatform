@@ -25,12 +25,11 @@ relationships:
     # If you wish to have a separate Redis instance for sessions, uncomment
     # this relationship and the corresponding service in .platform/services.yaml
     #redissession: 'redissession:redis'
-    # For enabling Solr, see .platform/services.yaml
-    #solr: "solr:endpoint0
 
 variables:
     php:
-        "display_errors": "Off"
+        # Example of setting php.ini config
+        #"display_errors": "On"
     env:
         # For enterprise cluster, disable Symfony Proxy & instead use Fastly Bundle available on eZ Platform Enterprise
         #SYMFONY_HTTP_CACHE: 0
@@ -84,9 +83,9 @@ hooks:
         fi
         # As we are deploying code changes we need to clear any kind of code/system cache
         app/console cache:clear
-        # If this is not a "fast-deploy" then typically you would want to migrate your data as well here
-        #app/console doctrine:migrations:migrate --no-interaction --allow-no-migration
-        #app/console kaliop:migration:migrate --no-interaction --no-debug
+        # Example of addtional deploy hooks if you use doctrine and/or kaliop migration bundle
+        ##app/console doctrine:migrations:migrate --no-interaction --allow-no-migration
+        ##app/console kaliop:migration:migrate --no-interaction --no-debug
 
 # The configuration of scheduled execution.
 # see http://symfony.com/doc/current/components/console/introduction.html
@@ -101,7 +100,7 @@ runtime:
         - imagick
         - readline
         - redis
-        - apcu
+        #- apcu
         #- name: 'blackfire'
         #  configuration:
         #      server_id: 'xxxx-xxx-xxx-xxx-xxxx'

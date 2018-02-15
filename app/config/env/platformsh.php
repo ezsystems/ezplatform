@@ -109,5 +109,6 @@ if (isset($relationships['redissession'])) {
         $container->setParameter('session.save_path', sprintf('%s:%d', $endpoint['host'], $endpoint['port']));
     }
 }
+
 // Disable PHPStormPass
 $container->setParameter('ezdesign.phpstorm.enabled', false);
