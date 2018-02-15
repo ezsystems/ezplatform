@@ -54,7 +54,6 @@ disk: 2048
 
 # The mounts that will be performed when the package is deployed.
 mounts:
-    # NOTE: Once possible, cache folder will rather be configured as local writable mount
     "/app/cache": "shared:files/cache"
     "/app/logs": "shared:files/logs"
     "/web/var": "shared:files/files"
