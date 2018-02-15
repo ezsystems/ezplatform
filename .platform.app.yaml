@@ -26,6 +26,18 @@ relationships:
     # this relationship and the corresponding service in .platform/services.yaml
     #redissession: 'redissession:redis'
 
+variables:
+    #php:
+        # Example of setting php.ini config
+        #"display_errors": "On"
+    env:
+        # For enterprise cluster, disable Symfony Proxy & instead use Fastly Bundle available on eZ Platform Enterprise
+        #SYMFONY_HTTP_CACHE: 0
+        # Change this to dev if you want to run site & commands in dev
+        SYMFONY_ENV: prod
+        # Uncomment if you want to use DFS clustering:
+        #PLATFORMSH_DFS_NFS_PATH: 'dfsdata'
+
 # The configuration of app when it is exposed to the web.
 web:
     locations:
@@ -50,36 +62,37 @@ mounts:
 
 # The hooks that will be performed when the package is deployed.
 hooks:
+    # Build hook, done once before connected to services, disk is still writable here
     build: |
         set -e
         rm web/app_dev.php
         . ./.env
-        if [ -z "$SYMFONY_ENV" ]; then
-            export SYMFONY_ENV=prod
-        fi
         if [ "$SYMFONY_ENV" = "dev" ] ; then
             composer install --prefer-dist --no-progress --no-interaction --optimize-autoloader
         else
             composer install --no-dev --prefer-dist --no-progress --no-interaction --optimize-autoloader
         fi
+    # Deploy hook, access to services & done on each server (if cluster), only mounts are writable at this point
     deploy: |
         set -e
         . ./.env
-        if [ -z "$SYMFONY_ENV" ]; then
-            export SYMFONY_ENV=prod
-        fi
         if [ ! -f web/var/.platform.installed ]; then
-            php -d memory_limit=-1 app/console ezplatform:install --env=$SYMFONY_ENV $INSTALL_EZ_INSTALL_TYPE
+            php -d memory_limit=-1 app/console ezplatform:install $INSTALL_EZ_INSTALL_TYPE
             touch web/var/.platform.installed
         fi
-        app/console --env=$SYMFONY_ENV cache:clear
+        # As we are deploying code changes we need to clear any kind of code/system cache
+        rm -f app/cache/*/*
+        app/console cache:clear
+        # Example of addtional deploy hooks if you use doctrine and/or kaliop migration bundle
+        ##app/console doctrine:migrations:migrate --no-interaction --allow-no-migration
+        ##app/console kaliop:migration:migrate --no-interaction --no-debug
 
 # The configuration of scheduled execution.
 # see http://symfony.com/doc/current/components/console/introduction.html
 #crons:
 #    symfony:
 #        spec: "*/20 * * * *"
-#        cmd: "php cron.php example:test"
+#        cmd: "php app/console ezpublish:cron:run"
 
 runtime:
     extensions:
@@ -87,8 +100,9 @@ runtime:
         - imagick
         - readline
         - redis
+        #- apcu
+        #- name: 'blackfire'
+        #  configuration:
+        #      server_id: 'xxxx-xxx-xxx-xxx-xxxx'
+        #      server_token: 'xxxx'
 
-# Uncomment if you want to use DFS clustering:
-#variables:
-    #env:
-        #PLATFORMSH_DFS_NFS_PATH: 'dfsdata'

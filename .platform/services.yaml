@@ -1,5 +1,5 @@
 mysqldb:
-    type: mysql:10.0
+    type: mysql:10.1
     disk: 2048
     configuration:
         schemas:
