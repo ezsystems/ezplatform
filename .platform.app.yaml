@@ -74,7 +74,7 @@ hooks:
         else
             composer install --no-dev --prefer-dist --no-progress --no-interaction --optimize-autoloader
         fi
-    # Deploy hook, access to services & done on each server (if cluster), only mounts are writable at this point
+    # Deploy hook, access to services & done once (per cluster, not per node), only mounts are writable at this point
     deploy: |
         set -e
         . ./.env
