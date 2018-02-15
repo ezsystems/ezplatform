@@ -27,7 +27,7 @@ relationships:
     #redissession: 'redissession:redis'
 
 variables:
-    php:
+    #php:
         # Example of setting php.ini config
         #"display_errors": "On"
     env:
