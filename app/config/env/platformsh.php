@@ -81,6 +81,7 @@ if (isset($relationships['rediscache'])) {
 
         @trigger_error('Usage of Memcached is deprecated, redis is recommended', E_USER_DEPRECATED);
 
+        $container->setParameter('cache_pool', 'singlememcached');
         $container->setParameter('cache_host', $endpoint['host']);
         $container->setParameter('cache_memcached_port', $endpoint['port']);
 
