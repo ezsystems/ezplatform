@@ -2,7 +2,7 @@
     "name": "ezsystems/ezplatform-ee",
     "description": "eZ Platform Enterprise Edition distribution",
     "homepage": "https://github.com/ezsystems/ezplatform-ee",
-    "license": "TTL-2.0",
+    "license": "proprietary",
     "type": "project",
     "authors": [
         {
@@ -14,6 +14,7 @@
         { "type": "composer", "url": "https://updates.ez.no/ttl" }
     ],
     "replace": {
+        "ezsystems/ezstudio": "*",
         "ezsystems/ezpublish-community": "*"
     },
     "autoload": {
