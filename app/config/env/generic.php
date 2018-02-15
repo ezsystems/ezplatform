@@ -5,6 +5,49 @@
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Loader;
 
+if ($dfsNfsPath = getenv('DFS_NFS_PATH')) {
+    $container->setParameter('dfs_nfs_path', $dfsNfsPath);
+
+    if ($value = getenv('DFS_DATABASE_DRIVER')) {
+        $container->setParameter('dfs_database_driver', $value);
+    } else {
+        $container->setParameter('dfs_database_driver', $container->getParameter('database_driver'));
+    }
+
+    if ($value = getenv('DFS_DATABASE_HOST')) {
+        $container->setParameter('dfs_database_host', $value);
+    } else {
+        $container->setParameter('dfs_database_host', $container->getParameter('database_host'));
+    }
+
+    if ($value = getenv('DFS_DATABASE_PORT')) {
+        $container->setParameter('dfs_database_port', $value);
+    } else {
+        $container->setParameter('dfs_database_port', $container->getParameter('database_port'));
+    }
+
+    if ($value = getenv('DFS_DATABASE_NAME')) {
+        $container->setParameter('dfs_database_name', $value);
+    } else {
+        $container->setParameter('dfs_database_name', $container->getParameter('database_name'));
+    }
+
+    if ($value = getenv('DFS_DATABASE_USER')) {
+        $container->setParameter('dfs_database_user', $value);
+    } else {
+        $container->setParameter('dfs_database_user', $container->getParameter('database_user'));
+    }
+
+    if ($value = getenv('DFS_DATABASE_PASSWORD')) {
+        $container->setParameter('dfs_database_password', $value);
+    } else {
+        $container->setParameter('dfs_database_password', $container->getParameter('database_password'));
+    }
+
+    $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../dfs'));
+    $loader->load('dfs.yml');
+}
+
 // Cache settings
 // If CACHE_POOL env variable is set, check if there is a yml file that needs to be loaded for it
 if (($pool = getenv('CACHE_POOL')) && file_exists(__DIR__ . "/../cache_pool/${pool}.yml")) {

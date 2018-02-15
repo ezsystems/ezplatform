@@ -1,4 +1,4 @@
-# Reusable service for memcache cache for use in tests/docker/platform.sh
+# Reusable service for memcache cache for use in generic.php and plaformsh.php on demand
 services:
     cache.memcached:
         parent: cache.adapter.memcached

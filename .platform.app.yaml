@@ -18,11 +18,25 @@ build:
 # to the application in the PLATFORM_RELATIONSHIPS variable. The right-hand
 # side is in the form `<service name>:<endpoint name>`.
 relationships:
-    database: 'mysqldb:mysql'
+    database: 'mysqldb:user'
+    # Uncomment if you want to store dfs tables in a separate database:
+    #dfs_database: 'mysqldb:dfs'
     rediscache: 'rediscache:redis'
     # If you wish to have a separate Redis instance for sessions, uncomment
     # this relationship and the corresponding service in .platform/services.yaml
     #redissession: 'redissession:redis'
+
+variables:
+    #php:
+        # Example of setting php.ini config
+        #"display_errors": "On"
+    env:
+        # For enterprise cluster, disable Symfony Proxy & instead use Fastly Bundle available on eZ Platform Enterprise
+        #SYMFONY_HTTP_CACHE: 0
+        # Change this to dev if you want to run site & commands in dev
+        SYMFONY_ENV: prod
+        # Uncomment if you want to use DFS clustering:
+        #PLATFORMSH_DFS_NFS_PATH: 'dfsdata'
 
 # The configuration of app when it is exposed to the web.
 web:
@@ -45,9 +59,12 @@ mounts:
     "/web/var": "shared:files/files"
     # Might want to not mount this one, it will slow down sessions, if you need cluster use memcached/redis!
     "/var/sessions": "shared:files/sessions"
+    # Uncomment if you want to use DFS clustering:
+    #"/dfsdata": "shared:files/dfsdata"
 
 # The hooks that will be performed when the package is deployed.
 hooks:
+    # Build hook, done once before connected to services, disk is still writable here
     build: |
         set -e
         if [ -z "$COMPOSER_KEY" ]; then
@@ -62,32 +79,32 @@ hooks:
         composer install --no-dev --prefer-dist --no-progress --no-interaction --optimize-autoloader
         rm web/app_dev.php
         . ./.env
-        if [ -z "$SYMFONY_ENV" ]; then
-            export SYMFONY_ENV=prod
-        fi
         if [ "$SYMFONY_ENV" = "dev" ] ; then
             composer install --prefer-dist --no-progress --no-interaction --optimize-autoloader
         else
             composer install --no-dev --prefer-dist --no-progress --no-interaction --optimize-autoloader
         fi
+    # Deploy hook, access to services & done once (per cluster, not per node), only mounts are writable at this point
     deploy: |
         set -e
         . ./.env
-        if [ -z "$SYMFONY_ENV" ]; then
-            export SYMFONY_ENV=prod
-        fi
         if [ ! -f web/var/.platform.installed ]; then
-            php -d memory_limit=-1 bin/console ezplatform:install --env=$SYMFONY_ENV $INSTALL_EZ_INSTALL_TYPE
+            php -d memory_limit=-1 bin/console ezplatform:install $INSTALL_EZ_INSTALL_TYPE
             touch web/var/.platform.installed
         fi
-        bin/console --env=$SYMFONY_ENV cache:clear
+        # As we are deploying code changes we need to clear any kind of code/system cache
+        rm -f app/cache/*/*
+        bin/console cache:clear
+        # Example of addtional deploy hooks if you use doctrine and/or kaliop migration bundle
+        ##bin/console doctrine:migrations:migrate --no-interaction --allow-no-migration
+        ##bin/console kaliop:migration:migrate --no-interaction --no-debug
 
 # The configuration of scheduled execution.
 # see http://symfony.com/doc/current/components/console/introduction.html
 #crons:
 #    symfony:
 #        spec: "*/20 * * * *"
-#        cmd: "php cron.php example:test"
+#        cmd: "php app/console ezpublish:cron:run"
 
 runtime:
     extensions:
@@ -95,3 +112,8 @@ runtime:
         - imagick
         - readline
         - redis
+        #- apcu
+        #- name: 'blackfire'
+        #  configuration:
+        #      server_id: 'xxxx-xxx-xxx-xxx-xxxx'
+        #      server_token: 'xxxx'
