@@ -1,6 +1,21 @@
 mysqldb:
-    type: mysql:10.0
+    type: mysql:10.1
     disk: 2048
+    configuration:
+        schemas:
+            - main
+            # Uncomment if you want to store dfs tables in a separate database:
+            #- dfs
+        endpoints:
+            user:
+                default_schema: main
+                privileges:
+                    main: admin
+            # Uncomment if you want to store dfs tables in a separate database:
+            #dfs:
+            #    default_schema: dfs
+            #    privileges:
+            #        dfs: admin
 
 # For use by Symfony Cache (used by eZ Platform SPI Persistence Cache)
 rediscache:

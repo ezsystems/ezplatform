@@ -11,10 +11,10 @@ server {
     ## and make sure to comment these out in DEV environment.
     #if[SYMFONY_ENV!=dev] include ez_params.d/ez_prod_rewrite_params;
 
-    # Cluster/streamed files rewrite rules. Enable on cluster with DFS as a binary data handler
-    #rewrite "^/var/([^/]+/)?storage/images(-versioned)?/(.*)" "/app.php" break;
+    # Include image rule for DFS or binary handler
+    include ez_params.d/ez_rewrite_%BINARY_DATA_HANDLER%image_params;
 
-    # ez rewrite rules
+    # Include remaining ez rewrite rules
     include ez_params.d/ez_rewrite_params;
 
     # upload max size
