@@ -1,7 +1,5 @@
 # To make sure as little cache as possible is written to the shared mount we use apc and redis (for cache that needs to be shared)
-
-imports:
-    - { resource: ../cache_pool/singleredis.yml }
+# NOTE: This is only loaded if platformsh.php detects both Redis and APCu
 
 framework:
     validation:

@@ -69,8 +69,14 @@ if (isset($relationships['rediscache'])) {
         $container->setParameter('cache_host', $endpoint['host']);
         $container->setParameter('cache_redis_port', $endpoint['port']);
 
-        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../cache_pool'));
+        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../cache_pool'));
         $loader->load('singleredis.yml');
+
+        if (function_exists('apcu_enabled') && apcu_enabled()) {
+            // If we also detect APCu we load cache tweaks for Symfony to use both instead of mount
+            $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__));
+            $loader->load('platformsh_caching.yml');
+        }
     }
 } elseif (isset($relationships['cache'])) {
     // Fallback to memcached if here (deprecated, we will only handle redis here in the future)
@@ -106,10 +112,5 @@ if (isset($relationships['redissession'])) {
         $container->setParameter('session.save_path', sprintf('%s:%d', $endpoint['host'], $endpoint['port']));
     }
 }
-
 // Disable PHPStormPass
 $container->setParameter('ezdesign.phpstorm.enabled', false);
-
-// Load Platform.sh specific settings
-$loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__));
-$loader->load('platformsh.yml');
