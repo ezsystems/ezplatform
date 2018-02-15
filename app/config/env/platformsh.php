@@ -87,6 +87,9 @@ if (isset($relationships['rediscache'])) {
 
         $container->setParameter('cache_host', $endpoint['host']);
         $container->setParameter('cache_memcached_port', $endpoint['port']);
+
+        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../cache_pool'));
+        $loader->load('singlememcached.yml');
     }
 }
 
