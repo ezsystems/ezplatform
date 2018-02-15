@@ -69,7 +69,7 @@ if (isset($relationships['rediscache'])) {
         $container->setParameter('cache_host', $endpoint['host']);
         $container->setParameter('cache_redis_port', $endpoint['port']);
 
-        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../cache_pool'));
+        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../cache_pool'));
         $loader->load('singleredis.yml');
 
         if (function_exists('apcu_enabled') && apcu_enabled()) {
@@ -88,7 +88,7 @@ if (isset($relationships['rediscache'])) {
         $container->setParameter('cache_host', $endpoint['host']);
         $container->setParameter('cache_memcached_port', $endpoint['port']);
 
-        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../cache_pool'));
+        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../cache_pool'));
         $loader->load('singlememcached.yml');
     }
 }
