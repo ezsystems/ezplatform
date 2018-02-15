@@ -65,12 +65,11 @@ if (isset($relationships['rediscache'])) {
             continue;
         }
 
-        $container->setParameter('cache_pool', 'singleredis');
-        $container->setParameter('cache_host', $endpoint['host']);
-        $container->setParameter('cache_redis_port', $endpoint['port']);
+        $container->setParameter('cache_pool', 'cache.redis');
+        $container->setParameter('cache_dsn', sprintf('%s:%d', $endpoint['host'], $endpoint['port']) . '?retry_interval=3');
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../cache_pool'));
-        $loader->load('singleredis.yml');
+        $loader->load('cache.memcached.yml');
     }
 } elseif (isset($relationships['cache'])) {
     // Fallback to memcached if here (deprecated, we will only handle redis here in the future)
@@ -81,12 +80,11 @@ if (isset($relationships['rediscache'])) {
 
         @trigger_error('Usage of Memcached is deprecated, redis is recommended', E_USER_DEPRECATED);
 
-        $container->setParameter('cache_pool', 'singlememcached');
-        $container->setParameter('cache_host', $endpoint['host']);
-        $container->setParameter('cache_memcached_port', $endpoint['port']);
+        $container->setParameter('cache_pool', 'cache.memcached');
+        $container->setParameter('cache_dsn', sprintf('%s:%d', $endpoint['host'], $endpoint['port']));
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../cache_pool'));
-        $loader->load('singlememcached.yml');
+        $loader->load('cache.memcached.yml');
     }
 }
 
