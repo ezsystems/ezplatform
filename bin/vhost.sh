@@ -18,6 +18,7 @@ declare -a option_vars=(
     %BODY_SIZE_LIMIT%
     %TIMEOUT%
     %FASTCGI_PASS%
+    %BINARY_DATA_HANDLER%
 )
 
 # Available template variables
@@ -45,6 +46,7 @@ declare -a template_values=(
     "50331648"
     "90"
     "unix:/var/run/php5-fpm.sock"
+    ""
     "48m"
     "90s"
     "localhost *.localhost"
@@ -97,6 +99,7 @@ Arguments:
   [--sf-classloader-file=<class-file.php>] : To specify a different class then default to use for PHP auto loading
   [--body-size-limit=<int>]                : Limit in megabytes for max size of request body, 0 value disables limit.
   [--request-timeout=<int>]                : Limit in seconds before timeout of request, 0 value disables timeout limit.
+  [--binary-data-handler=dfs|]             : Name of handler in user. Specify "dfs" if you are using the dfs io handler.
   [-h|--help]                              : Help text, this one more or less
 
 EOF
@@ -125,7 +128,7 @@ function inject_environment_variables
             fi
             if [ "$current_env_variable" == "TIMEOUT" ]; then
                 template_values[12]="$option_value"
-                template_values[15]="${option_value}s"
+                template_values[16]="${option_value}s"
             fi
         fi
         let i=$i+1;
@@ -171,13 +174,16 @@ case $i in
     --sf-trusted-proxies=*)
         template_values[10]="${i#*=}"
         ;;
+    --binary-data-handler=*)
+        template_values[14]="${i#*=}"
+        ;;
     --body-size-limit=*)
         let template_values[11]="${i#*=}"*1024*1024
-        template_values[14]="${i#*=}m"
+        template_values[15]="${i#*=}m"
         ;;
     --request-timeout=*)
         template_values[12]="${i#*=}"
-        template_values[15]="${i#*=}s"
+        template_values[16]="${i#*=}s"
         ;;
     -t=*|--template-file=*)
         template_file="${i#*=}"
@@ -218,10 +224,10 @@ fi
 ## Option specific logic
 
 # For httpd servers having just one host config we provide HOST_LIST
-template_values[16]="${template_values[3]}"
+template_values[17]="${template_values[3]}"
 if [[ "${template_values[4]}" != "" ]] ; then
-     tmp="${template_values[16]} ${template_values[4]}"
-     template_values[16]=$tmp
+     tmp="${template_values[17]} ${template_values[4]}"
+     template_values[17]=$tmp
 fi
 
 
