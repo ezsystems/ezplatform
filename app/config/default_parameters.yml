@@ -1,6 +1,7 @@
 # This file contains defaults for optional parameters, which you can override in parameters.yml
 parameters:
     locale_fallback: en
+    ezplatform.session.handler_id: session.handler.native_file
 
     # A secret key that's used to generate certain security-related tokens
     secret: '%env(SYMFONY_SECRET)%'

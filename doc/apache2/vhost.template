@@ -73,7 +73,8 @@
         RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
         # Cluster/streamed files rewrite rules. Enable on cluster with DFS as a binary data handler
-        #RewriteRule ^/var/([^/]+/)?storage/images(-versioned)?/.* /app.php [L]
+        RewriteCond %{ENV:BINARY_DATA_HANDLER} "dfs"
+        RewriteRule ^/var/([^/]+/)?storage/images(-versioned)?/.* /app.php [L]
 
         RewriteRule ^/var/([^/]+/)?storage/images(-versioned)?/.* - [L]
 
