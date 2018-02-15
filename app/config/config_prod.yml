@@ -2,8 +2,8 @@ imports:
     - { resource: config.yml }
     - { resource: ezplatform_prod.yml }
 
-# If you are on Platform.sh/docker or similar where app/cache is not writable during runtime
-# Enabling apc(u)/redis caching might be the answer.
+# Example below would make sure some of the symfony caches are written to apc / redis instead of disk
+# Make sure to verify if cache clearing is done as you expect when doing such changes.
 
 #framework:
 #    validation:
