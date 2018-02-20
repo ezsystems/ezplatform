@@ -124,7 +124,7 @@ function inject_environment_variables
             template_values[$i]="$option_value";
             if [ "$current_env_variable" == "BODY_SIZE_LIMIT" ]; then
                 let template_values[11]="$option_value"*1024
-                template_values[14]="${option_value}m"
+                template_values[15]="${option_value}m"
             fi
             if [ "$current_env_variable" == "TIMEOUT" ]; then
                 template_values[12]="$option_value"
