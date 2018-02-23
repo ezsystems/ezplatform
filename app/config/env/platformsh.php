@@ -69,7 +69,7 @@ if (isset($relationships['rediscache'])) {
         $container->setParameter('cache_dsn', sprintf('%s:%d', $endpoint['host'], $endpoint['port']) . '?retry_interval=3');
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../cache_pool'));
-        $loader->load('cache.memcached.yml');
+        $loader->load('cache.redis.yml');
     }
 } elseif (isset($relationships['cache'])) {
     // Fallback to memcached if here (deprecated, we will only handle redis here in the future)
