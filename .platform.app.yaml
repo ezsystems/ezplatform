@@ -91,7 +91,7 @@ hooks:
             touch web/var/.platform.installed
         fi
         # As we are deploying code changes we need to clear any kind of code/system cache
-        rm -f app/cache/*/*
+        rm -Rf app/cache/*/*.*
         app/console cache:clear
         # Example of addtional deploy hooks if you use doctrine and/or kaliop migration bundle
         ##app/console doctrine:migrations:migrate --no-interaction --allow-no-migration
