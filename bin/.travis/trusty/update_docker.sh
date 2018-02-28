@@ -12,7 +12,7 @@ docker -v
 
 
 docker-compose -v
-DOCKER_COMPOSE_VERSION="1.14.0"
+DOCKER_COMPOSE_VERSION="1.19.0"
 echo "\nUpdating Docker Compose to ${DOCKER_COMPOSE_VERSION}"
 sudo rm -f /usr/local/bin/docker-compose
 curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
