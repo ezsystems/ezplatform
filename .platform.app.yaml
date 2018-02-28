@@ -93,7 +93,7 @@ hooks:
             touch web/var/.platform.installed
         fi
         # As we are deploying code changes we need to clear any kind of code/system cache
-        rm -f app/cache/*/*
+        rm -Rf var/cache/*/*.*
         bin/console cache:clear
         # Example of addtional deploy hooks if you use doctrine and/or kaliop migration bundle
         ##bin/console doctrine:migrations:migrate --no-interaction --allow-no-migration
@@ -104,7 +104,7 @@ hooks:
 #crons:
 #    symfony:
 #        spec: "*/20 * * * *"
-#        cmd: "php app/console ezpublish:cron:run"
+#        cmd: "php bin/console ezpublish:cron:run"
 
 runtime:
     extensions:
