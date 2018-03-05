@@ -26,7 +26,7 @@ _ezplatformRepositoryFormsRoutes:
 fos.js_routing:
     resource: '@FOSJsRoutingBundle/Resources/config/routing/routing.xml'
 
-# Custom redirection from /ez to /admin, feel free to adjust to your needs
+# Custom redirection from /ez to /admin, feel free to adjust to your needs or remove if you don't need it
 platform1_admin_route:
     path: /ez
     controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
