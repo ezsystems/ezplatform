@@ -26,5 +26,6 @@ if ($debug) {
     Debug::enable();
 }
 
-$application = new Application(new AppKernel($env, $debug));
+$kernel = new AppKernel($env, $debug);
+$application = new Application($kernel);
 $application->run($input);
