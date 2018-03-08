@@ -20,6 +20,7 @@ security:
             ezpublish_rest_session: ~
             form_login:
                 require_previous_session: false
+                default_target_path: ezplatform.dashboard
             logout: ~
 
         main:
