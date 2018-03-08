@@ -21,7 +21,8 @@ security:
             form_login:
                 require_previous_session: false
                 default_target_path: ezplatform.dashboard
-            logout: ~
+            logout:
+                target: ezplatform.dashboard
 
         main:
             anonymous: ~
