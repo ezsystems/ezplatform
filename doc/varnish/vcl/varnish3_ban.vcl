@@ -14,6 +14,10 @@ sub vcl_recv {
     // Advertise Symfony for ESI support
     set req.http.Surrogate-Capability = "abc=ESI/1.0";
 
+    // Varnish, in its default configuration, sends the X-Forwarded-For header but does not filter out Forwarded header
+    // To be removed in Symfony 3.3
+    unset req.http.Forwarded;
+
     // Add a unique header containing the client address (only for master request)
     // Please note that /_fragment URI can change in Symfony configuration
     if (!req.url ~ "^/_fragment") {
