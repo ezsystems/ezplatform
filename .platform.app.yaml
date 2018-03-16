@@ -66,26 +66,34 @@ hooks:
     build: |
         set -e
         rm web/app_dev.php
-        . ./.env
         if [ "$SYMFONY_ENV" = "dev" ] ; then
             composer install --prefer-dist --no-progress --no-interaction --optimize-autoloader
         else
             composer install --no-dev --prefer-dist --no-progress --no-interaction --optimize-autoloader
         fi
     # Deploy hook, access to services & done once (per cluster, not per node), only mounts are writable at this point
+    # Note: Http traffic is paused while this is running, so for prod code this should finish as fast as possible, < 30s
     deploy: |
         set -e
-        . ./.env
+        # Mainly relevant for eZ Platform demo usage, for own setup adapt this or remove and rely on migrations.
         if [ ! -f web/var/.platform.installed ]; then
+            . ./.env
             php -d memory_limit=-1 app/console ezplatform:install $INSTALL_EZ_INSTALL_TYPE
             touch web/var/.platform.installed
         fi
-        # As we are deploying code changes we need to clear any kind of code/system cache
-        rm -Rf app/cache/*/*.*
-        app/console cache:clear
-        # Example of addtional deploy hooks if you use doctrine and/or kaliop migration bundle
+        # Clear cache if not in prod (prod gets new folder on each deploy to avoid having to clear nfs folder on deploy)
+        if [ "$SYMFONY_ENV" != "prod" ] ; then
+            rm -Rf app/cache/$SYMFONY_ENV/*.*
+            app/console cache:clear
+        fi
+        # Example of additional deploy hooks if you use doctrine and/or kaliop migration bundle
         ##app/console doctrine:migrations:migrate --no-interaction --allow-no-migration
         ##app/console kaliop:migration:migrate --no-interaction --no-debug
+    # Post deploy hook, like deploy but after being deployed and live, for deploy tasks we can do asynchronously
+    post_deploy: |
+        set -e
+        # Cleanup old prod cache folders, basically all except current $PLATFORM_TREE_ID folder.
+        find app/cache/prod -mindepth 1 -maxdepth 1 -type d \! \( -name "$PLATFORM_TREE_ID" \) -exec rm -rf '{}' \;
 
 # The configuration of scheduled execution.
 # see http://symfony.com/doc/current/components/console/introduction.html
