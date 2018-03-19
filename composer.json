@@ -1,20 +1,16 @@
 {
-    "name": "ezsystems/ezplatform-ee",
-    "description": "eZ Platform Enterprise Edition distribution",
-    "homepage": "https://github.com/ezsystems/ezplatform-ee",
-    "license": "proprietary",
+    "name": "ezsystems/ezplatform",
+    "description": "eZ Platform distribution",
+    "homepage": "https://github.com/ezsystems/ezplatform",
+    "license": "GPL-2.0-only",
     "type": "project",
     "authors": [
         {
             "name": "eZ dev-team & eZ Community",
-            "homepage": "https://github.com/ezsystems/ezplatform-ee/contributors"
+            "homepage": "https://github.com/ezsystems/ezplatform/contributors"
         }
     ],
-    "repositories": [
-        { "type": "composer", "url": "https://updates.ez.no/ttl" }
-    ],
     "replace": {
-        "ezsystems/ezstudio": "*",
         "ezsystems/ezpublish-community": "*"
     },
     "autoload": {
@@ -47,18 +43,7 @@
         "ezsystems/ezplatform-admin-ui": "^1.1@dev",
         "ezsystems/ezplatform-admin-ui-modules": "^1.1@dev",
         "ezsystems/ezplatform-admin-ui-assets": "^2.0@dev",
-        "ezsystems/ezplatform-design-engine": "^1.2@dev",
-        "ezsystems/platform-ui-bundle": "^2.1@dev",
-        "ezsystems/studio-ui-bundle": "^2.1@dev",
-        "ezsystems/ezstudio-form-builder": "^2.1@dev",
-        "ezsystems/ezstudio-notifications": "^2.1@dev",
-        "ezsystems/date-based-publisher": "^2.1@dev",
-        "ezsystems/landing-page-fieldtype-bundle": "^2.1@dev",
-        "ezsystems/flex-workflow": "^2.1@dev",
-        "ezsystems/ezstudio-cron": "^1.0@dev",
-        "ezsystems/ezstudio-installer": "^2.1@dev",
-        "ezsystems/platform-ui-assets-bundle": "^5.0.0",
-        "ezsystems/ezplatform-http-cache-fastly": "^1.1@dev",
+        "ezsystems/ezplatform-design-engine": "^1.1",
         "knplabs/knp-menu-bundle": "^2.1",
         "willdurand/js-translation-bundle": "^2.6.4",
         "friendsofsymfony/jsrouting-bundle": "^1.4",

@@ -81,12 +81,3 @@ if ($value = getenv('RECOMMENDATIONS_LICENSE_KEY')) {
 if ($value = getenv('PUBLIC_SERVER_URI')) {
     $container->setParameter('ez_recommendation.default.server_uri', $value);
 }
-
-// EzSystemsPlatformFastlyCacheBundle settings
-if ($value = getenv('FASTLY_SERVICE_ID')) {
-    $container->setParameter('fastly_service_id', $value);
-}
-
-if ($value = getenv('FASTLY_KEY')) {
-    $container->setParameter('fastly_key', $value);
-}

@@ -30,7 +30,6 @@ class AppKernel extends Kernel
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
             // eZ Systems
             new EzSystems\PlatformHttpCacheBundle\EzSystemsPlatformHttpCacheBundle(),
-            new EzSystems\PlatformFastlyCacheBundle\EzSystemsPlatformFastlyCacheBundle(),
             new eZ\Bundle\EzPublishCoreBundle\EzPublishCoreBundle(),
             new eZ\Bundle\EzPublishLegacySearchEngineBundle\EzPublishLegacySearchEngineBundle(),
             new eZ\Bundle\EzPublishIOBundle\EzPublishIOBundle(),
@@ -40,23 +39,10 @@ class AppKernel extends Kernel
             new EzSystems\RepositoryFormsBundle\EzSystemsRepositoryFormsBundle(),
             new EzSystems\EzPlatformSolrSearchEngineBundle\EzSystemsEzPlatformSolrSearchEngineBundle(),
             new EzSystems\EzPlatformDesignEngineBundle\EzPlatformDesignEngineBundle(),
-            // Application
             new EzSystems\EzPlatformAdminUiBundle\EzPlatformAdminUiBundle(),
             new EzSystems\EzPlatformAdminUiModulesBundle\EzPlatformAdminUiModulesBundle(),
             new EzSystems\EzPlatformAdminUiAssetsBundle\EzPlatformAdminUiAssetsBundle(),
-            // eZ Studio
-            new EzSystems\FormBuilderBundle\EzSystemsFormBuilderBundle(),
-            new EzSystems\StudioUIBundle\EzSystemsStudioUIBundle(),
-            new EzSystems\DateBasedPublisherBundle\EzSystemsDateBasedPublisherBundle(),
-            new EzSystems\FlexWorkflowBundle\EzSystemsFlexWorkflowBundle(),
-            new EzSystems\NotificationBundle\EzSystemsNotificationBundle(),
-            new EzSystems\PlatformUIBundle\EzSystemsPlatformUIBundle(),
-            new EzSystems\PlatformUIAssetsBundle\EzSystemsPlatformUIAssetsBundle(),
-            new EzSystems\LandingPageFieldTypeBundle\EzSystemsLandingPageFieldTypeBundle(),
-            new EzSystems\PlatformEEAssetsBundle\EzSystemsPlatformEEAssetsBundle(),
-            new EzSystems\CronBundle\EzSystemsCronBundle(),
-            new EzSystems\StudioInstallerBundle\EzSystemsStudioInstallerBundle(),
-            // AppBundle
+            // Application
             new AppBundle\AppBundle(),
         ];
 

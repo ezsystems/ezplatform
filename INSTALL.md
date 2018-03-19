@@ -7,7 +7,7 @@ https://doc.ezplatform.com/en/latest/getting_started/install_using_composer/
 
 
 ## Terms for future reference:
-  * `/<root-dir>/`: The filesystem path where eZ Platform Enterprise Edition is installed in.
+  * `/<root-dir>/`: The filesystem path where eZ Platform is installed in.
     Examples: `/home/myuser/www/` or `/var/sites/<project-name>/`
   * cli: command line interface. For *Linux/BSD/OS X* specific commands, use of `bash` or similar is assumed.
 
@@ -20,13 +20,13 @@ https://doc.ezplatform.com/en/latest/getting_started/install_using_composer/
   - Create Database: Installation will ask you for credentials/details for which database to use, example with mysql:
     `CREATE DATABASE <database> CHARACTER SET utf8;` *Note: Right now installer only supports MySQL and MariaDB, Postgres support will be (re)added in one of the upcoming releases.*
   - Set php.ini memory_limit=256M before running commands below
-  - *Optional:* You can also setup Solr to be used by eZ Platform Enterprise Edition and take note of the url it is accessible on
+  - *Optional:* You can also setup Solr to be used by eZ Platform and take note of the url it is accessible on
 
 ## Install
 
-1. **Install/Extract eZ Platform Enterprise Edition**<a name="install-1-extract"></a>:
+1. **Install/Extract eZ Platform**<a name="install-1-extract"></a>:
 
-    There are two ways to install eZ Platform Enterprise Edition described below, what is common is that you should make sure
+    There are two ways to install eZ Platform described below, what is common is that you should make sure
     relevant settings are generated into `app/config/parameters.yml` as a result of this step.
 
     `parameters.yml` contains settings for your database, mail system, and so on.
@@ -35,8 +35,8 @@ https://doc.ezplatform.com/en/latest/getting_started/install_using_composer/
 
     A. **Extract archive** (tar/zip)
 
-       Download archive from [support.ez.no/Downloads](https://support.ez.no/Downloads/), __not from GitHub__ *(those are for Composer)*.
-       Extract the eZ Platform Enterprise v2.x archive to a directory, then execute post install scripts:
+       Download archive from [ezplatform.com](https://ezplatform.com/#download), __not from GitHub__ *(those are for Composer)*.
+       Extract the eZ Platform v2.x archive to a directory, then execute post install scripts:
 
        *Note: The post install scripts will ask you to fill in some settings, including database settings.*
 
@@ -48,13 +48,13 @@ https://doc.ezplatform.com/en/latest/getting_started/install_using_composer/
 
     B. **Install via Composer**
 
-     If you have a eZ Enterprise Subscription and [have setup composer authentication tokens](https://doc.ez.no/display/DEVELOPER/Using+Composer), you can get eZ  using composer with the following commands:
+     You can get eZ Platform using Composer with the following commands:
 
      *Note: composer will take its time to download all libraries and when done you will be asked to fill in some settings, including database settings.*
 
        ```bash
        $ curl -sS https://getcomposer.org/installer | php
-       $ php -d memory_limit=-1 composer.phar create-project ezsystems/ezplatform-ee ezplatform ^2.0
+       $ php -d memory_limit=-1 composer.phar create-project ezsystems/ezplatform ezplatform ^2.0
        $ cd /ezplatform/
        ```
 
@@ -146,12 +146,13 @@ https://doc.ezplatform.com/en/latest/getting_started/install_using_composer/
        - web/var
        - var
 
+
 3. **Run installation command**<a name="install-4-db-setup"></a>:
 
-    You may now complete the eZ Platform Enterprise Edition installation with ezplatform:install command, example of use:
+    You may now complete the eZ Platform installation with ezplatform:install command, example of use:
 
     ```bash
-    $ php -d memory_limit=-1 app/console ezplatform:install --env=prod studio-clean
+    $ php -d memory_limit=-1 bin/console ezplatform:install --env prod clean
     ```
 
     **Note**: Password for the generated `admin` user is `publish`, this name and password is needed when you would like to login to backend Admin UI where you can and should change this.
