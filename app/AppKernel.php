@@ -67,6 +67,16 @@ class AppKernel extends Kernel
         return $bundles;
     }
 
+    public function getCacheDir()
+    {
+        // On platform.sh place each deployment cache in own folder to rather cleanup old cache async
+        if ($this->getEnvironment() === 'prod' && ($platformTreeId = getenv('PLATFORM_TREE_ID'))) {
+            return "{$this->getRootDir()}/cache/{$this->getEnvironment()}/{$platformTreeId}";
+        }
+
+        return parent::getCacheDir();
+    }
+
     /**
      * Loads the container configuration.
      *
