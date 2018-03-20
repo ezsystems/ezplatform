@@ -68,26 +68,38 @@ hooks:
     build: |
         set -e
         rm web/app_dev.php
-        . ./.env
         if [ "$SYMFONY_ENV" = "dev" ] ; then
             composer install --prefer-dist --no-progress --no-interaction --optimize-autoloader
         else
             composer install --no-dev --prefer-dist --no-progress --no-interaction --optimize-autoloader
         fi
     # Deploy hook, access to services & done once (per cluster, not per node), only mounts are writable at this point
+    # Note: Http traffic is paused while this is running, so for prod code this should finish as fast as possible, < 30s
     deploy: |
         set -e
-        . ./.env
+        # Mainly relevant for eZ Platform demo usage, for own setup adapt this or remove and rely on migrations.
         if [ ! -f web/var/.platform.installed ]; then
+            . ./.env
             php -d memory_limit=-1 bin/console ezplatform:install $INSTALL_EZ_INSTALL_TYPE
             touch web/var/.platform.installed
         fi
-        # As we are deploying code changes we need to clear any kind of code/system cache
-        rm -Rf var/cache/*/*.*
-        bin/console cache:clear
-        # Example of addtional deploy hooks if you use doctrine and/or kaliop migration bundle
+        # When deploying changes to existing cluster, clear all cache now that we have shared mounts available
+        if [ "$SYMFONY_ENV" != "prod" ] ; then
+            # Clear class cache before we boot up symfony in case of interface changes on classes cached
+            rm -Rf var/cache/$SYMFONY_ENV/*.*
+            bin/console cache:clear
+        elif [ -d "var/cache/prod/$PLATFORM_TREE_ID" ] ; then
+            # Clear cache on re-deploy when the folder exits, move folder so post_deploy can cleanup
+            mv -f var/cache/prod/$PLATFORM_TREE_ID var/cache/prod/old_deploy
+        fi
+        # Example of additional deploy hooks if you use doctrine and/or kaliop migration bundle
         ##bin/console doctrine:migrations:migrate --no-interaction --allow-no-migration
         ##bin/console kaliop:migration:migrate --no-interaction --no-debug
+    # Post deploy hook, like deploy but after being deployed and live, for deploy tasks we can do asynchronously
+    post_deploy: |
+        set -e
+        # Cleanup old prod cache folders, basically all except current $PLATFORM_TREE_ID folder.
+        find var/cache/prod -mindepth 1 -maxdepth 1 -type d \! \( -name "$PLATFORM_TREE_ID" \) -exec rm -rf '{}' \;
 
 # The configuration of scheduled execution.
 # see http://symfony.com/doc/current/components/console/introduction.html
