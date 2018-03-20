@@ -86,9 +86,9 @@ hooks:
             # Clear class cache before we boot up symfony in case of interface changes on classes cached
             rm -Rf app/cache/$SYMFONY_ENV/*.*
             app/console cache:clear
-        else
-            # Clear class cache on re-deploy, normally does nothing as folder is empty (see post_deploy for cleanup)
-            rm -Rf app/cache/prod/$PLATFORM_TREE_ID/*.*
+        elif [ -d "app/cache/prod/$PLATFORM_TREE_ID" ] ; then
+            # Clear cache on re-deploy when the folder exits, move folder so post_deploy can cleanup
+            mv -f app/cache/prod/$PLATFORM_TREE_ID app/cache/prod/old_deploy
         fi
         # Example of additional deploy hooks if you use doctrine and/or kaliop migration bundle
         ##app/console doctrine:migrations:migrate --no-interaction --allow-no-migration
