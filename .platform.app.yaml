@@ -81,10 +81,14 @@ hooks:
             php -d memory_limit=-1 app/console ezplatform:install $INSTALL_EZ_INSTALL_TYPE
             touch web/var/.platform.installed
         fi
-        # Clear cache if not in prod (prod gets new folder on each deploy to avoid having to clear nfs folder on deploy)
+        # When deploying changes to existing cluster, clear all cache now that we have shared mounts available
         if [ "$SYMFONY_ENV" != "prod" ] ; then
+            # Clear class cache before we boot up symfony in case of interface changes on classes cached
             rm -Rf app/cache/$SYMFONY_ENV/*.*
             app/console cache:clear
+        else
+            # Clear class cache on re-deploy, normally does nothing as folder is empty (see post_deploy for cleanup)
+            rm -Rf app/cache/prod/$PLATFORM_TREE_ID/*.*
         fi
         # Example of additional deploy hooks if you use doctrine and/or kaliop migration bundle
         ##app/console doctrine:migrations:migrate --no-interaction --allow-no-migration
