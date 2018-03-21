@@ -69,27 +69,27 @@ class AppKernel extends Kernel
         return __DIR__;
     }
 
+    private function getSymfonyTempDirPrefix()
+    {
+        return !empty($_SERVER['SYMFONY_TMP_DIR']) ? rtrim($_SERVER['SYMFONY_TMP_DIR'], '/') : dirname(
+            $this->getRootDir()
+        );
+    }
+
     public function getCacheDir()
     {
-        if (!empty($_SERVER['SYMFONY_TMP_DIR'])) {
-            return rtrim($_SERVER['SYMFONY_TMP_DIR'], '/') . '/var/cache/' . $this->getEnvironment();
+        $folder = $this->getSymfonyTempDirPrefix() . '/var/cache/' . $this->getEnvironment();
+
+        if (getenv('PLATFORM_TREE_ID') != '') {
+            return $folder . '/' . getenv('PLATFORM_TREE_ID');
         }
 
-        // On platform.sh place each deployment cache in own folder to rather cleanup old cache async
-        if ($this->getEnvironment() === 'prod' && ($platformTreeId = getenv('PLATFORM_TREE_ID'))) {
-            return dirname(__DIR__) . '/var/cache/prod/' . $platformTreeId;
-        }
-
-        return dirname(__DIR__) . '/var/cache/' . $this->getEnvironment();
+        return $folder;
     }
 
     public function getLogDir()
     {
-        if (!empty($_SERVER['SYMFONY_TMP_DIR'])) {
-            return rtrim($_SERVER['SYMFONY_TMP_DIR'], '/') . '/var/logs';
-        }
-
-        return dirname(__DIR__) . '/var/logs';
+        return $this->getSymfonyTempDirPrefix() . '/var/logs';
     }
 
     public function registerContainerConfiguration(LoaderInterface $loader)
