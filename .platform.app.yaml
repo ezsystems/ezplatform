@@ -25,6 +25,8 @@ relationships:
     # If you wish to have a separate Redis instance for sessions, uncomment
     # this relationship and the corresponding service in .platform/services.yaml
     #redissession: 'redissession:redis'
+    # If you wish to use solr, uncomment this relationship and the corresponding service in .platform/services.yaml
+    #solr: 'solrsearch:solr'
 
 variables:
     #php:
