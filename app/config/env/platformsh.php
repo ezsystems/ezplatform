@@ -103,7 +103,7 @@ if (isset($relationships['redissession'])) {
         $container->setParameter('session.save_path', sprintf('%s:%d', $endpoint['host'], $endpoint['port']));
     }
 } elseif (isset($relationships['rediscache'])) {
-    foreach ($relationships['redissession'] as $endpoint) {
+    foreach ($relationships['rediscache'] as $endpoint) {
         if ($endpoint['scheme'] !== 'redis') {
             continue;
         }
