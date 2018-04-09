@@ -18,7 +18,7 @@ If you don't have it already, install Composer, the command-line package manager
 php -r "readfile('https://getcomposer.org/installer');" | php
 ```
 
-For further information about Composer usage see [Using Composer](https://doc.ezplatform.com/en/latest/getting_started/about_composer/).
+For further information about Composer usage see the [Using Composer](https://doc.ezplatform.com/en/latest/getting_started/about_composer/) section.
 
 ### Install eZ Platform
 
@@ -45,7 +45,7 @@ php bin/console assetic:dump
 
 #### Installing another version
 
-The instructions above show how to install the latest stable version, however with Composer you can specify the version and stability if you want to install something else.
+The instructions above show how to install the latest stable version, however with Composer you can specify the exact version and stability level you want to install.
 
 Versions [can be expressed in many ways in Composer](https://getcomposer.org/doc/articles/versions.md), but the ones we recommend are:
 
@@ -73,15 +73,15 @@ php bin/console ezplatform:install clean
 
 ## Setting up directory permissions
 
-Directories `var`, `web/var` need to be writable by cli and web server user
+Directories `var`, `web/var` need to be writable by CLI and web server user
 (see [Symfony documentation](http://symfony.com/doc/3.4/setup/file_permissions.html))
 
 Furthermore, future files and directories created by these two users will need to inherit those permissions.
 
-*For security reasons, in production there is no need for web server to have access to write to other directories.*
+*For security reasons, in production there is no need for web server to have write permission to other directories.*
 
 For development setup you may change your web server config to use the same user as the owner of a directory.
-What follows below is mainly for production setup, and like Symfony we first and foremost recommend using an approach using ACL.
+What follows below is mainly for production setup, and like Symfony we first and foremost recommend using an ACL.
 
 ### Using ACL on a Linux/BSD system that supports chmod +a
 
@@ -98,7 +98,7 @@ sudo chmod +a "$(whoami) allow delete,write,append,file_inherit,directory_inheri
 
 ### Using ACL on a Linux/BSD system that does not support chmod +a
 
-Some systems don't support chmod +a, but do support another utility called setfacl. You may need to
+Some systems don't support `chmod +a`, but do support another utility called setfacl. You may need to
 [enable ACL support](https://help.ubuntu.com/community/FilePermissionsACLs) on your partition and install setfacl
 before using it *(as is the case with Ubuntu)*. The example below uses a command to try to determine
 your web server user and set it as `HTTPDUSER`, alternatively change to your actual web user if non standard:
@@ -127,14 +127,14 @@ sudo find web/var var -type f | xargs sudo chmod -R 664
 ### Using chmod on a Linux/BSD/OS X system where you can't change owner
 
 If you can't use ACL and aren't allowed to change owner, you can use chmod, making the files writable by everybody.
-Note that this method really isn't recommended as it allows any user to do anything.
+**Note that this method really isn't recommended as it allows any user to do anything.**
 
 ```bash
 sudo find web/var var -type d | xargs sudo chmod -R 777
 sudo find web/var var -type f | xargs sudo chmod -R 666
 ```
 
-When using chmod, note that newly created files (such as cache) owned by the web server's user may have different/restrictive permissions.
+When using `chmod`, note that newly created files (such as cache) owned by the web server's user may have different/restrictive permissions.
 In this case, it may be required to change the umask so that the cache and log directories will be group-writable or world-writable (`umask(0002)` or `umask(0000)` respectively).
 
 It may also be possible to add the group ownership inheritance flag so new files inherit the current group, and use `775`/`664` in the command lines above instead of world-writable:
@@ -143,7 +143,7 @@ It may also be possible to add the group ownership inheritance flag so new files
 sudo chmod g+s web/var var
 ```
 
-### Set up directory permissions on Windows
+### Setting up directory permissions on Windows
 
 For your choice of web server you'll need to make sure web server user has read access to `<root-dir>`, and
 write access to the following directories:
