@@ -37,39 +37,9 @@ Next, use the installation command:
 php bin/console ezplatform:install clean
 ```
 
-Finally, dump assets:
-
-``` bash
-php bin/console assetic:dump
-```
-
 #### Installing another version
 
-The instructions above show how to install the latest stable version, however with Composer you can specify the exact version and stability level you want to install.
-
-Versions [can be expressed in many ways in Composer](https://getcomposer.org/doc/articles/versions.md), but the ones we recommend are:
-
--   Exact git tag: `v1.3.1`
--   Tilde for locking down the minor version: `~1.3.0`
-    -   Equals: `1.3.*``
--   Caret for allowing all versions within a major: `^1.3.0`
-    -   Equals: `1.* <= 1.3.0`
-
-The above concerns stable releases, but [Composer lets you specify stability in many ways](https://getcomposer.org/doc/articles/versions.md#stability), mainly:
-
--   Exact git tag: `v1.4.0-beta1`
--   Stability flag on a given version: `1.4.0@beta`
-    -   Equals: versions of 1.4.0 in stability order of: beta, rc, stable
-    -   This can also be combined with tilde and caret to match ranges of unstable releases
--   Stability flag while omitting version: '`@alpha` equals latest available alpha release
-
-Example:
-
-``` bash
-composer create-project --keep-vcs ezsystems/ezplatform ezplatform @beta
-cd ezplatform
-php bin/console ezplatform:install clean
-```
+The instructions above show how to install the latest stable version, however with Composer you can [specify the exact version and stability level you want to install](https://doc.ezplatform.com/en/latest/getting_started/install_using_composer/#installing-another-version).
 
 ## Setting up directory permissions
 
