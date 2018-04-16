@@ -25,17 +25,16 @@ For further information about Composer usage see the [Using Composer](https://do
 The commands below assume you have Composer installed globally, a copy of git on your system, and your **MySQL/MariaDB server already set up with a database**. Once you've got all the required PHP extensions installed, you can get eZ Platform up and running with the following commands:
 
 ``` bash
-composer create-project --keep-vcs ezsystems/ezplatform ezplatform
+composer create-project --keep-vcs ezsystems/ezplatform ezplatform ^2
 cd ezplatform
 ```
 
-At this point you need to [set up directory permissions](https://doc.ezplatform.com/en/latest/getting_started/set_up_directory_permissions/).
+During the installation process you will be asked to input things like database host name, login, password, etc.
+They will be placed in `<ezplatform>/app/config/parameters.yml`.
 
-Next, use the installation command:
+Next you will receive instructions on how to install data into the database, and how to run a simplified dev server using the `server:run` command.
 
-``` bash
-php bin/console ezplatform:install clean
-```
+For a more complete and better performing setup using Apache or nginx, read up on how to [install eZ Platform manually](https://doc.ezplatform.com/en/latest/getting_started/install_manually/).
 
 #### Installing another version
 
