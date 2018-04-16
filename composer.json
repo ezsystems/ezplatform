@@ -86,7 +86,10 @@
         ]
     },
     "config": {
-        "bin-dir": "bin"
+        "bin-dir": "bin",
+        "preferred-install": {
+            "ezsystems/*": "dist"
+        }
     },
     "extra": {
         "symfony-app-dir": "app",
