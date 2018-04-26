@@ -14,8 +14,9 @@
 # Determine eZ Platform Build dir as relative to current script path
 EZPLATFORM_BUILD_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../../.." && pwd )"
 
-# Source .env first to make sure we don't override any variables
-. ${EZPLATFORM_BUILD_DIR}/.env
+# Read from .env first to make sure COMPOSE_FILE and INSTALL_EZ_INSTALL_TYPE are not overwritten
+export $(grep "COMPOSE_FILE" ${EZPLATFORM_BUILD_DIR}/.env)
+export $(grep "INSTALL_EZ_INSTALL_TYPE" ${EZPLATFORM_BUILD_DIR}/.env)
 
 DEPENDENCY_PACKAGE_DIR=$3
 
