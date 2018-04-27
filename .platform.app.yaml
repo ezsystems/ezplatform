@@ -90,6 +90,8 @@ hooks:
             # Clear cache on re-deploy when the folder exits, move folder so post_deploy can cleanup
             mv -f app/cache/prod/$PLATFORM_TREE_ID app/cache/prod/old_deploy
         fi
+        # Clear Redis cache (see: EZP-28816)
+        bin/.platform/clear-redis-cache.sh
         # Example of additional deploy hooks if you use doctrine and/or kaliop migration bundle
         ##app/console doctrine:migrations:migrate --no-interaction --allow-no-migration
         ##app/console kaliop:migration:migrate --no-interaction --no-debug
