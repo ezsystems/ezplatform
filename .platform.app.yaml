@@ -81,17 +81,8 @@ hooks:
             php -d memory_limit=-1 app/console ezplatform:install $INSTALL_EZ_INSTALL_TYPE
             touch web/var/.platform.installed
         fi
-        # When deploying changes to existing cluster, clear all cache now that we have shared mounts available
-        if [ "$SYMFONY_ENV" != "prod" ] ; then
-            # Clear class cache before we boot up symfony in case of interface changes on classes cached
-            rm -Rf app/cache/$SYMFONY_ENV/*.*
-            app/console cache:clear
-        elif [ -d "app/cache/prod/$PLATFORM_TREE_ID" ] ; then
-            # Clear cache on re-deploy when the folder exits, move folder so post_deploy can cleanup
-            mv -f app/cache/prod/$PLATFORM_TREE_ID app/cache/prod/old_deploy
-        fi
-        # Clear Redis cache (see: EZP-28816)
-        bin/.platform/clear-redis-cache.sh
+        # Clear cache (including Redis)
+        bin/.platform/clear-cache.sh
         # Example of additional deploy hooks if you use doctrine and/or kaliop migration bundle
         ##app/console doctrine:migrations:migrate --no-interaction --allow-no-migration
         ##app/console kaliop:migration:migrate --no-interaction --no-debug
