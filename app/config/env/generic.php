@@ -55,6 +55,13 @@ if (($pool = getenv('CACHE_POOL')) && file_exists(__DIR__ . "/../cache_pool/${po
     $loader->load($pool . '.yml');
 }
 
+// Session settings
+// If SESSION_STORAGE_HOST and SESSION_STORAGE_DSN env variable is set, use redis session storage
+if (($session_storage_host = getenv('SESSION_STORAGE_HOST')) && getenv('SESSION_STORAGE_DSN') && $session_storage_host == 'redis') {
+    $container->setParameter('ezplatform.session.handler_id', 'ezplatform.core.session.handler.native_redis');
+    $container->setParameter('session.save_path', getenv('SESSION_STORAGE_DSN'));
+}
+
 // Params that needs to be set at compile time and thus can't use Symfony's env()
 if ($purgeType = getenv('HTTPCACHE_PURGE_TYPE')) {
     $container->setParameter('purge_type', $purgeType);
