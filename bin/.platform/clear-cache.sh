@@ -11,7 +11,7 @@ function clearRedisCache
     REDISHOST=`php -r '$r=getenv("PLATFORM_RELATIONSHIPS");$r=json_decode(base64_decode($r), true);echo($r["rediscache"][0]["host"]);'`
     REDISPORT=`php -r '$r=getenv("PLATFORM_RELATIONSHIPS");$r=json_decode(base64_decode($r), true);echo($r["rediscache"][0]["port"]);'`
 
-    echo "FLUSHALL" | redis-cli -h $REDISHOST -p $REDISPORT
+    redis-cli -h $REDISHOST -p $REDISPORT FLUSHALL
 }
 
 # When deploying changes to existing cluster, clear all cache now that we have shared mounts available
