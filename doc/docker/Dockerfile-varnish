@@ -3,8 +3,8 @@ FROM debian:stretch-slim
 ENV VARNISH_MALLOC_SIZE="256M" \
     DEBIAN_FRONTEND=noninteractive
 
-ARG PACKAGECLOUD_URL=https://packagecloud.io/install/repositories/varnishcache/varnish5/script.deb.sh
-ARG VARNISH_MODULES_VERSION=0.12.1
+ARG PACKAGECLOUD_URL=https://packagecloud.io/install/repositories/varnishcache/varnish60/script.deb.sh
+ARG VARNISH_MODULES_VERSION=0.15.0
 
 # Use official packages from Varnish and build with varnish-modules mainly for xkey
 # see: https://github.com/varnish/varnish-modules/tree/master/docs
