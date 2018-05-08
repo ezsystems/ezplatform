@@ -64,7 +64,7 @@
         "symfony/phpunit-bridge": "~3.2"
     },
     "conflict": {
-        "symfony/symfony": "3.4.7",
+        "symfony/symfony": "3.4.9",
         "doctrine/dbal": "2.7.0"
     },
     "scripts": {
