@@ -50,8 +50,14 @@ ezpublish:
         admin_group:
             cache_service_name: '%cache_pool%'
             var_dir: var/site
+            design: admin
             languages: [eng-GB]
             content:
                 default_ttl: '%httpcache_default_ttl%'
             http_cache:
                 purge_servers: ['%purge_server%']
+
+ezdesign:
+    design_list:
+        admin:
+            - admin
