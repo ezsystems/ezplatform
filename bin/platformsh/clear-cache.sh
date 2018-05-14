@@ -2,8 +2,6 @@
 
 # Due to EZP-28816: console cache:clear doesn't remove cache from Redis, so we need to do it manually.
 
-set -e
-
 . ../../.env
 
 function clearRedisCache

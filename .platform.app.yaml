@@ -82,7 +82,7 @@ hooks:
             touch web/var/.platform.installed
         fi
         # Clear cache (including Redis)
-        bin/.platform/clear-cache.sh
+        bin/platformsh/clear-cache.sh
         # Example of additional deploy hooks if you use doctrine and/or kaliop migration bundle
         ##app/console doctrine:migrations:migrate --no-interaction --allow-no-migration
         ##app/console kaliop:migration:migrate --no-interaction --no-debug
