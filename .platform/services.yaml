@@ -21,15 +21,14 @@ mysqldb:
 rediscache:
     type: 'redis:3.2'
 
-# If you wish to have a separate Redis instance for sessions, uncomment
-# this service and the corresponding relationship in .platform.app.yaml.
-# For persisted session storage use the `redis-persistent` storage provided below.
-#redissession:
-#    type: 'redis:3.2'
-#
-
-# This configuration makes session storage persisted across server/redis restarts.
+# If you wish to have a separate Redis instance for sessions, uncomment this service and the corresponding relationship in .platform.app.yaml.
+# This configuration makes separated Redis session storage persisted across server/redis restarts.
 # Please, remember to have storage space to spare for this, and don't mind a bit slower instance type of redis.
 redissession:
     type: redis-persistent:3.2
     disk: 1024
+
+# If you don't need persistent sessions, you may use faster in-memory storage by replacing the redissession service definition above with this one:
+#redissession:
+#    type: 'redis:3.2'
+#
