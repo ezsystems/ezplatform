@@ -30,4 +30,3 @@ redissession:
 # If you don't need persistent sessions, you may use faster in-memory storage by replacing the redissession service definition above with this one:
 #redissession:
 #    type: 'redis:3.2'
-#

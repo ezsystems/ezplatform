@@ -22,7 +22,7 @@ relationships:
     # Uncomment if you want to store dfs tables in a separate database:
     #dfs_database: 'mysqldb:dfs'
     rediscache: 'rediscache:redis'
-    # If you wish to have a separate Redis instance for sessions, uncomment
+    # If you don't want to have a separate Redis instance for sessions, comment out
     # this relationship and the corresponding service in .platform/services.yaml
     redissession: 'redissession:redis'
 

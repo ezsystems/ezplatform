@@ -21,5 +21,3 @@ elif [ -d "../../app/cache/prod/$PLATFORM_TREE_ID" ] ; then
 fi
 
 clearRedisCache
-
-trap - EXIT
