@@ -69,6 +69,10 @@ class AppKernel extends Kernel
 
     public function getCacheDir()
     {
+        if (!empty($_SERVER['SYMFONY_TMP_DIR'])) {
+            return rtrim($_SERVER['SYMFONY_TMP_DIR'], '/') . '/app/cache/' . $this->getEnvironment();
+        }
+
         // On platform.sh place each deployment cache in own folder to rather cleanup old cache async
         if ($this->getEnvironment() === 'prod' && ($platformTreeId = getenv('PLATFORM_TREE_ID'))) {
             return "{$this->getRootDir()}/cache/{$this->getEnvironment()}/{$platformTreeId}";
