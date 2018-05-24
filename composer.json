@@ -44,6 +44,7 @@
         "ezsystems/ezplatform-admin-ui-modules": "^1.1@dev",
         "ezsystems/ezplatform-admin-ui-assets": "^2.0@dev",
         "ezsystems/ezplatform-design-engine": "^1.1",
+        "ezsystems/ezplatform-cron": "^2.0@dev",
         "knplabs/knp-menu-bundle": "^2.1",
         "willdurand/js-translation-bundle": "^2.6.4",
         "friendsofsymfony/jsrouting-bundle": "^1.4",
