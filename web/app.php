@@ -40,20 +40,22 @@ if (!$useDebugging && PHP_VERSION_ID < 70000) {
     $kernel->loadClassCache();
 }
 
-// Depending on the SYMFONY_HTTP_CACHE environment variable, tells whether the internal HTTP Cache mechanism is to be used.
+// Depending on the SYMFONY_HTTP_CACHE environment variable, tells whether Symfony internal HTTP Proxy Cache is to be used.
 // If not set, or "", it is auto activated if _not_ in "dev" environment.
 if (($useHttpCache = getenv('SYMFONY_HTTP_CACHE')) === false || $useHttpCache === '') {
     $useHttpCache = $environment !== 'dev';
 }
 
-// Load HTTP Cache ...
+// Load Symfony's Proxy for HTTP Cache (should not be used when using Varnish or Fastly)
 if ($useHttpCache) {
     // The standard HttpCache implementation can be overridden by setting the SYMFONY_HTTP_CACHE_CLASS environment variable.
     // NOTE: Make sure to setup composer config so it is *autoloadable*, or use "SYMFONY_CLASSLOADER_FILE" for this.
+    // SYMFONY_HTTP_CACHE_DIR is optional env variable for having different directory for Symfony's Http Cache Proxy
+    $httpCacheDir = getenv('SYMFONY_HTTP_CACHE_DIR');
     if ($httpCacheClass = getenv('SYMFONY_HTTP_CACHE_CLASS')) {
-        $kernel = new $httpCacheClass($kernel);
+        $kernel = new $httpCacheClass($kernel, $cacheDir ?: null);
     } else {
-        $kernel = new AppCache($kernel);
+        $kernel = new AppCache($kernel, $cacheDir ?: null);
     }
 }
 

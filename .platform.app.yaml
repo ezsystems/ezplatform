@@ -2,7 +2,10 @@
 # in the same project.
 
 # Please see doc/platformsh/README.md and doc/platformsh/INSTALL.md
-# NB: Clustered eZ Platform setups are not tested and are likely to have issues.
+
+# Vocabulary:
+# - PE: Platform.sh Enterprise
+# - PS: Platform.sh Professional
 
 # The name of this app. Must be unique within a project.
 name: app
@@ -33,8 +36,13 @@ variables:
         # Example of setting php.ini config
         #"display_errors": "On"
     env:
-        # For enterprise cluster, disable Symfony Proxy & instead use Fastly Bundle available on eZ Platform Enterprise
+        # For PE cluster, disable Symfony Proxy & instead use Fastly Bundle available on eZ Platform Enterprise
         #SYMFONY_HTTP_CACHE: 0
+        # Place symfony cache on tmpfs to avoid performance issues of having it on NFS, re-deploy to clear cache reliably
+        # "app" comes from application name for platform.sh, so adapt it if you change the name for multi application setups
+        SYMFONY_CACHE_DIR: /tmp/app
+        # PS: Given we just set cache directory to be non shared, we need to make sure http cache is shared (ignored when using Fastly)
+        SYMFONY_HTTP_CACHE_DIR: app/cache/prod
         # Change this to dev if you want to run site & commands in dev
         SYMFONY_ENV: prod
         # Uncomment if you want to use DFS clustering:
@@ -56,7 +64,6 @@ disk: 2048
 
 # The mounts that will be performed when the package is deployed.
 mounts:
-    "/app/cache": "shared:files/cache"
     "/app/logs": "shared:files/logs"
     "/web/var": "shared:files/files"
     # Uncomment if you want to use DFS clustering:
@@ -73,7 +80,7 @@ hooks:
         else
             composer install --no-dev --prefer-dist --no-progress --no-interaction --optimize-autoloader
         fi
-    # Deploy hook, access to services & done once (per cluster, not per node), only mounts are writable at this point
+    # Deploy hook, access to services & done once (per cluster, not per node), only mounts & tmpfs are writable at this point
     # Note: Http traffic is paused while this is running, so for prod code this should finish as fast as possible, < 30s
     deploy: |
         set -e
@@ -83,30 +90,22 @@ hooks:
             php -d memory_limit=-1 app/console ezplatform:install $INSTALL_EZ_INSTALL_TYPE
             touch web/var/.platform.installed
         fi
-        # When deploying changes to existing cluster, clear all cache now that we have shared mounts available
-        if [ "$SYMFONY_ENV" != "prod" ] ; then
-            # Clear class cache before we boot up symfony in case of interface changes on classes cached
-            rm -Rf app/cache/$SYMFONY_ENV/*.*
-            # Clear cache and warmup
-            app/console cache:clear
-        else
-            # For prod we have a clean folder on each deploy, if re-deploying a sha we move & let post_deploy clean up
-            if [ -d "app/cache/prod/$PLATFORM_TREE_ID" ] ; then
-                mv -f app/cache/prod/$PLATFORM_TREE_ID app/cache/prod/old_deploy
-            fi
-            # Warmup cache so incomming requests does not need to end up doing that in paralell under load
-            # We do this against /tmp and move it over afterwards in order to do this in under 10s instead of 30-50s
-            SYMFONY_TMP_DIR="/tmp" app/console cache:warmup; unset SYMFONY_TMP_DIR
-            mv /tmp/app/cache/prod/ app/cache/prod/$PLATFORM_TREE_ID
-        fi
+        # Clear class cache before we boot up symfony in case of interface changes on classes cached
+        rm -Rf $SYMFONY_CACHE_DIR/app/cache/
+        # Clear cache AND maybe more im warmup
+        app/console cache:clear
         # Example of additional deploy hooks if you use doctrine and/or kaliop migration bundle
         ##app/console doctrine:migrations:migrate --no-interaction --allow-no-migration
         ##app/console kaliop:migration:migrate --no-interaction --no-debug
-    # Post deploy hook, like deploy but after being deployed and live, for deploy tasks we can do asynchronously
-    post_deploy: |
-        set -e
-        # Cleanup old prod cache folders, basically all except current $PLATFORM_TREE_ID folder.
-        find app/cache/prod -mindepth 1 -maxdepth 1 -type d \! \( -name "$PLATFORM_TREE_ID" \) -exec rm -rf '{}' \;
+        # At this point should detect if any of the migrations did changes, if so: clear redis cache + exire Http cache
+
+# Given we place cache per node we opt to warmup cache before letting requests hit them, NOTE:
+# 1. Adapt this if you change php version, 2. For PE setups, open support ticket to platform.sh for adapting changes
+# https://docs.platform.sh/languages/php.html#alternate-start-commands
+web:
+    commands:
+        start: 'app/console cache:warmup && /usr/sbin/php-fpm7.1-zts'
+
 
 # The configuration of scheduled execution.
 # see http://symfony.com/doc/current/components/console/introduction.html

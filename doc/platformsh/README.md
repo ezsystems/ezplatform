@@ -6,8 +6,9 @@
 *Platform.sh* is a continuous deployment cloud hosting solution which can replicate a live production setup in seconds and create byte-level clones of throwaway dev and staging environments, which makes human testing and validation easy.
 
 ## Current limitations
-- Clustering is not yet tested or supported.
-- Performance is limited, as installation instructions do not yet cover any particular CDN or HTTP caching tools like Varnish or Fastly.
+- Configuration is limited to eZ Platform 1.13 and higher setups, if you intend to run legacy bridge or pure eZ Publish legacy on platform.sh
+  you should ideally get in contact with a eZ Partner who has experience with this already, possible also get some consulting hours
+  by eZ Professional Services to help on your migration path.
 
 ## Install
 For installation instructions, see [INSTALL.md](https://github.com/ezsystems/ezplatform/blob/master/doc/platformsh/INSTALL.md).
