@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1871f221e56061fc68baf165f8c62814",
+    "content-hash": "bb8ede3ac7936b6092de450c80f7fc9f",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -1077,7 +1077,7 @@
         },
         {
             "name": "ezsystems/ezpublish-kernel",
-            "version": "v6.13.3-rc1",
+            "version": "v6.13.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-kernel.git",
@@ -1168,16 +1168,16 @@
         },
         {
             "name": "ezsystems/platform-ui-assets-bundle",
-            "version": "v4.2.0",
+            "version": "v4.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/PlatformUIAssetsBundle.git",
-                "reference": "83663a5bb95d91299040ebe94e53fb0c348a4e20"
+                "reference": "623ca66dc0c1f40722781321180724974dc17a36"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/PlatformUIAssetsBundle/zipball/83663a5bb95d91299040ebe94e53fb0c348a4e20",
-                "reference": "83663a5bb95d91299040ebe94e53fb0c348a4e20",
+                "url": "https://api.github.com/repos/ezsystems/PlatformUIAssetsBundle/zipball/623ca66dc0c1f40722781321180724974dc17a36",
+                "reference": "623ca66dc0c1f40722781321180724974dc17a36",
                 "shasum": ""
             },
             "require": {
@@ -1200,11 +1200,11 @@
                 }
             ],
             "description": "External assets dependencies for PlatformUIBundle",
-            "time": "2018-05-08T09:17:23+00:00"
+            "time": "2018-06-11T08:22:04+00:00"
         },
         {
             "name": "ezsystems/platform-ui-bundle",
-            "version": "v1.13.3-rc1",
+            "version": "v1.13.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/PlatformUIBundle.git",
@@ -1255,7 +1255,7 @@
         },
         {
             "name": "ezsystems/repository-forms",
-            "version": "v1.11.2-rc1",
+            "version": "v1.11.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/repository-forms.git",
@@ -7288,9 +7288,6 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "ezsystems/ezpublish-kernel": 5,
-        "ezsystems/repository-forms": 5,
-        "ezsystems/platform-ui-bundle": 5,
         "roave/security-advisories": 20
     },
     "prefer-stable": false,
