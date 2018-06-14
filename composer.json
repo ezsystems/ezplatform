@@ -39,7 +39,7 @@
         "ezsystems/repository-forms": "^2.1@dev",
         "ezsystems/ezplatform-solr-search-engine": "^1.5@dev",
         "ezsystems/ez-support-tools": "^0.2@dev",
-        "ezsystems/ezplatform-http-cache": "~0.6@dev",
+        "ezsystems/ezplatform-http-cache": "~0.6.0@dev",
         "ezsystems/ezplatform-admin-ui": "^1.1@dev",
         "ezsystems/ezplatform-admin-ui-modules": "^1.1@dev",
         "ezsystems/ezplatform-admin-ui-assets": "^3.0@dev",
