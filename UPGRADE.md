@@ -1,7 +1,7 @@
 # Upgrade instructions
 
 Please visit our online documentation for instructions:
-https://doc.ez.no/display/DEVELOPER/Updating+eZ+Platform
+https://doc.ezplatform.com/en/latest/releases/updating_ez_platform/
 
 For legacy upgrade procedures, please go to our legacy documentation:
 * Go to https://doc.ez.no/display/MAIN

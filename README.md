@@ -8,38 +8,61 @@
 ## What is eZ Platform ?
 *eZ Platform* is a 100% open source professional CMS (Content Management System) developed by eZ Systems and the eZ Community.
 
-*eZ Platform v2* is the 7th generation of *eZ Publish*, it is built on top of the Symfony 3.4LTS framework (Full Stack).
+Current *eZ Platform v2* is the 7th generation of *eZ Publish*, it is built on top of the Symfony 3.4LTS framework (Full Stack).
 It has been in development since 2011, and integral part of the *eZ Publish Platform 5.x* as "Platform stack" since 2012.
 
-### Abstract:
+#### Abstract:
 - **Very extensible** *You can extend the application and the content model in many ways*
 - **Future & backwards compatible** *Strong BC policy on data as well as code*
 - **Multi channel by design** *Strong focus on separation between <sup>semantic</sup> content & design*
 - **Scalable** *Easily scale across multiple servers out of the box*
 - **Future proof** *Architecture designed to allow even more content scalability and performance in the future*
-- **Stable** *Built on experience building CMS since early 2000, and in production since 2012*
-- **Integration friendly** *Numerous events and signals to hook into for advanced workflow needs*
+- **Stable** *Built on experience building CMS since early 2000*
+- **Integration friendly** *Numerous events and signals to hook into for advanced needs*
 
-
-### Further information:
+#### Further information:
 eZ Platform is 100% open source and is the foundation for the commercial *eZ Platform Enterprise Edition* software which adds advanced features for editorial teams, 100% built on top of *eZ Platform* APIs.
 
 - eZ Platform Developer Hub: [ezplatform.com](https://ezplatform.com/)
 - [eZ Platform Open Source and Enterprise Edition roadmap](http://doc.ez.no/roadmap)
 - eZ Systems (commercial products and services): [ez.no](https://ez.no/)
 
-## Install
-For manual installation instructions, see [INSTALL.md](https://github.com/ezsystems/ezplatform/blob/master/INSTALL.md).
-For simplified installation, rather consider using [eZ Launchpad](https://ezsystems.github.io/launchpad/) which takes care about the whole setup for you.
+
+## Installation
+
+NOTE: *For simplified installation, consider using [eZ Launchpad](https://ezsystems.github.io/launchpad/) which takes care of the whole server setup for you.*
+
+Installation instructions below are for installing a clean installation of eZ Platform in latest version with no demo content or demo website.
+Full installation documentation is kept current [in the online docs](https://doc.ezplatform.com/en/latest/getting_started/install_using_composer/), and includes
+instructions on installing other distributions _(like demo install and enterprise edition)_, or other versions.
+
+#### Prerequisites
+
+These instructions assume you have already installed:
+- PHP _(7.1 or higher)_
+- Web Server _(Apache / Nginx)_
+- Database server _(MySQL 5.5+ or MariaDB 10.0+)_
+- [Composer](https://doc.ezplatform.com/en/latest/getting_started/about_composer/)
+- Git _(for development)_
+
+For further information [on requirements see online doc](https://doc.ezplatform.com/en/latest/getting_started/requirements_and_system_configuration/).
 
 
-### eZ Platform Demo
-This repository lets you create a clean, empty installation of eZ Platform. This type of installation is used for developing from scratch. You can also choose a version of eZ Platform including a demo, that is an example website. It is available in the following repository: https://github.com/ezsystems/ezplatform-demo
+#### Install eZ Platform _(clean distribution)_
 
-## Requirements
-Full requirements can be found on the [Requirements](https://doc.ez.no/display/TECHDOC/Requirements) page.
+Assuming you have prerequisites sorted out, including [Composer](https://doc.ezplatform.com/en/latest/getting_started/about_composer/)
+and Git, you can get eZ Platform up and running with the following commands in your terminal:
 
-*TL;DR: supported PHP versions are 7.1 and up, using php-fpm or mod_php, and either MySQL 5.5/5.6 or MariaDB 10.0/10.1.*
+``` bash
+composer create-project --keep-vcs ezsystems/ezplatform ezplatform ^2
+cd ezplatform
+```
+
+During the installation process you will be asked to input things like database host name, login, password, etc.
+They will be placed in `<ezplatform>/app/config/parameters.yml`.
+
+Next you will receive instructions on how to install data into the database, and how to run a simplified dev server using the `bin/console server:run` command.
+For a more complete and better performing setup using Apache or Nginx, read up on how to [install eZ Platform manually](https://doc.ezplatform.com/en/latest/getting_started/install_manually/).
 
 ## Issue tracker
 Submitting bugs, improvements and stories is possible on https://jira.ez.no/browse/EZP.
