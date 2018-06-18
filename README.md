@@ -34,7 +34,7 @@ NOTE: *For simplified installation, consider using [eZ Launchpad](https://ezsyst
 
 Installation instructions below are for installing a clean installation of eZ Platform in latest version with no demo content or demo website.
 Full installation documentation is kept current [in the online docs](https://doc.ezplatform.com/en/latest/getting_started/install_using_composer/), and includes
-instructions on installing other distributions _(like demo install and enterprise edition)_, or other versions.
+instructions on installing other distributions _(like [ezplatform-demo](https://github.com/ezsystems/ezplatform-demo) and [ezplatform-ee](https://github.com/ezsystems/ezplatform-ee) enterprise edition)_, or other versions.
 
 #### Prerequisites
 
