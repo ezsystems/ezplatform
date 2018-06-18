@@ -59,3 +59,7 @@ ezpublish:
     url_alias:
         slug_converter:
             transformation: 'urlalias_lowercase'
+
+ez_platform_standard_design:
+    # makes Kernel default templates (in EzPublishCoreBundle/Resources/views) part of standard Design
+    override_kernel_templates: true
