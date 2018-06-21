@@ -1,5 +1,6 @@
 mysqldb:
     type: mysql:10.2
+    # Version 10.1 might be a better option when running Legacy Bridge
     disk: 2048
     configuration:
         schemas:
