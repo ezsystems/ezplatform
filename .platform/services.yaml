@@ -1,5 +1,7 @@
 mysqldb:
-    type: mysql:10.1
+    type: mysql:10.2
+    # Version 10.1 might be a better option when running Legacy Bridge
+    # For more information see https://doc.ezplatform.com/en/2.1/getting_started/requirements_and_system_configuration/#supported-setups
     disk: 2048
     configuration:
         schemas:
