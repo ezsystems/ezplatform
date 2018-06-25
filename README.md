@@ -50,7 +50,7 @@ For further information [on requirements see online doc](https://doc.ezplatform.
 
 #### Install eZ Platform _(clean distribution)_
 
-Assuming you have prerequisites sorted out, you can get eZ Platform up and running with the following commands in your terminal:
+Assuming you have prerequisites sorted out, you can get the install up and running with the following commands in your terminal:
 
 ``` bash
 composer create-project --keep-vcs ezsystems/ezplatform ezplatform ^2
