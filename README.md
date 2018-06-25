@@ -32,7 +32,7 @@ eZ Platform is 100% open source and is the foundation for the commercial *eZ Pla
 
 NOTE: *For simplified installation, consider using [eZ Launchpad](https://ezsystems.github.io/launchpad/) which takes care of the whole server setup for you.*
 
-Installation instructions below are for installing a clean installation of eZ Platform in latest version with no demo content or demo website.
+Installation instructions below are for installing a clean installation of eZ Platform in latest version with _no_ demo content or demo website.
 Full installation documentation is kept current [in the online docs](https://doc.ezplatform.com/en/latest/getting_started/install_using_composer/), and includes
 instructions on installing other distributions _(like [ezplatform-demo](https://github.com/ezsystems/ezplatform-demo) and [ezplatform-ee](https://github.com/ezsystems/ezplatform-ee) enterprise edition)_, or other versions.
 
@@ -40,7 +40,7 @@ instructions on installing other distributions _(like [ezplatform-demo](https://
 
 These instructions assume you have already installed:
 - PHP _(7.1 or higher)_
-- Web Server _(Apache / Nginx)_
+- Web Server _(Recommeneded: Apache / Nginx. Use of php's built in development server is also possible)_
 - Database server _(MySQL 5.5+ or MariaDB 10.0+)_
 - [Composer](https://doc.ezplatform.com/en/latest/getting_started/about_composer/)
 - Git _(for development)_
@@ -50,19 +50,20 @@ For further information [on requirements see online doc](https://doc.ezplatform.
 
 #### Install eZ Platform _(clean distribution)_
 
-Assuming you have prerequisites sorted out, including [Composer](https://doc.ezplatform.com/en/latest/getting_started/about_composer/)
-and Git, you can get eZ Platform up and running with the following commands in your terminal:
+Assuming you have prerequisites sorted out, you can get eZ Platform up and running with the following commands in your terminal:
 
 ``` bash
 composer create-project --keep-vcs ezsystems/ezplatform ezplatform ^2
 cd ezplatform
 ```
 
+_Note: If  composer is installed localy instead of globally, the first command will start with `php composer.phar`._
+
 During the installation process you will be asked to input things like database host name, login, password, etc.
 They will be placed in `<ezplatform>/app/config/parameters.yml`.
 
 Next you will receive instructions on how to install data into the database, and how to run a simplified dev server using the `bin/console server:run` command.
-For a more complete and better performing setup using Apache or Nginx, read up on how to [install eZ Platform manually](https://doc.ezplatform.com/en/latest/getting_started/install_manually/).
+_Tip: For a more complete and better performing setup using Apache or Nginx, read up on how to [install eZ Platform manually](https://doc.ezplatform.com/en/latest/getting_started/install_manually/)._
 
 ## Issue tracker
 Submitting bugs, improvements and stories is possible on https://jira.ez.no/browse/EZP.
