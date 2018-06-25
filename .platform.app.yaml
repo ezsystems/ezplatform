@@ -105,8 +105,8 @@ hooks:
 # see http://symfony.com/doc/current/components/console/introduction.html
 #crons:
 #    symfony:
-#        spec: "*/20 * * * *"
-#        cmd: "php bin/console ezpublish:cron:run"
+#         spec: "0 0 * * 0"
+#         cmd: "php bin/console ezplatform:check-urls --quiet --env=prod > var/logs/ezp_cron.txt"
 
 runtime:
     extensions:
