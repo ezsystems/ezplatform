@@ -51,7 +51,7 @@
     # Optional: Whether to use debugging.
     # Possible values: 0, 1 or ""
     # Defaults to enabled if SYMFONY_ENV is set to "dev" if env value is omitted or empty
-    #if[SYMFONY_DEBUG] SetEnv SYMFONY_DEBUG "%SYMFONY_DEBUG%"s
+    #if[SYMFONY_DEBUG] SetEnv SYMFONY_DEBUG "%SYMFONY_DEBUG%"
 
     # Optional: Whether to use custom ClassLoader (autoloader) file
     # Needs to be a valid path relative to root web/ directory
