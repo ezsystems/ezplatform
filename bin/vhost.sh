@@ -95,8 +95,8 @@ Arguments:
   [--sf-trusted-proxies=127.0.0.1,....]    : Comma separated trusted proxies (e.g. Varnish), that we can get client ip from
   [--sf-http-cache=0|1]                    : To disable Symfony HTTP cache Proxy for using a different reverse proxy
                                              By default disabled when evn is "dev", enabled otherwise.
-  [--sf-http-cache-class=<class-file.php>] : To specify a different class then default to use as the Symfony proxy
-  [--sf-classloader-file=<class-file.php>] : To specify a different class then default to use for PHP auto loading
+  [--sf-http-cache-class=<class-file.php>] : DEPRECATED - To specify a different class then default to use as the Symfony proxy
+  [--sf-classloader-file=<class-file.php>] : DEPRECATED - To specify a different class then default to use for PHP auto loading
   [--body-size-limit=<int>]                : Limit in megabytes for max size of request body, 0 value disables limit.
   [--request-timeout=<int>]                : Limit in seconds before timeout of request, 0 value disables timeout limit.
   [--binary-data-handler=dfs|]             : Name of handler in user. Specify "dfs" if you are using the dfs io handler.
@@ -272,6 +272,9 @@ while [  "${template_vars[$COUNTER]}" != "" ]; do
             fi
         done
     else
+        # Change "#if[!VAR] " comments conditionally to uncommented lines
+        tmp=${tmp//"#if[!${current_var}] "/""}
+
         # Change #if[VARIABLE[...]] comments to conventional comment lines
         regex="if\[${current_var}([^]]*)\] "
         while [[ $tmp =~ $regex ]] ; do

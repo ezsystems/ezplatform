@@ -1,4 +1,5 @@
-# Official VirtualHost configuration for Apache 2.4 template
+# Official VirtualHost configuration for Apache 2.2. template
+## Deprecated, please plan your move to Apache 2.4 or Nginx
 # See Readme.md for how to generate your config manually, or in automated deployments.
 # Note: This is meant to be manually tailored for your needs, expires headers might for instance not work for your dev setup.
 
@@ -21,23 +22,11 @@
 
     # "web" folder is what we expose to the world, all rewrite rules further down is relative to it.
     <Directory %BASEDIR%/web>
-        <FilesMatch \.php$>
-            # For serving php files configure mod_proxy to talk to php-fpm using Apache 2.4.10 and higher.
-            # See: https://wiki.apache.org/httpd/PHP-FPM#apache_httpd_2.4
-
-            # For best performance, prefer socket use. This requires Linux, and that both Apache and PHP has access to
-            # the socket file `/var/run/php5-fpm.sock` via local file system and hence run on the same machine.
-            #SetHandler "proxy:unix:/var/run/php5-fpm.sock|fcgi://localhost/"
-            # For TCP usage, if you're not on Linux, or Apache and PHP are on separate machines, instead use fcgi: form.
-            # (Optionally hint php-fpm processes count using: https://wiki.apache.org/httpd/PHP-FPM#Proxy_via_handler)
-            #SetHandler "proxy:fcgi://localhost/:9000"
-
-            SetHandler "proxy:%FASTCGI_PASS%|fcgi://localhost/"
-        </FilesMatch>
-
+        # If using php configured in FastCGI mode, you might also need to add "ExecCGI" to the line below
         Options FollowSymLinks
         AllowOverride None
-        Require all granted
+        # Depending on your global Apache settings, you may need to uncomment and adapt:
+        #Allow from all
     </Directory>
 
     ## eZ Platform/Symfony ENVIRONMENT variables, for customizing app.php* execution
