@@ -81,3 +81,11 @@ if ($value = getenv('RECOMMENDATIONS_LICENSE_KEY')) {
 if ($value = getenv('PUBLIC_SERVER_URI')) {
     $container->setParameter('ez_recommendation.default.server_uri', $value);
 }
+
+if ($value = getenv('SESSION_HANDLER_ID')) {
+    $container->setParameter('ezplatform.session.handler_id', $value);
+}
+
+if ($value = getenv('SESSION_SAVE_PATH')) {
+    $container->setParameter('session.save_path', $value);
+}

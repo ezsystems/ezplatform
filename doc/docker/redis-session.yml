@@ -10,8 +10,8 @@ services:
     depends_on:
      - redis-session
     environment:
-     - PHP_INI_ENV_session.save_handler=redis
-     - PHP_INI_ENV_session.save_path="tcp://redis-session:6379?weight=1"
+     - SESSION_HANDLER_ID=ezplatform.core.session.handler.native_redis
+     - SESSION_SAVE_PATH=tcp://redis-session:6379?weight=1
 
   redis-session:
     image: ${REDIS_IMAGE}
