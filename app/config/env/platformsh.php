@@ -3,6 +3,13 @@
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Loader;
 
+// Run for all hooks, incl build step
+if (getenv('PLATFORM_PROJECT_ENTROPY')) {
+    // Disable PHPStormPass as we don't have write access & it's not localhost
+    $container->setParameter('ezdesign.phpstorm.enabled', false);
+}
+
+// Will not be executed on build step
 $relationships = getenv('PLATFORM_RELATIONSHIPS');
 if (!$relationships) {
     return;
@@ -110,6 +117,3 @@ if (isset($relationships['redissession'])) {
         $container->setParameter('session.save_path', sprintf('%s:%d', $endpoint['host'], $endpoint['port']));
     }
 }
-
-// Disable PHPStormPass
-$container->setParameter('ezdesign.phpstorm.enabled', false);
