@@ -2,7 +2,7 @@
 parameters:
     locale_fallback: en
     ezplatform.session.handler_id: session.handler.native_file
-    session.save_path: '%kernel.project_dir%/var/sessions/%kernel.environment%'
+    ezplatform.session.save_path: '%kernel.project_dir%/var/sessions/%kernel.environment%'
 
     # A secret key that's used to generate certain security-related tokens
     secret: '%env(SYMFONY_SECRET)%'

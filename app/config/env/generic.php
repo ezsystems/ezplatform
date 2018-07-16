@@ -87,5 +87,5 @@ if ($value = getenv('SESSION_HANDLER_ID')) {
 }
 
 if ($value = getenv('SESSION_SAVE_PATH')) {
-    $container->setParameter('session.save_path', $value);
+    $container->setParameter('ezplatform.session.save_path', $value);
 }
