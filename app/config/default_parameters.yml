@@ -96,7 +96,7 @@ parameters:
     purge_type: local
 
     ## Session handler, by default set to file based in order to be able to use %session.save_path%
-    # evn: SESSION_HANDLER_ID
+    # env: SESSION_HANDLER_ID
     session.handler_id: session.handler.native_file
 
     # Admin siteaccess group name
