@@ -1,8 +1,6 @@
 # This file contains defaults for optional parameters, which you can override in parameters.yml
 parameters:
     locale_fallback: en
-    ezplatform.session.handler_id: session.handler.native_file
-    ezplatform.session.save_path: '%kernel.project_dir%/var/sessions/%kernel.environment%'
 
     # A secret key that's used to generate certain security-related tokens
     secret: '%env(SYMFONY_SECRET)%'
@@ -45,6 +43,14 @@ parameters:
     # using EzSystemsPlatformHttpCacheBundle (default as of v1.12) which by design expires affected cache on changes
     httpcache_default_ttl: '%env(HTTPCACHE_DEFAULT_TTL)%'
 
+    # Session save path as used by symfony session handlers (eg. used for dsn with redis)
+    session.save_path: '%env(SESSION_SAVE_PATH)%'
+
+    # Recommendation Bundle params
+    ez_recommendation.default.yoochoose.customer_id: '%env(RECOMMENDATIONS_CUSTOMER_ID)%'
+    ez_recommendation.default.yoochoose.license_key: '%env(RECOMMENDATIONS_LICENSE_KEY)%'
+    ez_recommendation.default.server_uri: '%env(PUBLIC_SERVER_URI)%'
+
     # Fallback values for when environment variables do not exist
 
     env(MAILER_HOST):       127.0.0.1
@@ -66,19 +72,32 @@ parameters:
 
     env(HTTPCACHE_DEFAULT_TTL): 86400
 
+    env(SESSION_SAVE_PATH): '%kernel.project_dir%/var/sessions/%kernel.environment%'
+
+    env(RECOMMENDATIONS_CUSTOMER_ID):   ~
+    env(RECOMMENDATIONS_LICENSE_KEY):   ~
+    env(PUBLIC_SERVER_URI):             ~
+
 
     # Compile time handlers
     ## These are defined at compile time, and hence can't be set at runtime using env()
     ## app/config/env/generic.php takes care about letting you set them by env variables
 
     ## Log type is one of "stream", "error_log" or other types supported by monolog
+    # env: LOG_TYPE
     log_type: stream
 
     ## Mail transport used by SwiftMailer
+    # env: MAILER_TRANSPORT
     mailer_transport:  smtp
 
-    # Purge type used by HttpCache system ("local", "varnish"/"http", and on ee also "fastly")
+    ## Purge type used by HttpCache system ("local", "varnish"/"http", and on ee also "fastly")
+    # env: HTTPCACHE_PURGE_TYPE
     purge_type: local
+
+    ## Session handler, by default set to file based in order to be able to use %session.save_path%
+    # evn: SESSION_HANDLER_ID
+    session.handler_id: session.handler.native_file
 
     # Admin siteaccess group name
     admin_group_name: admin_group

@@ -104,7 +104,7 @@ if (isset($relationships['redissession'])) {
             continue;
         }
 
-        $container->setParameter('ezplatform.session.handler_id', 'ezplatform.core.session.handler.native_redis');
+        $container->setParameter('session.handler_id', 'ezplatform.core.session.handler.native_redis');
         $container->setParameter('session.save_path', sprintf('%s:%d', $endpoint['host'], $endpoint['port']));
     }
 } elseif (isset($relationships['rediscache'])) {
@@ -113,7 +113,7 @@ if (isset($relationships['redissession'])) {
             continue;
         }
 
-        $container->setParameter('ezplatform.session.handler_id', 'ezplatform.core.session.handler.native_redis');
+        $container->setParameter('session.handler_id', 'ezplatform.core.session.handler.native_redis');
         $container->setParameter('session.save_path', sprintf('%s:%d', $endpoint['host'], $endpoint['port']));
     }
 }
