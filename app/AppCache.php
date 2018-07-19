@@ -5,8 +5,7 @@ use EzSystems\PlatformHttpCacheBundle\AppCache as PlatformHttpCacheBundleAppCach
 /**
  * Class AppCache.
  *
- * For easier upgrade do not change this file, as of 2015.01 possible to extend
- * cleanly via SYMFONY_HTTP_CACHE_CLASS & SYMFONY_CLASSLOADER_FILE env variables!
+ * For easier upgrade do not change this file, prefer to adapt web/app.php instead.
  */
 class AppCache extends PlatformHttpCacheBundleAppCache
 {
