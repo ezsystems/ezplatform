@@ -55,6 +55,10 @@ server {
             # Separate entries by a comma, example: "ip1,ip2"
             # Defaults to not be set if env value is omitted or empty
             #if[SYMFONY_TRUSTED_PROXIES] fastcgi_param SYMFONY_TRUSTED_PROXIES "%SYMFONY_TRUSTED_PROXIES%";
+
+            # TIP: There are many more environment variables supported by eZ Platform. However unlike those listed above
+            #      they should in most cases rather be set in the environment then in vhost config to make sure cronjobs
+            #      and cli command usage takes them into account as well.
         }
     }
 

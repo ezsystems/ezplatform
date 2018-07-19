@@ -62,9 +62,13 @@
 
     # Optional: Defines the proxies to trust
     # Needed when using Varnish as proxy, if so disable SYMFONY_HTTP_CACHE.
-    # Separate entries by a comma, example: "proxy1.example.com,proxy2.example.org"
+    # Separate entries by a comma, example: "ip1,ip2"
     # Defaults to not be set if env value is omitted or empty
     #if[SYMFONY_TRUSTED_PROXIES] SetEnv SYMFONY_TRUSTED_PROXIES "%SYMFONY_TRUSTED_PROXIES%"
+
+    # TIP: There are many more environment variables supported by eZ Platform. However unlike those listed above
+    #      they should in most cases rather be set in the environment then in vhost config to make sure cronjobs
+    #      and cli command usage takes them into account as well.
 
     <IfModule mod_rewrite.c>
         RewriteEngine On
