@@ -10,10 +10,8 @@ declare -a option_vars=(
     %HOST_NAME%
     %HOST_ALIAS%
     %SYMFONY_ENV%
-    %SYMFONY_CLASSLOADER_FILE%
     %SYMFONY_DEBUG%
     %SYMFONY_HTTP_CACHE%
-    %SYMFONY_HTTP_CACHE_CLASS%
     %SYMFONY_TRUSTED_PROXIES%
     %BODY_SIZE_LIMIT%
     %TIMEOUT%
@@ -38,8 +36,6 @@ declare -a template_values=(
     "localhost"
     "*.localhost"
     "prod"
-    ""
-    ""
     ""
     ""
     ""
@@ -95,8 +91,6 @@ Arguments:
   [--sf-trusted-proxies=127.0.0.1,....]    : Comma separated trusted proxies (e.g. Varnish), that we can get client ip from
   [--sf-http-cache=0|1]                    : To disable Symfony HTTP cache Proxy for using a different reverse proxy
                                              By default disabled when evn is "dev", enabled otherwise.
-  [--sf-http-cache-class=<class-file.php>] : DEPRECATED - To specify a different class then default to use as the Symfony proxy
-  [--sf-classloader-file=<class-file.php>] : DEPRECATED - To specify a different class then default to use for PHP auto loading
   [--body-size-limit=<int>]                : Limit in megabytes for max size of request body, 0 value disables limit.
   [--request-timeout=<int>]                : Limit in seconds before timeout of request, 0 value disables timeout limit.
   [--binary-data-handler=dfs|]             : Name of handler in user. Specify "dfs" if you are using the dfs io handler.
@@ -123,12 +117,12 @@ function inject_environment_variables
         if [ "$option_value" != "SomeDefault" ]; then
             template_values[$i]="$option_value";
             if [ "$current_env_variable" == "BODY_SIZE_LIMIT" ]; then
-                let template_values[11]="$option_value"*1024
-                template_values[15]="${option_value}m"
+                let template_values[9]="$option_value"*1024
+                template_values[13]="${option_value}m"
             fi
             if [ "$current_env_variable" == "TIMEOUT" ]; then
-                template_values[12]="$option_value"
-                template_values[16]="${option_value}s"
+                template_values[10]="$option_value"
+                template_values[14]="${option_value}s"
             fi
         fi
         let i=$i+1;
@@ -159,31 +153,25 @@ case $i in
     -e=*|--sf-env=*)
         template_values[5]="${i#*=}"
         ;;
-    --sf-classloader-file=*)
+    -d=*|--sf-debug=*)
         template_values[6]="${i#*=}"
         ;;
-    -d=*|--sf-debug=*)
+    --sf-http-cache=*)
         template_values[7]="${i#*=}"
         ;;
-    --sf-http-cache=*)
+    --sf-trusted-proxies=*)
         template_values[8]="${i#*=}"
         ;;
-    --sf-http-cache-class=*)
-        template_values[9]="${i#*=}"
-        ;;
-    --sf-trusted-proxies=*)
-        template_values[10]="${i#*=}"
-        ;;
     --binary-data-handler=*)
-        template_values[14]="${i#*=}"
+        template_values[12]="${i#*=}"
         ;;
     --body-size-limit=*)
-        let template_values[11]="${i#*=}"*1024*1024
-        template_values[15]="${i#*=}m"
+        let template_values[9]="${i#*=}"*1024*1024
+        template_values[13]="${i#*=}m"
         ;;
     --request-timeout=*)
-        template_values[12]="${i#*=}"
-        template_values[16]="${i#*=}s"
+        template_values[10]="${i#*=}"
+        template_values[14]="${i#*=}s"
         ;;
     -t=*|--template-file=*)
         template_file="${i#*=}"
@@ -224,10 +212,10 @@ fi
 ## Option specific logic
 
 # For httpd servers having just one host config we provide HOST_LIST
-template_values[17]="${template_values[3]}"
+template_values[15]="${template_values[3]}"
 if [[ "${template_values[4]}" != "" ]] ; then
-     tmp="${template_values[17]} ${template_values[4]}"
-     template_values[17]=$tmp
+     tmp="${template_values[15]} ${template_values[4]}"
+     template_values[15]=$tmp
 fi
 
 
