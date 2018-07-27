@@ -69,5 +69,5 @@ if ($value = getenv('LOG_TYPE')) {
 }
 
 if ($value = getenv('SESSION_HANDLER_ID')) {
-    $container->setParameter('session.handler_id', $value);
+    $container->setParameter('ezplatform.session.handler_id', $value);
 }
