@@ -8,7 +8,7 @@
 # - PS: Platform.sh Professional
 
 # The name of this app. Must be unique within a project.
-name: app
+name: ez
 
 # The type of the application to build.
 type: php:7.2
@@ -39,8 +39,8 @@ variables:
         # For PE cluster, disable Symfony Proxy & instead use Fastly Bundle available on eZ Platform Enterprise
         #SYMFONY_HTTP_CACHE: 0
         # Place symfony cache on tmpfs to avoid performance issues of having it on NFS, re-deploy to clear cache reliably
-        # "app" comes from application name for platform.sh, so adapt it if you change the name for multi application setups
-        SYMFONY_CACHE_DIR: /tmp/app
+        # "ez" comes from application name for platform.sh, so adapt it if you change the name for multi application setups
+        SYMFONY_CACHE_DIR: /tmp/ez
         # PS: Given we just set cache directory to be non shared, we need to make sure http cache is shared (ignored when using Fastly)
         SYMFONY_HTTP_CACHE_DIR: app/cache/prod
         # Change this to dev if you want to run site & commands in dev
@@ -84,27 +84,27 @@ hooks:
     # Note: Http traffic is paused while this is running, so for prod code this should finish as fast as possible, < 30s
     deploy: |
         set -e
-        # Mainly relevant for eZ Platform demo usage, for own setup adapt this or remove and rely on migrations.
+        # Mainly relevant for eZ Platform demo usage, for own setup adapt this, or remove and rely on migrations.
         if [ ! -f web/var/.platform.installed ]; then
             . ./.env
             php -d memory_limit=-1 app/console ezplatform:install $INSTALL_EZ_INSTALL_TYPE
             touch web/var/.platform.installed
         fi
-        # Clear class cache before we boot up symfony in case of interface changes on classes cached
-        rm -Rf $SYMFONY_CACHE_DIR/app/cache/
-        # Clear cache AND maybe more im warmup
-        app/console cache:clear
+        # Clear class/lazy-proxy cache before we boot up symfony in case of interface changes on classes cached
+        rm -Rf $SYMFONY_CACHE_DIR/app/cache/$SYMFONY_ENV/*.*
+        # Clear cache, but leave warmup to be done on-demand and per node at startup (web.commands.start)
+        app/console cache:clear --no-warmup
         # Example of additional deploy hooks if you use doctrine and/or kaliop migration bundle
         ##app/console doctrine:migrations:migrate --no-interaction --allow-no-migration
         ##app/console kaliop:migration:migrate --no-interaction --no-debug
-        # At this point should detect if any of the migrations did changes, if so: clear redis cache + exire Http cache
+        # If migration changes happened and they did not use API, then: clear redis cache & exire Http cache
 
 # Given we place cache per node we opt to warmup cache before letting requests hit them, NOTE:
-# 1. Adapt this if you change php version, 2. For PE setups, open support ticket to platform.sh for adapting changes
-# https://docs.platform.sh/languages/php.html#alternate-start-commands
+# 1. Adapt this if you change php version*, 2. For PE setups, open support ticket to platform.sh for adapting changes
+# * https://docs.platform.sh/languages/php.html#alternate-start-commands
 web:
     commands:
-        start: 'app/console cache:warmup && /usr/sbin/php-fpm7.1-zts'
+        start: 'app/console cache:warmup && /usr/sbin/php-fpm7.2-zts'
 
 
 # The configuration of scheduled execution.
