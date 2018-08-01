@@ -76,7 +76,7 @@ Example config for Apache 2.4 in prefork mode:
         RewriteRule ^/assets/ - [L]
 
         # Additional Assetic rules for environments different from dev,
-        # remember to run php app/console assetic:dump --env=prod
+        # remember to run php bin/console assetic:dump --env=prod
         RewriteCond %{ENV:SYMFONY_ENV} !^(dev)
         RewriteRule ^/(css|js|fonts?)/.*\.(css|js|otf|eot|ttf|svg|woff) - [L]
 
