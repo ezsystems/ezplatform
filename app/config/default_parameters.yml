@@ -36,11 +36,9 @@ parameters:
     # Cache DSN, see app/config/services/cache.yml for examples:
     cache_dsn: '%env(CACHE_DSN)%'
     
-    # Gobal Cache namespace prefix for use by Symfony Cache
-    # By default (when not set) Symfony will use root path as seed when generating sha for cache namespace prefix.
-    # Can theoretically be used to version cache, however will affect all usage, incl Symfony's internal app cache
-    # For setting prefix specifically on a given cache pool instead, set namespace on service in app/config/cache_pool/
-    cache.prefix.seed: '%env(CACHE_PREFIX)%'
+    # Cache namespace prefix for use with Redis/Memcached
+    # For further info see: app/config/cache_pool/
+    cache_namespace: '%env(CACHE_NAMESPACE)%'
 
     # Settings for HttpCache
     purge_server: '%env(HTTPCACHE_PURGE_SERVER)%'
@@ -74,7 +72,7 @@ parameters:
 
     env(CACHE_DSN): localhost
     
-    env(CACHE_PREFIX): ~
+    env(CACHE_NAMESPACE): v1.mysite
 
     env(HTTPCACHE_PURGE_SERVER): "http://localhost:80"
 
