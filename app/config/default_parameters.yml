@@ -43,9 +43,6 @@ parameters:
     # using EzSystemsPlatformHttpCacheBundle (default as of v1.12) which by design expires affected cache on changes
     httpcache_default_ttl: '%env(HTTPCACHE_DEFAULT_TTL)%'
 
-    # Session save path as used by symfony session handlers (eg. used for dsn with redis)
-    ezplatform.session.save_path: '%env(SESSION_SAVE_PATH)%'
-
     # Recommendation Bundle params
     ez_recommendation.default.yoochoose.customer_id: '%env(RECOMMENDATIONS_CUSTOMER_ID)%'
     ez_recommendation.default.yoochoose.license_key: '%env(RECOMMENDATIONS_LICENSE_KEY)%'
@@ -95,9 +92,12 @@ parameters:
     # env: HTTPCACHE_PURGE_TYPE
     purge_type: local
 
-    ## Session handler, by default set to file based (instead of ~) in order to be able to use %ezplatform.session.save_path%
-    # env: SESSION_HANDLER_ID
-    ezplatform.session.handler_id: session.handler.native_file
+    ## Session handler, by default relying on the php.ini
+    # env: SESSION_HANDLER_ID (to override it)
+    ezplatform.session.handler_id: ~
+    # Used when ezplatform.session.handler_id is not null
+    # env: SESSION_SAVE_PATH (to override it)
+    ezplatform.session.save_path: ~
 
     # Admin siteaccess group name
     admin_group_name: admin_group
