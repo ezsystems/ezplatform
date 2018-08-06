@@ -20,6 +20,7 @@ services:
     depends_on:
      - install_db
     environment:
+     - COMPOSER_MEMORY_LIMIT
      - SYMFONY_ENV=${SYMFONY_ENV-prod}
      - SYMFONY_DEBUG
      - SYMFONY_CMD
