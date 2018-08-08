@@ -132,3 +132,10 @@ if (isset($relationships['solr'])) {
         $container->setParameter('solr_core', substr($endpoint['path'], 5));
     }
 }
+
+if (isset($relationships['varnish'])) {
+    foreach ($relationships['varnish'] as $endpoint) {
+        $container->setParameter('purge_type', 'http');
+        $container->setParameter('purge_server', sprintf('http://%s:%d', $endpoint['host'], $endpoint['port']));
+    }
+}
