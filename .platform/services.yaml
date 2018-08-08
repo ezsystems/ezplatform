@@ -33,3 +33,12 @@ rediscache:
 #redissession:
 #    type: redis-persistent:3.2
 #    disk: 1024
+
+varnish:
+    type: 'varnish:5.2'
+    relationships:
+        app: "app:http"
+    configuration:
+        vcl: !include
+            type: string
+            path: varnish.vcl.twig

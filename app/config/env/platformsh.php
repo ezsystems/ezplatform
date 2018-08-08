@@ -117,3 +117,10 @@ if (isset($relationships['redissession'])) {
         $container->setParameter('ezplatform.session.save_path', sprintf('%s:%d', $endpoint['host'], $endpoint['port']));
     }
 }
+
+if (isset($relationships['varnish'])) {
+    foreach ($relationships['varnish'] as $endpoint) {
+        $container->setParameter('purge_type', 'http');
+        $container->setParameter('purge_server', sprintf('http://%s:%d', $endpoint['host'], $endpoint['port']));
+    }
+}
