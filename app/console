@@ -18,6 +18,15 @@ use eZ\Bundle\EzPublishCoreBundle\Console\Application;
 use Symfony\Component\Console\Input\ArgvInput;
 use Symfony\Component\Debug\Debug;
 
+// Enforce no-warmup on PHP5 because of class cache issue EZP-29034
+if (
+    PHP_VERSION_ID < 70000 &&
+    in_array('cache:clear', $_SERVER['argv']) &&
+    !in_array('--no-warmup', $_SERVER['argv'])
+) {
+    $_SERVER['argv'][] = '--no-warmup';
+}
+
 $input = new ArgvInput();
 $env = $input->getParameterOption(array('--env', '-e'), getenv('SYMFONY_ENV') ?: 'dev');
 $debug = getenv('SYMFONY_DEBUG') !== '0' && !$input->hasParameterOption(array('--no-debug', '')) && $env !== 'prod';
