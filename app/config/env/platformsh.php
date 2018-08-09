@@ -119,3 +119,14 @@ if (isset($relationships['redissession'])) {
         $container->setParameter('session.save_path', sprintf('%s:%d', $endpoint['host'], $endpoint['port']));
     }
 }
+
+if (isset($relationships['solr'])) {
+    foreach ($relationships['solr'] as $endpoint) {
+        if ($endpoint['scheme'] !== 'solr') {
+            continue;
+        }
+
+        $container->setParameter('search_engine', 'solr');
+        $container->setParameter('solr_dsn', sprintf('http://%s:%d/%s', $endpoint['host'], $endpoint['port'], 'solr'));
+    }
+}
