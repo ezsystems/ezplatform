@@ -1,5 +1,5 @@
 
-# Additional Assetic rules for eZ Platform v2.0 and higher.
+# Additional Assetic rules
 ## Don't forget to run php bin/console assetic:dump --env=prod
 ## and make sure to comment these out in DEV environment.
 rewrite "^/css/(.*)\.css" "/css/$1.css" break;
