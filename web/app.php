@@ -18,12 +18,12 @@ if (($useDebugging = getenv('SYMFONY_DEBUG')) === false || $useDebugging === '')
     $useDebugging = $environment === 'dev';
 }
 
-// Depending on SYMFONY_CLASSLOADER_FILE use custom class loader, otherwise use bootstrap cache, or autoload in debug
+// Depending on SYMFONY_CLASSLOADER_FILE use custom class loader, otherwise use bootstrap cache on PHP 5, or autoload in debug and PHP 7
 if ($loaderFile = getenv('SYMFONY_CLASSLOADER_FILE')) {
     require_once $loaderFile;
 } else {
     require_once __DIR__ . '/../app/autoload.php';
-    if (!$useDebugging) {
+    if (!$useDebugging && PHP_VERSION_ID < 70000) {
         require_once __DIR__ . '/../app/bootstrap.php.cache';
     }
 }
