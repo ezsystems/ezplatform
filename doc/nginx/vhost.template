@@ -6,7 +6,7 @@ server {
 
     root %BASEDIR%/web;
 
-    # Additional Assetic rules for eZ Platform v2.0 and higher.
+    # Additional Assetic rules
     ## Don't forget to run php bin/console assetic:dump --env=prod
     ## and make sure to comment these out in DEV environment.
     #if[SYMFONY_ENV!=dev] include ez_params.d/ez_prod_rewrite_params;
