@@ -18,12 +18,12 @@ if (($useDebugging = getenv('SYMFONY_DEBUG')) === false || $useDebugging === '')
     $useDebugging = $environment === 'dev';
 }
 
-// Depending on SYMFONY_CLASSLOADER_FILE use custom class loader, otherwise use bootstrap cache, or autoload in debug
+// Depending on SYMFONY_CLASSLOADER_FILE use custom class loader, otherwise use normal autoload and optionally bootstrap cache on PHP 5 when not in debug mode
 if ($loaderFile = getenv('SYMFONY_CLASSLOADER_FILE')) {
     require_once $loaderFile;
 } else {
     require_once __DIR__ . '/../app/autoload.php';
-    if (!$useDebugging) {
+    if (!$useDebugging && PHP_VERSION_ID < 70000) {
         require_once __DIR__ . '/../app/bootstrap.php.cache';
     }
 }
@@ -36,8 +36,9 @@ if ($useDebugging) {
 
 $kernel = new AppKernel($environment, $useDebugging);
 
-// we don't want to use the classes cache if we are in a debug session
-if (!$useDebugging) {
+// we don't want to use the class cache if we are in a debug session
+// Also not on PHP7+ where it does not give benefit (if using composer optimize autoload), only downsides remains
+if (!$useDebugging && PHP_VERSION_ID < 70000) {
     $kernel->loadClassCache();
 }
 
