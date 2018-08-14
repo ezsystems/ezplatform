@@ -36,8 +36,8 @@ parameters:
     # Cache DSN, see app/config/services/cache.yml for examples:
     cache_dsn: '%env(CACHE_DSN)%'
     
-    # Cache namespace prefix for use with Redis/Memcached
-    # For further info see: app/config/cache_pool/
+    # Cache namespace prefix for use with Redis/Memcached, 'ez' by default. 
+    # For further info incl alternatives for "blue/green deployment" and multi repo installs, see: app/config/cache_pool/*.yml
     cache_namespace: '%env(CACHE_NAMESPACE)%'
 
     # Settings for HttpCache
@@ -71,8 +71,8 @@ parameters:
     env(CACHE_POOL): "cache.app"
 
     env(CACHE_DSN): localhost
-    
-    env(CACHE_NAMESPACE): v1.mysite
+
+    env(CACHE_NAMESPACE): ez
 
     env(HTTPCACHE_PURGE_SERVER): "http://localhost:80"
 
