@@ -9,7 +9,7 @@ doctrine:
                 user: "%dfs_database_user%"
                 password: "%dfs_database_password%"
                 dbname: "%dfs_database_name%"
-                charset: UTF8
+                charset: utf8mb4
 
 # define the flysystem handler
 oneup_flysystem:
