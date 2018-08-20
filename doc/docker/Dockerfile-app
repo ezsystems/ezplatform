@@ -1,4 +1,5 @@
-FROM ezsystems/php:7.1-v1 as builder
+ARG PHP_IMAGE=ezsystems/php:7.2-v1
+FROM ${PHP_IMAGE} as builder
 
 # This is prod image (for dev use just mount your application as host volume into php image we extend here)
 ENV SYMFONY_ENV=prod
@@ -27,7 +28,7 @@ RUN rm -Rf var/logs/* var/cache/*/*
 RUN rm -rf web/css web/fonts web/js web/var
 
 
-FROM ezsystems/php:7.1-v1
+FROM ${PHP_IMAGE}
 
 # This is prod image (for dev use just mount your application as host volume into php image we extend here)
 ENV SYMFONY_ENV=prod

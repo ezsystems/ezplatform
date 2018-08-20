@@ -14,7 +14,7 @@ services:
      - backend
 
   app:
-    image: ezsystems/php:7.1-v1
+    image: ${PHP_IMAGE}
     depends_on:
      - db
      - distribution
@@ -38,7 +38,7 @@ services:
      - vardir:/var/www/web/var
 
   web:
-    image: nginx:stable
+    image: ${NGINX_IMAGE}
     depends_on:
      - distribution
      - app
