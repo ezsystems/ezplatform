@@ -64,9 +64,12 @@ if [[ -n "${DEPENDENCY_PACKAGE_NAME}" ]]; then
     BASE_PACKAGE_NAME=`basename ${DEPENDENCY_PACKAGE_NAME}`
     echo "> Move ${DEPENDENCY_PACKAGE_DIR} to ${EZPLATFORM_BUILD_DIR}/${BASE_PACKAGE_NAME}"
     mv ${DEPENDENCY_PACKAGE_DIR} ${EZPLATFORM_BUILD_DIR}/${BASE_PACKAGE_NAME}
+    cd ${EZPLATFORM_BUILD_DIR}/${BASE_PACKAGE_NAME}
+
+    # perform full checkout to allow using as local Composer depenency
+    git fetch --unshallow
 
     echo "> Create temporary branch in ${DEPENDENCY_PACKAGE_NAME}"
-    cd ${EZPLATFORM_BUILD_DIR}/${BASE_PACKAGE_NAME}
     # reuse HEAD commit id for better knowledge about what got checked out
     TMP_TRAVIS_BRANCH=tmp_`git rev-parse --short HEAD`
     git checkout -b ${TMP_TRAVIS_BRANCH}
