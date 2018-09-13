@@ -114,6 +114,16 @@ crons:
         spec: "0 0 * * 0"
         cmd: "php bin/console ezplatform:check-urls"
 
+    # Automatic renewal of SSL/TLS certificates
+    # see: https://docs.platform.sh/configuration/routes/https.html#automatic-certificate-renewal
+    #renewcert:
+        # Force a redeploy at 10 am (UTC) on the 1st, 10th, 20th of every month.
+        # spec: '0 10 1,10,20 * *'
+        #cmd: |
+        #    if [ "$PLATFORM_BRANCH" = master ]; then
+        #        platform redeploy --yes --no-wait
+        #    fi
+
 runtime:
     extensions:
         - xsl
