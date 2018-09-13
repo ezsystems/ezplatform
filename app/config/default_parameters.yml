@@ -1,7 +1,6 @@
 # This file contains defaults for optional parameters, which you can override in parameters.yml
 parameters:
     locale_fallback: en
-    ezplatform.session.handler_id: session.handler.native_file
 
     # A secret key that's used to generate certain security-related tokens
     secret: '%env(SYMFONY_SECRET)%'
@@ -36,6 +35,10 @@ parameters:
 
     # Cache DSN, see app/config/services/cache.yml for examples:
     cache_dsn: '%env(CACHE_DSN)%'
+    
+    # Cache namespace prefix for use with Redis/Memcached, 'ez' by default. 
+    # For further info incl alternatives for "blue/green deployment" and multi repo installs, see: app/config/cache_pool/*.yml
+    cache_namespace: '%env(CACHE_NAMESPACE)%'
 
     # Settings for HttpCache
     purge_server: '%env(HTTPCACHE_PURGE_SERVER)%'
@@ -43,6 +46,14 @@ parameters:
     # By default cache ttl is set to 24h, when using Varnish you can set a much higher value. High values depends on
     # using EzSystemsPlatformHttpCacheBundle (default as of v1.12) which by design expires affected cache on changes
     httpcache_default_ttl: '%env(HTTPCACHE_DEFAULT_TTL)%'
+
+    # Session save path as used by symfony session handlers (eg. used for dsn with redis)
+    ezplatform.session.save_path: '%env(SESSION_SAVE_PATH)%'
+
+    # Recommendation Bundle params
+    ez_recommendation.default.yoochoose.customer_id: '%env(RECOMMENDATIONS_CUSTOMER_ID)%'
+    ez_recommendation.default.yoochoose.license_key: '%env(RECOMMENDATIONS_LICENSE_KEY)%'
+    ez_recommendation.default.server_uri: '%env(PUBLIC_SERVER_URI)%'
 
     # Fallback values for when environment variables do not exist
 
@@ -61,9 +72,17 @@ parameters:
 
     env(CACHE_DSN): localhost
 
+    env(CACHE_NAMESPACE): ez
+
     env(HTTPCACHE_PURGE_SERVER): "http://localhost:80"
 
     env(HTTPCACHE_DEFAULT_TTL): 86400
+
+    env(SESSION_SAVE_PATH): '%kernel.project_dir%/var/sessions/%kernel.environment%'
+
+    env(RECOMMENDATIONS_CUSTOMER_ID):   ~
+    env(RECOMMENDATIONS_LICENSE_KEY):   ~
+    env(PUBLIC_SERVER_URI):             ~
 
 
     # Compile time handlers
@@ -71,13 +90,20 @@ parameters:
     ## app/config/env/generic.php takes care about letting you set them by env variables
 
     ## Log type is one of "stream", "error_log" or other types supported by monolog
+    # env: LOG_TYPE
     log_type: stream
 
     ## Mail transport used by SwiftMailer
+    # env: MAILER_TRANSPORT
     mailer_transport:  smtp
 
-    # Purge type used by HttpCache system ("local", "varnish"/"http", and on ee also "fastly")
+    ## Purge type used by HttpCache system ("local", "varnish"/"http", and on ee also "fastly")
+    # env: HTTPCACHE_PURGE_TYPE
     purge_type: local
+
+    ## Session handler, by default set to file based (instead of ~) in order to be able to use %ezplatform.session.save_path%
+    # env: SESSION_HANDLER_ID
+    ezplatform.session.handler_id: session.handler.native_file
 
     # Admin siteaccess group name
     admin_group_name: admin_group

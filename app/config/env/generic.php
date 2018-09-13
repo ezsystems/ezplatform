@@ -68,16 +68,6 @@ if ($value = getenv('LOG_TYPE')) {
     $container->setParameter('log_type', $value);
 }
 
-// EzSystemsRecommendationsBundle settings
-// @todo Move to use env() and params
-if ($value = getenv('RECOMMENDATIONS_CUSTOMER_ID')) {
-    $container->setParameter('ez_recommendation.default.yoochoose.customer_id', $value);
-}
-
-if ($value = getenv('RECOMMENDATIONS_LICENSE_KEY')) {
-    $container->setParameter('ez_recommendation.default.yoochoose.license_key', $value);
-}
-
-if ($value = getenv('PUBLIC_SERVER_URI')) {
-    $container->setParameter('ez_recommendation.default.server_uri', $value);
+if ($value = getenv('SESSION_HANDLER_ID')) {
+    $container->setParameter('ezplatform.session.handler_id', $value);
 }

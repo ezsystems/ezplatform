@@ -3,6 +3,13 @@
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Loader;
 
+// Run for all hooks, incl build step
+if (getenv('PLATFORM_PROJECT_ENTROPY')) {
+    // Disable PHPStormPass as we don't have write access & it's not localhost
+    $container->setParameter('ezdesign.phpstorm.enabled', false);
+}
+
+// Will not be executed on build step
 $relationships = getenv('PLATFORM_RELATIONSHIPS');
 if (!$relationships) {
     return;
@@ -98,7 +105,7 @@ if (isset($relationships['redissession'])) {
         }
 
         $container->setParameter('ezplatform.session.handler_id', 'ezplatform.core.session.handler.native_redis');
-        $container->setParameter('session.save_path', sprintf('%s:%d', $endpoint['host'], $endpoint['port']));
+        $container->setParameter('ezplatform.session.save_path', sprintf('%s:%d', $endpoint['host'], $endpoint['port']));
     }
 } elseif (isset($relationships['rediscache'])) {
     foreach ($relationships['rediscache'] as $endpoint) {
@@ -107,9 +114,17 @@ if (isset($relationships['redissession'])) {
         }
 
         $container->setParameter('ezplatform.session.handler_id', 'ezplatform.core.session.handler.native_redis');
-        $container->setParameter('session.save_path', sprintf('%s:%d', $endpoint['host'], $endpoint['port']));
+        $container->setParameter('ezplatform.session.save_path', sprintf('%s:%d', $endpoint['host'], $endpoint['port']));
     }
 }
 
-// Disable PHPStormPass
-$container->setParameter('ezdesign.phpstorm.enabled', false);
+if (isset($relationships['solr'])) {
+    foreach ($relationships['solr'] as $endpoint) {
+        if ($endpoint['scheme'] !== 'solr') {
+            continue;
+        }
+
+        $container->setParameter('search_engine', 'solr');
+        $container->setParameter('solr_dsn', sprintf('http://%s:%d/%s', $endpoint['host'], $endpoint['port'], 'solr'));
+    }
+}

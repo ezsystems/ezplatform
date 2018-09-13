@@ -22,14 +22,18 @@ env:
     - TEST_CMD="bin/behat -vv --profile=rest --suite=fullXml --tags=~@broken"
     - TEST_CMD="bin/behat -vv --profile=core --tags=~@broken"
     - TEST_CMD="bin/phpunit -v vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishRestBundle/Tests/Functional" SYMFONY_CMD="ez:behat:create-language 'pol-PL' 'Polish (polski)'"
-    - TEST_CMD="bin/behat -v --profile=repository-forms --tags=~@broken" COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/redis.yml:doc/docker/selenium.yml"
+    - TEST_CMD="bin/behat -v --profile=repository-forms --tags=~@broken" COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/selenium.yml"
     - TEST_CMD="bin/behat -v --profile=behat --tags=~@broken"
+    - TEST_CMD="bin/behat --profile=adminui --suite=adminui --no-interaction -vv" COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/selenium.yml"
+    - TEST_CMD="bin/behat --profile=adminui --suite=adminui --no-interaction -vv --tags=~@EZP-29291-excluded" COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/varnish.yml:doc/docker/redis.yml:doc/docker/selenium.yml" WEB_HOST="varnish"
 
 # test only master (+ Pull requests)
 branches:
   only:
     - master
     - /^\d.\d+$/
+    # build tags (vX.Y.Z)
+    - /^v\d+.\d+.\d+$/
 
 # Update Docker and Docker Compose
 before_install: ./bin/.travis/trusty/update_docker.sh
@@ -56,9 +60,14 @@ after_failure:
   # Will show us what is up, and how long it's been up
   - docker ps -s
 
-# disable mail notifications
 notifications:
-  email: false
+  slack:
+    rooms:
+      - secure: ESkZY5bzNWua0eHc9rBkuE7AZrCNzLeCV1Rtn97h9KIBeuxsiB3heDUAOi3xZkqO4AyKD5AitAM2k7dTdQKvC8WMooHFWFdjlsSepUvjJISy8keY9kiXywUJ1S/YCwMPwT+HAWB4Qk2zyKmlLmZ8IfAK5aBtndXFQFQCqyeW4PE=
+      - secure: NlXxYbeVV7mWDTUgeFK0VrUdXGBF4lPVpMLZ3WXYDTUWfFyM8tiChENo/u/9n7tSz6KIxdWpy0j7h8+EjVUVCGxS+4q+kdzkfm1Vwq3ANhMsGBDcwdm7gYWhdd43aXV9ZaZPVUWv5C3yizzmYXeuNtviFDA5DEvrE5Rdp6sBsRE=
+    on_success: change
+    on_failure: always
+    on_pull_requests: false
 
 # reduce depth (history) of git checkout
 git:

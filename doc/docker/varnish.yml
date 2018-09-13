@@ -36,14 +36,6 @@ services:
 #   docker-compose exec varnish varnishlog -g request -q "ReqMethod eq 'PURGE'"
 #
 #  But before doing that check that http and not local purge client is set:
-#   docker-compose exec app app/console --env=dev debug:container ezplatform.http_cache.purge_client
-#
-# Or if you are using BAN requests and not using EzSystemsPlatformHttpCacheBundle:
-#   docker-compose exec varnish varnishlog -c -i ReqURL,ReqMethod -I ReqHeader:X-Location-Id
-#  Or more relevant only BAN's with all info:
-#   docker-compose exec varnish varnishlog -g request -q "ReqMethod eq 'BAN'"
-#
-#  But before doing that check that http and not local purge client is set:
-#   docker-compose exec app app/console --env=dev debug:container ezpublish.http_cache.purge_client
+#   docker-compose exec app bin/console --env=dev debug:container ezplatform.http_cache.purge_client_internal
 #
 # And if in prod make sure you have rebuilt app container on code changes ;)

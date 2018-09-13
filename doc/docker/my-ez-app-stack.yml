@@ -25,7 +25,6 @@ services:
      - SYMFONY_ENV=prod
      - SYMFONY_DEBUG
      - SYMFONY_HTTP_CACHE
-     - SYMFONY_HTTP_CACHE_CLASS
      - SYMFONY_TRUSTED_PROXIES
      - DATABASE_USER=ezp
      - DATABASE_PASSWORD=SetYourOwnPassword

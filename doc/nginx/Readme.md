@@ -42,7 +42,7 @@ Example config:
         root /var/www/ezinstall/web;
 
         # Additional Assetic rules for environments different from dev,
-        # remember to run php app/console assetic:dump --env=prod
+        # remember to run php bin/console assetic:dump --env=prod
         # and make sure to comment these out in "dev" environment.
         include ez_params.d/ez_prod_rewrite_params;
 

@@ -14,7 +14,7 @@ services:
      - backend
 
   app:
-    image: ezsystems/php:7.1-v1
+    image: ${PHP_IMAGE}
     depends_on:
      - db
      - distribution
@@ -23,7 +23,6 @@ services:
      - SYMFONY_ENV=${SYMFONY_ENV-prod}
      - SYMFONY_DEBUG
      - SYMFONY_HTTP_CACHE
-     - SYMFONY_HTTP_CACHE_CLASS
      - SYMFONY_TRUSTED_PROXIES
      - DATABASE_USER
      - DATABASE_PASSWORD
@@ -39,7 +38,7 @@ services:
      - vardir:/var/www/web/var
 
   web:
-    image: nginx:stable
+    image: ${NGINX_IMAGE}
     depends_on:
      - distribution
      - app

@@ -33,3 +33,21 @@ rediscache:
 #redissession:
 #    type: redis-persistent:3.2
 #    disk: 1024
+
+# If you wish to use solr, uncomment this service and the corresponding relationship in .platform.app.yaml.
+# Also, you need to generate the config using:
+# vendor/ezsystems/ezplatform-solr-search-engine/bin/generate-solr-config.sh
+#solrsearch:
+#    type: solr:6.6
+#    disk: 512
+#    configuration:
+#        configsets:
+#            mainconfig: !archive "configsets/solr6"
+#        cores:
+#            collection1:
+#                core_properties: |
+#                    configSet=mainconfig
+#                    schema=schema.xml
+#        endpoints:
+#            collection1:
+#                core: collection1

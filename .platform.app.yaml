@@ -25,6 +25,8 @@ relationships:
     # If you wish to have a separate Redis instance for sessions, uncomment
     # this relationship and the corresponding service in .platform/services.yaml
     #redissession: 'redissession:redis'
+    # If you wish to use solr, uncomment this relationship and the corresponding service in .platform/services.yaml
+    #solr: 'solrsearch:solr'
 
 variables:
     #php:
@@ -102,11 +104,15 @@ hooks:
         find var/cache/prod -mindepth 1 -maxdepth 1 -type d \! \( -name "$PLATFORM_TREE_ID" \) -exec rm -rf '{}' \;
 
 # The configuration of scheduled execution.
-# see http://symfony.com/doc/current/components/console/introduction.html
-#crons:
-#    symfony:
-#        spec: "*/20 * * * *"
-#        cmd: "php bin/console ezpublish:cron:run"
+# see https://docs.platform.sh/configuration/app/cron.html#cron-jobs
+crons:
+    minute:
+        # NOTE: Platform.sh PS does not execute every minute, so might sometimes miss jobs scheduled for a given time
+        spec: "* * * * *"
+        cmd: "php bin/console ezplatform:cron:run"
+    weekly:
+        spec: "0 0 * * 0"
+        cmd: "php bin/console ezplatform:check-urls"
 
 runtime:
     extensions:
