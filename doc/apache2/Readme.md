@@ -90,8 +90,7 @@ If you do not have an access to use virtualhost config, use the `.htaccess` file
 
     DirectoryIndex app.php
 
-    # Set default timeout to 90s, and max upload to 48mb
-    TimeOut 90
+    # Set default max upload to 48mb
     LimitRequestBody 50331648
 
     # Disabling MultiViews prevents unwanted negotiation, e.g. "/app" should not resolve

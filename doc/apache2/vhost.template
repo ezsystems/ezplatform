@@ -13,9 +13,6 @@
     # Request size limit in bytes, 0 to disable
     LimitRequestBody %BODY_SIZE_LIMIT%
 
-    # Request timeout limit in seconds, 0 to disable
-    TimeOut %TIMEOUT%
-
     # Enabled for Dev environment
     #LogLevel debug
 
