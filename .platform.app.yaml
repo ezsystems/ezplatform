@@ -43,7 +43,7 @@ variables:
         PLATFORMSH_CLI_UPDATES_CHECK: 0
         # API token (https://accounts.platform.sh/user/XXXXX/api-tokens)
         # It would be more secure to set it as project variable in Platform.sh Web UI
-        PLATFORMSH_CLI_TOKEN: %TOKEN%
+        PLATFORMSH_CLI_TOKEN: YOUR_TOKEN_GOES_HERE
 
 # The configuration of app when it is exposed to the web.
 web:
