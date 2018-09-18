@@ -1,6 +1,6 @@
 mysqldb:
     type: mysql:10.1
-    disk: 2048
+    disk: 1024
     configuration:
         schemas:
             - main
@@ -30,7 +30,7 @@ rediscache:
 # have storage space to spare for this, and don't mind a bit slower instance type of redis
 #redissession:
 #    type: redis-persistent:3.2
-#    disk: 1024
+#    disk: 512
 
 # If you wish to use solr, uncomment this service and the corresponding relationship in .platform.app.yaml.
 # Also, you need to generate the config using:
