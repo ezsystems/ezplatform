@@ -106,9 +106,10 @@ hooks:
 # The configuration of scheduled execution.
 # see https://docs.platform.sh/configuration/app/cron.html#cron-jobs
 crons:
-    minute:
-        # NOTE: Platform.sh PS does not execute every minute, so might sometimes miss jobs scheduled for a given time
-        spec: "* * * * *"
+    frequent:
+        # https://docs.platform.sh/configuration/app/cron.html:
+        # The minimum interval between cron runs is 5 minutes, even if specified as less.
+        spec: "*/5 * * * *"
         cmd: "php bin/console ezplatform:cron:run"
     weekly:
         spec: "0 0 * * 0"
