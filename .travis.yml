@@ -52,6 +52,7 @@ before_script:
 # Behat will use behat.yml which is a copy of behat.yml.dist with hostnames update by doc/docker/selenium.yml
 script: docker-compose exec --user www-data app sh -c "php $TEST_CMD"
 
+
 after_failure:
   # Will show us the last bit of the log of container's main processes
   # (not counting shell process above running php and behat)
