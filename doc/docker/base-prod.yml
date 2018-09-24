@@ -11,6 +11,7 @@ services:
     depends_on:
      - db
     environment:
+     - COMPOSER_MEMORY_LIMIT
      - SYMFONY_ENV=${SYMFONY_ENV-prod}
      - SYMFONY_DEBUG
      - SYMFONY_HTTP_CACHE
