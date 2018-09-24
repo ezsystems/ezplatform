@@ -31,6 +31,13 @@ default:
 
         EzSystems\PlatformBehatBundle\ServiceContainer\EzBehatExtension: ~
 
+        Bex\Behat\ScreenshotExtension:
+            active_image_drivers: cloudinary
+            image_drivers:
+                cloudinary:
+                    cloud_name: ezplatformtravis
+                    preset: ezplatform
+
     # default profile: no suites
     suites: ~
 
