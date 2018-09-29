@@ -75,6 +75,17 @@ hooks:
         else
             composer install --no-dev --prefer-dist --no-progress --no-interaction --optimize-autoloader
         fi
+
+        # Use sensitive project variable to set AWS CLI Credentials (https://docs.platform.sh/development/variables.html#project-variables)
+        # To set the variables, install Platform.sh CLI on your local and run:
+        #
+        # platform variable:create --project=<PLATFORMSH_PROJECT_ID> --value=<AWS_ACCESS_KEY_ID> --level=project --name=AWS_ACCESS_KEY_ID --json=false --sensitive=true --prefix=env --visible-build=true --visible-runtime=true
+        # platform variable:create --project=<PLATFORMSH_PROJECT_ID> --value=<AWS_SECRET_ACCESS_KEY> --level=project --name=AWS_SECRET_ACCESS_KEY --json=false --sensitive=true --prefix=env --visible-build=true --visible-runtime=true
+        #
+        if [ ! -z "$AWS_ACCESS_KEY_ID" ] && [ ! -z "$AWS_SECRET_ACCESS_KEY" ]; then
+            pip install futures
+            pip install awscli --upgrade --user
+        fi
     # Deploy hook, access to services & done once (per cluster, not per node), only mounts are writable at this point
     # Note: Http traffic is paused while this is running, so for prod code this should finish as fast as possible, < 30s
     deploy: |
