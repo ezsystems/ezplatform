@@ -82,7 +82,7 @@ hooks:
         # And use sensitive project variable to set Platform.sh CLI Token (https://docs.platform.sh/development/variables.html#project-variables)
         # To set the variable value, install Platform.sh CLI on your local and run:
         #
-        # platform variable:create --project=<PLATFORMSH_PROJECT_ID> --value=<TOKEN> --json=false --sensitive=true --prefix=env --visible-build=true --visible-runtime=true
+        # platform variable:create --project=<PLATFORMSH_PROJECT_ID> --value=<TOKEN> --name=PLATFORMSH_CLI_TOKEN --json=false --sensitive=true --prefix=env --visible-build=true --visible-runtime=true
         #
         if [ ! -z "$PLATFORMSH_CLI_TOKEN" ]; then
             curl -sS https://platform.sh/cli/installer | php 2>/dev/null
