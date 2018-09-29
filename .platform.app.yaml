@@ -41,9 +41,6 @@ variables:
         #PLATFORMSH_DFS_NFS_PATH: 'dfsdata'
         # Disable Platform.sh CLI automatic updates check (otherwise crons might stuck)
         PLATFORMSH_CLI_UPDATES_CHECK: 0
-        # API token (https://accounts.platform.sh/user/XXXXX/api-tokens)
-        # It would be more secure to set it as project variable in Platform.sh Web UI
-        PLATFORMSH_CLI_TOKEN: YOUR_TOKEN_GOES_HERE
 
 # The configuration of app when it is exposed to the web.
 web:
@@ -80,7 +77,16 @@ hooks:
         else
             composer install --no-dev --prefer-dist --no-progress --no-interaction --optimize-autoloader
         fi
-        curl -sS https://platform.sh/cli/installer | php
+
+        # Obtain Platform.sh API token at https://accounts.platform.sh/user/XXXXX/api-tokens
+        # And use sensitive project variable to set Platform.sh CLI Token (https://docs.platform.sh/development/variables.html#project-variables)
+        # To set the variable value, install Platform.sh CLI on your local and run:
+        #
+        # platform variable:create --project=<PLATFORMSH_PROJECT_ID> --value=<TOKEN> --json=false --sensitive=true --prefix=env --visible-build=true --visible-runtime=true
+        #
+        if [ ! -z "$PLATFORMSH_CLI_TOKEN" ]; then
+            curl -sS https://platform.sh/cli/installer | php 2>/dev/null
+        fi
     # Deploy hook, access to services & done once (per cluster, not per node), only mounts are writable at this point
     # Note: Http traffic is paused while this is running, so for prod code this should finish as fast as possible, < 30s
     deploy: |
@@ -122,13 +128,15 @@ crons:
     renew_ssl_certs:
         spec: '8 20 1 * *'
         cmd: |
-            if [ "$PLATFORM_BRANCH" = master ]; then
+            if [ "$PLATFORM_BRANCH" = master ] && [ -x "/app/.platformsh/bin/platform" ]; then
                 platform redeploy --yes --no-wait
             fi
     snapshot:
         spec: '0 6 * * *'
-        cmd: 'platform snapshot:create -e $PLATFORM_BRANCH --yes --no-wait'
-
+        cmd: |
+            if [ -x "/app/.platformsh/bin/platform" ]; then
+                platform snapshot:create -e $PLATFORM_BRANCH --yes --no-wait
+            fi
 
 runtime:
     extensions:
