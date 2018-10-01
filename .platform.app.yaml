@@ -128,7 +128,7 @@ crons:
     renew_ssl_certs:
         spec: '8 20 1 * *'
         cmd: |
-            if [ "$PLATFORM_BRANCH" = master ] && [ -x "/app/.platformsh/bin/platform" ]; then
+            if [ "$PLATFORM_BRANCH" = master ] && [ -x "/app/.platformsh/bin/platform" ] && [ -z "$PLATFORM_MODE" ]; then
                 platform redeploy --yes --no-wait
             fi
     snapshot:
