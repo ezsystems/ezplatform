@@ -1,4 +1,7 @@
 # Reusable service for redis cache for use in generic.php and plaformsh.php on demand
+#
+# For further reading on setup with eZ Platform and Redis:
+# https://doc.ezplatform.com/en/latest/guide/persistence_cache/#redis
 services:
     cache.redis:
         parent: cache.adapter.redis

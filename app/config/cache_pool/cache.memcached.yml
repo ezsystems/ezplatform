@@ -1,4 +1,7 @@
 # Reusable service for memcache cache for use in generic.php and plaformsh.php on demand
+#
+# For further reading on setup with eZ Platform and Memcached:
+# https://doc.ezplatform.com/en/latest/guide/persistence_cache/#memcached
 services:
     cache.memcached:
         parent: cache.adapter.memcached
