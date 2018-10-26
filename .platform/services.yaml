@@ -35,6 +35,8 @@ rediscache:
 # If you wish to use solr, uncomment this service and the corresponding relationship in .platform.app.yaml.
 # Also, you need to generate the config using:
 # vendor/ezsystems/ezplatform-solr-search-engine/bin/generate-solr-config.sh
+# Multi core setup is currently not supported on Platform.sh. Sharding does not work as the cores are
+# unable to reach each other
 #solrsearch:
 #    type: solr:6.6
 #    disk: 512
