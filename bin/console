@@ -12,6 +12,11 @@ use Symfony\Component\Debug\Debug;
 
 set_time_limit(0);
 
+// Disable the PHAR stream wrapper as it is insecure
+if (in_array('phar', stream_get_wrappers())) {
+    stream_wrapper_unregister('phar');
+}
+
 // Ensure UTF-8 is used in string operations
 setlocale(LC_CTYPE, 'C.UTF-8');
 
