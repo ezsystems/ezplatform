@@ -64,6 +64,9 @@ Example config for Apache 2.4 in prefork mode:
         # Sets the HTTP_AUTHORIZATION header sometimes removed by Apache
         RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
+        # Disable .php(3) and other executable extensions in the var directory
+        RewriteRule ^var/.*(?i)\.(php3?|phar|phtml|sh|exe|pl|bin)$ - [F]
+
         # Access to repository images in single server setup
         RewriteRule ^/var/([^/]+/)?storage/images(-versioned)?/.* - [L]
 
@@ -111,6 +114,9 @@ If you do not have an access to use virtualhost config, use the `.htaccess` file
     # Sets the HTTP_AUTHORIZATION header sometimes removed by Apache
     RewriteCond %{HTTP:Authorization} .
     RewriteRule ^ - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Disable .php(3) and other executable extensions in the var directory
+    RewriteRule ^var/.*(?i)\.(php3?|phar|phtml|sh|exe|pl|bin)$ - [F]
 
     # Makes it possible to placed your favicon and robots.txt at the root of your web folder
     RewriteRule ^favicon\.ico - [L]
