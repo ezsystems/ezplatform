@@ -138,6 +138,8 @@ jms_translation:
                 - '%kernel.root_dir%/../vendor/ezsystems/ezplatform-admin-ui/src'
             output_dir: '%kernel.root_dir%/../vendor/ezsystems/ezplatform-admin-ui/src/bundle/Resources/translations/'
             excluded_dirs: [Behat, Tests, node_modules]
+            extractor:
+                - ez_policy
             output_format: "xliff"
         admin_modules:
             dirs:
