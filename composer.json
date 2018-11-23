@@ -45,6 +45,7 @@
         "ezsystems/ezplatform-admin-ui-assets": "^3.1@dev",
         "ezsystems/ezplatform-design-engine": "^2.0@dev",
         "ezsystems/ezplatform-standard-design": "^0.1@dev",
+        "ezsystems/ezplatform-richtext": "^1.0@dev",
         "ezsystems/ezplatform-cron": "^2.0@dev",
         "knplabs/knp-menu-bundle": "^2.2.1",
         "willdurand/js-translation-bundle": "^2.6.6",
