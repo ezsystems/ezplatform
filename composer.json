@@ -22,7 +22,7 @@
         "egulias/listeners-debug-command-bundle": "^1.9.1",
         "ezsystems/content-on-the-fly-prototype": "~0.1.12@dev",
         "ezsystems/ez-support-tools": "~0.2.1@dev",
-        "ezsystems/ezplatform-solr-search-engine": "^1.5@dev",
+        "ezsystems/ezplatform-solr-search-engine": "^1.5.4@dev",
         "ezsystems/ezpublish-kernel": "~6.7.7@dev",
         "ezsystems/platform-ui-bundle": "~1.7.8@dev",
         "ezsystems/repository-forms": "~1.5.5@dev",
@@ -36,7 +36,7 @@
         "symfony/monolog-bundle": "^2.12.1",
         "symfony/swiftmailer-bundle": "^2.6.7",
         "symfony/symfony": "~2.8.47",
-        "tedivm/stash-bundle": "0.6.2",
+        "tedivm/stash-bundle": "^0.6.2",
         "twig/extensions": "^1.5.3",
         "white-october/pagerfanta-bundle": "~1.0.8",
         "willdurand/js-translation-bundle": "^2.6"
