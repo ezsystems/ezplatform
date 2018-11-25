@@ -43,7 +43,6 @@
         "incenteev/composer-parameter-handler": "^2.1.3",
         "knplabs/knp-menu-bundle": "^2.2.1",
         "leafo/scssphp": "^0.7.7",
-        "roave/security-advisories": "dev-master",
         "sensio/distribution-bundle": "^5.0.23",
         "symfony/assetic-bundle": "^2.8.2",
         "symfony/monolog-bundle": "^3.3.1",
@@ -65,6 +64,7 @@
         "ezsystems/behat-screenshot-image-driver-cloudinary": "^1.0.0",
         "ezsystems/behatbundle": "^6.5.4",
         "phpunit/phpunit": "^6.5.13",
+        "roave/security-advisories": "dev-master",
         "sensio/generator-bundle": "^3.1.7",
         "symfony/phpunit-bridge": "^3.4.18"
     },
