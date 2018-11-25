@@ -28,7 +28,6 @@
         "ezsystems/repository-forms": "~1.5.5@dev",
         "hautelook/templated-uri-bundle": "^1.0 | ^2.1",
         "incenteev/composer-parameter-handler": "2.1.3",
-        "roave/security-advisories": "dev-master",
         "sensio/distribution-bundle": "^3.0.36 | ^4.0.40 | ^5.0.22",
         "sensio/framework-extra-bundle": "^3.0.29",
         "sensio/generator-bundle": "^2.5.3",
@@ -50,7 +49,8 @@
         "behat/symfony2-extension": "^2.1.5",
         "bex/behat-screenshot": "^1.2.7",
         "ezsystems/behat-screenshot-image-driver-cloudinary": "^1.0.0",
-        "ezsystems/behatbundle": "^6.5.4"
+        "ezsystems/behatbundle": "^6.5.4",
+        "roave/security-advisories": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [
