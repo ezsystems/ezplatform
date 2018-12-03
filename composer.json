@@ -31,6 +31,7 @@
         "sensio/distribution-bundle": "^3.0.36 | ^4.0.40 | ^5.0.22",
         "sensio/framework-extra-bundle": "^3.0.29",
         "sensio/generator-bundle": "^2.5.3",
+        "sensiolabs/security-checker": "^5.0",
         "symfony/assetic-bundle": "~2.8.2",
         "symfony/expression-language": "^2.8.47",
         "symfony/monolog-bundle": "^2.12.1",
@@ -49,8 +50,7 @@
         "behat/symfony2-extension": "^2.1.5",
         "bex/behat-screenshot": "^1.2.7",
         "ezsystems/behat-screenshot-image-driver-cloudinary": "^1.0.0",
-        "ezsystems/behatbundle": "^6.5.4",
-        "roave/security-advisories": "dev-master"
+        "ezsystems/behatbundle": "^6.5.4"
     },
     "scripts": {
         "post-install-cmd": [
@@ -59,7 +59,8 @@
             "eZ\\Bundle\\EzPublishCoreBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "eZ\\Bundle\\EzPublishCoreBundle\\Composer\\ScriptHandler::dumpAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
+            "vendor/sensiolabs/security-checker/security-checker security:check"
         ],
         "post-update-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
@@ -67,7 +68,8 @@
             "eZ\\Bundle\\EzPublishCoreBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "eZ\\Bundle\\EzPublishCoreBundle\\Composer\\ScriptHandler::dumpAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
+            "vendor/sensiolabs/security-checker/security-checker security:check"
         ],
         "post-create-project-cmd": [
             "eZ\\Bundle\\EzPublishCoreBundle\\Composer\\ScriptHandler::installWelcomeText"
