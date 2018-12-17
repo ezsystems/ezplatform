@@ -227,9 +227,6 @@ image. The downside of this approach is that all eZ Platform code is copied to a
 other containers. This means bigger disk space footprint and longer loading time of the containers.
 It is also more complicated to make this approach work with docker stack so only a docker-compose example is provided.
 
-Note that if you set the environment variable COMPOSE_PROJECT_NAME to a non-default value, you'll need to change the image name in
-doc/docker/Dockerfile-distribution accordingly.
-
 ```sh
 export COMPOSE_FILE=doc/docker/base-prod.yml:doc/docker/create-dataset.yml:doc/docker/distribution.yml
 # If not already done, install setup, and generate database dump :
@@ -242,6 +239,10 @@ docker-compose -f doc/docker/base-prod.yml build --no-cache app
 
 # Optional, only build the images, do not create containers
 docker-compose build --no-cache distribution
+
+# Note that if you set the environment variable COMPOSE_PROJECT_NAME to a non-default value, you'll need to use set the
+# build argument DISTRIBUTION_IMAGE when building the distribution image
+docker-compose build --no-cache --build-arg DISTRIBUTION_IMAGE=customprojectname_app distribution
 
 # Build the "distribution" and dataset images, then start the containers
 docker-compose up -d

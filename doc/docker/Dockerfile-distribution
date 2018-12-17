@@ -1,6 +1,7 @@
-# Note : if you set the environment variable COMPOSE_PROJECT_NAME to a non-default value, you'll need to change the
-# image name in here too
-FROM docker_app as builder
+# Note : if you set the environment variable COMPOSE_PROJECT_NAME to a non-default value, you'll need to set the
+# DISTRIBUTION_IMAGE build arg too (for instance docker-compose build --no-cache --build-arg DISTRIBUTION_IMAGE=customprojectname_app distribution)
+ARG DISTRIBUTION_IMAGE=docker_app
+FROM ${DISTRIBUTION_IMAGE} as builder
 
 RUN composer config extra.symfony-assets-install hard
 RUN composer run-script post-install-cmd --no-interaction
