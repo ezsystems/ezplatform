@@ -66,6 +66,11 @@ server {
             # Defaults to not be set if env value is omitted or empty
             #if[SYMFONY_TRUSTED_PROXIES] fastcgi_param SYMFONY_TRUSTED_PROXIES "%SYMFONY_TRUSTED_PROXIES%";
         }
+
+        # Disable .php(3) and other executable extensions in the var directory
+        location ~ ^/var/.*(?i)\.(php3?|phar|phtml|sh|exe|pl|bin)$ {
+            return 403;
+        }
     }
 
     # Custom logs
