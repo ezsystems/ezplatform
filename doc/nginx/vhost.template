@@ -60,6 +60,11 @@ server {
             #      they should in most cases rather be set in the environment then in vhost config to make sure cronjobs
             #      and cli command usage takes them into account as well.
         }
+
+        # Disable .php(3) and other executable extensions in the var directory
+        location ~ ^/var/.*(?i)\.(php3?|phar|phtml|sh|exe|pl|bin)$ {
+            return 403;
+        }
     }
 
     # Custom logs

@@ -69,6 +69,11 @@ Example config:
                 # Defaults to "prod" if omitted
                 fastcgi_param SYMFONY_ENV prod;
             }
+
+            # Disable .php(3) and other executable extensions in the var directory
+            location ~ ^/var/.*(?i)\.(php3?|phar|phtml|sh|exe|pl|bin)$ {
+                return 403;
+            }
         }
 
         include ez_params.d/ez_server_params;
