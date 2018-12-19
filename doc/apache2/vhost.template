@@ -77,6 +77,9 @@
         RewriteCond %{REQUEST_URI} ^/php5-fcgi(.*)
         RewriteRule . - [L]
 
+        # Disable .php(3) and other executable extensions in the var directory
+        RewriteRule ^var/.*(?i)\.(php3?|phar|phtml|sh|exe|pl|bin)$ - [F]
+
         # Cluster/streamed files rewrite rules. Enable on cluster with DFS as a binary data handler
         #RewriteRule ^/var/([^/]+/)?storage/images(-versioned)?/.* /app.php [L]
 
