@@ -42,6 +42,7 @@
         "sensio/distribution-bundle": "^3.0.36 | ^4.0.40 | ^5.0.22",
         "sensio/framework-extra-bundle": "^3.0.29",
         "sensio/generator-bundle": "^2.5.3 | ^3.1.7",
+        "sensiolabs/security-checker": "^5.0",
         "symfony/assetic-bundle": "~2.8.2",
         "symfony/monolog-bundle": "^3.3.1",
         "symfony/swiftmailer-bundle": "^2.6.7 | ^3.2.4",
@@ -60,8 +61,7 @@
         "bex/behat-screenshot": "^1.2.7",
         "ezsystems/behat-screenshot-image-driver-cloudinary": "^1.0.0",
         "ezsystems/behatbundle": "^6.5.4",
-        "ezsystems/ezplatform-i18n": "^1.5@dev",
-        "roave/security-advisories": "dev-master"
+        "ezsystems/ezplatform-i18n": "^1.5@dev"
     },
     "scripts": {
         "symfony-scripts": [
@@ -70,7 +70,8 @@
             "eZ\\Bundle\\EzPublishCoreBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "eZ\\Bundle\\EzPublishCoreBundle\\Composer\\ScriptHandler::dumpAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
+            "@php bin/security-checker security:check"
         ],
         "post-install-cmd": [
             "@symfony-scripts"
