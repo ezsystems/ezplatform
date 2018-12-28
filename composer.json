@@ -43,6 +43,7 @@
         "knplabs/knp-menu-bundle": "^2.2.1",
         "leafo/scssphp": "^0.7.7",
         "sensio/distribution-bundle": "^5.0.23",
+        "sensiolabs/security-checker": "^5.0",
         "symfony/assetic-bundle": "^2.8.2",
         "symfony/monolog-bundle": "^3.3.1",
         "symfony/swiftmailer-bundle": "^3.2.4",
@@ -63,7 +64,6 @@
         "ezsystems/behat-screenshot-image-driver-cloudinary": "^1.0.0",
         "ezsystems/behatbundle": "^6.5.4",
         "phpunit/phpunit": "^6.5.13",
-        "roave/security-advisories": "dev-master",
         "sensio/generator-bundle": "^3.1.7",
         "symfony/phpunit-bridge": "^3.4.18"
     },
@@ -78,7 +78,8 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
             "@php bin/console bazinga:js-translation:dump --merge-domains",
-            "@php bin/console assetic:dump"
+            "@php bin/console assetic:dump",
+            "@php bin/security-checker security:check"
         ],
         "post-install-cmd": [
             "@symfony-scripts"
