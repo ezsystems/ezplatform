@@ -52,6 +52,7 @@ rediscache:
 #            collection1:
 #                core: collection1
 
+# Due to logic in app/config/env/platformsh.php, do not change the service name to something different than 'varnish'
 varnish:
     type: 'varnish:5.2'
     relationships:

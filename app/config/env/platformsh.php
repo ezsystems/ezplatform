@@ -14,8 +14,10 @@ $relationships = getenv('PLATFORM_RELATIONSHIPS');
 if (!$relationships) {
     return;
 }
+$routes = getenv('PLATFORM_ROUTES');
 
 $relationships = json_decode(base64_decode($relationships), true);
+$routes = json_decode(base64_decode($routes), true);
 
 foreach ($relationships['database'] as $endpoint) {
     if (empty($endpoint['query']['is_master'])) {
@@ -133,9 +135,22 @@ if (isset($relationships['solr'])) {
     }
 }
 
-if (isset($relationships['varnish'])) {
-    foreach ($relationships['varnish'] as $endpoint) {
-        $container->setParameter('purge_type', 'http');
-        $container->setParameter('purge_server', sprintf('http://%s:%d', $endpoint['host'], $endpoint['port']));
+// We will pick a varnish route by the following prioritization:
+// - The first route found that has upstream: varnish
+// - if primary route has upstream: varnish, that route will be prioritised
+// If no route is found with upstream: varnish, then purge_server will not be set
+$route = null;
+foreach ($routes as $host => $info) {
+    if ($route === null && $info['type'] === 'upstream' && $info['upstream'] === 'varnish') {
+        $route = $host;
     }
+    if ($info['type'] === 'upstream' && $info['upstream'] === 'varnish' && $info['primary'] === true) {
+        $route = $host;
+        break;
+    }
+}
+
+if ($route !== null) {
+    $container->setParameter('purge_type', 'varnish');
+    $container->setParameter('purge_server', rtrim($route, '/'));
 }
