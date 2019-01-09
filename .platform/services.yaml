@@ -60,5 +60,5 @@ varnish:
     configuration:
         vcl: !include
             type: string
-            path: varnish.vcl.twig
+            path: varnish.vcl
 
