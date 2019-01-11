@@ -34,7 +34,7 @@ variables:
         #"display_errors": "On"
     env:
         SYMFONY_HTTP_CACHE: 0
-        SYMFONY_TRUSTED_PROXIES: "127.0.0.1,localhost,varnish.internal"
+        SYMFONY_TRUSTED_PROXIES: "TRUST_REMOTE"
         # Change this to dev if you want to run site & commands in dev
         SYMFONY_ENV: prod
         # Uncomment if you want to use DFS clustering:
