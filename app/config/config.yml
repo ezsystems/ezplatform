@@ -93,6 +93,10 @@ assetic:
             formatter: 'Leafo\ScssPhp\Formatter\Crunched'
             import_paths: ['%kernel.project_dir%/web/']
 
+# Webpack Encore Configuration
+webpack_encore:
+    output_path: "%kernel.root_dir%/../web/js/"
+
 # Swiftmailer Configuration
 swiftmailer:
     transport: '%mailer_transport%'
