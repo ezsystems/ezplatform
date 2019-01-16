@@ -1,21 +1,13 @@
 const path = require('path');
-const fs = require('fs');
-const eZSystemsPath = path.resolve('./vendor/ezsystems/');
-const bundles = [];
-
-fs.readdirSync(eZSystemsPath).forEach((file) => {
-    const configPath = path.resolve(eZSystemsPath, file, 'ez.webpack.config.js');
-
-    if (fs.existsSync(configPath)) {
-        bundles.push(require(configPath));
-    }
-});
+const bundles = require('./var/encore/ez.config.js');
 
 module.exports = (Encore) => {
-    return bundles.map((getConfig) => {
+    return bundles.map((configPath) => {
+        const getConfig = require(configPath);
+
         Encore.reset();
-        Encore.setOutputPath('web/js/')
-            .setPublicPath('/js')
+        Encore.setOutputPath('web/assets/build')
+            .setPublicPath('/assets/build')
             .addExternals({
                 react: {
                     root: 'React',
@@ -47,8 +39,21 @@ module.exports = (Encore) => {
                     commonjs: 'popper',
                     amd: 'popper',
                 },
+                alloyeditor: {
+                    root: 'AlloyEditor',
+                    commonjs2: 'AlloyEditor',
+                    commonjs: 'AlloyEditor',
+                    amd: 'AlloyEditor',
+                },
+                'prop-types': {
+                    root: 'PropTypes',
+                    commonjs2: 'prop-types',
+                    commonjs: 'prop-types',
+                    amd: 'prop-types',
+                }
             })
             .enableSassLoader()
+            .enableReactPreset()
             .enableSingleRuntimeChunk();
 
         return getConfig(Encore);
