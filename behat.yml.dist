@@ -33,6 +33,8 @@ default:
                     cloud_name: ezplatformtravis
                     preset: ezplatform
 
+        Tonic\Behat\ParallelScenarioExtension: ~
+
     suites: ~
 
 imports:

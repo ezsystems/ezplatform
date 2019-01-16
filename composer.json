@@ -65,7 +65,8 @@
         "ezsystems/behatbundle": "^6.5.4",
         "phpunit/phpunit": "^6.5.13",
         "sensio/generator-bundle": "^3.1.7",
-        "symfony/phpunit-bridge": "^3.4.18"
+        "symfony/phpunit-bridge": "^3.4.18",
+        "tonicforhealth/behat-parallel-scenario": "dev-master"
     },
     "conflict": {
         "symfony/symfony": "3.4.9||3.4.12||3.4.16",
