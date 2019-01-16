@@ -1,7 +1,7 @@
 Apache 2.4 configuration
 ========================
 
-For recommended versions of [Apache](https://httpd.apache.org/), see [online eZ requirements](https://doc.ezplatform.com/en/2.5/getting_started/requirements/).
+For recommended versions of [Apache](https://httpd.apache.org/), see [online eZ requirements](https://doc.ezplatform.com/en/latest/getting_started/requirements/).
 
 
 Prerequisites
