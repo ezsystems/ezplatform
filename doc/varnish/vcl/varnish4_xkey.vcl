@@ -248,15 +248,15 @@ sub vcl_deliver {
         }
     }
 
-
     if (client.ip ~ debuggers) {
-        # In Varnish 4 the obj.hits counter behaviour has changed, so we use a
-        # different method: if X-Varnish contains only 1 id, we have a miss, if it
-        # contains more (and therefore a space), we have a hit.
-        if (resp.http.x-varnish ~ " ") {
+        // Add X-Cache header if debugging is enabled
+        if (obj.hits > 0) {
             set resp.http.X-Cache = "HIT";
             set resp.http.X-Cache-Hits = obj.hits;
-            set resp.http.X-Cache-TTL = obj.ttl;
+            // Not readable on Varnish 4.1LTS, so check for existence until we drop support for it in future versions
+            if (obj.ttl) {
+                set resp.http.X-Cache-TTL = obj.ttl;
+            }
         } else {
             set resp.http.X-Cache = "MISS";
         }
