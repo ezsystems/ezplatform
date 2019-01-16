@@ -164,4 +164,4 @@ following from the eZ installation root:
 The `NameVirtualHost` setting might already exist in the default configuration. Defining a new one will result in a
 conflict. If Apache reports errors such as `NameVirtualHost [IP_ADDRESS] has no VirtualHosts` or `Mixing * ports and
 non-* ports with a NameVirtualHost address is not supported`, try removing the `NameVirtualHost` line.
-For more details, see [NameVirtualHost directive](http://httpd.apache.org/docs/2.4/mod/core.html#namevirtualhost) section on the Apache documentation.
+For more details, see [NameVirtualHost directive](http://httpd.apache.org/docs/2.4/mod/core.html#namevirtualhost) section in Apache documentation.
