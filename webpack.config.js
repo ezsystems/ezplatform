@@ -5,9 +5,10 @@ const eZConfigManager = require('./ez.webpack.config.manager.js');
 const eZConfigs = getEzConfigs(Encore);
 
 Encore.reset();
-Encore.setOutputPath('web/js/')
-    .setPublicPath('/js')
+Encore.setOutputPath('web/assets/build')
+    .setPublicPath('/assets/build')
     .enableSassLoader()
+    .enableReactPreset()
     .enableSingleRuntimeChunk();
 
 // Put your config here.
