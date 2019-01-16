@@ -9,7 +9,7 @@ Prerequisites
 - Some general knowledge of how to install and configure Apache
 - Apache 2.4 must be installed using one of the following Multi-Processing Modules (MPM):
     - [Event](https://httpd.apache.org/docs/2.4/mod/event.html), or alternatively [Worker](https://httpd.apache.org/docs/2.4/mod/worker.html), for use with `php-fpm` over FastCGI.
-    - [Prefork](https://httpd.apache.org/docs/2.4/mod/prefork.html), together with `mod_php`, running php as a Apache module.
+    - [Prefork](https://httpd.apache.org/docs/2.4/mod/prefork.html), together with `mod_php`, running PHP as an Apache module.
        - Useful for Backwards compatibility or simple needs. For better performance _(less memory usage)_ pick a setup with `Event` MPM instead.
 - Apache modules installed and enabled:
  - required: `mod_rewrite`, `mod_env`
