@@ -95,7 +95,7 @@ assetic:
 
 # Webpack Encore Configuration
 webpack_encore:
-    output_path: "%kernel.root_dir%/../web/assets/build"
+    output_path: "%kernel.project_dir%/web/assets/build"
 
 # Swiftmailer Configuration
 swiftmailer:
