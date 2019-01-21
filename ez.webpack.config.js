@@ -6,8 +6,8 @@ module.exports = (Encore) => {
         const getConfig = require(configPath);
 
         Encore.reset();
-        Encore.setOutputPath('web/assets/build')
-            .setPublicPath('/assets/build')
+        Encore.setOutputPath('web/assets/ez/build')
+            .setPublicPath('/assets/ez/build')
             .addExternals({
                 react: 'React',
                 'react-dom': 'ReactDOM',
