@@ -72,8 +72,7 @@ framework:
         #       Further reading on sessions: http://doc.ezplatform.com/en/latest/guide/sessions/
     fragments: ~
     http_method_override: true
-    assets:
-        json_manifest_path: '%kernel.project_dir%/web/assets/build/manifest.json'
+    assets: true
     php_errors:
         log: true
 
@@ -97,6 +96,8 @@ assetic:
 # Webpack Encore Configuration
 webpack_encore:
     output_path: "%kernel.project_dir%/web/assets/build"
+    builds:
+        ez: "%kernel.project_dir%/web/assets/ez/build"
 
 # Swiftmailer Configuration
 swiftmailer:
