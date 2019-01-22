@@ -2,25 +2,30 @@ const path = require('path');
 const bundles = require('./var/encore/ez.config.js');
 
 module.exports = (Encore) => {
-    return bundles.map((configPath) => {
-        const getConfig = require(configPath);
+    Encore.setOutputPath('web/assets/ez/build')
+        .setPublicPath('/assets/ez/build')
+        .addExternals({
+            react: 'React',
+            'react-dom': 'ReactDOM',
+            jquery: 'jQuery',
+            moment: 'moment',
+            'popper.js': 'Popper',
+            alloyeditor: 'AlloyEditor',
+            'prop-types': 'PropTypes',
+        })
+        .enableSassLoader()
+        .enableReactPreset()
+        .enableSingleRuntimeChunk();
 
-        Encore.reset();
-        Encore.setOutputPath('web/assets/ez/build')
-            .setPublicPath('/assets/ez/build')
-            .addExternals({
-                react: 'React',
-                'react-dom': 'ReactDOM',
-                jquery: 'jQuery',
-                moment: 'moment',
-                'popper.js': 'Popper',
-                alloyeditor: 'AlloyEditor',
-                'prop-types': 'PropTypes',
-            })
-            .enableSassLoader()
-            .enableReactPreset()
-            .enableSingleRuntimeChunk();
+    bundles.forEach((configPath) => {
+        const addEntries = require(configPath);
 
-        return getConfig(Encore);
+        addEntries(Encore);
     });
+
+    const eZConfig = Encore.getWebpackConfig();
+
+    eZConfig.name = 'ez';
+
+    return eZConfig;
 };

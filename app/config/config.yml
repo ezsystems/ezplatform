@@ -72,7 +72,10 @@ framework:
         #       Further reading on sessions: http://doc.ezplatform.com/en/latest/guide/sessions/
     fragments: ~
     http_method_override: true
-    assets: true
+    assets:
+        packages:
+            ez:
+                json_manifest_path: '%kernel.project_dir%/web/assets/ez/build/manifest.json'
     php_errors:
         log: true
 
