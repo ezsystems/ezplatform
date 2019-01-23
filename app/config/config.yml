@@ -74,8 +74,8 @@ framework:
     http_method_override: true
     assets:
         packages:
-            ez:
-                json_manifest_path: '%kernel.project_dir%/web/assets/ez/build/manifest.json'
+            ezplatform:
+                json_manifest_path: '%kernel.project_dir%/web/assets/ezplatform/build/manifest.json'
     php_errors:
         log: true
 
@@ -100,7 +100,7 @@ assetic:
 webpack_encore:
     output_path: "%kernel.project_dir%/web/assets/build"
     builds:
-        ez: "%kernel.project_dir%/web/assets/ez/build"
+        ezplatform: "%kernel.project_dir%/web/assets/ezplatform/build"
 
 # Swiftmailer Configuration
 swiftmailer:
