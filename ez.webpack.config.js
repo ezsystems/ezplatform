@@ -2,8 +2,8 @@ const path = require('path');
 const bundles = require('./var/encore/ez.config.js');
 
 module.exports = (Encore) => {
-    Encore.setOutputPath('web/assets/ez/build')
-        .setPublicPath('/assets/ez/build')
+    Encore.setOutputPath('web/assets/ezplatform/build')
+        .setPublicPath('/assets/ezplatform/build')
         .addExternals({
             react: 'React',
             'react-dom': 'ReactDOM',
@@ -25,7 +25,7 @@ module.exports = (Encore) => {
 
     const eZConfig = Encore.getWebpackConfig();
 
-    eZConfig.name = 'ez';
+    eZConfig.name = 'ezplatform';
 
     return eZConfig;
 };
