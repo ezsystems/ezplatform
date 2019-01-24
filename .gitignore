@@ -38,6 +38,7 @@
 !web/assets/build/.gitkeep
 /web/assets/ezplatform/build/*
 !/web/assets/ezplatform/build/.gitkeep
+/node_modules/
 
 .php~
 
@@ -61,6 +62,7 @@ web/fonts/
 
 composer.phar
 composer.lock
+yarn.lock
 .buildpath
 .project
 .settings/
