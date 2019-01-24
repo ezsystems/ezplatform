@@ -1,16 +1,20 @@
-Apache 2.2 / 2.4  configuration
-===============================
+Apache 2.4 configuration
+========================
 
-For recommended versions of [Apache](https://httpd.apache.org/), see [online eZ requirements](https://doc.ez.no/display/TECHDOC/Requirements).
+For recommended versions of [Apache](https://httpd.apache.org/), see [online eZ requirements](https://doc.ezplatform.com/en/latest/getting_started/requirements/).
 
 
 Prerequisites
 -------------
 - Some general knowledge of how to install and configure Apache
-- Apache 2.x must be installed using [Apache MPM prefork](https://httpd.apache.org/docs/2.4/mod/prefork.html), *aka in "prefork mode"*.
+- Apache 2.4 must be installed using one of the following Multi-Processing Modules (MPM):
+    - [Event](https://httpd.apache.org/docs/2.4/mod/event.html), or alternatively [Worker](https://httpd.apache.org/docs/2.4/mod/worker.html), for use with `php-fpm` over FastCGI.
+    - [Prefork](https://httpd.apache.org/docs/2.4/mod/prefork.html), together with `mod_php`, running PHP as an Apache module.
+       - Useful for Backwards compatibility or simple needs. For better performance _(less memory usage)_ pick a setup with `Event` MPM instead.
 - Apache modules installed and enabled:
- - required: `mod_php`, `mod_rewrite`, `mod_env`
+ - required: `mod_rewrite`, `mod_env`
  - recommended: `mod_setenvif`, `mod_expires`
+ - If you use "Apache MPM Prefork": `mod_php`
 
 
 Configure
@@ -139,8 +143,8 @@ If you do not have an access to use virtualhost config, use the `.htaccess` file
 
 Virtual host template
 ---------------------
-This folder contains `vhost.template` for Apache 2.4, and `vhost.2.2.template` for Apache 2.2, both which provides more
-features you can enable in your virtual host configuration. You may also use this file as a `.htaccess` config. However,
+This folder contains `vhost.template` which provides more features you can enable in your virtual host configuration.
+You may also use this file as a `.htaccess` config. However,
 you will need to adjust rewrite rules to remove `/` like in the example above.
 
 *Note: vhost.template uses `mod_setenvif`, adapt it as indicated inline if you can't install it.*
@@ -157,4 +161,5 @@ following from the eZ installation root:
 
 The `NameVirtualHost` setting might already exist in the default configuration. Defining a new one will result in a
 conflict. If Apache reports errors such as `NameVirtualHost [IP_ADDRESS] has no VirtualHosts` or `Mixing * ports and
-non-* ports with a NameVirtualHost address is not supported`, try removing the `NameVirtualHost` line. For more details, see [NameVirtualHost directive](http://httpd.apache.org/docs/2.4/mod/core.html#namevirtualhost) section on the Apache documentation.
+non-* ports with a NameVirtualHost address is not supported`, try removing the `NameVirtualHost` line.
+For more details, see [NameVirtualHost directive](http://httpd.apache.org/docs/2.4/mod/core.html#namevirtualhost) section in Apache documentation.
