@@ -23,8 +23,6 @@ These examples are simplified to get you up and running, see [Virtual host templ
 
 #### Virtual Host
 
-_If you are new to Apache, consider checking tutorials online [like this one](https://websiteforstudents.com/how-to-run-apache2-with-php7-2-fpm-on-ubuntu-16-04-17-10-18-04/) first._
-
 1. Place virtualhost config *(example below)* in a suitable Apache config folder, typically:
    - Debian/Ubuntu: `/etc/apache2/sites-enabled/<yoursite>.conf`
    - RHEL/CentOS/Amazon-Linux: `/etc/httpd/conf.d/<yoursite>.conf`
