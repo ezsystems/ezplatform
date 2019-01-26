@@ -124,7 +124,7 @@ crons:
         spec: "0 0 * * 0"
         cmd: "php bin/console ezplatform:check-urls"
     renew_ssl_certs:
-        spec: '8 20 1 * *'
+        spec: '0 4 1 * *'
         cmd: |
             if [ "$PLATFORM_BRANCH" = master ] && [ -x "/app/.platformsh/bin/platform" ] && [ -z "$PLATFORM_MODE" ]; then
                 platform redeploy --yes --no-wait
