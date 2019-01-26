@@ -39,8 +39,6 @@ variables:
         SYMFONY_ENV: prod
         # Uncomment if you want to use DFS clustering:
         #PLATFORMSH_DFS_NFS_PATH: 'dfsdata'
-        # Disable Platform.sh CLI automatic updates check (otherwise crons might stuck)
-        PLATFORMSH_CLI_UPDATES_CHECK: 0
 
 # The configuration of app when it is exposed to the web.
 web:
