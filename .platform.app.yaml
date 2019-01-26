@@ -107,9 +107,11 @@ hooks:
 # see https://docs.platform.sh/configuration/app/cron.html#cron-jobs
 crons:
     frequent:
-        # https://docs.platform.sh/configuration/app/cron.html:
         # The minimum interval between cron runs is 5 minutes, even if specified as less.
-        spec: "*/5 * * * *"
+        # Except for PE. There crons can be run every minute.
+        # So if you are not on PE please change specs to "*/5 * * * *".
+        # Otherwise you will get Platform.sh warning on each deploy
+        spec: "* * * * *"
         cmd: "php bin/console ezplatform:cron:run"
     weekly:
         spec: "0 0 * * 0"
