@@ -31,6 +31,7 @@
         "ezsystems/ezplatform-admin-ui": "^1.5@dev",
         "ezsystems/ezplatform-admin-ui-assets": "^3.1@dev",
         "ezsystems/ezplatform-admin-ui-modules": "^1.5@dev",
+        "ezsystems/ezplatform-core": "^1.0@dev",
         "ezsystems/ezplatform-cron": "^2.0@dev",
         "ezsystems/ezplatform-design-engine": "^2.0@dev",
         "ezsystems/ezplatform-http-cache": "~0.8@dev",
