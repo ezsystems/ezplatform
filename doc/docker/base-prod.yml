@@ -7,7 +7,7 @@ services:
       context: ../../
       dockerfile: ${APP_DOCKER_FILE}
       args:
-       - PHP_IMAGE
+       - PHP_IMAGE_NODE
     depends_on:
      - db
     environment:

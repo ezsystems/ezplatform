@@ -6,6 +6,7 @@ services:
   - docker
 
 cache:
+  yarn: true
   directories:
     - $HOME/.composer/cache/files
 
