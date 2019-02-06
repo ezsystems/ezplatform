@@ -154,3 +154,8 @@ if ($route !== null) {
     $container->setParameter('purge_type', 'varnish');
     $container->setParameter('purge_server', rtrim($route, '/'));
 }
+
+// Setting default value for HTTPCACHE_VARNISH_INVALIDATE_TOKEN if it is not explicitly set
+if (!$varnishInvalidateToken = getenv('HTTPCACHE_VARNISH_INVALIDATE_TOKEN')) {
+    $container->setParameter('varnish_invalidate_token', getenv('PLATFORM_PROJECT_ENTROPY'));
+}
