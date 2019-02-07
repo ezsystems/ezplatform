@@ -132,9 +132,7 @@ sub ez_purge {
 
     # Support how purging was done in earlier versions, this is deprecated and here just for BC for code still using it
     if (req.method == "BAN") {
-        if (!client.ip ~ invalidators) {
-            return (synth(405, "Method not allowed"));
-        }
+        call ez_purge_acl;
 
         if (req.http.X-Location-Id) {
             ban("obj.http.X-Location-Id ~ " + req.http.X-Location-Id);
@@ -146,9 +144,7 @@ sub ez_purge {
     }
 
     if (req.method == "PURGE") {
-        if (!client.ip ~ invalidators) {
-            return (synth(405, "Method not allowed"));
-        }
+        call ez_purge_acl;
 
         # If http header "key" is set, we assume purge is on key and you have Varnish xkey installed
         if (req.http.key) {
@@ -161,6 +157,18 @@ sub ez_purge {
 
         # if not, then this is a normal purge by url
         return (purge);
+    }
+}
+
+sub ez_purge_acl {
+//    if (req.http.x-purge-token) {
+//        #  Won't work on Varnish <= 5.1, if needed in 4.1 you can hardcode a secret token here instead of std.getenv() usage
+//        if (req.http.x-purge-token != std.getenv("HTTPCACHE_VARNISH_INVALIDATE_TOKEN")) {
+//            return (synth(405, "Method not allowed"));
+//        }
+//    } else if  (!client.ip ~ invalidators) {
+    if  (!client.ip ~ invalidators) {
+        return (synth(405, "Method not allowed"));
     }
 }
 
@@ -253,9 +261,8 @@ sub vcl_deliver {
         if (obj.hits > 0) {
             set resp.http.X-Cache = "HIT";
             set resp.http.X-Cache-Hits = obj.hits;
-            // Not readable on Varnish 4.1LTS, so check for existence until we drop support for it in future versions
-            if (obj.ttl) {
-                set resp.http.X-Cache-TTL = obj.ttl;
+            // For Varnihs 5.1+ you can uncomment this to get debug of remaining TTL
+            //set resp.http.X-Cache-TTL = obj.ttl;
             }
         } else {
             set resp.http.X-Cache = "MISS";
