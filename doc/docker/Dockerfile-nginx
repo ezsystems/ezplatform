@@ -1,5 +1,5 @@
 ARG PHP_IMAGE=ezsystems/php:7.2-v1
-FROM ${PHP_IMAGE} as web-build
+FROM ${PHP_IMAGE}-node as web-build
 
 ENV SYMFONY_ENV=prod
 
