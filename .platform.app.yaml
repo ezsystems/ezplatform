@@ -77,6 +77,13 @@ hooks:
     # Build hook, done before connected to services, disk is still writable here
     build: |
         set -e
+
+        # Inject GITHUB token if provided. This is handy if you have your own private repos, or need to avoid
+        # github's API rate limit
+        if [ -n "$GITHUB_TOKEN" ]; then
+            composer config github-oauth.github.com $GITHUB_TOKEN
+        fi
+
         rm web/app_dev.php
         composer install --no-dev --prefer-dist --no-progress --no-interaction --optimize-autoloader
 
