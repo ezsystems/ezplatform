@@ -1,5 +1,5 @@
 ARG PHP_IMAGE=ezsystems/php:7.2-v1
-FROM ${PHP_IMAGE} as builder
+FROM ${PHP_IMAGE}-node as builder
 
 # This is prod image (for dev use just mount your application as host volume into php image we extend here)
 ENV SYMFONY_ENV=prod

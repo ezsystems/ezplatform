@@ -34,6 +34,12 @@
 !var/SymfonyRequirements.php
 /vendor/
 /web/bundles/
+/web/assets/translations/*
+/web/assets/build/*
+!web/assets/build/.gitkeep
+/web/assets/ezplatform/build/*
+!/web/assets/ezplatform/build/.gitkeep
+/node_modules/
 
 .php~
 
@@ -57,6 +63,7 @@ web/fonts/
 
 composer.phar
 composer.lock
+yarn.lock
 .buildpath
 .project
 .settings/

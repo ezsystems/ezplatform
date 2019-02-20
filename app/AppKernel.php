@@ -15,6 +15,7 @@ class AppKernel extends Kernel
             new Symfony\Bundle\MonologBundle\MonologBundle(),
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
+            new Symfony\WebpackEncoreBundle\WebpackEncoreBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             // Dependencies
@@ -45,6 +46,7 @@ class AppKernel extends Kernel
             new EzSystems\EzPlatformAdminUiModulesBundle\EzPlatformAdminUiModulesBundle(),
             new EzSystems\EzPlatformAdminUiAssetsBundle\EzPlatformAdminUiAssetsBundle(),
             new EzSystems\EzPlatformCronBundle\EzPlatformCronBundle(),
+            new EzSystems\EzPlatformEncoreBundle\EzSystemsEzPlatformEncoreBundle(),
             // Application
             new AppBundle\AppBundle(),
         ];
