@@ -254,7 +254,8 @@ sub vcl_deliver {
         if (obj.hits > 0) {
             set resp.http.X-Cache = "HIT";
             set resp.http.X-Cache-Hits = obj.hits;
-            set resp.http.X-Cache-TTL = obj.ttl;
+            // For Varnihs 5.1+ you can uncomment this to get debug of remaining TTL
+            //set resp.http.X-Cache-TTL = obj.ttl;
         } else {
             set resp.http.X-Cache = "MISS";
         }
