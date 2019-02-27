@@ -13,6 +13,7 @@ parameters:
     database_name: '%env(DATABASE_NAME)%'
     database_user: '%env(DATABASE_USER)%'
     database_password: '%env(DATABASE_PASSWORD)%'
+    database_charset: '%env(DATABASE_CHARSET)%'
 
     # Setting for mail system, used by SwiftMailer
     mailer_host: '%env(MAILER_HOST)%'

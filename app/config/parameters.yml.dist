@@ -15,3 +15,4 @@ parameters:
     env(DATABASE_NAME): ezplatform
     env(DATABASE_USER): root
     env(DATABASE_PASSWORD):
+    env(DATABASE_CHARSET): utf8mb4
