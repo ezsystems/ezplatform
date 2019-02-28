@@ -29,6 +29,9 @@ ezplatform.admin_ui.rest:
     resource: '@EzPlatformAdminUiBundle/Resources/config/routing_rest.yml'
     prefix: '%ezpublish_rest.path_prefix%'
 
+ezplatform.user:
+    resource: '@EzPlatformUserBundle/Resources/config/routing.yml'
+
 _ezplatformRepositoryFormsRoutes:
     resource: '@EzSystemsRepositoryFormsBundle/Resources/config/routing.yml'
 
