@@ -73,10 +73,8 @@ if [ "$RUN_INSTALL" = "1" ] ; then
   #docker-compose -f doc/docker/install.yml up --abort-on-container-exit
 fi
 
-INSTALL_EZ_INSTALL_TYPE=${INSTALL_EZ_INSTALL_TYPE:-clean}
-
 echo "> Start containers and install data"
 docker-compose up -d
-docker-compose exec --user www-data app sh -c "php /scripts/wait_for_db.php; php bin/console ezplatform:install $INSTALL_EZ_INSTALL_TYPE"
+docker-compose exec --user www-data app sh -c "php /scripts/wait_for_db.php; composer ezplatform-install"
 
 echo "> Done, ready to run behatphpcli container"

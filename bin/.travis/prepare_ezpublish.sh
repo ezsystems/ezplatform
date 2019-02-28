@@ -28,4 +28,4 @@ echo "> Run assetic dump for behat env"
 php app/console --env=behat --no-debug assetic:dump
 
 echo "> Installing ezplatform clean"
-php app/console --env=behat ezplatform:install clean
+composer ezplatform-install
