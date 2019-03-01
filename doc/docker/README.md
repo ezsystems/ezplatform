@@ -130,7 +130,7 @@ docker-compose exec --user www-data app sh -c "php /scripts/wait_for_db.php; php
 
 *Tip: You can typically re run the install command to get back to a clean installation in between behat runs using:*
 ```
-docker-compose exec --user www-data app app/console ezplatform:install clean
+docker-compose exec --user www-data app composer ezplatform-install
 ```
 
 ### DFS

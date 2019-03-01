@@ -8,7 +8,7 @@
 #
 # Arguments:
 # - ${COMPOSE_FILE}           compose file(s) paths
-# - ${INSTALL_TYPE}           optional, eZ Platform install type ("clean") will take from .env if not set
+# - ${INSTALL_TYPE}           *Not in use*
 # - ${DEPENDENCY_PACKAGE_DIR} optional, directory containing existing eZ Platform dependency package
 
 # Determine eZ Platform Build dir as relative to current script path
@@ -21,14 +21,6 @@ if [[ -z "${1}" ]]; then
     export $(grep "COMPOSE_FILE" ${EZPLATFORM_BUILD_DIR}/.env)
 else
     COMPOSE_FILE=$1
-fi
-
-if [[ -z "${2}" ]]; then
-    # If not set, read default from .env file
-    export $(grep "INSTALL_EZ_INSTALL_TYPE" ${EZPLATFORM_BUILD_DIR}/.env)
-    INSTALL_TYPE=$INSTALL_EZ_INSTALL_TYPE
-else
-    INSTALL_TYPE=$2
 fi
 
 if [[ -n "${DEPENDENCY_PACKAGE_DIR}" ]]; then
@@ -101,6 +93,6 @@ echo '> Change ownership of files inside docker container'
 docker-compose exec app sh -c 'chown -R www-data:www-data /var/www'
 
 echo '> Install data'
-docker-compose exec --user www-data app sh -c "php /scripts/wait_for_db.php; php bin/console ezplatform:install ${INSTALL_TYPE}"
+docker-compose exec --user www-data app sh -c "php /scripts/wait_for_db.php; composer ezplatform-install"
 
 echo '> Done, ready to run tests'
