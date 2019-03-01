@@ -1,14 +1,7 @@
 // Varnish VCL for:
-// - Varnish 4.1 or higher with xkey vmod (via varnish-modules package, or via Varnish Plus)
-// - eZ Platform 1.8 or higher with ezplatform-http-cache bundle
-//
-// Complete VCL example, further reading on:
-// - https://symfony.com/doc/current/http_cache/varnish.html
-// - https://foshttpcache.readthedocs.io/en/stable/varnish-configuration.html
-// - https://github.com/varnish/varnish-modules/blob/master/docs/vmod_xkey.rst
-// - https://www.varnish-cache.org/docs/trunk/users-guide/vcl.html
-//
-// Make sure to at least adjust default parameters.yml, defaults there reflect our testing needs with docker.
+// - Varnish 5.1 or higher with xkey vmod (via varnish-modules package, or via Varnish Plus)
+// - eZ Platform 2.x or higher (with bundled ezplatform-http-cache package)
+// DEPRECATED; please use VCL from https://github.com/ezsystems/ezplatform-http-cache/blob/0.8/docs/varnish/vcl/varnish5.vcl
 
 vcl 4.0;
 import std;
