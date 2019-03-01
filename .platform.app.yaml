@@ -7,6 +7,10 @@
 # The name of this app. Must be unique within a project.
 name: app
 
+dependencies:
+    nodejs:
+      yarn: "*"
+
 # The type of the application to build.
 type: php:7.2
 build:
@@ -59,6 +63,7 @@ mounts:
     "/var/cache": "shared:files/cache"
     "/var/logs": "shared:files/logs"
     "/web/var": "shared:files/files"
+    "/var/encore": "shared:files/encore"
     # Might want to not mount this one, it will slow down sessions, if you need cluster use memcached/redis!
     "/var/sessions": "shared:files/sessions"
     # Uncomment if you want to use DFS clustering:
