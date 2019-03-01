@@ -14,7 +14,7 @@ services:
     networks:
      - backend
     # Because of: https://github.com/elgalu/docker-selenium/issues/20
-    shm_size: 256m
+    shm_size: '1gb'
 
   app:
     depends_on:
