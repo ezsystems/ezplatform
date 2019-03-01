@@ -1,4 +1,4 @@
-ARG PHP_IMAGE=ezsystems/php:7.2-v1
+ARG PHP_IMAGE=ezsystems/php:7.3-v1
 FROM ${PHP_IMAGE} as web-build
 
 ENV SYMFONY_ENV=prod
