@@ -27,7 +27,7 @@
         "php": "^7.1",
         "doctrine/doctrine-bundle": "^1.9.1",
         "doctrine/orm": "^2.6.3",
-        "ezsystems/ez-support-tools": "^0.2@dev",
+        "ezsystems/ez-support-tools": "^1.0@dev",
         "ezsystems/ezplatform-admin-ui": "^1.5@dev",
         "ezsystems/ezplatform-admin-ui-assets": "^4.0",
         "ezsystems/ezplatform-admin-ui-modules": "^1.5@dev",
