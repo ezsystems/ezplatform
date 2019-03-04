@@ -49,6 +49,7 @@ class AppKernel extends Kernel
             new EzSystems\EzPlatformCronBundle\EzPlatformCronBundle(),
             new EzSystems\EzPlatformEncoreBundle\EzSystemsEzPlatformEncoreBundle(),
             new EzSystems\EzPlatformGraphQL\EzSystemsEzPlatformGraphQLBundle(),
+            new EzSystems\EzPlatformMatrixFieldtypeBundle\EzPlatformMatrixFieldtypeBundle(),
             // OverblogGraphQLBundle has to be loaded after EzSystemsEzPlatformGraphQLBundle
             new Overblog\GraphQLBundle\OverblogGraphQLBundle(),
             // Application
