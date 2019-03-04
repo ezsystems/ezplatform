@@ -36,6 +36,7 @@
         "ezsystems/ezplatform-design-engine": "^2.0@dev",
         "ezsystems/ezplatform-graphql": "^1.0@dev",
         "ezsystems/ezplatform-http-cache": "~0.8@dev",
+        "ezsystems/ezplatform-matrix-fieldtype": "^1.0@dev",
         "ezsystems/ezplatform-richtext": "^1.1@dev",
         "ezsystems/ezplatform-solr-search-engine": "^1.5.4@dev",
         "ezsystems/ezplatform-standard-design": "^0.1@dev",
