@@ -74,7 +74,8 @@
     "conflict": {
         "symfony/symfony": "3.4.9||3.4.12||3.4.16",
         "doctrine/dbal": "2.7.0",
-        "twig/twig": "2.6.1"
+        "twig/twig": "2.6.1",
+        "symfony/webpack-encore-bundle": "1.2.0||1.2.1"
     },
     "scripts": {
         "symfony-scripts": [
