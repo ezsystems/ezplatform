@@ -45,3 +45,16 @@ platform1_admin_route:
     defaults:
         path: /admin
         permanent: true
+
+#
+# GraphQL
+#
+
+overblog_graphql:
+    resource: "@OverblogGraphQLBundle/Resources/config/routing/graphql.yml"
+
+overblog_graphql_endpoint:
+    path: /graphql
+    defaults:
+        _controller: Overblog\GraphQLBundle\Controller\GraphController::endpointAction
+        _format: json

@@ -12,3 +12,6 @@ _errors:
 
 _main:
     resource: routing.yml
+
+overblog_graphql_graphiql:
+    resource: "@OverblogGraphiQLBundle/Resources/config/routing.xml"
