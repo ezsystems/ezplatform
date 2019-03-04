@@ -94,8 +94,7 @@
             "yarn encore dev"
         ],
         "post-install-cmd": [
-            "@symfony-scripts",
-            "@php bin/console ezplatform:graphql:generate-schema"
+            "@symfony-scripts"
         ],
         "post-update-cmd": [
             "@symfony-scripts"
