@@ -14,6 +14,8 @@ parameters:
     database_user: '%env(DATABASE_USER)%'
     database_password: '%env(DATABASE_PASSWORD)%'
     database_charset: '%env(DATABASE_CHARSET)%'
+    # collation currently has effect on MySQL only
+    database_collation: '%env(DATABASE_COLLATION)%'
 
     # Setting for mail system, used by SwiftMailer
     mailer_host: '%env(MAILER_HOST)%'
@@ -85,6 +87,9 @@ parameters:
     env(RECOMMENDATIONS_LICENSE_KEY):   ~
     env(PUBLIC_SERVER_URI):             ~
 
+    # set here for BC reasons, change them in parameters.yml
+    env(DATABASE_CHARSET): utf8mb4
+    env(DATABASE_COLLATION): utf8mb4_unicode_520_ci
 
     # Compile time handlers
     ## These are defined at compile time, and hence can't be set at runtime using env()
