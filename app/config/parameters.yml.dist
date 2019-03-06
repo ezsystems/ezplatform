@@ -15,3 +15,33 @@ parameters:
     env(DATABASE_NAME): ezplatform
     env(DATABASE_USER): root
     env(DATABASE_PASSWORD):
+
+    # Fallback values for when environment variables do not exist
+
+    env(MAILER_HOST):       127.0.0.1
+    env(MAILER_PORT):       ~
+    env(MAILER_USER):       ~
+    env(MAILER_PASSWORD):   ~
+
+    env(SEARCH_ENGINE): legacy
+
+    env(SOLR_DSN): http://localhost:8983/solr
+    env(SOLR_CORE): collection1
+
+    env(LOG_PATH): "%kernel.logs_dir%/%kernel.environment%.log"
+
+    env(CACHE_POOL): "cache.app"
+
+    env(CACHE_DSN): localhost
+
+    env(CACHE_NAMESPACE): ez
+
+    env(HTTPCACHE_PURGE_SERVER): "http://localhost:80"
+
+    env(HTTPCACHE_DEFAULT_TTL): 86400
+
+    env(SESSION_SAVE_PATH): '%kernel.project_dir%/var/sessions/%kernel.environment%'
+
+    env(RECOMMENDATIONS_CUSTOMER_ID):   ~
+    env(RECOMMENDATIONS_LICENSE_KEY):   ~
+    env(PUBLIC_SERVER_URI):             ~
