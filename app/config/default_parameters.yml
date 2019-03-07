@@ -39,5 +39,4 @@ parameters:
     ## using EzSystemsPlatformHttpCacheBundle (default as of v1.12) which by design expires affected cache on changes
     httpcache_default_ttl: 86400
 
-    varnish_invalidate_token: '%env(HTTPCACHE_VARNISH_INVALIDATE_TOKEN)%'
-    env(HTTPCACHE_VARNISH_INVALIDATE_TOKEN): ~
+    varnish_invalidate_token: ~
