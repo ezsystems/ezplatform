@@ -133,6 +133,8 @@ sub vcl_backend_response {
 // You may add FOSHttpCacheBundle tagging rules
 // See http://foshttpcache.readthedocs.org/en/latest/varnish-configuration.html#id4
 sub ez_purge {
+    // Retrieve purge token, needs to be here due to restart, match for PURGE method done within
+    call ez_invalidate_token;
 
     # Support how purging was done in earlier versions, this is deprecated and here just for BC for code still using it
     if (req.method == "BAN") {
@@ -225,7 +227,47 @@ sub ez_user_context_hash {
     }
 }
 
+// Sub-routine to get invalidate token.
+sub ez_invalidate_token {
+    // Prevent tampering attacks on the token mechanisms
+    if (req.restarts == 0
+        && (req.http.accept ~ "application/vnd.ezplatform.invalidate-token"
+            || req.http.x-backend-invalidate-token
+        )
+    ) {
+        return (synth(400));
+    }
+
+    if (req.restarts == 0 && req.method == "PURGE" && req.http.x-invalidate-token) {
+        set req.http.accept = "application/vnd.ezplatform.invalidate-token";
+
+        set req.url = "/_ez_http_invalidatetoken";
+
+        // Force the lookup
+        return (hash);
+    }
+
+    // Rebuild the original request which now has the invalidate token.
+    if (req.restarts > 0
+        && req.http.accept == "application/vnd.ezplatform.invalidate-token"
+    ) {
+        set req.url = "/";
+        set req.method = "PURGE";
+        unset req.http.accept;
+    }
+}
+
 sub vcl_deliver {
+    // On receiving the invalidate token response, copy the invalidate token to the original
+    // request and restart.
+    if (req.restarts == 0
+        && resp.http.content-type ~ "application/vnd.ezplatform.invalidate-token"
+    ) {
+        set req.http.x-backend-invalidate-token = resp.http.x-invalidate-token;
+
+        return (restart);
+    }
+
     // On receiving the hash response, copy the hash header to the original
     // request and restart.
     if (req.restarts == 0
