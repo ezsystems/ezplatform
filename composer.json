@@ -42,6 +42,7 @@
         "ezsystems/ezplatform-standard-design": "^0.2@dev",
         "ezsystems/ezpublish-kernel": "^7.5@dev",
         "ezsystems/repository-forms": "^2.5@dev",
+        "ezsystems/doctrine-dbal-schema": "^0.1@dev",
         "ezsystems/ezplatform-user": "^1.0@dev",
         "friendsofsymfony/jsrouting-bundle": "^1.6.3",
         "incenteev/composer-parameter-handler": "^2.1.3",

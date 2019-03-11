@@ -23,11 +23,18 @@ doctrine:
                 dbname: '%database_name%'
                 user: '%database_user%'
                 password: '%database_password%'
-                charset: utf8mb4
+                charset: '%database_charset%'
     orm:
         auto_generate_proxy_classes: '%kernel.debug%'
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
+
+# If you are not using MySQL, you can comment-out this section
+ez_doctrine_schema:
+    tables:
+        options:
+            charset: '%database_charset%'
+            collate: '%database_collation%'
 
 # Base configuration for Solr, for more options see: https://doc.ezplatform.com/en/latest/guide/search/#solr-bundle
 # Can have several connections used by each eZ Repositories in ezplatform.yml
