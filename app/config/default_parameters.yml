@@ -71,7 +71,7 @@ parameters:
 
     env(LOG_PATH): "%kernel.logs_dir%/%kernel.environment%.log"
 
-    env(CACHE_POOL): "cache.app"
+    env(CACHE_POOL): "cache.tagaware.filesystem"
 
     env(CACHE_DSN): localhost
 

@@ -1,9 +1,13 @@
-# Reusable service for redis cache for use in generic.php and plaformsh.php on demand
+# Optimized Redis cache adapter (from: https://github.com/ezsystems/symfony-tools)
+#
+# On platform.sh this is setup automatically in env/plaformsh.php.
+# For any other kind of use it can be enabled with CACHE_POOL, detected by env/generic.php.
 #
 # For further reading on setup with eZ Platform and Redis:
 # https://doc.ezplatform.com/en/latest/guide/persistence_cache/#redis
 services:
     cache.redis:
+        class: Symfony\Component\Cache\Adapter\TagAware\RedisTagAwareAdapter
         parent: cache.adapter.redis
         tags:
             - name: cache.pool
@@ -12,6 +16,7 @@ services:
               # redis://localhost:6379
               # redis://secret@example.com:1234/13
               # redis://secret@/var/run/redis.sock/13?persistent_id=4&class=Redis&timeout=3&retry_interval=3
+              # Example using Predis: redis://%cache_dsn%?class=\Predis\Client
               provider: 'redis://%cache_dsn%'
               # Cache namespace prefix overriding the one used by Symfony by default
               # This makes sure cache is reliably shared across whole cluster and all Symfony env's
