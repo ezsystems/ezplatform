@@ -35,7 +35,7 @@ variables:
     env:
         SYMFONY_HTTP_CACHE: 0
         SYMFONY_TRUSTED_PROXIES: "TRUST_REMOTE"
-        # Change this to dev if you want to run site & commands in dev
+        # Change this if you use a different env then "prod"
         SYMFONY_ENV: prod
         # Uncomment if you want to use DFS clustering:
         #PLATFORMSH_DFS_NFS_PATH: 'dfsdata'
@@ -68,11 +68,7 @@ hooks:
     build: |
         set -e
         rm web/app_dev.php
-        if [ "$SYMFONY_ENV" = "dev" ] ; then
-            composer install --prefer-dist --no-progress --no-interaction --optimize-autoloader
-        else
-            composer install --no-dev --prefer-dist --no-progress --no-interaction --optimize-autoloader
-        fi
+        composer install --no-dev --prefer-dist --no-progress --no-interaction --optimize-autoloader
     # Deploy hook, access to services & done once (per cluster, not per node), only mounts are writable at this point
     # Note: Http traffic is paused while this is running, so for prod code this should finish as fast as possible, < 30s
     deploy: |
