@@ -146,6 +146,10 @@ if ($purgeServer = getenv('HTTPCACHE_PURGE_SERVER')) {
     $container->setParameter('purge_server', $purgeServer);
 }
 
+if ($varnishInvalidateToken = getenv('HTTPCACHE_VARNISH_INVALIDATE_TOKEN')) {
+    $container->setParameter('varnish_invalidate_token', $varnishInvalidateToken);
+}
+
 if ($value = getenv('HTTPCACHE_DEFAULT_TTL')) {
     $container->setParameter('httpcache_default_ttl', $value);
 }

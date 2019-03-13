@@ -40,3 +40,4 @@ ezpublish:
             # HttpCache purge server(s) setting, eg Varnish, for when ezpublish.http_cache.purge_type is set to 'http'.
             http_cache:
                 purge_servers: ['%purge_server%']
+                varnish_invalidate_token: '%varnish_invalidate_token%'

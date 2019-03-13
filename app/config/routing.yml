@@ -37,3 +37,5 @@ _multiFileUpload:
     resource: '@EzSystemsMultiFileUploadBundle/Resources/config/routing.yml'
     prefix: '%ezpublish_rest.path_prefix%'
 
+ezplatform.httpcache:
+    resource: '@EzSystemsPlatformHttpCacheBundle/Resources/config/routing.yml'

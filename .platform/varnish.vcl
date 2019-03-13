@@ -1,34 +1,38 @@
 // Varnish VCL for:
-// - Varnish 4.1 or higher with xkey vmod (via varnish-modules package, or via Varnish Plus)
-// - eZ Platform 1.8 or higher with ezplatform-http-cache bundle
-//
-// Complete VCL example, further reading on:
-// - https://symfony.com/doc/current/http_cache/varnish.html
-// - https://foshttpcache.readthedocs.io/en/stable/varnish-configuration.html
-// - https://github.com/varnish/varnish-modules/blob/master/docs/vmod_xkey.rst
-// - https://www.varnish-cache.org/docs/trunk/users-guide/vcl.html
+// - Varnish 5.1 or higher (6.0LTS recommended, and is what we mainly test against)
+//   - Varnish xkey vmod (via varnish-modules package, or via Varnish Plus)
+// - eZ Platform 2.5LTS or higher with ezplatform-http-cache (this) bundle
 //
 // Make sure to at least adjust default parameters.yml, defaults there reflect our testing needs with docker.
 
-vcl 4.0;
-import std;
+// Not applicable on Platform.sh:
+//vcl 4.1;
+//import std;
 import xkey;
 
 // For customizing your backend and acl rules see parameters.vcl
-include "parameters.vcl";
+// Includes not available on Platform.sh
+//include "parameters.vcl";
+acl invalidators {
+    "127.0.0.1";
+    "192.168.0.0"/16;
+}
+
+// ACL for debuggers IP
+acl debuggers {
+    "127.0.0.1";
+    "192.168.0.0"/16;
+}
 
 // Called at the beginning of a request, after the complete request has been received
 sub vcl_recv {
-
     // Set the backend
-    set req.backend_hint = ezplatform;
+    //set req.backend_hint = ezplatform;
+    // Platform.sh specific:
+    set req.backend_hint = app.backend();
 
     // Add a Surrogate-Capability header to announce ESI support.
     set req.http.Surrogate-Capability = "abc=ESI/1.0";
-
-    // Varnish, in its default configuration, sends the X-Forwarded-For header but does not filter out Forwarded header
-    // To be removed in Symfony 3.3
-    unset req.http.Forwarded;
 
     // Ensure that the Symfony Router generates URLs correctly with Varnish
     if (req.http.X-Forwarded-Proto == "https" ) {
@@ -112,7 +116,6 @@ sub vcl_hit {
 
 // Called when the requested object has been retrieved from the backend
 sub vcl_backend_response {
-
     if (bereq.http.accept ~ "application/vnd.fos.user-context-hash"
         && beresp.status >= 500
     ) {
@@ -167,20 +170,17 @@ sub ez_purge {
 }
 
 sub ez_purge_acl {
-//    if (req.http.x-purge-token) {
-//        #  Won't work on Varnish <= 5.1, if needed in 4.1 you can hardcode a secret token here instead of std.getenv() usage
-//        if (req.http.x-purge-token != std.getenv("HTTPCACHE_VARNISH_INVALIDATE_TOKEN")) {
-//            return (synth(405, "Method not allowed"));
-//        }
-//    } else if  (!client.ip ~ invalidators) {
-    if  (!client.ip ~ invalidators) {
+    if (req.http.x-invalidate-token) {
+        if (req.http.x-invalidate-token != req.http.x-backend-invalidate-token) {
+            return (synth(405, "Method not allowed"));
+        }
+    } else if  (!client.ip ~ invalidators) {
         return (synth(405, "Method not allowed"));
     }
 }
 
 // Sub-routine to get client user context hash, used to for being able to vary page cache on user rights.
 sub ez_user_context_hash {
-
     // Prevent tampering attacks on the hash mechanism
     if (req.restarts == 0
         && (req.http.accept ~ "application/vnd.fos.user-context-hash"
@@ -307,8 +307,7 @@ sub vcl_deliver {
         if (obj.hits > 0) {
             set resp.http.X-Cache = "HIT";
             set resp.http.X-Cache-Hits = obj.hits;
-            // For Varnihs 5.1+ you can uncomment this to get debug of remaining TTL
-            //set resp.http.X-Cache-TTL = obj.ttl;
+            set resp.http.X-Cache-TTL = obj.ttl;
         } else {
             set resp.http.X-Cache = "MISS";
         }
