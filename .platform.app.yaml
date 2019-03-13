@@ -36,7 +36,7 @@ variables:
         # We disable Symfony Proxy, as we rather use Varnish
         SYMFONY_HTTP_CACHE: 0
         SYMFONY_TRUSTED_PROXIES: "TRUST_REMOTE"
-        # Change this if you use a different env then "prod"
+        # Change this if you use a different env then "prod", if you change this to "dev" remove "--no-dev" in build step
         SYMFONY_ENV: prod
         # Uncomment if you want to use DFS clustering:
         #PLATFORMSH_DFS_NFS_PATH: 'dfsdata'
@@ -95,7 +95,10 @@ hooks:
             touch web/var/.platform.installed
         fi
 
-        # Now that local mounts are available, make sure to clear cache to take env into account + warmup caches
+        # Now that mounts are available, clear class/container cache. E.g. in case of interface changes on lazy proxies
+        rm -Rf var/cache/$SYMFONY_ENV/*.*
+
+        # With that done, make sure to clear + warmup all remaining caches to take proper env variables into account
         bin/console cache:clear
 
         # Example of additional deploy hooks if you use doctrine and/or kaliop migration bundle
