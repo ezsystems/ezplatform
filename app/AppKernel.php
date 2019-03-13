@@ -87,11 +87,6 @@ class AppKernel extends Kernel
             return rtrim($_SERVER['SYMFONY_TMP_DIR'], '/') . '/var/cache/' . $this->getEnvironment();
         }
 
-        // On platform.sh place each deployment cache in own folder to rather cleanup old cache async
-        if ($this->getEnvironment() === 'prod' && ($platformTreeId = getenv('PLATFORM_TREE_ID'))) {
-            return dirname(__DIR__) . '/var/cache/prod/' . $platformTreeId;
-        }
-
         return dirname(__DIR__) . '/var/cache/' . $this->getEnvironment();
     }
 

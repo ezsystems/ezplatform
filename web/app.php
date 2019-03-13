@@ -54,7 +54,11 @@ $request = Request::createFromGlobals();
 // NOTE: You'll potentially need to customize these lines for your proxy depending on which forward headers to use!
 // SEE: https://symfony.com/doc/3.4/deployment/proxies.html
 if ($trustedProxies = getenv('SYMFONY_TRUSTED_PROXIES')) {
-    Request::setTrustedProxies(explode(',', $trustedProxies), Request::HEADER_X_FORWARDED_ALL);
+    if ($trustedProxies === 'TRUST_REMOTE') {
+        Request::setTrustedProxies([$request->server->get('REMOTE_ADDR')],  Request::HEADER_X_FORWARDED_ALL);
+    } else {
+        Request::setTrustedProxies(explode(',', $trustedProxies),  Request::HEADER_X_FORWARDED_ALL);
+    }
 }
 
 $response = $kernel->handle($request);
