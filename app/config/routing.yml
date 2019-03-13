@@ -31,6 +31,9 @@ _ezplatformRepositoryFormsRoutes:
 fos.js_routing:
     resource: '@FOSJsRoutingBundle/Resources/config/routing/routing.xml'
 
+ezplatform.httpcache:
+    resource: '@EzSystemsPlatformHttpCacheBundle/Resources/config/routing.yml'
+
 # Custom redirection from /ez to /admin, feel free to adjust to your needs or remove if you don't need it
 platform1_admin_route:
     path: /ez
