@@ -56,6 +56,7 @@ ezpublish:
                 default_ttl: '%httpcache_default_ttl%'
             http_cache:
                 purge_servers: ['%purge_server%']
+                varnish_invalidate_token: '%varnish_invalidate_token%'
 
     url_alias:
         slug_converter:
