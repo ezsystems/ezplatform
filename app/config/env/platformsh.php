@@ -156,6 +156,6 @@ if ($route !== null) {
 }
 
 // Setting default value for HTTPCACHE_VARNISH_INVALIDATE_TOKEN if it is not explicitly set
-if (!$varnishInvalidateToken = getenv('HTTPCACHE_VARNISH_INVALIDATE_TOKEN')) {
+if (!getenv('HTTPCACHE_VARNISH_INVALIDATE_TOKEN')) {
     $container->setParameter('varnish_invalidate_token', getenv('PLATFORM_PROJECT_ENTROPY'));
 }
