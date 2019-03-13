@@ -56,19 +56,29 @@ disk: 3072
 
 # The mounts that will be performed when the package is deployed.
 mounts:
-    "/app/cache": "shared:files/cache"
-    "/app/logs": "shared:files/logs"
-    "/web/var": "shared:files/files"
-    # Uncomment if you want to use DFS clustering:
-    #"/dfsdata": "shared:files/dfsdata"
+    'app/cache':
+        source: local
+        source_path: cache
+    'app/logs':
+        source: local
+        source_path: logs
+    'web/var':
+        source: local
+        source_path: var
+# Uncomment if you want to use DFS clustering, WARNING: Needs to be shared, contact Platform.sh support to set this up
+#    'dfsdata':
+#        source: shared
+#        source_path: dfsdata
+
 
 # The hooks that will be performed when the package is deployed.
 hooks:
-    # Build hook, done once before connected to services, disk is still writable here
+    # Build hook, done before connected to services, disk is still writable here
     build: |
         set -e
         rm web/app_dev.php
         composer install --no-dev --prefer-dist --no-progress --no-interaction --optimize-autoloader
+
     # Deploy hook, access to services & done once (per cluster, not per node), only mounts are writable at this point
     # Note: Http traffic is paused while this is running, so for prod code this should finish as fast as possible, < 30s
     deploy: |
@@ -79,23 +89,18 @@ hooks:
             php -d memory_limit=-1 app/console ezplatform:install $INSTALL_EZ_INSTALL_TYPE
             touch web/var/.platform.installed
         fi
-        # When deploying changes to existing cluster, clear all cache now that we have shared mounts available
-        if [ "$SYMFONY_ENV" != "prod" ] ; then
-            # Clear class cache before we boot up symfony in case of interface changes on classes cached
-            rm -Rf app/cache/$SYMFONY_ENV/*.*
-            app/console cache:clear
-        elif [ -d "app/cache/prod/$PLATFORM_TREE_ID" ] ; then
-            # Clear cache on re-deploy when the folder exits, move folder so post_deploy can cleanup
-            mv -f app/cache/prod/$PLATFORM_TREE_ID app/cache/prod/old_deploy
-        fi
+
+        # Now that local mounts are available, make sure to clear cache to take env into account + warmup caches
+        app/console cache:clear
+
         # Example of additional deploy hooks if you use doctrine and/or kaliop migration bundle
         ##app/console doctrine:migrations:migrate --no-interaction --allow-no-migration
         ##app/console kaliop:migration:migrate --no-interaction --no-debug
+
     # Post deploy hook, like deploy but after being deployed and live, for deploy tasks we can do asynchronously
-    post_deploy: |
-        set -e
-        # Cleanup old prod cache folders, basically all except current $PLATFORM_TREE_ID folder.
-        find app/cache/prod -mindepth 1 -maxdepth 1 -type d \! \( -name "$PLATFORM_TREE_ID" \) -exec rm -rf '{}' \;
+    #post_deploy: |
+    #    set -e
+
 
 # The configuration of scheduled execution.
 # see http://symfony.com/doc/current/components/console/introduction.html
