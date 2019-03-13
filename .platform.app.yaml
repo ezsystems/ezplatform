@@ -33,6 +33,7 @@ variables:
         # Example of setting php.ini config
         #"display_errors": "On"
     env:
+        # We disable Symfony Proxy, as we rather use Varnish
         SYMFONY_HTTP_CACHE: 0
         SYMFONY_TRUSTED_PROXIES: "TRUST_REMOTE"
         # Change this if you use a different env then "prod", if you change this to "dev" remove "--no-dev" in build step
