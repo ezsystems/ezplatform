@@ -25,9 +25,10 @@ ezpublish:
         match:
             URIElement: 1
 
-    # System settings, grouped by siteaccess and/or siteaccess group
+    # System settings, grouped by default (global), siteaccess and/or siteaccess group
+    # TIP: For multi site install organize shared config in groups, with single site we can set shared config in default
     system:
-        site_group:
+        default:
             # Cache pool service, needs to be different per repository (database) on multi repository install.
             cache_service_name: '%cache_pool%'
             # These reflect the current installers, complete installation before you change them. For changing var_dir
@@ -47,16 +48,8 @@ ezpublish:
                 purge_servers: ['%purge_server%']
                 varnish_invalidate_token: '%varnish_invalidate_token%'
 
-        # WARNING: Do not remove or rename this group.
-        admin_group:
-            cache_service_name: '%cache_pool%'
-            var_dir: var/site
-            languages: [eng-GB]
-            content:
-                default_ttl: '%httpcache_default_ttl%'
-            http_cache:
-                purge_servers: ['%purge_server%']
-                varnish_invalidate_token: '%varnish_invalidate_token%'
+        #site_group:
+        #    design: main
 
     url_alias:
         slug_converter:
