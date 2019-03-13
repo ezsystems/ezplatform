@@ -91,9 +91,9 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
             "@php bin/console bazinga:js-translation:dump 'web/assets' --merge-domains",
             "@php bin/console assetic:dump",
-            "@php bin/security-checker security:check",
             "yarn install",
-            "yarn encore dev"
+            "yarn encore dev",
+            "@php bin/security-checker security:check"
         ],
         "post-install-cmd": [
             "@symfony-scripts"
