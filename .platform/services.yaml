@@ -44,7 +44,9 @@ rediscache:
 #    disk: 512
 #    configuration:
 #        configsets:
-#            mainconfig: !archive "configsets/solr6"
+#            mainconfig: !include
+#                type: archive
+#                path: "configsets/solr6"
 #        cores:
 #            collection1:
 #                core_properties: |
@@ -53,3 +55,13 @@ rediscache:
 #        endpoints:
 #            collection1:
 #                core: collection1
+
+# Due to logic in app/config/env/platformsh.php, do not change the service name to something different than 'varnish'
+varnish:
+    type: 'varnish:5.2'
+    relationships:
+        app: "app:http"
+    configuration:
+        vcl: !include
+            type: string
+            path: varnish.vcl

@@ -33,9 +33,10 @@ variables:
         # Example of setting php.ini config
         #"display_errors": "On"
     env:
-        # For enterprise cluster, disable Symfony Proxy & instead use Fastly Bundle available on eZ Platform Enterprise
-        #SYMFONY_HTTP_CACHE: 0
-        # Change this to dev if you want to run site & commands in dev
+        # We disable Symfony Proxy, as we rather use Varnish
+        SYMFONY_HTTP_CACHE: 0
+        SYMFONY_TRUSTED_PROXIES: "TRUST_REMOTE"
+        # Change this if you use a different env then "prod"
         SYMFONY_ENV: prod
         # Uncomment if you want to use DFS clustering:
         #PLATFORMSH_DFS_NFS_PATH: 'dfsdata'
@@ -56,25 +57,33 @@ disk: 3072
 
 # The mounts that will be performed when the package is deployed.
 mounts:
-    "/var/cache": "shared:files/cache"
-    "/var/logs": "shared:files/logs"
-    "/web/var": "shared:files/files"
-    # Might want to not mount this one, it will slow down sessions, if you need cluster use memcached/redis!
-    "/var/sessions": "shared:files/sessions"
-    # Uncomment if you want to use DFS clustering:
-    #"/dfsdata": "shared:files/dfsdata"
+    'var/cache':
+        source: local
+        source_path: cache
+    'var/logs':
+        source: local
+        source_path: logs
+    'web/var':
+        source: local
+        source_path: var
+    # To persists sessions on deploys (and be prepared to move to cluster), please rather use e.g. persisted Redis instance.
+    'web/sessions':
+        source: local
+        source_path: sessions
+# Uncomment if you want to use DFS clustering, WARNING: Needs to be shared, contact Platform.sh support to set this up
+#    'dfsdata':
+#        source: shared
+#        source_path: dfsdata
+
 
 # The hooks that will be performed when the package is deployed.
 hooks:
-    # Build hook, done once before connected to services, disk is still writable here
+    # Build hook, done before connected to services, disk is still writable here
     build: |
         set -e
         rm web/app_dev.php
-        if [ "$SYMFONY_ENV" = "dev" ] ; then
-            composer install --prefer-dist --no-progress --no-interaction --optimize-autoloader
-        else
-            composer install --no-dev --prefer-dist --no-progress --no-interaction --optimize-autoloader
-        fi
+        composer install --no-dev --prefer-dist --no-progress --no-interaction --optimize-autoloader
+
     # Deploy hook, access to services & done once (per cluster, not per node), only mounts are writable at this point
     # Note: Http traffic is paused while this is running, so for prod code this should finish as fast as possible, < 30s
     deploy: |
@@ -84,23 +93,17 @@ hooks:
             php -d memory_limit=-1 `which composer` ezplatform-install
             touch web/var/.platform.installed
         fi
-        # When deploying changes to existing cluster, clear all cache now that we have shared mounts available
-        if [ "$SYMFONY_ENV" != "prod" ] ; then
-            # Clear class cache before we boot up symfony in case of interface changes on classes cached
-            rm -Rf var/cache/$SYMFONY_ENV/*.*
-            bin/console cache:clear
-        elif [ -d "var/cache/prod/$PLATFORM_TREE_ID" ] ; then
-            # Clear cache on re-deploy when the folder exits, move folder so post_deploy can cleanup
-            mv -f var/cache/prod/$PLATFORM_TREE_ID var/cache/prod/old_deploy
-        fi
+
+        # Now that local mounts are available, make sure to clear cache to take env into account + warmup caches
+        bin/console cache:clear
+
         # Example of additional deploy hooks if you use doctrine and/or kaliop migration bundle
         ##bin/console doctrine:migrations:migrate --no-interaction --allow-no-migration
         ##bin/console kaliop:migration:migrate --no-interaction --no-debug
+
     # Post deploy hook, like deploy but after being deployed and live, for deploy tasks we can do asynchronously
-    post_deploy: |
-        set -e
-        # Cleanup old prod cache folders, basically all except current $PLATFORM_TREE_ID folder.
-        find var/cache/prod -mindepth 1 -maxdepth 1 -type d \! \( -name "$PLATFORM_TREE_ID" \) -exec rm -rf '{}' \;
+    #post_deploy: |
+    #    set -e
 
 # The configuration of scheduled execution.
 # see https://docs.platform.sh/configuration/app/cron.html#cron-jobs
