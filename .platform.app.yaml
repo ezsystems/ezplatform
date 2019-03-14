@@ -66,6 +66,10 @@ mounts:
     'web/var':
         source: local
         source_path: var
+# Uncomment if you need to use Kaliop Migrations on your setup and not able to get it to write to "var" dir.
+#    'src/AppBundle/MigrationVersions/References':
+#        source: local
+#        source_path: MigrationVersionsReferences
 # Uncomment if you want to use DFS clustering, WARNING: Needs to be shared, contact Platform.sh support to set this up
 #    'dfsdata':
 #        source: shared
@@ -123,4 +127,3 @@ runtime:
         #  configuration:
         #      server_id: 'xxxx-xxx-xxx-xxx-xxxx'
         #      server_token: 'xxxx'
-
