@@ -27,6 +27,8 @@ ezpublish:
 
     # System settings, grouped by siteaccess and/or siteaccess group
     system:
+        default:
+            cache_service_name: '%cache_pool%'
         site_group:
             # Cache pool service, needs to be different per repository (database) on multi repository install.
             cache_service_name: '%cache_pool%'
