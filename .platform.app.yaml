@@ -70,11 +70,14 @@ mounts:
     'web/sessions':
         source: local
         source_path: sessions
+# Uncomment if you need to use Kaliop Migrations on your setup and not able to get it to write to "var" dir.
+#    'src/AppBundle/MigrationVersions/References':
+#        source: local
+#        source_path: MigrationVersionsReferences
 # Uncomment if you want to use DFS clustering, WARNING: Needs to be shared, contact Platform.sh support to set this up
 #    'dfsdata':
 #        source: shared
 #        source_path: dfsdata
-
 
 # The hooks that will be performed when the package is deployed.
 hooks:
@@ -111,13 +114,15 @@ hooks:
 # The configuration of scheduled execution.
 # see https://docs.platform.sh/configuration/app/cron.html#cron-jobs
 crons:
-    minute:
-        # NOTE: Platform.sh PS does not execute every minute, so might sometimes miss jobs scheduled for a given time
+    frequent:
+        # NOTE: The minimum interval between cron runs is 5 minutes, even if specified as less.
+        # Except for PE. There crons can be run every minute.
+        # So if you are not on PE please change specs to "*/5 * * * *" to avoid warning on each deploy.
         spec: "* * * * *"
         cmd: "php bin/console ezplatform:cron:run"
     weekly:
         spec: "0 0 * * 0"
-        cmd: "php bin/console ezplatform:check-urls"
+        cmd: "php bin/console ezplatform:check-urls --quiet"
 
 runtime:
     extensions:
