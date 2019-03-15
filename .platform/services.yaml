@@ -58,7 +58,7 @@ rediscache:
 
 # Due to logic in app/config/env/platformsh.php, do not change the service name to something different than 'varnish'
 varnish:
-    type: 'varnish:5.2'
+    type: 'varnish:6.0'
     relationships:
         app: "app:http"
     configuration:
