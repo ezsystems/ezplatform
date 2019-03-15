@@ -78,8 +78,7 @@ hooks:
     build: |
         set -e
 
-        # Inject GITHUB token if provided. This is handy if you have your own private repos, or need to avoid
-        # github's API rate limit
+        # Configure GITHUB token if set. For use if you have own private repos, or to avoid API rate limits.
         if [ -n "$GITHUB_TOKEN" ]; then
             composer config github-oauth.github.com $GITHUB_TOKEN
         fi
