@@ -29,7 +29,7 @@ ezpublish:
     # TIP: For multisite installations organize shared config into SiteAccess groups,
     #      for single-site you can place shared config under "default" and/or "global" for simplicity.
     system:
-        global:
+        default:
             # Cache pool service, needs to be different per repository (database) on multi repository install.
             cache_service_name: '%cache_pool%'
             # These reflect the current installers, complete installation before you change them. For changing var_dir
