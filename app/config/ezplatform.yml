@@ -27,7 +27,7 @@ ezpublish:
 
     # System settings, read in following order: `default`, <siteaccess-group>, <siteacces>, and `global`
     # TIP: For multisite installations organize shared config into SiteAccess groups,
-    #      for single-site you can place shared config under "default" and/or "global" for simplicity.
+    #      on single-site you can place shared config under "default" for simplicity as shown below.
     system:
         default:
             # Cache pool service, needs to be different per repository (database) on multi repository install.
@@ -52,7 +52,7 @@ ezpublish:
             # System languages. Note that by default, content, content types, and other data are in eng-GB locale,
             # so removing eng-GB from this list may lead to errors or content not being shown, unless you change
             # all eng-GB data to other locales first.
-            # For admin this needs to contain all languages you want to translate content to on the given repository (database).
+            # For admin this needs to contain all languages you want to translate content to on the given repository.
             languages: [eng-GB]
 
         site:
