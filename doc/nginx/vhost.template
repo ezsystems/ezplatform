@@ -23,6 +23,10 @@ server {
     # FPM fastcgi_read_timeout
     fastcgi_read_timeout %TIMEOUT_S%;
 
+    # Gzip is enabled by default on most platforms, so here we just specify mime types to compress.
+    # NOTE: Using gzip on text/html can be a security issue, unless you somehow pad. See http://breachattack.com
+    gzip_types text/plain text/css application/json text/javascript application/javascript text/xml application/xml application/xml+rss;
+
     location / {
         location ~ ^/app\.php(/|$) {
             include ez_params.d/ez_fastcgi_params;
