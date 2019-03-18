@@ -55,7 +55,7 @@ ezpublish:
             # For admin this needs to contain all languages you want to translate content to on the given repoistion (database).
             languages: [eng-GB]
 
-        side:
+        site:
             languages: [eng-GB]
 
     url_alias:
