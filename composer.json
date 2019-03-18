@@ -31,7 +31,7 @@
         "ezsystems/content-on-the-fly-prototype": "~0.1.12@dev",
         "ezsystems/ez-support-tools": "~0.2.1@dev",
         "ezsystems/ezplatform-design-engine": "^1.2",
-        "ezsystems/ezplatform-http-cache": "~0.8@dev",
+        "ezsystems/ezplatform-http-cache": "~0.9@dev",
         "ezsystems/ezplatform-multi-file-upload": "^0.1.3@dev",
         "ezsystems/ezplatform-solr-search-engine": "^1.5.4@dev",
         "ezsystems/ezpublish-kernel": "^6.13.5@dev",
