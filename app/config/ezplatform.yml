@@ -48,7 +48,7 @@ ezpublish:
         #site_group:
         #    design: main
 
-        admin:
+        admin_group:
             # System languages. Note that by default, content, content types, and other data are in eng-GB locale,
             # so removing eng-GB from this list may lead to errors or content not being shown, unless you change
             # all eng-GB data to other locales first.
