@@ -25,19 +25,17 @@ ezpublish:
         match:
             URIElement: 1
 
-    # System settings, grouped by siteaccess and/or siteaccess group
+    # System settings, read in following order: `default`, <siteaccess-group>, <siteacces>, and `global`
+    # TIP: For multisite installations organize shared config into SiteAccess groups,
+    #      on single-site you can place shared config under "default" for simplicity as shown below.
     system:
-        site_group:
+        default:
             # Cache pool service, needs to be different per repository (database) on multi repository install.
             cache_service_name: '%cache_pool%'
             # These reflect the current installers, complete installation before you change them. For changing var_dir
             # it is recommended to install clean, then change setting before you start adding binary content, otherwise you'll
             # need to manually modify your database data to reflect this to avoid exceptions.
             var_dir: var/site
-            # System languages. Note that by default, content, content types, and other data are in eng-GB locale,
-            # so removing eng-GB from this list may lead to errors or content not being shown, unless you change
-            # all eng-GB data to other locales first.
-            languages: [eng-GB]
             content:
                 # As we by default enable EzSystemsPlatformHttpCacheBundle which is designed to expire all affected cache
                 # on changes, and as error / redirects now have separate ttl, we easier allow ttl to be greatly increased
@@ -47,16 +45,18 @@ ezpublish:
                 purge_servers: ['%purge_server%']
                 varnish_invalidate_token: '%varnish_invalidate_token%'
 
-        # WARNING: Do not remove or rename this group.
+        #site_group:
+        #    design: main
+
         admin_group:
-            cache_service_name: '%cache_pool%'
-            var_dir: var/site
+            # System languages. Note that by default, content, content types, and other data are in eng-GB locale,
+            # so removing eng-GB from this list may lead to errors or content not being shown, unless you change
+            # all eng-GB data to other locales first.
+            # For admin this needs to contain all languages you want to translate content to on the given repository.
             languages: [eng-GB]
-            content:
-                default_ttl: '%httpcache_default_ttl%'
-            http_cache:
-                purge_servers: ['%purge_server%']
-                varnish_invalidate_token: '%varnish_invalidate_token%'
+
+        site:
+            languages: [eng-GB]
 
     url_alias:
         slug_converter:

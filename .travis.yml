@@ -26,7 +26,7 @@ env:
     - TEST_CMD="bin/behat -v --profile=repository-forms --tags=~@broken" COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/selenium.yml"
     - TEST_CMD="bin/behat -v --profile=behat --tags=~@broken"
     - TEST_CMD="bin/behat --profile=adminui --suite=adminui --no-interaction -vv" COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/selenium.yml"
-    - TEST_CMD="bin/behat --profile=adminui --suite=adminui --no-interaction -vv --tags=~@EZP-29291-excluded" COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/varnish.yml:doc/docker/redis.yml:doc/docker/selenium.yml" WEB_HOST="varnish"
+    - TEST_CMD="bin/behat --profile=adminui --suite=adminui --no-interaction -vv" COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/varnish.yml:doc/docker/redis.yml:doc/docker/selenium.yml" WEB_HOST="varnish"
 
 # test only master (+ Pull requests)
 branches:
