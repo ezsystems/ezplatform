@@ -25,11 +25,11 @@ ezpublish:
         match:
             URIElement: 1
 
-    # System settings, grouped by default (global), siteaccess and/or siteaccess group
+    # System settings, read in following order: `default`, <siteaccess-group>, <siteacces>, and `global`
     # TIP: For multisite installations organize shared config into SiteAccess groups,
-    # for single-site you can place shared config under "default"
+    #      for single-site you can place shared config under "default" and/or "global" for simplicity.
     system:
-        default:
+        global:
             # Cache pool service, needs to be different per repository (database) on multi repository install.
             cache_service_name: '%cache_pool%'
             # These reflect the current installers, complete installation before you change them. For changing var_dir
