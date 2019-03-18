@@ -26,7 +26,8 @@ ezpublish:
             URIElement: 1
 
     # System settings, grouped by default (global), siteaccess and/or siteaccess group
-    # TIP: For multi site install organize shared config in groups, with single site we can set shared config in default
+    # TIP: For multisite installations organize shared config into SiteAccess groups,
+    # for single-site you can place shared config under "default"
     system:
         default:
             # Cache pool service, needs to be different per repository (database) on multi repository install.
