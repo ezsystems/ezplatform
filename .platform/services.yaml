@@ -42,9 +42,7 @@ rediscache:
 #    disk: 512
 #    configuration:
 #        configsets:
-#            mainconfig: !include
-#                type: archive
-#                path: "configsets/solr6"
+#            mainconfig: !archive "configsets/solr6"
 #        cores:
 #            collection1:
 #                core_properties: |
