@@ -36,10 +36,6 @@ ezpublish:
             # it is recommended to install clean, then change setting before you start adding binary content, otherwise you'll
             # need to manually modify your database data to reflect this to avoid exceptions.
             var_dir: var/site
-            # System languages. Note that by default, content, content types, and other data are in eng-GB locale,
-            # so removing eng-GB from this list may lead to errors or content not being shown, unless you change
-            # all eng-GB data to other locales first.
-            languages: [eng-GB]
             content:
                 # As we by default enable EzSystemsPlatformHttpCacheBundle which is designed to expire all affected cache
                 # on changes, and as error / redirects now have separate ttl, we easier allow ttl to be greatly increased
@@ -51,6 +47,16 @@ ezpublish:
 
         #site_group:
         #    design: main
+
+        admin:
+            # System languages. Note that by default, content, content types, and other data are in eng-GB locale,
+            # so removing eng-GB from this list may lead to errors or content not being shown, unless you change
+            # all eng-GB data to other locales first.
+            # For admin this needs to contain all languages you want to translate content to on the given repoistion (database).
+            languages: [eng-GB]
+
+        side:
+            languages: [eng-GB]
 
     url_alias:
         slug_converter:
