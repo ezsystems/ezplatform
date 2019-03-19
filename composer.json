@@ -89,7 +89,7 @@
             "eZ\\Bundle\\EzPublishCoreBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "@php bin/console bazinga:js-translation:dump 'web/assets' --merge-domains",
+            "@php bin/console bazinga:js-translation:dump web/assets --merge-domains",
             "@php bin/console assetic:dump",
             "yarn install",
             "yarn encore dev",
