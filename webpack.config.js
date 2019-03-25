@@ -13,7 +13,7 @@ Encore.setOutputPath('web/assets/build')
 
 // Put your config here.
 
-// uncomment the two lines below, if you have your own Encore configuration for your project
+// uncomment the two lines below, if you added a new entry (by Encore.addEntry() or Encore.addStyleEntry() method) to your own Encore configuration for your project
 // const projectConfig = Encore.getWebpackConfig();
 // module.exports = [ eZConfig, projectConfig ];
 
