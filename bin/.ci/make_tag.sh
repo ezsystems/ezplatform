@@ -45,6 +45,13 @@ else
   exit
 fi
 
+devPackages=$(php -r '$hash = json_decode(file_get_contents("composer.json"), true); foreach($hash["require"] as $package => $version) { if(strpos($package, "ezsystems/") === 0 && is_int(strpos($version, "@dev"))) { echo "  " . $package . " " . $version . "\n"; } }')
+if (( ${#devPackages} > 0 )); then
+  echo -e "\033[31m There are ezsystems dev packages in composer.json: \033[0m"
+  printf "$devPackages\n"
+  exit
+fi
+
 # TODO: Add help text, display help on errors
 
 # After this we want to be able to cleanup things on exit (clean and error)
@@ -69,8 +76,6 @@ perl -pi -e 's/^(.*)\.lock$/#$1.lock/g' .gitignore
 minimumPHP=$(php -r '$hash = json_decode(file_get_contents("composer.json"), true); $php = str_replace(["^", "~"], "", $hash["require"]["php"]); echo explode("|", $php)[0];')
 echo -e "\033[36m Set minimum php version in composer.json (temporary to get vendor capable of working with it) to $minimumPHP \033[0m"
 composer config platform.php "$minimumPHP"
-
-# TODO: Check that ez packages (vendor whitelist?) don't use @dev
 
 echo -e "\033[36m Update composer packages to generate lock files \033[0m"
 php -d memory_limit=-1 `which composer` update --no-interaction --prefer-dist $COMPOSER_ARGS
