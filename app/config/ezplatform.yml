@@ -54,6 +54,12 @@ ezpublish:
             # all eng-GB data to other locales first.
             # For admin this needs to contain all languages you want to translate content to on the given repository.
             languages: [eng-GB]
+            content_tree_module:
+                contextual_tree_root_location_ids:
+                    - 2 # Home (Content structure)
+                    - 5 # Users
+                    - 43 # Media
+                    - 48 # Setup
 
         site:
             languages: [eng-GB]
