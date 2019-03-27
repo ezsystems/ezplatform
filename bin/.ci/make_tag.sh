@@ -25,6 +25,7 @@ else
   echo -e "\033[31m Tag argument did not look correct, should be v1.2.33 or v2.3.4-beta1 \033[0m"
   exit
 fi
+TMP_BRANCH="tmp_release_$TAG"
 
 shift
 COMPOSER_ARGS="$@"
@@ -59,7 +60,7 @@ clean_up () {
     ARG=$?
     git reset -q --hard HEAD
     git checkout -q $CURRENT_BRANCH
-    git branch -q -D "tmp_release_$TAG"
+    git branch -q -D $TMP_BRANCH
     exit $ARG
 }
 trap clean_up EXIT
@@ -68,7 +69,7 @@ trap clean_up EXIT
 
 # Let's start!
 
-git checkout -b "tmp_release_$TAG"
+git checkout -b $TMP_BRANCH
 
 echo -e "\033[36m Comment out *.lock files in .gitignore \033[0m"
 perl -pi -e 's/^(.*)\.lock$/#$1.lock/g' .gitignore
