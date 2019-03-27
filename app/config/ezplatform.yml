@@ -59,6 +59,7 @@ ezpublish:
                     - 2 # Home (Content structure)
                     - 5 # Users
                     - 43 # Media
+                    - 48 # Setup
 
         site:
             languages: [eng-GB]
