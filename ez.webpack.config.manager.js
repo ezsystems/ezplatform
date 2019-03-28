@@ -1,3 +1,4 @@
+const fs = require('fs');
 const findItems = (eZConfig, entryName) => {
     const items = eZConfig.entry[entryName];
 
@@ -9,7 +10,7 @@ const findItems = (eZConfig, entryName) => {
 };
 const replace = ({ eZConfig, entryName, itemToReplace, newItem }) => {
     const items = findItems(eZConfig, entryName);
-    const indexToReplace = items.indexOf(itemToReplace);
+    const indexToReplace = items.indexOf(fs.realpathSync(itemToReplace));
 
     if (indexToReplace < 0) {
         throw new Error(`Couldn't find item "${itemToReplace}" in entry "${entryName}". Please check if there is a typo in the name.`);
