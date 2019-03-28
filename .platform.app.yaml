@@ -106,8 +106,10 @@ hooks:
         set -e
         # Mainly relevant for eZ Platform demo usage, for own setup adapt this or remove and rely on migrations.
         if [ ! -f web/var/.platform.installed ]; then
+            export HTTPCACHE_PURGE_TYPE="local"
             php -d memory_limit=-1 `which composer` ezplatform-install
             touch web/var/.platform.installed
+            unset HTTPCACHE_PURGE_TYPE
         fi
 
         # Now that mounts are available, clear class/container cache. E.g. in case of interface changes on lazy proxies
@@ -117,8 +119,11 @@ hooks:
         bin/console cache:clear
 
         # Example of additional deploy hooks if you use doctrine and/or kaliop migration bundle
+        # During the deploy phase, varnish is not available. The purge type has to be configured to local
+        ##export HTTPCACHE_PURGE_TYPE="local"
         ##bin/console doctrine:migrations:migrate --no-interaction --allow-no-migration
         ##bin/console kaliop:migration:migrate --no-interaction --no-debug
+        ##unset HTTPCACHE_PURGE_TYPE
 
     # Post deploy hook, like deploy but after being deployed and live, for deploy tasks we can do asynchronously
     #post_deploy: |
