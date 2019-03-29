@@ -148,7 +148,7 @@ foreach ($routes as $host => $info) {
     }
 }
 
-if ($route !== null) {
+if ($route !== null && !getenv('HTTPCACHE_PURGE_TYPE')) {
     $container->setParameter('purge_type', 'varnish');
     $container->setParameter('purge_server', rtrim($route, '/'));
 }

@@ -106,7 +106,9 @@ hooks:
         set -e
         # Mainly relevant for eZ Platform demo usage, for own setup adapt this or remove and rely on migrations.
         if [ ! -f web/var/.platform.installed ]; then
-            php -d memory_limit=-1 `which composer` ezplatform-install
+            # To workaround issues with p.sh Varnish we clear container cache & temporary set Symfony Proxy
+            rm -Rf var/cache/$SYMFONY_ENV/*.*
+            HTTPCACHE_PURGE_TYPE="local" php -d memory_limit=-1 `which composer` ezplatform-install
             touch web/var/.platform.installed
         fi
 
