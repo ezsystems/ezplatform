@@ -119,7 +119,6 @@ hooks:
         bin/console cache:clear
 
         # Example of additional deploy hooks if you use doctrine and/or kaliop migration bundle
-        # During the deploy phase, varnish is not available. The purge type has to be configured to local
         ##bin/console doctrine:migrations:migrate --no-interaction --allow-no-migration
         ##bin/console kaliop:migration:migrate --no-interaction --no-debug
 
