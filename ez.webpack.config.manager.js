@@ -20,8 +20,9 @@ const replace = ({ eZConfig, entryName, itemToReplace, newItem }) => {
 };
 const remove = ({ eZConfig, entryName, itemsToRemove }) => {
     const items = findItems(eZConfig, entryName);
+    const realPathItemsToRemove = itemsToRemove.map((item) => fs.realpathSync(item));
 
-    eZConfig.entry[entryName] = items.filter((item) => !itemsToRemove.includes(item));
+    eZConfig.entry[entryName] = items.filter((item) => !realPathItemsToRemove.includes(item));
 };
 const add = ({ eZConfig, entryName, newItems }) => {
     const items = findItems(eZConfig, entryName);
