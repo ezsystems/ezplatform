@@ -120,10 +120,8 @@ hooks:
 
         # Example of additional deploy hooks if you use doctrine and/or kaliop migration bundle
         # During the deploy phase, varnish is not available. The purge type has to be configured to local
-        ##export HTTPCACHE_PURGE_TYPE="local"
         ##bin/console doctrine:migrations:migrate --no-interaction --allow-no-migration
         ##bin/console kaliop:migration:migrate --no-interaction --no-debug
-        ##unset HTTPCACHE_PURGE_TYPE
 
     # Post deploy hook, like deploy but after being deployed and live, for deploy tasks we can do asynchronously
     #post_deploy: |
