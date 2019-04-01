@@ -4,7 +4,7 @@ const eZConfigManager = require('./ez.webpack.config.manager.js');
 const configManagers = require('./var/encore/ez.config.manager.js');
 
 module.exports = (Encore) => {
-    Encore.setOutputPath('web/assets/ezplatform/build')
+    Encore.setOutputPath('public/assets/ezplatform/build')
         .setPublicPath('/assets/ezplatform/build')
         .addExternals({
             react: 'React',

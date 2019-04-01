@@ -1,0 +1,2 @@
+ezplatform_repository_forms:
+    resource: '@EzSystemsRepositoryFormsBundle/Resources/config/routing.yaml'

@@ -1,0 +1,11 @@
+parameters:
+    database_charset: '%env(DATABASE_CHARSET)%'
+    # collation currently has effect on MySQL only
+    database_collation: '%env(DATABASE_COLLATION)%'
+
+# If you are not using MySQL, you can comment-out this section
+ez_doctrine_schema:
+    tables:
+        options:
+            charset: '%database_charset%'
+            collate: '%database_collation%'
