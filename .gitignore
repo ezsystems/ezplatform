@@ -31,6 +31,9 @@
 !/var/sessions
 /var/sessions/*
 !var/sessions/.gitkeep
+!/var/encore
+/var/encore/*
+!var/encore/.gitkeep
 !var/SymfonyRequirements.php
 /vendor/
 /web/bundles/
