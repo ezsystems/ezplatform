@@ -92,7 +92,7 @@
             "@php bin/console bazinga:js-translation:dump web/assets --merge-domains",
             "@php bin/console assetic:dump",
             "yarn install",
-            "yarn encore dev",
+            "bin/compile_assets.sh",
             "@php bin/security-checker security:check"
         ],
         "post-install-cmd": [
