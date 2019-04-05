@@ -13,10 +13,10 @@
 set -e
 
 TAG=$1
-if [[ $TAG =~ ^v[0-9]+(\.[0-9]+){2,3}$ ]]; then
+if [[ $TAG =~ ^v[0-9]+(\.[0-9]+){2,3}(-[a-z]+[0-9]*)?$ ]]; then
   echo -e "\033[36m Start work on making tag $TAG \033[0m"
 else
-  echo -e "\033[31m Tag argument did not look correct, should be v1.2.33 \033[0m"
+  echo -e "\033[31m Tag argument did not look correct, should be v1.2.33 or v2.3.4-beta1 \033[0m"
   exit
 fi
 
