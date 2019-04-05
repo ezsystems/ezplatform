@@ -24,10 +24,10 @@ shift
 COMPOSER_ARGS="$@"
 CURRENT_BRANCH=`git branch | grep '*' | cut -d ' ' -f 2`
 
-# TODO: Add help text, display help on errors, check if checkout is unclean before starting so we don't throw them away
+# TODO: Add help text, display help on errors, check if checkout is unclean before starting so we don't throw away changes 
 
 
-# After this we want to be able to cleanup if things on exit (clean and error)
+# After this we want to be able to cleanup things on exit (clean and error)
 clean_up () {
     ARG=$?
     git reset -q --hard HEAD
