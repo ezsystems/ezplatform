@@ -8,7 +8,7 @@
 #
 # Arguments:
 # - tag: v3.4.2
-# - composer args: arguments to pass to composer update
+# - composer args: arguments to pass to composer update (optional)
 
 set -e
 
