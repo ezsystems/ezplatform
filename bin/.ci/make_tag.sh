@@ -10,13 +10,13 @@
 # - tag: v3.4.2
 # - composer args: arguments to pass to composer update (optional)
 
-set -e
-
 UNSTAGED_CHANGES=`git st | grep 'Changes not staged for commit'`
-if [ ${#UNSTAGED_CHANGES} > 0 ]; then
+if (( ${#UNSTAGED_CHANGES} > 0 )); then
   echo -e "\033[31m You have unstaged changes. Please commit or stash them. \033[0m"
   exit
 fi
+
+set -e
 
 TAG=$1
 if [[ $TAG =~ ^v[0-9]+(\.[0-9]+){2,3}(-[a-z]+[0-9]*)?$ ]]; then
