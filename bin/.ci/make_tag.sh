@@ -51,7 +51,7 @@ git checkout -b "tmp_release_$TAG"
 echo -e "\033[36m Comment out *.lock files in .gitignore \033[0m"
 perl -pi -e 's/^(.*)\.lock$/#$1.lock/g' .gitignore
 
-echo -e "\033[36m Set minimum php version in composer.json (temporary to get vendor cable of working with it) \033[0m"
+echo -e "\033[36m Set minimum php version in composer.json (temporary to get vendor capable of working with it) \033[0m"
 minimumPHP=$(php -r '$hash = json_decode(file_get_contents("composer.json"), true); $php = str_replace(["^", "~"], "", $hash["require"]["php"]); echo explode("|", $php)[0];')
 composer config platform.php "$minimumPHP"
 
