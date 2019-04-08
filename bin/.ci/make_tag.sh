@@ -12,6 +12,12 @@
 
 set -e
 
+UNSTAGED_CHANGES=`git st | grep 'Changes not staged for commit'`
+if [ ${#UNSTAGED_CHANGES} > 0 ]; then
+  echo -e "\033[31m You have unstaged changes. Please commit or stash them. \033[0m"
+  exit
+fi
+
 TAG=$1
 if [[ $TAG =~ ^v[0-9]+(\.[0-9]+){2,3}(-[a-z]+[0-9]*)?$ ]]; then
   echo -e "\033[36m Start work on making tag $TAG \033[0m"
@@ -29,8 +35,7 @@ if [[ $CURRENT_BRANCH == \(* ]]; then
   CURRENT_BRANCH=`git branch | grep '*' | sed 's/.*detached at \([^)]\+\).*/\1/'`
 fi
 
-# TODO: Add help text, display help on errors, check if checkout is unclean before starting so we don't throw away changes 
-
+# TODO: Add help text, display help on errors
 
 # After this we want to be able to cleanup things on exit (clean and error)
 clean_up () {
