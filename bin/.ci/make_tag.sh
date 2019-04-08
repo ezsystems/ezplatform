@@ -28,11 +28,21 @@ fi
 
 shift
 COMPOSER_ARGS="$@"
-CURRENT_BRANCH=`git branch | grep '*' | cut -d ' ' -f 2`
 
-# If we're in detached HEAD state
-if [[ $CURRENT_BRANCH == \(* ]]; then
-  CURRENT_BRANCH=`git branch | grep '*' | sed 's/.*detached at \([^)]\+\).*/\1/'`
+CURRENT_BRANCH_LINE=`git branch | grep '*'`
+#* 2.5|master
+if [[ $CURRENT_BRANCH_LINE =~ ^\*[[:space:]]([^[:space:]]+)$ ]]; then
+  CURRENT_BRANCH=${BASH_REMATCH[1]}
+#* (detached from v2.5.0)
+elif [[ $CURRENT_BRANCH_LINE =~ ^\*[[:space:]]\(detached[[:space:]]from[[:space:]]([^[:space:]]+)\)$ ]]; then
+  CURRENT_BRANCH=${BASH_REMATCH[1]}
+#* (HEAD detached at v2.5.0)
+elif [[ $CURRENT_BRANCH_LINE =~ ^\*[[:space:]]\(HEAD[[:space:]]detached[[:space:]]at[[:space:]]([^[:space:]]+)\)$ ]]; then
+  CURRENT_BRANCH=${BASH_REMATCH[1]}
+#* (no branch)
+else
+  echo -e "\033[31m Can't detect current branch/tag. \033[0m"
+  exit
 fi
 
 # TODO: Add help text, display help on errors
