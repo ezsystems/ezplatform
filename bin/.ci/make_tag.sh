@@ -24,6 +24,11 @@ shift
 COMPOSER_ARGS="$@"
 CURRENT_BRANCH=`git branch | grep '*' | cut -d ' ' -f 2`
 
+# If we're in detached HEAD state
+if [[ $CURRENT_BRANCH == \(* ]]; then
+  CURRENT_BRANCH=`git branch | grep '*' | sed 's/.*detached at \([^)]\+\).*/\1/'`
+fi
+
 # TODO: Add help text, display help on errors, check if checkout is unclean before starting so we don't throw away changes 
 
 
