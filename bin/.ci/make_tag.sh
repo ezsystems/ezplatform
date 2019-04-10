@@ -51,7 +51,7 @@ fi
 
 devPackageScanPhp='$hash = json_decode(file_get_contents("composer.json"), true); foreach($hash["require"] as $package => $version) { if(preg_match("'
 devPackageScanPhp+=$PACKAGE_WATCH_REGEX
-devPackageScanPhp+='", $package) === 1 && is_int(strpos($version, "@dev"))) { echo "  " . $package . " " . $version . "\n"; } }'
+devPackageScanPhp+='", $package) === 1 && is_int(strpos($version, "@dev"))) { echo "  $package $version\n"; } }'
 
 devPackages=$(php -r "$devPackageScanPhp")
 if (( ${#devPackages} > 0 )); then
