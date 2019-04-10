@@ -10,6 +10,9 @@
 # - tag: v3.4.2
 # - composer args: arguments to pass to composer update (optional)
 
+# Vendors we watch for stability (and potentially more).
+PACKAGE_WATCH_REGEX='/^(doctrine|ezsystems|silversolutions|symfony)\//';
+
 UNSTAGED_CHANGES=`git status | grep 'Changes not staged for commit'`
 if (( ${#UNSTAGED_CHANGES} > 0 )); then
   echo -e "\033[31m You have unstaged changes. Please commit or stash them. \033[0m"
@@ -46,9 +49,13 @@ else
   exit
 fi
 
-devPackages=$(php -r '$hash = json_decode(file_get_contents("composer.json"), true); foreach($hash["require"] as $package => $version) { if(strpos($package, "ezsystems/") === 0 && is_int(strpos($version, "@dev"))) { echo "  " . $package . " " . $version . "\n"; } }')
+devPackageScanPhp='$hash = json_decode(file_get_contents("composer.json"), true); foreach($hash["require"] as $package => $version) { if(preg_match("'
+devPackageScanPhp+=$PACKAGE_WATCH_REGEX
+devPackageScanPhp+='", $package) === 1 && is_int(strpos($version, "@dev"))) { echo "  " . $package . " " . $version . "\n"; } }'
+
+devPackages=$(php -r "$devPackageScanPhp")
 if (( ${#devPackages} > 0 )); then
-  echo -e "\033[31m There are ezsystems dev packages in composer.json: \033[0m"
+  echo -e "\033[31m There are unwanted dev packages in composer.json: \033[0m"
   printf "$devPackages\n"
   exit
 fi
