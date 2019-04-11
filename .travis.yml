@@ -44,20 +44,20 @@ matrix:
           env:
             - TEST_CMD="php bin/phpunit -v vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishRestBundle/Tests/Functional"
             - SYMFONY_CMD="ez:behat:create-language 'pol-PL' 'Polish (polski)'"
-        - name: "Repository Forms tests on Clean EE"
+        - name: "Repository Forms tests on Clean Platform"
           env:
             - COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/selenium.yml"
             - TEST_CMD="./bin/behat -v --no-interaction --colors --profile=repository-forms --tags=~@broken"
         - name: "Behat"
           env: TEST_CMD="bin/behat -v --profile=behat --tags=~@broken"
-        - name: "Admin UI on Clean EE"
+        - name: "Admin UI on Clean Platform"
           env:
             - COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/selenium.yml"
-            - TEST_CMD="./bin/.travis/get_behat_features.sh adminui | bin/fastest -o -v \"bin/behat {} --suite=adminui --no-interaction -vv --strict\""
-        - name: "Admin UI on Clean EE with Varnish and Redis"
+            - TEST_CMD="./bin/.travis/get_behat_features.sh adminui adminui | bin/fastest -o -v \"bin/behat {} --profile=adminui --suite=adminui --no-interaction -vv --strict\""
+        - name: "Admin UI on Clean Platform with Varnish and Redis"
           env:
             - COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/varnish.yml:doc/docker/redis.yml:doc/docker/selenium.yml"
-            - TEST_CMD="./bin/.travis/get_behat_features.sh adminui | bin/fastest -o -v \"bin/behat {} --suite=adminui --no-interaction -vv --strict --tags=~@EZP-29291-excluded\""
+            - TEST_CMD="./bin/.travis/get_behat_features.sh adminui adminui | bin/fastest -o -v \"bin/behat {} --profile=adminui --suite=adminui --no-interaction -vv --strict --tags=~@EZP-29291-excluded\""
             - WEB_HOST="varnish"
 
 notifications:
