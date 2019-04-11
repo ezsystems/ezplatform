@@ -126,8 +126,9 @@ hooks:
         ##bin/console doctrine:migrations:migrate --no-interaction --allow-no-migration
         ##bin/console kaliop:migration:migrate --no-interaction --no-debug
         
-        ## Deploy hook to automatically generate GraphQL schema on deploy (could also be executed manually when needed)
-        # php bin/console ezplatform:graphql:generate-schema
+        # Deploy hook to automatically generate GraphQL schema on deploy.
+        # Could also be executed manually when needed - on clustered instances on each node 
+        ##php bin/console ezplatform:graphql:generate-schema
 
     # Post deploy hook, like deploy but after being deployed and live, for deploy tasks we can do asynchronously
     #post_deploy: |
