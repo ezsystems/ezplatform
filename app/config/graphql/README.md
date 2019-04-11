@@ -1,4 +1,4 @@
-This directory is intentionally left empty. It to be populated by automatically generated GraphQL schema configuration files. Schema generation is done with the following commands:
+This directory is intentionally left empty. It is to be populated by automatically generated GraphQL schema configuration files. Schema generation is done with the following commands:
 
 ```
 php bin/console ezplatform:graphql:generate-schema
