@@ -45,7 +45,7 @@ RUN set -xe \
         && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false $buildDeps \
         && rm -rf /var/lib/apt/lists/*
 
-COPY doc/varnish/vcl/varnish4_xkey.vcl /etc/varnish/default.vcl
+COPY vendor/ezsystems/ezplatform-http-cache/docs/varnish/vcl/varnish5.vcl /etc/varnish/default.vcl
 COPY doc/docker/entrypoint/varnish/parameters.vcl /etc/varnish/parameters.vcl
 COPY doc/docker/entrypoint/varnish/entrypoint.sh /entrypoint.sh
 

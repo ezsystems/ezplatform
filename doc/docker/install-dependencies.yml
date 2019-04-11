@@ -1,0 +1,18 @@
+version: '3.3'
+# compose file for installing composer packages
+
+services:
+  install_dependencies:
+    image: ${PHP_IMAGE_DEV}
+    volumes:
+     - ${COMPOSE_DIR}/../..:/var/www:cached
+     - ${COMPOSER_HOME}:/root/.composer:cached
+    environment:
+     - COMPOSER_MEMORY_LIMIT
+     - SYMFONY_ENV=${SYMFONY_ENV-prod}
+     - SYMFONY_DEBUG
+     - SYMFONY_CMD
+     - DATABASE_USER
+     - DATABASE_PASSWORD
+     - DATABASE_NAME
+    command: ./doc/docker/install_script.sh
