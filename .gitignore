@@ -19,6 +19,7 @@
 
 /.web-server-pid
 /app/config/parameters.yml
+/app/config/graphql/*
 /build/
 /phpunit.xml
 /var/*
