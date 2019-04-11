@@ -73,6 +73,10 @@ mounts:
     'web/var':
         source: local
         source_path: var
+    # GraphQL Schemas should be generated dynamically on deploy
+    'app/config/graphql':
+        source: local
+        source_path: graphql
     # To be prepared to move to cluster, please rather use e.g. persisted Redis instance.
     'web/sessions':
         source: local
@@ -121,6 +125,7 @@ hooks:
         # Example of additional deploy hooks if you use doctrine and/or kaliop migration bundle
         ##bin/console doctrine:migrations:migrate --no-interaction --allow-no-migration
         ##bin/console kaliop:migration:migrate --no-interaction --no-debug
+        php bin/console ezplatform:graphql:generate-schema
 
     # Post deploy hook, like deploy but after being deployed and live, for deploy tasks we can do asynchronously
     #post_deploy: |
