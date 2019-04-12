@@ -26,6 +26,8 @@ default:
 
         EzSystems\PlatformBehatBundle\ServiceContainer\EzBehatExtension: ~
 
+        Liuggio\Fastest\Behat\ListFeaturesExtension\Extension: ~
+
         Bex\Behat\ScreenshotExtension:
             active_image_drivers: cloudinary
             image_drivers:
