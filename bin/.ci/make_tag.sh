@@ -105,6 +105,6 @@ git tag -f $TAG
 echo -e "\033[36m \nReady to push the tag once you have checked it to be correct, once ready:\033[0m"
 echo -e "\033[33m git push <remote> $TAG\n \033[0m"
 
-# After this it's possible to:
-# - Make release notes: https://github.com/yannickroger/release-notes-generator
-# - checkout tag and run ./bin/.ci/prepare_archive.sh
+echo -e "\033[2m After this it's possible to: \033[0m"
+echo -e "\033[2m - Make release notes: https://github.com/yannickroger/release-notes-generator \033[0m"
+echo -e "\033[2m - Checkout tag and make archive for upload: ./bin/.ci/prepare_archive.sh \n \033[0m"
