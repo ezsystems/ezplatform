@@ -4,5 +4,18 @@
 # times each build, often non optimal. To make this optimal we sort features by the number of scenarios in them
 # (ascending because Fastest reverse the queue order, and we want this queue to run descending) and run them in that order,
 # to minimize final time gap between the threads.
+PROFILE=''
+SUITE=''
+TAGS=''
 
-bin/behat --suite=$1 --list-scenarios | awk '{ gsub(/:[0-9]+/,"",$1); print $1 }' | uniq -c | sort | awk '{ print $2 }'
+while getopts p:s:t: option
+do
+case "${option}"
+in
+p) PROFILE="--profile=${OPTARG}";;
+s) SUITE="--suite=${OPTARG}";;
+t) TAGS="--tags=${OPTARG}";;
+esac
+done
+
+bin/behat ${PROFILE} ${SUITE} ${TAGS} --list-scenarios | awk '{ gsub(/:[0-9]+/,"",$1); print $1 }' | uniq -c | sort | awk '{ print $2 }'
