@@ -17,3 +17,6 @@ ezdesign:
 ez_platform_standard_design:
     # for pre eZ Design Engine tests use old template naming
     override_kernel_templates: false
+
+parameters:
+    ezsettings.default.notifications.success.timeout: 10000
