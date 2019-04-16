@@ -24,7 +24,7 @@
         "files": [ "vendor/symfony/symfony/src/Symfony/Component/VarDumper/Resources/functions/dump.php" ]
     },
     "require": {
-        "php": "^7.1",
+        "php": "^7.1.3",
         "doctrine/doctrine-bundle": "^1.9.1",
         "doctrine/orm": "^2.6.3",
         "ezsystems/doctrine-dbal-schema": "^0.1@dev",
