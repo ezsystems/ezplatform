@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "ezplatform:dev": "encore dev --config=webpack.config.ezplatform.js",
+    "ezplatform:prod": "encore prod --config=webpack.config.ezplatform.js"
+  },
   "devDependencies": {
     "@babel/preset-react": "^7.0.0",
     "@symfony/webpack-encore": "^0.22.4",
