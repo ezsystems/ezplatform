@@ -93,7 +93,7 @@
             "@php bin/console bazinga:js-translation:dump web/assets --merge-domains",
             "@php bin/console assetic:dump",
             "yarn install",
-            "bin/compile_assets.sh",
+            "EzSystems\\EzPlatformEncoreBundle\\Composer\\ScriptHandler::compileAssets",
             "@php bin/security-checker security:check"
         ],
         "post-install-cmd": [
