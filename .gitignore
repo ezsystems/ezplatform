@@ -43,6 +43,10 @@
 /web/assets/ezplatform/build/*
 !/web/assets/ezplatform/build/.gitkeep
 /node_modules/
+/bin/*
+!bin/console
+!bin/symfony_requirements
+!bin/vhost.sh
 
 .php~
 
