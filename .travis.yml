@@ -48,8 +48,6 @@ matrix:
           env:
             - COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/selenium.yml"
             - TEST_CMD="./bin/behat -v --no-interaction --colors --profile=repository-forms --tags=~@broken"
-        - name: "Behat"
-          env: TEST_CMD="bin/behat -v --profile=behat --tags=~@broken"
         - name: "Admin UI on Clean Platform"
           env:
             - COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/selenium.yml"
