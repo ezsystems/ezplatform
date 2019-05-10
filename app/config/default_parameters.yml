@@ -71,6 +71,7 @@ parameters:
 
     env(LOG_PATH): "%kernel.logs_dir%/%kernel.environment%.log"
 
+    # NOTE: For Windows usage you can use Symfony's `cache.app`, for eZ provided services see: app/config/cache_pool/*
     env(CACHE_POOL): "cache.tagaware.filesystem"
 
     env(CACHE_DSN): localhost
