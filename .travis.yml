@@ -1,5 +1,7 @@
-dist: xenial
-language: generic
+dist: trusty
+language: php
+php:
+  - 7.1
 
 services:
   - docker
@@ -25,40 +27,34 @@ branches:
 
 # list of behat arguments to test
 matrix:
-    include:
-        # TMP disable usage of varnish until we figure out segmentation faulty issue on 2.0
-        #- TEST_CMD="bin/behat -vv --profile=rest --suite=fullJson --tags=~@broken" COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/varnish.yml:doc/docker/selenium.yml" WEB_HOST="varnish"
-        - name: "Kernel Rest fullJson tests"
-          env:
-            - COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/selenium.yml"
-            - TEST_CMD="php ./bin/behat -vv --no-interaction --colors --profile=rest --suite=fullJson --tags=~@broken"
-        - name: "Kernel Rest fullXML tests"
-          env:
-            - COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/selenium.yml"
-            - TEST_CMD="php ./bin/behat -vv --no-interaction --colors --profile=rest --suite=fullXml --tags=~@broken"
-        - name: "Kernel Rest core tests"
-          env:
-            - COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/selenium.yml"
-            - TEST_CMD="php ./bin/behat -vv --no-interaction --colors --profile=core --tags=~@broken"
-        - name: "Unit Tests"
-          env:
-            - TEST_CMD="php bin/phpunit -v vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishRestBundle/Tests/Functional"
-            - SYMFONY_CMD="ez:behat:create-language 'pol-PL' 'Polish (polski)'"
-        - name: "Repository Forms tests on Clean Platform"
-          env:
-            - COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/selenium.yml"
-            - TEST_CMD="./bin/behat -v --no-interaction --colors --profile=repository-forms --tags=~@broken"
-        - name: "Behat"
-          env: TEST_CMD="bin/behat -v --profile=behat --tags=~@broken"
-        - name: "Admin UI on Clean Platform"
-          env:
-            - COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/selenium.yml"
-            - TEST_CMD="./bin/.travis/get_behat_features.sh -p adminui -s adminui | bin/fastest -o -v \"bin/behat {} --profile=adminui --suite=adminui --no-interaction -vv --strict\""
-        - name: "Admin UI on Clean Platform with Varnish and Redis"
-          env:
-            - COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/varnish.yml:doc/docker/redis.yml:doc/docker/selenium.yml"
-            - TEST_CMD="./bin/.travis/get_behat_features.sh -p adminui -s adminui | bin/fastest -o -v \"bin/behat {} --profile=adminui --suite=adminui --no-interaction -vv --strict\""
-            - WEB_HOST="varnish"
+  include:
+    # TMP disable usage of varnish until we figure out segmentation faulty issue on 2.0
+    #- TEST_CMD="--mode=behat --profile=rest --suite=fullJson --tags=~@broken" COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/varnish.yml:doc/docker/selenium.yml" WEB_HOST="varnish"
+    - name: "PHP Unit tests"
+      env:
+        - TEST_CMD="php bin/phpunit -v vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishRestBundle/Tests/Functional"
+        - SYMFONY_CMD="ez:behat:create-language 'pol-PL' 'Polish (polski)'"
+    - name: "Kernel Rest fullJson tests"
+      env: BEHAT_OPTS="--mode=behat --profile=rest --suite=fullJson --tags=~@broken --non-strict"
+    - name: "Kernel Rest fullXML tests"
+      env: BEHAT_OPTS="--mode=behat --profile=rest --suite=fullXml --tags=~@broken --non-strict"
+    - name: "Kernel Rest core tests"
+      env: BEHAT_OPTS="--mode=behat --profile=core --tags=~@broken"
+    - name: "Behat"
+      env: BEHAT_OPTS="--mode=behat --profile=behat --tags=~@broken"
+    - name: "Repository Forms tests on Clean Platform"
+      env: BEHAT_OPTS="--mode=behat --profile=repository-forms --tags=~@broken --non-strict"
+    - name: "Admin UI on Clean Platform"
+      env: BEHAT_OPTS="--profile=adminui --suite=adminui"
+    - name: "Admin UI on Clean Platform with Varnish and Redis"
+      env:
+        - COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/varnish.yml:doc/docker/redis.yml:doc/docker/selenium.yml"
+        - BEHAT_OPTS="--profile=adminui --suite=adminui"
+        - WEB_HOST="varnish"
+
+# reduce depth (history) of git checkout
+git:
+  depth: 30
 
 notifications:
   slack:
@@ -69,14 +65,23 @@ notifications:
     on_failure: always
     on_pull_requests: false
 
-# Update Docker and Docker Compose
-before_install: ./bin/.travis/trusty/update_docker.sh
-
-before_script:
+before_install:
+  # Update Docker and Docker Compose
+  - ./bin/.travis/trusty/update_docker.sh
   # Internal auth token dedicated to testing with travis+composer on ezsystems repos, not for reuse!
   - echo "{\"github-oauth\":{\"github.com\":\"d0285ed5c8644f30547572ead2ed897431c1fc09\"}}" > auth.json
+  # Disable XDebug for performance
+  - phpenv config-rm xdebug.ini
+  # Get latest composer build
+  - travis_retry composer selfupdate
+  # Avoid memory issues on composer install
+  - echo "memory_limit=-1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
+
+install:
   # Setup eZ Platform inside docker container
   - /bin/bash ./bin/.travis/trusty/setup_ezplatform.sh "${COMPOSE_FILE}"
+
+before_script:
   # Execute Symfony command if injected into test matrix
   - if [ "${SYMFONY_CMD}" != "" ] ; then docker-compose exec --user www-data app sh -c "bin/console ${SYMFONY_CMD}" ; fi
   #- docker ps
@@ -84,7 +89,9 @@ before_script:
 
 # Execute test command, need to use sh to get right exit code (docker/compose/issues/3379)
 # Behat will use behat.yml which is a copy of behat.yml.dist with hostnames update by doc/docker/selenium.yml
-script: docker-compose exec --user www-data app sh -c "$TEST_CMD"
+script:
+  - if [ "${TEST_CMD}" != "" ] ; then cd "$HOME/build/ezplatform"; docker-compose exec --user www-data app sh -c "$TEST_CMD" ; fi
+  - if [ "${BEHAT_OPTS}" != "" ] ; then cd "$HOME/build/ezplatform"; docker-compose exec --user www-data app sh -c "bin/ezbehat $BEHAT_OPTS" ; fi
 
 
 after_failure:
@@ -94,7 +101,3 @@ after_failure:
   - docker-compose logs -t --tail=15
   # Will show us what is up, and how long it's been up
   - docker ps -s
-
-# reduce depth (history) of git checkout
-git:
-  depth: 30
