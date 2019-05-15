@@ -12,11 +12,11 @@ kernel.internal:
     resource: '@EzPublishCoreBundle/Resources/config/routing/internal.yml'
 
 kernel.rest:
-    resource: '@EzPlatformRestCommonBundle/Resources/config/routing.yml'
+    resource: '@EzPlatformRestBundle/Resources/config/routing.yml'
     prefix: '%ezpublish_rest.path_prefix%'
 
 kernel.rest.options:
-    resource: '@EzPlatformRestCommonBundle/Resources/config/routing.yml'
+    resource: '@EzPlatformRestBundle/Resources/config/routing.yml'
     prefix: '%ezpublish_rest.path_prefix%'
     type: rest_options
 

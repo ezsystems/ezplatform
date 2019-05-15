@@ -34,7 +34,7 @@ class AppKernel extends Kernel
             new eZ\Bundle\EzPublishCoreBundle\EzPublishCoreBundle(),
             new eZ\Bundle\EzPublishLegacySearchEngineBundle\EzPublishLegacySearchEngineBundle(),
             new eZ\Bundle\EzPublishIOBundle\EzPublishIOBundle(),
-            new EzSystems\EzPlatformRestCommonBundle\EzPlatformRestCommonBundle(),
+            new EzSystems\EzPlatformRestBundle\EzPlatformRestBundle(),
             new EzSystems\EzSupportToolsBundle\EzSystemsEzSupportToolsBundle(),
             new EzSystems\PlatformInstallerBundle\EzSystemsPlatformInstallerBundle(),
             new EzSystems\DoctrineSchemaBundle\DoctrineSchemaBundle(),
