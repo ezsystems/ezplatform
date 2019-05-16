@@ -42,7 +42,6 @@ default:
 
 imports:
     - vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishCoreBundle/behat_suites.yml
-    - vendor/ezsystems/ezplatform-rest/behat_suites.yml
     - vendor/ezsystems/repository-forms/behat_suites.yml
     - vendor/ezsystems/ezplatform-admin-ui/behat_suites.yml
     - vendor/ezsystems/behatbundle/behat_suites.yml
