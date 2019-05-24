@@ -24,7 +24,7 @@ default:
                 env: behat
                 debug: false
 
-        EzSystems\PlatformBehatBundle\ServiceContainer\EzBehatExtension: ~
+        EzSystems\BehatBundle\BehatExtension: ~
 
         Liuggio\Fastest\Behat\ListFeaturesExtension\Extension: ~
 
