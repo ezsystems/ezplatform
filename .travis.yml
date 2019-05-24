@@ -28,9 +28,9 @@ branches:
 # list of behat arguments to test
 matrix:
   include:
-    - name: "PHP Unit tests"
+    - name: "eZ Platform REST Bundle functional tests"
       env:
-        - TEST_CMD="php bin/phpunit -v vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishRestBundle/Tests/Functional"
+        - TEST_CMD="./bin/.travis/run_rest_tests.sh"
         - SYMFONY_CMD="ez:behat:create-language 'pol-PL' 'Polish (polski)'"
     - name: "Kernel core tests"
       env: BEHAT_OPTS="--mode=behat --profile=core --tags=~@broken"
