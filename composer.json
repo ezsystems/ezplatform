@@ -45,6 +45,7 @@
         "ezsystems/ezpublish-kernel": "^8.0@dev",
         "ezsystems/repository-forms": "^3.0@dev",
         "ezsystems/symfony-tools": "~2.0.0@dev",
+        "ezsystems/ezplatform-rest": "^1.0@dev",
         "friendsofsymfony/jsrouting-bundle": "^1.6.3",
         "incenteev/composer-parameter-handler": "^2.1.3",
         "knplabs/knp-menu-bundle": "^2.2.1",
