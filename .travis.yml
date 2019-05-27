@@ -32,12 +32,8 @@ matrix:
     #- TEST_CMD="--mode=behat --profile=rest --suite=fullJson --tags=~@broken" COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/varnish.yml:doc/docker/selenium.yml" WEB_HOST="varnish"
     - name: "PHP Unit tests"
       env:
-        - TEST_CMD="php bin/phpunit -v vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishRestBundle/Tests/Functional"
+        - TEST_CMD="php bin/phpunit -c vendor/ezsystems/ezplatform-rest/phpunit-integration-rest.xml"
         - SYMFONY_CMD="ez:behat:create-language 'pol-PL' 'Polish (polski)'"
-    - name: "Kernel Rest fullJson tests"
-      env: BEHAT_OPTS="--mode=behat --profile=rest --suite=fullJson --tags=~@broken --non-strict"
-    - name: "Kernel Rest fullXML tests"
-      env: BEHAT_OPTS="--mode=behat --profile=rest --suite=fullXml --tags=~@broken --non-strict"
     - name: "Kernel Rest core tests"
       env: BEHAT_OPTS="--mode=behat --profile=core --tags=~@broken"
     - name: "Behat"
