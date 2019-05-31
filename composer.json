@@ -12,76 +12,22 @@
             "homepage": "https://github.com/ezsystems/ezplatform/contributors"
         }
     ],
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "/Users/maciejkobus/Projects/ezplatform-http-cache"
-        },
-        {
-            "type": "vcs",
-            "url": "/Users/maciejkobus/Projects/doctrine-dbal-schema"
-        },
-        {
-            "type": "vcs",
-            "url": "/Users/maciejkobus/Projects/ezpublish-kernel"
-        },
-        {
-            "type": "vcs",
-            "url": "/Users/maciejkobus/Projects/repository-forms"
-        },
-        {
-            "type": "vcs",
-            "url": "/Users/maciejkobus/Projects/ezplatform-richtext"
-        },
-        {
-            "type": "vcs",
-            "url": "/Users/maciejkobus/Projects/ezplatform-user"
-        },
-        {
-            "type": "vcs",
-            "url": "/Users/maciejkobus/Projects/ezplatform-admin-ui"
-        },
-        {
-            "type": "vcs",
-            "url": "/Users/maciejkobus/Projects/ezplatform-admin-ui-modules"
-        },
-        {
-            "type": "vcs",
-            "url": "/Users/maciejkobus/Projects/ezplatform-design-engine"
-        },
-        {
-            "type": "vcs",
-            "url": "/Users/maciejkobus/Projects/ez-support-tools"
-        },
-        {
-            "type": "vcs",
-            "url": "/Users/maciejkobus/Projects/ezplatform-core"
-        },
-        {
-            "type": "path",
-            "url": "/Users/maciejkobus/Projects/ezplatform-admin-ui-assets"
-        },
-        {
-            "type": "path",
-            "url": "/Users/maciejkobus/Projects/ezplatform-standard-design"
-        }
-    ],
     "require": {
         "php": ">=7.2",
         "ext-ctype": "*",
         "ext-iconv": "*",
-        "ezsystems/doctrine-dbal-schema": "dev-symfony4 as 1.0.x-dev",
-        "ezsystems/ez-support-tools": "dev-symfony4 as 2.0.x-dev",
-        "ezsystems/ezplatform-admin-ui": "dev-symfony4 as 2.0.x-dev",
-        "ezsystems/ezplatform-admin-ui-assets": "dev-symfony4 as 2.0.x-dev",
-        "ezsystems/ezplatform-admin-ui-modules": "dev-symfony4 as 2.0.x-dev",
-        "ezsystems/ezplatform-core": "dev-symfony4 as 2.0.x-dev",
-        "ezsystems/ezplatform-design-engine": "dev-symfony4 as 3.0.x-dev",
-        "ezsystems/ezplatform-richtext": "dev-symfony4 as 2.0.x-dev",
-        "ezsystems/ezplatform-standard-design": "dev-symfony4 as 2.0.x-dev",
-        "ezsystems/ezplatform-user": "dev-symfony4 as 2.0.x-dev",
-        "ezsystems/ezpublish-kernel": "dev-symfony4 as 8.0.x-dev",
-        "ezsystems/repository-forms": "dev-symfony4 as 3.0.x-dev",
+        "ezsystems/doctrine-dbal-schema": "1.0@dev",
+        "ezsystems/ez-support-tools": "2.0@dev",
+        "ezsystems/ezplatform-admin-ui": "2.0@dev",
+        "ezsystems/ezplatform-admin-ui-assets": "2.0@dev",
+        "ezsystems/ezplatform-admin-ui-modules": "2.0@dev",
+        "ezsystems/ezplatform-core": "2.0@dev",
+        "ezsystems/ezplatform-design-engine": "3.0@dev",
+        "ezsystems/ezplatform-richtext": "2.0@dev",
+        "ezsystems/ezplatform-standard-design": "2.0@dev",
+        "ezsystems/ezplatform-user": "2.0@dev",
+        "ezsystems/ezpublish-kernel": "8.0@dev",
+        "ezsystems/repository-forms": "3.0@dev",
         "friendsofsymfony/jsrouting-bundle": "^2.3",
         "knplabs/knp-menu-bundle": "^2.2",
         "php-http/guzzle6-adapter": "^2.0",
