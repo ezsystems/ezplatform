@@ -1,3 +1,5 @@
 # Only settings different then parameters.yml.dist, buildParameters will inject those we don't define from there!
 parameters:
-    env(DATABASE_URL): mysql://ezp:ezp@127.0.0.1:3306/behattestdb
+    env(DATABASE_NAME): behattestdb
+    env(DATABASE_USER): ezp
+    env(DATABASE_PASSWORD): ezp
