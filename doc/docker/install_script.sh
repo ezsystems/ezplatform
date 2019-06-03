@@ -16,6 +16,6 @@ fi;
 
 rm -Rf var/logs/* var/cache/*/*;
 chown -R www-data:www-data var/cache var/logs public/var;
-find var/cache var/logs web/var -type d -print0 | xargs -0 chmod -R 775;
-find var/cache var/logs web/var -type f -print0 | xargs -0 chmod -R 664;
+find var/cache var/logs public/var -type d -print0 | xargs -0 chmod -R 775;
+find var/cache var/logs public/var -type f -print0 | xargs -0 chmod -R 664;
 chown -R www-data:www-data config src;

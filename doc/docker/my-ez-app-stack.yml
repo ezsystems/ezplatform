@@ -13,7 +13,7 @@ services:
      - FASTCGI_PASS=app:9000
      - TIMEOUT=190
     volumes:
-     - vardir:/var/www/web/var
+     - vardir:/var/www/public/var
     networks:
      - my-ez-app
     deploy:
@@ -42,7 +42,7 @@ services:
      - RECOMMENDATIONS_LICENSE_KEY
      - PUBLIC_SERVER_URI
     volumes:
-     - vardir:/var/www/web/var
+     - vardir:/var/www/public/var
     networks:
      - stack-db_db
      - my-ez-app

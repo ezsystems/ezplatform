@@ -70,11 +70,11 @@ mounts:
     'var/encore':
         source: local
         source_path: encore
-    'web/var':
+    'public/var':
         source: local
         source_path: var
     # To be prepared to move to cluster, please rather use e.g. persisted Redis instance.
-    'web/sessions':
+    'public/sessions':
         source: local
         source_path: sessions
 # Uncomment if you need to use Kaliop Migrations on your setup and not able to get it to write to "var" dir.
@@ -97,7 +97,7 @@ hooks:
             composer config github-oauth.github.com $GITHUB_TOKEN
         fi
 
-        rm web/app_dev.php
+        rm public/index.php
         composer install --no-dev --prefer-dist --no-progress --no-interaction --optimize-autoloader
 
     # Deploy hook, access to services & done once (per cluster, not per node), only mounts are writable at this point
@@ -105,11 +105,11 @@ hooks:
     deploy: |
         set -e
         # Mainly relevant for eZ Platform demo usage, for own setup adapt this or remove and rely on migrations.
-        if [ ! -f web/var/.platform.installed ]; then
+        if [ ! -f public/var/.platform.installed ]; then
             # To workaround issues with p.sh Varnish we clear container cache & temporary set Symfony Proxy
             rm -Rf var/cache/$SYMFONY_ENV/*.*
             HTTPCACHE_PURGE_TYPE="local" php -d memory_limit=-1 `which composer` ezplatform-install
-            touch web/var/.platform.installed
+            touch public/var/.platform.installed
         fi
 
         # Now that mounts are available, clear class/container cache. E.g. in case of interface changes on lazy proxies

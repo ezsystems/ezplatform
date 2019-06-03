@@ -55,14 +55,14 @@
 /doc/docker/entrypoint/*/*.sql
 /dfsdata
 
-/web/css/
-/web/js/
-web/fonts/
-/web/design
-/web/extension
-/web/share
-/web/var
-/web/.htaccess
+/public/css/
+/public/js/
+/public/fonts/
+/public/design
+/public/extension
+/public/share
+/public/var
+/public/.htaccess
 
 composer.phar
 composer.lock
