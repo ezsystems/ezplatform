@@ -6,7 +6,7 @@ fastcgi_buffer_size 128k;
 fastcgi_buffers 4 256k;
 fastcgi_busy_buffers_size 256k;
 
-set $fc_script_name "app.php";
+set $fc_script_name "index.php";
 
 if ( $uri ~ "^/(.*\.php)" ) {
     set $fc_script_name $1;
@@ -19,5 +19,5 @@ fastcgi_param  PATH_TRANSLATED    $document_root$fastcgi_path_info;
 fastcgi_param  SCRIPT_NAME        $fc_script_name;
 fastcgi_param  SCRIPT_FILENAME    $document_root/$fc_script_name;
 
-fastcgi_index app.php;
+fastcgi_index index.php;
 
