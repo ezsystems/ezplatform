@@ -7,8 +7,8 @@
 <VirtualHost %IP_ADDRESS%:%PORT%>
     ServerName %HOST_NAME%
     ServerAlias %HOST_ALIAS%
-    DocumentRoot %BASEDIR%/web
-    DirectoryIndex app.php
+    DocumentRoot %BASEDIR%/public
+    DirectoryIndex index.php
 
     # Request size limit in bytes, 0 to disable
     LimitRequestBody %BODY_SIZE_LIMIT%
@@ -20,7 +20,7 @@
     #LogLevel debug
 
     # "web" folder is what we expose to the world, all rewrite rules further down is relative to it.
-    <Directory %BASEDIR%/web>
+    <Directory %BASEDIR%/public>
         <FilesMatch \.php$>
             # For serving php files configure mod_proxy to talk to php-fpm using Apache 2.4.10 and higher.
             # See: https://wiki.apache.org/httpd/PHP-FPM#apache_httpd_2.4
@@ -41,30 +41,30 @@
     </Directory>
 
     ## eZ Platform/Symfony ENVIRONMENT variables, for customizing app.php* execution
-    # * Only SYMFONY_ENV and SYMFONY_DEBUG supported by console command, rest are eZ Platform features in app.php.
+    # * Only APP_ENV and APP_DEBUG supported by console command, rest are eZ Platform features in app.php.
 
     # Environment.
     # Possible values: "prod" and "dev" out-of-the-box, other values possible with proper configuration
     # Defaults to "prod" if omitted (uses SetEnvIf so value can be used in rewrite rules)
-    #if[SYMFONY_ENV] SetEnvIf Request_URI ".*" SYMFONY_ENV=%SYMFONY_ENV%
+    #if[APP_ENV] SetEnvIf Request_URI ".*" APP_ENV=%APP_ENV%
 
     # Optional: Whether to use debugging.
     # Possible values: 0, 1 or ""
-    # Defaults to enabled if SYMFONY_ENV is set to "dev" if env value is omitted or empty
-    #if[SYMFONY_DEBUG] SetEnv SYMFONY_DEBUG "%SYMFONY_DEBUG%"
+    # Defaults to enabled if APP_ENV is set to "dev" if env value is omitted or empty
+    #if[APP_DEBUG] SetEnv APP_DEBUG "%APP_DEBUG%"
 
     # Optional: Whether to use Symfony's builtin HTTP Caching Proxy.
     # Disable it if you are using an external reverse proxy (e.g. Varnish)
     # Possible values: 0, 1 or ""
-    # Defaults to disabled if SYMFONY_ENV is set to "dev" or SYMFONY_TRUSTED_PROXIES is set,
+    # Defaults to disabled if APP_ENV is set to "dev" or APP_TRUSTED_PROXIES is set,
     # and if this env value is omitted or empty
-    #if[SYMFONY_HTTP_CACHE] SetEnv SYMFONY_HTTP_CACHE "%SYMFONY_HTTP_CACHE%"
+    #if[APP_HTTP_CACHE] SetEnv APP_HTTP_CACHE "%APP_HTTP_CACHE%"
 
     # Optional: Defines the proxies to trust
-    # Needed when using Varnish as proxy, if so disable SYMFONY_HTTP_CACHE.
+    # Needed when using Varnish as proxy, if so disable APP_HTTP_CACHE.
     # Separate entries by a comma, example: "ip1,ip2"
     # Defaults to not be set if env value is omitted or empty
-    #if[SYMFONY_TRUSTED_PROXIES] SetEnv SYMFONY_TRUSTED_PROXIES "%SYMFONY_TRUSTED_PROXIES%"
+    #if[APP_TRUSTED_PROXIES] SetEnv APP_TRUSTED_PROXIES "%APP_TRUSTED_PROXIES%"
 
     # TIP: There are many more environment variables supported by eZ Platform. However unlike those listed above
     #      they should in most cases rather be set in the environment then in vhost config to make sure cronjobs
@@ -95,13 +95,13 @@
 
         # Additional Assetic rules for environments different from dev,
         # remember to run php bin/console assetic:dump --env=prod
-        RewriteCond %{ENV:SYMFONY_ENV} !^(dev)
+        RewriteCond %{ENV:APP_ENV} !^(dev)
         RewriteRule ^/(css|js|fonts?)/.*\.(css|js|otf|eot|ttf|svg|woff) - [L]
 
         # Prevent access to website with direct usage of app.php in URL
-        RewriteRule ^/(.+/)?app\.php - [R=404,L]
+        RewriteRule ^/(.+/)?index\.php - [R=404,L]
 
-        RewriteRule .* /app.php
+        RewriteRule .* /index.php
     </IfModule>
 
     # Everything below is optional to improve performance by forcing
