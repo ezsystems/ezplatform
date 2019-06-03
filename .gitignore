@@ -36,12 +36,12 @@
 !var/encore/.gitkeep
 !var/SymfonyRequirements.php
 /vendor/
-/web/bundles/
-/web/assets/translations/*
-/web/assets/build/*
-!web/assets/build/.gitkeep
-/web/assets/ezplatform/build/*
-!/web/assets/ezplatform/build/.gitkeep
+/public/bundles/
+/public/assets/translations/*
+/public/assets/build/*
+!public/assets/build/.gitkeep
+/public/assets/ezplatform/build/*
+!/public/assets/ezplatform/build/.gitkeep
 /node_modules/
 
 .php~
