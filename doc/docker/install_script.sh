@@ -4,7 +4,7 @@
 # Second chown line:  For dev and behat tests we give a bit extra rights, never do this for prod.
 
 for i in $(seq 1 3); do composer install --no-progress --no-interaction --prefer-dist --no-suggest --optimize-autoloader && s=0 && break || s=$? && sleep 1; done; (exit $s);
-mkdir -p web/var;
+mkdir -p public/var;
 
 if [ "${INSTALL_DATABASE}" == "1" ]; then 
     php /scripts/wait_for_db.php;
@@ -15,7 +15,7 @@ if [ "${INSTALL_DATABASE}" == "1" ]; then
 fi;
 
 rm -Rf var/logs/* var/cache/*/*;
-chown -R www-data:www-data var/cache var/logs web/var;
+chown -R www-data:www-data var/cache var/logs public/var;
 find var/cache var/logs web/var -type d -print0 | xargs -0 chmod -R 775;
 find var/cache var/logs web/var -type f -print0 | xargs -0 chmod -R 664;
-chown -R www-data:www-data app/config src;
+chown -R www-data:www-data config src;
