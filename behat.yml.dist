@@ -20,7 +20,7 @@ default:
             kernel:
                 bootstrap: vendor/autoload.php
                 path: src/Kernel.php
-                class: Kernel
+                class: App\Kernel
                 env: behat
                 debug: false
 
