@@ -97,3 +97,7 @@ ide-twig.json
 npm-debug.log
 yarn-error.log
 ###< symfony/webpack-encore-bundle ###
+
+###> behat/symfony2-extension ###
+behat.yml
+###< behat/symfony2-extension ###
