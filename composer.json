@@ -72,7 +72,7 @@
         "symfony/maker-bundle": "^1.0",
         "symfony/test-pack": "^1.0",
         "symfony/web-server-bundle": "^4.2",
-        "phpunit/phpunit": "^6.5.13"
+        "phpunit/phpunit": "^6.5"
     },
     "conflict": {
         "symfony/symfony": "*"
