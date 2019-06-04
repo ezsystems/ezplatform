@@ -13,7 +13,7 @@
         }
     ],
     "require": {
-        "php": ">=7.2",
+        "php": "^7.3",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "ezsystems/doctrine-dbal-schema": "1.0@dev",
@@ -28,6 +28,8 @@
         "ezsystems/ezplatform-user": "2.0@dev",
         "ezsystems/ezpublish-kernel": "8.0@dev",
         "ezsystems/repository-forms": "3.0@dev",
+        "ezsystems/ezplatform-rest": "^1.0@dev",
+        "ezsystems/ezplatform-solr-search-engine": "^2.0@dev",
         "friendsofsymfony/jsrouting-bundle": "^2.3",
         "knplabs/knp-menu-bundle": "^2.2",
         "php-http/guzzle6-adapter": "^2.0",
@@ -56,10 +58,21 @@
         "symfony/yaml": "^4.2"
     },
     "require-dev": {
+        "behat/behat": "^3.5",
+        "behat/mink": "^1.7",
+        "behat/mink-extension": "^2.3",
+        "behat/mink-goutte-driver": "^1.2",
+        "behat/mink-selenium2-driver": "^1.3",
+        "behat/symfony2-extension": "^2.1",
+        "bex/behat-screenshot": "^1.2",
+        "ezsystems/behat-screenshot-image-driver-cloudinary": "^1.1@dev",
+        "ezsystems/behatbundle": "dev-symfony4 as 7.0.x-dev",
+        "liuggio/fastest": "^1.6",
         "symfony/debug-pack": "^1.0",
         "symfony/maker-bundle": "^1.0",
+        "symfony/test-pack": "^1.0",
         "symfony/web-server-bundle": "^4.2",
-        "liuggio/fastest": "^1.6"
+        "phpunit/phpunit": "^6.5.13"
     },
     "conflict": {
         "symfony/symfony": "*"
@@ -108,8 +121,7 @@
     },
     "extra": {
         "symfony": {
-            "allow-contrib": false,
-            "require": "4.2.*"
+            "allow-contrib": true
         },
         "branch-alias": {
             "dev-master": "3.0.x-dev"
