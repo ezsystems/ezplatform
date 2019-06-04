@@ -8,7 +8,7 @@ services:
     ports:
      - "8081:80"
     environment:
-     - SYMFONY_ENV
+     - APP_ENV
      - MAX_BODY_SIZE=20
      - FASTCGI_PASS=app:9000
      - TIMEOUT=190
@@ -22,18 +22,18 @@ services:
   app:
     image: swarmmanager:5000/my-ez-app/app
     environment:
-     - SYMFONY_ENV=prod
-     - SYMFONY_DEBUG
-     - SYMFONY_HTTP_CACHE
-     - SYMFONY_TRUSTED_PROXIES
+     - APP_ENV=prod
+     - APP_DEBUG
+     - APP_HTTP_CACHE
+     - APP_TRUSTED_PROXIES
      - DATABASE_USER=ezp
      - DATABASE_PASSWORD=SetYourOwnPassword
      - DATABASE_NAME=ezp
      - DATABASE_HOST=db
      - CUSTOM_CACHE_POOL=singleredis
      - CACHE_HOST=redis
-     - SYMFONY_HTTP_CACHE=0
-     - SYMFONY_TRUSTED_PROXIES=varnish
+     - APP_HTTP_CACHE=0
+     - APP_TRUSTED_PROXIES=varnish
      - HTTPCACHE_PURGE_SERVER=http://varnish
      - HTTPCACHE_PURGE_TYPE=http
      - PHP_INI_ENV_session.save_handler=redis

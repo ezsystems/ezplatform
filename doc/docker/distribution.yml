@@ -20,10 +20,10 @@ services:
      - distribution
      - dataset-vardir
     environment:
-     - SYMFONY_ENV=${SYMFONY_ENV-prod}
-     - SYMFONY_DEBUG
-     - SYMFONY_HTTP_CACHE
-     - SYMFONY_TRUSTED_PROXIES
+     - APP_ENV=${APP_ENV-prod}
+     - APP_DEBUG
+     - APP_HTTP_CACHE
+     - APP_TRUSTED_PROXIES
      - DATABASE_USER
      - DATABASE_PASSWORD
      - DATABASE_NAME
@@ -45,7 +45,7 @@ services:
     ports:
      - "8080:80"
     environment:
-     - SYMFONY_ENV=${SYMFONY_ENV-prod}
+     - APP_ENV=${APP_ENV-prod}
      - MAX_BODY_SIZE=20
      - FASTCGI_PASS=app:9000
      - TIMEOUT=190

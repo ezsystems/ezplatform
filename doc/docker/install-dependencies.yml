@@ -9,9 +9,9 @@ services:
      - ${COMPOSER_HOME}:/root/.composer:cached
     environment:
      - COMPOSER_MEMORY_LIMIT
-     - SYMFONY_ENV=${SYMFONY_ENV-prod}
-     - SYMFONY_DEBUG
-     - SYMFONY_CMD
+     - APP_ENV=${APP_ENV-prod}
+     - APP_DEBUG
+     - APP_CMD
      - DATABASE_USER
      - DATABASE_PASSWORD
      - DATABASE_NAME

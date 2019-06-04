@@ -1,7 +1,7 @@
 ARG PHP_IMAGE=ezsystems/php:7.3-v1
 FROM ${PHP_IMAGE}-node as web-build
 
-ENV SYMFONY_ENV=prod
+ENV APP_ENV=prod
 
 # Copy in project files into work dir
 COPY . /var/www
@@ -15,7 +15,7 @@ RUN if [ ! -d /var/www/web/assets ]; then mkdir /var/www/web/assets; fi
 
 # Generate assets using hard copy as we need to copy them over to resulting image
 RUN composer config extra.symfony-assets-install hard
-RUN composer run-script post-install-cmd --no-interaction
+RUN composer run-script auto-scripts --no-interaction
 
 
 # Copy over just the files we want in second stage, so resulting stage only has assets
@@ -24,6 +24,7 @@ FROM nginx:stable as web-multilayers
 
 COPY bin/vhost.sh /var/www/bin/vhost.sh
 COPY doc/nginx/vhost.template /var/www/doc/nginx/vhost.template
+RUN chmod +x /var/www/bin/vhost.sh
 
 # Auto generated assets
 COPY --from=web-build /var/www/web/bundles /var/www/web/bundles

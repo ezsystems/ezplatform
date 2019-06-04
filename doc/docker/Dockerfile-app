@@ -2,7 +2,7 @@ ARG PHP_IMAGE=ezsystems/php:7.3-v1
 FROM ${PHP_IMAGE}-node as builder
 
 # This is prod image (for dev use just mount your application as host volume into php image we extend here)
-ENV SYMFONY_ENV=prod
+ENV APP_ENV=prod
 
 # Copy in project files into work dir
 COPY . /var/www
@@ -31,7 +31,7 @@ RUN rm -rf public/css public/fonts public/js public/var
 FROM ${PHP_IMAGE}
 
 # This is prod image (for dev use just mount your application as host volume into php image we extend here)
-ENV SYMFONY_ENV=prod
+ENV APP_ENV=prod
 
 COPY --from=builder /var/www /var/www
 
