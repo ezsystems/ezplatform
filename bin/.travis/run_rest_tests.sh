@@ -3,4 +3,4 @@
 
 cd ./vendor/ezsystems/ezplatform-rest
 composer install
-php ./vendor/bin/phpunit -c phpunit-integration-rest.xml
+php ./vendor/bin/simple_phpunit -c phpunit-integration-rest.xml
