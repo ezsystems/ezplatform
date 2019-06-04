@@ -28,14 +28,14 @@ server {
     gzip_types text/plain text/css application/json text/javascript application/javascript text/xml application/xml application/xml+rss;
 
     location / {
-        location ~ ^/app\.php(/|$) {
+        location ~ ^/index\.php(/|$) {
             include ez_params.d/ez_fastcgi_params;
 
             # FPM socket
             # Possible values : unix:/var/run/php5-fpm.sock or 127.0.0.1:9000
             fastcgi_pass %FASTCGI_PASS%;
 
-            ## eZ Platform ENVIRONMENT variables, used for customizing app.php execution (not used by console commands)
+            ## eZ Platform ENVIRONMENT variables, used for customizing index.php execution (not used by console commands)
 
             # Environment.
             # Possible values: "prod" and "dev" out-of-the-box, other values possible with proper configuration
