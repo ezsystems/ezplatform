@@ -7,11 +7,11 @@ ENV APP_ENV=prod
 COPY . /var/www
 
 # Create asset directories that might not exists
-RUN if [ ! -d /var/www/web/bundles ]; then mkdir /var/www/web/bundles; fi
-RUN if [ ! -d /var/www/web/css ]; then mkdir /var/www/web/css; fi
-RUN if [ ! -d /var/www/web/fonts ]; then mkdir /var/www/web/fonts; fi
-RUN if [ ! -d /var/www/web/js ]; then mkdir /var/www/web/js; fi
-RUN if [ ! -d /var/www/web/assets ]; then mkdir /var/www/web/assets; fi
+RUN if [ ! -d /var/www/public/bundles ]; then mkdir /var/www/public/bundles; fi
+RUN if [ ! -d /var/www/public/css ]; then mkdir /var/www/public/css; fi
+RUN if [ ! -d /var/www/public/fonts ]; then mkdir /var/www/public/fonts; fi
+RUN if [ ! -d /var/www/public/js ]; then mkdir /var/www/public/js; fi
+RUN if [ ! -d /var/www/public/assets ]; then mkdir /var/www/public/assets; fi
 
 # Generate assets using hard copy as we need to copy them over to resulting image
 RUN composer config extra.symfony-assets-install hard
@@ -24,16 +24,15 @@ FROM nginx:stable as web-multilayers
 
 COPY bin/vhost.sh /var/www/bin/vhost.sh
 COPY doc/nginx/vhost.template /var/www/doc/nginx/vhost.template
-RUN chmod +x /var/www/bin/vhost.sh
 
 # Auto generated assets
-COPY --from=web-build /var/www/web/bundles /var/www/web/bundles
-COPY --from=web-build /var/www/web/css /var/www/web/css
-COPY --from=web-build /var/www/web/fonts /var/www/web/fonts
-COPY --from=web-build /var/www/web/js /var/www/web/js
+COPY --from=web-build /var/www/public/bundles /var/www/public/bundles
+COPY --from=web-build /var/www/public/css /var/www/public/css
+COPY --from=web-build /var/www/public/fonts /var/www/public/fonts
+COPY --from=web-build /var/www/public/js /var/www/public/js
 
 # User provided assets
-COPY --from=web-build /var/www/web/assets /var/www/web/assets
+COPY --from=web-build /var/www/public/assets /var/www/public/assets
 
 
 # In third stage build the resulting image

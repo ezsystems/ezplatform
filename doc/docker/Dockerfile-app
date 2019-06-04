@@ -20,11 +20,11 @@ RUN composer dump-autoload --optimize
 # Clear cache again so env variables are taken into account on startup
 RUN rm -Rf var/logs/* var/cache/*/*
 
-# Looks like we need to keep web/bundles ( like web/bundles/ezstudioui/js/views/ezs-landingpageview.js ) or else
+# Looks like we need to keep public/bundles ( like public/bundles/ezstudioui/js/views/ezs-landingpageview.js ) or else
 # urls like http://localhost:8080/_ezcombo?/bundles/ezstudioui/js/views/ezs-landingpageview.js&/tpl/handlebars/studiolandingpageconfigview-ez-template.js&/bundles/ezstudioui/js/views/ezs-landingpageconfigview.js&/tpl/handlebars/studiolayoutselectorview-ez-template.js&/bundles/ezstudioui/js/views/ezs-layoutselectorview.js&/tpl/handlebars/studiolandingpageconfigpopupformview-ez-template.js&/bundles/ezstudioui/js/views/forms/ezs-landingpageconfigpopupformview.js&/tpl/handlebars/landingpagecreatorview-ez-template.js&/bundles/ezsystemsformbuilder/js/models/fb-formfield-model.js&/bundles/ezsystemsformbuilder/js/lists/fb-formfields-modellist.js&/bundles/ezsystemsformbuilder/js/models/fb-formpage-model.js&/bundles/ezsystemsformbuilder/js/lists/fb-formpages-modellist.js&/bundles/ezsystemsformbuilder/js/models/fb-form-model.js&/tpl/handlebars/fbbasetabview-ez-template.js&/bundles/ezsystemsformbuilder/js/tabs/fb-base-tabview.js&/tpl/handlebars/fbpanelview-ez-template.js&/bundles/ezsystemsformbuilder/js/panels/fb-panelview.js
 # will not work when loading http://localhost:8080/ez
 # The other directories (except public/var) can be removed as they will be located in the web (nginx) image
-# web/var can be removed as will be mounted via vardir volume
+# public/var can be removed as will be mounted via vardir volume
 RUN rm -rf public/css public/fonts public/js public/var
 
 

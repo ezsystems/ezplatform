@@ -35,7 +35,7 @@ services:
      - backend
     volumes:
      - distribution:/var/www
-     - vardir:/var/www/web/var
+     - vardir:/var/www/public/var
 
   web:
     image: ${NGINX_IMAGE}
@@ -51,7 +51,7 @@ services:
      - TIMEOUT=190
     volumes:
      - distribution:/var/www:ro
-     - vardir:/var/www/web/var:ro
+     - vardir:/var/www/public/var:ro
     networks:
      - frontend
      - backend
@@ -63,7 +63,7 @@ services:
 
   dataset-vardir:
     volumes:
-     - vardir:/var/www/web/var:ro
+     - vardir:/var/www/public/var:ro
     networks:
      - backend
 
