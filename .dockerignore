@@ -35,20 +35,19 @@ app/bootstrap.php.cache
 var/bootstrap.php.cache
 #bin/*
 #!bin/console
-#!bin/symfony_requirements
 
 # Disabled as this is needed for dev setups unless we change dev to execute composer install automatically
 #vendor/
 
 # Assets and user uploads
-web/bundles/
-web/css/
-web/js/
-web/uploads/
-web/fonts/
+public/bundles/
+public/css/
+public/js/
+public/uploads/
+public/fonts/
 
 # Assets managed by Bower
-web/assets/vendor/
+public/assets/vendor/
 
 # PHPUnit
 app/phpunit.xml

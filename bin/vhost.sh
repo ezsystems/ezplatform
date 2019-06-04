@@ -201,7 +201,7 @@ if [ ! -f "$template_file" ] ; then
 fi
 
 if [[ "${template_values[0]}" == "" ]] ; then
-    if [ -d web/ ] ; then
+    if [ -d public/ ] ; then
         template_values[0]=`pwd`
     else
         show_help "--basedir=<path>" true
