@@ -94,3 +94,10 @@ framework:
     http_method_override: true
     templating:
         engines: [twig]
+    cache:
+        pools:
+            cache.array:
+                adapter: cache.adapter.array
+                default_lifetime: 3600
+                public: true
+                tags: true
