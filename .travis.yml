@@ -41,11 +41,6 @@ matrix:
       env: BEHAT_OPTS="--mode=behat --profile=repository-forms --tags=~@broken --non-strict"
     - name: "Admin UI on Clean Platform"
       env: BEHAT_OPTS="--profile=adminui --suite=adminui"
-    - name: "Admin UI on Clean Platform with Varnish and Redis"
-      env:
-        - COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/varnish.yml:doc/docker/redis.yml:doc/docker/selenium.yml"
-        - BEHAT_OPTS="--profile=adminui --suite=adminui"
-        - WEB_HOST="varnish"
 
 # reduce depth (history) of git checkout
 git:
