@@ -101,7 +101,7 @@ assetic:
     filters:
         cssrewrite: ~
         scssphp:
-            formatter: 'Leafo\ScssPhp\Formatter\Crunched'
+            formatter: 'ScssPhp\ScssPhp\Formatter\Crunched'
             import_paths: ['%kernel.project_dir%/web/']
 
 # Webpack Encore Configuration
