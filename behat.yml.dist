@@ -15,6 +15,7 @@ default:
                             args:
                                 - "--window-size=1440,1080"
                                 - "--no-sandbox"
+                                - "--w3c:false"
 
         Behat\Symfony2Extension:
             kernel:
