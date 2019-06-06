@@ -26,6 +26,7 @@ return [
     // eZ Platform
     eZ\Bundle\EzPublishCoreBundle\EzPublishCoreBundle::class => ['all' => true],
     eZ\Bundle\EzPublishLegacySearchEngineBundle\EzPublishLegacySearchEngineBundle::class => ['all' => true],
+    EzSystems\EzPlatformSolrSearchEngineBundle\EzSystemsEzPlatformSolrSearchEngineBundle::class => ['all' => true],
     eZ\Bundle\EzPublishIOBundle\EzPublishIOBundle::class => ['all' => true],
     EzSystems\EzPlatformRestBundle\EzPlatformRestBundle::class => ['all' => true],
     eZ\Bundle\EzPublishDebugBundle\EzPublishDebugBundle::class => ['dev' => true, 'test' => true, 'behat' => true],
