@@ -26,7 +26,7 @@ parameters:
     purge_type: local
 
     # Varnish invalidation/purge token (for use on platform.sh, eZ Platform Cloud and other places you can't use IP for ACL)
-#    varnish_invalidate_token: '%env(HTTPCACHE_VARNISH_INVALIDATE_TOKEN)%' # @todo option is not available for some reason
+    # varnish_invalidate_token: '%env(HTTPCACHE_VARNISH_INVALIDATE_TOKEN)%' # @todo option is not available for some reason
 
     ezpublish_rest.csrf_token_intention: authenticate
 
@@ -70,7 +70,7 @@ ezpublish:
             # HttpCache purge server(s) setting, eg Varnish, for when ezpublish.http_cache.purge_type is set to 'http'.
             http_cache:
                 purge_servers: ['%purge_server%']
-#                varnish_invalidate_token: '%varnish_invalidate_token%' # @todo enable ezplatform-http-cache first
+                # varnish_invalidate_token: '%varnish_invalidate_token%' # @todo enable ezplatform-http-cache first
 
         site:
             languages: [eng-GB]
