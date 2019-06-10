@@ -1,2 +1,0 @@
-#ezplatform_user:
-#  resource: '@EzPlatformUserBundle/Resources/config/routing.yml'
