@@ -18,9 +18,9 @@ default:
 
         Behat\Symfony2Extension:
             kernel:
-                bootstrap: vendor/autoload.php
-                path: app/AppKernel.php
-                class: AppKernel
+                bootstrap: config/bootstrap.php
+                path: src/Kernel.php
+                class: App\Kernel
                 env: behat
                 debug: false
 

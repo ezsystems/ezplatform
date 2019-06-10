@@ -21,6 +21,8 @@
 /app/config/parameters.yml
 /build/
 /phpunit.xml
+/.phpunit.result.cache
+/.rules
 /var/*
 !/var/cache
 /var/cache/*
@@ -36,12 +38,12 @@
 !var/encore/.gitkeep
 !var/SymfonyRequirements.php
 /vendor/
-/web/bundles/
-/web/assets/translations/*
-/web/assets/build/*
-!web/assets/build/.gitkeep
-/web/assets/ezplatform/build/*
-!/web/assets/ezplatform/build/.gitkeep
+/public/bundles/
+/public/assets/translations/*
+/public/assets/build/*
+!public/assets/build/.gitkeep
+/public/assets/ezplatform/build/*
+!/public/assets/ezplatform/build/.gitkeep
 /node_modules/
 
 .php~
@@ -55,17 +57,18 @@
 /doc/docker/entrypoint/*/*.sql
 /dfsdata
 
-/web/css/
-/web/js/
-web/fonts/
-/web/design
-/web/extension
-/web/share
-/web/var
-/web/.htaccess
+/public/css/
+/public/js/
+/public/fonts/
+/public/design
+/public/extension
+/public/share
+/public/var
+/public/.htaccess
 
 composer.phar
 composer.lock
+symfony.lock
 yarn.lock
 .buildpath
 .project
@@ -74,3 +77,40 @@ behat.yml
 .php_cs.cache
 auth.json
 ide-twig.json
+
+###> symfony/framework-bundle ###
+/.env.local
+/.env.local.php
+/.env.*.local
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+###> symfony/web-server-bundle ###
+/.web-server-pid
+###< symfony/web-server-bundle ###
+
+###> liip/imagine-bundle ###
+/public/media/cache/
+###< liip/imagine-bundle ###
+
+###> symfony/webpack-encore-bundle ###
+/node_modules/
+/public/build/
+npm-debug.log
+yarn-error.log
+###< symfony/webpack-encore-bundle ###
+
+###> behat/symfony2-extension ###
+behat.yml
+###< behat/symfony2-extension ###
+
+###> symfony/phpunit-bridge ###
+.phpunit
+/phpunit.xml
+###< symfony/phpunit-bridge ###
+
+###> phpunit/phpunit ###
+/phpunit.xml
+.phpunit.result.cache
+###< phpunit/phpunit ###

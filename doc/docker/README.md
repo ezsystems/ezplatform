@@ -57,7 +57,7 @@ However below environment variable `COMPOSE_FILE` is used instead since this is 
 ### Demo "image" use
 
 Using this approach, everything will run in containers and volumes. This means that if you for instance upload a image
-using the eZ Platform backend, that image will land in a volume, not somewhere below web/var/ in your project directory.
+using the eZ Platform backend, that image will land in a volume, not somewhere below public/var/ in your project directory.
 
 From root of your projects clone of this distribution, [setup composer auth.json](#composer) and execute the following:
 ```sh
@@ -71,7 +71,7 @@ docker-compose -f doc/docker/install-dependencies.yml -f doc/docker/install-data
 
 # Optionally, build dbdump and vardir images.
 # The dbdump image is created based on doc/docker/entrypoint/mysql/2_dump.sql which is created by above command
-# The vardir image is created based on the content of web/var
+# The vardir image is created based on the content of public/var
 # If you don't build these image explicitly, they will automaticly be builded later when running `docker-compose up`
 docker-compose build dataset-vardir dataset-dbdump
 
@@ -138,7 +138,7 @@ docker-compose exec --user www-data app composer ezplatform-install
 If you want to use the DFS cluster handler, you'll need to run the migration script manually, after starting the
 containers ( run `docker-compose up -d --force-create` first).
 
-The migration script will copy the binary files in web/var to the nfs mount point ( ./dfsdata ) and add the files'
+The migration script will copy the binary files in public/var to the nfs mount point ( ./dfsdata ) and add the files'
 metadata to the database. If your are going to run eZ Platform in a cluster you must then ensure ./dfsdata  is a mounted
 nfs share on every node/app container.
 
@@ -151,7 +151,7 @@ php app/console ezplatform:io:migrate-files --from=default,default --to=dfs,nfs 
 
 ```
 
-Once this is done, you may delete web/var/* if you don't intendt to run the migration scripts ever again.
+Once this is done, you may delete public/var/* if you don't intendt to run the migration scripts ever again.
 
 ### Production use
 
@@ -180,7 +180,7 @@ docker-compose -f doc/docker/base-prod.yml build --no-cache app web
 docker-compose -f doc/docker/base-prod.yml -f doc/docker/varnish.yml build --no-cache varnish
 
 # Create dataset images ( my-ez-app-dataset-dbdump and my-ez-app-dataset-vardir )
-# The dataset images contains a dump of the database and a dump of the var/ files ( located in web/var )
+# The dataset images contains a dump of the database and a dump of the var/ files ( located in public/var )
 docker-compose -f doc/docker/create-dataset.yml build --no-cache
 
 # Tag the images

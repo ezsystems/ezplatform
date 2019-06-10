@@ -1,1 +1,1 @@
-rewrite "^/var/([^/]+/)?storage/images(-versioned)?/(.*)" "/app.php" break;
+rewrite "^/var/([^/]+/)?storage/images(-versioned)?/(.*)" "/index.php" break;

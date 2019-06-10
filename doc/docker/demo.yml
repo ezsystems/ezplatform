@@ -4,17 +4,17 @@ version: '3.3'
 services:
   app:
     volumes:
-     - vardir:/var/www/web/var
+     - vardir:/var/www/public/var
     depends_on:
      - dataset-vardir
 
   web:
     volumes:
-     - vardir:/var/www/web/var:ro
+     - vardir:/var/www/public/var:ro
 
   dataset-vardir:
     volumes:
-     - vardir:/var/www/web/var:ro
+     - vardir:/var/www/public/var:ro
     networks:
      - backend
 

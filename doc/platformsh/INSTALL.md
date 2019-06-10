@@ -39,10 +39,10 @@ This requires more manual steps, but may be more up to date with current develop
       `git commit --allow-empty -m'rebuild' && git push`  
       This will take a while, as it runs the full composer install.
 
-> **NB:** If you have installed eZ Platform or the Enterprise Edition on this Platform.sh instance before, you may need to remove the web/var/.platform.installed file to ensure the installation is performed in the deploy stage.
+> **NB:** If you have installed eZ Platform or the Enterprise Edition on this Platform.sh instance before, you may need to remove the public/var/.platform.installed file to ensure the installation is performed in the deploy stage.
 >
 > The symptom for this is when, in the backend, you go to Content -> Form Manager and get an error message, or when the "My Drafts Scheduled for Future Publication" and "All Drafts Scheduled for Future Publication" sections on "My Dashboard" will not load.
 >
 > To do this, go to the Platform.sh web interface -> "Access site" and copy the "SSH access" command. Then, run the SSH command from a terminal, and:
-> `rm web/var/.platform.installed`
+> `rm public/var/.platform.installed`
 > The next time you trigger a rebuild (see above), the full install will run.

@@ -1,7 +1,7 @@
 dist: trusty
 language: php
 php:
-  - 7.1
+  - 7.3
 
 services:
   - docker
@@ -9,8 +9,9 @@ services:
 env:
   global:
     - COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/selenium.yml"
-    - SYMFONY_ENV=behat
-    - SYMFONY_DEBUG=1
+    - APP_ENV=behat
+    - APP_DEBUG=1
+    - COMPOSER_MEMORY_LIMIT=4G
 
 cache:
   yarn: true
@@ -40,11 +41,6 @@ matrix:
       env: BEHAT_OPTS="--mode=behat --profile=repository-forms --tags=~@broken --non-strict"
     - name: "Admin UI on Clean Platform"
       env: BEHAT_OPTS="--profile=adminui --suite=adminui"
-    - name: "Admin UI on Clean Platform with Varnish and Redis"
-      env:
-        - COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/varnish.yml:doc/docker/redis.yml:doc/docker/selenium.yml"
-        - BEHAT_OPTS="--profile=adminui --suite=adminui"
-        - WEB_HOST="varnish"
 
 # reduce depth (history) of git checkout
 git:

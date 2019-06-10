@@ -6,7 +6,7 @@ const eZConfig = getEzConfig(Encore);
 const customConfigs = require('./ez.webpack.custom.configs.js');
 
 Encore.reset();
-Encore.setOutputPath('web/assets/build')
+Encore.setOutputPath('public/assets/build')
     .setPublicPath('/assets/build')
     .enableSassLoader()
     .enableReactPreset()

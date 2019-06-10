@@ -1,0 +1,8 @@
+jms_translation:
+    configs:
+        admin_modules:
+            dirs:
+                - '%kernel.root_dir%/../vendor/ezsystems/ezplatform-admin-ui-modules/src'
+            output_dir: '%kernel.root_dir%/../vendor/ezsystems/ezplatform-admin-ui-modules/Resources/translations/'
+            excluded_dirs: [Behat, Tests, node_modules]
+            output_format: "xliff"

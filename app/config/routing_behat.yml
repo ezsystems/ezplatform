@@ -1,5 +1,0 @@
-_main:
-    resource: routing_dev.yml
-
-_ezplatform_behat:
-    resource: '@eZBehatBundle/Resources/config/routing.yml'

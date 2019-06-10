@@ -1,0 +1,22 @@
+# Siteaccesses are first added in ../ezplatform.yaml.
+# Only merge additional siteaccesses here.
+
+ezpublish:
+    siteaccess:
+        list:
+            - other_site
+        groups:
+            site_group:
+                - other_site
+        default_siteaccess: site
+        match:
+            URIElement: 1
+ezdesign:
+    phpstorm:
+        enabled: false
+
+ez_platform_standard_design:
+    override_kernel_templates: false
+
+parameters:
+    ezsettings.default.notifications.success.timeout: 10000

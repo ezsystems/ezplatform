@@ -8,8 +8,8 @@ version: '3.3'
 services:
   app:
     environment:
-     - SYMFONY_HTTP_CACHE=0
-     - SYMFONY_TRUSTED_PROXIES=varnish
+     - APP_HTTP_CACHE=0
+     - APP_TRUSTED_PROXIES=varnish
      - HTTPCACHE_PURGE_SERVER=http://varnish
      - HTTPCACHE_PURGE_TYPE=http
 

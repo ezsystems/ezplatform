@@ -43,9 +43,9 @@ services:
     command: >
       /bin/sh -c "
       if [ ! -e /nfs/vardirs/$${DATASET_VARDIR} ]; then
-        echo Copying files from /var/www/web/var to /nfs/vardirs/$${DATASET_VARDIR};
+        echo Copying files from /var/www/public/var to /nfs/vardirs/$${DATASET_VARDIR};
         mkdir /nfs/vardirs/$${DATASET_VARDIR} && \
-        time cp -a /var/www/web/var/ /nfs/vardirs/$${DATASET_VARDIR};
+        time cp -a /var/www/public/var/ /nfs/vardirs/$${DATASET_VARDIR};
       else
         echo Aborted, /nfs/vardirs/$${DATASET_VARDIR} already exists;
         exit 2;

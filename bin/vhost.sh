@@ -9,10 +9,10 @@ declare -a option_vars=(
     %PORT%
     %HOST_NAME%
     %HOST_ALIAS%
-    %SYMFONY_ENV%
-    %SYMFONY_DEBUG%
-    %SYMFONY_HTTP_CACHE%
-    %SYMFONY_TRUSTED_PROXIES%
+    %APP_ENV%
+    %APP_DEBUG%
+    %APP_HTTP_CACHE%
+    %APP_TRUSTED_PROXIES%
     %BODY_SIZE_LIMIT%
     %TIMEOUT%
     %FASTCGI_PASS%
@@ -201,7 +201,7 @@ if [ ! -f "$template_file" ] ; then
 fi
 
 if [[ "${template_values[0]}" == "" ]] ; then
-    if [ -d web/ ] ; then
+    if [ -d public/ ] ; then
         template_values[0]=`pwd`
     else
         show_help "--basedir=<path>" true
