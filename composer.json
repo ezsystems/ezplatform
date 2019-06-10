@@ -112,6 +112,10 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
+        ],
+        "ezplatform-install": [
+            "@php bin/console ezplatform:install clean",
+            "@auto-scripts"
         ]
     },
     "config": {
