@@ -21,6 +21,8 @@
 /app/config/parameters.yml
 /build/
 /phpunit.xml
+/.phpunit.result.cache
+/.rules
 /var/*
 !/var/cache
 /var/cache/*
