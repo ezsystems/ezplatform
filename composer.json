@@ -67,7 +67,7 @@
         "behat/symfony2-extension": "^2.1",
         "bex/behat-screenshot": "^1.2",
         "ezsystems/behat-screenshot-image-driver-cloudinary": "^1.1@dev",
-        "ezsystems/behatbundle": "dev-symfony4 as 7.0.x-dev",
+        "ezsystems/behatbundle": "^7.0@dev",
         "liuggio/fastest": "^1.6",
         "symfony/debug-pack": "^1.0",
         "symfony/maker-bundle": "^1.0",
