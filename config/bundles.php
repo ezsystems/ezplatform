@@ -31,6 +31,7 @@ return [
     EzSystems\EzPlatformRestBundle\EzPlatformRestBundle::class => ['all' => true],
     eZ\Bundle\EzPublishDebugBundle\EzPublishDebugBundle::class => ['dev' => true, 'test' => true, 'behat' => true],
     EzSystems\EzSupportToolsBundle\EzSystemsEzSupportToolsBundle::class => ['all' => true],
+    EzSystems\EzPlatformCronBundle\EzPlatformCronBundle::class => ['all' => true],
     EzSystems\PlatformInstallerBundle\EzSystemsPlatformInstallerBundle::class => ['all' => true],
     EzSystems\DoctrineSchemaBundle\DoctrineSchemaBundle::class => ['all' => true],
     EzSystems\RepositoryFormsBundle\EzSystemsRepositoryFormsBundle::class => ['all' => true],
