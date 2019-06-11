@@ -19,7 +19,7 @@
     # Enabled for Dev environment
     #LogLevel debug
 
-    # "web" folder is what we expose to the world, all rewrite rules further down is relative to it.
+    # "public" folder is what we expose to the world, all rewrite rules further down is relative to it.
     <Directory %BASEDIR%/public>
         <FilesMatch \.php$>
             # For serving php files configure mod_proxy to talk to php-fpm using Apache 2.4.10 and higher.
@@ -40,8 +40,8 @@
         Require all granted
     </Directory>
 
-    ## eZ Platform/Symfony ENVIRONMENT variables, for customizing app.php* execution
-    # * Only APP_ENV and APP_DEBUG supported by console command, rest are eZ Platform features in app.php.
+    ## eZ Platform/Symfony ENVIRONMENT variables, for customizing index.php* execution
+    # * Only APP_ENV and APP_DEBUG supported by console command, rest are eZ Platform features in index.php.
 
     # Environment.
     # Possible values: "prod" and "dev" out-of-the-box, other values possible with proper configuration
@@ -81,11 +81,11 @@
 
         # Cluster/streamed files rewrite rules. Enable on cluster with DFS as a binary data handler
         RewriteCond %{ENV:BINARY_DATA_HANDLER} "dfs"
-        RewriteRule ^/var/([^/]+/)?storage/images(-versioned)?/.* /app.php [L]
+        RewriteRule ^/var/([^/]+/)?storage/images(-versioned)?/.* /index.php [L]
 
         RewriteRule ^/var/([^/]+/)?storage/images(-versioned)?/.* - [L]
 
-        # Makes it possible to placed your favicon and robots.txt at the root of your web folder
+        # Makes it possible to placed your favicon and robots.txt at the root of your public folder
         RewriteRule ^/favicon\.ico - [L]
         RewriteRule ^/robots\.txt - [L]
 
@@ -98,7 +98,7 @@
         RewriteCond %{ENV:APP_ENV} !^(dev)
         RewriteRule ^/(css|js|fonts?)/.*\.(css|js|otf|eot|ttf|svg|woff) - [L]
 
-        # Prevent access to website with direct usage of app.php in URL
+        # Prevent access to website with direct usage of index.php in URL
         RewriteRule ^/(.+/)?index\.php - [R=404,L]
 
         RewriteRule .* /index.php
