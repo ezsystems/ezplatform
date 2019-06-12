@@ -16,6 +16,7 @@
         "php": "^7.3",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "ezsystems/ezplatform-cron": "^3.0@dev",
         "ezsystems/doctrine-dbal-schema": "^1.0@dev",
         "ezsystems/ez-support-tools": "^2.0@dev",
         "ezsystems/ezplatform-admin-ui": "^2.0@dev",
