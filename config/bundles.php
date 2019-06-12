@@ -43,5 +43,6 @@ return [
     EzSystems\EzPlatformAdminUiModulesBundle\EzPlatformAdminUiModulesBundle::class => ['all' => true],
     EzSystems\EzPlatformAdminUiAssetsBundle\EzPlatformAdminUiAssetsBundle::class => ['all' => true],
     EzSystems\EzPlatformEncoreBundle\EzSystemsEzPlatformEncoreBundle::class => ['all' => true],
+    EzSystems\EzPlatformMatrixFieldtypeBundle\EzPlatformMatrixFieldtypeBundle::class => ['all' => true],
     EzSystems\BehatBundle\EzSystemsBehatBundle::class => ['behat' => true]
 ];
