@@ -5,17 +5,23 @@ default:
         Behat\MinkExtension:
             base_url: 'http://localhost'
             goutte: ~
-            javascript_session: selenium2
-            selenium2:
-                browser: chrome
-                wd_host: 'http://localhost:4444/wd/hub'
-                capabilities:
-                    extra_capabilities:
-                        chromeOptions:
-                            args:
-                                - "--window-size=1440,1080"
-                                - "--no-sandbox"
+            javascript_session: selenium
+            sessions:
+                selenium:
+                    selenium2:
+                        browser: chrome
+                        wd_host: 'http://localhost:4444/wd/hub'
+                        capabilities:
+                            extra_capabilities:
+                                chromeOptions:
+                                    args:
+                                        - "--window-size=1440,1080"
+                                        - "--no-sandbox"
+                chrome:
+                    chrome:
+                        api_url: "http://0.0.0.0:9222"
 
+        DMore\ChromeExtension\Behat\ServiceContainer\ChromeExtension: ~
         Behat\Symfony2Extension:
             kernel:
                 bootstrap: config/bootstrap.php
