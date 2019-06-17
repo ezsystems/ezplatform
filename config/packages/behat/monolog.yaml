@@ -1,0 +1,6 @@
+monolog:
+    handlers:
+        travis:
+            type: stream
+            path: "%kernel.logs_dir%/travis_test.log"
+            level: error
