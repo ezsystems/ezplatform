@@ -41,7 +41,7 @@ The current Docker Compose files are made to be mixed and matched together for Q
 - varnish.yml _(optional, adds varnish service and appends config to app)_
 - solr.yml _(optional, add solr service and configure app for it)_
 - selenium.yml _(optional, always needs to be last, adds selenium service and appends config to app)_
-- chromium.yml _(alternative to `selenium.yml`, add headless Chrome service, same applies here if used. Experimental)_
+- chromium.yml _(alternative to `selenium.yml`, adds headless Chrome service, same applies here if used. Experimental)_
 
 
 These can be used with `-f` argument on docker-compose, like:
