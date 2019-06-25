@@ -19,7 +19,7 @@
     # Enabled for Dev environment
     #LogLevel debug
 
-    # "public" folder is what we expose to the world, all rewrite rules further down is relative to it.
+    # "public" folder is what we expose to the world, all rewrite rules further down are relative to it.
     <Directory %BASEDIR%/public>
         <FilesMatch \.php$>
             # For serving php files configure mod_proxy to talk to php-fpm using Apache 2.4.10 and higher.
