@@ -25,7 +25,7 @@ This example is simplified to get you up and running, see [Virtual host template
    - [listen](http://nginx.org/en/docs/http/ngx_http_core_module.html#listen): IP and port number to listen to.
    - [server_name](http://nginx.org/en/docs/http/ngx_http_core_module.html#server_name): Host list, example `ez.no *.ez.no`
     - Or for local dev for instance `ezinstall.localhost`, with corresponding entry in your [hosts file](https://en.wikipedia.org/wiki/Hosts_file).
-   - [root](http://nginx.org/en/docs/http/ngx_http_core_module.html#root): Point this to `web` directory of your eZ installation.
+   - [root](http://nginx.org/en/docs/http/ngx_http_core_module.html#root): Point this to `public` directory of your eZ installation.
    - [fastcgi_pass](http://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_pass): Socket or TCP address of `php-fpm`.
 2. Copy `ez_params.d` directory to folder to you nginx config folder, for examples:
    - Debian/Ubuntu: `sudo cp -R doc/nginx/ez_params.d /etc/nginx/`
@@ -39,7 +39,7 @@ Example config:
         # Further documentation: http://nginx.org/en/docs/http/server_names.html
         server_name  localhost;
 
-        root /var/www/ezinstall/web;
+        root /var/www/ezinstall/public;
 
         # Additional Assetic rules for environments different from dev,
         # remember to run php bin/console assetic:dump --env=prod

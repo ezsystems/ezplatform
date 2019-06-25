@@ -31,7 +31,7 @@ These examples are simplified to get you up and running, see [Virtual host templ
    - [ServerName](https://httpd.apache.org/docs/2.4/en/mod/core.html#servername): Your host name, example `ez.no`.
     - Or for local dev for instance `ezinstall.localhost`, with corresponding entry in your [hosts file](https://en.wikipedia.org/wiki/Hosts_file).
    - [ServerAlias](https://httpd.apache.org/docs/2.4/en/mod/core.html#serveralias): Optional host alias list, example `www.ez.no login.ez.no`, or `*.ez.no`.
-   - [DocumentRoot](https://httpd.apache.org/docs/2.4/en/mod/core.html#documentroot): Point this and *Directory* to `web` directory of eZ installation.
+   - [DocumentRoot](https://httpd.apache.org/docs/2.4/en/mod/core.html#documentroot): Point this and *Directory* to `public` directory of eZ installation.
    - If you can't install `mod_setenvif`, adjust the "Environment" section like described inline.
 3. Restart Apache, as follows:
    - Debian/Ubuntu: `sudo service apache2 restart`
@@ -42,14 +42,14 @@ Example config for Apache 2.4 in prefork mode:
     <VirtualHost *:80>
         ServerName localhost
         #ServerAlias *.localhost
-        DocumentRoot /var/www/ezinstall/web
-        DirectoryIndex app.php
+        DocumentRoot %BASEDIR%/public
+        DirectoryIndex index.php
 
         # Set default timeout to 90s, and max upload to 48mb
         TimeOut 90
         LimitRequestBody 50331648
 
-        <Directory /var/www/ezinstall/web>
+        <Directory %BASEDIR%/public>
             Options FollowSymLinks
             AllowOverride None
             # Depending on your global Apache settings, you may need to comment this:
@@ -74,7 +74,7 @@ Example config for Apache 2.4 in prefork mode:
         # Access to repository images in single server setup
         RewriteRule ^/var/([^/]+/)?storage/images(-versioned)?/.* - [L]
 
-        # Makes it possible to placed your favicon and robots.txt at the root of your web folder
+        # Makes it possible to place your favicon and robots.txt at the root of your public folder
         RewriteRule ^/favicon\.ico - [L]
         RewriteRule ^/robots\.txt - [L]
 
@@ -87,22 +87,22 @@ Example config for Apache 2.4 in prefork mode:
         RewriteCond %{ENV:SYMFONY_ENV} !^(dev)
         RewriteRule ^/(css|js|fonts?)/.*\.(css|js|otf|eot|ttf|svg|woff) - [L]
 
-        RewriteRule .* /app.php
+        RewriteRule .* /index.php
     </VirtualHost>
 
 
 #### .htaccess
 
-If you do not have an access to use virtualhost config, use the `.htaccess` file in a simplified form. It must be placed in the  `web/` folder to make it running. *This will not work if Apache is configured with the `AllowOverride None` for this directory.*
+If you do not have an access to use virtualhost config, use the `.htaccess` file in a simplified form. It must be placed in the `public/` folder to make it running. *This will not work if Apache is configured with the `AllowOverride None` for this directory.*
 
-    DirectoryIndex app.php
+    DirectoryIndex index.php
 
     # Set default timeout to 90s, and max upload to 48mb
     TimeOut 90
     LimitRequestBody 50331648
 
-    # Disabling MultiViews prevents unwanted negotiation, e.g. "/app" should not resolve
-    # to the front controller "/app.php" but be rewritten to "/app.php/app".
+    # Disabling MultiViews prevents unwanted negotiation, e.g. "/index" should not resolve
+    # to the front controller "/index.php" but be rewritten to "/index.php/index".
     <IfModule mod_negotiation.c>
         Options -MultiViews
     </IfModule>
@@ -122,7 +122,7 @@ If you do not have an access to use virtualhost config, use the `.htaccess` file
     # Disable .php(3) and other executable extensions in the var directory
     RewriteRule ^var/.*(?i)\.(php3?|phar|phtml|sh|exe|pl|bin)$ - [F]
 
-    # Makes it possible to placed your favicon and robots.txt at the root of your web folder
+    # Makes it possible to place your favicon and robots.txt at the root of your public folder
     RewriteRule ^favicon\.ico - [L]
     RewriteRule ^robots\.txt - [L]
 
@@ -138,7 +138,7 @@ If you do not have an access to use virtualhost config, use the `.htaccess` file
     RewriteRule ^(css|js|fonts?)/.*\.(css|js|otf|eot|ttf|svg|woff) - [L]
 
     # Rewrite all other queries to the front controller.
-    RewriteRule .* app.php
+    RewriteRule .* index.php
 
 
 Virtual host template
