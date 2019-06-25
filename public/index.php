@@ -44,8 +44,7 @@ if (($useHttpCache = getenv('APP_HTTP_CACHE')) === false || $useHttpCache === ''
 
 // Load internal HTTP Cache, aka Symfony Proxy, if enabled
 if ($useHttpCache) {
-    // @todo uncomment once HttpCache is working back again
-//    $kernel = new CacheKernel($kernel);
+    $kernel = new CacheKernel($kernel);
 
     // Needed when using Synfony proxy, see: http://symfony.com/doc/3.4/reference/configuration/framework.html#http-method-override
     Request::enableHttpMethodParameterOverride();
