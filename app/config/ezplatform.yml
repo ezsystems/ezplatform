@@ -60,6 +60,9 @@ ezpublish:
                     - 5 # Users
                     - 43 # Media
                     - 48 # Setup
+            subtree_paths:
+                content: /1/2/
+                media: /1/43/
 
         site:
             languages: [eng-GB]
