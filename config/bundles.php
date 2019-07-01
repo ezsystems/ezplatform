@@ -23,6 +23,7 @@ return [
     Bazinga\Bundle\JsTranslationBundle\BazingaJsTranslationBundle::class => ['all' => true],
     Knp\Bundle\MenuBundle\KnpMenuBundle::class => ['all' => true],
     WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle::class => ['all' => true],
+    FOS\HttpCacheBundle\FOSHttpCacheBundle::class => ['all' => true],
     // eZ Platform
     eZ\Bundle\EzPublishCoreBundle\EzPublishCoreBundle::class => ['all' => true],
     eZ\Bundle\EzPublishLegacySearchEngineBundle\EzPublishLegacySearchEngineBundle::class => ['all' => true],
@@ -44,5 +45,6 @@ return [
     EzSystems\EzPlatformAdminUiAssetsBundle\EzPlatformAdminUiAssetsBundle::class => ['all' => true],
     EzSystems\EzPlatformEncoreBundle\EzSystemsEzPlatformEncoreBundle::class => ['all' => true],
     EzSystems\EzPlatformMatrixFieldtypeBundle\EzPlatformMatrixFieldtypeBundle::class => ['all' => true],
-    EzSystems\BehatBundle\EzSystemsBehatBundle::class => ['behat' => true]
+    EzSystems\BehatBundle\EzSystemsBehatBundle::class => ['behat' => true],
+    EzSystems\PlatformHttpCacheBundle\EzSystemsPlatformHttpCacheBundle::class => ['all' => true],
 ];

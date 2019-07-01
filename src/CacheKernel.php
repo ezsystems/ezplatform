@@ -2,7 +2,7 @@
 
 namespace App;
 
-use EzSystems\PlatformHttpezCacheBundle\AppCache as PlatformHttpCacheBundleAppCache;
+use EzSystems\PlatformHttpCacheBundle\AppCache as PlatformHttpCacheBundleAppCache;
 
 /**
  * For easier upgrade do not change this file, prefer to adapt public/index.php instead.
