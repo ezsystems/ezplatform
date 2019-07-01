@@ -83,6 +83,8 @@ framework:
     translator: { fallback: '%locale_fallback%' }
     validation: { enable_annotations: true }
     default_locale: '%locale_fallback%'
+    esi: true
+    fragments: true
     session:
         # https://symfony.com/doc/current/reference/configuration/framework.html#handler-id
         # if handler_id set to null will use default session handler from php.ini
