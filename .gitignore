@@ -45,7 +45,6 @@
 /node_modules/
 /bin/*
 !bin/console
-!bin/symfony_requirements
 !bin/vhost.sh
 
 .php~
@@ -78,5 +77,3 @@ behat.yml
 .php_cs.cache
 auth.json
 ide-twig.json
-/nbproject/
-/.idea/
