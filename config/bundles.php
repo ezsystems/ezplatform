@@ -48,4 +48,7 @@ return [
     EzSystems\BehatBundle\EzSystemsBehatBundle::class => ['behat' => true],
     EzSystems\PlatformHttpCacheBundle\EzSystemsPlatformHttpCacheBundle::class => ['all' => true],
     Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle::class => ['all' => true],
+    EzSystems\EzPlatformGraphQL\EzSystemsEzPlatformGraphQLBundle::class => ['all' => true],
+    Overblog\GraphQLBundle\OverblogGraphQLBundle::class => ['all' => true],
+    Overblog\GraphiQLBundle\OverblogGraphiQLBundle::class => ['dev' => true],
 ];
