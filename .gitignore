@@ -36,7 +36,6 @@
 !/var/encore
 /var/encore/*
 !var/encore/.gitkeep
-!var/SymfonyRequirements.php
 /vendor/
 /public/bundles/
 /public/assets/translations/*
@@ -45,6 +44,11 @@
 /public/assets/ezplatform/build/*
 !/public/assets/ezplatform/build/.gitkeep
 /node_modules/
+/bin/*
+!bin/.ci/
+!bin/.travis/
+!bin/console
+!bin/vhost.sh
 
 .php~
 
