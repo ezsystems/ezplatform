@@ -41,6 +41,7 @@ The current Docker Compose files are made to be mixed and matched together for Q
 - varnish.yml _(optional, adds varnish service and appends config to app)_
 - solr.yml _(optional, add solr service and configure app for it)_
 - selenium.yml _(optional, always needs to be last, adds selenium service and appends config to app)_
+- chromium.yml _(alternative to `selenium.yml`, adds headless Chrome service, same applies here if used. Experimental)_
 
 
 These can be used with `-f` argument on docker-compose, like:
@@ -132,6 +133,12 @@ docker-compose exec --user www-data app sh -c "php /scripts/wait_for_db.php; php
 ```
 docker-compose exec --user www-data app composer ezplatform-install
 ```
+
+Note: if you want to use the Chromium driver, use 
+```
+export COMPOSE_FILE=doc/docker/base-prod.yml:doc/docker/chromium.yml
+```
+This driver is not fully supported in our test suite and is in experimental state.
 
 ### DFS
 

@@ -1,0 +1,20 @@
+version: '3.3'
+# Appends services to prod.yml, prod+dev, prod+redis, ..., always latest
+
+services:
+  chromium:
+    image: ${CHROMIUM_IMAGE}
+    ports:
+     - "9222:9222"
+    networks:
+     - backend
+    command: tail -f /dev/null
+
+  app:
+    depends_on:
+     - chromium
+    environment:
+     - EZP_TEST_REST_HOST=$WEB_HOST
+     - BEHAT_CHROMIUM_HOST=$CHROMIUM_HOST
+     - BEHAT_WEB_HOST=$WEB_HOST
+     - MINK_DEFAULT_SESSION=chrome
