@@ -74,6 +74,9 @@ ezpublish:
 
         site:
             languages: [eng-GB]
+        admin_group:
+            pagination:
+                user_settings_limit: 10
 
     url_alias:
         slug_converter:
