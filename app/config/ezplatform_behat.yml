@@ -19,4 +19,4 @@ ez_platform_standard_design:
     override_kernel_templates: false
 
 parameters:
-    ezsettings.default.notifications.success.timeout: 10000
+    ezsettings.default.notifications.success.timeout: 20000
