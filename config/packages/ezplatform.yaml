@@ -5,10 +5,10 @@ parameters:
     search_engine: '%env(SEARCH_ENGINE)%'
 
     ## Session handler, by default set to file based (instead of ~) in order to be able to use %ezplatform.session.save_path%
-    ezplatform.session.handler_id: '%env(SESSION_HANDLER_ID)%'
+    ezplatform.session.handler_id: session.handler.native_file
 
     # Session save path as used by symfony session handlers (eg. used for dsn with redis)
-    ezplatform.session.save_path: '%env(SESSION_SAVE_PATH)%'
+    ezplatform.session.save_path: '%kernel.project_dir%/var/sessions/%kernel.environment%'
 
     # Settings for Cache pool, to change add own cache service and optionally inject own arguments
     # predefined pools: see symfony config and the optional pools in app/config/cache_pool/
