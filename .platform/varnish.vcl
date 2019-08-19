@@ -135,12 +135,11 @@ sub vcl_backend_response {
     if (beresp.http.Content-Type ~ "application/javascript"
         || beresp.http.Content-Type ~ "application/json"
         || beresp.http.Content-Type ~ "application/vnd.ms-fontobject"
+        || beresp.http.Content-Type ~ "application/vnd.ez.api"
         || beresp.http.Content-Type ~ "application/x-font-ttf"
         || beresp.http.Content-Type ~ "image/svg+xml"
         || beresp.http.Content-Type ~ "text/css"
-        || beresp.http.Content-Type ~ "text/html"
         || beresp.http.Content-Type ~ "text/plain"
-        || beresp.http.Content-Type ~ "text/xml"
     ) {
         set beresp.do_gzip = true;
     }
