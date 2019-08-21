@@ -71,7 +71,7 @@
         "behat/symfony2-extension": "^2.1.5",
         "bex/behat-screenshot": "^1.2.7",
         "ezsystems/behat-screenshot-image-driver-cloudinary": "^1.1.0@dev",
-        "ezsystems/behatbundle": "^6.5.4@dev",
+        "ezsystems/behatbundle": "^7.0.0@dev",
         "overblog/graphiql-bundle": "^0.1.2",
         "phpunit/phpunit": "^6.5.13",
         "sensio/generator-bundle": "^3.1.7",
