@@ -30,6 +30,10 @@ web:
             passthru: "/app.php"
             # The number of seconds whitelisted (static) content should be cache
             expires: 600
+            rules:
+                # Disable .php(3) and other executable extensions in the var directory
+                '^/var/.*(?i)\.(php3?|phar|phtml|sh|exe|pl|bin)$':
+                    allow: false
 
 # The size of the persistent disk of the application (in MB).
 disk: 2048
