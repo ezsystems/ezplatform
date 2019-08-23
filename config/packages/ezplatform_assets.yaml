@@ -1,5 +1,4 @@
 webpack_encore:
-    output_path: "%kernel.project_dir%/public/assets/build"
     builds:
         ezplatform: "%kernel.project_dir%/public/assets/ezplatform/build"
 
