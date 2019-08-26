@@ -51,6 +51,11 @@ matrix:
         - COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/varnish.yml:doc/docker/redis.yml:doc/docker/selenium.yml"
         - BEHAT_OPTS="--profile=adminui --suite=adminui"
         - WEB_HOST="varnish"
+    - if: type in (cron, api)
+      name: "Admin UI tests using different personas"
+      env:
+        - SETUP_BEHAT_OPTS="--profile=setup --suite=personas --tags=@setup"
+        - BEHAT_OPTS="--profile=adminui --suite=personas"
 
 # reduce depth (history) of git checkout
 git:
@@ -84,6 +89,7 @@ install:
 before_script:
   # Execute Symfony command if injected into test matrix
   - if [ "${SYMFONY_CMD}" != "" ] ; then docker-compose exec --user www-data app sh -c "bin/console ${SYMFONY_CMD}" ; fi
+  - if [ "${SETUP_BEHAT_OPTS}" != "" ] ; then cd "$HOME/build/ezplatform"; docker-compose exec --user www-data app sh -c "bin/ezbehat $SETUP_BEHAT_OPTS" ; fi
   #- docker ps
   #- docker-compose logs
 
