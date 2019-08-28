@@ -19,23 +19,6 @@ $routes = getenv('PLATFORM_ROUTES');
 $relationships = json_decode(base64_decode($relationships), true);
 $routes = json_decode(base64_decode($routes), true);
 
-foreach ($relationships['database'] as $endpoint) {
-    if (empty($endpoint['query']['is_master'])) {
-        continue;
-    }
-
-    $container->setParameter('database_driver', 'pdo_' . $endpoint['scheme']);
-    $container->setParameter('database_host', $endpoint['host']);
-    $container->setParameter('database_port', $endpoint['port']);
-    $container->setParameter('database_name', $endpoint['path']);
-    $container->setParameter('database_user', $endpoint['username']);
-    $container->setParameter('database_password', $endpoint['password']);
-
-    // 'cluster_database_name' is deprecated in eZ Platform 1.13.1/2.1
-    // Cluster DB name is hardcoded. It will have no any effect if cluster is disabled
-    $container->setParameter('cluster_database_name', 'cluster');
-}
-
 // PLATFORMSH_DFS_NFS_PATH is different compared to DFS_NFS_PATH in the sense that it is relative to ezplatform dir
 // DFS_NFS_PATH is an absolute path
 if ($dfsNfsPath = getenv('PLATFORMSH_DFS_NFS_PATH')) {
@@ -64,8 +47,8 @@ if ($dfsNfsPath = getenv('PLATFORMSH_DFS_NFS_PATH')) {
         $container->setParameter('dfs_database_password', $container->getParameter('database_password'));
     }
 
-    $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../dfs'));
-    $loader->load('dfs.yml');
+    $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/dfs'));
+    $loader->load('dfs.yaml');
 }
 // Use Redis-based caching if possible.
 if (isset($relationships['rediscache'])) {
@@ -77,8 +60,8 @@ if (isset($relationships['rediscache'])) {
         $container->setParameter('cache_pool', 'cache.redis');
         $container->setParameter('cache_dsn', sprintf('%s:%d', $endpoint['host'], $endpoint['port']) . '?retry_interval=3');
 
-        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../cache_pool'));
-        $loader->load('cache.redis.yml');
+        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/cache_pool'));
+        $loader->load('cache.redis.yaml');
     }
 } elseif (isset($relationships['cache'])) {
     // Fallback to memcached if here (deprecated, we will only handle redis here in the future)
@@ -92,8 +75,8 @@ if (isset($relationships['rediscache'])) {
         $container->setParameter('cache_pool', 'cache.memcached');
         $container->setParameter('cache_dsn', sprintf('%s:%d', $endpoint['host'], $endpoint['port']));
 
-        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../cache_pool'));
-        $loader->load('cache.memcached.yml');
+        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/cache_pool'));
+        $loader->load('cache.memcached.yaml');
     }
 }
 
