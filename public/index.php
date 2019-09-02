@@ -51,6 +51,15 @@ if ($useHttpCache) {
 }
 
 $request = Request::createFromGlobals();
+
+// Deny request if it contains the frontcontroller script ie. http://example.com/app.php
+$frontControllerScript = preg_quote(basename($request->server->get('SCRIPT_FILENAME')));
+if (preg_match("<^/([^/]+/)?$frontControllerScript([/?#]|$)>", $request->getRequestUri(), $matches) === 1) {
+    http_response_code(400);
+    echo('<html><head><title>400 Bad Request</title></head><body><h1>400 Bad Request</h1></center></body></html>');
+    die;
+}
+
 $response = $kernel->handle($request);
 $response->send();
 $kernel->terminate($request, $response);
