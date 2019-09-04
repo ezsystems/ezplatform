@@ -69,8 +69,6 @@ web/fonts/
 /web/.htaccess
 
 composer.phar
-composer.lock
-yarn.lock
 .buildpath
 .project
 .settings/
