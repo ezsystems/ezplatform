@@ -94,8 +94,6 @@ framework:
         #       default session name will be set to "eZSESSID{siteaccess_hash}" (unique session name per siteaccess)
         #       Further reading on sessions: http://doc.ezplatform.com/en/latest/guide/sessions/
     http_method_override: true
-    templating:
-        engines: [twig]
     cache:
         pools:
             cache.array:
