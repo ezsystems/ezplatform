@@ -23,7 +23,7 @@
         "ezsystems/ezplatform-core": "^2.0@dev",
         "ezsystems/ezplatform-design-engine": "^3.0@dev",
         "ezsystems/ezplatform-graphql": "^2.0@dev",
-        "ezsystems/ezplatform-http-cache": "^1.0@dev",
+        "ezsystems/ezplatform-http-cache": "dev-ezp-30928-as_a_developer_i_want_deprecated_methods_and_parameters_to_be_dropped as 1.0.x-dev",
         "ezsystems/ezplatform-richtext": "^2.0@dev",
         "ezsystems/ezplatform-standard-design": "^0.3@dev",
         "ezsystems/ezplatform-user": "^2.0@dev",
