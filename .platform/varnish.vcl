@@ -9,6 +9,7 @@
 //vcl 4.1;
 //import std;
 import xkey;
+import cookie;
 
 // For customizing your backend and acl rules see parameters.vcl
 // Includes not available on Platform.sh
@@ -60,14 +61,10 @@ sub vcl_recv {
 
     // Remove all cookies besides Session ID, as JS tracker cookies and so will make the responses effectively un-cached
     if (req.http.cookie) {
-        set req.http.cookie = ";" + req.http.cookie;
-        set req.http.cookie = regsuball(req.http.cookie, "; +", ";");
-        set req.http.cookie = regsuball(req.http.cookie, ";(eZSESSID[^=]*)=", "; \1=");
-        set req.http.cookie = regsuball(req.http.cookie, ";[^ ][^;]*", "");
-        set req.http.cookie = regsuball(req.http.cookie, "^[; ]+|[; ]+$", "");
-
+        cookie.parse(req.http.cookie);
+        cookie.filter_except("eZSESSID");
+        set req.http.cookie = cookie.get_string();
         if (req.http.cookie == "") {
-            // If there are no more cookies, remove the header to get page cached.
             unset req.http.cookie;
         }
     }
