@@ -94,4 +94,8 @@ docker-compose exec app sh -c 'chown -R www-data:www-data /var/www'
 echo '> Install data'
 docker-compose exec --user www-data app sh -c "php /scripts/wait_for_db.php; composer ezplatform-install"
 
+echo '> Generate GraphQL schema'
+docker-compose exec --user www-data app sh -c "php bin/console ezplatform:graphql:generate-schema"
+docker-compose exec --user www-data app sh -c "php bin/console cache:clear"
+
 echo '> Done, ready to run tests'
