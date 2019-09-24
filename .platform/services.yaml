@@ -27,18 +27,27 @@ mysqldb:
 
 # For use by Symfony Cache (used by eZ Platform SPI Persistence Cache)
 rediscache:
-    type: 'redis:3.2'
+    type: 'redis:5.0'
+    configuration:
+        # For cache eZ Platform 2.5+ RedisTagAwareAdapter requries one of the 'volatile-lru' eviction policies
+        # https://docs.platform.sh/configuration/services/redis.html#eviction-policy
+        # https://doc.ezplatform.com/en/2.5/getting_started/requirements/
+        maxmemory_policy: volatile-lru
 
 # If you wish to have a separate Redis instance for sessions, uncomment
 # this service and the corresponding relationship in .platform.app.yaml.
 #redissession:
-#    type: 'redis:3.2'
+#    type: 'redis:5.0'
+#    configuration:
+#        maxmemory_policy: allkeys-ttl
 #
 # Alternatively if you have a requirement that sessions are persisted across server/redis restarts,
 # have storage space to spare for this, and don't mind a bit slower instance type of redis
 #redissession:
-#    type: redis-persistent:3.2
+#    type: redis-persistent:5.0
 #    disk: 512
+#    configuration:
+#        maxmemory_policy: allkeys-ttl
 
 # If you wish to use solr, uncomment this service and the corresponding relationship in .platform.app.yaml.
 # Also, you need to generate the config using:
