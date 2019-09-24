@@ -29,7 +29,7 @@ mysqldb:
 rediscache:
     type: 'redis:5.0'
     configuration:
-        # For cache eZ Platform 2.5+ RedisTagAwareAdapter requries one of the 'volatile-lru' eviction policies
+        # For cache eZ Platform 2.5+ RedisTagAwareAdapter requries one of the 'volatile-*' eviction policies
         # https://docs.platform.sh/configuration/services/redis.html#eviction-policy
         # https://doc.ezplatform.com/en/2.5/getting_started/requirements/
         maxmemory_policy: volatile-lru
