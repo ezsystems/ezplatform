@@ -94,7 +94,8 @@ mounts:
 #        source_path: MigrationVersionsReferences
 # Uncomment if you want to use DFS clustering, required if using legacy-bridge.
 #    'dfsdata':
-#        source: shared
+#        # Platform.sh Staff: This MUST be shared on cluster, all others SHOULD be local for performance reasons
+#        source: local
 #        source_path: dfsdata
 
 # The hooks that will be performed when the package is deployed.
