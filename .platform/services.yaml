@@ -42,7 +42,7 @@ rediscache:
 #redissession:
 #    type: 'redis:5.0'
 #    configuration:
-#        maxmemory_policy: allkeys-ttl
+#        maxmemory_policy: allkeys-lru
 #
 # Alternatively if you have a requirement that sessions are persisted across server/redis restarts,
 # have storage space to spare for this, and don't mind a bit slower instance type of redis
@@ -50,7 +50,7 @@ rediscache:
 #    type: redis-persistent:5.0
 #    disk: 512
 #    configuration:
-#        maxmemory_policy: allkeys-ttl
+#        maxmemory_policy: allkeys-lru
 
 # If you wish to use solr, uncomment this service and the corresponding relationship in .platform.app.yaml.
 # Also, you need to generate the config using:

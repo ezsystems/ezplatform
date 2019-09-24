@@ -9,6 +9,6 @@ echo "removing var/cache/${SYMFONY_ENV}/*.* to avoid Symfony container issues on
 rm -Rf var/cache/${SYMFONY_ENV}/*.*
 #date
 echo "clearing application cache"
-bin/console cache:clear
+php bin/console cache:clear
 #date
 echo "done executing pre_start cache clear"
