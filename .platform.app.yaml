@@ -47,7 +47,7 @@ variables:
         # If you change to "dev" remove "--no-dev" from `composer install` command.
         SYMFONY_ENV: prod
         # Uncomment if you want to use DFS clustering:
-        # NOTE: Recommended on PE Dedicated cluster setup. Required if using legacy-bridge.
+        # NOTE: Recommended on PE Dedicated cluster setup. Required if using legacy-bridge on PE dedicated cluster setup.
         #PLATFORMSH_DFS_NFS_PATH: 'dfsdata'
 
 # The configuration of app when it is exposed to the web.
@@ -92,7 +92,7 @@ mounts:
 #    'src/AppBundle/MigrationVersions/References':
 #        source: local
 #        source_path: MigrationVersionsReferences
-# Uncomment if you want to use DFS clustering, required if using legacy-bridge.
+# Uncomment if you want to use DFS clustering, required if using legacy-bridge on PE dedicated cluster setup.
 #    'dfsdata':
 #        # Platform.sh Staff: This MUST be shared on cluster, all others SHOULD be local for performance reasons
 #        source: local
