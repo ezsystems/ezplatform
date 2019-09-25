@@ -1,6 +1,6 @@
 #!/bin/bash
-# This script gets run as part of the .platform.app.yaml deploy step
-# On PE Cluster (usually just production) this should be setup by P.sh team as part of pre_start event
+# This script is run as part of the .platform.app.yaml deployment step
+# On PE Cluster (usually just production) this should be setup by platform.sh team as part of pre_start event
 
 set -e
 

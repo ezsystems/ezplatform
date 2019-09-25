@@ -17,7 +17,7 @@ type: php:7.3
 
 build:
     # "none" means we're running composer manually, see build hook
-    # We currently need to do this because of the need to install newer version of Node.js
+    # We currently need to do this to install newer version of Node.js
     flavor: "none"
 
 # The relationships of the application with services or other applications.
@@ -29,7 +29,7 @@ relationships:
     # Uncomment if you want to store dfs tables in a separate database:
     #dfs_database: 'mysqldb:dfs'
     rediscache: 'rediscache:redis'
-    # [Recommended] To have an isolated & persisted Redis instance for sessions, uncomment
+    # [Recommended] To have an isolated and persisted Redis instance for sessions, uncomment
     # this relationship and the corresponding service in .platform/services.yaml
     #redissession: 'redissession:redis'
     # If you wish to use solr, uncomment this relationship and the corresponding service in .platform/services.yaml
@@ -43,11 +43,11 @@ variables:
         # We disable Symfony Proxy, as we rather use Varnish
         SYMFONY_HTTP_CACHE: 0
         SYMFONY_TRUSTED_PROXIES: "TRUST_REMOTE"
-        # Change this if you use a different env then "prod"
-        # If you change to "dev" remove "--no-dev" from `composer install` command.
+        # Change this if you use a different env than "prod"
+        # If you change to "dev" remove "--no-dev" from the `composer install` command.
         SYMFONY_ENV: prod
         # Uncomment if you want to use DFS clustering:
-        # NOTE: Recommended on PE Dedicated cluster setup. Required if using legacy-bridge on PE dedicated cluster setup.
+        # NOTE: Recommended on PE Dedicated cluster setup. Required if using Legacy Bridge on PE dedicated cluster setup.
         #PLATFORMSH_DFS_NFS_PATH: 'dfsdata'
 
 # The configuration of app when it is exposed to the web.
@@ -71,7 +71,7 @@ disk: 3072
 # The mounts that will be performed when the package is deployed.
 mounts:
 # PE Cluster Note: By default will set all to shared, so if moving to PE dedicated cluster you should ask platform.sh
-# Support to make sure at least cache + logs is local, while you can let web/var be shared if you prefer that over DFS.
+# Support to make sure at least cache + logs are local, while you can let web/var be shared if you prefer that over DFS.
     'var/cache':
         source: local
         source_path: cache
@@ -92,7 +92,7 @@ mounts:
 #    'src/AppBundle/MigrationVersions/References':
 #        source: local
 #        source_path: MigrationVersionsReferences
-# Uncomment if you want to use DFS clustering, required if using legacy-bridge on PE dedicated cluster setup.
+# Uncomment if you want to use DFS clustering, required if using Legacy Bridge on PE dedicated cluster setup.
 #    'dfsdata':
 #        # Platform.sh Staff: This MUST be shared on cluster, all others SHOULD be local for performance reasons
 #        source: local
@@ -139,10 +139,10 @@ hooks:
         fi
 
         # Now that mounts are available, clear cache on mount.
-        # NB! Skip on PE Cluster setup using e.g. "if [$PLATFORM_BRANCH" != 'production']; then" & get p.sh to enable this on internal per node "pre_start" hook
+        # Note: Skip on PE Cluster setup using e.g. "if [$PLATFORM_BRANCH" != 'production']; then" & get p.sh to enable this on internal per node "pre_start" hook
         ./bin/platformsh/pre_start-per_node-clear_cache.sh
 
-        # If you also need to clear redis cache on every deploy, you can either use this command or redis-cli
+        # If you also need to clear Redis cache on every deploy, you can either use this command or redis-cli
         # Normally this should only be needed if cached data structures changes (upgrades), or you change data via sql (e.g. restore backup)
         ##php bin/console cache:pool:clear cache.redis
 
@@ -151,7 +151,7 @@ hooks:
         ##php bin/console kaliop:migration:migrate --no-interaction --no-debug
 
         # When using Solr, there are two cases where you'll need to rebuild indexes:
-        # - When Solr / search configuration change
+        # - When Solr / search configuration changes
         # - On database import/restore
         # So in development it might be convenient to rebuild indexes, slowing down deploy time
         ##php bin/console ezplatform:reindex --processes=auto

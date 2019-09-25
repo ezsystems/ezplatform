@@ -1,10 +1,10 @@
-# Default settings in order to setup eZ Platform demo install on Platform.sh dev instances
+# Default settings in order to set up eZ Platform demo install on Platform.sh dev instances
 #
-# NB: Like on own servers, make sure to tune Redis/Solr/Varnish/Mysql memory/disk size for your installation to avoid issues.
+# Note: Like on own servers, make sure to tune Redis/Solr/Varnish/MySQL memory/disk size for your installation to avoid issues.
 #     Reach out to platform.sh support to get help on this and insight into your disk/memory usage.
 
 mysqldb:
-    # NB! If you change this also change DATABASE_VERSION, as used by "doctrine.dbal.server_version" in config.yml.
+    # Note: If you change this also change DATABASE_VERSION, as used by "doctrine.dbal.server_version" in config.yml.
     type: mysql:10.2
     # Version 10.1 might be a better option when running Legacy Bridge
     # For more information see https://doc.ezplatform.com/en/2.1/getting_started/requirements_and_system_configuration/#supported-setups
@@ -28,7 +28,7 @@ mysqldb:
 # For use by Symfony Cache (used by eZ Platform SPI Persistence Cache)
 rediscache:
     type: 'redis:5.0'
-    # For cache you might need to increase the size of your plan if your install sizeable amount of content.
+    # For cache you might need to increase the size of your plan if your installation has a sizeable amount of content.
     # Check with platform.sh staff if in doubt on this, and if it would make sense to configure larger redis size here.
     # size: L
     configuration:

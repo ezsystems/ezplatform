@@ -4,15 +4,15 @@
 This is the simplest approach, but may be less up to date with current development than the other, more manual approach.
 
 ### Using eZ Platform Cloud
-With eZ Platform Cloud subscription, you are able to create an instance of both open source and Enterprise using templates. In the future it also allow you to create an instance of Commerce version.
+With eZ Platform Cloud subscription, you are able to create an instance of both open source and Enterprise using templates. In the future it will also enable you to create an instance of eZ Commerce.
 
 To use eZ Platform Cloud:
-1. Login at [cloud.ezplatform.com](https://cloud.ezplatform.com/)
-2. Click to Add a project, during setup wizard you'll get the choice to pick a flavour of eZ Platform.
+1. Log in to [cloud.ezplatform.com](https://cloud.ezplatform.com/)
+2. Click Add a project, during setup wizard you'll get the choice to pick a flavor of eZ Platform.
 3. Complete the setup wizard, and your eZ Platform site will be created.
 
 ### Using vanilla platform.sh
-Using an platform.sh account, you can create an instance of open source version of eZ Platform from template:
+Using a platform.sh account, you can create an instance of open source version of eZ Platform from template:
 1. Login or create an account at [Platform.sh](https://platform.sh)
 2. Create a Platform.sh project, using the "Create a blank site from a template" option. Select one of the "eZ Platform" stack templates.
 3. Complete the setup wizard, and your eZ Platform site will be created.
@@ -22,13 +22,13 @@ This requires more manual steps, but may be more up to date with current develop
 
 **NB:** Some optional aspects of the installation require you to be project owner on a Platform.sh project. If you create a new project now, you will be.
 
-1. Login or create an account at [Platform.sh](https://platform.sh) _(or login to [cloud.ezplatform.com](https://cloud.ezplatform.com/) if you have an subscription)_
+1. Log in or create an account at [Platform.sh](https://platform.sh) _(or login to [cloud.ezplatform.com](https://cloud.ezplatform.com/) if you have an subscription)_
 2. Unless this has already been done for you, create a new project by using the **Import your existing code** option. Follow the setup wizard, but halt at the end, before clicking **Finish**.
 3. Fork [eZ Platform](https://github.com/ezsystems/ezplatform/) _(or [eZ Platform Enterprise](https://github.com/ezsystems/ezplatform-ee/)/[eZ Commerce](https://github.com/ezsystems/ezcommerce/) if you have a subscription)_ and clone your fork locally.
 4. Add the platform remote of your project, and push your branch. The Platform.sh setup wizard provides the command to use. Example:
    `git remote add platform my_project@git.eu.platform.sh:my_project.git`
 5. [Optional] Authentication against Github/Bitbucket/Gitlab/updates.ez.no for locale development:
-   If you have private packages from own git repositories or use eZ Platform Enterprise, you can use Composer's
+   If you have private packages from your own git repositories or use eZ Platform Enterprise, you can use Composer's
    [auth.json](https://getcomposer.org/doc/articles/http-basic-authentication.md) file or [COMPOSER_AUTH](https://getcomposer.org/doc/03-cli.md#composer-auth) environment variable for this.
    Here's an example of `COMPOSER_AUTH` usage to authenticate for eZ Enterprise packages:
    `export COMPOSER_AUTH='{"http-basic":{"updates.ez.no":{"username":"network-id","password":"token-key"}}}'`
@@ -61,7 +61,7 @@ The bundled config is a recommended safe default that you can start from, just m
 If you are on a Platform.sh Enterprise Dedicated Cluster setup, typically named PE-6 / PE-12 / (...), you'll need to do some adjustment on the platform.sh config and you'll
 have dedicated on-boarding where topics around using eZ Platform on this cluster will be gone true before you can deploy to it.
 
-If you want to read up a bit, look in the bundled platform.sh config. There are a lot of config commented out by default, some of these are explicitly for Dedicated Cluster setup.
+If you want to read up a bit, look in the bundled platform.sh config. There is a lot of config commented out by default, some of these are explicitly for Dedicated Cluster setup.
 
 It's recommended to:
 - Get platform.sh Support to setup `var/cache` and `var/log` as locale mounts to avoid performance issues _(default on PE Cluster is shared)_
