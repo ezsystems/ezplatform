@@ -9,22 +9,12 @@ auth.json
 # Skipped as it makes build very slow and since it is needed by composer when working on dev branches
 #vendor/*/*/.git
 
-### Symfony template
-# Cache and logs (Symfony2)
-app/cache/*
-app/logs/*
-!app/cache/.keep
-!app/logs/.keep
-
-# Email spool folder
-app/spool/*
-
-# Cache, session files and logs (Symfony3)
+# Cache, session files and logs (Symfony4)
 var/cache/*
-var/logs/*
+var/log/*
 var/sessions/*
 !var/cache/.gitkeep
-!var/logs/.gitkeep
+!var/log/.gitkeep
 !var/sessions/.gitkeep
 
 # Parameters (should be regenerated in container)

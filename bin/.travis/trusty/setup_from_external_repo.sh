@@ -64,7 +64,7 @@ if [ "$RUN_INSTALL" = "1" ] ; then
   echo "> Run composer install (try 3 times)"
   for i in $(seq 1 3); do composer install --no-progress --no-interaction --prefer-dist --optimize-autoloader && s=0 && break || s=$? && sleep 1; done; (exit $s)
   mkdir -p web/var
-  rm -Rf var/logs/* var/cache/*/*
+  rm -Rf var/log/* var/cache/*/*
   sudo chown -R www-data:www-data var web/var
   find var web/var -type d | xargs chmod -R 775
   find var web/var -type f | xargs chmod -R 664
