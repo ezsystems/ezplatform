@@ -41,6 +41,11 @@ matrix:
       env: BEHAT_OPTS="--mode=behat --profile=repository-forms --tags=~@broken --non-strict"
     - name: "Admin UI on Clean Platform"
       env: BEHAT_OPTS="--profile=adminui --suite=adminui"
+    - if: type in (cron, api)
+      name: "Admin UI tests using different personas"
+      env:
+        - SETUP_BEHAT_OPTS="--profile=setup --suite=personas --tags=@setup"
+        - BEHAT_OPTS="--profile=adminui --suite=personas"
 
 # reduce depth (history) of git checkout
 git:
@@ -74,6 +79,7 @@ install:
 before_script:
   # Execute Symfony command if injected into test matrix
   - if [ "${SYMFONY_CMD}" != "" ] ; then docker-compose exec --user www-data app sh -c "bin/console ${SYMFONY_CMD}" ; fi
+  - if [ "${SETUP_BEHAT_OPTS}" != "" ] ; then cd "$HOME/build/ezplatform"; docker-compose exec --user www-data app sh -c "bin/ezbehat $SETUP_BEHAT_OPTS" ; fi
   #- docker ps
   #- docker-compose logs
 
