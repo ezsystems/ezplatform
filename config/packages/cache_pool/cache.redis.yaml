@@ -5,9 +5,12 @@
 #
 # For further reading on setup with eZ Platform and Redis:
 # https://doc.ezplatform.com/en/latest/guide/persistence_cache/#redis
+parameters:
+  cache_namespace: ezp
+
 services:
     cache.redis:
-        class: Symfony\Component\Cache\Adapter\TagAware\RedisTagAwareAdapter
+        class: Symfony\Component\Cache\Adapter\RedisTagAwareAdapter
         parent: cache.adapter.redis
         tags:
             - name: cache.pool

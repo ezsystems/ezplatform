@@ -1,10 +1,13 @@
 # Optimized File cache adapter (from: https://github.com/ezsystems/symfony-tools)
 #
 # Loaded by default, for use on single server setups.
+parameters:
+  cache_namespace: ezp
+
 services:
     cache.tagaware.filesystem:
         public: true # @todo should be private
-        class: Symfony\Component\Cache\Adapter\TagAware\FilesystemTagAwareAdapter
+        class: Symfony\Component\Cache\Adapter\FilesystemTagAwareAdapter
         parent: cache.adapter.filesystem
         tags:
             - name: cache.pool

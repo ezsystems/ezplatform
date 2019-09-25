@@ -9,7 +9,7 @@ name: app
 
 dependencies:
     nodejs:
-      yarn: "*"
+        yarn: "*"
 
 # The type of the application to build.
 type: php:7.3
@@ -34,14 +34,14 @@ relationships:
 
 variables:
     #php:
-        # Example of setting php.ini config
-        #"display_errors": "On"
+    # Example of setting php.ini config
+    #"display_errors": "On"
     env:
         # We disable Symfony Proxy, as we rather use Varnish
-        SYMFONY_HTTP_CACHE: 0
-        SYMFONY_TRUSTED_PROXIES: "TRUST_REMOTE"
+        APP_HTTP_CACHE: 0
+        TRUSTED_PROXIES: "TRUST_REMOTE"
         # Change this if you use a different env then "prod", if you change this to "dev" remove "--no-dev" in build step
-        SYMFONY_ENV: prod
+        APP_ENV: prod
         # Uncomment if you want to use DFS clustering:
         #PLATFORMSH_DFS_NFS_PATH: 'dfsdata'
 
@@ -50,9 +50,9 @@ web:
     locations:
         "/":
             # The public directory of the app, relative to its root.
-            root: "web"
+            root: "public"
             # The front-controller script to send non-static requests to.
-            passthru: "/app.php"
+            passthru: "/index.php"
             # The number of seconds whitelisted (static) content should be cache
             expires: 600
             rules:
@@ -68,19 +68,18 @@ mounts:
     'var/cache':
         source: local
         source_path: cache
-    'var/logs':
+    'var/log':
         source: local
-        source_path: logs
+        source_path: log
+    'var/sessions':
+        source: local
+        source_path: sessions
     'var/encore':
         source: local
         source_path: encore
     'public/var':
         source: local
         source_path: var
-    # To be prepared to move to cluster, please rather use e.g. persisted Redis instance.
-    'public/sessions':
-        source: local
-        source_path: sessions
 # Uncomment if you need to use Kaliop Migrations on your setup and not able to get it to write to "var" dir.
 #    'src/AppBundle/MigrationVersions/References':
 #        source: local
@@ -108,7 +107,6 @@ hooks:
             composer config github-oauth.github.com $GITHUB_TOKEN
         fi
 
-        rm public/index.php
         composer install --no-dev --prefer-dist --no-progress --no-interaction --optimize-autoloader
 
     # Deploy hook, access to services & done once (per cluster, not per node), only mounts are writable at this point
@@ -122,13 +120,13 @@ hooks:
         # Mainly relevant for eZ Platform demo usage, for own setup adapt this or remove and rely on migrations.
         if [ ! -f public/var/.platform.installed ]; then
             # To workaround issues with p.sh Varnish we clear container cache & temporary set Symfony Proxy
-            rm -Rf var/cache/$SYMFONY_ENV/*.*
+            rm -Rf var/cache/$APP_ENV/*.*
             HTTPCACHE_PURGE_TYPE="local" php -d memory_limit=-1 `which composer` ezplatform-install
             touch public/var/.platform.installed
         fi
 
         # Now that mounts are available, clear class/container cache. E.g. in case of interface changes on lazy proxies
-        rm -Rf var/cache/$SYMFONY_ENV/*.*
+        rm -Rf var/cache/$APP_ENV/*.*
 
         # With that done, make sure to clear + warmup all remaining caches to take proper env variables into account
         bin/console cache:clear

@@ -1,0 +1,11 @@
+"https://{default}/":
+    type: upstream
+    upstream: "varnish:http"
+    cache:
+        # As this does not support Vary, and purging, we can't use this as Sf Proxy drop in.
+        # However it is possible to enable this for anonymous traffic when backend sends expiry headers.
+        enabled: false
+
+"https://www.{default}/":
+    type: redirect
+    to: "https://{default}/"
