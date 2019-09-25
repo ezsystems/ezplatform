@@ -80,10 +80,6 @@ mounts:
     'public/var':
         source: local
         source_path: var
-    # To be prepared to move to cluster, please rather use e.g. persisted Redis instance.
-#    'public/sessions':
-#        source: local
-#        source_path: sessions
 # Uncomment if you need to use Kaliop Migrations on your setup and not able to get it to write to "var" dir.
 #    'src/AppBundle/MigrationVersions/References':
 #        source: local
