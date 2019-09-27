@@ -80,6 +80,9 @@ mounts:
     'public/var':
         source: local
         source_path: var
+    'config/graphql/types':
+        source: local
+        source_path: graphql_types
 # Uncomment if you need to use Kaliop Migrations on your setup and not able to get it to write to "var" dir.
 #    'src/AppBundle/MigrationVersions/References':
 #        source: local
