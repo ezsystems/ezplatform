@@ -48,7 +48,9 @@ rediscache:
 # have storage space to spare for this, and don't mind a bit slower instance type of redis
 #redissession:
 #    type: redis-persistent:5.0
-#    disk: 512
+ # Disk size should be bigger than redis'  "maxmemory" setting due to https://redis.io/topics/persistence#log-rewriting.
+ # The memory given to redis is dependend on your plan and "size: ". Adjust "disk: " accordingly
+ #    disk: 512
 #    configuration:
 #        maxmemory_policy: allkeys-lru
 
