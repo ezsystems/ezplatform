@@ -84,10 +84,10 @@ mounts:
     'web/var':
         source: local
         source_path: var
-    # GraphQL Schemas need be generated dynamically on server to reflect live repository status
-    #'app/config/graphql':
-    #    source: local
-    #    source_path: graphql
+# Uncomment if GraphQL Schemas need be generated dynamically on server to reflect live repository status:
+#    'app/config/graphql':
+#        source: local
+#        source_path: graphql
     # To be prepared to move to cluster, please rather use e.g. persisted Redis instance.
     'web/sessions':
         source: local
