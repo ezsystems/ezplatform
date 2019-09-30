@@ -15,4 +15,5 @@ services:
      - DATABASE_USER
      - DATABASE_PASSWORD
      - DATABASE_NAME
+     - COMPOSER_AUTH
     command: ./doc/docker/install_script.sh
