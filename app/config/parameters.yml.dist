@@ -17,3 +17,4 @@ parameters:
     env(DATABASE_PASSWORD):
     env(DATABASE_CHARSET): utf8mb4
     env(DATABASE_COLLATION): utf8mb4_unicode_520_ci
+    env(DATABASE_VERSION): mariadb-10.2.26

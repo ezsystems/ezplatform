@@ -1,0 +1,20 @@
+version: '3.3'
+# compose file perform install and dump database. Append after install-dependencies.yml
+
+services:
+  install_db:
+    image: ${MYSQL_IMAGE}
+    volumes:
+     - ${COMPOSE_DIR}/entrypoint/mysql:/docker-entrypoint-initdb.d/:ro,cached
+    environment:
+     - MYSQL_RANDOM_ROOT_PASSWORD=1
+     - MYSQL_USER=$DATABASE_USER
+     - MYSQL_PASSWORD=$DATABASE_PASSWORD
+     - MYSQL_DATABASE=$DATABASE_NAME
+
+  install_dependencies:
+    environment:
+     - INSTALL_DATABASE=1
+     - DATABASE_HOST=install_db
+    depends_on:
+    - install_db

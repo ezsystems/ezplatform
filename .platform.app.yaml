@@ -1,8 +1,9 @@
 # This file describes an application. You can have multiple applications
 # in the same project.
 
-# Please see doc/platformsh/README.md and doc/platformsh/INSTALL.md
-# NB: Clustered eZ Platform setups are not tested and are likely to have issues.
+# Please see doc/platformsh/README.md and doc/platformsh/INSTALL.md for eZ specific getting started instructions.
+# Full documentation: https://docs.platform.sh
+# Requirements: https://doc.ezplatform.com/en/2.5/getting_started/requirements/#ez-platform-cloud-requirements-and-setup
 
 # The name of this app. Must be unique within a project.
 name: app
@@ -13,8 +14,10 @@ dependencies:
 
 # The type of the application to build.
 type: php:7.3
+
 build:
     # "none" means we're running composer manually, see build hook
+    # We currently need to do this to install newer version of Node.js
     flavor: "none"
 
 # The relationships of the application with services or other applications.
@@ -26,7 +29,7 @@ relationships:
     # Uncomment if you want to store dfs tables in a separate database:
     #dfs_database: 'mysqldb:dfs'
     rediscache: 'rediscache:redis'
-    # If you wish to have a separate Redis instance for sessions, uncomment
+    # [Recommended] To have an isolated and persisted Redis instance for sessions, uncomment
     # this relationship and the corresponding service in .platform/services.yaml
     #redissession: 'redissession:redis'
     # If you wish to use solr, uncomment this relationship and the corresponding service in .platform/services.yaml
@@ -40,9 +43,11 @@ variables:
         # We disable Symfony Proxy, as we rather use Varnish
         SYMFONY_HTTP_CACHE: 0
         SYMFONY_TRUSTED_PROXIES: "TRUST_REMOTE"
-        # Change this if you use a different env then "prod", if you change this to "dev" remove "--no-dev" in build step
+        # Change this if you use a different env than "prod"
+        # If you change to "dev" remove "--no-dev" from the `composer install` command.
         SYMFONY_ENV: prod
         # Uncomment if you want to use DFS clustering:
+        # NOTE: Recommended on PE Dedicated cluster setup. Required if using Legacy Bridge on PE dedicated cluster setup.
         #PLATFORMSH_DFS_NFS_PATH: 'dfsdata'
 
 # The configuration of app when it is exposed to the web.
@@ -55,12 +60,18 @@ web:
             passthru: "/app.php"
             # The number of seconds whitelisted (static) content should be cache
             expires: 600
+            rules:
+                # Disable .php(3) and other executable extensions in the var directory
+                '^/var/.*(?i)\.(php3?|phar|phtml|sh|exe|pl|bin)$':
+                    allow: false
 
 # The size of the persistent disk of the application (in MB).
 disk: 3072
 
 # The mounts that will be performed when the package is deployed.
 mounts:
+# PE Cluster Note: By default will set all to shared, so if moving to PE dedicated cluster you should ask platform.sh
+# Support to make sure at least cache + logs are local, while you can let web/var be shared if you prefer that over DFS.
     'var/cache':
         source: local
         source_path: cache
@@ -85,9 +96,10 @@ mounts:
 #    'src/AppBundle/MigrationVersions/References':
 #        source: local
 #        source_path: MigrationVersionsReferences
-# Uncomment if you want to use DFS clustering, WARNING: Needs to be shared, contact Platform.sh support to set this up
+# Uncomment if you want to use DFS clustering, required if using Legacy Bridge on PE dedicated cluster setup.
 #    'dfsdata':
-#        source: shared
+#        # Platform.sh Staff: This MUST be shared on cluster, all others SHOULD be local for performance reasons
+#        source: local
 #        source_path: dfsdata
 
 # The hooks that will be performed when the package is deployed.
@@ -96,18 +108,32 @@ hooks:
     build: |
         set -e
 
-        # Configure GITHUB token if set. For use if you have own private repos, or to avoid API rate limits.
-        if [ -n "$GITHUB_TOKEN" ]; then
-            composer config github-oauth.github.com $GITHUB_TOKEN
+        # Install newer version of Node.js, as current default (v6LTS) does not play well with WebpackEncore
+        unset NPM_CONFIG_PREFIX
+        curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | dash
+        export NVM_DIR="$HOME/.nvm"
+        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+        nvm current
+        nvm install 10.15.3
+
+        if ["$COMPOSER_AUTH" == ""]; then
+            echo "TIP: If you need to authenticate against Github/Gitlab/updates.ez.no, use COMPOSER_AUTH env variable"
+            echo "See: https://docs.platform.sh/tutorials/composer-auth.html#set-the-envcomposerauth-project-variable"
         fi
 
-        rm web/app_dev.php
         composer install --no-dev --prefer-dist --no-progress --no-interaction --optimize-autoloader
+
+        # Generic cleanup to remove files we don't want to be deployed to prod (you don't need this for "dev" ENV)
+        rm web/app_dev.php
 
     # Deploy hook, access to services & done once (per cluster, not per node), only mounts are writable at this point
     # Note: Http traffic is paused while this is running, so for prod code this should finish as fast as possible, < 30s
     deploy: |
         set -e
+
+        unset NPM_CONFIG_PREFIX
+        command -v nvm && nvm use 10.15.3
+
         # Mainly relevant for eZ Platform demo usage, for own setup adapt this or remove and rely on migrations.
         if [ ! -f web/var/.platform.installed ]; then
             # To workaround issues with p.sh Varnish we clear container cache & temporary set Symfony Proxy
@@ -116,18 +142,26 @@ hooks:
             touch web/var/.platform.installed
         fi
 
-        # Now that mounts are available, clear class/container cache. E.g. in case of interface changes on lazy proxies
-        rm -Rf var/cache/$SYMFONY_ENV/*.*
+        # Now that mounts are available, clear cache on mount.
+        # Note: Skip on PE Cluster setup using e.g. "if [$PLATFORM_BRANCH" != 'production']; then" & get p.sh to enable this on internal per node "pre_start" hook
+        ./bin/platformsh/pre_start-per_node-clear_cache.sh
 
-        # With that done, make sure to clear + warmup all remaining caches to take proper env variables into account
-        bin/console cache:clear
+        # If you also need to clear Redis cache on every deploy, you can either use this command or redis-cli
+        # Normally this should only be needed if cached data structures changes (upgrades), or you change data via sql (e.g. restore backup)
+        ##php bin/console cache:pool:clear cache.redis
 
         # Example of additional deploy hooks if you use doctrine and/or kaliop migration bundle
-        ##bin/console doctrine:migrations:migrate --no-interaction --allow-no-migration
-        ##bin/console kaliop:migration:migrate --no-interaction --no-debug
+        ##php bin/console doctrine:migrations:migrate --no-interaction --allow-no-migration
+        ##php bin/console kaliop:migration:migrate --no-interaction --no-debug
+
+        # When using Solr, there are two cases where you'll need to rebuild indexes:
+        # - When Solr / search configuration changes
+        # - On database import/restore
+        # So in development it might be convenient to rebuild indexes, slowing down deploy time
+        ##php bin/console ezplatform:reindex --processes=auto
         
-        # Deploy hook to automatically generate GraphQL schema on deploy.
-        # Could also be executed manually when needed - on clustered instances on each node 
+        # GraphQL: Usually you should generate schema locally & deploy with your code, but if not possible then
+        # uncomment this to automatically generate GraphQL schema on deploy. To use make app/config/graphql a mount.
         ##php bin/console ezplatform:graphql:generate-schema
 
     # Post deploy hook, like deploy but after being deployed and live, for deploy tasks we can do asynchronously
