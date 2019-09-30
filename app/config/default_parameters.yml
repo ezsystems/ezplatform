@@ -16,6 +16,9 @@ parameters:
     database_charset: '%env(DATABASE_CHARSET)%'
     # collation currently has effect on MySQL only
     database_collation: '%env(DATABASE_COLLATION)%'
+    # Needed by Doctrine Bundle / ORM to avoid it opening connection during situations where there is no service yet.
+    # See: https://symfony.com/doc/current/reference/configuration/doctrine.html
+    database_version: '%env(DATABASE_VERSION)%'
 
     # Setting for mail system, used by SwiftMailer
     mailer_host: '%env(MAILER_HOST)%'
@@ -91,6 +94,7 @@ parameters:
     # set here for BC reasons, change them in parameters.yml
     env(DATABASE_CHARSET): utf8mb4
     env(DATABASE_COLLATION): utf8mb4_unicode_520_ci
+    env(DATABASE_VERSION): mariadb-10.2.26
 
     # Compile time handlers
     ## These are defined at compile time, and hence can't be set at runtime using env()

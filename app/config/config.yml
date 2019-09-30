@@ -25,6 +25,9 @@ doctrine:
                 user: '%database_user%'
                 password: '%database_password%'
                 charset: '%database_charset%'
+                # Needs to be set to avoid Doctrine opening connection to database to get version info during situation where
+                # database is not ready yet. See: https://symfony.com/doc/current/reference/configuration/doctrine.html
+                server_version: '%database_version%'
     orm:
         auto_generate_proxy_classes: '%kernel.debug%'
         naming_strategy: doctrine.orm.naming_strategy.underscore
