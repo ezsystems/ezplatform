@@ -30,7 +30,7 @@ ez_io:
                 connection: doctrine.dbal.dfs_connection
 
 # set the application handlers
-ezpublish:
+ezplatform:
     system:
         default:
             io:

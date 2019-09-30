@@ -30,7 +30,7 @@ parameters:
 
     ezpublish_rest.csrf_token_intention: authenticate
 
-ezpublish:
+ezplatform:
     # HttpCache settings, By default 'local' (Symfony HttpCache Proxy), by setting it to 'http' you can point it to Varnish
     http_cache:
         purge_type: '%purge_type%'

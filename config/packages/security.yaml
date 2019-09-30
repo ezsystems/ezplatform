@@ -29,7 +29,7 @@
 security:
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
-        ezpublish:
+        ezplatform:
             id: ezpublish.security.user_provider
     #!        in_memory:
     #!            memory: ~
