@@ -19,7 +19,7 @@
 
 /.web-server-pid
 /app/config/parameters.yml
-# Ucomment if you'd like to not depoy schema changes with your code
+# Uncomment if you'd like to not depoy schema changes with your code
 #/app/config/graphql/*
 /build/
 /phpunit.xml
