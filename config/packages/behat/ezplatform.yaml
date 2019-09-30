@@ -1,7 +1,7 @@
 # Siteaccesses are first added in ../ezplatform.yaml.
 # Only merge additional siteaccesses here.
 
-ezpublish:
+ezplatform:
     siteaccess:
         list:
             - other_site

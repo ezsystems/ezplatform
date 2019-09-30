@@ -2,7 +2,7 @@ parameters:
     # Admin siteaccess group name
     admin_group_name: admin_group
 
-ezpublish:
+ezplatform:
     siteaccess:
         list: [admin]
         groups:
