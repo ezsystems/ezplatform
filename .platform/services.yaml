@@ -5,7 +5,7 @@
 
 mysqldb:
     # Note: You might want to set Doctrine's "server_version" setting to avoid that it tries to connect to database to get version
-    type: mysql:10.4
+    type: mariadb:10.4
     disk: 1024
     configuration:
         schemas:
