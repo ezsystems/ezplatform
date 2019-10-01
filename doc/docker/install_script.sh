@@ -4,8 +4,12 @@
 # Second chown line:  For dev and behat tests we give a bit extra rights, never do this for prod.
 
 for i in $(seq 1 3); do
-  composer install --no-progress --no-interaction --prefer-dist --no-suggest --optimize-autoloader && s=0 && break || s=$? && sleep 1
-done; (exit $s)
+    composer install --no-progress --no-interaction --prefer-dist --no-suggest --optimize-autoloader && s=0 && break || s=$? && sleep 1
+done
+if [ "$s" != "0" ]; then
+    echo "ERROR : composer install failed, exit code : $s"
+    exit $s
+fi
 mkdir -p web/var
 
 if [ "${INSTALL_DATABASE}" == "1" ]; then 
