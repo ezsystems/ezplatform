@@ -121,9 +121,6 @@ hooks:
 
         composer install --no-dev --prefer-dist --no-progress --no-interaction --optimize-autoloader
 
-        # Generic cleanup to remove files we don't want to be deployed to prod (you don't need this for "dev" ENV)
-        rm web/app_dev.php
-
     # Deploy hook, access to services & done once (per cluster, not per node), only mounts are writable at this point
     # Note: Http traffic is paused while this is running, so for prod code this should finish as fast as possible, < 30s
     deploy: |
