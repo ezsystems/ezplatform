@@ -5,7 +5,7 @@
 
 mysqldb:
     # Note: If you change this also change DATABASE_VERSION, as used by "doctrine.dbal.server_version" in config.yml.
-    type: mysql:10.2
+    type: mariadb:10.2
     # Version 10.1 might be a better option when running Legacy Bridge
     # For more information see https://doc.ezplatform.com/en/2.1/getting_started/requirements_and_system_configuration/#supported-setups
     disk: 1024
