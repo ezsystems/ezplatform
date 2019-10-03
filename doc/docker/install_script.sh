@@ -12,7 +12,6 @@ if [ "$s" != "0" ]; then
 fi
 mkdir -p public/var
 
-
 if [ "${INSTALL_DATABASE}" == "1" ]; then 
     export DATABASE_URL=${DATABASE_PLATFORM}://${DATABASE_USER}:${DATABASE_PASSWORD}@${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_NAME}
 
