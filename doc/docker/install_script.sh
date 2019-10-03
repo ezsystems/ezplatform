@@ -16,8 +16,8 @@ if [ "${INSTALL_DATABASE}" == "1" ]; then
     php /scripts/wait_for_db.php
     composer ezplatform-install
     if [ "$APP_CMD" != '' ]; then
-      echo '> Executing' "$APP_CMD"
-      php bin/console $APP_CMD
+        echo '> Executing' "$APP_CMD"
+        php bin/console $APP_CMD
     fi
     echo 'Dumping database into doc/docker/entrypoint/mysql/2_dump.sql for use by mysql on startup.'
     mysqldump -u $DATABASE_USER --password=$DATABASE_PASSWORD -h $DATABASE_HOST --add-drop-table --extended-insert  --protocol=tcp $DATABASE_NAME > doc/docker/entrypoint/mysql/2_dump.sql
