@@ -42,6 +42,7 @@ The current Docker Compose files are made to be mixed and matched together for Q
 - solr.yml _(optional, add solr service and configure app for it)_
 - selenium.yml _(optional, always needs to be last, adds selenium service and appends config to app)_
 - chromium.yml _(alternative to `selenium.yml`, adds headless Chrome service, same applies here if used. Experimental)_
+- xdebug.yml _(optional, enables xdebug and sets `remote_host` to XDEBUG_REMOTE_HOST or localhost by default)_
 
 
 These can be used with `-f` argument on docker-compose, like:

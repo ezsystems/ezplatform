@@ -1,0 +1,7 @@
+version: '3.3'
+
+services:
+  app:
+    image: ${PHP_IMAGE_DEV}
+    environment:
+        - XDEBUG_CONFIG=remote_host=${XDEBUG_REMOTE_HOST-localhost}
