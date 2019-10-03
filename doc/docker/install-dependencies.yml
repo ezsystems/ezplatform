@@ -9,6 +9,7 @@ services:
      - ${COMPOSER_HOME}:/root/.composer:cached
     environment:
      - COMPOSER_MEMORY_LIMIT
+     - COMPOSER_PROCESS_TIMEOUT
      - APP_ENV=${APP_ENV-prod}
      - APP_DEBUG
      - APP_CMD
