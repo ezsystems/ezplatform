@@ -45,6 +45,7 @@
 /bin/*
 !bin/.ci/
 !bin/.travis/
+!bin/platformsh/
 !bin/console
 !bin/vhost.sh
 
