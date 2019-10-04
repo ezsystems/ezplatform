@@ -140,7 +140,7 @@ hooks:
 
         # Now that mounts are available, clear cache on mount.
         # Note: Skip on PE Cluster setup using e.g. "if [$PLATFORM_BRANCH" != 'production']; then" & get p.sh to enable this on internal per node "pre_start" hook
-        sh bin/platformsh/pre_start-per_node-clear_cache.sh
+        sh bin/platformsh_prestart_cacheclear.sh
 
         # If you also need to clear Redis cache on every deploy, you can either use this command or redis-cli
         # Normally this should only be needed if cached data structures changes (upgrades), or you change data via sql (e.g. restore backup)
