@@ -1,0 +1,8 @@
+system:
+  default:
+    fielddefinition_settings_templates:
+      - { template: "KoreRatingFieldTypeBundle::fielddefinition_settings.html.twig"}
+    field_edit_templates:
+      - { template: "KoreRatingFieldTypeBundle::field_edit.html.twig"}
+    field_templates:
+      - { template: "KoreRatingFieldTypeBundle::field_view.html.twig"}
