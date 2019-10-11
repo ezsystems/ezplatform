@@ -46,6 +46,7 @@ security:
 
         ezpublish_front:
             pattern: ^/
+            user_checker: eZ\Publish\Core\MVC\Symfony\Security\UserChecker
             anonymous: ~
             ezpublish_rest_session: ~
             form_login:
