@@ -12,6 +12,7 @@ services:
      - db
     environment:
      - COMPOSER_MEMORY_LIMIT
+     - PHP_INI_ENV_memory_limit
      - SYMFONY_ENV=${SYMFONY_ENV-prod}
      - SYMFONY_DEBUG
      - SYMFONY_HTTP_CACHE
