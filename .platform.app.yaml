@@ -179,6 +179,7 @@ runtime:
         - imagick
         - readline
         - redis
+        - igbinary
         #- apcu
         #- name: 'blackfire'
         #  configuration:
