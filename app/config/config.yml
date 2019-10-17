@@ -11,7 +11,7 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
-    # An optional unique identifier used to generate the CSRF token. Commenting this line will result in authentication
+    # Identifier used to generate the CSRF token. Commenting this line will result in authentication
     # issues both in AdminUI and REST calls
     ezpublish_rest.csrf_token_intention: authenticate
 
