@@ -4,7 +4,7 @@ default:
     formatters:
         pretty: true
         allure:
-          output_path: %paths.base%/build/allure
+          output_path: '%paths.base%/build/allure'
     extensions:
         Behat\MinkExtension:
             base_url: 'http://localhost'
