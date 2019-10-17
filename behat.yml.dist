@@ -1,6 +1,10 @@
 default:
     calls:
         error_reporting: -1 # Report all PHP errors
+    formatters:
+        pretty: true
+        allure:
+          output_path: %paths.base%/build/allure
     extensions:
         Behat\MinkExtension:
             base_url: 'http://localhost'
@@ -44,6 +48,8 @@ default:
                     preset: ezplatform
                     mode: normal
                     limit: 10
+
+        Allure\Behat\AllureFormatterExtension: ~
 
     suites: ~
 
