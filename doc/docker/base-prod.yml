@@ -12,6 +12,7 @@ services:
      - db
     environment:
      - COMPOSER_MEMORY_LIMIT
+     - PHP_INI_ENV_memory_limit
      - APP_ENV=${APP_ENV-prod}
      - APP_DEBUG
      - APP_HTTP_CACHE
