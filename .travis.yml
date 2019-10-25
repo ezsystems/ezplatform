@@ -71,9 +71,6 @@ notifications:
     on_pull_requests: false
 
 before_install:
-  # Decrypt SSH key to Allure report server
-  - openssl aes-256-cbc -K $encrypted_564abe244951_key -iv $encrypted_564abe244951_iv -in bin/.travis/rsa_allure.enc -out $HOME/rsa_allure -d
-  - chmod 400 $HOME/rsa_allure
   # Update Docker and Docker Compose
   - ./bin/.travis/trusty/update_docker.sh
   # Internal auth token dedicated to testing with travis+composer on ezsystems repos, not for reuse!
