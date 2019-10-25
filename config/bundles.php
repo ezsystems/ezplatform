@@ -36,7 +36,7 @@ return [
     EzSystems\EzPlatformCronBundle\EzPlatformCronBundle::class => ['all' => true],
     EzSystems\PlatformInstallerBundle\EzSystemsPlatformInstallerBundle::class => ['all' => true],
     EzSystems\DoctrineSchemaBundle\DoctrineSchemaBundle::class => ['all' => true],
-    EzSystems\RepositoryFormsBundle\EzSystemsRepositoryFormsBundle::class => ['all' => true],
+    EzSystems\EzPlatformContentFormsBundle\EzPlatformContentFormsBundle::class => ['all' => true],
     EzSystems\EzPlatformDesignEngineBundle\EzPlatformDesignEngineBundle::class => ['all' => true],
     EzSystems\EzPlatformStandardDesignBundle\EzPlatformStandardDesignBundle::class => ['all' => true],
     EzSystems\EzPlatformRichTextBundle\EzPlatformRichTextBundle::class => ['all' => true],

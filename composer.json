@@ -10,6 +10,9 @@
             "homepage": "https://github.com/ezsystems/ezplatform/contributors"
         }
     ],
+    "repositories": [
+        { "type": "vcs", "url": "https://github.com/ezsystems/ezplatform-content-forms.git" }
+    ],
     "require": {
         "php": "^7.3",
         "ext-ctype": "*",
@@ -31,7 +34,7 @@
         "ezsystems/ezplatform-standard-design": "^0.3@dev",
         "ezsystems/ezplatform-user": "^2.0@dev",
         "ezsystems/ezpublish-kernel": "^8.0@dev",
-        "ezsystems/repository-forms": "^3.0@dev",
+        "ezsystems/ezplatform-content-forms": "dev-content-forms as ^1.0@dev",
         "friendsofsymfony/jsrouting-bundle": "^2.3",
         "knplabs/knp-menu-bundle": "^2.2",
         "php-http/guzzle6-adapter": "^2.0",
