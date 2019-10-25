@@ -3,11 +3,9 @@ default:
         error_reporting: -1 # Report all PHP errors
     formatters:
         pretty: true
-        allure:
-          output_path: '%paths.base%/build/allure'
     extensions:
         Behat\MinkExtension:
-            base_url: 'http://localhost'
+            base_url: 'http://v3.local'
             goutte: ~
             javascript_session: selenium
             sessions:
@@ -27,15 +25,7 @@ default:
 
         DMore\ChromeExtension\Behat\ServiceContainer\ChromeExtension: ~
 
-        Behat\Symfony2Extension:
-            kernel:
-                bootstrap: config/bootstrap.php
-                path: src/Kernel.php
-                class: App\Kernel
-                env: behat
-                debug: false
-
-        EzSystems\BehatBundle\BehatExtension: ~
+        FriendsOfBehat\SymfonyExtension: ~
 
         Liuggio\Fastest\Behat\ListFeaturesExtension\Extension: ~
 
@@ -54,8 +44,4 @@ default:
     suites: ~
 
 imports:
-    - vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishCoreBundle/behat_suites.yml
-    - vendor/ezsystems/repository-forms/behat_suites.yml
-    - vendor/ezsystems/ezplatform-admin-ui/behat_suites.yml
-    - vendor/ezsystems/behatbundle/behat_suites.yml
-    - vendor/ezsystems/ezplatform-http-cache/behat_suites.yml
+    - behat_suites_new.yaml

@@ -24,7 +24,6 @@ return [
     Knp\Bundle\MenuBundle\KnpMenuBundle::class => ['all' => true],
     WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle::class => ['all' => true],
     FOS\HttpCacheBundle\FOSHttpCacheBundle::class => ['all' => true],
-    // eZ Platform
     eZ\Bundle\EzPublishCoreBundle\EzPublishCoreBundle::class => ['all' => true],
     EzSystems\EzPlatformCoreBundle\EzPlatformCoreBundle::class => ['all' => true],
     eZ\Bundle\EzPublishLegacySearchEngineBundle\EzPublishLegacySearchEngineBundle::class => ['all' => true],
@@ -52,4 +51,5 @@ return [
     EzSystems\EzPlatformGraphQL\EzSystemsEzPlatformGraphQLBundle::class => ['all' => true],
     Overblog\GraphQLBundle\OverblogGraphQLBundle::class => ['all' => true],
     Overblog\GraphiQLBundle\OverblogGraphiQLBundle::class => ['dev' => true],
+    FriendsOfBehat\SymfonyExtension\Bundle\FriendsOfBehatSymfonyExtensionBundle::class => ['behat' => true],
 ];

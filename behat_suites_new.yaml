@@ -1,0 +1,8 @@
+default:
+  suites:
+    adminui:
+      paths:
+        - '%paths.base%/features/'
+      contexts:
+        - App\Context\AuthenticationContext
+        - App\Context\NavigationContext

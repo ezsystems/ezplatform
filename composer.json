@@ -74,13 +74,15 @@
         "ezsystems/allure-behat": "^3.0",
         "ezsystems/behat-screenshot-image-driver-cloudinary": "^1.1@dev",
         "ezsystems/behatbundle": "^8.0@dev",
+        "friends-of-behat/service-container-extension": "^1.0",
+        "friends-of-behat/symfony-extension": "^2.0",
         "liuggio/fastest": "^1.6",
         "overblog/graphiql-bundle": "^0.1.2",
+        "phpunit/phpunit": "^8.2",
         "symfony/debug-pack": "^1.0",
         "symfony/maker-bundle": "^1.0",
         "symfony/test-pack": "^1.0",
-        "symfony/web-server-bundle": "^4.2",
-        "phpunit/phpunit": "^8.2"
+        "symfony/web-server-bundle": "^4.2"
     },
     "conflict": {
         "symfony/symfony": "*"
