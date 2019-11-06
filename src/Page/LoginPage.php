@@ -53,13 +53,13 @@ class LoginPage extends Page
      */
     protected function fillPassword(string $password): void
     {
-        $this->getHTMLPage()->find(...$this->fields['password'])->setValue($password);
+        $this->getHTMLPage()->withTimeout(10)->find(...$this->fields['password'])->setValue($password);
     }
 
     function verifyIsLoaded(): void
     {
-        $this->getWebAssert()->elementExists(...$this->fields['username']);
-        $this->getWebAssert()->elementExists(...$this->fields['password']);
+        $this->assert()->elementExists(...$this->fields['username']);
+        $this->assert()->elementExists(...$this->fields['password']);
     }
 
     public function getName(): string
