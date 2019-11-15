@@ -34,6 +34,7 @@
         "ezsystems/repository-forms": "^3.0@dev",
         "friendsofsymfony/jsrouting-bundle": "^2.3",
         "knplabs/knp-menu-bundle": "^2.2",
+        "monolog/monolog": "^1.25.2",
         "php-http/guzzle6-adapter": "^2.0",
         "platformsh/symfonyflex-bridge": "^2.1",
         "sensio/framework-extra-bundle": "^5.1",
