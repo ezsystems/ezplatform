@@ -37,8 +37,8 @@ matrix:
       env: BEHAT_OPTS="--mode=behat --profile=core --tags=~@broken"
     - name: "Behat"
       env: BEHAT_OPTS="--mode=behat --profile=behat --tags=~@broken"
-    - name: "Repository Forms tests on Clean Platform"
-      env: BEHAT_OPTS="--mode=behat --profile=repository-forms --tags=~@broken --non-strict"
+    - name: "Content Forms tests on Clean Platform"
+      env: BEHAT_OPTS="--mode=behat --profile=content-forms --tags=~@broken --non-strict"
     - name: "Admin UI on Clean Platform"
       env: BEHAT_OPTS="--profile=adminui --suite=adminui"
     - if: type in (cron, api)

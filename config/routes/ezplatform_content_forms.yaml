@@ -1,0 +1,2 @@
+ezplatform_content_forms:
+    resource: '@EzPlatformContentFormsBundle/Resources/config/routing.yaml'
