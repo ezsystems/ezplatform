@@ -26,3 +26,12 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    # Those service definitions were added to fix missing command registration in an external package
+    JMS\TranslationBundle\Command\ExtractTranslationCommand:
+        tags:
+            - { name: console.command }
+
+    JMS\TranslationBundle\Command\ResourcesListCommand:
+        tags:
+            - { name: console.command }
