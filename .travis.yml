@@ -30,32 +30,32 @@ matrix:
   include:
     # TMP disable usage of varnish until we figure out segmentation faulty issue on 2.0
     #- TEST_CMD="--mode=behat --profile=rest --suite=fullJson --tags=~@broken" COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/varnish.yml:doc/docker/selenium.yml" WEB_HOST="varnish"
-    - name: "PHP Unit tests"
-      env:
-        - TEST_CMD="php bin/phpunit -v vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishRestBundle/Tests/Functional"
-        - SYMFONY_CMD="ez:behat:create-language 'pol-PL' 'Polish (polski)'"
-    - name: "Kernel Rest fullJson tests"
-      env: BEHAT_OPTS="--mode=behat --profile=rest --suite=fullJson --tags=~@broken --non-strict"
-    - name: "Kernel Rest fullXML tests"
-      env: BEHAT_OPTS="--mode=behat --profile=rest --suite=fullXml --tags=~@broken --non-strict"
-    - name: "Kernel Rest core tests"
-      env: BEHAT_OPTS="--mode=behat --profile=core --tags=~@broken"
-    - name: "Behat"
-      env: BEHAT_OPTS="--mode=behat --profile=behat --tags=~@broken"
-    - name: "Repository Forms tests on Clean Platform"
-      env: BEHAT_OPTS="--mode=behat --profile=repository-forms --tags=~@broken --non-strict"
+#    - name: "PHP Unit tests"
+#      env:
+#        - TEST_CMD="php bin/phpunit -v vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishRestBundle/Tests/Functional"
+#        - SYMFONY_CMD="ez:behat:create-language 'pol-PL' 'Polish (polski)'"
+#    - name: "Kernel Rest fullJson tests"
+#      env: BEHAT_OPTS="--mode=behat --profile=rest --suite=fullJson --tags=~@broken --non-strict"
+#    - name: "Kernel Rest fullXML tests"
+#      env: BEHAT_OPTS="--mode=behat --profile=rest --suite=fullXml --tags=~@broken --non-strict"
+#    - name: "Kernel Rest core tests"
+#      env: BEHAT_OPTS="--mode=behat --profile=core --tags=~@broken"
+#    - name: "Behat"
+#      env: BEHAT_OPTS="--mode=behat --profile=behat --tags=~@broken"
+#    - name: "Repository Forms tests on Clean Platform"
+#      env: BEHAT_OPTS="--mode=behat --profile=repository-forms --tags=~@broken --non-strict"
     - name: "Admin UI on Clean Platform"
-      env: BEHAT_OPTS="--profile=adminui --suite=adminui"
-    - name: "Admin UI on Clean Platform with Varnish and Redis"
-      env:
-        - COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/varnish.yml:doc/docker/redis.yml:doc/docker/selenium.yml"
-        - BEHAT_OPTS="--profile=adminui --suite=adminui"
-        - WEB_HOST="varnish"
-    - if: type in (cron, api)
-      name: "Admin UI tests using different personas"
-      env:
-        - SETUP_BEHAT_OPTS="--profile=setup --suite=personas --tags=@setup"
-        - BEHAT_OPTS="--profile=adminui --suite=personas"
+      env: BEHAT_OPTS="--profile=adminui --suite=adminuimodules"
+#    - name: "Admin UI on Clean Platform with Varnish and Redis"
+#      env:
+#        - COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/varnish.yml:doc/docker/redis.yml:doc/docker/selenium.yml"
+#        - BEHAT_OPTS="--profile=adminui --suite=adminui"
+#        - WEB_HOST="varnish"
+#    - if: type in (cron, api)
+#      name: "Admin UI tests using different personas"
+#      env:
+#        - SETUP_BEHAT_OPTS="--profile=setup --suite=personas --tags=@setup"
+#        - BEHAT_OPTS="--profile=adminui --suite=personas"
 
 # reduce depth (history) of git checkout
 git:
