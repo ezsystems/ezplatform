@@ -63,6 +63,14 @@
         "symfony/yaml": "^4.3"
     },
     "require-dev": {
+        "symfony/service-contracts": "~1.1.8",
+        "symfony/form": "~4.3.8",
+        "symfony/translation": "~4.3.8",
+        "symfony/validator": "~4.3.8",
+        "symfony/var-dumper": "~4.4.0",
+        "symfony/http-kernel": "~4.3.8",
+        "symfony/security": "~4.3.8",
+        "symfony/security-bundle": "~4.3.8",
         "behat/behat": "^3.5",
         "behat/mink": "^1.7",
         "symfony/dom-crawler": "~4.3.8",
