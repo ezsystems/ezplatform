@@ -29,23 +29,23 @@ branches:
 # list of behat arguments to test
 matrix:
   include:
-    - name: "eZ Platform REST Bundle functional tests"
-      env:
-        - TEST_CMD="./bin/.travis/run_rest_tests.sh"
-        - SYMFONY_CMD="ez:behat:create-language 'pol-PL' 'Polish (polski)'"
-    - name: "Kernel core tests"
-      env: BEHAT_OPTS="--mode=behat --profile=core --tags=~@broken"
-    - name: "Behat"
-      env: BEHAT_OPTS="--mode=behat --profile=behat --tags=~@broken"
+    # - name: "eZ Platform REST Bundle functional tests"
+    #   env:
+    #     - TEST_CMD="./bin/.travis/run_rest_tests.sh"
+    #     - SYMFONY_CMD="ez:behat:create-language 'pol-PL' 'Polish (polski)'"
+    # - name: "Kernel core tests"
+    #   env: BEHAT_OPTS="--mode=behat --profile=core --tags=~@broken"
+    # - name: "Behat"
+    #   env: BEHAT_OPTS="--mode=behat --profile=behat --tags=~@broken"
     - name: "Content Forms tests on Clean Platform"
       env: BEHAT_OPTS="--mode=behat --profile=content-forms --tags=~@broken --non-strict"
-    - name: "Admin UI on Clean Platform"
-      env: BEHAT_OPTS="--profile=adminui --suite=adminui"
-    - if: type in (cron, api)
-      name: "Admin UI tests using different personas"
-      env:
-        - SETUP_BEHAT_OPTS="--profile=setup --suite=personas --tags=@setup"
-        - BEHAT_OPTS="--profile=adminui --suite=personas"
+    # - name: "Admin UI on Clean Platform"
+    #   env: BEHAT_OPTS="--profile=adminui --suite=adminui"
+    # - if: type in (cron, api)
+    #   name: "Admin UI tests using different personas"
+    #   env:
+    #     - SETUP_BEHAT_OPTS="--profile=setup --suite=personas --tags=@setup"
+    #     - BEHAT_OPTS="--profile=adminui --suite=personas"
 
 # reduce depth (history) of git checkout
 git:
