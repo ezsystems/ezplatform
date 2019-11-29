@@ -19,6 +19,8 @@ default:
                             args:
                                 - "--window-size=1440,1080"
                                 - "--no-sandbox"
+                                # problem with different iframe host  - https://bugs.chromium.org/p/chromedriver/issues/detail?id=2758
+                                - "--disable-features=site-per-process"
 
         Behat\Symfony2Extension:
             kernel:
