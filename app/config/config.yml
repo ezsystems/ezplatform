@@ -17,19 +17,19 @@ parameters:
 doctrine:
     dbal:
         connections:
-            connection1:
+            connection_1:
                 driver: '%database_driver%'
                 host: '%database_host%'
                 port: '%database_port%'
-                dbname: '%database_name%'
+                dbname: '%database_name%_1'
                 user: '%database_user%'
                 password: '%database_password%'
                 charset: '%database_charset%'
-            connection2:
+            connection_2:
                 driver: '%database_driver%'
                 host: '%database_host%'
                 port: '%database_port%'
-                dbname: '%database_name%'
+                dbname: '%database_name%_2'
                 user: '%database_user%'
                 password: '%database_password%'
                 charset: '%database_charset%'
@@ -37,12 +37,12 @@ doctrine:
         auto_generate_proxy_classes: '%kernel.debug%'
         default_entity_manager: siteaccessaware
         entity_managers:
-            connection1:
-                connection: connection1
+            connection_1:
+                connection: connection_1
                 mappings:
                     AppBundle: ~
-            connection2:
-                connection: connection2
+            connection_2:
+                connection: connection_2
                 mappings:
                     AppBundle: ~
 
@@ -58,15 +58,23 @@ ez_doctrine_schema:
 # Can have several connections used by each eZ Repositories in ezplatform.yml
 ez_search_engine_solr:
     endpoints:
-        endpoint0:
+        endpoint_1:
             dsn: '%solr_dsn%'
-            core: '%solr_core%'
+            core: '%solr_core%_1'
+        endpoint_2:
+            dsn: '%solr_dsn%'
+            core: '%solr_core%_2'
     connections:
-        default:
+        connection_1:
             entry_endpoints:
-                - endpoint0
+                - endpoint_1
             mapping:
-                default: endpoint0
+                default: endpoint_1
+        connection_2:
+            entry_endpoints:
+                - endpoint_2
+            mapping:
+                default: endpoint_2
 
 framework:
     esi: ~
