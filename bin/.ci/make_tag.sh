@@ -43,6 +43,10 @@ elif [[ $CURRENT_BRANCH_LINE =~ ^\*[[:space:]]\(detached[[:space:]]from[[:space:
 #* (HEAD detached at v2.5.0)
 elif [[ $CURRENT_BRANCH_LINE =~ ^\*[[:space:]]\(HEAD[[:space:]]detached[[:space:]]at[[:space:]]([^[:space:]]+)\)$ ]]; then
   CURRENT_BRANCH=${BASH_REMATCH[1]}
+#* (HEAD detached from v2.5.0)
+elif [[ $CURRENT_BRANCH_LINE =~ ^\*[[:space:]]\(HEAD[[:space:]]detached[[:space:]]from[[:space:]]([^[:space:]]+)\)$ ]]; then
+  CURRENT_BRANCH=${BASH_REMATCH[1]}
+  echo -e "\033[33m 'HEAD detatched from' detected, you'll end up on '${CURRENT_BRANCH}' once tag has been made! \033[0m"
 #* (no branch)
 else
   echo -e "\033[31m Can't detect current branch/tag. \033[0m"
