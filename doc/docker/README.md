@@ -44,6 +44,7 @@ The current Docker Compose files are made to be mixed and matched together for Q
 - varnish.yml _(optional, adds varnish service and appends config to app)_
 - solr.yml _(optional, add solr service and configure app for it)_
 - selenium.yml _(optional, always needs to be last, adds selenium service and appends config to app)_
+- multihost.yml _(optional, adds multihost config to app container network)_
 
 
 These can be used with `-f` argument on docker-compose, like:
