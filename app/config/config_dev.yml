@@ -14,7 +14,7 @@ framework:
 web_profiler:
     toolbar: true
     intercept_redirects: false
-    # By default add rule to disable showing of useless Admin UI "notifications/count" in web debug toolbar AJAX calls list to make it more manageable.
+    # By default disable showing of Admin UI "notifications/count" in web debug toolbar AJAX calls list to make it more manageable.
     excluded_ajax_paths: '(^/((index|app(_[\w]+)?)\.php/)?_wdt)|/notifications/count$'
 
 monolog:
