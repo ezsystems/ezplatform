@@ -7,10 +7,12 @@ services:
     ports:
      - "9999:9999"
      - "4444:4444"
+     - "5900:5900"
     environment:
      - SCREEN_WIDTH=1920
      - SCREEN_HEIGHT=1080
      - SCREEN_DEPTH=24
+     - VNC_NO_PASSWORD=1
     networks:
      - backend
     # Because of: https://github.com/elgalu/docker-selenium/issues/20

@@ -1,6 +1,10 @@
 default:
     calls:
         error_reporting: -1 # Report all PHP errors
+    formatters:
+        pretty: true
+        allure:
+          output_path: %paths.base%/build/allure
     extensions:
         Behat\MinkExtension:
             base_url: 'http://localhost'
@@ -15,6 +19,8 @@ default:
                             args:
                                 - "--window-size=1440,1080"
                                 - "--no-sandbox"
+                                # problem with different iframe host  - https://bugs.chromium.org/p/chromedriver/issues/detail?id=2758
+                                - "--disable-features=site-per-process"
 
         Behat\Symfony2Extension:
             kernel:
@@ -37,6 +43,8 @@ default:
                     preset: ezplatform
                     mode: normal
                     limit: 10
+
+        Allure\Behat\AllureFormatterExtension: ~
 
     suites: ~
 

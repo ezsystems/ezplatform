@@ -107,3 +107,6 @@ after_failure:
   - docker-compose logs -t --tail=15
   # Will show us what is up, and how long it's been up
   - docker ps -s
+
+after_script:
+  - if [ "${BEHAT_OPTS}" != "" ] ; then bin/ezreport ; fi

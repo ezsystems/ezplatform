@@ -11,6 +11,8 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
+    # Identifier used to generate the CSRF token. Commenting this line will result in authentication
+    # issues both in AdminUI and REST calls
     ezpublish_rest.csrf_token_intention: authenticate
 
 # Configuration for Database connection, can have several connections used by eZ Repositories in ezplatform.yml
