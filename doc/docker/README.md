@@ -45,6 +45,7 @@ The current Docker Compose files are made to be mixed and matched together for Q
 - solr.yml _(optional, add solr service and configure app for it)_
 - selenium.yml _(optional, always needs to be last, adds selenium service and appends config to app)_
 - chromium.yml _(alternative to `selenium.yml`, adds headless Chrome service, same applies here if used. Experimental)_
+- multihost.yml _(optional, adds multihost config to app container network)_
 
 
 These can be used with `-f` argument on docker-compose, like:
