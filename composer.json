@@ -25,7 +25,7 @@
     },
     "require": {
         "php": "~5.6|~7.0",
-        "doctrine/doctrine-bundle": "^1.9.1",
+        "doctrine/doctrine-bundle": "^1.10.3",
         "egulias/listeners-debug-command-bundle": "^1.9.1",
         "ezplatform-i18n/ezplatform-i18n-ach_ug": "^1.5@dev",
         "ezsystems/content-on-the-fly-prototype": "~0.1.12@dev",
@@ -39,7 +39,7 @@
         "ezsystems/repository-forms": "^1.11.3@dev",
         "hautelook/templated-uri-bundle": "^1.0 | ^2.1",
         "incenteev/composer-parameter-handler": "^2.1.3",
-        "sensio/distribution-bundle": "^3.0.36 | ^4.0.40 | ^5.0.22",
+        "sensio/distribution-bundle": "^3.0.36 | ^4.0.42 | ^5.0.25",
         "sensio/framework-extra-bundle": "^3.0.29",
         "sensio/generator-bundle": "^2.5.3 | ^3.1.7",
         "sensiolabs/security-checker": "^5.0",
@@ -48,7 +48,7 @@
         "symfony/swiftmailer-bundle": "^2.6.7 | ^3.2.4",
         "symfony/symfony": "~2.8.47",
         "tedivm/stash-bundle": "^0.6.2",
-        "twig/extensions": "^1.5.3",
+        "twig/extensions": "^1.5.4",
         "white-october/pagerfanta-bundle": "~1.0.8",
         "willdurand/js-translation-bundle": "^2.6.6"
     },
