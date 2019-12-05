@@ -35,7 +35,7 @@ default:
                 path: src/Kernel.php
                 class: App\Kernel
                 env: behat
-                debug: false
+                debug: true
 
         EzSystems\BehatBundle\BehatExtension: ~
 
