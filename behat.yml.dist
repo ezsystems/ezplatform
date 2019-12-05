@@ -28,7 +28,7 @@ default:
                 path: app/AppKernel.php
                 class: AppKernel
                 env: behat
-                debug: false
+                debug: true
 
         EzSystems\PlatformBehatBundle\ServiceContainer\EzBehatExtension: ~
 
