@@ -10,7 +10,13 @@
             "homepage": "https://github.com/ezsystems/ezplatform/contributors"
         }
     ],
-    "replace": {
+    "repositories": [
+        {
+            "type": "vcs",
+            "url":  "https://github.com/ezsystems/allure-behat.git"
+        }
+    ],
+  "replace": {
         "ezsystems/ezpublish-community": "*"
     },
     "autoload": {
