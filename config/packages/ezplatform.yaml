@@ -1,8 +1,9 @@
 imports:
     - { resource: cache_pool/cache.tagaware.filesystem.yaml }
-    # uncomment following cache pools if you want to use redis or memcached
+    # Uncomment following cache pools if you want to use redis or memcached
 #    - { resource: cache_pool/cache.redis.yaml }
 #    - { resource: cache_pool/cache.memcached.yaml }
+    # Or if you have more special needs create your own Symfony cache service
 
 parameters:
     locale_fallback: en
