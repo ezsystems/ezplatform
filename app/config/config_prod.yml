@@ -31,7 +31,7 @@ monolog:
         nested:
             type: '%log_type%'
             path: '%log_path%'
-            level: debug
+            level: warning
         console:
             type: console
             process_psr_3_messages: false
