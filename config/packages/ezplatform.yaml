@@ -1,3 +1,10 @@
+imports:
+    - { resource: cache_pool/cache.tagaware.filesystem.yaml }
+    # Uncomment following cache pools if you want to use redis or memcached
+#    - { resource: cache_pool/cache.redis.yaml }
+#    - { resource: cache_pool/cache.memcached.yaml }
+    # Or if you have more special needs create your own Symfony cache service
+
 parameters:
     locale_fallback: en
 
@@ -96,10 +103,3 @@ framework:
         #       default session name will be set to "eZSESSID{siteaccess_hash}" (unique session name per siteaccess)
         #       Further reading on sessions: http://doc.ezplatform.com/en/latest/guide/sessions/
     http_method_override: true
-    cache:
-        pools:
-            cache.array:
-                adapter: cache.adapter.array
-                default_lifetime: 3600
-                public: true
-                tags: true

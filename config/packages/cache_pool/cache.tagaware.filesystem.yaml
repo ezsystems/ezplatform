@@ -6,7 +6,7 @@ parameters:
 
 services:
     cache.tagaware.filesystem:
-        public: true # @todo should be private
+        public: true
         class: Symfony\Component\Cache\Adapter\FilesystemTagAwareAdapter
         parent: cache.adapter.filesystem
         tags:
