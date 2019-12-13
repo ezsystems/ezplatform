@@ -83,6 +83,7 @@
     "conflict": {
         "symfony/symfony": "3.4.9||3.4.12||3.4.16",
         "doctrine/dbal": "2.7.0",
+        "doctrine/persistence": "1.3.2",
         "twig/twig": "2.6.1",
         "symfony/webpack-encore-bundle": "1.2.0||1.2.1"
     },
