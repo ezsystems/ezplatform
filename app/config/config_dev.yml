@@ -6,11 +6,16 @@ framework:
     router:
         resource: '%kernel.project_dir%/app/config/routing_dev.yml'
         strict_requirements: true
-    profiler: { only_exceptions: false }
+    profiler:
+        only_exceptions: false
+        # Optional: Skips generating profiles for subrequests by default due to dev performance
+        only_master_requests: true
 
 web_profiler:
     toolbar: true
     intercept_redirects: false
+    # By default disable showing of Admin UI "notifications/count" in web debug toolbar AJAX calls list to make it more manageable.
+    excluded_ajax_paths: '(^/((index|app(_[\w]+)?)\.php/)?_wdt)|/notifications/count$'
 
 monolog:
     handlers:
@@ -18,7 +23,7 @@ monolog:
             type: '%log_type%'
             path: '%log_path%'
             level: debug
-            channels: ['!event']
+            channels: ['!event', '!doctrine']
         console:
             type: console
             process_psr_3_messages: false
