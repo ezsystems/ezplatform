@@ -25,6 +25,7 @@
         "ezsystems/ezplatform-graphql": "^2.0@dev",
         "ezsystems/ezplatform-http-cache": "^1.0@dev",
         "ezsystems/ezplatform-matrix-fieldtype": "^2.0@dev",
+        "ezsystems/ezplatform-query-fieldtype": "^2.0@dev",
         "ezsystems/ezplatform-rest": "^1.0@dev",
         "ezsystems/ezplatform-richtext": "^2.0@dev",
         "ezsystems/ezplatform-solr-search-engine": "^3.0@dev",
