@@ -84,6 +84,10 @@ mounts:
     'web/var':
         source: local
         source_path: var
+# Uncomment if GraphQL Schemas need be generated dynamically on server to reflect live repository status:
+#    'app/config/graphql':
+#        source: local
+#        source_path: graphql
     # To be prepared to move to cluster, please rather use e.g. persisted Redis instance.
     'web/sessions':
         source: local
@@ -155,6 +159,10 @@ hooks:
         # - On database import/restore
         # So in development it might be convenient to rebuild indexes, slowing down deploy time
         ##php bin/console ezplatform:reindex --processes=auto
+        
+        # GraphQL: Usually you should generate schema locally & deploy with your code, but if not possible then
+        # uncomment this to automatically generate GraphQL schema on deploy. To use make app/config/graphql a mount.
+        ##php bin/console ezplatform:graphql:generate-schema
 
     # Post deploy hook, like deploy but after being deployed and live, for deploy tasks we can do asynchronously
     #post_deploy: |
