@@ -46,21 +46,22 @@ if ($dfsNfsPath = getenv('DFS_NFS_PATH')) {
     }
 
     $loader = new Loader\YamlFileLoader($container, new FileLocator(dirname(__DIR__).'/dfs'));
-    $loader->load('dfs.yml');
+    $loader->load('dfs.yaml');
 }
 
 // Cache settings
 // If CACHE_POOL env variable is set, check if there is a yml file that needs to be loaded for it
+$loader = new Loader\YamlFileLoader($container, new FileLocator(dirname(__DIR__).'/cache_pool'));
 if (($pool = getenv('CACHE_POOL')) && file_exists(dirname(__DIR__)."/cache_pool/${pool}.yaml")) {
-    $loader = new Loader\YamlFileLoader($container, new FileLocator(dirname(__DIR__).'/cache_pool'));
     $loader->load($pool.'.yaml');
+} else {
+    // load default cache adapter
+    $loader->load('cache.tagaware.filesystem.yaml');
 }
 
 // Params that needs to be set at compile time and thus can't use Symfony's env()
 if ($purgeType = getenv('HTTPCACHE_PURGE_TYPE')) {
     $container->setParameter('purge_type', $purgeType);
-} else {
-    $container->setParameter('purge_type', 'local');
 }
 
 if ($value = getenv('MAILER_TRANSPORT')) {
