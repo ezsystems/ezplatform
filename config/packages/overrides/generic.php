@@ -59,6 +59,8 @@ if (($pool = getenv('CACHE_POOL')) && file_exists(dirname(__DIR__)."/cache_pool/
 // Params that needs to be set at compile time and thus can't use Symfony's env()
 if ($purgeType = getenv('HTTPCACHE_PURGE_TYPE')) {
     $container->setParameter('purge_type', $purgeType);
+} else {
+    $container->setParameter('purge_type', 'local');
 }
 
 if ($value = getenv('MAILER_TRANSPORT')) {
