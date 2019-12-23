@@ -45,7 +45,7 @@ if ($dfsNfsPath = getenv('DFS_NFS_PATH')) {
         $container->setParameter('dfs_database_password', $container->getParameter('database_password'));
     }
 
-    $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../dfs'));
+    $loader = new Loader\YamlFileLoader($container, new FileLocator(dirname(__DIR__).'/dfs'));
     $loader->load('dfs.yml');
 }
 

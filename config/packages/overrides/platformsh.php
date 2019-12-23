@@ -47,7 +47,7 @@ if ($dfsNfsPath = getenv('PLATFORMSH_DFS_NFS_PATH')) {
         $container->setParameter('dfs_database_password', $container->getParameter('database_password'));
     }
 
-    $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/dfs'));
+    $loader = new Loader\YamlFileLoader($container, new FileLocator(dirname(__DIR__).'/dfs'));
     $loader->load('dfs.yaml');
 }
 // Use Redis-based caching if possible.
@@ -60,7 +60,7 @@ if (isset($relationships['rediscache'])) {
         $container->setParameter('cache_pool', 'cache.redis');
         $container->setParameter('cache_dsn', sprintf('%s:%d', $endpoint['host'], $endpoint['port']) . '?retry_interval=3');
 
-        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/cache_pool'));
+        $loader = new Loader\YamlFileLoader($container, new FileLocator(dirname(__DIR__).'/cache_pool'));
         $loader->load('cache.redis.yaml');
     }
 } elseif (isset($relationships['cache'])) {
@@ -75,7 +75,7 @@ if (isset($relationships['rediscache'])) {
         $container->setParameter('cache_pool', 'cache.memcached');
         $container->setParameter('cache_dsn', sprintf('%s:%d', $endpoint['host'], $endpoint['port']));
 
-        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/cache_pool'));
+        $loader = new Loader\YamlFileLoader($container, new FileLocator(dirname(__DIR__).'/cache_pool'));
         $loader->load('cache.memcached.yaml');
     }
 }
