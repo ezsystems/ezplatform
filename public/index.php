@@ -22,7 +22,7 @@ if (($useDebugging = getenv('APP_DEBUG')) === false || $useDebugging === '') {
 if ($useDebugging) {
     umask(0000);
 
-    Debug::enable();
+    Debug::enable(E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED);
 }
 
 if ($trustedProxies = $_SERVER['TRUSTED_PROXIES'] ?? $_ENV['TRUSTED_PROXIES'] ?? false) {
