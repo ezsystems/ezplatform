@@ -57,7 +57,7 @@ composer create-project --keep-vcs ezsystems/ezplatform ezplatform ^2
 cd ezplatform
 ```
 
-_Note: If  composer is installed locally instead of globally, the first command will start with `php composer.phar`._
+_Note: If composer is installed locally instead of globally, the first command will start with `php composer.phar`._
 
 During the installation process you will be asked to input things like database host name, login, password, etc.
 They will be placed in `<ezplatform>/app/config/parameters.yml`.
