@@ -40,7 +40,7 @@ instructions on installing other distributions _(like [ezplatform-demo](https://
 
 These instructions assume you have already installed:
 - PHP _(7.1 or higher)_
-- Web Server _(Recommeneded: Apache / Nginx. Use of php's built in development server is also possible)_
+- Web Server _(Recommended: Apache / Nginx. Use of php's built-in development server is also possible)_
 - Database server _(MySQL 5.5+ or MariaDB 10.0+)_
 - [Composer](https://doc.ezplatform.com/en/latest/getting_started/about_composer/)
 - Git _(for development)_
@@ -57,7 +57,7 @@ composer create-project --keep-vcs ezsystems/ezplatform ezplatform ^2
 cd ezplatform
 ```
 
-_Note: If  composer is installed localy instead of globally, the first command will start with `php composer.phar`._
+_Note: If composer is installed locally instead of globally, the first command will start with `php composer.phar`._
 
 During the installation process you will be asked to input things like database host name, login, password, etc.
 They will be placed in `<ezplatform>/app/config/parameters.yml`.
