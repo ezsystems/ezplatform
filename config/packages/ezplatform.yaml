@@ -1,18 +1,8 @@
-imports:
-    - { resource: cache_pool/cache.tagaware.filesystem.yaml }
-    # Uncomment following cache pools if you want to use redis or memcached
-#    - { resource: cache_pool/cache.redis.yaml }
-#    - { resource: cache_pool/cache.memcached.yaml }
-    # Or if you have more special needs create your own Symfony cache service
-
 parameters:
     locale_fallback: en
 
     # One of `legacy` (default) or `solr`
     search_engine: '%env(SEARCH_ENGINE)%'
-
-    ## Session handler, by default set to file based (instead of ~) in order to be able to use %ezplatform.session.save_path%
-    ezplatform.session.handler_id: session.handler.native_file
 
     # Session save path as used by symfony session handlers (eg. used for dsn with redis)
     ezplatform.session.save_path: '%kernel.project_dir%/var/sessions/%kernel.environment%'
@@ -29,15 +19,24 @@ parameters:
     # Settings for HttpCache
     purge_server: '%env(HTTPCACHE_PURGE_SERVER)%'
 
-    ## Purge type used by HttpCache system ("local", "varnish"/"http", and on ee also "fastly")
-    purge_type: local
+    # Identifier used to generate the CSRF token. Commenting this line will result in authentication
+    # issues both in AdminUI and REST calls
+    ezpublish_rest.csrf_token_intention: authenticate
 
     # Varnish invalidation/purge token (for use on platform.sh, eZ Platform Cloud and other places you can't use IP for ACL)
     # varnish_invalidate_token: '%env(HTTPCACHE_VARNISH_INVALIDATE_TOKEN)%' # @todo option is not available for some reason
 
-    # Identifier used to generate the CSRF token. Commenting this line will result in authentication
-    # issues both in AdminUI and REST calls
-    ezpublish_rest.csrf_token_intention: authenticate
+    # Compile time handlers
+    ## These are defined at compile time, and hence can't be set at runtime using env()
+    ## config/env/generic.php takes care about letting you set them by env variables
+
+    ## Session handler, by default set to file based (instead of ~) in order to be able to use %ezplatform.session.save_path%
+    # env: SESSION_HANDLER_ID
+    ezplatform.session.handler_id: session.handler.native_file
+
+    ## Purge type used by HttpCache system ("local", "varnish"/"http", and on ee also "fastly")
+    # env: HTTPCACHE_PURGE_TYPE
+    purge_type: local
 
 ezplatform:
     # HttpCache settings, By default 'local' (Symfony HttpCache Proxy), by setting it to 'http' you can point it to Varnish
