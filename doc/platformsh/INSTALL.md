@@ -42,7 +42,7 @@ This requires more manual steps, but may be more up to date with current develop
        For example set the project variables for your eZ Network installation ID and token:
       `platform variable:create --level project --name env:COMPOSER_AUTH --json true --visible-runtime false --value '{"http-basic": {"updates.ez.no": {"username": "network-id", "password": "token"}}}'`
    4. If you have the need to debug things remotely, set the `SYMFONY_ENV` environment variable to 'dev':
-      `platform variable:update --name env:SYMONY_ENV --value 'dev'`.
+      `platform variable:update env:SYMONY_ENV --value 'dev'`.
 7. Push your branch. The Platform.sh setup wizard provides the command to use. Example:
    `git push -u platform master`  
    This starts the build process. Now, finish the Platform.sh setup wizard.
