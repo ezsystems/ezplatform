@@ -84,8 +84,8 @@ mounts:
     'web/var':
         source: local
         source_path: var
-    # To be prepared to move to cluster, please rather use e.g. persisted Redis instance.
-    'web/sessions':
+    # [PE Cluster] For cluster it's recommended to rather use a performant shared session storage like Redis/Memcached.
+    'var/sessions':
         source: local
         source_path: sessions
 # Uncomment if you need to use Kaliop Migrations on your setup and not able to get it to write to "var" dir.
