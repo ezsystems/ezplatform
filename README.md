@@ -14,7 +14,7 @@ It has been in development since 2011, and integral part of the *eZ Publish Plat
 #### Abstract:
 
 - **Very extensible** — You can extend the application and the content model in many ways.
-- **Future and backwards compatible** — Strong BC policy on data as well as code.
+- **Future and backwards compatible** — Strong backward compatibility policy on data as well as code.
 - **Multi-channel by design** — Strong focus on separation between <sup>semantic</sup> content and design.
 - **Scalable** — Easily scale across multiple servers out of the box.
 - **Future proof** — Uses architecture designed to allow even more content scalability and performance in the future.
@@ -48,7 +48,7 @@ These instructions assume you have already installed:
 - [Composer](https://doc.ezplatform.com/en/latest/getting_started/about_composer/)
 - Git _(for development)_
 
-For more details on requirements, see [online doc](https://doc.ezplatform.com/en/latest/getting_started/requirements_and_system_configuration/).
+For more details on requirements, see [online documentation](https://doc.ezplatform.com/en/latest/getting_started/requirements_and_system_configuration/).
 
 
 #### Install eZ Platform _(clean distribution)_
@@ -75,7 +75,7 @@ If you discover a security issue, please see how to responsibly report such issu
 
 ## Backwards compatibility
 eZ Platform aims to be **fully content compatible** with eZ Publish 5.x, meaning that the content in these versions of the CMS can be upgraded using
-[online documentation](http://doc.ez.no/eZ-Publish/Upgrading) to eZ Platform.
+[online documentation](https://doc.ezplatform.com/en/latest/migrating/migrating_from_ez_publish_platform/) to eZ Platform.
 
 Unlike eZ Publish Platform 5.x, eZ Platform does not ship with eZ Publish Legacy (4.x). But this is available by optional installing [LegacyBridge](https://github.com/ezsystems/LegacyBridge/releases/) to allow eZ Platform and eZ Publish Legacy to run together, this is only recommended for migration use cases and not for new installations.
 
