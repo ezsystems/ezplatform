@@ -11,6 +11,7 @@ services:
      - db
     environment:
      - COMPOSER_MEMORY_LIMIT
+     - EZPLATFORM_SITEACCESS
      - PHP_INI_ENV_memory_limit
      - SYMFONY_ENV=${SYMFONY_ENV-dev}
      - SYMFONY_DEBUG
