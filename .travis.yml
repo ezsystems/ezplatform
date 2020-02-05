@@ -91,7 +91,7 @@ before_script:
 # Execute test command, need to use sh to get right exit code (docker/compose/issues/3379)
 # Behat will use behat.yml which is a copy of behat.yml.dist with hostnames update by doc/docker/selenium.yml
 script:
-  - if [ "${TEST_CMD}" != "" ] ; then cd "$HOME/build/ezplatform"; docker-compose exec --user www-data app sh -c "$TEST_CMD" ; fi
+  - if [ "${TEST_CMD}" != "" ] ; then cd "$HOME/build/ezplatform"; docker-compose exec app sh -c "$TEST_CMD" ; fi
   - if [ "${BEHAT_OPTS}" != "" ] ; then cd "$HOME/build/ezplatform"; docker-compose exec --user www-data app sh -c "bin/ezbehat $BEHAT_OPTS" ; fi
 
 
