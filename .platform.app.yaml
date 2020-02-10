@@ -36,9 +36,10 @@ relationships:
     #solr: 'solrsearch:collection1'
 
 variables:
-    #php:
+    php:
         # Example of setting php.ini config
         #"display_errors": "On"
+        memory_limit: 512M
     env:
         # We disable Symfony Proxy, as we rather use Varnish
         SYMFONY_HTTP_CACHE: 0
