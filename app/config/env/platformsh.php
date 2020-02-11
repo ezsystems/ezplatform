@@ -163,7 +163,8 @@ if (!getenv('HTTPCACHE_VARNISH_INVALIDATE_TOKEN')) {
     $container->setParameter('varnish_invalidate_token', getenv('PLATFORM_PROJECT_ENTROPY'));
 }
 
-// Detect if imagick is enabled, if so get imagine to use it to reduce memory use (compared to GD which uses PHP memory)
+// Adapt config based on enabled PHP extensions
+// Get imagine to use imagick if enabled, to ravoid using php memory for image convertions
 if (extension_loaded('imagick')) {
-    $container->setParameter('liip_imagine.driver', '');
+    $container->setParameter('liip_imagine.driver', 'imagick');
 }
