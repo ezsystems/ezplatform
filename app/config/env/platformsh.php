@@ -164,7 +164,7 @@ if (!getenv('HTTPCACHE_VARNISH_INVALIDATE_TOKEN')) {
 }
 
 // Adapt config based on enabled PHP extensions
-// Get imagine to use imagick if enabled, to ravoid using php memory for image convertions
+// Get imagine to use imagick if enabled, to avoid using php memory for image convertions
 if (extension_loaded('imagick')) {
     $container->setParameter('liip_imagine.driver', 'imagick');
 }
