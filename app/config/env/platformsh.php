@@ -162,3 +162,8 @@ if ($route !== null && !getenv('HTTPCACHE_PURGE_TYPE')) {
 if (!getenv('HTTPCACHE_VARNISH_INVALIDATE_TOKEN')) {
     $container->setParameter('varnish_invalidate_token', getenv('PLATFORM_PROJECT_ENTROPY'));
 }
+
+// Detect if imagick is enabled, if so get imagine to use it to reduce memory use (compared to GD which uses PHP memory)
+if (extension_loaded('imagick')) {
+    $container->setParameter('liip_imagine.driver', '');
+}
