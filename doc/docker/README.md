@@ -109,6 +109,8 @@ docker-compose up -d --force-recreate
 After some 5-10 seconds you should be able to browse the site on `localhost:8080` and the backend on `localhost:8080/admin`.
 
 
+_TIP: If you are seeing 500 errors, or in the case of `SYMFONY_ENV=dev` Database exceptions, then make sure to comment out `database_*` params in `app/config/parameters.yml` to make sure env variables are used correctly._
+
 ### Behat and Selenium use
 
 *Docker-Compose setup for Behat use is provided and used internally to test eZ Platform, this can be combined with most
