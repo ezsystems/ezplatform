@@ -162,3 +162,9 @@ if ($route !== null && !getenv('HTTPCACHE_PURGE_TYPE')) {
 if (!getenv('HTTPCACHE_VARNISH_INVALIDATE_TOKEN')) {
     $container->setParameter('varnish_invalidate_token', getenv('PLATFORM_PROJECT_ENTROPY'));
 }
+
+// Adapt config based on enabled PHP extensions
+// Get imagine to use imagick if enabled, to avoid using php memory for image convertions
+if (extension_loaded('imagick')) {
+    $container->setParameter('liip_imagine_driver', 'imagick');
+}

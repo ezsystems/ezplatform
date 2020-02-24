@@ -169,3 +169,7 @@ jms_translation:
             output_dir: '%kernel.root_dir%/../vendor/ezsystems/ezplatform-admin-ui-modules/Resources/translations/'
             excluded_dirs: [Behat, Tests, node_modules]
             output_format: "xliff"
+
+liip_imagine:
+    # valid drivers options include "gd" or "gmagick" or "imagick"
+    driver: "%liip_imagine_driver%"
