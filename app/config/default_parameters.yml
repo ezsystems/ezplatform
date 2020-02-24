@@ -124,4 +124,4 @@ parameters:
     env(HTTPCACHE_VARNISH_INVALIDATE_TOKEN): ~
     
     # LiipImagineBundle - imagine driver
-    liip_imagine.driver: 'gd'
+    liip_imagine_driver: 'gd'
