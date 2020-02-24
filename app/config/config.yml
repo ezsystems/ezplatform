@@ -172,4 +172,4 @@ jms_translation:
 
 liip_imagine:
     # valid drivers options include "gd" or "gmagick" or "imagick"
-    driver: "%liip_imagine.driver%"
+    driver: "%liip_imagine_driver%"
