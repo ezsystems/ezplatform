@@ -36,9 +36,10 @@ relationships:
     #solr: 'solrsearch:collection1'
 
 variables:
-    #php:
+    php:
         # Example of setting php.ini config
         #"display_errors": "On"
+        memory_limit: 512M
     env:
         # We disable Symfony Proxy, as we rather use Varnish
         APP_HTTP_CACHE: 0
@@ -78,6 +79,7 @@ mounts:
     'var/log':
         source: local
         source_path: log
+    # [PE Cluster] For cluster it's recommended to rather use a performant shared session storage like Redis/Memcached.
     'var/sessions':
         source: local
         source_path: sessions
