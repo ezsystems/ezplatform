@@ -1,7 +1,7 @@
 // Varnish VCL for:
 // - Varnish 5.1 or higher with xkey vmod (via varnish-modules package, or via Varnish Plus)
 // - eZ Platform 2.x or higher (with bundled ezplatform-http-cache package)
-// DEPRECATED; please use VCL from https://github.com/ezsystems/ezplatform-http-cache/blob/0.8/docs/varnish/vcl/varnish5.vcl
+// DEPRECATED; please use VCL from https://github.com/ezsystems/ezplatform-http-cache/blob/1.0/docs/varnish/vcl/varnish5.vcl
 
 vcl 4.0;
 import std;
