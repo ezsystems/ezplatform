@@ -4,7 +4,7 @@
 // - eZ Platform 3.x or higher with ezplatform-http-cache (this) bundle
 //
 
-// Not applicable on Platform.sh
+// Not applicable on Platform.sh:
 //vcl 4.1;
 //import std;
 import xkey;
