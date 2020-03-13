@@ -1,18 +1,15 @@
-// Varnish VCL for:
-// - Varnish 5.1 or higher (6.0LTS recommended, and is what we mainly test against)
-//   - Varnish xkey vmod (via varnish-modules package, or via Varnish Plus)
-// - eZ Platform 2.5LTS or higher with ezplatform-http-cache (this) bundle
+// Varnish VCL for Platform.sh with:
+// - Varnish 6.0 or higher (6.0LTS recommended, and is what we mainly test against)
+//   - Varnish xkey vmod (via varnish-modules package 0.10.2 or higher, or via Varnish Plus)
+// - eZ Platform 3.x or higher with ezplatform-http-cache (this) bundle
 //
-// Make sure to at least adjust default parameters.yml, defaults there reflect our testing needs with docker.
 
-// Not applicable on Platform.sh:
+// Not applicable on Platform.sh
 //vcl 4.1;
 //import std;
 import xkey;
 
-// For customizing your backend and acl rules see parameters.vcl
-// Includes not available on Platform.sh
-//include "parameters.vcl";
+// Includes not available on Platform.sh, so inlining parameters.vlc:
 acl invalidators {
     "127.0.0.1";
     "192.168.0.0"/16;
@@ -26,6 +23,7 @@ acl debuggers {
 
 // Called at the beginning of a request, after the complete request has been received
 sub vcl_recv {
+
     // Set the backend
     //set req.backend_hint = ezplatform;
     // Platform.sh specific:
@@ -116,6 +114,7 @@ sub vcl_hit {
 
 // Called when the requested object has been retrieved from the backend
 sub vcl_backend_response {
+
     if (bereq.http.accept ~ "application/vnd.fos.user-context-hash"
         && beresp.status >= 500
     ) {
@@ -152,32 +151,33 @@ sub ez_purge {
     // Retrieve purge token, needs to be here due to restart, match for PURGE method done within
     call ez_invalidate_token;
 
-    # Support how purging was done in earlier versions, this is deprecated and here just for BC for code still using it
-    if (req.method == "BAN") {
+    # Adapted with acl from vendor/friendsofsymfony/http-cache/resources/config/varnish/fos_tags_xkey.vcl
+    if (req.method == "PURGEKEYS") {
         call ez_purge_acl;
 
-        if (req.http.X-Location-Id) {
-            ban("obj.http.X-Location-Id ~ " + req.http.X-Location-Id);
-            if (client.ip ~ debuggers) {
-                set req.http.X-Debug = "Ban done for content connected to LocationId " + req.http.X-Location-Id;
-            }
-            return (synth(200, "Banned"));
+        # If neither of the headers are provided we return 400 to simplify detecting wrong configuration
+        if (!req.http.xkey-purge && !req.http.xkey-softpurge) {
+            return (synth(400, "Neither header XKey-Purge or XKey-SoftPurge set"));
         }
+
+        # Based on provided header invalidate (purge) and/or expire (softpurge) the tagged content
+        set req.http.n-gone = 0;
+        set req.http.n-softgone = 0;
+        if (req.http.xkey-purge) {
+            set req.http.n-gone = xkey.purge(req.http.xkey-purge);
+        }
+
+        if (req.http.xkey-softpurge) {
+            set req.http.n-softgone = xkey.softpurge(req.http.xkey-softpurge);
+        }
+
+        return (synth(200, "Purged "+req.http.n-gone+" objects, expired "+req.http.n-softgone+" objects"));
     }
 
+    # Adapted with acl from vendor/friendsofsymfony/http-cache/resources/config/varnish/fos_purge.vcl
     if (req.method == "PURGE") {
         call ez_purge_acl;
 
-        # If http header "key" is set, we assume purge is on key and you have Varnish xkey installed
-        if (req.http.key) {
-            # By default we recommend using soft purge to respect grace time, if you need to hard purge use:
-            # set req.http.n-gone = xkey.purge(req.http.key);
-            set req.http.n-gone = xkey.softpurge(req.http.key);
-
-            return (synth(200, "Invalidated "+req.http.n-gone+" objects"));
-        }
-
-        # if not, then this is a normal purge by url
         return (purge);
     }
 }
@@ -194,10 +194,11 @@ sub ez_purge_acl {
 
 // Sub-routine to get client user context hash, used to for being able to vary page cache on user rights.
 sub ez_user_context_hash {
+
     // Prevent tampering attacks on the hash mechanism
     if (req.restarts == 0
         && (req.http.accept ~ "application/vnd.fos.user-context-hash"
-            || req.http.x-user-hash
+            || req.http.x-user-context-hash
         )
     ) {
         return (synth(400));
@@ -251,8 +252,12 @@ sub ez_invalidate_token {
         return (synth(400));
     }
 
-    if (req.restarts == 0 && req.method == "PURGE" && req.http.x-invalidate-token) {
+    if (req.restarts == 0 && (req.method == "PURGE" || req.method == "PURGEKEYS") && req.http.x-invalidate-token) {
         set req.http.accept = "application/vnd.ezplatform.invalidate-token";
+
+        // Backup original http properties
+        set req.http.x-fos-token-url = req.url;
+        set req.http.x-fos-token-method = req.method;
 
         set req.url = "/_ez_http_invalidatetoken";
 
@@ -264,8 +269,10 @@ sub ez_invalidate_token {
     if (req.restarts > 0
         && req.http.accept == "application/vnd.ezplatform.invalidate-token"
     ) {
-        set req.url = "/";
-        set req.method = "PURGE";
+        set req.url = req.http.x-fos-token-url;
+        set req.method = req.http.x-fos-token-method;
+        unset req.http.x-fos-token-url;
+        unset req.http.x-fos-token-method;
         unset req.http.accept;
     }
 }
@@ -286,7 +293,7 @@ sub vcl_deliver {
     if (req.restarts == 0
         && resp.http.content-type ~ "application/vnd.fos.user-context-hash"
     ) {
-        set req.http.x-user-hash = resp.http.x-user-hash;
+        set req.http.x-user-context-hash = resp.http.x-user-context-hash;
 
         return (restart);
     }
@@ -295,8 +302,8 @@ sub vcl_deliver {
 
     // Remove the vary on user context hash, this is nothing public. Keep all
     // other vary headers.
-    if (resp.http.Vary ~ "X-User-Hash") {
-        set resp.http.Vary = regsub(resp.http.Vary, "(?i),? *X-User-Hash *", "");
+    if (resp.http.Vary ~ "X-User-Context-Hash") {
+        set resp.http.Vary = regsub(resp.http.Vary, "(?i),? *X-User-Context-Hash *", "");
         set resp.http.Vary = regsub(resp.http.Vary, "^, *", "");
         if (resp.http.Vary == "") {
             unset resp.http.Vary;
@@ -328,6 +335,6 @@ sub vcl_deliver {
         // Remove tag headers when delivering to non debug client
         unset resp.http.xkey;
         // Sanity check to prevent ever exposing the hash to a non debug client.
-        unset resp.http.x-user-hash;
+        unset resp.http.x-user-context-hash;
     }
 }
