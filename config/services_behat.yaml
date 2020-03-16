@@ -1,0 +1,30 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    App\Tests\Behat\:
+        resource: '../tests/Behat/*'
+
+    # @todo This could be loaded via ezpublish-kernel based on current env
+    eZ\Bundle\EzPublishCoreBundle\Features\Context\ContentContext:
+        public: true
+        arguments:
+            $repository: '@ezpublish.api.repository'
+
+    eZ\Bundle\EzPublishCoreBundle\Features\Context\ConsoleContext:
+        public: true
+        arguments:
+            $configResolver: '@ezpublish.config.resolver'
+            $siteaccessList: '%ezpublish.siteaccess.list%'
+            $defaultSiteaccess: '%ezpublish.siteaccess.default%'
+
+    eZ\Bundle\EzPublishCoreBundle\Features\Context\YamlConfigurationContext:
+        public: true
+        arguments:
+            $kernel: '@kernel'
+
+    eZ\Bundle\EzPublishCoreBundle\Features\Context\QueryControllerContext:
+        public: true
+        arguments:
+            $repository: '@ezpublish.api.repository'
