@@ -2,24 +2,12 @@
 
 use App\CacheKernel;
 use App\Kernel;
-use Symfony\Component\Debug\Debug;
+use Symfony\Component\ErrorHandler\Debug;
 use Symfony\Component\HttpFoundation\Request;
 
 require dirname(__DIR__).'/config/bootstrap.php';
 
-// Environment is taken from "APP_ENV" variable, if not set, defaults to "prod"
-$environment = getenv('APP_ENV');
-if ($environment === false) {
-    $environment = 'prod';
-}
-
-// Depending on the SYMFONY_DEBUG environment variable, tells whether Symfony should be loaded with debugging.
-// If not set, or "", it is auto activated if in "dev" environment.
-if (($useDebugging = getenv('APP_DEBUG')) === false || $useDebugging === '') {
-    $useDebugging = $environment === 'dev';
-}
-
-if ($useDebugging) {
+if ($_SERVER['APP_DEBUG']) {
     umask(0000);
 
     Debug::enable();
@@ -33,13 +21,13 @@ if ($trustedHosts = $_SERVER['TRUSTED_HOSTS'] ?? $_ENV['TRUSTED_HOSTS'] ?? false
     Request::setTrustedHosts([$trustedHosts]);
 }
 
-$kernel = new Kernel($environment, $useDebugging);
+$kernel = new Kernel($_SERVER['APP_ENV'], (bool) $_SERVER['APP_DEBUG']);
 
 // Depending on the APP_HTTP_CACHE environment variable, tells whether the internal HTTP Cache mechanism is to be used.
 // Recommendation is to use Varnish over this, for performance and being able to setup cluster if you need to.
 // If not set, or "", it is auto activated if _not_ in "dev" environment.
 if (($useHttpCache = getenv('APP_HTTP_CACHE')) === false || $useHttpCache === '') {
-    $useHttpCache = $environment !== 'dev';
+    $useHttpCache = $_SERVER['APP_ENV'] !== 'dev';
 }
 
 // Load internal HTTP Cache, aka Symfony Proxy, if enabled
@@ -52,12 +40,19 @@ if ($useHttpCache) {
 
 $request = Request::createFromGlobals();
 
-// Deny request if it contains the frontcontroller script ie. http://example.com/app.php
-$frontControllerScript = preg_quote(basename($request->server->get('SCRIPT_FILENAME')));
-if (preg_match("<^/([^/]+/)?$frontControllerScript([/?#]|$)>", $request->getRequestUri(), $matches) === 1) {
-    http_response_code(400);
-    echo('<html><head><title>400 Bad Request</title></head><body><h1>400 Bad Request</h1></center></body></html>');
-    die;
+// Depending on the APP_HTTP_CACHE environment variable, tells whether the internal HTTP Cache mechanism is to be used.
+// Recommendation is to use Varnish over this, for performance and being able to setup cluster if you need to.
+// If not set, or "", it is auto activated if _not_ in "dev" environment.
+if (($useHttpCache = getenv('APP_HTTP_CACHE')) === false || $useHttpCache === '') {
+    $useHttpCache = $_SERVER['APP_ENV'] !== 'dev';
+}
+
+// Load internal HTTP Cache, aka Symfony Proxy, if enabled
+if ($useHttpCache) {
+    $kernel = new CacheKernel($kernel);
+
+    // Needed when using Synfony proxy, see: http://symfony.com/doc/3.4/reference/configuration/framework.html#http-method-override
+    Request::enableHttpMethodParameterOverride();
 }
 
 $response = $kernel->handle($request);
