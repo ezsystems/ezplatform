@@ -13,9 +13,11 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "repositories": [
-        {"type": "vcs", "url": "https://github.com/webhdx/fastest.git"},
-        {"type": "vcs", "url": "https://github.com/webhdx/JMSTranslationBundle.git"},
-        {"type": "vcs", "url": "https://github.com/webhdx/Routing.git"}
+        {"type": "vcs", "url": "https://github.com/webhdx/ezplatform-admin-ui-assets.git"},
+        {"type": "vcs", "url": "https://github.com/ezsystems/fastest.git"},
+        {"type": "vcs", "url": "https://github.com/ezsystems/TemplatedUriBundle.git"},
+        {"type": "vcs", "url": "https://github.com/hautelook/TemplatedUriRouter.git"},
+        {"type": "vcs", "url": "https://github.com/ezsystems/Routing.git"}
     ],
     "require": {
         "php": "^7.3",
@@ -24,7 +26,7 @@
         "ezsystems/doctrine-dbal-schema": "dev-symfony5 as 1.0.x-dev",
         "ezsystems/ez-support-tools": "dev-symfony5 as 2.0.x-dev",
         "ezsystems/ezplatform-admin-ui": "dev-symfony5 as 2.0.x-dev",
-        "ezsystems/ezplatform-admin-ui-assets": "dev-symfony5 as 5.0.x-dev",
+        "ezsystems/ezplatform-admin-ui-assets": "^5.0@dev",
         "ezsystems/ezplatform-admin-ui-modules": "dev-symfony5 as 2.0.x-dev",
         "ezsystems/ezplatform-core": "dev-symfony5 as 2.0.x-dev",
         "ezsystems/ezplatform-cron": "dev-symfony5 as 3.0.x-dev",
@@ -32,7 +34,7 @@
         "ezsystems/ezplatform-graphql": "dev-symfony5 as 2.0.x-dev",
         "ezsystems/ezplatform-http-cache": "dev-symfony5 as 1.0.x-dev",
         "ezsystems/ezplatform-matrix-fieldtype": "dev-symfony5 as 2.0.x-dev",
-        "ezsystems/ezplatform-query-fieldtype": "^2.0@dev",
+        "ezsystems/ezplatform-query-fieldtype": "dev-symfony5 as 2.0.x-dev",
         "ezsystems/ezplatform-rest": "dev-symfony5 as 1.0.x-dev",
         "ezsystems/ezplatform-richtext": "dev-symfony5 as 2.0.x-dev",
         "ezsystems/ezplatform-solr-search-engine": "dev-symfony5 as 3.0.x-dev",
@@ -42,8 +44,7 @@
         "ezsystems/ezplatform-content-forms": "dev-symfony5 as 1.0.x-dev",
         "friendsofsymfony/jsrouting-bundle": "^2.5",
         "knplabs/knp-menu-bundle": "^3.0",
-        "hautelook/templated-uri-bundle": "^3.2",
-        "hautelook/templated-uri-router": "^3.2",
+        "hautelook/templated-uri-bundle": "^3.3@dev",
         "monolog/monolog": "^2.0",
         "php-http/guzzle6-adapter": "^2.0",
         "platformsh/symfonyflex-bridge": "^2.2",
@@ -70,7 +71,8 @@
         "symfony/validator": "^5.0",
         "symfony/web-link": "^5.0",
         "symfony/webpack-encore-bundle": "^1.7",
-        "symfony/yaml": "^5.0"
+        "symfony/yaml": "^5.0",
+        "twig/extra-bundle": "^3.0"
     },
     "require-dev": {
         "behat/behat": "^3.6",
@@ -84,7 +86,7 @@
         "ezsystems/allure-behat": "dev-symfony5 as 3.0.x-dev",
         "ezsystems/behat-screenshot-image-driver-cloudinary": "^1.1@dev",
         "ezsystems/behatbundle": "dev-symfony5 as 8.0.x-dev",
-        "liuggio/fastest": "dev-symfony5 as 1.6.1",
+        "liuggio/fastest": "^1.7",
         "overblog/graphiql-bundle": "^0.2",
         "symfony/debug-pack": "^1.0",
         "symfony/maker-bundle": "^1.14",
