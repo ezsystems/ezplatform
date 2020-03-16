@@ -3,25 +3,27 @@
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Loader;
 
+require_once dirname(__DIR__, 2).'/bootstrap.php';
+
 // Run for all hooks, incl build step
-if (getenv('PLATFORM_PROJECT_ENTROPY')) {
+if ($_ENV['PLATFORM_PROJECT_ENTROPY'] ?? false) {
     // Disable PHPStormPass as we don't have write access & it's not localhost
     $container->setParameter('ezdesign.phpstorm.enabled', false);
 }
 
 // Will not be executed on build step
-$relationships = getenv('PLATFORM_RELATIONSHIPS');
+$relationships = $_ENV['PLATFORM_RELATIONSHIPS'] ?? false;
 if (!$relationships) {
     return;
 }
-$routes = getenv('PLATFORM_ROUTES');
+$routes = $_ENV['PLATFORM_ROUTES'];
 
 $relationships = json_decode(base64_decode($relationships), true);
 $routes = json_decode(base64_decode($routes), true);
 
 // PLATFORMSH_DFS_NFS_PATH is different compared to DFS_NFS_PATH in the sense that it is relative to ezplatform dir
 // DFS_NFS_PATH is an absolute path
-if ($dfsNfsPath = getenv('PLATFORMSH_DFS_NFS_PATH')) {
+if ($dfsNfsPath = $_ENV['PLATFORMSH_DFS_NFS_PATH'] ?? false) {
     $container->setParameter('dfs_nfs_path', sprintf('%s/%s', dirname($container->getParameter('kernel.project_dir')), $dfsNfsPath));
 
     if (array_key_exists('dfs_database', $relationships)) {
@@ -131,14 +133,14 @@ foreach ($routes as $host => $info) {
     }
 }
 
-if ($route !== null && !getenv('HTTPCACHE_PURGE_TYPE')) {
+if ($route !== null && !($_ENV['HTTPCACHE_PURGE_TYPE'] ?? false)) {
     $container->setParameter('purge_type', 'varnish');
     $container->setParameter('purge_server', rtrim($route, '/'));
 }
 
 // Setting default value for HTTPCACHE_VARNISH_INVALIDATE_TOKEN if it is not explicitly set
-if (!getenv('HTTPCACHE_VARNISH_INVALIDATE_TOKEN')) {
-    $container->setParameter('varnish_invalidate_token', getenv('PLATFORM_PROJECT_ENTROPY'));
+if (!($_ENV['HTTPCACHE_VARNISH_INVALIDATE_TOKEN'] ?? false)) {
+    $container->setParameter('varnish_invalidate_token', $_ENV['PLATFORM_PROJECT_ENTROPY']);
 }
 
 // Adapt config based on enabled PHP extensions

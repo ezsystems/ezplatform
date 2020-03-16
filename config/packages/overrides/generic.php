@@ -6,7 +6,7 @@
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Loader;
 
-require dirname(__DIR__, 2).'/bootstrap.php';
+require_once dirname(__DIR__, 2).'/bootstrap.php';
 
 if ($dfsNfsPath = $_ENV['DFS_NFS_PATH'] ?? false) {
     $container->setParameter('dfs_nfs_path', $dfsNfsPath);
