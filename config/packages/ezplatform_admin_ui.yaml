@@ -29,8 +29,8 @@ jms_translation:
     configs:
         admin:
             dirs:
-                - '%kernel.root_dir%/../vendor/ezsystems/ezplatform-admin-ui/src'
-            output_dir: '%kernel.root_dir%/../vendor/ezsystems/ezplatform-admin-ui/src/bundle/Resources/translations/'
+                - '%kernel.project_dir%/vendor/ezsystems/ezplatform-admin-ui/src'
+            output_dir: '%kernel.project_dir%/vendor/ezsystems/ezplatform-admin-ui/src/bundle/Resources/translations/'
             excluded_dirs: [Behat, Tests, node_modules]
             extractor:
                 - ez_policy

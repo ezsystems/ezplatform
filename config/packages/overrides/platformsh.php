@@ -22,7 +22,7 @@ $routes = json_decode(base64_decode($routes), true);
 // PLATFORMSH_DFS_NFS_PATH is different compared to DFS_NFS_PATH in the sense that it is relative to ezplatform dir
 // DFS_NFS_PATH is an absolute path
 if ($dfsNfsPath = getenv('PLATFORMSH_DFS_NFS_PATH')) {
-    $container->setParameter('dfs_nfs_path', sprintf('%s/%s', dirname($container->getParameter('kernel.root_dir')), $dfsNfsPath));
+    $container->setParameter('dfs_nfs_path', sprintf('%s/%s', dirname($container->getParameter('kernel.project_dir')), $dfsNfsPath));
 
     if (array_key_exists('dfs_database', $relationships)) {
         foreach ($relationships['dfs_database'] as $endpoint) {
