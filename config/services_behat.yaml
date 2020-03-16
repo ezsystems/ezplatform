@@ -6,6 +6,11 @@ services:
     App\Tests\Behat\:
         resource: '../tests/Behat/*'
 
+    # @todo Move this to BehatBundle
+    EzSystems\Behat\API\Context\:
+        resource: '../vendor/ezsystems/behatbundle/src/lib/API/Context/*'
+        public: true
+
     # @todo This could be loaded via ezpublish-kernel based on current env
     eZ\Bundle\EzPublishCoreBundle\Features\Context\ContentContext:
         public: true
@@ -28,3 +33,20 @@ services:
         public: true
         arguments:
             $repository: '@ezpublish.api.repository'
+
+    EzSystems\Behat\API\Context\TestContext:
+        public: true
+        arguments:
+            $userService: '@ezpublish.api.service.user'
+            $permissionResolver: '@=service("ezpublish.api.repository").getPermissionResolver()'
+
+    EzSystems\Behat\Core\Context\ConfigurationContext:
+        public: true
+        arguments:
+            $projectDir: '%kernel.project_dir%'
+
+
+    EzSystems\Behat\Core\Context\FileContext:
+        public: true
+        arguments:
+            $projectDirectory: '%kernel.project_dir%'
