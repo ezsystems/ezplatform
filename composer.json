@@ -91,7 +91,6 @@
         "symfony/debug-pack": "^1.0",
         "symfony/maker-bundle": "^1.14",
         "symfony/test-pack": "^1.0",
-        "symfony/web-server-bundle": "^4.4",
         "phpunit/phpunit": "^8.2"
     },
     "conflict": {
