@@ -11,6 +11,10 @@ services:
         resource: '../vendor/ezsystems/behatbundle/src/lib/API/Context/*'
         public: true
 
+    eZ\Bundle\EzPublishCoreBundle\Features\Context\:
+        resource: '../vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishCoreBundle/Features/Context//*'
+        public: true
+
     # @todo This could be loaded via ezpublish-kernel based on current env
     eZ\Bundle\EzPublishCoreBundle\Features\Context\ContentContext:
         public: true
@@ -33,6 +37,11 @@ services:
         public: true
         arguments:
             $repository: '@ezpublish.api.repository'
+
+    eZ\Bundle\EzPublishCoreBundle\Features\Context\ContentTypeContext:
+        public: true
+        arguments:
+            $contentTypeService: '@ezpublish.api.service.content_type'
 
     EzSystems\Behat\API\Context\TestContext:
         public: true
