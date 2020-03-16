@@ -37,23 +37,7 @@ if ($useHttpCache) {
     // Needed when using Synfony proxy, see: http://symfony.com/doc/3.4/reference/configuration/framework.html#http-method-override
     Request::enableHttpMethodParameterOverride();
 }
-
 $request = Request::createFromGlobals();
-
-// Depending on the APP_HTTP_CACHE environment variable, tells whether the internal HTTP Cache mechanism is to be used.
-// Recommendation is to use Varnish over this, for performance and being able to setup cluster if you need to.
-// If not set, or "", it is auto activated if _not_ in "dev" environment.
-if (($useHttpCache = getenv('APP_HTTP_CACHE')) === false || $useHttpCache === '') {
-    $useHttpCache = $_SERVER['APP_ENV'] !== 'dev';
-}
-
-// Load internal HTTP Cache, aka Symfony Proxy, if enabled
-if ($useHttpCache) {
-    $kernel = new CacheKernel($kernel);
-
-    // Needed when using Synfony proxy, see: http://symfony.com/doc/3.4/reference/configuration/framework.html#http-method-override
-    Request::enableHttpMethodParameterOverride();
-}
 
 $response = $kernel->handle($request);
 $response->send();
