@@ -10,8 +10,6 @@
             "homepage": "https://github.com/ezsystems/ezplatform/contributors"
         }
     ],
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "require": {
         "php": "^7.3",
         "ext-ctype": "*",
