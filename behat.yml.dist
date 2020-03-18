@@ -29,27 +29,26 @@ default:
 
         DMore\ChromeExtension\Behat\ServiceContainer\ChromeExtension: ~
 
-        Behat\Symfony2Extension:
+        FriendsOfBehat\SymfonyExtension\ServiceContainer\SymfonyExtension:
             kernel:
-                bootstrap: config/bootstrap.php
                 path: src/Kernel.php
                 class: App\Kernel
-                env: behat
+                environment: behat
                 debug: true
 
         EzSystems\BehatBundle\BehatExtension: ~
 
         Liuggio\Fastest\Behat\ListFeaturesExtension\Extension: ~
 
-        Bex\Behat\ScreenshotExtension:
-            active_image_drivers: cloudinary
-            image_drivers:
-                cloudinary:
-                    screenshot_directory: /tmp/behat-screenshot/
-                    cloud_name: ezplatformtravis
-                    preset: ezplatform
-                    mode: normal
-                    limit: 10
+#        Bex\Behat\ScreenshotExtension:
+#            active_image_drivers: cloudinary
+#            image_drivers:
+#                cloudinary:
+#                    screenshot_directory: /tmp/behat-screenshot/
+#                    cloud_name: ezplatformtravis
+#                    preset: ezplatform
+#                    mode: normal
+#                    limit: 10
 
         Allure\Behat\AllureFormatterExtension: ~
 
