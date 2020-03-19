@@ -1,2 +1,2 @@
-#ezplatform_http_cache:
-#    resource: '@EzSystemsPlatformHttpCacheBundle/Resources/config/routing.yml'
+ezplatform_http_cache:
+    resource: '@EzSystemsPlatformHttpCacheBundle/Resources/config/routing.yml'
