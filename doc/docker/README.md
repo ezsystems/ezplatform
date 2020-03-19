@@ -164,7 +164,7 @@ php app/console ezplatform:io:migrate-files --from=default,default --to=dfs,nfs 
 
 ```
 
-Once this is done, you may delete public/var/* if you don't intendt to run the migration scripts ever again.
+Once this is done, you may delete public/var/* if you don't intend to run the migration scripts ever again.
 
 ### Production use
 
