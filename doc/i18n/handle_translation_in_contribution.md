@@ -20,8 +20,8 @@ you can even use this feature with `transchoice`:
 
 ## How to extract new strings from template
 
-All translations are handled by the repository. So if you add new strings in ezpublish-kernel, you will extract them into
-ezpublish-kernel translation files.
+All translations are handled by the repository. So if you add new strings in ezplatform-kernel, you will extract them into
+ezplatform-kernel translation files.
 
 To help you in this task and maintain consistency, we implement a dedicated script.
 
