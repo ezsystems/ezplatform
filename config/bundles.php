@@ -19,7 +19,6 @@ return [
     Nelmio\CorsBundle\NelmioCorsBundle::class => ['all' => true],
     Bazinga\Bundle\JsTranslationBundle\BazingaJsTranslationBundle::class => ['all' => true],
     Knp\Bundle\MenuBundle\KnpMenuBundle::class => ['all' => true],
-    FOS\HttpCacheBundle\FOSHttpCacheBundle::class => ['all' => true],
     eZ\Bundle\EzPublishCoreBundle\EzPublishCoreBundle::class => ['all' => true],
     EzSystems\EzPlatformCoreBundle\EzPlatformCoreBundle::class => ['all' => true],
     eZ\Bundle\EzPublishLegacySearchEngineBundle\EzPublishLegacySearchEngineBundle::class => ['all' => true],
@@ -52,4 +51,5 @@ return [
     BabDev\PagerfantaBundle\BabDevPagerfantaBundle::class => ['all' => true],
     FriendsOfBehat\SymfonyExtension\Bundle\FriendsOfBehatSymfonyExtensionBundle::class => ['test' => true, 'behat' => true],
     Hautelook\TemplatedUriBundle\HautelookTemplatedUriBundle::class => ['all' => true],
+    FOS\HttpCacheBundle\FOSHttpCacheBundle::class => ['all' => true],
 ];
