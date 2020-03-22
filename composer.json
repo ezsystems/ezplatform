@@ -24,7 +24,7 @@
         "ezsystems/ezplatform-cron": "^3.0@dev",
         "ezsystems/ezplatform-design-engine": "^3.0@dev",
         "ezsystems/ezplatform-graphql": "^2.0@dev",
-        "ezsystems/ezplatform-http-cache": "^2.0@dev",
+        "ezsystems/ezplatform-http-cache": "dev-load-varnish-only-when-used as ^2.0@dev",
         "ezsystems/ezplatform-kernel": "^1.0@dev",
         "ezsystems/ezplatform-matrix-fieldtype": "^2.0@dev",
         "ezsystems/ezplatform-query-fieldtype": "^2.0@dev",
