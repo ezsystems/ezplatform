@@ -4,7 +4,7 @@
 # If you are on Windows you would have to use `cache.app` by setting `env(CACHE_POOL): "cache.app"` parameter
 services:
     cache.tagaware.filesystem:
-        class: Symfony\Component\Cache\Adapter\TagAware\FilesystemTagAwareAdapter
+        class: Symfony\Component\Cache\Adapter\FilesystemTagAwareAdapter
         parent: cache.adapter.filesystem
         tags:
             - name: cache.pool

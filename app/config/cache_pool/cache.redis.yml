@@ -7,7 +7,7 @@
 # https://doc.ezplatform.com/en/latest/guide/persistence_cache/#redis
 services:
     cache.redis:
-        class: Symfony\Component\Cache\Adapter\TagAware\RedisTagAwareAdapter
+        class: Symfony\Component\Cache\Adapter\RedisTagAwareAdapter
         parent: cache.adapter.redis
         tags:
             - name: cache.pool
