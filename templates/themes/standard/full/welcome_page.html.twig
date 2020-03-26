@@ -1,0 +1,202 @@
+{% extends '@ezdesign/pagelayout.html.twig' %}
+
+{% block stylesheets %}
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        body {
+            font-size: 16px;
+            line-height: 32px;
+            color: #131C26;
+            overflow-x: hidden;
+            font-family: "Noto Sans", sans-serif;
+        }
+        .heading {
+
+        }
+        .header {
+            height: 450px;
+            background: transparent linear-gradient(90deg, #FF4713 0%, #DB0032 100%) 0% 0% no-repeat padding-box;
+            opacity: 1;
+        }
+        h1 {
+            font-size: 42px;
+            line-height: 49px;
+            font-family: 'Work Sans', sans-serif;
+            font-weight: 500;
+        }
+        h2 {
+            font-size: 22px;
+            line-height: 22px;
+            font-family: 'Work Sans', sans-serif;
+            font-weight: 400;
+        }
+        a {
+            color: #db0032;
+        }
+        a:hover {
+            color: #ff4713;
+        }
+        .footer {
+            background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTQuNTg5IiBoZWlnaHQ9IjUxNC4yNTQiIHZpZXdCb3g9IjAgMCA1MTQuNTg5IDUxNC4yNTQiPjxkZWZzPjxzdHlsZT4uYXtmaWxsOiNkN2Q4ZTI7b3BhY2l0eTowLjI7fTwvc3R5bGU+PC9kZWZzPjxwYXRoIGNsYXNzPSJhIiBkPSJNNTE2LjI1OCwzNDUuN1YyMTQuNzE4aC0zMTguN1Y1MzMuNDA2SDMyOS40Njl2NTcuNDM4SDU3NC42VjM0NS43Wk0zMjkuNDY5LDUwMi41MTdIMjI4LjQ0OVYyNDUuNTg2SDQ4NS4zNjJWMzQ1LjdIMzI5LjQ2OVptMjE1Ljc4NSw1OC45NjhIMzU4LjhWMzc1LjA2MUg1NDUuMjU1WiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTI0LjMyNyAtMjg0LjczMykgcm90YXRlKDMwKSIvPjwvc3ZnPg==") no-repeat 107% 0;
+            height: 370px;
+        }
+        .footer .container-fluid {
+            display: flex;
+            align-items: flex-end;
+            height: 100%;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<header class="header mb-5 pb-5">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="pl-3 pt-4">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAuODYyIiBoZWlnaHQ9IjM4IiB2aWV3Qm94PSIwIDAgMTAwLjg2MiAzOCI+PGRlZnM+PHN0eWxlPi5he2ZpbGw6I2ZmZjt9LmJ7ZmlsbDojZWI0MTE3O308L3N0eWxlPjwvZGVmcz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMjAyLjY0IC0yMDMuNTcyKSI+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjk4LjQ2NCAyMDMuNTcyKSI+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMS42MjEgMS4yNTEpIj48cGF0aCBjbGFzcz0iYSIgZD0iTTYwMC4yMzgsMjExLjEyMXYtMi40NDRoMS4wODZhMS40MzksMS40MzksMCwwLDEsLjUuMDY2LjU0Mi41NDIsMCwwLDEsLjI3MS4yMzIuNjkxLjY5MSwwLDAsMSwuMS4zNjkuNjEyLjYxMiwwLDAsMS0uMTY3LjQzOC4yOS4yOSwwLDEsMC0uMzI1LjM0OSwxLjcxOCwxLjcxOCwwLDAsMSwuMjY5LjMyNWwuNDI1LjY2NWgtLjQwOGwtLjMyMy0uNTA5Yy0uMDk0LS4xNDYtLjE3Mi0uMjU5LS4yMzQtLjMzN2EuNzIzLjcyMywwLDAsMC0uMTYzLS4xNjMuNTY0LjU2NCwwLDAsMC0uMTQ4LS4wNjUuOTY4Ljk2OCwwLDAsMC0uMTgtLjAxM2gtLjM3NnYxLjA4NlptLjMyMy0xLjM2NWguN2ExLjAxLDEuMDEsMCwwLDAsLjM0Ni0uMDQ3LjM2MS4zNjEsMCwwLDAsLjE5MS0uMTQ2LjQuNCwwLDAsMCwuMDY1LS4yMTkuMzYzLjM2MywwLDAsMC0uMTI1LS4yODUuNTk0LjU5NCwwLDAsMC0uNC0uMTEyaC0uNzc1WiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTYwMC4yMzggLTIwOC42NzcpIi8+PC9nPjxwYXRoIGNsYXNzPSJhIiBkPSJNNTk2LjE0MiwyMDguNjExYTIuNTIsMi41MiwwLDEsMSwyLjUxOC0yLjUxOUEyLjUyMywyLjUyMywwLDAsMSw1OTYuMTQyLDIwOC42MTFabTAtNC43MjRhMi4yLDIuMiwwLDEsMCwyLjIsMi4yQTIuMjA3LDIuMjA3LDAsMCwwLDU5Ni4xNDIsMjAzLjg4N1oiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC01OTMuNjIyIC0yMDMuNTcyKSIvPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyMDIuNjQgMjA2LjMwNCkiPjxwYXRoIGNsYXNzPSJhIiBkPSJNMjMyLjM1NSwyMjYuOTNWMjE0LjcxOEgyMDIuNjR2MjkuNzE0aDEyLjN2NS4zNTVoMjIuODU2VjIyNi45M1ptLTE3LjQxNiwxNC42MjFIMjA1LjUyVjIxNy42aDIzLjk1NHY5LjMzNEgyMTQuOTM5WiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTIwMi42NCAtMjE0LjcxOCkiLz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0Mi40NjMgMy4yMzQpIj48cGF0aCBjbGFzcz0iYSIgZD0iTTM5NC4yLDI3Ny4yMTNhNC41ODUsNC41ODUsMCwwLDEtLjk3OCwxLjUsNi4yNjIsNi4yNjIsMCwwLDEtMS40OTQsMS4xMzYsOC42MTksOC42MTksMCwwLDEtMS44My43NDUsNy4zMTIsNy4zMTIsMCwwLDEtMS45OS4yNzUsNi45MDYsNi45MDYsMCwwLDEtMi43MjYtLjU1LDcuNjQ4LDcuNjQ4LDAsMCwxLTIuMzEyLTEuNTI2LDcuNzg1LDcuNzg1LDAsMCwxLTEuNjUzLTIuMzM0LDguNTMyLDguNTMyLDAsMCwxLS43NDItMi43NThoMTguODczbC4wMzktLjJhNC45MTMsNC45MTMsMCwwLDAsLjA3MS0uNjQ2Yy4wMTMtLjI3MS4wMjItLjU2OS4wMjItLjg4OGExMi41NTQsMTIuNTU0LDAsMCwwLS44MjYtNC40ODIsMTEuNjY4LDExLjY2OCwwLDAsMC0yLjM0NC0zLjgsMTEuNDM2LDExLjQzNiwwLDAsMC04LjQ5LTMuNiwxMS45MTcsMTEuOTE3LDAsMCwwLTQuODIxLjk2MSwxMS43MTksMTEuNzE5LDAsMCwwLTMuNzczLDIuNjEzLDExLjg0MiwxMS44NDIsMCwwLDAtMi40NTcsMy44NCwxMi41MTQsMTIuNTE0LDAsMCwwLS44NjksNC42MzksMTIuNjY3LDEyLjY2NywwLDAsMCwuODY5LDQuNjYsMTEuOTUyLDExLjk1MiwwLDAsMCwyLjQzNSwzLjg2MiwxMS40NTMsMTEuNDUzLDAsMCwwLDMuNzUyLDIuNjE0LDExLjkzMywxMS45MzMsMCwwLDAsNC44MjIuOTYsMTIuNTE1LDEyLjUxNSwwLDAsMCwzLjM0NS0uNDQ2LDExLjk3NSwxMS45NzUsMCwwLDAsMi45MjQtMS4yMjgsMTAuNTU4LDEwLjU1OCwwLDAsMCwyLjMyOC0xLjg1OCw4LjY1Niw4LjY1NiwwLDAsMCwxLjYtMi4zODVsLjExNi0uMjU5LTMuODA2LTEuMDUzWm0tNi4zOC0xMy43NTFhNy40NDIsNy40NDIsMCwwLDEsNS4xLDEuOTksNy44LDcuOCwwLDAsMSwxLjY1NCwyLjI3LDcuOTU4LDcuOTU4LDAsMCwxLC43NTksMi42NDVIMzgwLjM5YTguMjcsOC4yNywwLDAsMSwuNzE4LTIuNjI4LDcuNTIxLDcuNTIxLDAsMCwxLDEuNjEtMi4yNjgsNy4yNDgsNy4yNDgsMCwwLDEsMi4zMDYtMS40OEE3LjQzMyw3LjQzMywwLDAsMSwzODcuODE5LDI2My40NjJaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMzc1Ljg5OSAtMjUyLjIwMykiLz48cGF0aCBjbGFzcz0iYSIgZD0iTTQ5OS4xNiwyMjcuOTEzSDQ3MS40NDJ2NC4xM2gxOS4wODRsLTIyLjMsMjcuNjdoMjguMDIzdi00LjEzMUg0NzYuODYzWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTQ0NS42MDEgLTIyNy45MTMpIi8+PC9nPjwvZz48cmVjdCBjbGFzcz0iYiIgd2lkdGg9IjE3LjM4NSIgaGVpZ2h0PSIxNy4zODIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDIxNy44MyAyMjEuMjU0KSIvPjwvZz48L3N2Zz4=">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container h-100 text-center text-white d-flex flex-column align-items-center justify-content-center">
+        <h1>
+            {{ ez_render_field(content, 'name') }}
+            {{ constant('EzSystems\\EzPlatformCoreBundle\\EzPlatformCoreBundle::VERSION') }}
+        </h1>
+        <div class="pt-5">
+            {{ ez_render_field(content, 'short_description') }}
+            <p>Navigate to: {{ project_dir }}</p>
+            <p>Create a new content at
+                <a href="/admin" class="text-white">
+                    <u>{{ app.request.server.get('REQUEST_SCHEME') }}://{{ app.request.server.get('HTTP_HOST')}}/admin</u>
+                </a>
+            </p>
+        </div>
+    </div>
+</header>
+<div class="page py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mb-5">
+                <div class="text-center pt-3 pb-5">
+                    {{ ez_render_field(content, 'description') }}
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="d-inline-flex flex-row align-items-baseline">
+                    <div class="mr-4">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iNDIiIGhlaWdodD0iNDIiIHZpZXdCb3g9IjAgMCA0MiA0MiI+PGRlZnM+PHN0eWxlPi5he2ZpbGw6dXJsKCNhKTt9LmJ7ZmlsbDpub25lO308L3N0eWxlPjxsaW5lYXJHcmFkaWVudCBpZD0iYSIgeDE9IjAuNSIgeDI9IjAuNSIgeTI9IjEiIGdyYWRpZW50VW5pdHM9Im9iamVjdEJvdW5kaW5nQm94Ij48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNmZjQ3MTMiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNkYjAwMzIiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cGF0aCBjbGFzcz0iYSIgZD0iTTQwLDE2Ljc1LDI4LjYsNEg1LjhBNC4wNTYsNC4wNTYsMCwwLDAsMiw4LjI1VjMzLjc3MUE0LjAzNiw0LjAzNiwwLDAsMCw1LjgsMzhsMzAuNC0uMDIxQTQuMDM2LDQuMDM2LDAsMCwwLDQwLDMzLjc1Wk0yNi43LDcuMTg4LDM3LjE1LDE4Ljg3NUgyNi43WiIvPjxwYXRoIGNsYXNzPSJiIiBkPSJNMCwwSDQyVjQySDBaIi8+PC9zdmc+">
+                    </div>
+                    <div>
+                        <h2 class="mb-3">Documentation</h2>
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="https://ezplatform.com/documentation-center" target="_blank">
+                                    Documentation center
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://doc.ezplatform.com/projects/userguide" target="_blank">
+                                    User documentation
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://doc.ezplatform.com" target="_blank">
+                                    Developer documentation
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://doc.ezplatform.com/projects/ezpersonalization" target="_blank">
+                                    eZ Personalization documentation
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://doc.ez.no/commerce" target="_blank">
+                                    eZ Commerce documentation
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mt-5 mt-md-0">
+                <div class="d-inline-flex flex-row align-items-baseline">
+                    <div class="mr-4">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iNDIiIGhlaWdodD0iNDIiIHZpZXdCb3g9IjAgMCA0MiA0MiI+PGRlZnM+PHN0eWxlPi5he2ZpbGw6bm9uZTt9LmJ7ZmlsbDp1cmwoI2EpO308L3N0eWxlPjxsaW5lYXJHcmFkaWVudCBpZD0iYSIgeDE9IjAuNSIgeDI9IjAuNSIgeTI9IjEiIGdyYWRpZW50VW5pdHM9Im9iamVjdEJvdW5kaW5nQm94Ij48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNmZjQ3MTMiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNkYjAwMzIiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cGF0aCBjbGFzcz0iYSIgZD0iTTAsMEg0MlY0MkgwWiIvPjxwYXRoIGNsYXNzPSJiIiBkPSJNMzUsMkg3QTMuODY0LDMuODY0LDAsMCwwLDMsNS43MTR2MjZhMy44NjQsMy44NjQsMCwwLDAsNCwzLjcxNGg4TDIxLDQxbDYtNS41NzFoOGEzLjg3NiwzLjg3NiwwLDAsMCw0LTMuNzE0di0yNkEzLjg3NiwzLjg3NiwwLDAsMCwzNSwyWk0yMywzMS43MTRIMTlWMjhoNFptNC4xNC0xNC4zOTMtMS44LDEuNzA5QTYuMTI2LDYuMTI2LDAsMCwwLDIzLDI0LjI4NkgxOXYtLjkyOUE3LjIxNiw3LjIxNiwwLDAsMSwyMS4zNCwxOC4xbDIuNDgtMi4zNEEzLjUwOSwzLjUwOSwwLDAsMCwyNSwxMy4xNDNhMy44NzYsMy44NzYsMCwwLDAtNC0zLjcxNCwzLjg3NiwzLjg3NiwwLDAsMC00LDMuNzE0SDEzYTcuNzI4LDcuNzI4LDAsMCwxLDgtNy40MjksNy43MjgsNy43MjgsMCwwLDEsOCw3LjQyOUE1LjcwNSw1LjcwNSwwLDAsMSwyNy4xNCwxNy4zMjFaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIDApIi8+PC9zdmc+" alt="live help icon">
+                    </div>
+                    <div>
+                        <h2 class="mb-3">Tutorials and resources</h2>
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="https://doc.ezplatform.com/en/latest/getting_started/first_steps" target="_blank">
+                                    Getting started
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://doc.ezplatform.com/en/latest/tutorials/platform_beginner/building_a_bicycle_route_tracker_in_ez_platform"
+                                   target="_blank">
+                                    Tutorials
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://doc.ezplatform.com/rest-api-reference" target="_blank">
+                                    REST API reference
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://doc.ezplatform.com/en/latest/api/public_php_api" target="_blank">
+                                    Public PHP API
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://doc.ezplatform.com/en/latest/api/graphql" target="_blank">GraphQL</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mt-lg-0 mt-5">
+                <div class="d-inline-flex flex-row align-items-baseline">
+                    <div class="mr-4">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iNDIiIGhlaWdodD0iNDIiIHZpZXdCb3g9IjAgMCA0MiA0MiI+PGRlZnM+PHN0eWxlPi5he2ZpbGw6bm9uZTt9LmJ7ZmlsbDp1cmwoI2EpO308L3N0eWxlPjxsaW5lYXJHcmFkaWVudCBpZD0iYSIgeDE9IjAuNSIgeDI9IjAuNSIgeTI9IjEiIGdyYWRpZW50VW5pdHM9Im9iamVjdEJvdW5kaW5nQm94Ij48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNmZjQ3MTMiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNkYjAwMzIiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cGF0aCBjbGFzcz0iYSIgZD0iTTAsMEg0MlY0MkgwWiIvPjxwYXRoIGNsYXNzPSJiIiBkPSJNMzguMSw5LjZIMzQuM1YyNi43SDkuNnYzLjhhMS45MDYsMS45MDYsMCwwLDAsMS45LDEuOUgzMi40TDQwLDQwVjExLjVBMS45MDYsMS45MDYsMCwwLDAsMzguMSw5LjZaTTMwLjUsMjFWMy45QTEuOTA2LDEuOTA2LDAsMCwwLDI4LjYsMkgzLjlBMS45MDYsMS45MDYsMCwwLDAsMiwzLjlWMzAuNWw3LjYtNy42aDE5QTEuOTA2LDEuOTA2LDAsMCwwLDMwLjUsMjFaIi8+PC9zdmc+" alt="forum icon">
+                    </div>
+                    <div>
+                        <h2 class="mb-3">Forums and community</h2>
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="(https://discuss.ezplatform.com" target="_blank">
+                                    Discussion forum
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://ez-community-on-slack.herokuapp.com/" target="_blank">
+                                    Community Slack channel
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://ez.no/Blog" target="_blank">
+                                    eZ blog
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="footer px-3 pb-3">
+    <div class="container-fluid">
+        <span class="copyright">Copyright @{{ "now"|date('Y') }} eZ Systems</span>
+    </div>
+</footer>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('bundles/ezplatformadminuiassets/vendors/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ asset('bundles/ezplatformadminuiassets/vendors/popper.js/dist/umd/popper.min.js') }}"></script>
+    <script src="{{ asset('bundles/ezplatformadminuiassets/vendors/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+{% endblock %}

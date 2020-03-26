@@ -82,6 +82,14 @@ ezplatform:
 
         site:
             languages: [eng-GB]
+            content_view:
+                full:
+                    welcome_page:
+                        template: "@ezdesign/full/welcome_page.html.twig"
+                        match:
+                            Id\Location: 2
+                        params:
+                            project_dir: '%kernel.project_dir%'
 
     url_alias:
         slug_converter:
