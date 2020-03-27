@@ -1,6 +1,6 @@
 {% extends '@ezdesign/pagelayout.html.twig' %}
 
-{% trans_default_domain 'welcome_page' %}
+{% trans_default_domain 'ezplatform_welcome_page' %}
 
 {% block stylesheets %}
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,500" rel="stylesheet">
@@ -70,11 +70,11 @@
         </h1>
         <div class="pt-5">
             {{ ez_render_field(content, 'short_description') }}
-            <p>{{ 'welcome_page.navigate_to'|trans({'%target%': project_dir})|desc('Navigate to: %target%') }}</p>
+            <p>{{ 'ezplatform_welcome_page.navigate_to'|trans({'%target%': project_dir})|desc('Navigate to: %target%') }}</p>
 
             {% set admin_url = url('ezplatform.dashboard', { 'siteaccess': 'admin' }) %}
             <p>
-                {{ 'welcome_page.create_new_content_at'|trans({'%target%': '<a href="' ~ admin_url ~ '" class="text-white"><u>' ~ admin_url ~ '</u></a>' })
+                {{ 'ezplatform_welcome_page.create_new_content_at'|trans({'%target%': '<a href="' ~ admin_url ~ '" class="text-white"><u>' ~ admin_url ~ '</u></a>' })
                 |desc('Create new content at %target%')|raw }}
             </p>
         </div>
@@ -98,31 +98,31 @@
                         <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iNDIiIGhlaWdodD0iNDIiIHZpZXdCb3g9IjAgMCA0MiA0MiI+PGRlZnM+PHN0eWxlPi5he2ZpbGw6dXJsKCNhKTt9LmJ7ZmlsbDpub25lO308L3N0eWxlPjxsaW5lYXJHcmFkaWVudCBpZD0iYSIgeDE9IjAuNSIgeDI9IjAuNSIgeTI9IjEiIGdyYWRpZW50VW5pdHM9Im9iamVjdEJvdW5kaW5nQm94Ij48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNmZjQ3MTMiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNkYjAwMzIiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cGF0aCBjbGFzcz0iYSIgZD0iTTQwLDE2Ljc1LDI4LjYsNEg1LjhBNC4wNTYsNC4wNTYsMCwwLDAsMiw4LjI1VjMzLjc3MUE0LjAzNiw0LjAzNiwwLDAsMCw1LjgsMzhsMzAuNC0uMDIxQTQuMDM2LDQuMDM2LDAsMCwwLDQwLDMzLjc1Wk0yNi43LDcuMTg4LDM3LjE1LDE4Ljg3NUgyNi43WiIvPjxwYXRoIGNsYXNzPSJiIiBkPSJNMCwwSDQyVjQySDBaIi8+PC9zdmc+">
                     </div>
                     <div>
-                        <h2 class="mb-3">{{ 'welcome_page.documentation'|trans|desc('Documentation') }}</h2>
+                        <h2 class="mb-3">{{ 'ezplatform_welcome_page.documentation'|trans|desc('Documentation') }}</h2>
                         <ul class="list-unstyled">
                             <li>
                                 <a href="https://ezplatform.com/documentation-center" target="_blank">
-                                    {{ 'welcome_page.documentation_center'|trans|desc('Documentation center') }}
+                                    {{ 'ezplatform_welcome_page.documentation_center'|trans|desc('Documentation center') }}
                                 </a>
                             </li>
                             <li>
                                 <a href="https://doc.ezplatform.com/projects/userguide" target="_blank">
-                                    {{ 'welcome_page.user_documentation'|trans|desc('User documentation') }}
+                                    {{ 'ezplatform_welcome_page.user_documentation'|trans|desc('User documentation') }}
                                 </a>
                             </li>
                             <li>
                                 <a href="https://doc.ezplatform.com" target="_blank">
-                                    {{ 'welcome_page.developer_documentation'|trans|desc('Developer documentation') }}
+                                    {{ 'ezplatform_welcome_page.developer_documentation'|trans|desc('Developer documentation') }}
                                 </a>
                             </li>
                             <li>
                                 <a href="https://doc.ezplatform.com/projects/ezpersonalization" target="_blank">
-                                    {{ 'welcome_page.ez_personalization_documentation'|trans|desc('eZ Personalization documentation') }}
+                                    {{ 'ezplatform_welcome_page.ez_personalization_documentation'|trans|desc('eZ Personalization documentation') }}
                                 </a>
                             </li>
                             <li>
                                 <a href="https://doc.ez.no/commerce" target="_blank">
-                                    {{ 'welcome_page.ez_commerce_documentation'|trans|desc('eZ Commerce documentation') }}
+                                    {{ 'ezplatform_welcome_page.ez_commerce_documentation'|trans|desc('eZ Commerce documentation') }}
                                 </a>
                             </li>
                         </ul>
@@ -135,26 +135,26 @@
                         <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iNDIiIGhlaWdodD0iNDIiIHZpZXdCb3g9IjAgMCA0MiA0MiI+PGRlZnM+PHN0eWxlPi5he2ZpbGw6bm9uZTt9LmJ7ZmlsbDp1cmwoI2EpO308L3N0eWxlPjxsaW5lYXJHcmFkaWVudCBpZD0iYSIgeDE9IjAuNSIgeDI9IjAuNSIgeTI9IjEiIGdyYWRpZW50VW5pdHM9Im9iamVjdEJvdW5kaW5nQm94Ij48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNmZjQ3MTMiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNkYjAwMzIiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cGF0aCBjbGFzcz0iYSIgZD0iTTAsMEg0MlY0MkgwWiIvPjxwYXRoIGNsYXNzPSJiIiBkPSJNMzUsMkg3QTMuODY0LDMuODY0LDAsMCwwLDMsNS43MTR2MjZhMy44NjQsMy44NjQsMCwwLDAsNCwzLjcxNGg4TDIxLDQxbDYtNS41NzFoOGEzLjg3NiwzLjg3NiwwLDAsMCw0LTMuNzE0di0yNkEzLjg3NiwzLjg3NiwwLDAsMCwzNSwyWk0yMywzMS43MTRIMTlWMjhoNFptNC4xNC0xNC4zOTMtMS44LDEuNzA5QTYuMTI2LDYuMTI2LDAsMCwwLDIzLDI0LjI4NkgxOXYtLjkyOUE3LjIxNiw3LjIxNiwwLDAsMSwyMS4zNCwxOC4xbDIuNDgtMi4zNEEzLjUwOSwzLjUwOSwwLDAsMCwyNSwxMy4xNDNhMy44NzYsMy44NzYsMCwwLDAtNC0zLjcxNCwzLjg3NiwzLjg3NiwwLDAsMC00LDMuNzE0SDEzYTcuNzI4LDcuNzI4LDAsMCwxLDgtNy40MjksNy43MjgsNy43MjgsMCwwLDEsOCw3LjQyOUE1LjcwNSw1LjcwNSwwLDAsMSwyNy4xNCwxNy4zMjFaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIDApIi8+PC9zdmc+" alt="live help icon">
                     </div>
                     <div>
-                        <h2 class="mb-3">{{ 'welcome_page.tutorials_and_resources'|trans|desc('Tutorials and resources') }}</h2>
+                        <h2 class="mb-3">{{ 'ezplatform_welcome_page.tutorials_and_resources'|trans|desc('Tutorials and resources') }}</h2>
                         <ul class="list-unstyled">
                             <li>
                                 <a href="https://doc.ezplatform.com/en/latest/getting_started/first_steps" target="_blank">
-                                    {{ 'welcome_page.getting_started'|trans|desc('Getting started') }}
+                                    {{ 'ezplatform_welcome_page.getting_started'|trans|desc('Getting started') }}
                                 </a>
                             </li>
                             <li>
                                 <a href="https://doc.ezplatform.com/en/latest/tutorials/platform_beginner/building_a_bicycle_route_tracker_in_ez_platform" target="_blank">
-                                    {{ 'welcome_page.tutorials'|trans|desc('Tutorials') }}
+                                    {{ 'ezplatform_welcome_page.tutorials'|trans|desc('Tutorials') }}
                                 </a>
                             </li>
                             <li>
                                 <a href="http://doc.ezplatform.com/rest-api-reference" target="_blank">
-                                    {{ 'welcome_page.rest_api_reference'|trans|desc('REST API reference') }}
+                                    {{ 'ezplatform_welcome_page.rest_api_reference'|trans|desc('REST API reference') }}
                                 </a>
                             </li>
                             <li>
                                 <a href="https://doc.ezplatform.com/en/latest/api/public_php_api" target="_blank">
-                                    {{ 'welcome_page.public_php_api'|trans|desc('Public PHP API') }}
+                                    {{ 'ezplatform_welcome_page.public_php_api'|trans|desc('Public PHP API') }}
                                 </a>
                             </li>
                             <li>
@@ -170,21 +170,21 @@
                         <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iNDIiIGhlaWdodD0iNDIiIHZpZXdCb3g9IjAgMCA0MiA0MiI+PGRlZnM+PHN0eWxlPi5he2ZpbGw6bm9uZTt9LmJ7ZmlsbDp1cmwoI2EpO308L3N0eWxlPjxsaW5lYXJHcmFkaWVudCBpZD0iYSIgeDE9IjAuNSIgeDI9IjAuNSIgeTI9IjEiIGdyYWRpZW50VW5pdHM9Im9iamVjdEJvdW5kaW5nQm94Ij48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNmZjQ3MTMiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNkYjAwMzIiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cGF0aCBjbGFzcz0iYSIgZD0iTTAsMEg0MlY0MkgwWiIvPjxwYXRoIGNsYXNzPSJiIiBkPSJNMzguMSw5LjZIMzQuM1YyNi43SDkuNnYzLjhhMS45MDYsMS45MDYsMCwwLDAsMS45LDEuOUgzMi40TDQwLDQwVjExLjVBMS45MDYsMS45MDYsMCwwLDAsMzguMSw5LjZaTTMwLjUsMjFWMy45QTEuOTA2LDEuOTA2LDAsMCwwLDI4LjYsMkgzLjlBMS45MDYsMS45MDYsMCwwLDAsMiwzLjlWMzAuNWw3LjYtNy42aDE5QTEuOTA2LDEuOTA2LDAsMCwwLDMwLjUsMjFaIi8+PC9zdmc+" alt="forum icon">
                     </div>
                     <div>
-                        <h2 class="mb-3">{{ 'welcome_page.forums_and_community'|trans|desc('Forums and community') }}</h2>
+                        <h2 class="mb-3">{{ 'ezplatform_welcome_page.forums_and_community'|trans|desc('Forums and community') }}</h2>
                         <ul class="list-unstyled">
                             <li>
                                 <a href="(https://discuss.ezplatform.com" target="_blank">
-                                    {{ 'welcome_page.discussion_forum'|trans|desc('Discussion forum') }}
+                                    {{ 'ezplatform_welcome_page.discussion_forum'|trans|desc('Discussion forum') }}
                                 </a>
                             </li>
                             <li>
                                 <a href="https://ez-community-on-slack.herokuapp.com/" target="_blank">
-                                    {{ 'welcome_page.community_slack_channel'|trans|desc('Community Slack channel') }}
+                                    {{ 'ezplatform_welcome_page.community_slack_channel'|trans|desc('Community Slack channel') }}
                                 </a>
                             </li>
                             <li>
                                 <a href="https://ez.no/Blog" target="_blank">
-                                    {{ 'welcome_page.ez_blog'|trans|desc('eZ blog') }}
+                                    {{ 'ezplatform_welcome_page.ez_blog'|trans|desc('eZ blog') }}
                                 </a>
                             </li>
                         </ul>
@@ -196,7 +196,13 @@
 </div>
 <footer class="footer px-3 pb-3">
     <div class="container-fluid">
-        <span class="copyright">Copyright 1999-{{ "now"|date('Y') }} <a href="https://ez.no">eZ Systems AS</a> and others.</span>
+        <span class="copyright">
+        {{ 'ezplatform_welcome_page.copyright'|trans({
+            '%ez_link_open%': '<a class="ez-login__hyperlink" href="http://ez.no">',
+            '%ez_link_close%': '</a>',
+            '%current_year%': "now"|date("Y")
+        }) |desc('eZ Platform ©1999-%current_year% %ez_link_open%eZ Systems AS%ez_link_close% and others.')|raw }}
+        </span>
     </div>
 </footer>
 {% endblock %}
