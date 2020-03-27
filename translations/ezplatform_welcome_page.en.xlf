@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file source-language="en" target-language="en" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="36f18f43d29bcb59a4e39b08f0e11eef135452c2" resname="ezplatform_welcome_page.community_slack_channel">
+        <source>Community Slack channel</source>
+        <target state="new">Community Slack channel</target>
+        <note>key: ezplatform_welcome_page.community_slack_channel</note>
+      </trans-unit>
+      <trans-unit id="7a962f72da65e7106687adac6e6d7b5d658991b1" resname="ezplatform_welcome_page.copyright">
+        <source>eZ Platform ©1999-%current_year% %ez_link_open%eZ Systems AS%ez_link_close% and others.</source>
+        <target state="new">eZ Platform ©1999-%current_year% %ez_link_open%eZ Systems AS%ez_link_close% and others.</target>
+        <note>key: ezplatform_welcome_page.copyright</note>
+      </trans-unit>
+      <trans-unit id="dce2b551a81d5cbd0b2c34dcea1e31311f67ed0d" resname="ezplatform_welcome_page.create_new_content_at">
+        <source>Create new content at %target%</source>
+        <target state="new">Create new content at %target%</target>
+        <note>key: ezplatform_welcome_page.create_new_content_at</note>
+      </trans-unit>
+      <trans-unit id="2fd7671312f51a576c9eb0f6878050605d373443" resname="ezplatform_welcome_page.developer_documentation">
+        <source>Developer documentation</source>
+        <target state="new">Developer documentation</target>
+        <note>key: ezplatform_welcome_page.developer_documentation</note>
+      </trans-unit>
+      <trans-unit id="ef851442be9700601ff8582ffcac408c61a2fa50" resname="ezplatform_welcome_page.discussion_forum">
+        <source>Discussion forum</source>
+        <target state="new">Discussion forum</target>
+        <note>key: ezplatform_welcome_page.discussion_forum</note>
+      </trans-unit>
+      <trans-unit id="13495626a1253900afe436a8b3f0353526d255fb" resname="ezplatform_welcome_page.documentation">
+        <source>Documentation</source>
+        <target state="new">Documentation</target>
+        <note>key: ezplatform_welcome_page.documentation</note>
+      </trans-unit>
+      <trans-unit id="b29ec3c9e9cb0be36ca25de3605b8f41f968cdd7" resname="ezplatform_welcome_page.documentation_center">
+        <source>Documentation center</source>
+        <target state="new">Documentation center</target>
+        <note>key: ezplatform_welcome_page.documentation_center</note>
+      </trans-unit>
+      <trans-unit id="5d4cfefb0dbbd20c2413e9960a14228d227dc354" resname="ezplatform_welcome_page.ez_blog">
+        <source>eZ blog</source>
+        <target state="new">eZ blog</target>
+        <note>key: ezplatform_welcome_page.ez_blog</note>
+      </trans-unit>
+      <trans-unit id="a19f6891677a7fe3c4f0cce0197f951b5ca83094" resname="ezplatform_welcome_page.ez_commerce_documentation">
+        <source>eZ Commerce documentation</source>
+        <target state="new">eZ Commerce documentation</target>
+        <note>key: ezplatform_welcome_page.ez_commerce_documentation</note>
+      </trans-unit>
+      <trans-unit id="ef09a879123fe34ae00a7976497fc773ba65ab23" resname="ezplatform_welcome_page.ez_personalization_documentation">
+        <source>eZ Personalization documentation</source>
+        <target state="new">eZ Personalization documentation</target>
+        <note>key: ezplatform_welcome_page.ez_personalization_documentation</note>
+      </trans-unit>
+      <trans-unit id="250dbbd13b7e759179f8225d0d1fe0513d6d6cae" resname="ezplatform_welcome_page.forums_and_community">
+        <source>Forums and community</source>
+        <target state="new">Forums and community</target>
+        <note>key: ezplatform_welcome_page.forums_and_community</note>
+      </trans-unit>
+      <trans-unit id="1401374676b405bc0b4b1ebabaea7268292c7dfb" resname="ezplatform_welcome_page.getting_started">
+        <source>Getting started</source>
+        <target state="new">Getting started</target>
+        <note>key: ezplatform_welcome_page.getting_started</note>
+      </trans-unit>
+      <trans-unit id="44f96430175f6289d5830009e222eb13fb0120ad" resname="ezplatform_welcome_page.navigate_to">
+        <source>Navigate to: %target%</source>
+        <target state="new">Navigate to: %target%</target>
+        <note>key: ezplatform_welcome_page.navigate_to</note>
+      </trans-unit>
+      <trans-unit id="2166e14c6377fcd371f4a17736421d8d8455df77" resname="ezplatform_welcome_page.public_php_api">
+        <source>Public PHP API</source>
+        <target state="new">Public PHP API</target>
+        <note>key: ezplatform_welcome_page.public_php_api</note>
+      </trans-unit>
+      <trans-unit id="5de33a07727efb21d8be821b09410f7b7d84016f" resname="ezplatform_welcome_page.rest_api_reference">
+        <source>REST API reference</source>
+        <target state="new">REST API reference</target>
+        <note>key: ezplatform_welcome_page.rest_api_reference</note>
+      </trans-unit>
+      <trans-unit id="7c9245f30760ddbfbce88a69376491d12e5cfe68" resname="ezplatform_welcome_page.tutorials">
+        <source>Tutorials</source>
+        <target state="new">Tutorials</target>
+        <note>key: ezplatform_welcome_page.tutorials</note>
+      </trans-unit>
+      <trans-unit id="47e75fc6ef9547c74230992c25d3bc0c8742f3ff" resname="ezplatform_welcome_page.tutorials_and_resources">
+        <source>Tutorials and resources</source>
+        <target state="new">Tutorials and resources</target>
+        <note>key: ezplatform_welcome_page.tutorials_and_resources</note>
+      </trans-unit>
+      <trans-unit id="5b3af7d74e6387633b689bcca1f7344f941bf0ac" resname="ezplatform_welcome_page.user_documentation">
+        <source>User documentation</source>
+        <target state="new">User documentation</target>
+        <note>key: ezplatform_welcome_page.user_documentation</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
