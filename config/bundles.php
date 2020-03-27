@@ -37,7 +37,6 @@ return [
     EzSystems\EzPlatformRichTextBundle\EzPlatformRichTextBundle::class => ['all' => true],
     EzSystems\EzPlatformAdminUiBundle\EzPlatformAdminUiBundle::class => ['all' => true],
     EzSystems\EzPlatformUserBundle\EzPlatformUserBundle::class => ['all' => true],
-    EzSystems\EzPlatformAdminUiModulesBundle\EzPlatformAdminUiModulesBundle::class => ['all' => true],
     EzSystems\EzPlatformAdminUiAssetsBundle\EzPlatformAdminUiAssetsBundle::class => ['all' => true],
     EzSystems\EzPlatformEncoreBundle\EzSystemsEzPlatformEncoreBundle::class => ['all' => true],
     EzSystems\EzPlatformMatrixFieldtypeBundle\EzPlatformMatrixFieldtypeBundle::class => ['all' => true],
