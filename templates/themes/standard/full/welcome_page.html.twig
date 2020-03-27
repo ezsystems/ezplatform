@@ -70,7 +70,7 @@
         </h1>
         <div class="pt-5">
             {{ ez_render_field(content, 'short_description') }}
-            <p>Navigate to: {{ project_dir }}</p>
+            <p>{{ 'welcome_page.navigate_to'|trans({'%target%': project_dir})|desc('Navigate to: %target%') }}</p>
             <p>Create a new content at
                 <a href="/admin" class="text-white">
                     <u>{{ app.request.server.get('REQUEST_SCHEME') }}://{{ app.request.server.get('HTTP_HOST')}}/admin</u>
