@@ -56,7 +56,7 @@
     # Optional: Whether to use Symfony's builtin HTTP Caching Proxy.
     # Disable it if you are using an external reverse proxy (e.g. Varnish)
     # Possible values: 0, 1 or ""
-    # Defaults to disabled if APP_ENV is set to "dev" or APP_TRUSTED_PROXIES is set,
+    # Defaults to disabled if APP_ENV is set to "dev" or TRUSTED_PROXIES is set,
     # and if this env value is omitted or empty
     #if[APP_HTTP_CACHE] SetEnv APP_HTTP_CACHE "%APP_HTTP_CACHE%"
 
@@ -64,7 +64,7 @@
     # Needed when using Varnish as proxy, if so disable APP_HTTP_CACHE.
     # Separate entries by a comma, example: "ip1,ip2"
     # Defaults to not be set if env value is omitted or empty
-    #if[APP_TRUSTED_PROXIES] SetEnv APP_TRUSTED_PROXIES "%APP_TRUSTED_PROXIES%"
+    #if[TRUSTED_PROXIES] SetEnv TRUSTED_PROXIES "%TRUSTED_PROXIES%"
 
     # TIP: There are many more environment variables supported by eZ Platform. However unlike those listed above
     #      they should in most cases rather be set in the environment then in vhost config to make sure cronjobs

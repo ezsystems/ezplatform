@@ -58,7 +58,7 @@ server {
             # Needed when using Varnish as proxy, if so disable APP_HTTP_CACHE.
             # Separate entries by a comma, example: "ip1,ip2"
             # Defaults to not be set if env value is omitted or empty
-            #if[APP_TRUSTED_PROXIES] fastcgi_param APP_TRUSTED_PROXIES "%APP_TRUSTED_PROXIES%";
+            #if[TRUSTED_PROXIES] fastcgi_param TRUSTED_PROXIES "%TRUSTED_PROXIES%";
 
             # TIP: There are many more environment variables supported by eZ Platform. However unlike those listed above
             #      they should in most cases rather be set in the environment then in vhost config to make sure cronjobs
