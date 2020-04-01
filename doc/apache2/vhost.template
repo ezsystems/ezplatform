@@ -99,7 +99,7 @@
         RewriteRule ^/(css|js|fonts?)/.*\.(css|js|otf|eot|ttf|svg|woff) - [L]
 
         # Prevent access to website with direct usage of index.php in URL
-        RewriteRule ^/(.+/)?index\.php - [R=404,L]
+        RewriteRule ^/([^/]+/)?index\.php([/?#]|$) - [R=404,L]
 
         RewriteRule .* /index.php
     </IfModule>
