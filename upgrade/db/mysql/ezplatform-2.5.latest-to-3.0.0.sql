@@ -26,3 +26,9 @@ UPDATE `ezkeyword_attribute_link` SET `version` = (
     WHERE `cattr`.`id` = `ezkeyword_attribute_link`.`objectattribute_id`
 );
 --
+
+-- EZP-31079: Provided default value for ezuser login pattern --
+UPDATE `ezcontentclass_attribute` SET `data_text2` = '^[^@]+$'
+    WHERE `data_type_string` = 'ezuser'
+    AND `data_text2` IS NULL;
+--
