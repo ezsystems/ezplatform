@@ -12,7 +12,7 @@ declare -a option_vars=(
     %APP_ENV%
     %APP_DEBUG%
     %APP_HTTP_CACHE%
-    %APP_TRUSTED_PROXIES%
+    %TRUSTED_PROXIES%
     %BODY_SIZE_LIMIT%
     %TIMEOUT%
     %FASTCGI_PASS%

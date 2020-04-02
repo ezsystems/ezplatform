@@ -25,7 +25,6 @@ services:
      - APP_ENV=prod
      - APP_DEBUG
      - APP_HTTP_CACHE
-     - APP_TRUSTED_PROXIES
      - DATABASE_USER=ezp
      - DATABASE_PASSWORD=SetYourOwnPassword
      - DATABASE_NAME=ezp
@@ -33,7 +32,7 @@ services:
      - CUSTOM_CACHE_POOL=singleredis
      - CACHE_HOST=redis
      - APP_HTTP_CACHE=0
-     - APP_TRUSTED_PROXIES=varnish
+     - TRUSTED_PROXIES=varnish
      - HTTPCACHE_PURGE_SERVER=http://varnish
      - HTTPCACHE_PURGE_TYPE=http
      - PHP_INI_ENV_session.save_handler=redis

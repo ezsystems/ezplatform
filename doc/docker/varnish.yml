@@ -9,7 +9,7 @@ services:
   app:
     environment:
      - APP_HTTP_CACHE=0
-     - APP_TRUSTED_PROXIES=varnish
+     - TRUSTED_PROXIES=varnish
      - HTTPCACHE_PURGE_SERVER=http://varnish
      - HTTPCACHE_PURGE_TYPE=varnish
 

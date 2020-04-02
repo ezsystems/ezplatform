@@ -16,7 +16,7 @@ services:
      - APP_ENV=${APP_ENV-dev}
      - APP_DEBUG
      - APP_HTTP_CACHE
-     - APP_TRUSTED_PROXIES
+     - TRUSTED_PROXIES
      - DATABASE_USER
      - DATABASE_PASSWORD
      - DATABASE_NAME
