@@ -6,7 +6,7 @@
 # For further reading on setup with eZ Platform and Redis:
 # https://doc.ezplatform.com/en/latest/guide/persistence_cache/#redis
 parameters:
-  cache_namespace: ezp
+  cache_namespace: '%env(CACHE_NAMESPACE)%'
   cache_dsn: '%env(CACHE_DSN)%'
 
 services:
