@@ -4,9 +4,11 @@ body {
     color: #131C26;
     overflow-x: hidden;
     font-family: "Noto Sans", sans-serif;
+    background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTQuNTg5IiBoZWlnaHQ9IjUxNC4yNTQiIHZpZXdCb3g9IjAgMCA1MTQuNTg5IDUxNC4yNTQiPjxkZWZzPjxzdHlsZT4uYXtmaWxsOiNkN2Q4ZTI7b3BhY2l0eTowLjI7fTwvc3R5bGU+PC9kZWZzPjxwYXRoIGNsYXNzPSJhIiBkPSJNNTE2LjI1OCwzNDUuN1YyMTQuNzE4aC0zMTguN1Y1MzMuNDA2SDMyOS40Njl2NTcuNDM4SDU3NC42VjM0NS43Wk0zMjkuNDY5LDUwMi41MTdIMjI4LjQ0OVYyNDUuNTg2SDQ4NS4zNjJWMzQ1LjdIMzI5LjQ2OVptMjE1Ljc4NSw1OC45NjhIMzU4LjhWMzc1LjA2MUg1NDUuMjU1WiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTI0LjMyNyAtMjg0LjczMykgcm90YXRlKDMwKSIvPjwvc3ZnPg==") no-repeat right bottom;
+    margin-bottom: 48px;
 }
 .header {
-    height: 450px;
+    height: 410px;
     background: transparent linear-gradient(90deg, #FF4713 0%, #DB0032 100%) 0% 0% no-repeat padding-box;
     opacity: 1;
 }
@@ -30,8 +32,9 @@ a {
     }
 }
 .footer {
-    background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTQuNTg5IiBoZWlnaHQ9IjUxNC4yNTQiIHZpZXdCb3g9IjAgMCA1MTQuNTg5IDUxNC4yNTQiPjxkZWZzPjxzdHlsZT4uYXtmaWxsOiNkN2Q4ZTI7b3BhY2l0eTowLjI7fTwvc3R5bGU+PC9kZWZzPjxwYXRoIGNsYXNzPSJhIiBkPSJNNTE2LjI1OCwzNDUuN1YyMTQuNzE4aC0zMTguN1Y1MzMuNDA2SDMyOS40Njl2NTcuNDM4SDU3NC42VjM0NS43Wk0zMjkuNDY5LDUwMi41MTdIMjI4LjQ0OVYyNDUuNTg2SDQ4NS4zNjJWMzQ1LjdIMzI5LjQ2OVptMjE1Ljc4NSw1OC45NjhIMzU4LjhWMzc1LjA2MUg1NDUuMjU1WiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTI0LjMyNyAtMjg0LjczMykgcm90YXRlKDMwKSIvPjwvc3ZnPg==") no-repeat 107% 0;
-    height: 370px;
+    position: absolute;
+    bottom: 0;
+    height: 48px;
 
     .container-fluid {
         display: flex;

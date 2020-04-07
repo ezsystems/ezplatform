@@ -38,8 +38,8 @@
         </div>
     </div>
 </header>
-<div class="page pb-5">
-    <div class="container-fluid background-grey pt-4">
+<div class="page pb-4">
+    <div class="container-fluid background-grey pt-3">
         <div class="row py-4">
             <div class="col-12 py-4">
                 <div class="container text-center">
@@ -154,13 +154,13 @@
 </div>
 <footer class="footer px-3 pb-3">
     <div class="container-fluid">
-        <span class="copyright">
-        {{ 'ezplatform_welcome_page.copyright'|trans({
-            '%ez_link_open%': '<a href="http://ez.no" target="_blank">',
-            '%ez_link_close%': '</a>',
-            '%current_year%': "now"|date("Y")
-        }) |desc('eZ Platform ©1999-%current_year% %ez_link_open%eZ Systems AS%ez_link_close% and others.')|raw }}
-        </span>
+    <span class="copyright">
+    {{ 'ezplatform_welcome_page.copyright'|trans({
+        '%ez_link_open%': '<a href="http://ez.no" target="_blank">',
+        '%ez_link_close%': '</a>',
+        '%current_year%': "now"|date("Y")
+    }) |desc('eZ Platform ©1999-%current_year% %ez_link_open%eZ Systems AS%ez_link_close% and others.')|raw }}
+    </span>
     </div>
 </footer>
 {% endblock %}
