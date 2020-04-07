@@ -52,6 +52,8 @@
 
 .php~
 
+/config/graphql/
+
 /doc/docker/entrypoint/*/*.sql
 /dfsdata
 
