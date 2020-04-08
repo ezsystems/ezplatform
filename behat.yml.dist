@@ -40,15 +40,15 @@ default:
 
         Liuggio\Fastest\Behat\ListFeaturesExtension\Extension: ~
 
-#        Bex\Behat\ScreenshotExtension:
-#            active_image_drivers: cloudinary
-#            image_drivers:
-#                cloudinary:
-#                    screenshot_directory: /tmp/behat-screenshot/
-#                    cloud_name: ezplatformtravis
-#                    preset: ezplatform
-#                    mode: normal
-#                    limit: 10
+        Bex\Behat\ScreenshotExtension:
+            active_image_drivers: cloudinary
+            image_drivers:
+                cloudinary:
+                    screenshot_directory: /tmp/behat-screenshot/
+                    cloud_name: ezplatformtravis
+                    preset: ezplatform
+                    mode: normal
+                    limit: 10
 
         Allure\Behat\AllureFormatterExtension: ~
 

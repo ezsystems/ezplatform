@@ -67,10 +67,9 @@
     "require-dev": {
         "behat/behat": "^3.6",
         "behat/mink": "^1.8",
-        "friends-of-behat/mink-extension": "^2.4",
         "behat/mink-goutte-driver": "^1.2",
         "behat/mink-selenium2-driver": "^1.4",
-        "friends-of-behat/symfony-extension": "^2.1@beta",
+        "bex/behat-screenshot": "^2.1",
         "dmore/behat-chrome-extension": "^1.3",
         "dmore/chrome-mink-driver": "^2.7",
         "ezsystems/allure-behat": "^3.1@dev",
@@ -78,11 +77,13 @@
         "ezsystems/behat-screenshot-image-driver-cloudinary": "^1.1@dev",
         "ezsystems/behatbundle": "^8.0@dev",
         "ezsystems/fastest": "^1.7",
+        "friends-of-behat/mink-extension": "^2.4",
+        "friends-of-behat/symfony-extension": "^2.1@beta",
         "overblog/graphiql-bundle": "^0.2",
+        "phpunit/phpunit": "^8.2",
         "symfony/debug-pack": "^1.0",
         "symfony/maker-bundle": "^1.14",
-        "symfony/test-pack": "^1.0",
-        "phpunit/phpunit": "^8.2"
+        "symfony/test-pack": "^1.0"
     },
     "conflict": {
         "doctrine/persistence": "1.3.2",
