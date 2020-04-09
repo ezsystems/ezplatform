@@ -12,6 +12,7 @@ services:
     environment:
      - CACHE_POOL=cache.redis
      - CACHE_DSN=redis:6379
+     - CACHE_NAMESPACE
 
   redis:
     image: ${REDIS_IMAGE}
