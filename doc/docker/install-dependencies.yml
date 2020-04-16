@@ -3,7 +3,7 @@ version: '3.3'
 
 services:
   install_dependencies:
-    image: ${PHP_IMAGE_DEV}
+    image: ${PHP_IMAGE}-dev
     volumes:
      - ${COMPOSE_DIR}/../..:/var/www:cached
      - ${COMPOSER_HOME}:/root/.composer:cached
