@@ -33,8 +33,9 @@ variables:
         # Example of setting php.ini config
         #"display_errors": "On"
     env:
-        # We disable Symfony Proxy, as we rather use Varnish
+        # We disable Symfony Proxy (AppCache), as we rather use Varnish
         SYMFONY_HTTP_CACHE: 0
+        # Warning: Only for Varnish on Platform.sh to workarounbd missing IP. Disable if you use Fastly or Symfony Proxy where this would be a security issue!
         SYMFONY_TRUSTED_PROXIES: "TRUST_REMOTE"
         # Change this if you use a different env then "prod", if you change this to "dev" remove "--no-dev" in build step
         SYMFONY_ENV: prod
