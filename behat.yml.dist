@@ -44,7 +44,8 @@ default:
                     mode: normal
                     limit: 10
 
-        Allure\Behat\AllureFormatterExtension: ~
+        Allure\Behat\AllureFormatterExtension:
+            image_attachment_limit: 5
 
     suites: ~
 
