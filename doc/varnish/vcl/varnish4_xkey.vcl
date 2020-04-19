@@ -116,6 +116,19 @@ sub vcl_backend_response {
 
     // Make Varnish keep all objects for up to 1 hour beyond their TTL, see vcl_hit for Request logic on this
     set beresp.grace = 1h;
+
+    // Compressing the content
+    if (beresp.http.Content-Type ~ "application/javascript"
+        || beresp.http.Content-Type ~ "application/json"
+        || beresp.http.Content-Type ~ "application/vnd.ms-fontobject"
+        || beresp.http.Content-Type ~ "application/vnd.ez.api"
+        || beresp.http.Content-Type ~ "application/x-font-ttf"
+        || beresp.http.Content-Type ~ "image/svg+xml"
+        || beresp.http.Content-Type ~ "text/css"
+        || beresp.http.Content-Type ~ "text/plain"
+    ) {
+        set beresp.do_gzip = true;
+    }
 }
 
 // Handle purge
@@ -156,13 +169,11 @@ sub ez_purge {
 }
 
 sub ez_purge_acl {
-//    if (req.http.x-purge-token) {
-//        #  Won't work on Varnish <= 5.1, if needed in 4.1 you can hardcode a secret token here instead of std.getenv() usage
-//        if (req.http.x-purge-token != std.getenv("HTTPCACHE_VARNISH_INVALIDATE_TOKEN")) {
-//            return (synth(405, "Method not allowed"));
-//        }
-//    } else if  (!client.ip ~ invalidators) {
-    if  (!client.ip ~ invalidators) {
+    if (req.http.x-invalidate-token) {
+        if (req.http.x-invalidate-token != req.http.x-backend-invalidate-token) {
+            return (synth(405, "Method not allowed"));
+        }
+    } else if  (!client.ip ~ invalidators) {
         return (synth(405, "Method not allowed"));
     }
 }
@@ -176,7 +187,7 @@ sub ez_user_context_hash {
             || req.http.x-user-hash
         )
     ) {
-        return (synth(400));
+        return (synth(400, "Bad Request"));
     }
 
     if (req.restarts == 0 && (req.method == "GET" || req.method == "HEAD")) {
@@ -224,7 +235,7 @@ sub ez_invalidate_token {
             || req.http.x-backend-invalidate-token
         )
     ) {
-        return (synth(400));
+        return (synth(400, "Bad Request"));
     }
 
     if (req.restarts == 0 && req.method == "PURGE" && req.http.x-invalidate-token) {

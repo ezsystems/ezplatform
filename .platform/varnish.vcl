@@ -6,7 +6,7 @@
 // Make sure to at least adjust default parameters.yml, defaults there reflect our testing needs with docker.
 
 // Not applicable on Platform.sh:
-//vcl 4.1;
+//vcl 4.0;
 //import std;
 import xkey;
 
@@ -26,6 +26,7 @@ acl debuggers {
 
 // Called at the beginning of a request, after the complete request has been received
 sub vcl_recv {
+
     // Set the backend
     //set req.backend_hint = ezplatform;
     // Platform.sh specific:
@@ -116,6 +117,7 @@ sub vcl_hit {
 
 // Called when the requested object has been retrieved from the backend
 sub vcl_backend_response {
+
     if (bereq.http.accept ~ "application/vnd.fos.user-context-hash"
         && beresp.status >= 500
     ) {
@@ -194,13 +196,14 @@ sub ez_purge_acl {
 
 // Sub-routine to get client user context hash, used to for being able to vary page cache on user rights.
 sub ez_user_context_hash {
+
     // Prevent tampering attacks on the hash mechanism
     if (req.restarts == 0
         && (req.http.accept ~ "application/vnd.fos.user-context-hash"
             || req.http.x-user-hash
         )
     ) {
-        return (synth(400));
+        return (synth(400, "Bad Request"));
     }
 
     if (req.restarts == 0 && (req.method == "GET" || req.method == "HEAD")) {
@@ -248,7 +251,7 @@ sub ez_invalidate_token {
             || req.http.x-backend-invalidate-token
         )
     ) {
-        return (synth(400));
+        return (synth(400, "Bad Request"));
     }
 
     if (req.restarts == 0 && req.method == "PURGE" && req.http.x-invalidate-token) {
