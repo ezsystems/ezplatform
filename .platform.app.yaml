@@ -44,7 +44,7 @@ variables:
         # We disable Symfony Proxy (CacheKernel), as we rather use Varnish
         APP_HTTP_CACHE: 0
         # Warning: Only for Varnish on Platform.sh to workaround missing IP. Disable if you use Fastly or Symfony Proxy where this would be a security issue!
-        TRUSTED_PROXIES: "TRUST_REMOTE"
+        TRUSTED_PROXIES: "REMOTE_ADDR"
         # Change this if you use a different env than "prod"
         # If you change to "dev" remove "--no-dev" from the `composer install` command.
         APP_ENV: prod
