@@ -18,6 +18,7 @@ default:
                         capabilities:
                             extra_capabilities:
                                 chromeOptions:
+                                    w3c: false
                                     args:
                                         - "--window-size=1440,1080"
                                         - "--no-sandbox"

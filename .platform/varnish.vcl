@@ -5,7 +5,7 @@
 //
 
 // Not applicable on Platform.sh:
-//vcl 4.1;
+//vcl 4.0;
 //import std;
 import xkey;
 
@@ -201,7 +201,7 @@ sub ez_user_context_hash {
             || req.http.x-user-context-hash
         )
     ) {
-        return (synth(400));
+        return (synth(400, "Bad Request"));
     }
 
     if (req.restarts == 0 && (req.method == "GET" || req.method == "HEAD")) {
@@ -249,7 +249,7 @@ sub ez_invalidate_token {
             || req.http.x-backend-invalidate-token
         )
     ) {
-        return (synth(400));
+        return (synth(400, "Bad Request"));
     }
 
     if (req.restarts == 0 && (req.method == "PURGE" || req.method == "PURGEKEYS") && req.http.x-invalidate-token) {
