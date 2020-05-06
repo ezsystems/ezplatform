@@ -105,7 +105,10 @@ if (isset($relationships['redissession'])) {
     }
 }
 
-if (isset($relationships['solr'])) {
+if (
+    isset($relationships['solr']) &&
+    (!$container->hasParameter('search_engine') || $container->getParameter('search_engine') === 'solr')
+) {
     foreach ($relationships['solr'] as $endpoint) {
         if ($endpoint['scheme'] !== 'solr') {
             continue;
