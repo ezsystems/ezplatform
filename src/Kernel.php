@@ -46,4 +46,19 @@ class Kernel extends BaseKernel
         $routes->import($confDir.'/{routes}/*'.self::CONFIG_EXTS, '/', 'glob');
         $routes->import($confDir.'/{routes}'.self::CONFIG_EXTS, '/', 'glob');
     }
+
+    // can be removed when bumping to Symfony 5.2
+    public function getCacheDir()
+    {
+        if (isset($_SERVER['APP_CACHE_DIR'])) {
+            return $_SERVER['APP_CACHE_DIR'].'/'.$this->environment;
+        }
+        return parent::getCacheDir();
+    }
+
+    // can be removed when bumping to Symfony 5.2
+    public function getLogDir()
+    {
+        return $_SERVER['APP_LOG_DIR'] ?? parent::getLogDir();
+    }
 }
