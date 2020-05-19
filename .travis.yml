@@ -46,20 +46,22 @@ matrix:
       env: BEHAT_OPTS="--mode=behat --profile=repository-forms --tags=~@broken --non-strict"
     - name: "Admin UI on Clean Platform"
       env: BEHAT_OPTS="--profile=adminui --suite=adminui"
-    - name: "[PHP 7.1] Admin UI on Clean Platform"
-      env:
-        - BEHAT_OPTS="--profile=adminui --suite=adminui"
-        - PHP_IMAGE=ezsystems/php:7.1-v1
     - name: "Admin UI on Clean Platform with Varnish and Redis"
       env:
         - COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/varnish.yml:doc/docker/redis.yml:doc/docker/selenium.yml"
         - BEHAT_OPTS="--profile=adminui --suite=adminui"
         - WEB_HOST="varnish"
+    # Nightly and triggered jobs for Clean OSS
     - if: type in (cron, api)
       name: "Admin UI tests using different personas"
       env:
         - SETUP_BEHAT_OPTS="--profile=setup --suite=personas --tags=@setup"
         - BEHAT_OPTS="--profile=adminui --suite=personas"
+    - if: type in (cron, api)
+      name: "[PHP 7.1] Admin UI on Clean Platform"
+      env:
+        - BEHAT_OPTS="--profile=adminui --suite=adminui"
+        - PHP_IMAGE=ezsystems/php:7.1-v1
 
 # reduce depth (history) of git checkout
 git:
