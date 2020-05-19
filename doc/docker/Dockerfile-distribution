@@ -1,7 +1,7 @@
 # Note : if you set the environment variable COMPOSE_PROJECT_NAME to a non-default value, you'll need to set the
 # DISTRIBUTION_IMAGE build arg too (for instance docker-compose build --no-cache --build-arg DISTRIBUTION_IMAGE=customprojectname_app distribution)
 ARG DISTRIBUTION_IMAGE=docker_app
-ARG PHP_IMAGE=ezsystems/php:7.3-v1
+ARG PHP_IMAGE=ezsystems/php:7.4-v1
 FROM ${DISTRIBUTION_IMAGE} as distrofiles
 
 FROM ${PHP_IMAGE}-node as builder
