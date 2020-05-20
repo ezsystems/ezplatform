@@ -11,17 +11,17 @@ services:
     buzz.file_get_contents_client:
         class: Buzz\Client\FileGetContents
         arguments:
-            - timeout: 10
+            -   timeout: 10
 
     buzz.curl_client:
         class: Buzz\Client\Curl
         arguments:
-            - timeout: 10
+            -   timeout: 10
 
     buzz.multi_curl_client:
         class: Buzz\Client\MultiCurl
         arguments:
-            - timeout: 10
+            -   timeout: 10
 
     # Browser
     Buzz\Browser:
