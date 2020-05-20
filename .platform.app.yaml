@@ -40,6 +40,15 @@ variables:
         # Example of setting php.ini config
         #"display_errors": "On"
         memory_limit: 512M
+        # The default OPcache configuration is not suited for Symfony applications
+        opcache.memory_consumption: 256
+        opcache.max_accelerated_files: 20000
+        # We recommend enabling the following opcache.validate_timestamps setting in production, but then opcache_reset() must be called every time you clear symfony cache.
+        #opcache.validate_timestamps: 0
+
+        # Applications that open many PHP files, such as Symfony projects, should use at least these values
+        realpath_cache_size: 4096K
+        realpath_cache_ttl: 600
     env:
         # We disable Symfony Proxy (CacheKernel), as we rather use Varnish
         APP_HTTP_CACHE: 0
