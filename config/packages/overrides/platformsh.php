@@ -137,7 +137,7 @@ if ($route !== null && !($_SERVER['HTTPCACHE_PURGE_TYPE'] ?? false)) {
     $purgeServer = rtrim($route, '/');
     if (($_SERVER['HTTPCACHE_USERNAME'] ?? false) && ($_SERVER['HTTPCACHE_PASSWORD'] ?? false)) {
         $domain = parse_url($purgeServer, \PHP_URL_HOST);
-        $credentials = $_SERVER['HTTPCACHE_USERNAME'] . ':' . urlencode($_SERVER['HTTPCACHE_PASSWORD']);
+        $credentials = urlencode($_SERVER['HTTPCACHE_USERNAME']) . ':' . urlencode($_SERVER['HTTPCACHE_PASSWORD']);
         $purgeServer = str_replace($domain, $credentials . '@' . $domain, $purgeServer);
     }
 
