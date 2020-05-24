@@ -68,7 +68,6 @@
 
 composer.phar
 composer.lock
-symfony.lock
 yarn.lock
 .buildpath
 .project
