@@ -36,7 +36,7 @@ eZ Platform is fully open source and it is the foundation for the commercial *eZ
 
 Installation instructions below are for installing a clean installation of eZ Platform in latest version with _no_ demo content or demo website.
 Full installation documentation is [in the online docs](https://doc.ezplatform.com/en/latest/getting_started/install_using_composer/).
-It includes instructions on installing other distributions _(like [ezplatform-demo](https://github.com/ezsystems/ezplatform-demo) and [ezplatform-ee](https://github.com/ezsystems/ezplatform-ee) enterprise edition)_, or other versions.
+It includes instructions on installing other distributions _(like [ezplatform-ee](https://github.com/ezsystems/ezplatform-ee) enterprise edition)_, or other versions.
 
 #### Prerequisites
 
