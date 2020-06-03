@@ -7,9 +7,10 @@ parameters:
     # Session save path as used by symfony session handlers (eg. used for dsn with redis)
     ezplatform.session.save_path: '%kernel.project_dir%/var/sessions/%kernel.environment%'
 
-    # Settings for Cache pool, to change add own cache service and optionally inject own arguments
-    # predefined pools: see symfony config and the optional pools in app/config/cache_pool/
-    # @todo fix this comment
+    # Predefined pools are located in config/packages/cache_pool/
+    # You can add your own cache pool to the folder mentioned above.
+    # In order to change the default cache_pool use environmental variable export.
+    # The line below must not be altered as required cache service files are resolved based on environmental config.
     cache_pool: '%env(CACHE_POOL)%'
 
     # By default cache ttl is set to 24h, when using Varnish you can set a much higher value. High values depends on
