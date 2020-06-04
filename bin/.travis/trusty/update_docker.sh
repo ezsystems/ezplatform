@@ -24,9 +24,15 @@ if (( $(echo "$dc < 1.23" |bc -l) )); then
     DOCKER_COMPOSE_VERSION="1.23.2"
     echo "Updating Docker Compose from ${dc} (${dc_full}) to ${DOCKER_COMPOSE_VERSION}"
     sudo rm -f /usr/local/bin/docker-compose
-    curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
-    chmod +x docker-compose
-    sudo mv docker-compose /usr/local/bin
+    curl --retry 5 -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+    FILE_TYPE=$(file -b --mime-type docker-compose | sed 's|/.*||')
+    if [[ $FILE_TYPE == "application" ]]; then
+        chmod +x docker-compose
+        sudo mv docker-compose /usr/local/bin
+    else
+        echo "Error when downloading docker-compose"
+        cat docker-compose
+    fi
 else
     echo "Skip updating Docker Compose ${dc} (${dc_full})"
 fi
