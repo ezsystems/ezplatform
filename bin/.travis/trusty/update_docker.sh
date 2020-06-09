@@ -1,5 +1,7 @@
 #!/bin/bash
 
+SCRIPT_DIR=`dirname $0`
+
 # Update Docker, if needed
 d_full=`docker version --format '{{.Server.Version}}'`
 d=`echo $d_full | ( IFS="." ; read a b c && echo $a.$b)`
@@ -20,19 +22,25 @@ fi
 # Update Docker Compose, if needed
 dc_full=`docker-compose version --short`
 dc=`echo $dc_full | ( IFS="." ; read a b c && echo $a.$b)`
-if (( $(echo "$dc < 1.23" |bc -l) )); then
-    DOCKER_COMPOSE_VERSION="1.23.2"
-    echo "Updating Docker Compose from ${dc} (${dc_full}) to ${DOCKER_COMPOSE_VERSION}"
-    sudo rm -f /usr/local/bin/docker-compose
-    curl --retry 5 -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
-    FILE_TYPE=$(file -b --mime-type docker-compose | sed 's|/.*||')
-    if [[ $FILE_TYPE == "application" ]]; then
-        chmod +x docker-compose
-        sudo mv docker-compose /usr/local/bin
-    else
-        echo "Error when downloading docker-compose"
-        cat docker-compose
-    fi
-else
+if (( ! $(echo "$dc < 1.23" |bc -l) )); then
     echo "Skip updating Docker Compose ${dc} (${dc_full})"
+    exit 0
+fi
+
+DOCKER_COMPOSE_VERSION="1.23.2"
+echo "Updating Docker Compose from ${dc} (${dc_full}) to ${DOCKER_COMPOSE_VERSION}"
+GITHUB_TOKEN=$(cat ${SCRIPT_DIR}/../composer-auth.json | jq -r '.["github-oauth"]["github.com"]')
+PLATFORM=docker-compose-`uname -s`-`uname -m`
+
+DOCKER_COMPOSE_DOWNLOAD_URL=$(curl -H "Authorization: token ${GITHUB_TOKEN}" https://api.github.com/repos/docker/compose/releases/tags/${DOCKER_COMPOSE_VERSION} | jq -r --arg p "$PLATFORM" '.assets[] | select(.name == $p) | .url')
+curl -L -H "Authorization: token ${GITHUB_TOKEN}" -H "Accept: application/octet-stream" $DOCKER_COMPOSE_DOWNLOAD_URL > docker-compose-dl
+
+FILE_TYPE=$(file -b --mime-type docker-compose-dl | sed 's|/.*||')
+if [[ $FILE_TYPE == "application" ]]; then
+    sudo rm -f /usr/local/bin/docker-compose
+    chmod +x docker-compose-dl
+    sudo mv docker-compose-dl /usr/local/bin/docker-compose
+else
+    echo "Error when downloading docker-compose"
+    exit 1
 fi
