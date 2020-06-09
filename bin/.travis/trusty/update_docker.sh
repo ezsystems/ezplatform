@@ -34,7 +34,7 @@ PLATFORM=docker-compose-`uname -s`-`uname -m`
 
 DOCKER_COMPOSE_DOWNLOAD_URL=$(curl -H "Authorization: token ${GITHUB_TOKEN}" https://api.github.com/repos/docker/compose/releases/tags/${DOCKER_COMPOSE_VERSION} | jq -r --arg p "$PLATFORM" '.assets[] | select(.name == $p) | .url')
 echo "Downloading docker-compose from ${DOCKER_COMPOSE_DOWNLOAD_URL}"
-curl -L -H "Authorization: token ${GITHUB_TOKEN}" -H "Accept: application/octet-stream" $DOCKER_COMPOSE_DOWNLOAD_URL > docker-compose-dl
+curl -I -v -H "Authorization: token ${GITHUB_TOKEN}" -H "Accept: application/octet-stream" -L ${DOCKER_COMPOSE_DOWNLOAD_URL} --output docker-compose-dl
 
 FILE_TYPE=$(file -b --mime-type docker-compose-dl | sed 's|/.*||')
 if [[ $FILE_TYPE == "application" ]]; then
