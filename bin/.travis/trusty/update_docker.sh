@@ -27,6 +27,8 @@ if (( ! $(echo "$dc < 1.23" |bc -l) )); then
     exit 0
 fi
 
+sudo apt-get update curl
+
 DOCKER_COMPOSE_VERSION="1.23.2"
 echo "Updating Docker Compose from ${dc} (${dc_full}) to ${DOCKER_COMPOSE_VERSION}"
 GITHUB_TOKEN=$(cat ${SCRIPT_DIR}/../composer-auth.json | jq -r '.["github-oauth"]["github.com"]')
