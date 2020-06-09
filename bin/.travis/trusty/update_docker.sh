@@ -27,7 +27,14 @@ if (( ! $(echo "$dc < 1.23" |bc -l) )); then
     exit 0
 fi
 
-sudo apt-get update curl
+wget http://curl.haxx.se/download/curl-7.60.0.tar.bz2
+tar -xvjf curl-7.60.0.tar.bz2
+cd curl-7.60.0
+./configure
+make
+sudo make install
+sudo ldconfig
+
 
 DOCKER_COMPOSE_VERSION="1.23.2"
 echo "Updating Docker Compose from ${dc} (${dc_full}) to ${DOCKER_COMPOSE_VERSION}"
