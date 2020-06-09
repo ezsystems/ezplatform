@@ -134,10 +134,16 @@ foreach ($routes as $host => $info) {
 }
 
 if ($route !== null && !($_SERVER['HTTPCACHE_PURGE_TYPE'] ?? false)) {
-    $container->setParameter('purge_type', 'varnish');
-    $container->setParameter('purge_server', rtrim($route, '/'));
-}
+    $purgeServer = rtrim($route, '/');
+    if (($_SERVER['HTTPCACHE_USERNAME'] ?? false) && ($_SERVER['HTTPCACHE_PASSWORD'] ?? false)) {
+        $domain = parse_url($purgeServer, \PHP_URL_HOST);
+        $credentials = urlencode($_SERVER['HTTPCACHE_USERNAME']) . ':' . urlencode($_SERVER['HTTPCACHE_PASSWORD']);
+        $purgeServer = str_replace($domain, $credentials . '@' . $domain, $purgeServer);
+    }
 
+    $container->setParameter('purge_type', 'varnish');
+    $container->setParameter('purge_server', $purgeServer);
+}
 // Setting default value for HTTPCACHE_VARNISH_INVALIDATE_TOKEN if it is not explicitly set
 if (!($_SERVER['HTTPCACHE_VARNISH_INVALIDATE_TOKEN'] ?? false)) {
     $container->setParameter('varnish_invalidate_token', $_SERVER['PLATFORM_PROJECT_ENTROPY']);
