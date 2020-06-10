@@ -6,9 +6,9 @@ sudo apt-get build-dep curl
 # Get latest (as of Feb 25, 2016) libcurl
 mkdir ~/curl
 cd ~/curl
-wget http://curl.haxx.se/download/curl-7.50.2.tar.bz2
-tar -xvjf curl-7.50.2.tar.bz2
-cd curl-7.50.2
+wget http://curl.haxx.se/download/curl-7.64.1.tar.bz2
+tar -xvjf curl-7.64.1.tar.bz2
+cd curl-7.64.1
 
 # The usual steps for building an app from source
 # ./configure
