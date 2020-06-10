@@ -38,13 +38,12 @@ PLATFORM=docker-compose-`uname -s`-`uname -m`
 
 DOCKER_COMPOSE_DOWNLOAD_URL=$(curl -H "Authorization: token ${GITHUB_TOKEN}" https://api.github.com/repos/docker/compose/releases/tags/${DOCKER_COMPOSE_VERSION} | jq -r --arg p "$PLATFORM" '.assets[] | select(.name == $p) | .url')
 echo "Downloading docker-compose from ${DOCKER_COMPOSE_DOWNLOAD_URL}"
-curl -v -H "Authorization: token ${GITHUB_TOKEN}" -H "Accept: application/octet-stream" -L ${DOCKER_COMPOSE_DOWNLOAD_URL} --output docker-compose-dl
+curl -H "Authorization: token ${GITHUB_TOKEN}" -H "Accept: application/octet-stream" -L ${DOCKER_COMPOSE_DOWNLOAD_URL} --output docker-compose-dl
 
 FILE_TYPE=$(file -b --mime-type docker-compose-dl | sed 's|/.*||')
 if [[ $FILE_TYPE == "application" ]]; then
     sudo rm -f /usr/local/bin/docker-compose
     chmod +x docker-compose-dl
-    cat docker-compose-dl
     sudo mv docker-compose-dl /usr/local/bin/docker-compose
 else
     echo "Error when downloading docker-compose"
