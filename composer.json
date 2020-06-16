@@ -80,7 +80,7 @@
         "ezsystems/fastest": "^1.7",
         "friends-of-behat/mink-browserkit-driver": "^1.4",
         "friends-of-behat/mink-extension": "^2.4",
-        "friends-of-behat/symfony-extension": "^2.1@beta",
+        "friends-of-behat/symfony-extension": "^2.1",
         "overblog/graphiql-bundle": "^0.2",
         "phpunit/phpunit": "^8.2",
         "symfony/debug-pack": "^1.0",
