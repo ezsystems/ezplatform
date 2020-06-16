@@ -140,7 +140,7 @@
     "extra": {
         "symfony": {
             "allow-contrib": true,
-            "require": "~5.0.0 || 5.1.*"
+            "require": "~5.1.0"
         },
         "branch-alias": {
             "dev-master": "3.1.x-dev"
