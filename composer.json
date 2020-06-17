@@ -77,7 +77,7 @@
         "ezsystems/allure-php-api": "~3.1.0@dev",
         "ezsystems/behat-screenshot-image-driver-cloudinary": "^1.1@dev",
         "ezsystems/behatbundle": "~8.0.0@dev",
-        "ezsystems/fastest": "^1.7",
+        "liuggio/fastest": "^1.7",
         "friends-of-behat/mink-browserkit-driver": "^1.4",
         "friends-of-behat/mink-extension": "^2.4",
         "friends-of-behat/symfony-extension": "^2.1",
