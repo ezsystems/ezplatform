@@ -105,7 +105,7 @@ if (isset($relationships['redissession'])) {
     }
 }
 
-if (isset($relationships['solr'])) {
+if (isset($relationships['solr']) && ($_SERVER['SEARCH_ENGINE'] ?? false) === 'solr') {
     foreach ($relationships['solr'] as $endpoint) {
         if ($endpoint['scheme'] !== 'solr') {
             continue;
