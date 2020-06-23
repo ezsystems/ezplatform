@@ -67,9 +67,6 @@
 /public/.htaccess
 
 composer.phar
-composer.lock
-symfony.lock
-yarn.lock
 .buildpath
 .project
 .settings/
