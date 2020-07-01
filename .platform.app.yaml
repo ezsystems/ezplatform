@@ -158,6 +158,13 @@ hooks:
         # So in development it might be convenient to rebuild indexes, slowing down deploy time
         ##php bin/console ezplatform:reindex --processes=auto
 
+        # When using Varnish/Fastly, HttpCache is not cleared when clearing Symfony Cache folder above, you need to
+        # clear cache yourself when for instance templates or config affecting responses change, for instance with:
+        ##bin/console fos:httpcache:invalidate:tag ez-all
+        # Depending on your VCL, buy default this would trigger a soft purge (expiry) and allow grace period, however
+        # even so if your change only affected certain subset of content, ideally you should only clear specific tags:
+        ##bin/console fos:httpcache:invalidate:tag l44 c33 ct2 ...
+
     # Post deploy hook, like deploy but after being deployed and live, for deploy tasks we can do asynchronously
     #post_deploy: |
     #    set -e
