@@ -2,10 +2,11 @@
 fos_http_cache:
     # https://foshttpcachebundle.readthedocs.io/en/latest/reference/configuration/user-context.html#configuration
     user_context:
-        # As of eZ Platform v3.1 we ship with this disabled by default for better cache efficiency (EZP-28916).
-        # BC BREAK: For upgrades you might want to omit it, as it implies all custom
-        # controllers that relies on user rights needs an explicit: $response->setVary('X-User-Context-Hash');
+        # As of eZ Platform v3.2 we ship with this disabled by default for better cache efficiency (EZP-28916).
+        # UPGRADE NOTE: For upgrades you might want to omit it, as it implies *all* custom controllers
+        #               that relies on user rights needs an explicit: $response->setVary('X-User-Context-Hash');
         always_vary_on_context_hash: false
+
     # https://foshttpcachebundle.readthedocs.io/en/latest/reference/configuration/headers.html
     cache_control:
         rules:
