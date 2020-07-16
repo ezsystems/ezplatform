@@ -18,4 +18,4 @@ services:
      - COMPOSER_AUTH
      - DATABASE_PLATFORM
      - DATABASE_PORT
-    command: ./doc/docker/install_script.sh
+    command: sh -c "rm /usr/local/etc/php/conf.d/xdebug.ini && ./doc/docker/install_script.sh"
