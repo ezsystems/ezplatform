@@ -25,7 +25,7 @@ parameters:
     ezpublish_rest.csrf_token_intention: authenticate
 
     # Varnish invalidation/purge token (for use on platform.sh, eZ Platform Cloud and other places you can't use IP for ACL)
-    varnish_invalidate_token: '%env(HTTPCACHE_VARNISH_INVALIDATE_TOKEN)%'
+    varnish_invalidate_token: '%env(resolve:default::HTTPCACHE_VARNISH_INVALIDATE_TOKEN)%'
 
     # Compile time handlers
     ## These are defined at compile time, and hence can't be set at runtime using env()
