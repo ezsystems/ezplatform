@@ -144,7 +144,7 @@
             "require": "~5.1.0"
         },
         "branch-alias": {
-            "dev-master": "3.1.x-dev"
+            "dev-master": "3.2.x-dev"
         }
     }
 }
