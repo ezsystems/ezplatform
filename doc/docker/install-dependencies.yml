@@ -12,6 +12,7 @@ services:
      - APP_ENV=${APP_ENV-prod}
      - APP_DEBUG
      - APP_CMD
+     - DATABASE_VERSION
      - DATABASE_USER
      - DATABASE_PASSWORD
      - DATABASE_NAME
