@@ -35,6 +35,7 @@ installed on your machine.
 The current Docker Compose files are made to be mixed and matched together for QA/Support use cases. Currently available:
 - base-prod.yml _(required, always needs to be first, contains: db, web and app container)_
 - base-dev.yml _(alternative to `base-prod.yml`, same applies here if used)_
+- base-dev-debug.yml _(optional, to be used together with base-dev.yml in order to change to image containing useful additional tools for development, [check details](https://github.com/ezsystems/docker-php))_
 - create-dataset.yml _(optional, to be used together with base-prod.yml in order to set up db and vardir)_
 - demo.yml _(optional, to be used together with base-prod.yml in order to set up db and vardir)_
 - dfs.yml _(optional, adds DFS cluster handler. Note that you need to run the migrate script manually, see below)_

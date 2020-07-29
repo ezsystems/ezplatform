@@ -3,7 +3,7 @@ version: '3.3'
 
 services:
   app:
-    image: ${PHP_IMAGE_DEV}
+    image: ${PHP_IMAGE}-node
     volumes:
      - ${COMPOSE_DIR}/../../:/var/www:cached
      - ${COMPOSER_HOME}:/root/.composer:cached
@@ -25,7 +25,6 @@ services:
      - RECOMMENDATIONS_LICENSE_KEY
      - PUBLIC_SERVER_URI
      - HTTPCACHE_VARNISH_INVALIDATE_TOKEN
-     - XDEBUG_CONFIG
     networks:
      - backend
 

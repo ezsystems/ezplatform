@@ -1,0 +1,8 @@
+version: '3.3'
+# Single server setup for dev
+
+services:
+  app:
+    image: ${PHP_IMAGE_DEV}
+    environment:
+      - XDEBUG_CONFIG
