@@ -8,7 +8,7 @@ Prerequisites
 
 Recommended VCL base files
 --------------------------
-Provided VCL for eZ can be found in [vendor/ezsystems/ezplatform-http-cache/docs/varnish](https://github.com/ezsystems/ezplatform-http-cache/tree/master/docs/varnish). Specifically `/vcl/varnish5.vcl`.
+Provided VCL for eZ can be found in [vendor/ezsystems/ezplatform-http-cache/docs/varnish](https://github.com/ezsystems/ezplatform-http-cache/tree/2.0/docs/varnish). Specifically `/vcl/varnish5.vcl`.
 
 
 > **Note:** Http cache management is done with the help of [FOSHttpCacheBundle](http://foshttpcachebundle.readthedocs.org/).
