@@ -82,7 +82,7 @@ disk: 3072
 # The mounts that will be performed when the package is deployed.
 mounts:
 # PE Cluster Note: By default will set all to shared, so if moving to PE dedicated cluster you should ask platform.sh
-# Support to make sure at least cache + logs are local, while you can let web/var be shared if you prefer that over DFS.
+#                  Support to make sure at least cache + logs are local, while you can let web/var be shared if you prefer that over DFS.
     'var/cache':
         source: local
         source_path: cache
@@ -175,11 +175,16 @@ hooks:
         ##bin/console fos:httpcache:invalidate:tag l44 c33 ct2 ...
 
     # Post deploy hook, like deploy but after being deployed and live, for deploy tasks we can do asynchronously
+    # Tip: As this is running while web is running, and it's async, avoid doing anything like cache clearing that affects web requests here.
     #post_deploy: |
     #    set -e
 
 # The configuration of scheduled execution.
 # see https://docs.platform.sh/configuration/app/cron.html#cron-jobs
+#
+# Tip: Crons work like on traditional dedicated servers, they share resources with web, so:
+# - For long runing heavy operations, consider using background "workers" with event queuing.
+# - To disable certain features during a cronjob, you can usually do it with env variable or php variable, example: "php -d newrelic.enabled=false bin/console my:import"
 crons:
     frequent:
         # NOTE: The minimum interval between cron runs is 5 minutes, even if specified as less.
