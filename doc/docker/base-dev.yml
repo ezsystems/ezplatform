@@ -3,7 +3,7 @@ version: '3.3'
 
 services:
   app:
-    image: ${PHP_IMAGE}-node
+    image: ${PHP_IMAGE}
     volumes:
      - ${COMPOSE_DIR}/../../:/var/www:cached
      - ${COMPOSER_HOME}:/root/.composer:cached
