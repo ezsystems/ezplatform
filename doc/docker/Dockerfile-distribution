@@ -4,7 +4,7 @@ ARG DISTRIBUTION_IMAGE=docker_app
 ARG PHP_IMAGE=ezsystems/php:7.4-v1
 FROM ${DISTRIBUTION_IMAGE} as distrofiles
 
-FROM ${PHP_IMAGE}-node as builder
+FROM ${PHP_IMAGE} as builder
 
 COPY --from=distrofiles /var/www /var/www
 
