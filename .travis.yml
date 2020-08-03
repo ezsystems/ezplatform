@@ -62,6 +62,7 @@ matrix:
       env:
         - BEHAT_OPTS="--profile=adminui --suite=adminui"
         - PHP_IMAGE=ezsystems/php:7.1-v1-node
+        - PHP_IMAGE_DEV=ezsystems/php:7.1-v1-dev
 
 # reduce depth (history) of git checkout
 git:
