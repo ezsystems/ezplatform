@@ -3,12 +3,13 @@ version: '3.3'
 
 services:
   install_dependencies:
-    image: ${PHP_IMAGE_DEV}
+    image: ${PHP_IMAGE}
     volumes:
      - ${COMPOSE_DIR}/../..:/var/www:cached
      - ${COMPOSER_HOME}:/root/.composer:cached
     environment:
      - COMPOSER_MEMORY_LIMIT
+     - PHP_INI_ENV_memory_limit
      - SYMFONY_ENV=${SYMFONY_ENV-prod}
      - SYMFONY_DEBUG
      - SYMFONY_CMD

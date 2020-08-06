@@ -11,6 +11,7 @@ env:
     - COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/selenium.yml"
     - SYMFONY_ENV=behat
     - SYMFONY_DEBUG=1
+    - PHP_IMAGE=ezsystems/php:7.4-v2-node10
 
 cache:
   yarn: true
