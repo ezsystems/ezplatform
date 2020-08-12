@@ -11,6 +11,7 @@ services:
      - db
     environment:
      - COMPOSER_MEMORY_LIMIT
+     - ENABLE_XDEBUG
      - EZPLATFORM_SITEACCESS
      - PHP_INI_ENV_memory_limit
      - APP_ENV=${APP_ENV-dev}
@@ -26,6 +27,7 @@ services:
      - RECOMMENDATIONS_LICENSE_KEY
      - PUBLIC_SERVER_URI
      - HTTPCACHE_VARNISH_INVALIDATE_TOKEN
+     - XDEBUG_CONFIG
     networks:
      - backend
 
