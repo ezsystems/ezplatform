@@ -11,6 +11,7 @@ env:
     - COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/selenium.yml"
     - SYMFONY_ENV=behat
     - SYMFONY_DEBUG=1
+    - PHP_IMAGE=ezsystems/php:7.4-v2-node10
 
 cache:
   yarn: true
@@ -58,11 +59,11 @@ matrix:
         - SETUP_BEHAT_OPTS="--profile=setup --suite=personas --tags=@setup"
         - BEHAT_OPTS="--profile=adminui --suite=personas"
     - if: type in (cron, api)
-      name: "[PHP 7.1] Admin UI on Clean Platform"
+      name: "[PHP 7.1/PostgreSQL] Admin UI on Clean Platform"
       env:
+        - COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/db-postgresql.yml:doc/docker/selenium.yml"
         - BEHAT_OPTS="--profile=adminui --suite=adminui"
-        - PHP_IMAGE=ezsystems/php:7.1-v1-node
-        - PHP_IMAGE_DEV=ezsystems/php:7.1-v1-dev
+        - PHP_IMAGE=ezsystems/php:7.1-v2-node10
 
 # reduce depth (history) of git checkout
 git:

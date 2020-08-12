@@ -13,8 +13,7 @@ services:
           nocopy: false
 
   import-db:
-    # Using dev for now, because we need mysql client
-    image: ${PHP_IMAGE_DEV}
+    image: ${PHP_IMAGE}
     environment:
      - DATABASE_USER
      - DATABASE_PASSWORD
