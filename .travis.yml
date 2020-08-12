@@ -12,6 +12,7 @@ env:
     - APP_ENV=behat
     - APP_DEBUG=1
     - COMPOSER_MEMORY_LIMIT=4G
+    - PHP_IMAGE=ezsystems/php:7.4-v2-node12
 
 cache:
   yarn: true
@@ -53,11 +54,11 @@ matrix:
         - SETUP_BEHAT_OPTS="--profile=setup --suite=personas --tags=@setup"
         - BEHAT_OPTS="--profile=adminui --suite=personas"
     - if: type in (cron, api)
-      name: "[PHP 7.3] Admin UI on Clean Platform"
+      name: "[PHP 7.3/PostgreSQL] Admin UI on Clean Platform"
       env:
+        - COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/db-postgresql.yml:doc/docker/selenium.yml"
         - BEHAT_OPTS="--profile=adminui --suite=adminui --tags=~@broken"
-        - PHP_IMAGE=ezsystems/php:7.3-v1-node
-        - PHP_IMAGE_DEV=ezsystems/php:7.3-v1-dev
+        - PHP_IMAGE=ezsystems/php:7.3-v2-node12
 
 # reduce depth (history) of git checkout
 git:
