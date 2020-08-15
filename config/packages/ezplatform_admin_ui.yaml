@@ -1,0 +1,37 @@
+parameters:
+    # Admin siteaccess group name
+    admin_group_name: admin_group
+
+ezplatform:
+    siteaccess:
+        list: [admin]
+        groups:
+            # WARNING: Do not remove or rename this group.
+            # It's used to distinguish common siteaccesses from admin ones.
+            # In case of multisite with multiple admin panels, remember to add any additional admin siteaccess to this group.
+            admin_group: [admin]
+
+    system:
+        admin_group:
+            # For admin this needs to contain all languages you want to translate content to on the given repository.
+            languages: [eng-GB]
+            content_tree_module:
+                contextual_tree_root_location_ids:
+                    - 2 # Home (Content structure)
+                    - 5 # Users
+                    - 43 # Media
+                    - 48 # Setup
+            subtree_paths:
+                content: /1/2/
+                media: /1/43/
+
+jms_translation:
+    configs:
+        admin:
+            dirs:
+                - '%kernel.project_dir%/vendor/ezsystems/ezplatform-admin-ui/src'
+            output_dir: '%kernel.project_dir%/vendor/ezsystems/ezplatform-admin-ui/src/bundle/Resources/translations/'
+            excluded_dirs: [Behat, Tests, node_modules]
+            extractor:
+                - ez_policy
+            output_format: "xliff"

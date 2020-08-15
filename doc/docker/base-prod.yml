@@ -1,0 +1,72 @@
+version: '3.3'
+# Simple single server setup for prod
+
+services:
+  app:
+    build:
+      context: ../../
+      dockerfile: ${APP_DOCKER_FILE}
+      args:
+       - PHP_IMAGE
+    depends_on:
+     - db
+    environment:
+     - COMPOSER_MEMORY_LIMIT
+     - EZPLATFORM_SITEACCESS
+     - PHP_INI_ENV_memory_limit
+     - APP_ENV=${APP_ENV-prod}
+     - APP_DEBUG
+     - APP_HTTP_CACHE
+     - TRUSTED_PROXIES
+     - DATABASE_USER
+     - DATABASE_PASSWORD
+     - DATABASE_NAME
+     - DATABASE_HOST=db
+     - DATABASE_VERSION
+     - RECOMMENDATIONS_CUSTOMER_ID
+     - RECOMMENDATIONS_LICENSE_KEY
+     - PUBLIC_SERVER_URI
+     - HTTPCACHE_VARNISH_INVALIDATE_TOKEN
+    networks:
+     - backend
+
+  web:
+    build:
+      context: ../../
+      dockerfile: doc/docker/Dockerfile-nginx
+      args:
+       - PHP_IMAGE
+    depends_on:
+     - app
+    ports:
+     - "8080:80"
+    environment:
+     - APP_ENV=${APP_ENV-prod}
+     - MAX_BODY_SIZE=20
+     - FASTCGI_PASS=app:9000
+     - TIMEOUT=190
+    networks:
+     - frontend
+     - backend
+
+  db:
+    image: ${MYSQL_IMAGE}
+    # TODO: Get rid of by having some sort of migration command executed by app container at startup for inserting/updating data (if needed) instead of db dump, as for charset find another way of setting that.
+    volumes:
+      - dbdump:/docker-entrypoint-initdb.d/:ro
+    environment:
+     - MYSQL_RANDOM_ROOT_PASSWORD=1
+     - MYSQL_USER=$DATABASE_USER
+     - MYSQL_PASSWORD=$DATABASE_PASSWORD
+     - MYSQL_DATABASE=$DATABASE_NAME
+     - TERM=dumb
+    networks:
+     - backend
+
+volumes:
+  vardir:
+  dbdump:
+
+networks:
+  frontend:
+  backend:

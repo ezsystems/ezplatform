@@ -1,0 +1,82 @@
+# Default settings in order to set up eZ Platform demo install on Platform.sh dev instances
+#
+# Note: Like on own servers, make sure to tune Redis/Solr/Varnish/MySQL memory/disk size for your installation to avoid issues.
+#     Reach out to platform.sh support to get help on this and insight into your disk/memory usage.
+
+mysqldb:
+    type: mariadb:10.4
+    disk: 1024
+    configuration:
+        schemas:
+            - main
+            # Uncomment if you want to store dfs tables in a separate database:
+            #- dfs
+        endpoints:
+            user:
+                default_schema: main
+                privileges:
+                    main: admin
+            # Uncomment if you want to store dfs tables in a separate database:
+            #dfs:
+            #    default_schema: dfs
+            #    privileges:
+            #        dfs: admin
+
+# For use by Symfony Cache (used by eZ Platform SPI Persistence Cache)
+rediscache:
+    type: 'redis:5.0'
+    # For cache you might need to increase the size of your plan if your installation has a sizeable amount of content.
+    # Check with platform.sh staff if in doubt on this, and if it would make sense to configure larger redis size here.
+    # size: L
+    configuration:
+        # Note: If using RedisTagAwareAdapter it requires one of the 'volatile-*' eviction policies
+        # https://docs.platform.sh/configuration/services/redis.html#eviction-policy
+        # https://doc.ezplatform.com/en/latest/getting_started/requirements/
+        maxmemory_policy: volatile-lru
+
+# If you wish to have a separate Redis instance for sessions, uncomment
+# this service and the corresponding relationship in .platform.app.yaml.
+#redissession:
+#    type: 'redis:5.0'
+#    configuration:
+#        maxmemory_policy: allkeys-lru
+#
+# Alternatively if you have a requirement that sessions are persisted across server/redis restarts,
+# have storage space to spare for this, and don't mind a bit slower instance type of redis
+#redissession:
+#    type: redis-persistent:5.0
+# Disk size should be bigger than Redis'  "maxmemory" setting due to https://redis.io/topics/persistence#log-rewriting.
+# The memory given to Redis depends on your plan and "size: ". Adjust "disk: " accordingly.
+#    disk: 512
+#    configuration:
+#        maxmemory_policy: allkeys-lru
+
+# If you wish to use solr, uncomment this service and the corresponding relationship in .platform.app.yaml.
+# Also, you need to generate the config using:
+# vendor/ezsystems/ezplatform-solr-search-engine/bin/generate-solr-config.sh
+# Multi core setup is currently not supported on Platform.sh. Sharding does not work as the cores are
+# unable to reach each other
+#solrsearch:
+#    type: solr:6.6
+#    disk: 512
+#    configuration:
+#        configsets:
+#            mainconfig: !archive "configsets/solr6"
+#        cores:
+#            collection1:
+#                core_properties: |
+#                    configSet=mainconfig
+#                    schema=schema.xml
+#        endpoints:
+#            collection1:
+#                core: collection1
+
+# Due to logic in app/config/env/platformsh.php, do not change the service name to something different than 'varnish'
+varnish:
+    type: 'varnish:6.0'
+    relationships:
+        app: "app:http"
+    configuration:
+        vcl: !include
+            type: string
+            path: varnish.vcl

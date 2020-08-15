@@ -1,0 +1,65 @@
+#security:
+#    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+#    providers:
+#        in_memory: { memory: ~ }
+#    firewalls:
+#        dev:
+#            pattern: ^/(_(profiler|wdt)|css|images|js)/
+#            security: false
+#        main:
+#            anonymous: true
+#
+#            # activate different ways to authenticate
+#
+#            # http_basic: true
+#            # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
+#
+#            # form_login: true
+#            # https://symfony.com/doc/current/security/form_login_setup.html
+#
+#    # Easy way to control access for large sections of your site
+#    # Note: Only the *first* access control that matches will be used
+#    access_control:
+#        # - { path: ^/admin, roles: ROLE_ADMIN }
+#        # - { path: ^/profile, roles: ROLE_USER }
+#
+
+# To get started with security, check out the documentation:
+# https://symfony.com/doc/current/security.html
+security:
+    # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    providers:
+        ezplatform:
+            id: ezpublish.security.user_provider
+    #!        in_memory:
+    #!            memory: ~
+
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        ezpublish_forgot_password:
+            pattern: /user/(forgot-password|reset-password)
+            security: false
+
+        ezpublish_front:
+            pattern: ^/
+            user_checker: eZ\Publish\Core\MVC\Symfony\Security\UserChecker
+            anonymous: ~
+            ezpublish_rest_session: ~
+            form_login:
+                require_previous_session: false
+                csrf_token_generator: security.csrf.token_manager
+            logout: ~
+
+        main:
+            anonymous: ~
+            # activate different ways to authenticate
+
+            # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
+            #http_basic: ~
+
+            # https://symfony.com/doc/current/security/form_login_setup.html
+            #form_login: ~

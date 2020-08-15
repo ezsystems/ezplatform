@@ -1,0 +1,23 @@
+version: '3.3'
+# compose file for installing composer packages
+
+services:
+  install_dependencies:
+    image: ${PHP_IMAGE}
+    volumes:
+     - ${COMPOSE_DIR}/../..:/var/www:cached
+     - ${COMPOSER_HOME}:/root/.composer:cached
+    environment:
+     - COMPOSER_MEMORY_LIMIT
+     - PHP_INI_ENV_memory_limit
+     - APP_ENV=${APP_ENV-prod}
+     - APP_DEBUG
+     - APP_CMD
+     - DATABASE_VERSION
+     - DATABASE_USER
+     - DATABASE_PASSWORD
+     - DATABASE_NAME
+     - COMPOSER_AUTH
+     - DATABASE_PLATFORM
+     - DATABASE_PORT
+    command: ./doc/docker/install_script.sh

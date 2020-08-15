@@ -1,0 +1,41 @@
+version: '3.3'
+# Simple single server setup for prod
+
+## WARNING!
+# This service is currently work in progress, is not tested by CI, and thus not guaranteed to work.
+# You are however more then welcome to try it out and help make it stable.
+
+services:
+  app:
+    environment:
+     - APP_HTTP_CACHE=0
+     - TRUSTED_PROXIES=varnish
+     - HTTPCACHE_PURGE_SERVER=http://varnish
+     - HTTPCACHE_PURGE_TYPE=varnish
+
+  varnish:
+    build:
+      context: ../../
+      dockerfile: doc/docker/Dockerfile-varnish
+    ports:
+     - "8081:80"
+    environment:
+     - VARNISH_MALLOC_SIZE=256m
+    depends_on:
+     - web
+     - app
+    networks:
+     - frontend
+     - backend
+    command: ["--acl-add", "app"]
+
+## DEBUG??
+# In need of debugging all request going to Varnish, use varnishlog, example:
+#   docker-compose exec varnish varnishlog -c -i ReqURL,ReqMethod -I ReqHeader:xkey
+#  Or more relevant only PURGE's with all info:
+#   docker-compose exec varnish varnishlog -g request -q "ReqMethod eq 'PURGE'"
+#
+#  But before doing that check that http and not local purge client is set:
+#   docker-compose exec app bin/console --env=dev debug:container ezplatform.http_cache.purge_client_internal
+#
+# And if in prod make sure you have rebuilt app container on code changes ;)

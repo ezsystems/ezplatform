@@ -1,0 +1,6 @@
+jms_translation:
+    source_language: en
+    locales: [en]
+    dumper:
+        add_references: false
+        add_date: false

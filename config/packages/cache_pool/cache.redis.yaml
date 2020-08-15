@@ -1,0 +1,32 @@
+# Optimized Redis cache adapter (from: https://github.com/ezsystems/symfony-tools)
+#
+# On platform.sh this is setup automatically in env/plaformsh.php.
+# For any other kind of use it can be enabled with CACHE_POOL, detected by env/generic.php.
+#
+# For further reading on setup with eZ Platform and Redis:
+# https://doc.ezplatform.com/en/latest/guide/persistence_cache/#redis
+parameters:
+    cache_namespace: '%env(CACHE_NAMESPACE)%'
+    cache_dsn: '%env(CACHE_DSN)%'
+
+services:
+    cache.redis:
+        public: true
+        class: Symfony\Component\Cache\Adapter\RedisTagAwareAdapter
+        parent: cache.adapter.redis
+        tags:
+            -   name: cache.pool
+                clearer: cache.app_clearer
+                # Examples from vendor/symfony/symfony/src/Symfony/Component/Cache/Traits/RedisTrait.php:
+                # redis://localhost:6379
+                # redis://secret@example.com:1234/13
+                # redis://secret@/var/run/redis.sock/13?persistent_id=4&class=Redis&timeout=3&retry_interval=3
+                # Example using Predis: redis://%cache_dsn%?class=\Predis\Client
+                provider: 'redis://%cache_dsn%'
+                # Cache namespace prefix overriding the one used by Symfony by default
+                # This makes sure cache is reliably shared across whole cluster and all Symfony env's
+                # Can be used for blue/green deployment strategies when changes affect content cache.
+                # For multi db setup adapt this to be unique per pool (one pool per database)
+                # If you prefer default behaviour set this to null or comment out, and consider for instance:
+                # https://symfony.com/doc/current/reference/configuration/framework.html#prefix-seed
+                namespace: '%cache_namespace%'

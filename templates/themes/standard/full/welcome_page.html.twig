@@ -1,0 +1,166 @@
+{% extends '@ezdesign/pagelayout.html.twig' %}
+
+{% trans_default_domain 'ezplatform_welcome_page' %}
+
+{% block stylesheets %}
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    {{ encore_entry_link_tags('app_default') }}
+{% endblock %}
+
+{% block content %}
+<header class="header pb-5">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="pl-3 pt-4">
+                     <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iNTlweCIgaGVpZ2h0PSIzOHB4IiB2aWV3Qm94PSIwIDAgNTkgMzgiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8dGl0bGU+ZXotYnktaWJleGEgd2hpdGUgbG9nbzwvdGl0bGU+CiAgICA8ZyBpZD0iZXotYnktaWJleGEtd2hpdGUtbG9nbyIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgZmlsbD0iI0ZGRkZGRiIgZmlsbC1ydWxlPSJub256ZXJvIiBpZD0iU2hhcGUiPgogICAgICAgICAgICA8cGF0aCBkPSJNNTUuMDAxOTM1NSwzLjY4OTY3NzQyIEw1NS4wMDE5MzU1LDEuMjM4MDY0NTIgTDU2LjA5MjkwMzIsMS4yMzgwNjQ1MiBDNTYuMzEzNTQ4NCwxLjIzODA2NDUyIDU2LjQ4NTE2MTMsMS4yNjI1ODA2NSA1Ni41ODMyMjU4LDEuMzExNjEyOSBDNTYuNzA1ODA2NSwxLjM2MDY0NTE2IDU2Ljc3OTM1NDgsMS40MzQxOTM1NSA1Ni44NTI5MDMyLDEuNTU2Nzc0MTkgQzU2LjkyNjQ1MTYsMS42NzkzNTQ4NCA1Ni45NTA5Njc3LDEuODAxOTM1NDggNTYuOTUwOTY3NywxLjkyNDUxNjEzIEM1Ni45NTA5Njc3LDIuMDk2MTI5MDMgNTYuOTAxOTM1NSwyLjI0MzIyNTgxIDU2Ljc3OTM1NDgsMi4zNjU4MDY0NSBDNTYuNjU2Nzc0MiwyLjQ4ODM4NzEgNTYuNDg1MTYxMywyLjU2MTkzNTQ4IDU2LjI2NDUxNjEsMi41ODY0NTE2MSBDNTYuMzYyNTgwNiwyLjYzNTQ4Mzg3IDU2LjQxMTYxMjksMi42NiA1Ni40NjA2NDUyLDIuNzA5MDMyMjYgQzU2LjU1ODcwOTcsMi44MDcwOTY3NyA1Ni42NTY3NzQyLDIuOTA1MTYxMjkgNTYuNzMwMzIyNiwzLjAyNzc0MTk0IEw1Ny4xNzE2MTI5LDMuNjc3NDE5MzUgTDU2Ljc1NDgzODcsMy42Nzc0MTkzNSBMNTYuNDM2MTI5LDMuMTYyNTgwNjUgQzU2LjMzODA2NDUsMy4wMTU0ODM4NyA1Ni4yNjQ1MTYxLDIuODkyOTAzMjMgNTYuMTkwOTY3NywyLjgxOTM1NDg0IEw1Ni4wMTkzNTQ4LDIuNjQ3NzQxOTQgTDU1Ljg3MjI1ODEsMi41NzQxOTM1NSBMNTUuMzMyOTAzMiwyLjU3NDE5MzU1IEw1NS4zMzI5MDMyLDMuNjY1MTYxMjkgTDU0Ljk4OTY3NzQsMy42NjUxNjEyOSBMNTQuOTg5Njc3NCwzLjY4OTY3NzQyIEw1NS4wMDE5MzU1LDMuNjg5Njc3NDIgWiBNNTUuMzA4Mzg3MSwyLjMyOTAzMjI2IEw1Ni4wMDcwOTY4LDIuMzI5MDMyMjYgQzU2LjE1NDE5MzUsMi4zMjkwMzIyNiA1Ni4yNzY3NzQyLDIuMzA0NTE2MTMgNTYuMzUwMzIyNiwyLjI4IEM1Ni40MjM4NzEsMi4yNTU0ODM4NyA1Ni40OTc0MTk0LDIuMjA2NDUxNjEgNTYuNTQ2NDUxNiwyLjEzMjkwMzIzIEM1Ni41OTU0ODM5LDIuMDU5MzU0ODQgNTYuNjIsMS45ODU4MDY0NSA1Ni42MiwxLjkxMjI1ODA2IEM1Ni42MiwxLjc4OTY3NzQyIDU2LjU3MDk2NzcsMS42OTE2MTI5IDU2LjQ5NzQxOTQsMS42MTgwNjQ1MiBDNTYuNDIzODcxLDEuNTQ0NTE2MTMgNTYuMjc2Nzc0MiwxLjQ5NTQ4Mzg3IDU2LjEwNTE2MTMsMS40OTU0ODM4NyBMNTUuMzMyOTAzMiwxLjQ5NTQ4Mzg3IEw1NS4zMzI5MDMyLDIuMzE2Nzc0MTkgTDU1LjMwODM4NzEsMi4zMTY3NzQxOSBMNTUuMzA4Mzg3MSwyLjMyOTAzMjI2IFoiPjwvcGF0aD4KICAgICAgICAgICAgPHBhdGggZD0iTTU1Ljg5Njc3NDIsNS4wMjU4MDY0NSBDNTQuNTExNjEyOSw1LjAyNTgwNjQ1IDUzLjM3MTYxMjksMy44ODU4MDY0NSA1My4zNzE2MTI5LDIuNTAwNjQ1MTYgQzUzLjM3MTYxMjksMS4xMTU0ODM4NyA1NC40ODcwOTY4LDAgNTUuODk2Nzc0MiwwIEM1Ny4yODE5MzU1LDAgNTguNDIxOTM1NSwxLjE0IDU4LjQyMTkzNTUsMi41MjUxNjEyOSBDNTguNDIxOTM1NSwzLjkxMDMyMjU4IDU3LjI4MTkzNTUsNS4wMjU4MDY0NSA1NS44OTY3NzQyLDUuMDI1ODA2NDUgWiBNNTUuODk2Nzc0MiwwLjMwNjQ1MTYxMyBDNTQuNjgzMjI1OCwwLjMwNjQ1MTYxMyA1My42OTAzMjI2LDEuMjk5MzU0ODQgNTMuNjkwMzIyNiwyLjUxMjkwMzIzIEM1My42OTAzMjI2LDMuNzI2NDUxNjEgNTQuNjgzMjI1OCw0LjcxOTM1NDg0IDU1Ljg5Njc3NDIsNC43MTkzNTQ4NCBDNTcuMTEwMzIyNiw0LjcxOTM1NDg0IDU4LjEwMzIyNTgsMy43MjY0NTE2MSA1OC4xMDMyMjU4LDIuNTEyOTAzMjMgQzU4LjEwMzIyNTgsMS4zMTE2MTI5IDU3LjExMDMyMjYsMC4zMDY0NTE2MTMgNTUuODk2Nzc0MiwwLjMwNjQ1MTYxMyBaIj48L3BhdGg+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik0xOC4zMjU4MDY1LDMwLjkzOTM1NDggQzE4LjEwNTE2MTMsMzEuNTAzMjI1OCAxNy43NjE5MzU1LDMxLjk4MTI5MDMgMTcuMzU3NDE5NCwzMi40NDcwOTY4IEMxNi45MTYxMjksMzIuODg4Mzg3MSAxNi40MTM1NDg0LDMzLjI2ODM4NzEgMTUuODQ5Njc3NCwzMy41ODcwOTY4IEMxNS4yODU4MDY1LDMzLjkwNTgwNjUgMTQuNjYwNjQ1MiwzNC4xNTA5Njc3IDE0LjAyMzIyNTgsMzQuMzM0ODM4NyBDMTMuMzczNTQ4NCwzNC41MzA5Njc3IDEyLjcxMTYxMjksMzQuNjA0NTE2MSAxMi4wMzc0MTk0LDM0LjYwNDUxNjEgQzExLjA5MzU0ODQsMzQuNjA0NTE2MSAxMC4xNjE5MzU1LDM0LjQwODM4NzEgOS4zMTYxMjkwMywzNC4wNDA2NDUyIEM4LjQ3MDMyMjU4LDMzLjY3MjkwMzIgNy42ODU4MDY0NSwzMy4xNzAzMjI2IDcuMDExNjEyOSwzMi41MDgzODcxIEM2LjMzNzQxOTM1LDMxLjg1ODcwOTcgNS43NzM1NDgzOSwzMS4wNzQxOTM1IDUuMzU2Nzc0MTksMzAuMTc5MzU0OCBDNC45NjQ1MTYxMywyOS4zNTgwNjQ1IDQuNzE5MzU0ODQsMjguNDI2NDUxNiA0LjYwOTAzMjI2LDI3LjQwOTAzMjMgTDIzLjQ3NDE5MzUsMjcuNDA5MDMyMyBMMjMuNTIzMjI1OCwyNy4yMTI5MDMyIEMyMy41NDc3NDE5LDI3LjA0MTI5MDMgMjMuNTcyMjU4MSwyNi44NDUxNjEzIDIzLjU5Njc3NDIsMjYuNTYzMjI1OCBDMjMuNjIxMjkwMywyNi4yOTM1NDg0IDIzLjYyMTI5MDMsMjUuOTk5MzU0OCAyMy42MjEyOTAzLDI1LjY2ODM4NzEgQzIzLjYyMTI5MDMsMjQuMTM2MTI5IDIzLjM1MTYxMjksMjIuNjI4Mzg3MSAyMi44LDIxLjE5NDE5MzUgQzIyLjIzNjEyOSwxOS43NiAyMS40NjM4NzEsMTguNDcyOTAzMiAyMC40NDY0NTE2LDE3LjQwNjQ1MTYgQzE5LjQyOTAzMjMsMTYuMzE1NDgzOSAxOC4xOTA5Njc3LDE1LjQ0NTE2MTMgMTYuNzU2Nzc0MiwxNC43ODMyMjU4IEMxNS4zMjI1ODA2LDE0LjEzMzU0ODQgMTMuNjkyMjU4MSwxMy44MTQ4Mzg3IDExLjk1MTYxMjksMTMuODE0ODM4NyBDMTAuMjEwOTY3NywxMy44MTQ4Mzg3IDguNTgwNjQ1MTYsMTQuMTMzNTQ4NCA3LjE0NjQ1MTYxLDE0Ljc4MzIyNTggQzUuNjg3NzQxOTQsMTUuNDIwNjQ1MiA0LjQyNTE2MTI5LDE2LjI5MDk2NzcgMy4zODMyMjU4MSwxNy40MDY0NTE2IEMyLjM0MTI5MDMyLDE4LjQ5NzQxOTQgMS41MDc3NDE5NCwxOS43ODQ1MTYxIDAuOTMxNjEyOTAzLDIxLjI0MzIyNTggQzAuMzQzMjI1ODA2LDIyLjcwMTkzNTUgMC4wNjEyOTAzMjI2LDI0LjI1ODcwOTcgMC4wNjEyOTAzMjI2LDI1Ljg3Njc3NDIgQzAuMDYxMjkwMzIyNiwyNy41MDcwOTY4IDAuMzU1NDgzODcxLDI5LjA2Mzg3MSAwLjkzMTYxMjkwMywzMC41MzQ4Mzg3IEMxLjUyLDMxLjk5MzU0ODQgMi4zMTY3NzQxOSwzMy4zMDUxNjEzIDMuMzU4NzA5NjgsMzQuMzk2MTI5IEM0LjQwMDY0NTE2LDM1LjQ4NzA5NjggNS42NjMyMjU4MSwzNi4zNTc0MTk0IDcuMDk3NDE5MzUsMzcuMDE5MzU0OCBDOC41NTYxMjkwMywzNy42NTY3NzQyIDEwLjE4NjQ1MTYsMzcuOTg3NzQxOSAxMS45MDI1ODA2LDM3Ljk4Nzc0MTkgQzEzLjA0MjU4MDYsMzcuOTg3NzQxOSAxNC4xODI1ODA2LDM3Ljg0MDY0NTIgMTUuMjQ5MDMyMywzNy41NDY0NTE2IEMxNi4zMTU0ODM5LDM3LjI1MjI1ODEgMTcuMjgzODcxLDM2Ljg0Nzc0MTkgMTguMTY2NDUxNiwzNi4zMDgzODcxIEMxOS4wMzY3NzQyLDM1Ljc5MzU0ODQgMTkuODIxMjkwMywzNS4xNjgzODcxIDIwLjQ5NTQ4MzksMzQuNDU3NDE5NCBDMjEuMTY5Njc3NCwzMy43NTg3MDk3IDIxLjcwOTAzMjMsMzIuOTQ5Njc3NCAyMi4xMDEyOTAzLDMyLjA3OTM1NDggTDIyLjIyMzg3MSwzMS44MDk2Nzc0IEwxOC40MTE2MTI5LDMwLjc2Nzc0MTkgTDE4LjMyNTgwNjUsMzAuOTM5MzU0OCBMMTguMzI1ODA2NSwzMC45MzkzNTQ4IFogTTExLjk2Mzg3MSwxNy4yMTAzMjI2IEMxMi45MzIyNTgxLDE3LjIxMDMyMjYgMTMuODg4Mzg3MSwxNy4zODE5MzU1IDE0Ljc1ODcwOTcsMTcuNzQ5Njc3NCBDMTUuNjI5MDMyMywxOC4wOTI5MDMyIDE2LjQxMzU0ODQsMTguNTk1NDgzOSAxNy4wNjMyMjU4LDE5LjIwODM4NzEgQzE3LjcxMjkwMzIsMTkuODIxMjkwMyAxOC4yNzY3NzQyLDIwLjU5MzU0ODQgMTguNzE4MDY0NSwyMS40NjM4NzEgQzE5LjExMDMyMjYsMjIuMjYwNjQ1MiAxOS4zNjc3NDE5LDIzLjE2Nzc0MTkgMTkuNDY1ODA2NSwyNC4xMTE2MTI5IEw0LjUyMzIyNTgxLDI0LjExMTYxMjkgQzQuNjIxMjkwMzIsMjMuMTY3NzQxOSA0Ljg2NjQ1MTYxLDIyLjI4NTE2MTMgNS4yNDY0NTE2MSwyMS40ODgzODcxIEM1LjY2MzIyNTgxLDIwLjYxODA2NDUgNi4xOTAzMjI1OCwxOS44NTgwNjQ1IDYuODUyMjU4MDYsMTkuMjMyOTAzMiBDNy41MTQxOTM1NSwxOC42MDc3NDE5IDguMjg2NDUxNjEsMTguMTE3NDE5NCA5LjE1Njc3NDE5LDE3Ljc0OTY3NzQgQzEwLjAxNDgzODcsMTcuMzgxOTM1NSAxMC45NTg3MDk3LDE3LjIxMDMyMjYgMTEuOTYzODcxLDE3LjIxMDMyMjYgTDExLjk2Mzg3MSwxNy4yMTAzMjI2IFogTTQ0LjkzODA2NDUsMTAuMDc2MTI5IEwyMi42NTI5MDMyLDM3Ljc0MjU4MDYgTDUwLjY1MDMyMjYsMzcuNzQyNTgwNiBMNTAuNjUwMzIyNiwzMy42MTE2MTI5IEwzMS4yOTQ4Mzg3LDMzLjYxMTYxMjkgTDUzLjU2Nzc0MTksNS45NDUxNjEyOSBMMjUuODUyMjU4MSw1Ljk0NTE2MTI5IEwyNS44NTIyNTgxLDEwLjA3NjEyOSBMNDQuOTM4MDY0NSwxMC4wNzYxMjkgWiI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container h-100 text-center text-white d-flex flex-column align-items-center justify-content-center">
+        <h1>
+            {{ ez_render_field(content, 'name') }}
+            {{ constant('EzSystems\\EzPlatformCoreBundle\\EzPlatformCoreBundle::VERSION') }}
+        </h1>
+        <div class="pt-5">
+            {{ ez_render_field(content, 'short_description') }}
+            <p>{{ 'ezplatform_welcome_page.navigate_to'|trans({'%target%': project_dir})|desc('Navigate to: %target%') }}</p>
+
+            {% set admin_url = url('ezplatform.dashboard', { 'siteaccess': 'admin' }) %}
+            <p>
+                {{ 'ezplatform_welcome_page.create_new_content_at'|trans({'%target%': '<a href="' ~ admin_url ~ '" class="text-white"><u>' ~ admin_url ~ '</u></a>' })
+                |desc('Create new content at %target%')|raw }}
+            </p>
+        </div>
+    </div>
+</header>
+<div class="page pb-4">
+    <div class="container-fluid background-grey pt-3">
+        <div class="row py-4">
+            <div class="col-12 py-4">
+                <div class="container text-center">
+                    {{ ez_render_field(content, 'description') }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <div class="d-inline-flex flex-row align-items-baseline">
+                    <div class="mr-4">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iNDIiIGhlaWdodD0iNDIiIHZpZXdCb3g9IjAgMCA0MiA0MiI+PGRlZnM+PHN0eWxlPi5he2ZpbGw6dXJsKCNhKTt9LmJ7ZmlsbDpub25lO308L3N0eWxlPjxsaW5lYXJHcmFkaWVudCBpZD0iYSIgeDE9IjAuNSIgeDI9IjAuNSIgeTI9IjEiIGdyYWRpZW50VW5pdHM9Im9iamVjdEJvdW5kaW5nQm94Ij48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNmZjQ3MTMiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNkYjAwMzIiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cGF0aCBjbGFzcz0iYSIgZD0iTTQwLDE2Ljc1LDI4LjYsNEg1LjhBNC4wNTYsNC4wNTYsMCwwLDAsMiw4LjI1VjMzLjc3MUE0LjAzNiw0LjAzNiwwLDAsMCw1LjgsMzhsMzAuNC0uMDIxQTQuMDM2LDQuMDM2LDAsMCwwLDQwLDMzLjc1Wk0yNi43LDcuMTg4LDM3LjE1LDE4Ljg3NUgyNi43WiIvPjxwYXRoIGNsYXNzPSJiIiBkPSJNMCwwSDQyVjQySDBaIi8+PC9zdmc+">
+                    </div>
+                    <div>
+                        <h2 class="mb-3">{{ 'ezplatform_welcome_page.documentation'|trans|desc('Documentation') }}</h2>
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="https://ezplatform.com/documentation-center" target="_blank">
+                                    {{ 'ezplatform_welcome_page.documentation_center'|trans|desc('Documentation center') }}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://doc.ezplatform.com/projects/userguide" target="_blank">
+                                    {{ 'ezplatform_welcome_page.user_documentation'|trans|desc('User documentation') }}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://doc.ezplatform.com" target="_blank">
+                                    {{ 'ezplatform_welcome_page.developer_documentation'|trans|desc('Developer documentation') }}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://doc.ezplatform.com/projects/ezpersonalization" target="_blank">
+                                    {{ 'ezplatform_welcome_page.ez_personalization_documentation'|trans|desc('eZ Personalization documentation') }}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://doc.ez.no/commerce" target="_blank">
+                                    {{ 'ezplatform_welcome_page.ez_commerce_documentation'|trans|desc('eZ Commerce documentation') }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mt-5 mt-md-0">
+                <div class="d-inline-flex flex-row align-items-baseline">
+                    <div class="mr-4">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iNDIiIGhlaWdodD0iNDIiIHZpZXdCb3g9IjAgMCA0MiA0MiI+PGRlZnM+PHN0eWxlPi5he2ZpbGw6bm9uZTt9LmJ7ZmlsbDp1cmwoI2EpO308L3N0eWxlPjxsaW5lYXJHcmFkaWVudCBpZD0iYSIgeDE9IjAuNSIgeDI9IjAuNSIgeTI9IjEiIGdyYWRpZW50VW5pdHM9Im9iamVjdEJvdW5kaW5nQm94Ij48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNmZjQ3MTMiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNkYjAwMzIiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cGF0aCBjbGFzcz0iYSIgZD0iTTAsMEg0MlY0MkgwWiIvPjxwYXRoIGNsYXNzPSJiIiBkPSJNMzUsMkg3QTMuODY0LDMuODY0LDAsMCwwLDMsNS43MTR2MjZhMy44NjQsMy44NjQsMCwwLDAsNCwzLjcxNGg4TDIxLDQxbDYtNS41NzFoOGEzLjg3NiwzLjg3NiwwLDAsMCw0LTMuNzE0di0yNkEzLjg3NiwzLjg3NiwwLDAsMCwzNSwyWk0yMywzMS43MTRIMTlWMjhoNFptNC4xNC0xNC4zOTMtMS44LDEuNzA5QTYuMTI2LDYuMTI2LDAsMCwwLDIzLDI0LjI4NkgxOXYtLjkyOUE3LjIxNiw3LjIxNiwwLDAsMSwyMS4zNCwxOC4xbDIuNDgtMi4zNEEzLjUwOSwzLjUwOSwwLDAsMCwyNSwxMy4xNDNhMy44NzYsMy44NzYsMCwwLDAtNC0zLjcxNCwzLjg3NiwzLjg3NiwwLDAsMC00LDMuNzE0SDEzYTcuNzI4LDcuNzI4LDAsMCwxLDgtNy40MjksNy43MjgsNy43MjgsMCwwLDEsOCw3LjQyOUE1LjcwNSw1LjcwNSwwLDAsMSwyNy4xNCwxNy4zMjFaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIDApIi8+PC9zdmc+" alt="live help icon">
+                    </div>
+                    <div>
+                        <h2 class="mb-3">{{ 'ezplatform_welcome_page.tutorials_and_resources'|trans|desc('Tutorials and resources') }}</h2>
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="https://doc.ezplatform.com/en/latest/getting_started/first_steps" target="_blank">
+                                    {{ 'ezplatform_welcome_page.getting_started'|trans|desc('Getting started') }}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://doc.ezplatform.com/en/latest/tutorials/platform_beginner/building_a_bicycle_route_tracker_in_ez_platform" target="_blank">
+                                    {{ 'ezplatform_welcome_page.tutorials'|trans|desc('Tutorials') }}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://doc.ezplatform.com/rest-api-reference" target="_blank">
+                                    {{ 'ezplatform_welcome_page.rest_api_reference'|trans|desc('REST API reference') }}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://doc.ezplatform.com/en/latest/api/public_php_api" target="_blank">
+                                    {{ 'ezplatform_welcome_page.public_php_api'|trans|desc('Public PHP API') }}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://doc.ezplatform.com/en/latest/api/graphql" target="_blank">GraphQL</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mt-lg-0 mt-5">
+                <div class="d-inline-flex flex-row align-items-baseline">
+                    <div class="mr-4">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iNDIiIGhlaWdodD0iNDIiIHZpZXdCb3g9IjAgMCA0MiA0MiI+PGRlZnM+PHN0eWxlPi5he2ZpbGw6bm9uZTt9LmJ7ZmlsbDp1cmwoI2EpO308L3N0eWxlPjxsaW5lYXJHcmFkaWVudCBpZD0iYSIgeDE9IjAuNSIgeDI9IjAuNSIgeTI9IjEiIGdyYWRpZW50VW5pdHM9Im9iamVjdEJvdW5kaW5nQm94Ij48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNmZjQ3MTMiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNkYjAwMzIiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cGF0aCBjbGFzcz0iYSIgZD0iTTAsMEg0MlY0MkgwWiIvPjxwYXRoIGNsYXNzPSJiIiBkPSJNMzguMSw5LjZIMzQuM1YyNi43SDkuNnYzLjhhMS45MDYsMS45MDYsMCwwLDAsMS45LDEuOUgzMi40TDQwLDQwVjExLjVBMS45MDYsMS45MDYsMCwwLDAsMzguMSw5LjZaTTMwLjUsMjFWMy45QTEuOTA2LDEuOTA2LDAsMCwwLDI4LjYsMkgzLjlBMS45MDYsMS45MDYsMCwwLDAsMiwzLjlWMzAuNWw3LjYtNy42aDE5QTEuOTA2LDEuOTA2LDAsMCwwLDMwLjUsMjFaIi8+PC9zdmc+" alt="forum icon">
+                    </div>
+                    <div>
+                        <h2 class="mb-3">{{ 'ezplatform_welcome_page.forums_and_community'|trans|desc('Forums and community') }}</h2>
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="https://discuss.ezplatform.com" target="_blank">
+                                    {{ 'ezplatform_welcome_page.discussion_forum'|trans|desc('Discussion forum') }}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://ez-community-on-slack.herokuapp.com/" target="_blank">
+                                    {{ 'ezplatform_welcome_page.community_slack_channel'|trans|desc('Community Slack channel') }}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://ez.no/Blog" target="_blank">
+                                    {{ 'ezplatform_welcome_page.ez_blog'|trans|desc('eZ blog') }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="footer px-3 pb-3">
+    <div class="container-fluid">
+        <span class="copyright">
+        {{ 'ezplatform_welcome_page.copyright'|trans({
+            '%ez_link_open%': '<a href="http://ez.no" target="_blank">',
+            '%ez_link_close%': '</a>',
+            '%current_year%': "now"|date("Y")
+        }) |desc('eZ Platform ©1999-%current_year% %ez_link_open%eZ Systems AS%ez_link_close% and others.')|raw }}
+        </span>
+    </div>
+</footer>
+{% endblock %}

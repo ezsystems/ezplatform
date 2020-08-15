@@ -1,0 +1,14 @@
+version: '3.3'
+# Blackfire agent config, to be appended after base-prod or base-dev config.
+# You'll need to export the two blackfire server variables before you can use this.
+
+services:
+  # See: https://blackfire.io/docs/integrations/docker
+  blackfire:
+    image: blackfire/blackfire
+    environment:
+        # Reads the host BLACKFIRE_SERVER_ID and BLACKFIRE_SERVER_TOKEN environment variables.
+        - BLACKFIRE_SERVER_ID
+        - BLACKFIRE_SERVER_TOKEN
+    networks:
+     - backend

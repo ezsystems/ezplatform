@@ -1,0 +1,27 @@
+version: '3.3'
+# Appends services to prod.yml, prod+dev, prod+redis, ..., always latest
+
+services:
+  selenium:
+    image: ${SELENIUM_IMAGE}
+    ports:
+     - "9999:9999"
+     - "4444:4444"
+     - "5900:5900"
+    environment:
+     - SCREEN_WIDTH=1920
+     - SCREEN_HEIGHT=1080
+     - SCREEN_DEPTH=24
+     - VNC_NO_PASSWORD=1
+    networks:
+     - backend
+    # Because of: https://github.com/elgalu/docker-selenium/issues/20
+    shm_size: '1gb'
+
+  app:
+    depends_on:
+     - selenium
+    environment:
+     - EZP_TEST_REST_HOST=$WEB_HOST
+     - BEHAT_SELENIUM_HOST=$SELENIUM_HOST
+     - BEHAT_WEB_HOST=$WEB_HOST

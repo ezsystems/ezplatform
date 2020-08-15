@@ -1,47 +1,165 @@
-eZ Publish Apache 2.2 / 2.4  configuration
-=========================================
+Apache 2.4 configuration
+========================
 
-For information on which version of Apache is supported with your version of eZ Publish, consult with the online documentation on http://doc.ez.no.
-
-
-Prerequisite
-------------
-- Apache 2.x must be installed in prefork mode
-- Modules enabled: `mode_php`, `mod_rewrite`, `mod_setenvif` and optionally `mod_expires` for improved performance in production.
+For recommended versions of [Apache](https://httpd.apache.org/), see [online eZ requirements](https://doc.ezplatform.com/en/latest/getting_started/requirements/).
 
 
-Configuration
-------------
-- Copy the provided example file `etc/apache2/vhost.template` into target folder like `/etc/apache2/sites-available/yoursite.com`
--- Note that `apache2` target folder name on RHEL/Centos is `httpd`!
-- Edit it and adapt the configuration to suit your needs
--- Make sure to replace all `%VARIABLES%`, further description below
--- For cluster setup, enable custom rewrite rules for this found inline in the vhost.tempalte
--- In 5.2 and higher you can optionally configure the eZ Publish front controller (`index.php`) using environment variables documented inline in the vhost template.
--- Adapt the ´<Directory´ section for your Apache version
-- Create a symlink of /etc/apache2/sites-available/yoursite.com into /etc/apache2/sites-enabled/yoursite.com
-- restart Apache
+Prerequisites
+-------------
+- Some general knowledge of how to install and configure Apache
+- Apache 2.4 must be installed using one of the following Multi-Processing Modules (MPM):
+    - [Event](https://httpd.apache.org/docs/2.4/mod/event.html), or alternatively [Worker](https://httpd.apache.org/docs/2.4/mod/worker.html), for use with `php-fpm` over FastCGI.
+    - [Prefork](https://httpd.apache.org/docs/2.4/mod/prefork.html), together with `mod_php`, running PHP as an Apache module.
+       - Useful for Backwards compatibility or simple needs. For better performance _(less memory usage)_ pick a setup with `Event` MPM instead.
+- Apache modules installed and enabled:
+ - required: `mod_rewrite`, `mod_env`
+ - recommended: `mod_setenvif`, `mod_expires`
+ - If you use "Apache MPM Prefork": `mod_php`
 
-#### vhost.template %VARIABLES%
 
-| Name         | Description          |
-|--------------|----------------------|
-| %IP_ADDRESS% | The IP address of the virtual host, for example "128.39.140.28". Apache allows the usage of a wildcard (`*`) , either for just ip like `<VirtualHost *:%PORT%>` or for both using `<VirtualHost *>` |
-| %PORT%       | The port on which the web server listens for incoming requests. This is an optional setting, the default port for http traffic is 80. |
-| %HOST%       | The host(/IP address) that Apache should use to match this virtual host config. |
-| %HOST_ALIAS% | Additional comma separated list of hosts(/IP addresses) that Apache should use to match this virtual host config. |
-| %BASEDIR%    | Full path to eZ Publish, for example "/var/www/ezpublish-5.3.0", where "web" directory and rest of eZ Publish 5.x exists. |
-| %ENV%        | eZ Publish (Symfony) environment, isolation of cache and config for different use cases, out of the box: `prod` or `dev`. |
-| %PROXY%      | Optional, needs to be enabled in your vhost file. Defines the proxies to trust to get access to ESI resources and not be treated as remote IP. |
+Configure
+---------
+These examples are simplified to get you up and running, see [Virtual host template](#virtual-host-template) for more options and details on best practice.
 
-#### Pure legacy setup
+#### Virtual Host
 
-In eZ Publish 5.x you can optionally set it up to only use legacy, this is useful for 4.x upgrades which only uses legacy.
-*Warning: By doing this, absolutely no integrations between legacy and Platform works, so you can not use any of the Platform features (API, HttpCache, Symfony, ..) in this setup.*
+1. Place virtualhost config *(example below)* in a suitable Apache config folder, typically:
+   - Debian/Ubuntu: `/etc/apache2/sites-enabled/<yoursite>.conf`
+   - RHEL/CentOS/Amazon-Linux: `/etc/httpd/conf.d/<yoursite>.conf`
+2. Adjust the basics to your setup:
+   - [VirtualHost](https://httpd.apache.org/docs/2.4/en/mod/core.html#virtualhost): IP and port number to listen to.
+   - [ServerName](https://httpd.apache.org/docs/2.4/en/mod/core.html#servername): Your host name, example `ez.no`.
+    - Or for local dev for instance `ezinstall.localhost`, with corresponding entry in your [hosts file](https://en.wikipedia.org/wiki/Hosts_file).
+   - [ServerAlias](https://httpd.apache.org/docs/2.4/en/mod/core.html#serveralias): Optional host alias list, example `www.ez.no login.ez.no`, or `*.ez.no`.
+   - [DocumentRoot](https://httpd.apache.org/docs/2.4/en/mod/core.html#documentroot): Point this and *Directory* to `public` directory of eZ installation.
+   - If you can't install `mod_setenvif`, adjust the "Environment" section like described inline.
+3. Restart Apache, as follows:
+   - Debian/Ubuntu: `sudo service apache2 restart`
+   - RHEL/CentOS/Amazon-Linux: `sudo service httpd restart`
 
-To setup pure legacy you will have to modify the vhost configuration to point to ezpublish_legacy folder as BASEDIR, and remove use of `/web` in the config.
-You'll also need to use the cluster rewrite rules for 5.3 and below if using cluster setup.
+Example config for Apache 2.4 in prefork mode:
 
-#### NameVirtualHost conflicts
+    <VirtualHost *:80>
+        ServerName localhost
+        #ServerAlias *.localhost
+        DocumentRoot %BASEDIR%/public
+        DirectoryIndex index.php
 
-The "NameVirtualHost" setting might already exist in the default configuration. Defining a new one will result in a conflict. If Apache reports errors such as "NameVirtualHost [IP_ADDRESS] has no VirtualHosts" or "Mixing * ports and non-* ports with a NameVirtualHost address is not supported", try skipping the NameVirtualHost line. See [more info about the NameVirtualHost directive](http://httpd.apache.org/docs/2.2/mod/core.html#namevirtualhost)
+        # Set default timeout to 90s, and max upload to 48mb
+        TimeOut 90
+        LimitRequestBody 50331648
+
+        <Directory %BASEDIR%/public>
+            Options FollowSymLinks
+            AllowOverride None
+            # Depending on your global Apache settings, you may need to comment this:
+            Require all granted
+        </Directory>
+
+        # As we require ´mod_rewrite´  this is on purpose not placed in a <IfModule mod_rewrite.c> block
+        RewriteEngine On
+
+        # Environment.
+        # Possible values: "prod" and "dev" out-of-the-box, other values possible with proper configuration
+        # Defaults to "prod" if omitted. If Apache complains about this line and you can't install `mod_setenvif` then
+        # comment out "%{ENV:SYMFONY_ENV}" line below, and comment this out or set via: SetEnv SYMFONY_ENV "prod"
+        SetEnvIf Request_URI ".*" SYMFONY_ENV=prod
+
+        # Sets the HTTP_AUTHORIZATION header sometimes removed by Apache
+        RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+        # Disable .php(3) and other executable extensions in the var directory
+        RewriteRule ^var/.*(?i)\.(php3?|phar|phtml|sh|exe|pl|bin)$ - [F]
+
+        # Access to repository images in single server setup
+        RewriteRule ^/var/([^/]+/)?storage/images(-versioned)?/.* - [L]
+
+        # Makes it possible to place your favicon and robots.txt at the root of your public folder
+        RewriteRule ^/favicon\.ico - [L]
+        RewriteRule ^/robots\.txt - [L]
+
+        # The following rules are needed to correctly display bundle and project assets
+        RewriteRule ^/bundles/ - [L]
+        RewriteRule ^/assets/ - [L]
+
+        # Additional Assetic rules for environments different from dev,
+        # remember to run php bin/console assetic:dump --env=prod
+        RewriteCond %{ENV:SYMFONY_ENV} !^(dev)
+        RewriteRule ^/(css|js|fonts?)/.*\.(css|js|otf|eot|ttf|svg|woff) - [L]
+
+        RewriteRule .* /index.php
+    </VirtualHost>
+
+
+#### .htaccess
+
+If you do not have an access to use virtualhost config, use the `.htaccess` file in a simplified form. It must be placed in the `public/` folder to make it running. *This will not work if Apache is configured with the `AllowOverride None` for this directory.*
+
+    DirectoryIndex index.php
+
+    # Set default timeout to 90s, and max upload to 48mb
+    TimeOut 90
+    LimitRequestBody 50331648
+
+    # Disabling MultiViews prevents unwanted negotiation, e.g. "/index" should not resolve
+    # to the front controller "/index.php" but be rewritten to "/index.php/index".
+    <IfModule mod_negotiation.c>
+        Options -MultiViews
+    </IfModule>
+
+    # As we require ´mod_rewrite´  this is on purpose not placed in a <IfModule mod_rewrite.c> block
+    RewriteEngine On
+
+    # Environment.
+    # Possible values: "prod" and "dev" out-of-the-box, other values possible with proper configuration
+    # Defaults to "prod" if omitted.
+    SetEnv SYMFONY_ENV "prod"
+
+    # Sets the HTTP_AUTHORIZATION header sometimes removed by Apache
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule ^ - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Disable .php(3) and other executable extensions in the var directory
+    RewriteRule ^var/.*(?i)\.(php3?|phar|phtml|sh|exe|pl|bin)$ - [F]
+
+    # Makes it possible to place your favicon and robots.txt at the root of your public folder
+    RewriteRule ^favicon\.ico - [L]
+    RewriteRule ^robots\.txt - [L]
+
+    # To display assets from eZ / Symfony bundles
+    RewriteRule ^bundles/ - [L]
+
+    # Access to repository images in single server setup
+    RewriteRule ^var/([^/]+/)?storage/images(-versioned)?/.* - [L]
+
+    # Additional Assetic rules for prod environments
+    # ! Remember to run php ezpublish/console assetic:dump --env=prod on changes
+    # ! Or if SYMFONY_ENV is set to "dev", comment this out!
+    RewriteRule ^(css|js|fonts?)/.*\.(css|js|otf|eot|ttf|svg|woff) - [L]
+
+    # Rewrite all other queries to the front controller.
+    RewriteRule .* index.php
+
+
+Virtual host template
+---------------------
+This folder contains `vhost.template` which provides more features you can enable in your virtual host configuration.
+You may also use this file as a `.htaccess` config. However,
+you will need to adjust rewrite rules to remove `/` like in the example above.
+
+*Note: vhost.template uses `mod_setenvif`, adapt it as indicated inline if you can't install it.*
+
+Bash script *(Unix/Linux/OS X)* exists to be able to generate the configuration. To display help text, execute the
+following from the eZ installation root:
+```bash
+./bin/vhost.sh -h
+```
+
+#### Common issues
+
+##### NameVirtualHost conflicts
+
+The `NameVirtualHost` setting might already exist in the default configuration. Defining a new one will result in a
+conflict. If Apache reports errors such as `NameVirtualHost [IP_ADDRESS] has no VirtualHosts` or `Mixing * ports and
+non-* ports with a NameVirtualHost address is not supported`, try removing the `NameVirtualHost` line.
+For more details, see [NameVirtualHost directive](http://httpd.apache.org/docs/2.4/mod/core.html#namevirtualhost) section in Apache documentation.

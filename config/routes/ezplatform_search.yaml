@@ -1,0 +1,2 @@
+platform_search:
+    resource: '@IbexaPlatformSearchBundle/Resources/config/routing.yaml'

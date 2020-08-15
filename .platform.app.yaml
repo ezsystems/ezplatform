@@ -1,0 +1,210 @@
+# This file describes an application. You can have multiple applications
+# in the same project.
+
+# Please see doc/platformsh/README.md and doc/platformsh/INSTALL.md for eZ specific getting started instructions.
+# Full documentation: https://docs.platform.sh
+# eZ requirements: https://doc.ezplatform.com/en/latest/getting_started/requirements/#ez-platform-cloud-requirements-and-setup
+
+# The name of this app. Must be unique within a project.
+name: app
+
+dependencies:
+    nodejs:
+        yarn: "*"
+
+# The type of the application to build.
+type: php:7.3
+
+build:
+    # "none" means we're running composer manually, see build hook
+    # We currently need to do this to install newer version of Node.js
+    flavor: "none"
+
+# The relationships of the application with services or other applications.
+# The left-hand side is the name of the relationship as it will be exposed
+# to the application in the PLATFORM_RELATIONSHIPS variable. The right-hand
+# side is in the form `<service name>:<endpoint name>`.
+relationships:
+    database: 'mysqldb:user'
+    # Uncomment if you want to store dfs tables in a separate database:
+    #dfs_database: 'mysqldb:dfs'
+    rediscache: 'rediscache:redis'
+    # [Recommended] To have an isolated and persisted Redis instance for sessions, uncomment
+    # this relationship and the corresponding service in .platform/services.yaml
+    #redissession: 'redissession:redis'
+    # If you wish to use solr, uncomment this relationship and the corresponding service in .platform/services.yaml
+    #solr: 'solrsearch:collection1'
+
+variables:
+    php:
+        # Example of setting php.ini config
+        #"display_errors": "On"
+        memory_limit: 512M
+        # The default OPcache configuration is not suited for Symfony applications
+        opcache.memory_consumption: 256
+        opcache.max_accelerated_files: 20000
+        # We recommend enabling the following opcache.validate_timestamps setting in production, but then opcache_reset() must be called every time you clear symfony cache.
+        #opcache.validate_timestamps: 0
+
+        # Applications that open many PHP files, such as Symfony projects, should use at least these values
+        realpath_cache_size: 4096K
+        realpath_cache_ttl: 600
+    env:
+        # We disable Symfony Proxy (CacheKernel), as we rather use Varnish
+        APP_HTTP_CACHE: 0
+        # Warning: Only for Varnish on Platform.sh to workaround missing IP. Disable if you use Fastly or Symfony Proxy where this would be a security issue!
+        TRUSTED_PROXIES: "REMOTE_ADDR"
+        # Change this if you use a different env than "prod"
+        # If you change to "dev" remove "--no-dev" from the `composer install` command.
+        APP_ENV: prod
+        # Uncomment if you want to use DFS clustering:
+        # NOTE: Recommended on PE Dedicated cluster setup. Required if using Legacy Bridge on PE dedicated cluster setup.
+        #PLATFORMSH_DFS_NFS_PATH: 'dfsdata'
+
+# The configuration of app when it is exposed to the web.
+web:
+    locations:
+        "/":
+            # The public directory of the app, relative to its root.
+            root: "public"
+            # The front-controller script to send non-static requests to.
+            passthru: "/index.php"
+            # The number of seconds whitelisted (static) content should be cache
+            expires: 600
+            rules:
+                # Disable .php(3) and other executable extensions in the var directory
+                '^/var/.*(?i)\.(php3?|phar|phtml|sh|exe|pl|bin)$':
+                    allow: false
+
+# The size of the persistent disk of the application (in MB).
+disk: 3072
+
+# The mounts that will be performed when the package is deployed.
+mounts:
+# PE Cluster Note: By default will set all to shared, so if moving to PE dedicated cluster you should ask platform.sh
+#                  Support to make sure at least cache + logs are local, while you can let web/var be shared if you prefer that over DFS.
+    'var/cache':
+        source: local
+        source_path: cache
+    'var/log':
+        source: local
+        source_path: log
+    # [PE Cluster] For cluster it's recommended to rather use a performant shared session storage like Redis/Memcached.
+    'var/sessions':
+        source: local
+        source_path: sessions
+    'var/encore':
+        source: local
+        source_path: encore
+    'public/var':
+        source: local
+        source_path: var
+    'config/graphql/types/ezplatform':
+        source: local
+        source_path: graphql_types
+# Uncomment if you need to use Kaliop Migrations on your setup and not able to get it to write to "var" dir.
+#    'src/AppBundle/MigrationVersions/References':
+#        source: local
+#        source_path: MigrationVersionsReferences
+# Uncomment if you want to use DFS clustering, required if using Legacy Bridge on PE dedicated cluster setup.
+#    'dfsdata':
+#        # Platform.sh Staff: This MUST be shared on cluster, all others SHOULD be local for performance reasons
+#        source: local
+#        source_path: dfsdata
+
+# The hooks that will be performed when the package is deployed.
+hooks:
+    # Build hook, done before connected to services, disk is still writable here
+    build: |
+        set -e
+
+        # Install newer version of Node.js, as current default (v6LTS) does not play well with WebpackEncore
+        unset NPM_CONFIG_PREFIX
+        curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | dash
+        export NVM_DIR="$HOME/.nvm"
+        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+        nvm current
+        nvm install 10.15.3
+
+        if [ -z "$COMPOSER_AUTH" ]; then
+            echo "TIP: If you need to authenticate against Github/Gitlab/updates.ez.no, use COMPOSER_AUTH env variable"
+            echo "See: https://docs.platform.sh/tutorials/composer-auth.html#set-the-envcomposerauth-project-variable"
+        fi
+
+        composer install --no-dev --prefer-dist --no-progress --no-interaction --optimize-autoloader
+
+    # Deploy hook, access to services & done once (per cluster, not per node), only mounts are writable at this point
+    # Note: Http traffic is paused while this is running, so for prod code this should finish as fast as possible, < 30s
+    deploy: |
+        set -e
+
+        unset NPM_CONFIG_PREFIX
+        command -v nvm && nvm use 10.15.3
+
+        # Mainly relevant for eZ Platform demo usage, for own setup adapt this or remove and rely on migrations.
+        if [ ! -f public/var/.platform.installed ]; then
+            # To workaround issues with p.sh Varnish we clear container cache & temporary set Symfony Proxy
+            rm -Rf var/cache/$APP_ENV/*.*
+            HTTPCACHE_PURGE_TYPE="local" php -d memory_limit=-1 `which composer` ezplatform-install
+            touch public/var/.platform.installed
+        fi
+
+        # Now that mounts are available, clear cache on mount.
+        # Note: Skip on PE Cluster setup using e.g. "if [$PLATFORM_BRANCH" != 'production']; then" & get p.sh to enable this on internal per node "pre_start" hook
+        sh bin/platformsh_prestart_cacheclear.sh
+
+        # If you also need to clear Redis cache on every deploy, you can either use this command or redis-cli
+        # Normally this should only be needed if cached data structures changes (upgrades), or you change data via sql (e.g. restore backup)
+        ##php bin/console cache:pool:clear cache.redis
+
+        # Example of additional deploy hooks if you use doctrine and/or kaliop migration bundle
+        ##php bin/console doctrine:migrations:migrate --no-interaction --allow-no-migration
+        ##php bin/console kaliop:migration:migrate --no-interaction --no-debug
+
+        # When using Solr, there are two cases where you'll need to rebuild indexes:
+        # - When Solr / search configuration changes
+        # - On database import/restore
+        # So in development it might be convenient to rebuild indexes, slowing down deploy time
+        ##php bin/console ezplatform:reindex --processes=auto
+
+        # When using Varnish/Fastly, HttpCache is not cleared when clearing Symfony Cache folder above, you need to
+        # clear cache yourself when for instance templates or config affecting responses change, for instance with:
+        ##bin/console fos:httpcache:invalidate:tag ez-all
+        # Depending on your VCL, buy default this would trigger a soft purge (expiry) and allow grace period, however
+        # even so if your change only affected certain subset of content, ideally you should only clear specific tags:
+        ##bin/console fos:httpcache:invalidate:tag l44 c33 ct2 ...
+
+    # Post deploy hook, like deploy but after being deployed and live, for deploy tasks we can do asynchronously
+    # Tip: As this is running while web is running, and it's async, avoid doing anything like cache clearing that affects web requests here.
+    #post_deploy: |
+    #    set -e
+
+# The configuration of scheduled execution.
+# see https://docs.platform.sh/configuration/app/cron.html#cron-jobs
+#
+# Tip: Crons work like on traditional dedicated servers, they share resources with web, so:
+# - For long runing heavy operations, consider using background "workers" with event queuing.
+# - To disable certain features during a cronjob, you can usually do it with env variable or php variable, example: "php -d newrelic.enabled=false bin/console my:import"
+crons:
+    frequent:
+        # NOTE: The minimum interval between cron runs is 5 minutes, even if specified as less.
+        # Except for PE. There crons can be run every minute.
+        # So if you are not on PE please change specs to "*/5 * * * *" to avoid warning on each deploy.
+        spec: "* * * * *"
+        cmd: "php bin/console ezplatform:cron:run"
+    weekly:
+        spec: "0 0 * * 0"
+        cmd: "php bin/console ezplatform:check-urls --quiet"
+
+runtime:
+    extensions:
+        - xsl
+        - imagick
+        - readline
+        - redis
+        - igbinary
+        #- apcu
+        #- name: 'blackfire'
+        #  configuration:
+        #      server_id: 'xxxx-xxx-xxx-xxx-xxxx'
+        #      server_token: 'xxxx'

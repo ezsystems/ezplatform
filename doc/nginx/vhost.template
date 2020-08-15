@@ -1,0 +1,79 @@
+
+server {
+    listen       %PORT%;
+    # Further documentation: http://nginx.org/en/docs/http/server_names.html
+    server_name  %HOST_LIST%;
+
+    root %BASEDIR%/public;
+
+    # Additional Assetic rules
+    ## Don't forget to run php bin/console assetic:dump --env=prod
+    ## and make sure to comment these out in DEV environment.
+    #if[APP_ENV!=dev] include ez_params.d/ez_prod_rewrite_params;
+
+    # Include image rule for DFS or binary handler
+    include ez_params.d/ez_rewrite_%BINARY_DATA_HANDLER%image_params;
+
+    # Include remaining ez rewrite rules
+    include ez_params.d/ez_rewrite_params;
+
+    # upload max size
+    client_max_body_size %BODY_SIZE_LIMIT_M%;
+
+    # FPM fastcgi_read_timeout
+    fastcgi_read_timeout %TIMEOUT_S%;
+
+    # Gzip is enabled by default on most platforms, so here we just specify mime types to compress.
+    # NOTE: Using gzip on text/html can be a security issue, unless you somehow pad. See http://breachattack.com
+    gzip_types text/plain text/css application/json text/javascript application/javascript text/xml application/xml application/xml+rss;
+
+    location / {
+        location ~ ^/index\.php(/|$) {
+            include ez_params.d/ez_fastcgi_params;
+
+            # FPM socket
+            # Possible values : unix:/var/run/php5-fpm.sock or 127.0.0.1:9000
+            fastcgi_pass %FASTCGI_PASS%;
+
+            ## eZ Platform ENVIRONMENT variables, used for customizing index.php execution (not used by console commands)
+
+            # Environment.
+            # Possible values: "prod" and "dev" out-of-the-box, other values possible with proper configuration
+            # Make sure to comment the "ez_params.d/ez_prod_rewrite_params" include above in dev.
+            # Defaults to "prod" if omitted
+            #if[APP_ENV] fastcgi_param APP_ENV %APP_ENV%;
+
+            # Whether to use debugging.
+            # Possible values: 0 or 1
+            # Defaults to 0 if omitted, unless APP_ENV is set to: "dev"
+            #if[APP_DEBUG] fastcgi_param APP_DEBUG "%APP_DEBUG%";
+
+            # Optional: Whether to use Symfony's builtin HTTP Caching Proxy.
+            # Disable it if you are using an external reverse proxy (e.g. Varnish)
+            # Possible values: 0 or 1
+            # Defaults to 1 if omitted, unless APP_ENV is set to: "dev"
+            #if[APP_HTTP_CACHE] fastcgi_param APP_HTTP_CACHE "%APP_HTTP_CACHE%";
+
+            # Optional: Defines the proxies to trust
+            # Needed when using Varnish as proxy, if so disable APP_HTTP_CACHE.
+            # Separate entries by a comma, example: "ip1,ip2"
+            # Defaults to not be set if env value is omitted or empty
+            #if[TRUSTED_PROXIES] fastcgi_param TRUSTED_PROXIES "%TRUSTED_PROXIES%";
+
+            # TIP: There are many more environment variables supported by eZ Platform. However unlike those listed above
+            #      they should in most cases rather be set in the environment then in vhost config to make sure cronjobs
+            #      and cli command usage takes them into account as well.
+        }
+
+        # Disable .php(3) and other executable extensions in the var directory
+        location ~ ^/var/.*(?i)\.(php3?|phar|phtml|sh|exe|pl|bin)$ {
+            return 403;
+        }
+    }
+
+    # Custom logs
+    # access_log %BASEDIR%/app/logs/httpd-access.log;
+    # error_log  %BASEDIR%/app/logs/httpd-error.log notice;
+
+    include ez_params.d/ez_server_params;
+}

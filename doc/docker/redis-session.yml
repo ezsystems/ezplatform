@@ -1,0 +1,19 @@
+version: '3.3'
+# Config for having sessions in separate redis instance, to be appended after base-prod or base-dev, ..., but before selenium.yml
+
+## WARNING:
+# This service is currently work in progress, is not tested by CI, and thus not guaranteed to work.
+# You are however more then welcome to try it out and help make it stable.
+
+services:
+  app:
+    depends_on:
+     - redis-session
+    environment:
+     - SESSION_HANDLER_ID=ezplatform.core.session.handler.native_redis
+     - SESSION_SAVE_PATH=tcp://redis-session:6379?weight=1
+
+  redis-session:
+    image: ${REDIS_IMAGE}
+    networks:
+     - backend

@@ -1,65 +1,86 @@
 # eZ Platform
 
-## What is eZ Platform ?
-*eZ Platform* is a 100% open source professional CMS (Content Management System) made by eZ Systems AS and eZ Community.
+[![Build Status](https://img.shields.io/travis/ezsystems/ezplatform.svg?style=flat-square)](https://travis-ci.org/ezsystems/ezplatform)
+[![Downloads](https://img.shields.io/packagist/dt/ezsystems/ezplatform.svg?style=flat-square)](https://packagist.org/packages/ezsystems/ezplatform)
+[![Latest release](https://img.shields.io/github/release/ezsystems/ezplatform.svg?style=flat-square)](https://github.com/ezsystems/ezplatform/releases)
+[![License](https://img.shields.io/packagist/l/ezsystems/ezplatform.svg?style=flat-square)](LICENSE)
 
-eZ Platform is the 6th generation of eZ Publish, it is built on top of Symfony framework (Full Stack).
-It has been in development since 2011, and official part of the eZ Publish Platform 5.x as "Platform stack" since 2012. 
+## What is eZ Platform?
+*eZ Platform* is a fully open source professional CMS (Content Management System) developed by eZ Systems and the eZ Community.
 
-### Abstract:
-- **Very extensible** *You can extend the application and the content model many ways*
-- **Future & backwards compatible** *Strong BC policy on data as well as code*
-- **Multi channel by design** *High focus on separation between <sup>semantic</sup> content & design*
-- **Scalable** *Easily scale across multiple servers out of the box*
-- **Future proof** *Architecture allows even more content scalability and performance in the future*
-- **Stable** *Built on experience building CMS since early 2000, and in production since 2012*
-- **Integration friendly** *Numerous events and signals to hook into for advance workflow needs*
+Current *eZ Platform v2* is the 7th generation of *eZ Publish*, it is built on top of the Symfony 3.4LTS framework (Full Stack).
+It has been in development since 2011, and integral part of the *eZ Publish Platform 5.x* as "Platform stack" since 2012.
 
-### Main packages:
-- **ezpublish-kernel** (building on top of **Symfony Framework**):
- - Content Repository with a highly flexible content model exposed via Public API.<br>
-   Out of the box powered by SQL *Storage Engine* using [Doctrine DBAL](http://doctrine-dbal.readthedocs.org/en/latest/reference/configuration.html#driver),
-   data cache implementation using [Stash](http://www.stashphp.com/Drivers.html) and binary file system handled by [Flysystem](https://github.com/thephpleague/flysystem#adapters).
-   Improved *Storage Engine* planned, custom implementation for advance data scalability already possible.
- - Powerful (& extensible) Content Query engine, currently powered by SQL, soon Solr/ElasticSearch
- - Very high performance thanks to content & user aware HTTP <sup>"view"</sup> cache (now [using](https://github.com/FriendsOfSymfony/FOSHttpCacheBundle))
- - Ads concept of "web sites" allowing you to manage several within one installation
- - Allow you to rapidly setup *Contextual override* of content view twig templates as well as controller based on Content type, section, and much more.
- - Helpers, services, events and signals allowing you to efficiently create everything from simple web sites to advance applications
-- **PlatformUIBundle**: A modern, extensible "Backend" UI for managing content & administration
-- **DemoBundle**: Demo web site showcasing how a website can be done *(more examples planned)*
+#### Abstract:
 
-### Further information:
-eZ Platform is 100% open source and is released in companion with a commercial *eZ Studio* software which adds advance
-features for editorial teams and media companies, 100% built on top of *eZ Platform* APIs.
+- **Very extensible** — You can extend the application and the content model in many ways.
+- **Future and backwards compatible** — Strong backward compatibility policy on data as well as code.
+- **Multi-channel by design** — Strong focus on separation between <sup>semantic</sup> content and design.
+- **Scalable** — Easily scale across multiple servers out of the box.
+- **Future proof** — Uses architecture designed to allow even more content scalability and performance in the future.
+- **Stable** — Built on experience in building CMS that has been gathered since early 2000.
+- **Integration friendly** — Numerous events and signals to hook into for advanced needs.
 
-- [eZ Publish 5.x Architecture, including "Platform Stack"](https://doc.ez.no/pages/viewpage.action?pageId=11403666)
-- [eZ Studio and eZ Platform RoadMap](http://ez.no/Blog/What-to-Expect-from-eZ-Studio-and-eZ-Platform)
-- [eZ Platform 2015 release plan](http://ez.no/Blog/What-Releases-to-Expect-from-eZ-in-2015)
-- eZ Systems AS *(commercial products and services)*: [ez.no](http://ez.no/)
-- eZ Community: [share.ez.no](http://ez.no/)
+#### Further information:
 
-## Install and Upgrade
-For installation & upgrade instructions, see [INSTALL.md](https://github.com/ezsystems/ezplatform/blob/master/INSTALL.md).
+eZ Platform is fully open source and it is the foundation for the commercial *eZ Platform Enterprise Edition* software, which adds advanced features for editorial teams, entirely built on top of *eZ Platform* APIs.
 
-## Requirements
-**eZ Platform** currently has same requirements as eZ Publish Platform 5.4, further details on [5.4 requirements](https://doc.ez.no/display/EZP/Requirements+5.4) page.
+- eZ Platform Developer Hub: [ezplatform.com](https://ezplatform.com/)
+- [eZ Platform Open Source and Enterprise Edition roadmap](http://doc.ez.no/roadmap)
+- eZ Systems (commercial products and services): [ez.no](https://ez.no/)
 
-*TL;DR; minimum PHP 5.4.4 and higher, using mod_php or php-fpm.*
+
+## Installation
+
+**Note:** For simplified installation, consider using community-supported [eZ Launchpad](https://ezsystems.github.io/launchpad/) which takes care of the whole server setup for you.
+
+Installation instructions below are for installing a clean installation of eZ Platform in latest version with _no_ demo content or demo website.
+Full installation documentation is [in the online docs](https://doc.ezplatform.com/en/latest/getting_started/install_using_composer/).
+It includes instructions on installing other distributions _(like [ezplatform-ee](https://github.com/ezsystems/ezplatform-ee) enterprise edition)_, or other versions.
+
+#### Prerequisites
+
+These instructions assume you have already installed:
+
+- PHP _(7.3 or higher)_
+- Web Server _(Recommended: Apache / Nginx. Use of PHP's built-in development server is also possible)_
+- Database server _(MySQL 5.5+ or MariaDB 10.0+)_
+- [Composer](https://doc.ezplatform.com/en/latest/getting_started/about_composer/)
+- Git _(for development)_
+
+For more details on requirements, see [online documentation](https://doc.ezplatform.com/en/latest/getting_started/requirements_and_system_configuration/).
+
+
+#### Install eZ Platform _(clean distribution)_
+
+Assuming you have prerequisites sorted out, you can get the install up and running with the following commands in your terminal:
+
+``` bash
+composer create-project --keep-vcs ezsystems/ezplatform ezplatform ^2
+cd ezplatform
+```
+
+**Note:** If composer is installed locally instead of globally, the first command will start with `php composer.phar`.
+
+During the installation process you will be asked to provide database host name, login, password, etc.
+The configuration details will be placed in `<ezplatform>/app/config/parameters.yml`.
+
+Next you will receive instructions on how to install data into the database, and how to run a simplified dev server using the `bin/console server:run` command.
+
+**Tip:** For a more complete and better performing setup using Apache or Nginx, see how to [install eZ Platform manually](https://doc.ezplatform.com/en/latest/getting_started/install_manually/).
 
 ## Issue tracker
-Submitting bugs, improvements and stories is possible on https://jira.ez.no/browse/EZP.
-If you discover a security issue, please see how to responsibly report such issues on https://doc.ez.no/Security.
+Submitting bugs, improvements and stories is possible on [https://jira.ez.no/browse/EZP](https://jira.ez.no/browse/EZP).
+If you discover a security issue, please see how to responsibly report such issues in ["Reporting security issues in eZ Systems products"](https://doc.ezplatform.com/en/latest/guide/reporting_issues/#reporting-security-issues-in-ez-systems-products).
 
 ## Backwards compatibility
-eZ Platform is **100% data compatible** with eZ Publish 5.x, 4.x and 3.x *(introduced in 2002)*, meaning content in these versions of the CMS can be upgraded using online documentation to
- [Upgrade](http://doc.ez.no/eZ-Publish/Upgrading) to eZ Platform.
+eZ Platform aims to be **fully content compatible** with eZ Publish 5.x, meaning that the content in these versions of the CMS can be upgraded using
+[online documentation](https://doc.ezplatform.com/en/latest/migrating/migrating_from_ez_publish_platform/) to eZ Platform.
 
-Unlike eZ Publish Platform 5, eZ Platform don't ship with eZ Publish Legacy (4.x). *Legacy* can however still be installed using Composer,
-as explained on https://doc.ez.no/display/EZP/Installing+eZ+Publish+Legacy+on+top+of+eZ+Platform.
+Unlike eZ Publish Platform 5.x, eZ Platform does not ship with eZ Publish Legacy (4.x). But this is available by optional installing [LegacyBridge](https://github.com/ezsystems/LegacyBridge/releases/) to allow eZ Platform and eZ Publish Legacy to run together, this is only recommended for migration use cases and not for new installations.
 
 ## COPYRIGHT
-Copyright (C) 1999-2015 eZ Systems AS. All rights reserved.
+Copyright (C) 1999-2020 eZ Systems AS. All rights reserved.
 
 ## LICENSE
 http://www.gnu.org/licenses/gpl-2.0.txt GNU General Public License v2

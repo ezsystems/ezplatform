@@ -1,0 +1,8 @@
+ezplatform_admin_ui:
+    resource: '@EzPlatformAdminUiBundle/Resources/config/routing.yaml'
+    defaults:
+        siteaccess_group_whitelist: '%admin_group_name%'
+
+ezplatform_admin_ui_rest:
+    resource: '@EzPlatformAdminUiBundle/Resources/config/routing_rest.yaml'
+    prefix: '%ezpublish_rest.path_prefix%'

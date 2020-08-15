@@ -1,0 +1,50 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    font-size: 16px;
+    line-height: 32px;
+    color: #131C26;
+    overflow-x: hidden;
+    font-family: "Noto Sans", sans-serif;
+    margin-bottom: 48px;
+}
+.header {
+    height: 410px;
+    background: transparent linear-gradient(90deg, #FF4713 0%, #DB0032 100%) 0% 0% no-repeat padding-box;
+    opacity: 1;
+}
+h1 {
+    font-size: 42px;
+    line-height: 49px;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 500;
+}
+h2 {
+    font-size: 22px;
+    line-height: 22px;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 400;
+}
+a {
+    color: #db0032;
+
+    &:hover {
+        color: #ff4713;
+    }
+}
+.footer {
+    position: absolute;
+    bottom: 0;
+    height: 48px;
+
+    .container-fluid {
+        display: flex;
+        align-items: flex-end;
+        height: 100%;
+    }
+}
+.background-grey {
+    background-color: #f7f7f9;
+}

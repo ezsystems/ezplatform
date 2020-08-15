@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "@babel/preset-react": "^7.0.0",
+    "@symfony/webpack-encore": "^0.28.0",
+    "node-sass": "^4.11.0",
+    "sass-loader": "^7.0.1"
+  }
+}

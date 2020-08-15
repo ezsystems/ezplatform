@@ -1,0 +1,20 @@
+version: '3.3'
+
+services:
+  app:
+    environment:
+     - DFS_NFS_PATH=/dfsdata
+    depends_on:
+     - dfsperm
+    volumes:
+     - ../../dfsdata:/dfsdata
+
+  web:
+    environment:
+     - BINARY_DATA_HANDLER=dfs
+
+  dfsperm:
+    image: ${PHP_IMAGE}
+    volumes:
+     - ../../dfsdata:/dfsdata
+    command: /bin/bash -c "mkdir -p /dfsdata/var; chown 1000:33 /dfsdata/var"

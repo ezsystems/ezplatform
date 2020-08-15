@@ -1,0 +1,105 @@
+parameters:
+    locale_fallback: en
+
+    # One of `legacy` (default) or `solr`
+    search_engine: '%env(SEARCH_ENGINE)%'
+
+    # Session save path as used by symfony session handlers (eg. used for dsn with redis)
+    ezplatform.session.save_path: '%kernel.project_dir%/var/sessions/%kernel.environment%'
+
+    # Predefined pools are located in config/packages/cache_pool/
+    # You can add your own cache pool to the folder mentioned above.
+    # In order to change the default cache_pool use environmental variable export.
+    # The line below must not be altered as required cache service files are resolved based on environmental config.
+    cache_pool: '%env(CACHE_POOL)%'
+
+    # By default cache ttl is set to 24h, when using Varnish you can set a much higher value. High values depends on
+    # using EzSystemsPlatformHttpCacheBundle (default as of v1.12) which by design expires affected cache on changes
+    httpcache_default_ttl: '%env(HTTPCACHE_DEFAULT_TTL)%'
+
+    # Settings for HttpCache
+    purge_server: '%env(HTTPCACHE_PURGE_SERVER)%'
+
+    # Identifier used to generate the CSRF token. Commenting this line will result in authentication
+    # issues both in AdminUI and REST calls
+    ezpublish_rest.csrf_token_intention: authenticate
+
+    # Varnish invalidation/purge token (for use on platform.sh, eZ Platform Cloud and other places you can't use IP for ACL)
+    varnish_invalidate_token: '%env(resolve:default::HTTPCACHE_VARNISH_INVALIDATE_TOKEN)%'
+
+    # Compile time handlers
+    ## These are defined at compile time, and hence can't be set at runtime using env()
+    ## config/env/generic.php takes care about letting you set them by env variables
+
+    ## Session handler, by default set to file based (instead of ~) in order to be able to use %ezplatform.session.save_path%
+    # env: SESSION_HANDLER_ID
+    ezplatform.session.handler_id: session.handler.native_file
+
+    ## Purge type used by HttpCache system ("local", "varnish"/"http", and on ee also "fastly")
+    # env: HTTPCACHE_PURGE_TYPE
+    purge_type: local
+
+ezplatform:
+    # HttpCache settings, By default 'local' (Symfony HttpCache Proxy), by setting it to 'varnish' you can point it to Varnish
+    http_cache:
+        purge_type: '%purge_type%'
+
+    # Repositories configuration, setup default repository to support solr if enabled
+    repositories:
+        default:
+            storage: ~
+            search:
+                engine: '%search_engine%'
+                connection: default
+
+    # Siteaccess configuration, with one siteaccess per default
+    siteaccess:
+        list: [site]
+        groups:
+            site_group: [site]
+        default_siteaccess: site
+        match:
+            URIElement: 1
+
+    # System settings, read in following order: `default`, <siteaccess-group>, <siteacces>, and `global`
+    # TIP: For multisite installations organize shared config into SiteAccess groups,
+    #      on single-site you can place shared config under "default" for simplicity as shown below.
+    system:
+        default:
+            # Cache pool service, needs to be different per repository (database) on multi repository install.
+            cache_service_name: '%cache_pool%'
+            # These reflect the current installers, complete installation before you change them. For changing var_dir
+            # it is recommended to install clean, then change setting before you start adding binary content, otherwise you'll
+            # need to manually modify your database data to reflect this to avoid exceptions.
+            var_dir: var/site
+            content:
+                # As we by default enable EzSystemsPlatformHttpCacheBundle which is designed to expire all affected cache
+                # on changes, and as error / redirects now have separate ttl, we easier allow ttl to be greatly increased
+                default_ttl: '%httpcache_default_ttl%'
+            # HttpCache purge server(s) setting, eg Varnish, for when ezpublish.http_cache.purge_type is set to 'varnish'.
+            http_cache:
+                purge_servers: ['%purge_server%']
+                varnish_invalidate_token: '%varnish_invalidate_token%'
+
+        site:
+            languages: [eng-GB]
+
+    url_alias:
+        slug_converter:
+            transformation: 'urlalias_lowercase'
+
+framework:
+    translator: { fallback: '%locale_fallback%' }
+    validation: { enable_annotations: true }
+    default_locale: '%locale_fallback%'
+    esi: true
+    fragments: true
+    session:
+        # https://symfony.com/doc/current/reference/configuration/framework.html#handler-id
+        # if handler_id set to null will use default session handler from php.ini
+        handler_id: '%ezplatform.session.handler_id%'
+        save_path: '%ezplatform.session.save_path%'
+        # Note: eZ Platform also allows session name and session cookie configuration to be per SiteAccess, by
+        #       default session name will be set to "eZSESSID{siteaccess_hash}" (unique session name per siteaccess)
+        #       Further reading on sessions: http://doc.ezplatform.com/en/latest/guide/sessions/
+    http_method_override: true

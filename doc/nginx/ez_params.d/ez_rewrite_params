@@ -1,0 +1,26 @@
+rewrite "^/var/([^/]+/)?storage/images(-versioned)?/(.*)" "/var/$1storage/images$2/$3" break;
+
+# Makes it possible to place your favicon at the root of your
+# eZ Platform instance. It will then be served directly.
+rewrite "^/favicon\.ico" "/favicon.ico" break;
+
+# Give direct access to robots.txt for use by crawlers (Google,
+# Bing, Spammers..)
+rewrite "^/robots\.txt" "/robots.txt" break;
+
+# Platform for Privacy Preferences Project ( P3P ) related files
+# for Internet Explorer
+# More info here : http://en.wikipedia.org/wiki/P3p
+rewrite "^/w3c/p3p\.xml" "/w3c/p3p.xml" break;
+
+# Following rule is needed to correctly display bundle and project assets
+rewrite "^/bundles/(.*)" "/bundles/$1" break;
+rewrite "^/assets/(.*)" "/assets/$1" break;
+
+# Prevent access to website with direct usage of index.php in URL
+if ($request_uri ~ "^/([^/]+/)?index\.php([/?#]|$)") {
+    return 404;
+}
+
+rewrite "^(.*)$" "/index.php$1" last;
+

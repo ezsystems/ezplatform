@@ -1,0 +1,7 @@
+# See how to configure the bundle: https://symfony.com/doc/current/bundles/LiipImagineBundle/basic-usage.html
+parameters:
+    # Valid drivers options include "gd", "gmagick" or "imagick"
+    liip_imagine_driver: 'gd'
+
+liip_imagine:
+    driver: "%liip_imagine_driver%"

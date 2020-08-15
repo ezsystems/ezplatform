@@ -1,0 +1,2 @@
+ezplatform_http_cache:
+    resource: '@EzSystemsPlatformHttpCacheBundle/Resources/config/routing.yml'

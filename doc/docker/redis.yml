@@ -1,0 +1,20 @@
+version: '3.3'
+# Redis config, to be appended after base-prod or base-dev, ..., but before selenium.yml
+
+## WARNING:
+# This service is currently work in progress, is not tested by CI, and thus not guaranteed to work.
+# You are however more then welcome to try it out and help make it stable.
+
+services:
+  app:
+    depends_on:
+     - redis
+    environment:
+     - CACHE_POOL=cache.redis
+     - CACHE_DSN=redis:6379
+     - CACHE_NAMESPACE
+
+  redis:
+    image: ${REDIS_IMAGE}
+    networks:
+     - backend

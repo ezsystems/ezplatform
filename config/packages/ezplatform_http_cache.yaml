@@ -1,0 +1,22 @@
+## FOSHttpCache Configuration
+fos_http_cache:
+    cache_control:
+        rules:
+            # Make sure already cacheable (fresh) responses from eZ Platform which are errors/redirect gets lower ttl (then default_ttl)
+            -   match:
+                    match_response: "response.isFresh() && ( response.isServerError() || response.isClientError() || response.isRedirect() )"
+                headers:
+                    overwrite: true
+                    cache_control:
+                        max_age: 5
+                        s_maxage: 20
+            # Example of performance tuning, force TTL on 404 pages to avoid crawlers / ... taking to much load
+            # Should not be set to high, as cached 404's can cause issues for future routes, url aliases, wildcards, ..
+            -   match:
+                    match_response: "!response.isFresh() && response.isNotFound()"
+                headers:
+                    overwrite: true
+                    cache_control:
+                        public: true
+                        max_age: 0
+                        s_maxage: 20

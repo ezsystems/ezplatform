@@ -1,0 +1,54 @@
+### IDE files
+.idea/
+
+### Composer files
+auth.json
+
+### GIT files
+.git
+# Skipped as it makes build very slow and since it is needed by composer when working on dev branches
+#vendor/*/*/.git
+
+# Cache, session files and logs (Symfony4)
+var/cache/*
+var/log/*
+var/sessions/*
+!var/cache/.gitkeep
+!var/log/.gitkeep
+!var/sessions/.gitkeep
+
+# Parameters (should be regenerated in container)
+app/config/parameters.yml
+
+# Managed by Composer
+app/bootstrap.php.cache
+var/bootstrap.php.cache
+#bin/*
+#!bin/console
+
+# Disabled as this is needed for dev setups unless we change dev to execute composer install automatically
+#vendor/
+
+# Assets and user uploads
+public/bundles/
+public/css/
+public/js/
+public/uploads/
+public/fonts/
+
+# Assets managed by Bower
+public/assets/vendor/
+
+# PHPUnit
+app/phpunit.xml
+phpunit.xml
+
+# Build data
+build/
+
+# Composer PHAR
+composer.phar
+
+# Backup entities generated with doctrine:generate:entities command
+*/Entity/*~
+

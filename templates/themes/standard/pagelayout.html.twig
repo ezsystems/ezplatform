@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="{{ app.request.locale|replace({'_': '-'}) }}">
+<head>
+    <link rel="icon" type="image/x-icon" href="{{ asset('bundles/ezplatformadminui/img/favicon.ico') }}" />
+    <meta charset="utf-8">
+    {% if content is defined and title is not defined %}
+        {% set title = ez_content_name( content ) %}
+    {% endif %}
+    <title>{{ title|default( 'Home' ) }}</title>
+    <meta name="generator" content="eZ Platform"/>
+    {% if content is defined and content.contentInfo.mainLocationId %}
+        <link rel="canonical" href="{{ ez_path(content) }}" />
+    {% endif %}
+
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+{% block content %}
+{% endblock %}
+</body>
+</html>

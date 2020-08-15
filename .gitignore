@@ -1,29 +1,116 @@
+# All user specific files from now on should be kept in the global .gitignore file
+# located in the user's local environment. To do so you have to inform Git which
+# files should be excluded globally (for every Git repository).
+#
+# Here is a short instruction about how to exclude selected files globally:
+#
+# - create a new .gitignore file in your home folder:
+#   touch ~/.gitignore
+#
+# - add some exclusions, eg:
+#   /nbproject/
+#   /.idea/
+#
+# - inform Git where it should start looking for .gitignore file:
+#   git config --global core.excludesfile ~/.gitignore
+#
+# More details about excluding specific file on your local environment can be found
+# in the official GitHub article: https://help.github.com/articles/ignoring-files/
+
+/.web-server-pid
+/build/
+/phpunit.xml
+/.phpunit.result.cache
+/.rules
+/var/*
+!/var/cache
+/var/cache/*
+!var/cache/.gitkeep
+!/var/log
+/var/log/*
+!var/log/.gitkeep
+!/var/sessions
+/var/sessions/*
+!var/sessions/.gitkeep
+!/var/encore
+/var/encore/*
+!var/encore/.gitkeep
 /vendor/
+/public/bundles/
+/public/assets/translations/*
+/public/assets/build/*
+!public/assets/build/.gitkeep
+/public/assets/ezplatform/build/*
+!/public/assets/ezplatform/build/.gitkeep
+/node_modules/
+/bin/*
+!bin/.ci/
+!bin/.travis/
+!bin/console
+!bin/platformsh_prestart_cacheclear.sh
+!bin/vhost.sh
+
 .php~
-/nbproject/
-/.idea/
-/bin/behat
-/bin/phpunit
-/ezpublish/cache/
-/ezpublish/logs/
-/ezpublish_legacy
-/ezpublish/config/parameters.yml
-/ezpublish/config/ezpublish_prod.yml
-/ezpublish/config/ezpublish_dev.yml
-/ezpublish/sessions
-/ezpublish/bootstrap.php.cache
-/web/index_treemenu.php
-/web/index_rest.php
-/web/index_cluster.php
-/web/bundles/
-/web/design
-/web/extension
-/web/share
-/web/var
-/web/.htaccess
+
+/config/graphql/
+
+/doc/docker/entrypoint/*/*.sql
+/dfsdata
+
+/public/css/
+/public/js/
+/public/fonts/
+/public/design
+/public/extension
+/public/share
+/public/var
+/public/.htaccess
+
 composer.phar
 composer.lock
+symfony.lock
+yarn.lock
 .buildpath
 .project
 .settings/
+behat.yml
+.php_cs.cache
+auth.json
+ide-twig.json
 
+###> symfony/framework-bundle ###
+/.env.local
+/.env.local.php
+/.env.*.local
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+###> liip/imagine-bundle ###
+/public/media/cache/
+###< liip/imagine-bundle ###
+
+###> symfony/webpack-encore-bundle ###
+/node_modules/
+/public/build/
+npm-debug.log
+yarn-error.log
+###< symfony/webpack-encore-bundle ###
+
+###> behat/symfony2-extension ###
+behat.yml
+###< behat/symfony2-extension ###
+
+###> symfony/phpunit-bridge ###
+.phpunit
+/phpunit.xml
+###< symfony/phpunit-bridge ###
+
+###> phpunit/phpunit ###
+/phpunit.xml
+.phpunit.result.cache
+###< phpunit/phpunit ###
+
+###> friends-of-behat/symfony-extension ###
+/behat.yml
+###< friends-of-behat/symfony-extension ###

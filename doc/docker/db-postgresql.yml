@@ -1,0 +1,22 @@
+version: '3.3'
+# Single server setup for dev
+
+services:
+  app:
+    environment:
+     - DATABASE_PORT=5432
+     - DATABASE_DRIVER=pdo_pgsql
+     - DATABASE_PLATFORM=pgsql
+     - DATABASE_CHARSET=utf8
+     - DATABASE_VERSION=9.4
+
+  db:
+    image: postgres:9.4
+    environment:
+      - POSTGRES_USER=$DATABASE_USER
+      - POSTGRES_PASSWORD=$DATABASE_PASSWORD
+      - POSTGRES_DB=$DATABASE_NAME
+    networks:
+      - backend
+    ports:
+      - "5433:5432"

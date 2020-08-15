@@ -1,0 +1,10 @@
+webpack_encore:
+    builds:
+        ezplatform: "%kernel.project_dir%/public/assets/ezplatform/build"
+
+framework:
+    assets:
+        packages:
+            ezplatform:
+                json_manifest_path: '%kernel.project_dir%/public/assets/ezplatform/build/manifest.json'
+
