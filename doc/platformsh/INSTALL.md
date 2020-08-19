@@ -40,7 +40,8 @@ This requires more manual steps, but may be more up to date with current develop
       Run `platform get <your project id>`
    3. Authentication against Github/Bitbucket/Gitlab/updates.ez.no
        For example set the project variables for your eZ Network installation ID and token:
-      `platform project:variable:create env:COMPOSER_AUTH '{"http-basic":{"updates.ez.no":{"username":"network-id","password":"token-key"}}}' --no-visible-runtime --sensitive true`
+       `platform variable:create --name=env:COMPOSER_AUTH --value='{"http-basic":{"updates.ez.no":{"username":"network-id","password":"token-key"}}}' --level=project --sensitive=true --json=true --visible-runtime=false --visible-build=true
+       `
    4. If you have the need to debug things remotely, set the `APP_ENV` environment variable to 'dev':
       `platform project:variable:set env:APP_ENV dev`.
 7. Push your branch. The Platform.sh setup wizard provides the command to use. Example:
