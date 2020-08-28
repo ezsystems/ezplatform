@@ -62,3 +62,5 @@ imports:
     - vendor/ezsystems/ezplatform-admin-ui/behat_suites.yml
     - vendor/ezsystems/behatbundle/behat_suites.yml
     - vendor/ezsystems/ezplatform-http-cache/behat_suites.yml
+    - vendor/ezsystems/ezplatform-user/behat_suites.yml
+
