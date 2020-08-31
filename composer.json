@@ -25,7 +25,7 @@
         "ezsystems/ezplatform-design-engine": "~3.0.0@dev",
         "ezsystems/ezplatform-graphql": "~2.1.0@dev",
         "ezsystems/ezplatform-http-cache": "~2.1.0@dev",
-        "ezsystems/ezplatform-kernel": "~1.1.0@dev",
+        "ezsystems/ezplatform-kernel": "dev-fix/EZP-31462-handle-users-with-unsupported-password-hash-types as 1.1.x-dev",
         "ezsystems/ezplatform-matrix-fieldtype": "~2.0.0@dev",
         "ezsystems/ezplatform-query-fieldtype": "~2.1.0@dev",
         "ezsystems/ezplatform-rest": "~1.1.0@dev",
@@ -33,7 +33,7 @@
         "ezsystems/ezplatform-search": "~1.0.0@dev",
         "ezsystems/ezplatform-solr-search-engine": "~3.1.0@dev",
         "ezsystems/ezplatform-standard-design": "~0.3.0@dev",
-        "ezsystems/ezplatform-user": "dev-fix/EZP-31462-handle-users-with-unsupported-password-hash-types as 2.1.x-dev",
+        "ezsystems/ezplatform-user": "dev-fix/EZP-31462-handle-users-with-unsupported-password-hash-types as 2.1.x-deve",
         "friendsofsymfony/jsrouting-bundle": "^2.5",
         "hautelook/templated-uri-bundle": "^3.2",
         "knplabs/knp-menu-bundle": "^3.0",
@@ -150,6 +150,10 @@
     "repositories":[
         {
             "name": "ezsystems/ezplatform-user",
+            "type": "git",
+            "url": "https://github.com/kaff/ezplatform-user.git"
+        }, {
+            "name": "ezsystems/ezplatform-kernel",
             "type": "git",
             "url": "https://github.com/kaff/ezplatform-user.git"
         }
