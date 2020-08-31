@@ -33,7 +33,7 @@
         "ezsystems/ezplatform-search": "~1.0.0@dev",
         "ezsystems/ezplatform-solr-search-engine": "~3.1.0@dev",
         "ezsystems/ezplatform-standard-design": "~0.3.0@dev",
-        "ezsystems/ezplatform-user": "dev-fix/EZP-31462-handle-users-with-unsupported-password-hash-types as 2.1.x-deve",
+        "ezsystems/ezplatform-user": "dev-fix/EZP-31462-handle-users-with-unsupported-password-hash-types as 2.1.x-dev",
         "friendsofsymfony/jsrouting-bundle": "^2.5",
         "hautelook/templated-uri-bundle": "^3.2",
         "knplabs/knp-menu-bundle": "^3.0",
