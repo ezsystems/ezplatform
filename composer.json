@@ -155,7 +155,7 @@
         }, {
             "name": "ezsystems/ezplatform-kernel",
             "type": "git",
-            "url": "https://github.com/kaff/ezplatform-user.git"
+            "url": "https://github.com/kaff/ezplatform-kernel.git"
         }
     ]
 }
