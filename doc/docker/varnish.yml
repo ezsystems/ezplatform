@@ -9,7 +9,9 @@ services:
   app:
     environment:
      - SYMFONY_HTTP_CACHE=0
-     - SYMFONY_TRUSTED_PROXIES=varnish
+     # Never do this in production if the app container is accesible for the public as well
+     # See https://ezplatform.com/security-advisories/ezsa-2020-002-unauthorised-cache-purge-with-misconfigured-fastly for more details how it could be abused
+     - SYMFONY_TRUSTED_PROXIES=TRUST_REMOTE 
      - HTTPCACHE_PURGE_SERVER=http://varnish
      - HTTPCACHE_PURGE_TYPE=varnish
 
