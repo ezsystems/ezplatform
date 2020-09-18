@@ -1,7 +1,8 @@
 parameters:
     env(DFS_DATABASE_URL): '%env(resolve:DATABASE_URL)%'
     ibexa.platform.io.nfs.adapter.config:
-        directory: '%dfs_nfs_path%/$var_dir$/$storage_dir$'
+        root: '%dfs_nfs_path%'
+        path: '$var_dir$/$storage_dir$/'
         writeFlags: ~
         linkHandling: ~
         permissions: [ ]
