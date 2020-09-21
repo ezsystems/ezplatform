@@ -17,7 +17,7 @@
         "doctrine/doctrine-migrations-bundle": "^3.0",
         "ezsystems/doctrine-dbal-schema": "~1.0.0@dev",
         "ezsystems/ez-support-tools": "~2.1.0@dev",
-        "ezsystems/ezplatform-admin-ui": "~2.1.0@dev",
+        "ezsystems/ezplatform-admin-ui": "dev-fix/EZP-31462-handle-users-with-unsupported-password-hash-types as 2.1.x-dev",
         "ezsystems/ezplatform-admin-ui-assets": "~5.1.0@beta",
         "ezsystems/ezplatform-content-forms": "~1.1.0@dev",
         "ezsystems/ezplatform-core": "~2.1.0@dev",
@@ -156,6 +156,10 @@
             "name": "ezsystems/ezplatform-kernel",
             "type": "git",
             "url": "https://github.com/kaff/ezplatform-kernel.git"
+        }, {
+            "name": "ezsystems/ezplatform-admin-ui",
+            "type": "git",
+            "url": "https://github.com/kaff/ezplatform-admin-ui.git"
         }
     ]
 }
