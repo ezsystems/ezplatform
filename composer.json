@@ -110,7 +110,7 @@
             "eZ\\Bundle\\EzPublishCoreBundle\\Composer\\ScriptHandler::installWelcomeText"
         ],
         "ezplatform-install": [
-            "@php bin/console ezplatform:install clean"
+            "@php bin/console --ansi ezplatform:install clean"
         ]
     },
     "config": {
