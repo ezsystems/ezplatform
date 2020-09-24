@@ -24,29 +24,37 @@ $routes = json_decode(base64_decode($routes), true);
 // PLATFORMSH_DFS_NFS_PATH is different compared to DFS_NFS_PATH in the sense that it is relative to ezplatform dir
 // DFS_NFS_PATH is an absolute path
 if ($dfsNfsPath = $_SERVER['PLATFORMSH_DFS_NFS_PATH'] ?? false) {
-    $container->setParameter('dfs_nfs_path', sprintf('%s/%s', dirname($container->getParameter('kernel.project_dir')), $dfsNfsPath));
+    $container->setParameter('dfs_nfs_path', sprintf('%s/%s', $container->getParameter('kernel.project_dir'), $dfsNfsPath));
 
+    // Map common parameters
+    $container->setParameter('dfs_database_charset', $container->getParameter('database_charset'));
+    $container->setParameter(
+        'dfs_database_collation',
+        $container->getParameter('database_collation')
+    );
     if (array_key_exists('dfs_database', $relationships)) {
+        // process dedicated P.sh dedicated config
         foreach ($relationships['dfs_database'] as $endpoint) {
             if (empty($endpoint['query']['is_master'])) {
                 continue;
             }
-
             $container->setParameter('dfs_database_driver', 'pdo_' . $endpoint['scheme']);
-            $container->setParameter('dfs_database_host', $endpoint['host']);
-            $container->setParameter('dfs_database_port', $endpoint['port']);
-            $container->setParameter('dfs_database_name', $endpoint['path']);
-            $container->setParameter('dfs_database_user', $endpoint['username']);
-            $container->setParameter('dfs_database_password', $endpoint['password']);
+            $container->setParameter(
+                'dfs_database_url',
+                sprintf(
+                    '%s://%s:%s:%d@%s/%s',
+                    $endpoint['scheme'],
+                    $endpoint['username'],
+                    $endpoint['password'],
+                    $endpoint['port'],
+                    $endpoint['host'],
+                    $endpoint['path']
+                )
+            );
         }
     } else {
-        // If dfs_database endpoint is not defined, we'll use the default database for DFS too
+        // or set fallback from the Repository database, if not configured
         $container->setParameter('dfs_database_driver', $container->getParameter('database_driver'));
-        $container->setParameter('dfs_database_host', $container->getParameter('database_host'));
-        $container->setParameter('dfs_database_port', $container->getParameter('database_port'));
-        $container->setParameter('dfs_database_name', $container->getParameter('database_name'));
-        $container->setParameter('dfs_database_user', $container->getParameter('database_user'));
-        $container->setParameter('dfs_database_password', $container->getParameter('database_password'));
     }
 
     $loader = new Loader\YamlFileLoader($container, new FileLocator(dirname(__DIR__).'/dfs'));

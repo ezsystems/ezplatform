@@ -1,5 +1,6 @@
 parameters:
     env(DFS_DATABASE_URL): '%env(resolve:DATABASE_URL)%'
+    dfs_database_url: '%env(resolve:DFS_DATABASE_URL)%'
     ibexa.platform.io.nfs.adapter.config:
         root: '%dfs_nfs_path%'
         path: '$var_dir$/$storage_dir$/'
@@ -18,7 +19,7 @@ doctrine:
                 default_table_options:
                     charset: '%dfs_database_charset%'
                     collate: '%dfs_database_collation%'
-                url: '%env(resolve:DFS_DATABASE_URL)%'
+                url: '%dfs_database_url%'
 
 # define the flysystem handler
 oneup_flysystem:
