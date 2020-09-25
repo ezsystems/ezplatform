@@ -1,22 +1,32 @@
+parameters:
+    env(DFS_DATABASE_URL): '%env(resolve:DATABASE_URL)%'
+    dfs_database_url: '%env(resolve:DFS_DATABASE_URL)%'
+    ibexa.platform.io.nfs.adapter.config:
+        root: '%dfs_nfs_path%'
+        path: '$var_dir$/$storage_dir$/'
+        writeFlags: ~
+        linkHandling: ~
+        permissions: [ ]
+
 # new doctrine connection for the dfs legacy_dfs_cluster metadata handler.
 doctrine:
     dbal:
         connections:
             dfs:
-                driver: "%dfs_database_driver%"
-                host: "%dfs_database_host%"
-                port: "%dfs_database_port%"
-                user: "%dfs_database_user%"
-                password: "%dfs_database_password%"
-                dbname: "%dfs_database_name%"
-                charset: utf8mb4
+                # configure these for your database server
+                driver: '%dfs_database_driver%'
+                charset: '%dfs_database_charset%'
+                default_table_options:
+                    charset: '%dfs_database_charset%'
+                    collate: '%dfs_database_collation%'
+                url: '%dfs_database_url%'
 
 # define the flysystem handler
 oneup_flysystem:
     adapters:
         nfs_adapter:
-            local:
-                directory: "/%dfs_nfs_path%/$var_dir$/$storage_dir$"
+            custom:
+                service: ibexa.platform.io.nfs.adapter.site_access_aware
 
 # define the ez handlers
 ez_io:
