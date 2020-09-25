@@ -6,49 +6,27 @@
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Loader;
 
-require_once dirname(__DIR__, 2).'/bootstrap.php';
+require_once dirname(__DIR__, 2) . '/bootstrap.php';
 
-    if ($dfsNfsPath = $_SERVER['DFS_NFS_PATH'] ?? false) {
+/** @var \Symfony\Component\DependencyInjection\ContainerBuilder $container */
+if ($dfsNfsPath = $_SERVER['DFS_NFS_PATH'] ?? false) {
     $container->setParameter('dfs_nfs_path', $dfsNfsPath);
 
-    if ($value = $_SERVER['DFS_DATABASE_DRIVER'] ?? false) {
-        $container->setParameter('dfs_database_driver', $value);
-    } else {
-        $container->setParameter('dfs_database_driver', $container->getParameter('database_driver'));
+    $parameterMap = [
+        'dfs_database_charset' => 'database_charset',
+        'dfs_database_driver' => 'database_driver',
+        'dfs_database_collation' => 'database_collation',
+    ];
+
+    foreach ($parameterMap as $dfsParameter => $platformParameter) {
+        $container->setParameter(
+            $dfsParameter,
+            $_SERVER[strtoupper($dfsParameter)] ?? $container->getParameter($platformParameter)
+        );
     }
 
-    if ($value = $_SERVER['DFS_DATABASE_HOST'] ?? false) {
-        $container->setParameter('dfs_database_host', $value);
-    } else {
-        $container->setParameter('dfs_database_host', $container->getParameter('database_host'));
-    }
-
-    if ($value = $_SERVER['DFS_DATABASE_PORT'] ?? false) {
-        $container->setParameter('dfs_database_port', $value);
-    } else {
-        $container->setParameter('dfs_database_port', $container->getParameter('database_port'));
-    }
-
-    if ($value = $_SERVER['DFS_DATABASE_NAME'] ?? false) {
-        $container->setParameter('dfs_database_name', $value);
-    } else {
-        $container->setParameter('dfs_database_name', $container->getParameter('database_name'));
-    }
-
-    if ($value = $_SERVER['DFS_DATABASE_USER'] ?? false) {
-        $container->setParameter('dfs_database_user', $value);
-    } else {
-        $container->setParameter('dfs_database_user', $container->getParameter('database_user'));
-    }
-
-    if ($value = $_SERVER['DFS_DATABASE_PASSWORD'] ?? false) {
-        $container->setParameter('dfs_database_password', $value);
-    } else {
-        $container->setParameter('dfs_database_password', $container->getParameter('database_password'));
-    }
-
-    $loader = new Loader\YamlFileLoader($container, new FileLocator(dirname(__DIR__).'/dfs'));
-    $loader->load('dfs.yml');
+    $loader = new Loader\YamlFileLoader($container, new FileLocator(dirname(__DIR__) . '/dfs'));
+    $loader->load('dfs.yaml');
 }
 
 // Cache settings
