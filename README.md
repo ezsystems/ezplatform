@@ -56,16 +56,21 @@ For more details on requirements, see [online documentation](https://doc.ezplatf
 Assuming you have prerequisites sorted out, you can get the install up and running with the following commands in your terminal:
 
 ``` bash
-composer create-project --keep-vcs ezsystems/ezplatform ezplatform ^2
+composer create-project --keep-vcs ezsystems/ezplatform ezplatform ^3
 cd ezplatform
 ```
 
 **Note:** If composer is installed locally instead of globally, the first command will start with `php composer.phar`.
 
-During the installation process you will be asked to provide database host name, login, password, etc.
-The configuration details will be placed in `<ezplatform>/app/config/parameters.yml`.
+You must add your database connection credentials (hostname, login, password) to the environment file.  
+To do this, in the main project directory, the `.env` file, change the parameters that are prefixed with `DATABASE_` as necessary.
+Store the database credentials in your `.env.local` file. Do not commit the file to the Version Control System.
 
-Next you will receive instructions on how to install data into the database, and how to run a simplified dev server using the `bin/console server:run` command.
+Use the following command to install eZ Platform (insert base data into the database):
+
+```bash
+composer ezplatform-install
+```
 
 **Tip:** For a more complete and better performing setup using Apache or Nginx, see how to [install eZ Platform manually](https://doc.ezplatform.com/en/latest/getting_started/install_manually/).
 
@@ -77,7 +82,7 @@ If you discover a security issue, please see how to responsibly report such issu
 eZ Platform aims to be **fully content compatible** with eZ Publish 5.x, meaning that the content in these versions of the CMS can be upgraded using
 [online documentation](https://doc.ezplatform.com/en/latest/migrating/migrating_from_ez_publish_platform/) to eZ Platform.
 
-Unlike eZ Publish Platform 5.x, eZ Platform does not ship with eZ Publish Legacy (4.x). But this is available by optional installing [LegacyBridge](https://github.com/ezsystems/LegacyBridge/releases/) to allow eZ Platform and eZ Publish Legacy to run together, this is only recommended for migration use cases and not for new installations.
+Unlike eZ Publish Platform 5.x, eZ Platform does not ship with eZ Publish Legacy (4.x).
 
 ## COPYRIGHT
 Copyright (C) 1999-2020 eZ Systems AS. All rights reserved.
