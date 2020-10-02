@@ -40,7 +40,7 @@ server {
             # Environment.
             # Possible values: "prod" and "dev" out-of-the-box, other values possible with proper configuration
             # Make sure to comment the "ez_params.d/ez_prod_rewrite_params" include above in dev.
-            # Defaults to "prod" if omitted
+            # Defaults to "dev" if omitted
             #if[APP_ENV] fastcgi_param APP_ENV %APP_ENV%;
 
             # Whether to use debugging.
