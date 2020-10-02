@@ -82,7 +82,7 @@ disk: 3072
 # The mounts that will be performed when the package is deployed.
 mounts:
 # PE Cluster Note: By default will set all to shared, so if moving to PE dedicated cluster you should ask platform.sh
-#                  Support to make sure at least cache + logs are local, while you can let web/var be shared if you prefer that over DFS.
+#                  Support to make sure at least cache + logs are local, while you can let public/var be shared if you prefer that over DFS.
     'var/cache':
         source: local
         source_path: cache
