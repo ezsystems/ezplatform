@@ -2,7 +2,7 @@
 #
 # Loaded by default, for use on single server setups.
 parameters:
-    cache_namespace: ezp
+    cache_namespace: '%env(CACHE_NAMESPACE)%'
 
 services:
     cache.tagaware.filesystem:
