@@ -45,7 +45,7 @@
 
     # Environment.
     # Possible values: "prod" and "dev" out-of-the-box, other values possible with proper configuration
-    # Defaults to "prod" if omitted (uses SetEnvIf so value can be used in rewrite rules)
+    # Defaults to "dev" if omitted (uses SetEnvIf so value can be used in rewrite rules)
     #if[APP_ENV] SetEnvIf Request_URI ".*" APP_ENV=%APP_ENV%
 
     # Optional: Whether to use debugging.
