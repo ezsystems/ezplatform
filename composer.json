@@ -63,6 +63,9 @@
         "ezsystems/behatbundle": "^6.5.8",
         "ezsystems/ezplatform-i18n": "^1.5@dev"
     },
+    "conflict": {
+        "doctrine/dbal": ">=2.11.0"
+    },
     "scripts": {
         "symfony-scripts": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
