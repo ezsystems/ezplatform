@@ -37,6 +37,7 @@
         "friendsofsymfony/jsrouting-bundle": "^2.5",
         "hautelook/templated-uri-bundle": "^3.2",
         "knplabs/knp-menu-bundle": "^3.0",
+        "lexik/jwt-authentication-bundle": "^2.6",
         "monolog/monolog": "^2.0",
         "php-http/guzzle6-adapter": "^2.0",
         "platformsh/symfonyflex-bridge": "^2.2",
