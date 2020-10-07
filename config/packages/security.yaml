@@ -44,6 +44,26 @@ security:
             pattern: /user/(forgot-password|reset-password)
             security: false
 
+        ezpatform_rest:
+            request_matcher: EzSystems\EzPlatformAdminUi\REST\Security\NonAdminRESTRequestMatcher
+            user_checker: eZ\Publish\Core\MVC\Symfony\Security\UserChecker
+            anonymous: ~
+            guard:
+                authenticators:
+                    - lexik_jwt_authentication.jwt_token_authenticator
+                entry_point: lexik_jwt_authentication.jwt_token_authenticator
+            stateless: true
+
+        ezpatform_graphql:
+            request_matcher: EzSystems\EzPlatformGraphQL\Security\NonAdminGraphQLRequestMatcher
+            user_checker: eZ\Publish\Core\MVC\Symfony\Security\UserChecker
+            anonymous: ~
+            guard:
+                authenticators:
+                    - lexik_jwt_authentication.jwt_token_authenticator
+                entry_point: lexik_jwt_authentication.jwt_token_authenticator
+            stateless: true
+
         ezpublish_front:
             pattern: ^/
             user_checker: eZ\Publish\Core\MVC\Symfony\Security\UserChecker
