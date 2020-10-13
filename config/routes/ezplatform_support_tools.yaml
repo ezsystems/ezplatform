@@ -1,0 +1,2 @@
+ezplatform_support_tools:
+  resource: '@EzSystemsEzSupportToolsBundle/Resources/config/routing.yaml'
