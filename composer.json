@@ -74,7 +74,7 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "eZ\\Bundle\\EzPublishCoreBundle\\Composer\\ScriptHandler::dumpAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "@php bin/security-checker security:check || true"
+            "@php bin/security-checker security:check"
         ],
         "post-install-cmd": [
             "@symfony-scripts"
