@@ -7,7 +7,7 @@ default:
           output_path: '%paths.base%/build/allure'
     extensions:
         Behat\MinkExtension:
-            base_url: 'http://localhost'
+            base_url: 'http://localhost:8000'
             goutte: ~
             javascript_session: selenium
             sessions:
@@ -54,7 +54,10 @@ default:
         Allure\Behat\AllureFormatterExtension:
             image_attachment_limit: 5
 
-    suites: ~
+    suites:
+        default:
+            contexts:
+                - App\Tests\Behat\DemoContext
 
 imports:
     - vendor/ezsystems/ezplatform-kernel/eZ/Bundle/EzPublishCoreBundle/behat_suites.yml

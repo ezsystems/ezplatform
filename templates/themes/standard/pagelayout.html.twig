@@ -12,10 +12,16 @@
         <link rel="canonical" href="{{ ez_path(content) }}" />
     {% endif %}
 
-    {% block stylesheets %}{% endblock %}
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app_styles') }}
+    {% endblock %}
 </head>
 <body>
 {% block content %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('app_js') }}
 {% endblock %}
 </body>
 </html>
