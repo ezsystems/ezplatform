@@ -12,9 +12,18 @@ Encore.setOutputPath('public/assets/build')
     .enableReactPreset()
     .enableSingleRuntimeChunk();
 
-// Put your config here.
-Encore.addEntry('app_default', [
+// Welcome page stylesheets
+Encore.addEntry('welcome_page', [
     path.resolve(__dirname, './assets/scss/welcome-page.scss'),
+]);
+
+// Put your config here.
+Encore.addEntry('app_js', [
+    path.resolve(__dirname, './assets/app.js'),
+]);
+
+Encore.addEntry('app_styles', [
+    path.resolve(__dirname, './assets/styles/app.css'),
 ]);
 
 const projectConfig = Encore.getWebpackConfig();
