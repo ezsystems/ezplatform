@@ -1,6 +1,6 @@
 {% extends '@ezdesign/pagelayout.html.twig' %}
 
-{% trans_default_domain 'ezplatform_welcome_page' %}
+{% trans_default_domain 'ibexa_platform_welcome_page' %}
 
 {% block stylesheets %}
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,700" rel="stylesheet">
@@ -24,17 +24,17 @@
     <div class="container-fluid header__container">
         <div class="container h-100 text-center text-white d-flex flex-column align-items-center justify-content-center">
             <h1>
-                {{ 'ezplatform_welcome_page.welcome_to'|trans|desc('Welcome to') }}<br>
+                {{ 'ibexa_platform_welcome_page.welcome_to'|trans|desc('Welcome to') }}<br>
                 {{ ez_render_field(content, 'name') }}
                 {{ constant('EzSystems\\EzPlatformCoreBundle\\EzPlatformCoreBundle::VERSION') }}
             </h1>
             <div class="pt-5">
                 {{ ez_render_field(content, 'short_description') }}
-                <p class="mb-0">{{ 'ezplatform_welcome_page.navigate_to'|trans({'%target%': project_dir})|desc('Navigate to: %target%') }}</p>
+                <p class="mb-0">{{ 'ibexa_platform_welcome_page.navigate_to'|trans({'%target%': project_dir})|desc('Navigate to: %target%') }}</p>
 
                 {% set admin_url = url('ezplatform.dashboard', { 'siteaccess': 'admin' }) %}
                 <p class="mb-0">
-                    {{ 'ezplatform_welcome_page.create_new_content_at'|trans({'%target%': '<a href="' ~ admin_url ~ '" class="text-white"><u>' ~ admin_url ~ '</u></a>' })
+                    {{ 'ibexa_platform_welcome_page.create_new_content_at'|trans({'%target%': '<a href="' ~ admin_url ~ '" class="text-white"><u>' ~ admin_url ~ '</u></a>' })
                     |desc('Create new content at %target%')|raw }}
                 </p>
             </div>
@@ -59,21 +59,21 @@
                         <img src="{{ asset('assets/build/images/file-text-info-icon.svg') }}" alt="File text info icon">
                     </div>
                     <div>
-                        <h2 class="mb-3">{{ 'ezplatform_welcome_page.documentation'|trans|desc('Documentation') }}</h2>
+                        <h2 class="mb-3">{{ 'ibexa_platform_welcome_page.documentation'|trans|desc('Documentation') }}</h2>
                         <ul class="list-unstyled references-list">
                             <li class="references-list-item">
                                 <a href="https://ezplatform.com/documentation-center" class="references-list-item__link" target="_blank">
-                                    {{ 'ezplatform_welcome_page.documentation_center'|trans|desc('Documentation center') }}
+                                    {{ 'ibexa_platform_welcome_page.documentation_center'|trans|desc('Documentation center') }}
                                 </a>
                             </li>
                             <li class="references-list-item">
                                 <a href="https://doc.ezplatform.com/projects/userguide" class="references-list-item__link" target="_blank">
-                                    {{ 'ezplatform_welcome_page.user_documentation'|trans|desc('User documentation') }}
+                                    {{ 'ibexa_platform_welcome_page.user_documentation'|trans|desc('User documentation') }}
                                 </a>
                             </li>
                             <li class="references-list-item">
                                 <a href="https://doc.ezplatform.com" class="references-list-item__link" target="_blank">
-                                    {{ 'ezplatform_welcome_page.developer_documentation'|trans|desc('Developer documentation') }}
+                                    {{ 'ibexa_platform_welcome_page.developer_documentation'|trans|desc('Developer documentation') }}
                                 </a>
                             </li>
                         </ul>
@@ -86,26 +86,26 @@
                         <img src="{{ asset('assets/build/images/folder-icon.svg') }}" alt="Folder icon">
                     </div>
                     <div>
-                        <h2 class="mb-3">{{ 'ezplatform_welcome_page.tutorials_and_resources'|trans|desc('Tutorials and resources') }}</h2>
+                        <h2 class="mb-3">{{ 'ibexa_platform_welcome_page.tutorials_and_resources'|trans|desc('Tutorials and resources') }}</h2>
                         <ul class="list-unstyled references-list">
                             <li class="references-list-item">
                                 <a href="https://doc.ezplatform.com/en/latest/getting_started/first_steps" class="references-list-item__link" target="_blank">
-                                    {{ 'ezplatform_welcome_page.getting_started'|trans|desc('Getting started') }}
+                                    {{ 'ibexa_platform_welcome_page.getting_started'|trans|desc('Getting started') }}
                                 </a>
                             </li>
                             <li class="references-list-item">
                                 <a href="https://doc.ezplatform.com/en/latest/tutorials/platform_beginner/building_a_bicycle_route_tracker_in_ez_platform" class="references-list-item__link" target="_blank">
-                                    {{ 'ezplatform_welcome_page.tutorials'|trans|desc('Tutorials') }}
+                                    {{ 'ibexa_platform_welcome_page.tutorials'|trans|desc('Tutorials') }}
                                 </a>
                             </li>
                             <li class="references-list-item">
                                 <a href="http://doc.ezplatform.com/rest-api-reference" class="references-list-item__link" target="_blank">
-                                    {{ 'ezplatform_welcome_page.rest_api_reference'|trans|desc('REST API reference') }}
+                                    {{ 'ibexa_platform_welcome_page.rest_api_reference'|trans|desc('REST API reference') }}
                                 </a>
                             </li>
                             <li class="references-list-item">
                                 <a href="https://doc.ezplatform.com/en/latest/api/public_php_api" class="references-list-item__link" target="_blank">
-                                    {{ 'ezplatform_welcome_page.public_php_api'|trans|desc('Public PHP API') }}
+                                    {{ 'ibexa_platform_welcome_page.public_php_api'|trans|desc('Public PHP API') }}
                                 </a>
                             </li>
                             <li>
@@ -121,21 +121,21 @@
                         <img src="{{ asset('assets/build/images/conversation-chat-icon.svg') }}" alt="Conversation chat icon">
                     </div>
                     <div>
-                        <h2 class="mb-3">{{ 'ezplatform_welcome_page.forums_and_community'|trans|desc('Forums and community') }}</h2>
+                        <h2 class="mb-3">{{ 'ibexa_platform_welcome_page.forums_and_community'|trans|desc('Forums and community') }}</h2>
                         <ul class="list-unstyled references-list">
                             <li class="references-list-item">
                                 <a href="https://discuss.ezplatform.com" class="references-list-item__link" target="_blank">
-                                    {{ 'ezplatform_welcome_page.discussion_forum'|trans|desc('Discussion forum') }}
+                                    {{ 'ibexa_platform_welcome_page.discussion_forum'|trans|desc('Discussion forum') }}
                                 </a>
                             </li>
                             <li class="references-list-item">
                                 <a href="https://ez-community-on-slack.herokuapp.com/" class="references-list-item__link" target="_blank">
-                                    {{ 'ezplatform_welcome_page.community_slack_channel'|trans|desc('Community Slack channel') }}
+                                    {{ 'ibexa_platform_welcome_page.community_slack_channel'|trans|desc('Community Slack channel') }}
                                 </a>
                             </li>
                             <li class="references-list-item">
                                 <a href="https://ez.no/Blog" class="references-list-item__link" target="_blank">
-                                    {{ 'ezplatform_welcome_page.ibexa_blog'|trans|desc('Ibexa blog') }}
+                                    {{ 'ibexa_platform_welcome_page.ibexa_blog'|trans|desc('Ibexa blog') }}
                                 </a>
                             </li>
                         </ul>
@@ -148,11 +148,11 @@
 <footer class="footer pb-3">
     <div class="container-fluid container--wide">
         <span class="copyright">
-        {{ 'ezplatform_welcome_page.copyright'|trans({
-            '%ez_link_open%': '<a href="http://ibexa.co" target="_blank">',
-            '%ez_link_close%': '</a>',
+        {{ 'ibexa_platform_welcome_page.copyright'|trans({
+            '%ibexa_link_open%': '<a href="http://ibexa.co" target="_blank">',
+            '%ibexa_link_close%': '</a>',
             '%current_year%': "now"|date("Y")
-        }) |desc('Ibexa Digital Experience Platform © %current_year% %ez_link_open%Ibexa%ez_link_close% and others')|raw }}
+        }) |desc('Ibexa Platform © %current_year% %ibexa_link_open%Ibexa%ibexa_link_close% and others')|raw }}
         </span>
     </div>
 </footer>
