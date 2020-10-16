@@ -10,7 +10,12 @@ Encore.setOutputPath('public/assets/build')
     .setPublicPath('/assets/build')
     .enableSassLoader()
     .enableReactPreset()
-    .enableSingleRuntimeChunk();
+    .enableSingleRuntimeChunk()
+    .copyFiles({
+        from: './assets/images',
+        to: 'images/[path][name].[ext]',
+        pattern: /\.(png|svg)$/
+    });
 
 // Welcome page stylesheets
 Encore.addEntry('welcome_page', [

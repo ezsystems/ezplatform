@@ -12,8 +12,8 @@
         <note>key: ezplatform_welcome_page.community_slack_channel</note>
       </trans-unit>
       <trans-unit id="7a962f72da65e7106687adac6e6d7b5d658991b1" resname="ezplatform_welcome_page.copyright">
-        <source>eZ Platform ©1999-%current_year% %ez_link_open%eZ Systems AS%ez_link_close% and others.</source>
-        <target state="new">eZ Platform ©1999-%current_year% %ez_link_open%eZ Systems AS%ez_link_close% and others.</target>
+        <source>Ibexa Digital Experience Platform © %current_year% %ez_link_open%Ibexa%ez_link_close% and others</source>
+        <target state="new">Ibexa Digital Experience Platform © %current_year% %ez_link_open%Ibexa%ez_link_close% and others</target>
         <note>key: ezplatform_welcome_page.copyright</note>
       </trans-unit>
       <trans-unit id="dce2b551a81d5cbd0b2c34dcea1e31311f67ed0d" resname="ezplatform_welcome_page.create_new_content_at">
@@ -41,21 +41,6 @@
         <target state="new">Documentation center</target>
         <note>key: ezplatform_welcome_page.documentation_center</note>
       </trans-unit>
-      <trans-unit id="5d4cfefb0dbbd20c2413e9960a14228d227dc354" resname="ezplatform_welcome_page.ez_blog">
-        <source>eZ blog</source>
-        <target state="new">eZ blog</target>
-        <note>key: ezplatform_welcome_page.ez_blog</note>
-      </trans-unit>
-      <trans-unit id="a19f6891677a7fe3c4f0cce0197f951b5ca83094" resname="ezplatform_welcome_page.ez_commerce_documentation">
-        <source>eZ Commerce documentation</source>
-        <target state="new">eZ Commerce documentation</target>
-        <note>key: ezplatform_welcome_page.ez_commerce_documentation</note>
-      </trans-unit>
-      <trans-unit id="ef09a879123fe34ae00a7976497fc773ba65ab23" resname="ezplatform_welcome_page.ez_personalization_documentation">
-        <source>eZ Personalization documentation</source>
-        <target state="new">eZ Personalization documentation</target>
-        <note>key: ezplatform_welcome_page.ez_personalization_documentation</note>
-      </trans-unit>
       <trans-unit id="250dbbd13b7e759179f8225d0d1fe0513d6d6cae" resname="ezplatform_welcome_page.forums_and_community">
         <source>Forums and community</source>
         <target state="new">Forums and community</target>
@@ -65,6 +50,11 @@
         <source>Getting started</source>
         <target state="new">Getting started</target>
         <note>key: ezplatform_welcome_page.getting_started</note>
+      </trans-unit>
+      <trans-unit id="edc48a0599d3e9ec1b83de82c2c975a64ed6ad4a" resname="ezplatform_welcome_page.ibexa_blog">
+        <source>Ibexa blog</source>
+        <target state="new">Ibexa blog</target>
+        <note>key: ezplatform_welcome_page.ibexa_blog</note>
       </trans-unit>
       <trans-unit id="44f96430175f6289d5830009e222eb13fb0120ad" resname="ezplatform_welcome_page.navigate_to">
         <source>Navigate to: %target%</source>
@@ -95,6 +85,11 @@
         <source>User documentation</source>
         <target state="new">User documentation</target>
         <note>key: ezplatform_welcome_page.user_documentation</note>
+      </trans-unit>
+      <trans-unit id="707dd8a91f831413c9d3ea19acc98e56f6b5ea05" resname="ezplatform_welcome_page.welcome_to">
+        <source>Welcome to</source>
+        <target state="new">Welcome to</target>
+        <note>key: ezplatform_welcome_page.welcome_to</note>
       </trans-unit>
     </body>
   </file>
