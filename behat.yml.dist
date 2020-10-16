@@ -30,7 +30,7 @@ default:
 
         DMore\ChromeExtension\Behat\ServiceContainer\ChromeExtension: ~
 
-        FriendsOfBehat\SymfonyExtension\ServiceContainer\SymfonyExtension:
+        FriendsOfBehat\SymfonyExtension:
             kernel:
                 path: src/Kernel.php
                 class: App\Kernel
