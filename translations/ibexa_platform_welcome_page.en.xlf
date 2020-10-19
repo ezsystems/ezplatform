@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file source-language="en" target-language="en" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="2987fc15ff9917b965034c1f6113259e3670b0cb" resname="ibexa_platform_welcome_page.community_slack_channel">
+        <source>Community Slack channel</source>
+        <target state="new">Community Slack channel</target>
+        <note>key: ibexa_platform_welcome_page.community_slack_channel</note>
+      </trans-unit>
+      <trans-unit id="4c881f4c860503bedbef66f45a3500ac13c22621" resname="ibexa_platform_welcome_page.copyright">
+        <source>Ibexa Platform © %current_year% %ibexa_link_open%Ibexa%ibexa_link_close% and others</source>
+        <target state="new">Ibexa Platform © %current_year% %ibexa_link_open%Ibexa%ibexa_link_close% and others</target>
+        <note>key: ibexa_platform_welcome_page.copyright</note>
+      </trans-unit>
+      <trans-unit id="38fed69c2be5e97705fcf090148d490768d8c81d" resname="ibexa_platform_welcome_page.create_new_content_at">
+        <source>Create new content at %target%</source>
+        <target state="new">Create new content at %target%</target>
+        <note>key: ibexa_platform_welcome_page.create_new_content_at</note>
+      </trans-unit>
+      <trans-unit id="1390e41e8ca90a5bd5daa7a5c3ad06a5996bf6d8" resname="ibexa_platform_welcome_page.developer_documentation">
+        <source>Developer documentation</source>
+        <target state="new">Developer documentation</target>
+        <note>key: ibexa_platform_welcome_page.developer_documentation</note>
+      </trans-unit>
+      <trans-unit id="d20f60607aef51d406f58b24d5cbf78d378faed9" resname="ibexa_platform_welcome_page.discussion_forum">
+        <source>Discussion forum</source>
+        <target state="new">Discussion forum</target>
+        <note>key: ibexa_platform_welcome_page.discussion_forum</note>
+      </trans-unit>
+      <trans-unit id="85f6f00214473349dd7d2f21210ba566041b816d" resname="ibexa_platform_welcome_page.documentation">
+        <source>Documentation</source>
+        <target state="new">Documentation</target>
+        <note>key: ibexa_platform_welcome_page.documentation</note>
+      </trans-unit>
+      <trans-unit id="7b5e9ed019b56355d940c88703b12f7adf3955bf" resname="ibexa_platform_welcome_page.documentation_center">
+        <source>Documentation center</source>
+        <target state="new">Documentation center</target>
+        <note>key: ibexa_platform_welcome_page.documentation_center</note>
+      </trans-unit>
+      <trans-unit id="6c2779b7cb80ba0f46e1608a853d766f855cf39b" resname="ibexa_platform_welcome_page.forums_and_community">
+        <source>Forums and community</source>
+        <target state="new">Forums and community</target>
+        <note>key: ibexa_platform_welcome_page.forums_and_community</note>
+      </trans-unit>
+      <trans-unit id="22eeb52805189aeb47128d417c3dbd618d30c8d0" resname="ibexa_platform_welcome_page.getting_started">
+        <source>Getting started</source>
+        <target state="new">Getting started</target>
+        <note>key: ibexa_platform_welcome_page.getting_started</note>
+      </trans-unit>
+      <trans-unit id="1e438f216fca7d5e4c14b72dc5f2aafce168dafb" resname="ibexa_platform_welcome_page.ibexa_blog">
+        <source>Ibexa blog</source>
+        <target state="new">Ibexa blog</target>
+        <note>key: ibexa_platform_welcome_page.ibexa_blog</note>
+      </trans-unit>
+      <trans-unit id="0585031bc3561306d2bdc84968795e126ae1da11" resname="ibexa_platform_welcome_page.navigate_to">
+        <source>Navigate to: %target%</source>
+        <target state="new">Navigate to: %target%</target>
+        <note>key: ibexa_platform_welcome_page.navigate_to</note>
+      </trans-unit>
+      <trans-unit id="034d93e3dd14d39d2c3bb4740c4fef2e139f4e30" resname="ibexa_platform_welcome_page.public_php_api">
+        <source>Public PHP API</source>
+        <target state="new">Public PHP API</target>
+        <note>key: ibexa_platform_welcome_page.public_php_api</note>
+      </trans-unit>
+      <trans-unit id="0e868794e655862b46712096f3838035715ca91b" resname="ibexa_platform_welcome_page.rest_api_reference">
+        <source>REST API reference</source>
+        <target state="new">REST API reference</target>
+        <note>key: ibexa_platform_welcome_page.rest_api_reference</note>
+      </trans-unit>
+      <trans-unit id="7989236cbff5d38a5cfda3bfa9b211d80db1af04" resname="ibexa_platform_welcome_page.tutorials">
+        <source>Tutorials</source>
+        <target state="new">Tutorials</target>
+        <note>key: ibexa_platform_welcome_page.tutorials</note>
+      </trans-unit>
+      <trans-unit id="5c2121c5baa63c943a5c93decfbad20cdf23bf42" resname="ibexa_platform_welcome_page.tutorials_and_resources">
+        <source>Tutorials and resources</source>
+        <target state="new">Tutorials and resources</target>
+        <note>key: ibexa_platform_welcome_page.tutorials_and_resources</note>
+      </trans-unit>
+      <trans-unit id="7c2709c50bb6e3f654581e4f23f34d8c6dd65725" resname="ibexa_platform_welcome_page.user_documentation">
+        <source>User documentation</source>
+        <target state="new">User documentation</target>
+        <note>key: ibexa_platform_welcome_page.user_documentation</note>
+      </trans-unit>
+      <trans-unit id="ebc66899289f111043fdf09adbfabd940f857825" resname="ibexa_platform_welcome_page.welcome_to">
+        <source>Welcome to</source>
+        <target state="new">Welcome to</target>
+        <note>key: ibexa_platform_welcome_page.welcome_to</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

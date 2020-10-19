@@ -4,40 +4,53 @@ html {
 }
 body {
     font-size: 16px;
-    line-height: 32px;
+    line-height: 26px;
     color: #131C26;
     overflow-x: hidden;
-    font-family: "Noto Sans", sans-serif;
+    font-family: "Noto Sans";
     margin-bottom: 48px;
 }
 .header {
-    height: 410px;
-    background: transparent linear-gradient(90deg, #FF4713 0%, #DB0032 100%) 0% 0% no-repeat padding-box;
-    opacity: 1;
+    &__container {
+        height: 379px;
+        background: url("../images/background.png") no-repeat;
+    }
+}
+.logo {
+    max-width: 117px;
+    max-height: 33px;
 }
 h1 {
-    font-size: 42px;
-    line-height: 49px;
-    font-family: 'Work Sans', sans-serif;
+    font-size: 35px;
+    line-height: 44px;
+    font-family: 'Noto Sans';
     font-weight: 500;
 }
 h2 {
-    font-size: 22px;
-    line-height: 22px;
-    font-family: 'Work Sans', sans-serif;
-    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    font-family: 'Work Sans';
+    font-weight: 700;
 }
 a {
-    color: #db0032;
+    color: #252525;
 
     &:hover {
-        color: #ff4713;
+        color: #db0032;
+        text-decoration: none;
+    }
+}
+ul {
+    li:before {
+        content:"•";
+        font-size:12pt;
     }
 }
 .footer {
     position: absolute;
     bottom: 0;
     height: 48px;
+    width: 100%;
 
     .container-fluid {
         display: flex;
@@ -45,6 +58,27 @@ a {
         height: 100%;
     }
 }
+.copyright {
+    opacity: .6;
+}
 .background-grey {
     background-color: #f7f7f9;
+}
+.ezrichtext-field {
+    p {
+        margin-bottom: 0;
+    }
+}
+.description {
+    max-width: 625px;
+}
+.references {
+    &-list {
+        &-item__link {
+            padding-left: 15px;
+        }
+    }
+}
+.container--wide {
+    max-width: 1566px;
 }
