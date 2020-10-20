@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>Common File Text Info</title>
-    <g id="Welcome-Screen" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
-        <g id="Welcome_screen" transform="translate(-310.000000, -748.000000)" stroke="#DB0032" stroke-width="1.14356732">
-            <g id="Common-File-Text-Info" transform="translate(311.000000, 749.000000)">
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g transform="translate(-310.000000, -748.000000)" stroke="#DB0032" stroke-width="1.14356732">
+            <g transform="translate(311.000000, 749.000000)">
                 <line x1="4.59714061" y1="9.17140987" x2="15.4610301" y2="9.17140987" id="Path"></line>
                 <line x1="4.59714061" y1="12.6021118" x2="11.4585445" y2="12.6021118" id="Path"></line>
                 <line x1="4.59714061" y1="5.74070793" x2="12.6021118" y2="5.74070793" id="Path"></line>
