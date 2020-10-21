@@ -24,6 +24,10 @@ ezplatform:
             subtree_paths:
                 content: /1/2/
                 media: /1/43/
+            assets:
+                icon_sets:
+                    streamlineicons: /bundles/ezplatformadminuiassets/vendors/webalys/streamlineicons/all-icons.svg
+                default_icon_set: streamlineicons
 
 jms_translation:
     configs:
