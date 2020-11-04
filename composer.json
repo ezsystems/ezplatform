@@ -98,7 +98,7 @@
             "@php bin/console assetic:dump",
             "yarn install",
             "EzSystems\\EzPlatformEncoreBundle\\Composer\\ScriptHandler::compileAssets",
-            "@php bin/security-checker security:check"
+            "@php bin/security-checker security:check || true"
         ],
         "post-install-cmd": [
             "@symfony-scripts"
