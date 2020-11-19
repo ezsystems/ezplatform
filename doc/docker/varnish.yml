@@ -29,7 +29,7 @@ services:
     networks:
      - frontend
      - backend
-    command: ["--acl-add", "app"]
+    command: ["--acl-add", "app", "--debug-acl-add", "app"]
 
 ## DEBUG??
 # In need of debugging all request going to Varnish, use varnishlog, example:
