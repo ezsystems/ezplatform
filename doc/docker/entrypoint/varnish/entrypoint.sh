@@ -3,6 +3,7 @@
 # Script takes the following parameters:
 # [--acl-all-networks] - Add all container's network in the PURGE ACL.
 # [--acl-add ...] - Add a host or network segment to the PURGE ACL
+# [--debug-acl-add ...] - Add a host or network segment to the debuggers ACL
 
 function create_template_file
 {
@@ -34,7 +35,7 @@ function get_net_segments
 }
 
 # $1 is segment, format 1.2.3.4/24 or myhostname
-function add_segment
+function format_segment
 {
     # convert format 1.2.3.4/24 --> "1.2.3.4"/24;
     segment=`echo $1 | sed "s|\(.*\)/\(.*\)|\"\1\"/\2;|"`
@@ -42,8 +43,25 @@ function add_segment
     # convert format myhost --> "myhost";  ( any string not containing slash )
     segment=`echo $segment | sed -E "s|^([^/]+)\$|\"\1\";|"`
 
+    echo "$segment"
+}
+
+# $1 is segment, format 1.2.3.4/24 or myhostname
+function add_segment_to_purge_acl
+{
+    segment=`format_segment $1`
+
     echo "Adding network segment to varnish ACL : $segment"
     sed -i -s "s|\(.*ACL_INVALIDATOR.*\)|    $segment\n\1|" /etc/varnish/parameters.vcl
+}
+
+# $1 is segment, format 1.2.3.4/24 or myhostname
+function add_segment_to_debugger_acl
+{
+    segment=`format_segment $1`
+
+    echo "Adding network segment to varnish debuggers : $segment"
+    sed -i -s "s|\(.*DEBUGGER.*\)|    $segment\n\1|" /etc/varnish/parameters.vcl
 }
 
 create_template_file
@@ -53,7 +71,7 @@ while (( "$#" )); do
         segments=`get_net_segments`
 
         for segment in `echo $segments`; do
-            add_segment $segment
+            add_segment_to_purge_acl $segment
         done
     elif [ "$1" = "--acl-add" ]; then
         shift
@@ -62,7 +80,16 @@ while (( "$#" )); do
         if [ "$new_network" = "" ]; then
             echo "Warning : --acl-add parameter needs to be followed by a network segment, for instance \"--acl-add 10.0.1.0/24\""
         else
-            add_segment $new_network
+            add_segment_to_purge_acl $new_network
+        fi
+    elif [ "$1" = "--debug-acl-add" ]; then
+        shift
+        new_network="$1"
+
+        if [ "$new_network" = "" ]; then
+            echo "Warning : --debug-acl-add parameter needs to be followed by a network segment, for instance \"--debug-add 10.0.1.0/24\""
+        else
+            add_segment_to_debugger_acl $new_network
         fi
     else
         echo "Warning : Unrecognized parameter $1"
