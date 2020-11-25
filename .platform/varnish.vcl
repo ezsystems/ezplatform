@@ -3,7 +3,7 @@
 //   - Varnish xkey vmod (via varnish-modules package, or via Varnish Plus)
 // - eZ Platform 2.5LTS or higher with ezplatform-http-cache (this) bundle
 //
-// Make sure to at least adjust default parameters.yml, defaults there reflect our testing needs with docker.
+// WARNING: Not for us with Fastly, see documentation for where to find dedicated Fastly VCL.  
 
 // Not applicable on Platform.sh:
 //vcl 4.0;
