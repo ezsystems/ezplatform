@@ -4,3 +4,5 @@ ezdesign:
 
 parameters:
     ezsettings.admin_group.notifications.success.timeout: 20000
+    ezplatform.behat.root_content_name: "Ibexa Platform"
+    ezplatform.behat.enabled: true
