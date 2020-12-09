@@ -18,7 +18,7 @@
         "ezsystems/doctrine-dbal-schema": "^1.1@dev",
         "ezsystems/ez-support-tools": "^2.2@dev",
         "ezsystems/ezplatform-admin-ui": "^2.2@dev",
-        "ezsystems/ezplatform-admin-ui-assets": "~5.2.2@rc",
+        "ezsystems/ezplatform-admin-ui-assets": "~5.3.0@beta",
         "ezsystems/ezplatform-content-forms": "^1.2@dev",
         "ezsystems/ezplatform-core": "^2.2@dev",
         "ezsystems/ezplatform-cron": "^3.1@dev",
