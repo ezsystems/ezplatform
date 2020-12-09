@@ -37,8 +37,6 @@ services:
      - HTTPCACHE_PURGE_TYPE=http
      - PHP_INI_ENV_session.save_handler=redis
      - PHP_INI_ENV_session.save_path="tcp://redis:6379?weight=1"
-     - RECOMMENDATIONS_CUSTOMER_ID
-     - RECOMMENDATIONS_LICENSE_KEY
      - PUBLIC_SERVER_URI
     volumes:
      - vardir:/var/www/public/var
