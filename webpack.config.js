@@ -10,6 +10,10 @@ Encore.setOutputPath('web/assets/build')
     .setPublicPath('/assets/build')
     .enableSassLoader()
     .enableReactPreset()
+    // If you can ensure all assets are versioned, you may cache assets longer. In such case it's important that you cache assets
+    // longer then the cached dynamic pages referring to them (i.e. cache_ttl: 1d, then 2d for assets to account for stale cache)
+    //.enableVersioning()
+    //.cleanupOutputBeforeBuild()
     .enableSingleRuntimeChunk();
 
 // Put your config here.

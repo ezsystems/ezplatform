@@ -25,13 +25,14 @@ monolog:
     handlers:
         main:
             type: fingers_crossed
-            # eZ Platform sets this to critical instead of error to avoid too verbose logs in prod
-            action_level: critical
+            action_level: error
             handler: nested
         nested:
             type: '%log_type%'
             path: '%log_path%'
-            level: debug
+            level: error
+            include_stacktraces: '%log_stacktraces%'
+            max_files: '%log_max_files%'
         console:
             type: console
             process_psr_3_messages: false
