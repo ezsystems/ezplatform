@@ -37,7 +37,7 @@ parameters:
 
     ## Purge type used by HttpCache system ("local", "varnish"/"http", and on ee also "fastly")
     # env: HTTPCACHE_PURGE_TYPE
-    purge_type: local
+    purge_type: '%env(HTTPCACHE_PURGE_TYPE)%'
 
 ezplatform:
     # HttpCache settings, By default 'local' (Symfony HttpCache Proxy), by setting it to 'varnish' you can point it to Varnish
