@@ -36,7 +36,7 @@ parameters:
     ezplatform.session.handler_id: session.handler.native_file
 
     ## Purge type used by HttpCache system ("local", "varnish"/"http", and on ee also "fastly")
-    # env: HTTPCACHE_PURGE_TYPE
+    env(HTTPCACHE_PURGE_TYPE): local # default value to maintain BC
     purge_type: '%env(HTTPCACHE_PURGE_TYPE)%'
 
 ezplatform:
