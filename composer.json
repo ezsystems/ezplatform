@@ -140,11 +140,10 @@
         "sort-packages": true,
         "bin-dir": "bin/"
     },
-    "minimum-stability": "dev",
     "extra": {
         "symfony": {
             "allow-contrib": true,
-            "require": "~5.2.1@dev"
+            "require": "~5.2.1"
         },
         "branch-alias": {
             "dev-master": "3.3.x-dev"
