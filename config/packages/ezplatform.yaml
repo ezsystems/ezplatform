@@ -1,31 +1,34 @@
 parameters:
     locale_fallback: en
 
+    # Identifier used to generate the CSRF token. Commenting this line will result in authentication
+    # issues both in AdminUI and REST calls
+    ezpublish_rest.csrf_token_intention: authenticate
+
+    # You can uncomment following parameters to override the setting.
+    # Their values correspond to the defaults being used.
+
     # One of `legacy` (default) or `solr`
-    search_engine: '%env(SEARCH_ENGINE)%'
+    #search_engine: '%env(SEARCH_ENGINE)%'
 
     # Session save path as used by symfony session handlers (eg. used for dsn with redis)
-    ezplatform.session.save_path: '%kernel.project_dir%/var/sessions/%kernel.environment%'
+    #ezplatform.session.save_path: '%kernel.project_dir%/var/sessions/%kernel.environment%'
 
     # Predefined pools are located in config/packages/cache_pool/
     # You can add your own cache pool to the folder mentioned above.
     # In order to change the default cache_pool use environmental variable export.
     # The line below must not be altered as required cache service files are resolved based on environmental config.
-    cache_pool: '%env(CACHE_POOL)%'
+    #cache_pool: '%env(CACHE_POOL)%'
 
     # By default cache ttl is set to 24h, when using Varnish you can set a much higher value. High values depends on
     # using EzSystemsPlatformHttpCacheBundle (default as of v1.12) which by design expires affected cache on changes
-    httpcache_default_ttl: '%env(HTTPCACHE_DEFAULT_TTL)%'
+    #httpcache_default_ttl: '%env(HTTPCACHE_DEFAULT_TTL)%'
 
     # Settings for HttpCache
-    purge_server: '%env(HTTPCACHE_PURGE_SERVER)%'
-
-    # Identifier used to generate the CSRF token. Commenting this line will result in authentication
-    # issues both in AdminUI and REST calls
-    ezpublish_rest.csrf_token_intention: authenticate
+    #purge_server: '%env(HTTPCACHE_PURGE_SERVER)%'
 
     # Varnish invalidation/purge token (for use on platform.sh, eZ Platform Cloud and other places you can't use IP for ACL)
-    varnish_invalidate_token: '%env(resolve:default::HTTPCACHE_VARNISH_INVALIDATE_TOKEN)%'
+    #varnish_invalidate_token: '%env(resolve:default::HTTPCACHE_VARNISH_INVALIDATE_TOKEN)%'
 
     # Compile time handlers
     ## These are defined at compile time, and hence can't be set at runtime using env()
@@ -33,11 +36,12 @@ parameters:
 
     ## Session handler, by default set to file based (instead of ~) in order to be able to use %ezplatform.session.save_path%
     # env: SESSION_HANDLER_ID
-    ezplatform.session.handler_id: session.handler.native_file
+    #ezplatform.session.handler_id: session.handler.native_file
 
     ## Purge type used by HttpCache system ("local", "varnish"/"http", and on ee also "fastly")
-    # env: HTTPCACHE_PURGE_TYPE
-    purge_type: local
+    #purge_type: '%env(HTTPCACHE_PURGE_TYPE)%'
+
+    env(HTTPCACHE_PURGE_TYPE): local # default value to maintain BC
 
 ezplatform:
     # HttpCache settings, By default 'local' (Symfony HttpCache Proxy), by setting it to 'varnish' you can point it to Varnish
