@@ -2,8 +2,8 @@
 # Can have several connections used by each eZ Repositories in ezplatform.yml
 parameters:
     # Solr root endpoint, relevant if `solr` is set as search_engine
-    solr_dsn: '%env(SOLR_DSN)%'
-    solr_core: '%env(SOLR_CORE)%'
+    #solr_dsn: '%env(SOLR_DSN)%'
+    #solr_core: '%env(SOLR_CORE)%'
 
 ez_search_engine_solr:
     endpoints:
