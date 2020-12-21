@@ -1,6 +1,10 @@
 parameters:
     locale_fallback: en
 
+    # Identifier used to generate the CSRF token. Commenting this line will result in authentication
+    # issues both in AdminUI and REST calls
+    ezpublish_rest.csrf_token_intention: authenticate
+
     # You can uncomment following parameters to override the setting.
     # Their values correspond to the defaults being used.
 
@@ -22,10 +26,6 @@ parameters:
 
     # Settings for HttpCache
     #purge_server: '%env(HTTPCACHE_PURGE_SERVER)%'
-
-    # Identifier used to generate the CSRF token. Commenting this line will result in authentication
-    # issues both in AdminUI and REST calls
-    #ezpublish_rest.csrf_token_intention: authenticate
 
     # Varnish invalidation/purge token (for use on platform.sh, eZ Platform Cloud and other places you can't use IP for ACL)
     #varnish_invalidate_token: '%env(resolve:default::HTTPCACHE_VARNISH_INVALIDATE_TOKEN)%'
