@@ -145,7 +145,7 @@ hooks:
         if [ ! -f public/var/.platform.installed ]; then
             # To workaround issues with p.sh Varnish we clear container cache & temporary set Symfony Proxy
             rm -Rf var/cache/$APP_ENV/*.*
-            HTTPCACHE_PURGE_TYPE="local" php -d memory_limit=-1 `which composer` ezplatform-install
+            PLATFORMSH_SKIP_HTTPCACHE_PURGE="1" php -d memory_limit=-1 `which composer` ezplatform-install
             touch public/var/.platform.installed
         fi
 
