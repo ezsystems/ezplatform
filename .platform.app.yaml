@@ -128,7 +128,7 @@ hooks:
 
         if [ -z "$COMPOSER_AUTH" ]; then
             echo "TIP: If you need to authenticate against Github/Gitlab/updates.ez.no, use COMPOSER_AUTH env variable"
-            echo "See: https://docs.platform.sh/tutorials/composer-auth.html#set-the-envcomposerauth-project-variable"
+            echo "See: https://docs.platform.sh/guides/general/composer-auth.html#set-the-envcomposer_auth-project-variable"
         fi
 
         composer install --no-dev --prefer-dist --no-progress --no-interaction --optimize-autoloader
