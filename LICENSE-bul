@@ -1,0 +1,222 @@
+Ibexa Business Use License Agreement ("Ibexa BUL") Version 2.3
+
+
+IMPORTANT: Please read the following license agreement carefully.
+
+This Ibexa Business License Agreement (“Ibexa BUL”) is between Ibexa AS
+(Norwegian business registration no. 981601564, formerly eZ Systems AS),
+a Norwegian company ("Licensor", “Ibexa” or “we”), and the customer ("Licensee"
+or "you"). By installing all or any portion of the Licensed Software (or
+authorizing any other person to do so), you accept the terms and conditions of
+this Ibexa BUL. If you acquired the Licensed Software without an opportunity to
+review this Ibexa BUL and do not accept the Ibexa BUL, you must: (a) not use
+the Licensed Software and (b) return or delete the Licensed Software,
+with your certification of deletion, within thirty (30) days of the
+purchase date.
+
+The parties hereby agree to the following terms and conditions:
+
+1. Definitions
+
+"Licensed Software" means the Ibexa Digital Experience Platform (DXP)
+or other Ibexa software product (such as eZ Platform Enterprise Edition,
+eZ Publish Platform) downloaded, ordered or otherwise legally acquired
+(licensed) by you from Ibexa (or other party authorized by Ibexa).
+
+"Licensed Copy" means one sample of the Licensed Software.
+
+"Subscription Agreement" means the Ibexa Digital Experience Platform (DXP)
+Subscription Agreement, or other applicable Ibexa subscription (such as eZ
+Enterprise or eZ Platform Enterprise Subscription Agreement), entitling
+you to a BUL to the Licensed Software.
+
+2. License grant
+
+2.1 You may
+If you have entered into an Ibexa Subscription Agreement, you have paid the
+correct fees and you comply with the terms of this Ibexa BUL, we grant you a
+limited, non-exclusive and non-transferable right to:
+
+(a) install and run the Licensed Copy on the agreed number of websites
+or with the agreed number of database content objects; and
+
+(b) modify or make improvements, patches, workarounds and bug fixes
+(collectively "Licensee Modifications") to the Licensed Copy, or permit
+a third party to do so on Licensee's behalf, solely for use by the
+Licensee and its subsidiaries or affiliates.
+
+Licensee may make a reasonable number of copies of the Licensed Copy as
+required for backup and archival purposes only.
+
+2.2 You may not
+Licensee may use the Licensed Software only as expressly granted in
+section 2. Without limiting the foregoing, you may not: (a) give, lease,
+license, sell, make available, or distribute any part of the Licensed
+Software or Licensee Modifications to any third party, except as
+otherwise expressly permitted herein; (b) use the Licensed Software to
+operate as a time-sharing, outsourcing, service bureau, application
+service provider, managed service provider environment or similar
+service directed towards and performed on behalf or for the benefit of a
+third party; (c) copy the Licensed Software onto any public or
+distributed network; or (d) change any right notices which appear in the
+Licensed Software.
+
+3. Your responsibility
+Except as expressly described in this Ibexa BUL or in a separate written
+agreement, you alone are solely responsible for the installation of the
+Licensed Software, its operation, supervision, maintenance, management
+and related training and support. The same shall apply to any related
+installation, maintenance and configuration of computer hardware used by
+the Licensed Software.
+
+4. Price and payment
+You may use the Licensed Software free of charge if you are a current
+and paying Ibexa Subscription Agreement customer, with a
+subscription agreement covering the Licensed Software. If not, you may
+not use the Licensed Software.
+
+Please see the Ibexa Subscription Agreement for the prices and terms of payment,
+that apply.
+
+Within six months of the termination or expiration of any such Ibexa
+Subscription Agreement, all use of the Licensed Software has to stop,
+unless the Ibexa Subscription Agreement is renewed within such six month
+period. During this six month period, Ibexa is not liable for any loss
+or damage (of any kind) with you.
+
+5. Audit rights
+To make sure everyone is contributing their part to enable us to
+continue making great software, we need a right at all times to audit
+our Licensors. During the term of this Ibexa BUL and for a three year
+period following its termination, we therefor may conduct periodic
+reviews of your records relating to the Licensed Software for the
+purpose of verifying Licensee's compliance with this Ibexa BUL, Ibexa
+Subscription Agreement and related agreements. During
+this three year period, you are obliged to maintain complete and accurate
+books and other records related to software licensing and related
+payments. We must exercise its right of audit upon no fewer than 15
+days' prior notice. You will then provide us with reasonable access and
+assistance for the audit, including reasonable use of personnel,
+available office equipment and space. In return, we must give you a copy
+of the results of the audit, if you ask us for it.
+
+6. Termination
+Ibexa may terminate this Ibexa BUL immediately if you are in breach any of its
+provisions and such breach remains uncured 30 days after you receive
+notice of the breach. In the event that you (a) fail to pay Ibexa any
+outstanding amounts, including subscription fees or license fees for
+other software, on time, or (b) are or become liquidated, dissolved,
+bankrupt or insolvent, whether voluntarily or involuntarily, or is to
+take any action to be declared so, we may terminate this Ibexa BUL
+immediately. Upon cancellation or other termination of this Ibexa BUL, for
+any reason, you must immediately destroy all copies of the Licensed
+Software, and confirm the destruction within 7 (seven) days.
+
+7. Intellectual property rights
+You agree that no copyright, other intellectual property or proprietary
+rights in the Licensed Software and related documentation are
+transferred to you. No trademarks of Ibexa may be used by you without Ibexa’
+express written permission. If permission is granted, use must always
+take place in accordance with our guidelines as they may be updated from
+time to time. For Licensee Modifications, you must, in the modified
+files and in a separate text file, clearly indicate that the Licensed
+Software contains modifications and state their dates and location.
+
+8. Limited warranties
+We warrant that the Licensed Software will remain in substantial
+conformance with the current documentation of the Licensed Software. We
+disclaim, and you waive, all warranties, whether express or implied,
+including warranties of merchantability, fitness for a particular
+purpose, non-infringement, system integration, non-interference and
+accuracy of informational content. We do not warrant that the Licensed
+Software will meet your requirements or that the operation of it will be
+uninterrupted or error-free, or that errors will be corrected. The
+entire risk of the Licensed Software's quality and performance is
+therefore with you
+
+9. Limitation of liability
+To the extent permitted by law, we do not have liability with respect to
+obligations described in this Ibexa BUL or otherwise for direct,
+consequential, exemplary, special, indirect, incidental or punitive
+damages, including any lost profits or lost savings (whether resulting
+from impaired or lost data, software or computer failure or any other
+cause), even if we have been advised of the possibility of such damages.
+
+This limitation of liability applies to any default, including breach of
+contract, breach of warranty, negligence, misrepresentations and other
+injury. We both agree that the remedies and limitations herein allocate
+the risks between us as authorized by law. The license fee (none) is set
+in reliance upon this allocation of risk and the exclusion of damages as
+set forth in this Ibexa BUL.
+
+10. Miscellaneous
+
+10.1 Termination for patent action
+This Ibexa BUL shall terminate automatically and you may no longer exercise
+any of the rights granted to you by this Ibexa BUL as of the date you
+commence an action, including a cross-claim or counterclaim, against Ibexa,
+any third party supplier Ibexa is distributing software for, or other
+licensee, alleging that the Licensed Software infringes a patent.
+
+10.2 Transfer
+Without Ibexa’ written permission, you may not sublicense or otherwise
+transfer your rights and obligations under this Ibexa BUL to any other
+person or party. Any attempt by you to do so, will terminate this Ibexa BUL
+without further notice. Ibexa may assign its rights hereunder at any time
+without consent.
+
+10.3 Governing law
+This Ibexa BUL is to be governed by the laws of Norway, without regard to
+any conflict of law provisions.
+
+10.4 Disputes and legal venue
+If we disagree, you and Ibexa will first attempt to resolve the
+disagreement through discussions and negotiations.
+
+If you and Ibexa cannot agree, the dispute can be referred to Oslo City
+Court as mandatory legal venue by either one of us. However, if you are
+located in a country that does not have a bilateral or multilateral
+ruling enforcement treaty with Norway, the dispute must be referred to
+and finally determined by arbitration administered by the World
+Intellectual Property Organization (WIPO) Arbitration and Mediation
+Centre in accordance with the WIPO Arbitration Rules.
+
+The place of arbitration is to be Oslo, Norway. The arbitrator (only
+one) will decide based on this Ibexa BUL and Norwegian law. We both agree
+that the arbitrator will have the power to decide all matters, and to
+award any remedies. All proceedings and documents shall remain strictly
+confidential.
+
+In no event shall the United Nations Convention on Contracts for the
+International Sale of Goods apply to, or govern, this Ibexa BUL.
+
+10.5 Notices
+Any notices we need to send each other, must be delivered and addressed
+to you at the address you provided to Ibexa (or our representative) at the
+time of the order, and to Ibexa at
+
+Attn: Software Licensing Dept.,
+
+Ibexa AS,
+Solligata 2,
+0254 Oslo
+Norway
+
+Either party may change its address for notice purposes upon notice in
+accordance with this section.
+
+10.6 Export law assurances
+You are responsible for complying with any applicable local laws,
+including export and import regulations.
+
+10.7 Entire agreement
+This Ibexa BUL comprises the entire agreement, and replaces all earlier
+proposals, understandings and agreements, oral and written, between us.
+
+10.8 Update of terms
+In order to be able to manage all those licensing software from us, we
+may from time to time in our discretion issue new versions of this
+license. Unless you within 30 days from when you were first made aware
+or should have become aware of the new license have not objected in
+writing to us, the new version of the Ibexa BUL is to be deemed as accepted
+by you.
