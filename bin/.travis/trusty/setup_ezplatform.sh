@@ -81,6 +81,11 @@ if [[ -n "${DEPENDENCY_PACKAGE_NAME}" ]]; then
 
 fi
 
+if [[ -n "${DOCKER_PASSWORD}" ]]; then
+    echo "> Set up Docker credentials"
+    echo ${DOCKER_PASSWORD} | docker login -u ${DOCKER_USERNAME} --password-stdin
+fi
+
 echo "> Install DB and dependencies"
 docker-compose -f doc/docker/install-dependencies.yml up --abort-on-container-exit
 
