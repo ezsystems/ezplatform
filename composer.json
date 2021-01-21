@@ -42,7 +42,6 @@
         "php-http/guzzle6-adapter": "^2.0",
         "platformsh/symfonyflex-bridge": "^2.2",
         "sensio/framework-extra-bundle": "^5.5",
-        "sensiolabs/security-checker": "^6.0",
         "symfony/asset": "^5.0",
         "symfony/cache": "^5.0",
         "symfony/console": "^5.0",
@@ -121,12 +120,10 @@
             "ezplatform:encore:compile": "symfony-cmd"
         },
         "post-install-cmd": [
-            "@auto-scripts",
-            "@php bin/security-checker security:check || true"
+            "@auto-scripts"
         ],
         "post-update-cmd": [
-            "@auto-scripts",
-            "@php bin/security-checker security:check || true"
+            "@auto-scripts"
         ],
         "ezplatform-install": [
             "@php bin/console --ansi ezplatform:install clean",

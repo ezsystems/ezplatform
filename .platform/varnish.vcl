@@ -3,7 +3,7 @@
 //   - Varnish xkey vmod (via varnish-modules package 0.10.2 or higher, or via Varnish Plus)
 // - eZ Platform 3.x or higher with ezplatform-http-cache (this) bundle
 //
-// WARNING: Not for us with Fastly, see documentation for where to find dedicated Fastly VCL.  
+// WARNING: Not for us with Fastly, see documentation for where to find dedicated Fastly VCL.
 
 // Not applicable on Platform.sh:
 //vcl 4.0;
