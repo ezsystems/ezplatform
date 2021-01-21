@@ -52,7 +52,6 @@
         "overblog/graphql-bundle": "^0.11.11",
         "scssphp/scssphp": "~1.0",
         "sensio/distribution-bundle": "^5.0.23",
-        "sensiolabs/security-checker": "^5.0",
         "symfony/assetic-bundle": "^2.8.2",
         "symfony/monolog-bundle": "^3.3.1",
         "symfony/swiftmailer-bundle": "^3.2.4",
@@ -97,8 +96,7 @@
             "@php bin/console bazinga:js-translation:dump web/assets --merge-domains",
             "@php bin/console assetic:dump",
             "yarn install",
-            "EzSystems\\EzPlatformEncoreBundle\\Composer\\ScriptHandler::compileAssets",
-            "@php bin/security-checker security:check || true"
+            "EzSystems\\EzPlatformEncoreBundle\\Composer\\ScriptHandler::compileAssets"
         ],
         "post-install-cmd": [
             "@symfony-scripts"
