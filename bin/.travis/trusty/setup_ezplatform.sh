@@ -70,8 +70,12 @@ if [[ -n "${DEPENDENCY_PACKAGE_NAME}" ]]; then
     cd -
 
     # use local checkout path relative to docker volume
+    # create the directory for non-container commands to pass
+    if [ ! -d /var/www/${BASE_PACKAGE_NAME} ]; then
+        sudo mkdir -p /var/www/${BASE_PACKAGE_NAME}
+    fi
     echo "> Make composer use tested dependency local checkout ${TMP_TRAVIS_BRANCH} of ${BASE_PACKAGE_NAME}"
-    composer config repositories.localDependency git /var/www/${BASE_PACKAGE_NAME}
+    composer config repositories.localDependency path /var/www/${BASE_PACKAGE_NAME}
 
     echo "> Require ${DEPENDENCY_PACKAGE_NAME}:dev-${TMP_TRAVIS_BRANCH} as ${BRANCH_ALIAS}"
     if ! composer require --no-update "${DEPENDENCY_PACKAGE_NAME}:dev-${TMP_TRAVIS_BRANCH} as ${BRANCH_ALIAS}"; then
