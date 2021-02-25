@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Script used to prepare for eZ Platform/Enterprise archives
 #
 # Pre-requirement for LTS (EE) archives:
@@ -6,7 +6,7 @@
 #     If auth.json is placed in COMPOSER_HOME, it needs to be for same user as the one executing script.
 
 
-# Install all composer deps non-interactivly, skip scripts as they will be executed install
+# Install all composer deps non-interactively, skip scripts as they will be executed install
 composer install --no-interaction --prefer-dist --no-dev --no-scripts --optimize-autoloader
 
 # Rename .gitignore to make it optional as it is optimized for kernel development and not project development

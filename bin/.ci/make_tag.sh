@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Script used to make eZ Platform/Enterprise meta tags
 #
 # Only aims to:

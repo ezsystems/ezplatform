@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Script to generate virtual host config based on template containing variables among the ones defined below.
 # For help text, execute: ./bin/vhost.sh -h
 
