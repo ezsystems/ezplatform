@@ -75,7 +75,10 @@ if [[ -n "${DEPENDENCY_PACKAGE_NAME}" ]]; then
         sudo mkdir -p /var/www/${BASE_PACKAGE_NAME}
     fi
     echo "> Make composer use tested dependency local checkout ${TMP_TRAVIS_BRANCH} of ${BASE_PACKAGE_NAME}"
-    composer config repositories.localDependency path /var/www/${BASE_PACKAGE_NAME}
+    REPOSITORY_PROPERTIES=$( jq -n \
+                  --arg basePackageName "/var/www/$BASE_PACKAGE_NAME" \
+                  '{"type": "path", "url": $basePackageName, "options": { "symlink": false }}' )
+    composer config repositories.localDependency "$REPOSITORY_PROPERTIES"
 
     echo "> Require ${DEPENDENCY_PACKAGE_NAME}:dev-${TMP_TRAVIS_BRANCH} as ${BRANCH_ALIAS}"
     if ! composer require --no-update "${DEPENDENCY_PACKAGE_NAME}:dev-${TMP_TRAVIS_BRANCH} as ${BRANCH_ALIAS}"; then
