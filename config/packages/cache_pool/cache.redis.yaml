@@ -22,7 +22,7 @@ services:
                 # redis://secret@example.com:1234/13
                 # redis://secret@/var/run/redis.sock/13?persistent_id=4&class=Redis&timeout=3&retry_interval=3
                 # Example using Predis: redis://%cache_dsn%?class=\Predis\Client
-                provider: 'redis://%cache_dsn%'
+                provider: '%cache_dsn%'
                 # Cache namespace prefix overriding the one used by Symfony by default
                 # This makes sure cache is reliably shared across whole cluster and all Symfony env's
                 # Can be used for blue/green deployment strategies when changes affect content cache.
