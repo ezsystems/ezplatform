@@ -5,6 +5,11 @@
 [![Latest release](https://img.shields.io/github/release/ezsystems/ezplatform.svg?style=flat-square)](https://github.com/ezsystems/ezplatform/releases)
 [![License](https://img.shields.io/packagist/l/ezsystems/ezplatform.svg?style=flat-square)](LICENSE)
 
+## **This repository is no longer in active development!**
+
+The `master` branch of this repository is no longer in development.
+Please refer to [ibexa/oss](https://github.com/ibexa/oss) for the current, Flex-based repository.
+
 ## What is Ibexa Platform?
 *Ibexa Platform* is a fully open source professional CMS (Content Management System) developed by Ibexa and the Ibexa Community.
 
