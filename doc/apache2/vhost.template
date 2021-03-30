@@ -56,8 +56,7 @@
     # Optional: Whether to use Symfony's builtin HTTP Caching Proxy.
     # Disable it if you are using an external reverse proxy (e.g. Varnish)
     # Possible values: 0, 1 or ""
-    # Defaults to disabled if SYMFONY_ENV is set to "dev" or SYMFONY_TRUSTED_PROXIES is set,
-    # and if this env value is omitted or empty
+    # Defaults to disabled if SYMFONY_ENV is set to "dev"
     #if[SYMFONY_HTTP_CACHE] SetEnv SYMFONY_HTTP_CACHE "%SYMFONY_HTTP_CACHE%"
 
     # Optional: Defines the proxies to trust
