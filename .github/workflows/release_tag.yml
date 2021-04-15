@@ -1,0 +1,135 @@
+name: Create Release for tag
+
+on:
+  push:
+    tags:
+      - 'v*'
+      - '!v*-alpha*'
+      - '!v*-beta*'
+      - '!v*-rc*'
+jobs:
+  provide_changed_packages:
+    # see json juggling: https://docs.github.com/en/free-pro-team@latest/actions/reference/context-and-expression-syntax-for-github-actions#example-6
+    # see https://stackoverflow.com/a/62953566/1348344
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set Environment
+        run: |
+          echo "BUILD_TAG=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
+
+      - uses: actions/checkout@v2
+
+      # load current composer.lock
+      - id: currentLock
+        name: Gather latest package information
+        run: |
+          OUT=$(jq --slurp '[.[].packages[] | select(.name | contains("ezsystems") or contains("ibexa")) | [.name, .version] | { name: (.[0]), version: .[1] }]' composer.lock)
+          echo "::set-output name=lock::$( echo "$OUT" | sed ':a;N;$!ba;s/\n/%0A/g' )"
+
+      - name: Get previous release tag based on type
+        id: prevrelease
+        uses: ibexa/version-logic-action@master
+        with:
+          currentTag: ${{ env.BUILD_TAG }}
+
+      # checkout previous tag
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ steps.prevrelease.outputs.previousTag }}
+
+      # load previous composer.lock
+      - id: previousLock
+        name: Gather previous package information
+        run: |
+          OUT=$(jq --slurp '[.[].packages[] | select(.name | contains("ezsystems") or contains("ibexa")) | [.name, .version] | { name: (.[0]), version: .[1] }]' composer.lock)
+          echo "::set-output name=lock::$( echo "$OUT" | sed ':a;N;$!ba;s/\n/%0A/g' )"
+
+      # do some magic comparing those outputs
+      - id: output_data
+        name: Do comparison and output JSON with changes
+        run: |
+          FILE1=$(mktemp)
+          FILE2=$(mktemp)
+          cat > $FILE1 <<'EOF'
+          ${{ steps.previousLock.outputs.lock }}
+          EOF
+          cat > $FILE2 <<'EOF'
+          ${{ steps.currentLock.outputs.lock }}
+          EOF
+          OUT=$(jq -s 'flatten | group_by(.name)' $FILE1 $FILE2 | jq -s '[ .[][] | {name: (.[0].name), versions: [ .[0].version, .[1].version ] | unique} | select(.versions | length > 1) ]')
+          echo "::set-output name=matrix::$( echo "$OUT" | sed ':a;N;$!ba;s/\n/%0A/g' )"
+
+    # this step is needed, so the output gets to the next defined job
+    outputs:
+      matrix: ${{ steps.output_data.outputs.matrix }}
+
+  get_package_changelogs:
+    needs: provide_changed_packages
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set Environment
+        run: |
+          echo "BUILD_TAG=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
+
+      - name: Get previous release tag based on type
+        id: prevrelease
+        uses: ibexa/version-logic-action@master
+        with:
+          currentTag: ${{ env.BUILD_TAG }}
+
+      - name: Checkout Generator
+        uses: actions/checkout@v2
+        with:
+          repository: ibexa/changelog-generator-action
+          ref: master
+
+      - name: Setup Python environment
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install pygithub
+        run: |
+          pip install pygithub
+
+      - name: Run generator in a loop
+        id: generator
+        env:
+          INPUT_GITHUB_TOKEN: ${{ secrets.TRAVIS_GITHUB_TOKEN }}
+        run: |
+          cat > input.json <<'EOF'
+          ${{ needs.provide_changed_packages.outputs.matrix }}
+          EOF
+          export INPUT_BARE=True
+          echo "${{ github.repository }} ${{ env.BUILD_TAG }} change log" >> generator_output
+          echo "" >> generator_output
+          echo "Changes since ${{ steps.prevrelease.outputs.previousTag }}" >> generator_output
+          echo "" >> generator_output
+          jq -c '.[]' input.json | while read i; do
+            export GITHUB_REPOSITORY=$(jq -r '.name' <<< "$i")
+            export INPUT_PREVIOUSTAG=$(jq -r '.versions[0]' <<< "$i")
+            export INPUT_CURRENTTAG=$(jq -r '.versions[1]' <<< "$i")
+            echo -n "## " >> generator_output
+            python main.py >> generator_output
+            echo '' >> generator_output
+          done
+          echo "::set-output name=output::$( cat generator_output | sed ':a;N;$!ba;s/\n/%0A/g' )"
+
+      - name: Create Release
+        id: create_release
+        uses: zendesk/action-create-release@v1
+        with:
+          tag_name: ${{ env.BUILD_TAG }}
+          body: |
+            ${{ steps.generator.outputs.output }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Archive markdown
+        uses: actions/upload-artifact@v2
+        with:
+          name: changelogs
+          path: generator_output
