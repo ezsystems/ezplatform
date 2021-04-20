@@ -5,8 +5,7 @@ on:
     tags:
       - 'v*'
       - '!v*-alpha*'
-      - '!v*-beta*'
-      - '!v*-rc*'
+
 jobs:
   provide_changed_packages:
     # see json juggling: https://docs.github.com/en/free-pro-team@latest/actions/reference/context-and-expression-syntax-for-github-actions#example-6
@@ -84,21 +83,22 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: ibexa/changelog-generator-action
-          ref: master
+          ref: v2
 
       - name: Setup Python environment
         uses: actions/setup-python@v2
         with:
           python-version: '3.x'
 
-      - name: Install pygithub
+      - name: Install pygithub & jira
         run: |
-          pip install pygithub
+          pip install pygithub jira
 
       - name: Run generator in a loop
         id: generator
         env:
           INPUT_GITHUB_TOKEN: ${{ secrets.TRAVIS_GITHUB_TOKEN }}
+          INPUT_JIRA_TOKEN: ${{ secrets.JIRA_TOKEN }}
         run: |
           cat > input.json <<'EOF'
           ${{ needs.provide_changed_packages.outputs.matrix }}
