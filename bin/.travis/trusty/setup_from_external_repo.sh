@@ -33,6 +33,11 @@ if [ "$COMPOSE_FILE" = "" ] ; then
     exit 1
 fi
 
+if [[ -n "${DOCKER_PASSWORD}" ]]; then
+    echo "> Set up Docker credentials"
+    echo ${DOCKER_PASSWORD} | docker login -u ${DOCKER_USERNAME} --password-stdin
+fi
+
 echo "> Move '$REPO_DIR' to 'tmp_travis_folder'"
 mv $REPO_DIR tmp_travis_folder
 ls -al tmp_travis_folder
