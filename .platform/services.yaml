@@ -27,7 +27,7 @@ mysqldb:
 
 # For use by Symfony Cache (used by eZ Platform SPI Persistence Cache)
 rediscache:
-    type: 'redis:5.0'
+    type: 'redis:6.0'
     # For cache you might need to increase the size of your plan if your installation has a sizeable amount of content.
     # Check with platform.sh staff if in doubt on this, and if it would make sense to configure larger redis size here.
     # size: L
@@ -35,7 +35,7 @@ rediscache:
         # For cache eZ Platform 2.5+ RedisTagAwareAdapter requries one of the 'volatile-*' eviction policies
         # https://docs.platform.sh/configuration/services/redis.html#eviction-policy
         # https://doc.ezplatform.com/en/2.5/getting_started/requirements/
-        maxmemory_policy: volatile-lru
+        maxmemory_policy: volatile-lfu
 
 # If you wish to have a separate Redis instance for sessions, uncomment
 # this service and the corresponding relationship in .platform.app.yaml.

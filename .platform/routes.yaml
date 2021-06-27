@@ -2,8 +2,11 @@
     type: upstream
     upstream: "varnish:http"
     cache:
-        # As this does not support Vary, and purging, we can't use this as Sf Proxy drop in.
-        # However it is possible to enable this for anonymous traffic when backend sends expiry headers.
+        # This cache does not support Tagging, purging, and user context hash, we can't use this for HttpCache.
+        # Instead use one of:
+        # - Varnish (default)
+        # - Fastly (needed on Enterprise Dedicated)
+        # - Symfony Proxy (AppCache, only for single server, limited performance and ESI support)
         enabled: false
 
 "https://www.{default}/":

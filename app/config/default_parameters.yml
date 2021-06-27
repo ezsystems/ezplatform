@@ -102,7 +102,9 @@ parameters:
 
     ## Log type is one of "stream", "error_log" or other types supported by monolog
     # env: LOG_TYPE
-    log_type: stream
+    log_type: rotating_file
+    log_max_files: 10
+    log_stacktraces: true
 
     ## Mail transport used by SwiftMailer
     # env: MAILER_TRANSPORT

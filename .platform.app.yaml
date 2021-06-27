@@ -37,9 +37,24 @@ relationships:
 
 variables:
     php:
-        # Example of setting php.ini config
+        # Some recommended defaults for php.ini settings, adapt for your project
         #"display_errors": "On"
         memory_limit: 512M
+        post_max_size: 256M
+        upload_max_filesize: 256M
+
+        # Tweaking some default config
+        opcache.memory_consumption: 256
+        opcache.max_accelerated_files: 20000
+        opcache.max_wasted_percentage: 10
+        opcache.revalidate_freq: 20
+        realpath_cache_ttl: 600
+
+        # https://docs.platform.sh/configuration/app/timezone.html#setting-an-application-runtime-timezone
+        date.timezone: Europe/Oslo
+
+        # Set session lifetime to 18h
+        session.gc_maxlifetime: 64800
     env:
         # We disable Symfony Proxy (AppCache), as we rather use Varnish
         SYMFONY_HTTP_CACHE: 0
@@ -66,6 +81,12 @@ web:
                 # Disable .php(3) and other executable extensions in the var directory
                 '^/var/.*(?i)\.(php3?|phar|phtml|sh|exe|pl|bin)$':
                     allow: false
+                # Asset expiry, to set it higher you'll need "cache busting", i.e. by versioning assets (see info in webpack.config.js)
+                # Note: For Fastly comment out "expires" line, and uncomment the two lines for Surrogate-Control header instead!
+                '^\/(assets|bundles)\/([^\/]+\/)?([^\/]+\/)?.*\.(jpe?g|png|gif|svgz?|css|js|json|map|ico|bmp|eot|woff2?|otf|ttf)$':
+                    expires: 1h
+                    #headers:
+                        #Surrogate-Control: max-age=3600
 
 # The size of the persistent disk of the application (in MB).
 disk: 3072
@@ -124,6 +145,9 @@ hooks:
         # Generic cleanup to remove files we don't want to be deployed to prod (you don't need this for "dev" ENV)
         rm web/app_dev.php
 
+        # Install platform.sh cli for cron use: backup (needs auth tokens) and re-deploy (for cert renew)
+        curl -sS https://platform.sh/cli/installer | php
+
     # Deploy hook, access to services & done once (per cluster, not per node), only mounts are writable at this point
     # Note: Http traffic is paused while this is running, so for prod code this should finish as fast as possible, < 30s
     deploy: |
@@ -147,6 +171,8 @@ hooks:
         # If you also need to clear Redis cache on every deploy, you can either use this command or redis-cli
         # Normally this should only be needed if cached data structures changes (upgrades), or you change data via sql (e.g. restore backup)
         ##php bin/console cache:pool:clear cache.redis
+        # Command above will just clear current pool/namespace set for default siteaccess, to clear all:
+        ##redis-cli -h rediscache.internal -p 6379 FLUSHALL
 
         # Example of additional deploy hooks if you use doctrine and/or kaliop migration bundle
         ##php bin/console doctrine:migrations:migrate --no-interaction --allow-no-migration
@@ -161,7 +187,7 @@ hooks:
         # When using Varnish/Fastly, HttpCache is not cleared when clearing Symfony Cache folder above, you need to
         # clear cache yourself when for instance templates or config affecting responses change, for instance with:
         ##bin/console fos:httpcache:invalidate:tag ez-all
-        # Depending on your VCL, buy default this would trigger a soft purge (expiry) and allow grace period, however
+        # Depending on your VCL, by default this would trigger a soft purge (expiry) and allow grace period, however
         # even so if your change only affected certain subset of content, ideally you should only clear specific tags:
         ##bin/console fos:httpcache:invalidate:tag l44 c33 ct2 ...
 
@@ -186,6 +212,13 @@ crons:
     weekly:
         spec: "0 0 * * 0"
         cmd: "php bin/console ezplatform:check-urls --quiet"
+    renewcert:
+        # Force a redeploy at 2 am (UTC) on the 5th and 20th of every month to renew certificates.
+        spec: '0 2 5,20 * *'
+        cmd: |
+            if [ "$PLATFORM_BRANCH" = master ]; then
+                platform redeploy --yes --no-wait
+            fi
 
 runtime:
     extensions:
