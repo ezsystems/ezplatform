@@ -5,23 +5,34 @@ ezpublish:
 
     # Repositories configuration, setup default repository to support solr if enabled
     repositories:
-        default:
-            storage: ~
+        repository_1:
+            storage:
+                engine: legacy
+                connection: connection_1
             search:
                 engine: '%search_engine%'
-                connection: default
+                connection: connection_1
+        repository_2:
+            storage:
+                engine: legacy
+                connection: connection_2
+            search:
+                engine: '%search_engine%'
+                connection: connection_2
 
     # Siteaccess configuration, with one siteaccess per default
     siteaccess:
-        list: [site, admin]
+        list: [site1, admin1, site2, admin2]
         groups:
-            site_group: [site]
+            site_group: [site1, site2]
+            site1_group: [site1, admin1]
+            site2_group: [site2, admin2]
 
             # WARNING: Do not remove or rename this group.
             # It's used to distinguish common siteaccesses from admin ones.
             # In case of multisite with multiple admin panels, remember to add any additional admin siteaccess to this group.
-            admin_group: [admin]
-        default_siteaccess: site
+            admin_group: [admin1, admin2]
+        default_siteaccess: site1
         match:
             URIElement: 1
 
@@ -48,6 +59,14 @@ ezpublish:
         #site_group:
         #    design: main
 
+        site1_group:
+            cache_service_name: '%cache_pool%_1'
+            var_dir: var/site1
+
+        site2_group:
+            cache_service_name: '%cache_pool%_2'
+            var_dir: var/site2
+
         admin_group:
             # System languages. Note that by default, content, content types, and other data are in eng-GB locale,
             # so removing eng-GB from this list may lead to errors or content not being shown, unless you change
@@ -64,7 +83,9 @@ ezpublish:
                 content: /1/2/
                 media: /1/43/
 
-        site:
+        site2:
+            languages: [eng-GB]
+        site1:
             languages: [eng-GB]
 
     url_alias:
