@@ -56,7 +56,14 @@ jobs:
           cat > $FILE2 <<'EOF'
           ${{ steps.currentLock.outputs.lock }}
           EOF
-          OUT=$(jq -s 'flatten | group_by(.name)' $FILE1 $FILE2 | jq -s '[ .[][] | {name: (.[0].name), versions: [ .[0].version, .[1].version ] | unique} | select(.versions | length > 1) ]')
+          # Get only changed packages and sort versions in ascending order
+          # Step 1: Merge composer.json from two versions, grouping by .name
+          # Step 2: Take .versions key and remove duplicate versions (means this bundle did not change)
+          # Step 3: Select only those bundles that have more than 1 version in .versions
+          # Step 4: Sort versions
+          # Step 5: (outer brackets) Wrap that into JSON list of objects
+          # Note: zzzz is added as an additional suffix to properly sort out alpha/beta/etc pre-releases (v2.5.1-alphazzzz < v2.5.1zzzz)
+          OUT=$(jq -s 'flatten | group_by(.name)' $FILE1 $FILE2 | jq -s '[ .[][] | {name: (.[0].name), versions: [ .[0].version, .[1].version ] | unique} | select(.versions | length > 1) ] | .[].versions |= sort_by( . + "zzzz" | [scan("[0-9]+|[a-z]+")] | map(tonumber? // .) )')
           echo "::set-output name=matrix::$( echo "$OUT" | sed ':a;N;$!ba;s/\n/%0A/g' )"
 
     # this step is needed, so the output gets to the next defined job
