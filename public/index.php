@@ -26,7 +26,8 @@ $kernel = new Kernel($_SERVER['APP_ENV'], (bool) $_SERVER['APP_DEBUG']);
 // Depending on the APP_HTTP_CACHE environment variable, tells whether the internal HTTP Cache mechanism is to be used.
 // Recommendation is to use Varnish over this, for performance and being able to setup cluster if you need to.
 // If not set, or "", it is auto activated if _not_ in "dev" environment.
-if (($useHttpCache = getenv('APP_HTTP_CACHE')) === false || $useHttpCache === '') {
+$useHttpCache = $_ENV['APP_HTTP_CACHE'] ?? false;
+if ($useHttpCache === false || $useHttpCache === '') {
     $useHttpCache = $_SERVER['APP_ENV'] !== 'dev';
 }
 
