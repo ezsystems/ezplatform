@@ -1,0 +1,143 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+    tests:
+        name: Tests
+        runs-on: ubuntu-latest
+        services:
+            mysql:
+                image: mariadb:10.3
+                env:
+                    MYSQL_ALLOW_EMPTY_PASSWORD: yes
+                    MYSQL_DATABASE: ezplatform
+                ports:
+                    - 3306:3306
+                options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+            redis:
+                image: redis:latest
+                ports:
+                    - 6379:6379
+                options: --health-cmd "redis-cli ping" --health-interval 10s --health-timeout 5s --health-retries 5
+        strategy:
+            matrix:
+                php: [7.3]
+        env:
+            CACHE_POOL: cache.redis
+            DATABASE_URL: mysql://root@127.0.0.1:3306/ezplatform
+            CACHE_DSN: 127.0.0.1:6379
+            APP_ENV: behat
+            APP_DEBUG: 1
+            COMPOSER_MEMORY_LIMIT: 4G
+        steps:
+            -   uses: actions/checkout@v2
+
+            -   name: Setup PHP
+                uses: shivammathur/setup-php@master
+                with:
+                    php-version: ${{ matrix.php }}
+                    extensions: mbstring, intl
+                id: php
+
+            -   name: Get Composer Cache Directory
+                id: composer-cache
+                run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+            -   uses: actions/cache@v1
+                with:
+                    path: ${{ steps.composer-cache.outputs.dir }}
+                    key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+                    restore-keys: |
+                        ${{ runner.os }}-composer-
+
+            -   name: Validate composer.json and composer.lock
+                run: composer validate
+
+            -   name: Install dependencies
+                run: composer install --prefer-dist --no-progress --no-suggest --no-interaction
+
+            -   name: Show Versions
+                run: composer info -i
+
+            -   name: Install Symfony Server
+                run: |
+                    wget https://get.symfony.com/cli/installer -O - | bash
+                    /home/runner/.symfony/bin/symfony local:server:ca:install
+                    /home/runner/.symfony/bin/symfony local:php:list
+
+            -   name: Install eZ Platform
+                run: |
+                    rm -rf var/cache
+                    composer ezplatform-install
+
+            -   name: Run Webserver
+                run: /home/runner/.symfony/bin/symfony local:server:start --port=42443 -d
+
+            -   name: Change Mink Base Url
+                run: |
+                    sed -E 's/(base_url): '\''(http:\/\/localhost)'\''/\1: https:\/\/127.0.0.1:42443/g' behat.yml.dist > behat.yml
+
+            -   name: "eZ Platform REST Bundle functional tests"
+                run:  |
+                    bin/console ez:behat:create-language 'pol-PL' 'Polish (polski)'
+                    ./bin/.travis/run_rest_tests.sh
+                env:
+                    EZP_TEST_REST_HOST: 127.0.0.1:42443
+                    EZP_TEST_REST_SCHEME: https
+
+            -   name: "Kernel core tests"
+                run: bin/ezbehat --mode=behat --profile=core --tags=~@broken
+
+            -   name: "Behat"
+                run: bin/ezbehat --mode=behat --profile=behat --tags=~@broken
+
+            -   name: "Content Forms tests on Clean Platform"
+                run: bin/ezbehat --mode=behat --profile=content-forms --tags=~@broken --non-strict
+
+            -   name: "Admin UI on Clean Platform"
+                run: bin/ezbehat --profile=adminui --suite=adminui
+
+            -   name: "Admin UI tests using different personas"
+                run: |
+                    bin/ezbehat --profile=setup --suite=personas --tags=@setup
+                    bin/ezbehat --profile=adminui --suite=personas
+
+    varnishthroughezlaunchpad:
+        name: eZ Launchpad and HTTP Cache Tests
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                # This is PHP to run eZ Launchpad here, not the PHP running eZ
+                php: [7.3]
+        steps:
+            -   uses: actions/checkout@v1
+
+            -   name: Setup PHP
+                uses: shivammathur/setup-php@master
+                with:
+                    php-version: ${{ matrix.php }}
+                id: php
+
+            -   name: Create fake conditions for eZ Launchpad - Create
+                run: |
+                    echo "{provisioning: { folder_name: provisioning}, docker: { compose_filename: docker-compose.yml, network_name: githubactions, network_prefix_port: 42}}" > ../.ezlaunchpad.yml
+                    mkdir ../data && cd ../data
+                    touch db.sql && gzip db.sql
+                    mkdir ezlaunchpad && cd ezlaunchpad
+                    wget -O ezlaunchpad.zip https://github.com/ezsystems/launchpad/archive/master.zip
+                    unzip ezlaunchpad.zip && rm ezlaunchpad.zip
+                    cp -rp launchpad-master/payload ../../provisioning
+                    cd .. && rm -rf ezlaunchpad
+
+            -   name: eZ Launchpad installation
+                run: curl -LSs https://ezsystems.github.io/launchpad/install_curl.bash | bash
+
+            -   name: eZ Launchpad create the project
+                run: cd .. && ~/ez create
+
+            -   name: Status Info
+                run:  cd .. && ~/ez ps
+
+            -   name: "Admin UI on Clean Platform with Varnish and Redis"
+                run: echo "@todo"
