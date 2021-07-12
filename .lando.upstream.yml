@@ -1,0 +1,32 @@
+# This file sets some good defaults for local development using this Platform.sh
+# template with Lando.
+#
+# Note that you should not edit this file so it can continue to receive upstream
+# updates. If you wish to change the values below then override them in your
+# normal .lando.yml.
+
+# These both allow you to test this template without needing a site on Platform.sh
+# However you will want to replace them in your .lando.yml
+name: platformsh-ezplatform
+recipe: platformsh
+
+config:
+
+  # This section overrides Platform.sh configuration with values that make more
+  # sense for local development.
+  #
+  # Note that "app" is the name of the application defined in your
+  # .platform.app.yaml or applications.yaml.
+  overrides:
+    app:
+      variables:
+        env:
+          APP_ENV: dev
+          APP_DEBUG: 1
+
+# These are tools that are commonly used during development for this template.
+tooling:
+  console:
+    cmd: /app/bin/console
+    service: app
+
