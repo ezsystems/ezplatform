@@ -52,10 +52,35 @@ web:
             passthru: "/app.php"
             # The number of seconds whitelisted (static) content should be cache
             expires: 600
+            # Deny by default, allow in rules below as necessary
+            allow: false
             rules:
+                # This appears redundant, but looks can be deceiving.
                 # Disable .php(3) and other executable extensions in the var directory
                 '^/var/.*(?i)\.(php3?|phar|phtml|sh|exe|pl|bin)$':
                     allow: false
+                # Serve storage/images|images-versioned directly
+                '^/var/([^/]+/)?storage/images(-versioned)?/.*':
+                    allow: true
+                '^/favicon\.ico':
+                    allow: true
+                '^/robots\.txt':
+                    allow: true
+                '^/bundles/':
+                    allow: true
+                '^/assets/':
+                    allow: true
+                '^/design/':
+                    allow: true
+                '^/extension/[^/]+/design([/?]|$)':
+                    allow: true
+                '^/var/[^/]+/cache/public([/?]|$)':
+                    allow: true
+                '^/share/icons/':
+                    allow: true
+                # Comment this if in "dev" mode
+                '^/(css|js|fonts?)/.*\.(css|js|otf|eot|ttf|svg|woff)':
+                    allow: true
 
 # The size of the persistent disk of the application (in MB).
 disk: 3072
