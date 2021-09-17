@@ -134,3 +134,12 @@ fos_http_cache:
                         public: true
                         max_age: 0
                         s_maxage: 20
+            # Do not cache login/logout
+            -
+                match:
+                    path: ^/(login|logout)
+                headers:
+                    overwrite: true
+                    cache_control:
+                        max_age: 0
+                        s_maxage: 0
