@@ -58,6 +58,9 @@ matrix:
       env:
         - SETUP_BEHAT_OPTS="--profile=setup --suite=personas --tags=@setup"
         - BEHAT_OPTS="--profile=adminui --suite=personas"
+    - name: "THIS ONE WILL FAIL"
+      env:
+        - BEHAT_OPTS="--profile=adminui --suite=personas"
     - if: type in (cron, api)
       name: "[PHP 7.1/PostgreSQL] Admin UI on Clean Platform"
       env:
