@@ -43,7 +43,7 @@ default:
                     cloud_name: ezplatformtravis
                     preset: ezplatform
                     mode: normal
-                    limit: 10
+                    limit: 3
 
         Allure\Behat\AllureFormatterExtension:
             image_attachment_limit: 5
