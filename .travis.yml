@@ -61,8 +61,8 @@ matrix:
     - name: "THIS ONE WILL FAIL"
       env:
         - BEHAT_OPTS="--profile=adminui --suite=personas"
-    - if: type in (cron, api)
-      name: "[PHP 7.1/PostgreSQL] Admin UI on Clean Platform"
+    # - if: type in (cron, api)
+    - name: "[PHP 7.1/PostgreSQL] Admin UI on Clean Platform"
       env:
         - COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/db-postgresql.yml:doc/docker/selenium.yml"
         - BEHAT_OPTS="--profile=adminui --suite=adminui"
