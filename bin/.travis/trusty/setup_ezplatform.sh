@@ -94,16 +94,16 @@ if [[ -n "${DOCKER_PASSWORD}" ]]; then
 fi
 
 echo "> Install DB and dependencies"
-docker-compose -f doc/docker/install-dependencies.yml up --abort-on-container-exit
+docker-compose --env-file .env -f doc/docker/install-dependencies.yml up --abort-on-container-exit
 
 echo "> Start docker containers specified by ${COMPOSE_FILE}"
-docker-compose up -d
+docker-compose --env-file .env up -d
 
 # for behat builds to work
 echo '> Change ownership of files inside docker container'
-docker-compose exec app sh -c 'chown -R www-data:www-data /var/www'
+docker-compose --env-file .env exec app sh -c 'chown -R www-data:www-data /var/www'
 
 echo '> Install data'
-docker-compose exec --user www-data app sh -c "php /scripts/wait_for_db.php; composer ezplatform-install"
+docker-compose --env-file .env exec --user www-data app sh -c "php /scripts/wait_for_db.php; composer ezplatform-install"
 
 echo '> Done, ready to run tests'
