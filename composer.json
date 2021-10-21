@@ -74,7 +74,7 @@
         "ezsystems/allure-behat": "^2.0@dev",
         "ezsystems/allure-php-api": "^2.0@dev",
         "ezsystems/behat-screenshot-image-driver-cloudinary": "^1.1.0@dev",
-        "ezsystems/behatbundle": "^7.0.0@dev",
+        "ezsystems/behatbundle": "dev-ibx-1228-spi-cache-skipping-location-path-1 as 7.0.x-dev",
         "liuggio/fastest": "~1.6.0",
         "overblog/graphiql-bundle": "^0.1.2",
         "phpunit/phpunit": "^6.5.13",
