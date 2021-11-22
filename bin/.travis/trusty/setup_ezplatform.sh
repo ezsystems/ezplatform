@@ -93,6 +93,9 @@ if [[ -n "${DOCKER_PASSWORD}" ]]; then
     echo ${DOCKER_PASSWORD} | docker login -u ${DOCKER_USERNAME} --password-stdin
 fi
 
+# Copy .env file to the directory where Docker Compose looks for it to avoid specyfing it directly everywhere
+cp .env doc/docker
+
 echo "> Install DB and dependencies"
 docker-compose -f doc/docker/install-dependencies.yml up --abort-on-container-exit
 
