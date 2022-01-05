@@ -107,6 +107,6 @@ echo '> Change ownership of files inside docker container'
 docker-compose exec app sh -c 'chown -R www-data:www-data /var/www'
 
 echo '> Install data'
-docker-compose exec --user www-data app sh -c "php /scripts/wait_for_db.php; composer ezplatform-install"
+docker-compose exec --user www-data app sh -c "php /scripts/wait_for_db.php; composer --no-interaction ezplatform-install"
 
 echo '> Done, ready to run tests'
