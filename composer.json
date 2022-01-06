@@ -39,7 +39,7 @@
         "ezsystems/ezplatform-http-cache": "^1.0@dev",
         "ezsystems/ezplatform-matrix-fieldtype": "^1.0@dev",
         "ezsystems/ezplatform-richtext": "^1.1@dev",
-        "ezsystems/ezplatform-solr-search-engine": "^1.6@dev",
+        "ezsystems/ezplatform-solr-search-engine": "^2.0@dev",
         "ezsystems/ezplatform-standard-design": "^0.2@dev",
         "ezsystems/ezplatform-user": "^1.0@dev",
         "ezsystems/ezpublish-kernel": "^7.5@dev",
