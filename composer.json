@@ -17,34 +17,41 @@
         "psr-4": {
             "AppBundle\\": "src/AppBundle/"
         },
-        "classmap": [ "app/AppKernel.php", "app/AppCache.php" ]
+        "classmap": [
+            "app/AppKernel.php",
+            "app/AppCache.php"
+        ]
     },
     "autoload-dev": {
-        "psr-4": { "Tests\\": "tests/" },
-        "files": [ "vendor/symfony/symfony/src/Symfony/Component/VarDumper/Resources/functions/dump.php" ]
+        "psr-4": {
+            "Tests\\": "tests/"
+        },
+        "files": [
+            "vendor/symfony/symfony/src/Symfony/Component/VarDumper/Resources/functions/dump.php"
+        ]
     },
     "require": {
         "php": "^7.1.3",
         "doctrine/doctrine-bundle": "^1.9.1",
         "doctrine/orm": "^2.6.3",
-        "ezsystems/doctrine-dbal-schema": "^0.1@dev",
-        "ezsystems/ez-support-tools": "^1.0@dev",
-        "ezsystems/ezplatform-admin-ui": "^1.5@dev",
-        "ezsystems/ezplatform-admin-ui-assets": "^4.1.0",
-        "ezsystems/ezplatform-admin-ui-modules": "^1.5@dev",
-        "ezsystems/ezplatform-core": "^1.0@dev",
-        "ezsystems/ezplatform-cron": "^2.0@dev",
-        "ezsystems/ezplatform-design-engine": "^2.0@dev",
-        "ezsystems/ezplatform-graphql": "^1.0@dev",
-        "ezsystems/ezplatform-http-cache": "^1.0@dev",
-        "ezsystems/ezplatform-matrix-fieldtype": "^1.0@dev",
-        "ezsystems/ezplatform-richtext": "^1.1@dev",
-        "ezsystems/ezplatform-solr-search-engine": "^1.6@dev",
-        "ezsystems/ezplatform-standard-design": "^0.2@dev",
-        "ezsystems/ezplatform-user": "^1.0@dev",
-        "ezsystems/ezpublish-kernel": "^7.5@dev",
-        "ezsystems/repository-forms": "^2.5@dev",
-        "ezsystems/symfony-tools": "~1.1.0@dev",
+        "ezsystems/doctrine-dbal-schema": "~0.1.7",
+        "ezsystems/ez-support-tools": "~1.0.14",
+        "ezsystems/ezplatform-admin-ui": "~1.5.27",
+        "ezsystems/ezplatform-admin-ui-assets": "~4.2.2",
+        "ezsystems/ezplatform-admin-ui-modules": "~1.5.13",
+        "ezsystems/ezplatform-core": "~1.0.7",
+        "ezsystems/ezplatform-cron": "~2.0.7",
+        "ezsystems/ezplatform-design-engine": "~2.0.3",
+        "ezsystems/ezplatform-graphql": "~1.0.11",
+        "ezsystems/ezplatform-http-cache": "~1.0.5",
+        "ezsystems/ezplatform-matrix-fieldtype": "~1.0.11",
+        "ezsystems/ezplatform-richtext": "~1.1.13",
+        "ezsystems/ezplatform-solr-search-engine": "~1.7.10",
+        "ezsystems/ezplatform-standard-design": "~0.2.5",
+        "ezsystems/ezplatform-user": "~1.0.11",
+        "ezsystems/ezpublish-kernel": "~7.5.27",
+        "ezsystems/repository-forms": "~2.5.13",
+        "ezsystems/symfony-tools": "~1.1.7",
         "friendsofsymfony/jsrouting-bundle": "^1.6.3",
         "incenteev/composer-parameter-handler": "^2.1.3",
         "knplabs/knp-menu-bundle": "^2.2.1",
@@ -71,10 +78,10 @@
         "behat/mink-selenium2-driver": "^1.4.0",
         "behat/symfony2-extension": "^2.1.5",
         "bex/behat-screenshot": "^1.2.7",
-        "ezsystems/allure-behat": "^2.0@dev",
-        "ezsystems/allure-php-api": "^2.0@dev",
-        "ezsystems/behat-screenshot-image-driver-cloudinary": "^1.1.0@dev",
-        "ezsystems/behatbundle": "^7.0.0@dev",
+        "ezsystems/allure-behat": "~2.0.5",
+        "ezsystems/allure-php-api": "~2.0.1",
+        "ezsystems/behat-screenshot-image-driver-cloudinary": "~1.1.1",
+        "ezsystems/behatbundle": "~7.0.12",
         "liuggio/fastest": "~1.6.0",
         "overblog/graphiql-bundle": "^0.1.2",
         "phpunit/phpunit": "^6.5.13",
