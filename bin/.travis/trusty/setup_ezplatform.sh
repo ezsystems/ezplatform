@@ -20,7 +20,7 @@ if [[ -z "${1}" ]]; then
     # If not set, read default from .env file
     export $(grep "COMPOSE_FILE" ${EZPLATFORM_BUILD_DIR}/.env)
 else
-    COMPOSE_FILE=$1
+    export COMPOSE_FILE=$1
 fi
 
 if [[ -n "${DEPENDENCY_PACKAGE_DIR}" ]]; then
@@ -40,9 +40,6 @@ if [[ -n "${DEPENDENCY_PACKAGE_NAME}" ]]; then
     echo "- DEPENDENCY_PACKAGE_NAME=${DEPENDENCY_PACKAGE_NAME}"
 fi
 
-echo '> Remove XDebug PHP extension'
-phpenv config-rm xdebug.ini
-
 # Handle dependency if needed
 if [[ -n "${DEPENDENCY_PACKAGE_NAME}" ]]; then
     # get dependency branch alias
@@ -55,7 +52,7 @@ if [[ -n "${DEPENDENCY_PACKAGE_NAME}" ]]; then
     # move dependency to directory available for docker volume
     BASE_PACKAGE_NAME=`basename ${DEPENDENCY_PACKAGE_NAME}`
     echo "> Move ${DEPENDENCY_PACKAGE_DIR} to ${EZPLATFORM_BUILD_DIR}/${BASE_PACKAGE_NAME}"
-    mv ${DEPENDENCY_PACKAGE_DIR} ${EZPLATFORM_BUILD_DIR}/${BASE_PACKAGE_NAME}
+    cp -R ${DEPENDENCY_PACKAGE_DIR} ${EZPLATFORM_BUILD_DIR}/${BASE_PACKAGE_NAME}
     cd ${EZPLATFORM_BUILD_DIR}/${BASE_PACKAGE_NAME}
 
     # perform full checkout to allow using as local Composer depenency
@@ -85,7 +82,6 @@ if [[ -n "${DEPENDENCY_PACKAGE_NAME}" ]]; then
         echo 'Failed requiring dependency' >&2
         exit 3
     fi
-
 fi
 
 if [[ -n "${DOCKER_PASSWORD}" ]]; then
@@ -104,9 +100,9 @@ docker-compose up -d
 
 # for behat builds to work
 echo '> Change ownership of files inside docker container'
-docker-compose exec app sh -c 'chown -R www-data:www-data /var/www'
+docker-compose exec -T app sh -c 'chown -R www-data:www-data /var/www'
 
 echo '> Install data'
-docker-compose exec --user www-data app sh -c "php /scripts/wait_for_db.php; composer --no-interaction ezplatform-install"
+docker-compose exec -T --user www-data app sh -c "php /scripts/wait_for_db.php; composer --no-interaction ezplatform-install"
 
 echo '> Done, ready to run tests'
