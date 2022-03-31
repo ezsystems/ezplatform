@@ -62,14 +62,14 @@ jobs:
             add-as-dependency: false
         secrets:
             SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-    admin-ui-varnish-redis-postgresql-php72:
+    admin-ui-varnish-redis-postgresql-php73:
         name: "Admin UI on Clean Platform"
         uses: ./.github/workflows/callable-browser-tests.yaml
         with:
             project-version: "dev-${{ github.head_ref }}"
             test-suite: "--profile=adminui --suite=adminui"
             add-as-dependency: false
-            php-image: "ezsystems/php:7.2-v2-node10"
+            php-image: "ezsystems/php:7.3-v2-node10"
             setup: "doc/docker/base-dev.yml:doc/docker/varnish.yml:doc/docker/db-postgresql.yml:doc/docker/redis.yml:doc/docker/selenium.yml"
         secrets:
             SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
