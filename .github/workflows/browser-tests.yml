@@ -1,0 +1,85 @@
+name: Browser tests
+
+on:
+    push:
+        branches:
+            - master
+            - "[0-9]+.[0-9]+"
+    pull_request: ~
+
+jobs:
+    kernel-rest-json:
+        name: "Kernel REST JSON tests"
+        uses: ./.github/workflows/callable-browser-tests.yaml
+        with:
+            project-version: "dev-${{ github.head_ref }}"
+            test-suite: "--mode=behat --profile=rest --suite=fullJson --tags=~@broken --non-strict"
+            add-as-dependency: false
+        secrets:
+            SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+    kernel-rest-xml:
+        name: "Kernel Rest fullXML tests"
+        uses: ./.github/workflows/callable-browser-tests.yaml
+        with:
+            project-version: "dev-${{ github.head_ref }}"
+            test-suite: "--mode=behat --profile=rest --suite=fullXml --tags=~@broken --non-strict"
+            add-as-dependency: false
+        secrets:
+            SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+    kernel-rest-core:
+        name: "Kernel Rest core tests"
+        uses: ./.github/workflows/callable-browser-tests.yaml
+        with:
+            project-version: "dev-${{ github.head_ref }}"
+            test-suite: "--mode=behat --profile=core --tags=~@broken"
+            add-as-dependency: false
+        secrets:
+            SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+    behat:
+        name: "Behat"
+        uses: ./.github/workflows/callable-browser-tests.yaml
+        with:
+            project-version: "dev-${{ github.head_ref }}"
+            test-suite: "--mode=behat --profile=behat --tags=~@broken"
+            add-as-dependency: false
+        secrets:
+            SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+    repository-forms:
+        name: "Repository Forms tests on Clean Platform"
+        uses: ./.github/workflows/callable-browser-tests.yaml
+        with:
+            project-version: "dev-${{ github.head_ref }}"
+            test-suite: "--mode=behat --profile=repository-forms --tags=~@broken --non-strict"
+            add-as-dependency: false
+        secrets:
+            SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+    admin-ui:
+        name: "Admin UI on Clean Platform"
+        uses: ./.github/workflows/callable-browser-tests.yaml
+        with:
+            project-version: "dev-${{ github.head_ref }}"
+            test-suite: "--profile=adminui --suite=adminui"
+            add-as-dependency: false
+        secrets:
+            SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+    admin-ui-varnish-redis-postgresql-php73:
+        name: "Admin UI on Clean Platform"
+        uses: ./.github/workflows/callable-browser-tests.yaml
+        with:
+            project-version: "dev-${{ github.head_ref }}"
+            test-suite: "--profile=adminui --suite=adminui"
+            add-as-dependency: false
+            php-image: "ezsystems/php:7.3-v2-node10"
+            setup: "doc/docker/base-dev.yml:doc/docker/varnish.yml:doc/docker/db-postgresql.yml:doc/docker/redis.yml:doc/docker/selenium.yml"
+        secrets:
+            SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+    admin-ui-personas:
+        name: "Admin UI tests using different personas"
+        uses: ./.github/workflows/callable-browser-tests.yaml
+        with:
+            project-version: "dev-${{ github.head_ref }}"
+            test-setup-phase-1: "--profile=setup --suite=personas --tags=@setup"
+            test-suite: "--profile=adminui --suite=personas"
+            add-as-dependency: false
+        secrets:
+            SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
