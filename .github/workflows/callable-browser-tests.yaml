@@ -132,7 +132,7 @@ jobs:
               run: |
                   cd ${HOME}/build/ezplatform
                   docker-compose --env-file=.env exec -T --user www-data app sh -c "composer run post-install-cmd"
-                  docker-compose --env-file=.env exec -T --user www-data app sh -c "bin/ezbehat ${{ inputs.test-setup-phase-1 }}"
+                  docker-compose --env-file=.env exec -T --user www-data app sh -c "bin/ezbehat ${{ inputs.test-setup-phase-2 }}"
 
             - name: Run tests
               run: |
