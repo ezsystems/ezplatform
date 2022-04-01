@@ -76,6 +76,14 @@ jobs:
               name: "[Varnish] Set the URL the tests should access"
               run: echo "WEB_HOST=varnish" >> $GITHUB_ENV
 
+            - id: project-version
+              name: "Set the project version to use"
+              run: |
+                echo "::set-output name=project-version::^2.5@dev"
+                if [[ -n "$GITHUB_BASE_REF" ]] ; then
+                    echo "::set-output name=project-version::${{ inputs.project-version }}"
+                fi
+
             - if: inputs.php-image != ''
               name: Create the PHP_IMAGE variable
               run: echo "PHP_IMAGE=${{ inputs.php-image }}" >> $GITHUB_ENV
@@ -90,7 +98,7 @@ jobs:
                   coverage: none
 
             - name: Set up metarepository
-              run: composer create-project ${{ inputs.project-edition }}:${{ inputs.project-version }} --no-install ${HOME}/build/ezplatform
+              run: composer create-project ${{ inputs.project-edition }}:${{ steps.project-version.outputs.project-version }} --no-install ${HOME}/build/ezplatform
 
             - if: env.SATIS_NETWORK_KEY != ''
               name: Add composer keys for private packagist
