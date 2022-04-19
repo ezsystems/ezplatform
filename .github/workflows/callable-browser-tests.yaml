@@ -64,6 +64,7 @@ env:
     SYMFONY_ENV: behat
     SYMFONY_DEBUG: 1
     PHP_INI_ENV_memory_limit: 7G
+    COMPOSER_MEMORY_LIMIT: 4G
     ENABLE_XDEBUG: 1
 
 jobs:
