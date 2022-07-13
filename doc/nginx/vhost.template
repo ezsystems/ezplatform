@@ -6,6 +6,10 @@ server {
 
     root %BASEDIR%/web;
 
+    if ($request_method ~ ^(TRACE|TRACK)$) {
+        return 405;
+    }
+
     # Additional Assetic rules
     ## Don't forget to run php bin/console assetic:dump --env=prod
     ## and make sure to comment these out in DEV environment.
