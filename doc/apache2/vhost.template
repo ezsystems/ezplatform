@@ -74,7 +74,7 @@
         RewriteEngine On
 
         # Make sure TRACE and TRACK methods are denied
-        RewriteCond %{REQUEST_METHOD} ^(TRACE|TRACK)
+        RewriteCond %{REQUEST_METHOD} ^(TRACE|TRACK) [NC]
         RewriteRule .* - [F]
 
         # For FastCGI mode or when using PHP-FPM, to get basic auth working.
