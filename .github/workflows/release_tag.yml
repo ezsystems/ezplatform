@@ -16,24 +16,39 @@ jobs:
       - name: Set Environment
         run: |
           echo "BUILD_TAG=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
-
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       # load current composer.lock
       - id: currentLock
         name: Gather latest package information
         run: |
           OUT=$(jq --slurp '[.[].packages[] | select(.name | contains("ezsystems") or contains("ibexa")) | [.name, .version] | { name: (.[0]), version: .[1] }]' composer.lock)
-          echo "::set-output name=lock::$( echo "$OUT" | sed ':a;N;$!ba;s/\n/%0A/g' )"
+          echo "lock=$( echo "$OUT" | sed ':a;N;$!ba;s/\n//g' )" >> $GITHUB_OUTPUT
+      - name: Get previous last full release
+        id: prevfull
+        run: |
+          OUT=$(hub api /repos/${{ github.repository }}/releases | jq -r -s '[ .[][].tag_name | select(. | contains("rc") or contains("beta") or contains("alpha") | not) ] | first')
+          echo "tag=$( echo "$OUT" )" >> $GITHUB_OUTPUT
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Get previous last full release
+        id: prevfull
+        run: |
+          OUT=$(hub api /repos/${{ github.repository }}/releases | jq -r -s '[ .[][].tag_name | select(. | contains("rc") or contains("beta") or contains("alpha") | not) ] | first')
+          echo "::set-output name=tag::$( echo "$OUT" | sed ':a;N;$!ba;s/\n/%0A/g' )"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Get previous release tag based on type
         id: prevrelease
         uses: ibexa/version-logic-action@master
         with:
           currentTag: ${{ env.BUILD_TAG }}
+          prevFullTag: ${{ steps.prevfull.outputs.tag }}
 
       # checkout previous tag
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           ref: ${{ steps.prevrelease.outputs.previousTag }}
 
@@ -42,8 +57,7 @@ jobs:
         name: Gather previous package information
         run: |
           OUT=$(jq --slurp '[.[].packages[] | select(.name | contains("ezsystems") or contains("ibexa")) | [.name, .version] | { name: (.[0]), version: .[1] }]' composer.lock)
-          echo "::set-output name=lock::$( echo "$OUT" | sed ':a;N;$!ba;s/\n/%0A/g' )"
-
+          echo "lock=$( echo "$OUT" | sed ':a;N;$!ba;s/\n//g' )" >> $GITHUB_OUTPUT
       # do some magic comparing those outputs
       - id: output_data
         name: Do comparison and output JSON with changes
@@ -64,8 +78,7 @@ jobs:
           # Step 5: (outer brackets) Wrap that into JSON list of objects
           # Note: zzzz is added as an additional suffix to properly sort out alpha/beta/etc pre-releases (v2.5.1-alphazzzz < v2.5.1zzzz)
           OUT=$(jq -s 'flatten | group_by(.name)' $FILE1 $FILE2 | jq -s '[ .[][] | {name: (.[0].name), versions: [ .[0].version, .[1].version ] | unique} | select(.versions | length > 1) ] | .[].versions |= sort_by( . + "zzzz" | [scan("[0-9]+|[a-z]+")] | map(tonumber? // .) )')
-          echo "::set-output name=matrix::$( echo "$OUT" | sed ':a;N;$!ba;s/\n/%0A/g' )"
-
+          echo "matrix=$( echo "$OUT" | sed ':a;N;$!ba;s/\n//g' )" >> $GITHUB_OUTPUT
     # this step is needed, so the output gets to the next defined job
     outputs:
       matrix: ${{ steps.output_data.outputs.matrix }}
@@ -79,7 +92,6 @@ jobs:
       - name: Set Environment
         run: |
           echo "BUILD_TAG=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
-
       - name: Get previous release tag based on type
         id: prevrelease
         uses: ibexa/version-logic-action@master
@@ -87,20 +99,19 @@ jobs:
           currentTag: ${{ env.BUILD_TAG }}
 
       - name: Checkout Generator
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: ibexa/changelog-generator-action
           ref: v2
 
       - name: Setup Python environment
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: '3.x'
 
       - name: Install pygithub & jira
         run: |
-          pip install pygithub jira
-
+          pip install pygithub jira github-action-utils
       - name: Run generator in a loop
         id: generator
         env:
@@ -119,24 +130,26 @@ jobs:
             export GITHUB_REPOSITORY=$(jq -r '.name' <<< "$i")
             export INPUT_PREVIOUSTAG=$(jq -r '.versions[0]' <<< "$i")
             export INPUT_CURRENTTAG=$(jq -r '.versions[1]' <<< "$i")
+            echo Running against $GITHUB_REPOSITORY
             echo -n "## " >> generator_output
             python main.py >> generator_output
             echo '' >> generator_output
           done
-          echo "::set-output name=output::$( cat generator_output | sed ':a;N;$!ba;s/\n/%0A/g' )"
-
+          echo "CHANGELOG_OUTPUT<<EOF" >> $GITHUB_ENV
+          echo "$(cat generator_output)" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
       - name: Create Release
         id: create_release
         uses: zendesk/action-create-release@v1
         with:
           tag_name: ${{ env.BUILD_TAG }}
           body: |
-            ${{ steps.generator.outputs.output }}
+            ${{ env.CHANGELOG_OUTPUT }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Archive markdown
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: changelogs
           path: generator_output
