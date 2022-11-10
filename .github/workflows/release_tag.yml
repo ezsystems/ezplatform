@@ -32,14 +32,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Get previous last full release
-        id: prevfull
-        run: |
-          OUT=$(hub api /repos/${{ github.repository }}/releases | jq -r -s '[ .[][].tag_name | select(. | contains("rc") or contains("beta") or contains("alpha") | not) ] | first')
-          echo "::set-output name=tag::$( echo "$OUT" | sed ':a;N;$!ba;s/\n/%0A/g' )"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Get previous release tag based on type
         id: prevrelease
         uses: ibexa/version-logic-action@master
@@ -153,3 +145,4 @@ jobs:
         with:
           name: changelogs
           path: generator_output
+
