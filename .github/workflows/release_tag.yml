@@ -24,7 +24,7 @@ jobs:
         name: Gather latest package information
         run: |
           OUT=$(jq --slurp '[.[].packages[] | select(.name | contains("ezsystems") or contains("ibexa")) | [.name, .version] | { name: (.[0]), version: .[1] }]' composer.lock)
-          echo "::set-output name=lock::$( echo "$OUT" | sed ':a;N;$!ba;s/\n/%0A/g' )"
+          echo "lock=$( echo "$OUT" | sed ':a;N;$!ba;s/\n/%0A/g' )" >> $GITHUB_OUTPUT
 
       - name: Get previous release tag based on type
         id: prevrelease
@@ -42,7 +42,7 @@ jobs:
         name: Gather previous package information
         run: |
           OUT=$(jq --slurp '[.[].packages[] | select(.name | contains("ezsystems") or contains("ibexa")) | [.name, .version] | { name: (.[0]), version: .[1] }]' composer.lock)
-          echo "::set-output name=lock::$( echo "$OUT" | sed ':a;N;$!ba;s/\n/%0A/g' )"
+          echo "lock=$( echo "$OUT" | sed ':a;N;$!ba;s/\n/%0A/g' )" >> $GITHUB_OUTPUT
 
       # do some magic comparing those outputs
       - id: output_data
@@ -57,7 +57,7 @@ jobs:
           ${{ steps.currentLock.outputs.lock }}
           EOF
           OUT=$(jq -s 'flatten | group_by(.name)' $FILE1 $FILE2 | jq -s '[ .[][] | {name: (.[0].name), versions: [ .[0].version, .[1].version ] | unique} | select(.versions | length > 1) ]')
-          echo "::set-output name=matrix::$( echo "$OUT" | sed ':a;N;$!ba;s/\n/%0A/g' )"
+          echo "matrix=$( echo "$OUT" | sed ':a;N;$!ba;s/\n/%0A/g' )" >> $GITHUB_OUTPUT
 
     # this step is needed, so the output gets to the next defined job
     outputs:
@@ -116,7 +116,7 @@ jobs:
             python main.py >> generator_output
             echo '' >> generator_output
           done
-          echo "::set-output name=output::$( cat generator_output | sed ':a;N;$!ba;s/\n/%0A/g' )"
+          echo "output=$( cat generator_output | sed ':a;N;$!ba;s/\n/%0A/g' )" >> $GITHUB_OUTPUT
 
       - name: Create Release
         id: create_release
