@@ -69,7 +69,7 @@ env:
 
 jobs:
     browser-tests:
-        runs-on: ubuntu-18.04
+        runs-on: ubuntu-20.04
         timeout-minutes: ${{ inputs.timeout }}
 
         steps:
@@ -89,7 +89,7 @@ jobs:
               name: Create the PHP_IMAGE variable
               run: echo "PHP_IMAGE=${{ inputs.php-image }}" >> $GITHUB_ENV
 
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@v3
 
             - name: Setup PHP Action
               uses: shivammathur/setup-php@v2
