@@ -169,7 +169,7 @@ jobs:
                   echo "SLACK_PAYLOAD={\"blocks\": [{\"type\": \"section\",\"text\": {\"type\": \"mrkdwn\",\"text\": \":white_check_mark: Browser tests for $GITHUB_REPOSITORY repository have passed.\nCommiter: $GITHUB_ACTOR \nBranch: $GITHUB_REF_NAME \nDetails: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID \"}}]}" >> $GITHUB_ENV
             - if: github.event_name != 'pull_request'
               name: Send notification about workflow result
-              uses: slackapi/slack-github-action@v1.16.0
+              uses: slackapi/slack-github-action@v1.23.0
               with:
                   payload: ${{ env.SLACK_PAYLOAD }}
               env:
