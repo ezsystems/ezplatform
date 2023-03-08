@@ -69,7 +69,7 @@ env:
 
 jobs:
     browser-tests:
-        runs-on: ubuntu-18.04
+        runs-on: ubuntu-20.04
         timeout-minutes: ${{ inputs.timeout }}
 
         steps:
@@ -80,16 +80,16 @@ jobs:
             - id: project-version
               name: "Set the project version to use"
               run: |
-                echo "::set-output name=project-version::^2.5@dev"
+                echo "project-version=^2.5@dev" >> $GITHUB_OUTPUT
                 if [[ -n "$GITHUB_BASE_REF" ]] ; then
-                    echo "::set-output name=project-version::${{ inputs.project-version }}"
+                    echo "project-version=${{ inputs.project-version }}" >> $GITHUB_OUTPUT
                 fi
 
             - if: inputs.php-image != ''
               name: Create the PHP_IMAGE variable
               run: echo "PHP_IMAGE=${{ inputs.php-image }}" >> $GITHUB_ENV
 
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@v3
 
             - name: Setup PHP Action
               uses: shivammathur/setup-php@v2
