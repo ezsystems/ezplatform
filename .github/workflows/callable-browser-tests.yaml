@@ -148,12 +148,6 @@ jobs:
                   cd ${HOME}/build/ezplatform
                   docker-compose --env-file=.env exec -T --user www-data app sh -c "bin/ezbehat ${{ inputs.test-suite }}"
 
-            - if: always()
-              name: Upload tests report
-              run: |
-                  cd ${HOME}/build/ezplatform
-                  bin/ezreport
-
     report-results:
         runs-on: ubuntu-latest
         timeout-minutes: 3
