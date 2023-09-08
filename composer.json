@@ -71,8 +71,6 @@
         "behat/mink-selenium2-driver": "^1.4.0",
         "behat/symfony2-extension": "^2.1.5",
         "bex/behat-screenshot": "^1.2.7",
-        "ezsystems/allure-behat": "^2.0@dev",
-        "ezsystems/allure-php-api": "^2.0@dev",
         "ezsystems/behat-screenshot-image-driver-cloudinary": "^1.1.0@dev",
         "ezsystems/behatbundle": "^7.0.0@dev",
         "liuggio/fastest": "~1.6.0",

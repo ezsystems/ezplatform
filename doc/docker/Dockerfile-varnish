@@ -1,9 +1,9 @@
-FROM debian:stretch-slim
+FROM debian:bullseye-slim
 
 ENV VARNISH_MALLOC_SIZE="256M" \
     DEBIAN_FRONTEND=noninteractive
 
-ARG PACKAGECLOUD_URL=https://packagecloud.io/install/repositories/varnishcache/varnish60/script.deb.sh
+ARG PACKAGECLOUD_URL=https://packagecloud.io/install/repositories/varnishcache/varnish60lts/script.deb.sh
 ARG VARNISH_MODULES_VERSION=0.15.0
 
 # Use official packages from Varnish and build with varnish-modules mainly for xkey
@@ -19,8 +19,8 @@ RUN set -xe \
             libpcre3-dev \
             libtool \
             pkg-config \
-            python-docutils \
-            python-sphinx \
+            python3-docutils \
+            sphinx-common \
             varnish-dev \
         " \
     # Update apt and get dependencies
@@ -29,7 +29,7 @@ RUN set -xe \
         \
     # Get official Varnish package
         && curl -s ${PACKAGECLOUD_URL} | bash \
-        && apt-get install -q -y --allow-unauthenticated --no-install-recommends varnish $buildDeps \
+        && apt-get install -q -y --allow-unauthenticated --no-install-recommends varnish=6.0.11-1~bullseye $buildDeps \
         \
     # Install varnish modules
         && curl -A "Docker" -o /tmp/varnish-modules.tar.gz -D - -L -s https://github.com/varnish/varnish-modules/archive/refs/tags/${VARNISH_MODULES_VERSION}.tar.gz \
