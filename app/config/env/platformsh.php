@@ -37,7 +37,7 @@ foreach ($relationships['database'] as $endpoint) {
 }
 
 // If mailer_host has default value, then set it to platform.sh' default instead
-if ($container->getParameter('mailer_host') === '127.0.0.1') {
+if ($container->resolveEnvPlaceholders($container->getParameter('mailer_host'), true) === '127.0.0.1') {
     $container->setParameter('mailer_host', getenv('PLATFORM_SMTP_HOST'));
 }
 
