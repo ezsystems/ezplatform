@@ -18,3 +18,17 @@ services:
               # If you prefer default behaviour set this to null or comment out, and consider for instance:
               # https://symfony.com/doc/current/reference/configuration/framework.html#prefix-seed
               namespace: '%cache_namespace%'
+    cache.memcached_1:
+        parent: cache.adapter.memcached
+        tags:
+            - name: cache.pool
+              clearer: cache.app_clearer
+              provider: 'memcached://%cache_dsn%'
+              namespace: '%cache_namespace%_1'
+    cache.memcached_2:
+        parent: cache.adapter.memcached
+        tags:
+            - name: cache.pool
+              clearer: cache.app_clearer
+              provider: 'memcached://%cache_dsn%'
+              namespace: '%cache_namespace%_2'
